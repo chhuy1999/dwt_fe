@@ -269,4 +269,7 @@
 
 /* Mobile */
 @media (max-width: 739px) {
+    .mainWrap {
+        display: none;
+    }
 }

@@ -15,8 +15,8 @@
 
         <!-- Vendor CSS Files -->
         <link href="{{asset('/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
-        <link rel="stylesheet" href="{{asset('/assets/css/variables.css')}}" />
-        <link rel="stylesheet" href="{{asset('/assets/css/login.css')}}" />
+        <link href="{{asset('/assets/css/variables.css')}}" rel="stylesheet" />
+        <link href="{{asset('/assets/css/login.css')}}" rel="stylesheet" />
     </head>
     <body>
         <div class="wrapper">

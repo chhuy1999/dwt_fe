@@ -1479,24 +1479,24 @@
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-stacked100@1.0.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
 
     <!-- Chart Types -->
-    <script src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/PieChartTwo.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
-    <script src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChartTwo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
 
-    <script>
+    <script type="text/javascript">
         // SELECT MULTIPLE LEFT SIDEBAR
         const select = document.getElementById('select');
         const elems = document.querySelectorAll('.data_chart-items');

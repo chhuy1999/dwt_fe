@@ -23,7 +23,7 @@ $(function () {
             hide: function (e) {
                 $('#xoaThuocTinh').modal('show');
                 $('#deleteRowElement').on('click', function() {
-                    $(this).closest('[ATTRIBUTE]').fadeOut(500, function() {
+                    $(this).fadeOut(500, function() {
                         $(this).remove();
                     });
                     $('#xoaThuocTinh').modal('hide');
