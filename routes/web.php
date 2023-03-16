@@ -28,6 +28,9 @@ Route::get('ho-so-don-vi', function () {
     return view('CauHinh.hoSoDonVi');
 });
 Route::get('/phong-ban',[\App\Http\Controllers\Api\DepartmentController::class,'search']);
+Route::post('/phong-ban',[\App\Http\Controllers\Api\DepartmentController::class,'create']);
+Route::get('/phong-ban',[\App\Http\Controllers\Api\DepartmentController::class,'index']);
+Route::put('/phong-ban/{id}',[\App\Http\Controllers\Api\DepartmentController::class,'update']);
 
 // Quản lý nhân sự
 

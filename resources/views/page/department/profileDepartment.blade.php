@@ -1,8 +1,9 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Hồ sơ đơn vị')
+{{-- @endsection --}}
 @section('content')
-    @dd($datas)
+
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap me-0">
         <div class="mainSection">
@@ -99,7 +100,7 @@
 
                                             <div class="main_search d-flex mt-2">
                                                 <i class="bi bi-search"></i>
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="data_search" id="search"/>
                                                 <button class="btn btn-danger d-block w-50" data-bs-toggle="modal"
                                                         data-bs-target="#themThanhVien">Thêm thành
                                                     viên</button>
@@ -125,212 +126,56 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <th scope="row"><div class="d-flex justify-content-center align-items-center">1</div></th>
-                                                        <td>
-                                                            Digital Marketing
-                                                        </td>
-                                                        <td>
-                                                            Trưởng Bộ phận
-                                                        </td>
-                                                        <td>
-                                                            Quản lý các hoạt động của phòng
-                                                        </td>
-                                                        <td>
-                                                            25.000.000
-                                                        </td>
-                                                        <td>
-                                                            325.000.000
-                                                        </td>
-                                                        <td>
-                                                            <div data-bs-toggle="modal"
-                                                                 data-bs-target="#trangBiHanhChinh">
-                                                                Pack Quản lý
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            Vũ Thị Hà
-                                                        </td>
-                                                        <td>
-                                                            <div class="table_actions d-flex">
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#suaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/edit.svg') }}" />
-                                                                </div>
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#xoaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/trash.svg') }}" />
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"><div class="d-flex justify-content-center align-items-center">2</div></th>
-                                                        <td>
-                                                            Content website
-                                                        </td>
-                                                        <td>
-                                                            Nhân viên
-                                                        </td>
-                                                        <td>
-                                                            Viết thương hiệu sản phẩm & sự kiện nội bộ trên website
-                                                        </td>
-                                                        <td>
-                                                            10.000.000
-                                                        </td>
-                                                        <td>
-                                                            130.000.000
-                                                        </td>
-                                                        <td>
-                                                            <div data-bs-toggle="modal"
-                                                                 data-bs-target="#trangBiHanhChinh">
-                                                                Pack Quản lý
-                                                            </div>
-                                                        </td>
-                                                        <td style="letter-spacing: -1px">
-                                                            Nguyễn Thị Ngọc Lan
-                                                        </td>
-                                                        <td>
-                                                            <div class="table_actions d-flex">
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#suaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/edit.svg') }}" />
-                                                                </div>
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#xoaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/trash.svg') }}" />
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"><div class="d-flex justify-content-center align-items-center">3</div></th>
-                                                        <td>
-                                                            Sale Online
-                                                        </td>
-                                                        <td>
-                                                            Nhân viên
-                                                        </td>
-                                                        <td>
-                                                            Giới thiệu sản phẩm đến khách hàng, chăm sóc khách hàng
-                                                        </td>
-                                                        <td>
-                                                            10.000.000
-                                                        </td>
-                                                        <td>
-                                                            130.000.000
-                                                        </td>
-                                                        <td>
-                                                            <div data-bs-toggle="modal"
-                                                                 data-bs-target="#trangBiHanhChinh">
-                                                                Pack Quản lý
-                                                            </div>
-                                                        </td>
-                                                        <td style="letter-spacing: -1px">
-                                                            Nguyễn Thị Hồng Oanh
-                                                        </td>
-                                                        <td>
-                                                            <div class="table_actions d-flex">
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#suaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/edit.svg') }}" />
-                                                                </div>
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#xoaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/trash.svg') }}" />
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"><div class="d-flex justify-content-center align-items-center">4</div></th>
-                                                        <td>
-                                                            Sale Online
-                                                        </td>
-                                                        <td>
-                                                            Nhân viên
-                                                        </td>
-                                                        <td>
-                                                            Giới thiệu sản phẩm đến khách hàng, chăm sóc khách hàng
-                                                        </td>
-                                                        <td>
-                                                            10.000.000
-                                                        </td>
-                                                        <td>
-                                                            130.000.000
-                                                        </td>
-                                                        <td>
-                                                            <div data-bs-toggle="modal"
-                                                                 data-bs-target="#trangBiHanhChinh">
-                                                                Pack Quản lý
-                                                            </div>
-                                                        </td>
-                                                        <td style="letter-spacing: -1px">
-                                                            Nguyễn Thị Hồng Oanh
-                                                        </td>
-                                                        <td>
-                                                            <div class="table_actions d-flex">
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#suaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/edit.svg') }}" />
-                                                                </div>
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#xoaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/trash.svg') }}" />
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"><div class="d-flex justify-content-center align-items-center">5</div></th>
-                                                        <td>
-                                                            Quản lý sàn TMDT
-                                                        </td>
-                                                        <td>
-                                                            Chuyên viên
-                                                        </td>
-                                                        <td>
-                                                            Lên kế hoạch về chiển dịch Marketing trên sàn TMĐT
-                                                        </td>
-                                                        <td>
-                                                            14.000.000
-                                                        </td>
-                                                        <td>
-                                                            182.000.000
-                                                        </td>
-                                                        <td>
-                                                            <div data-bs-toggle="modal"
-                                                                 data-bs-target="#trangBiHanhChinh">
-                                                                Pack Nhân viên
-                                                            </div>
-                                                        </td>
-                                                        <td style="letter-spacing: -1px">
-                                                            Hà Nguyễn Minh Hiếu
-                                                        </td>
-                                                        <td>
-                                                            <div class="table_actions d-flex">
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#suaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/edit.svg') }}" />
-                                                                </div>
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                     data-bs-target="#xoaThanhVien">
-                                                                    <img style="width:16px;height:16px"
-                                                                         src="{{ asset('assets/img/trash.svg') }}" />
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
 
+
+
+                                                        @foreach($datas->data->data as $value)
+
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div class="d-flex justify-content-center align-items-center">
+                                                                    {{$value->id}}
+                                                                </div>
+                                                            </th>
+                                                            <td>
+                                                                {{$value->name}}
+                                                            </td>
+                                                            <td>
+                                                                {{$value->parent}}
+                                                            </td>
+                                                            <td>
+                                                                {{$value->description}}
+                                                            </td>
+                                                            <td>
+                                                                25.000.000
+                                                            </td>
+                                                            <td>
+                                                                {{$value->salary_fund}}
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                data-bs-target="#trangBiHanhChinh">
+                                                                Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                Vũ Thị Hà
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                    data-bs-target="#suaThanhVien">
+                                                                    <img style="width:16px;height:16px"
+                                                                    src="{{ asset('assets/img/edit.svg') }}" />
+                                                                </div>
+                                                                <div class="btn" data-bs-toggle="modal"
+                                                                    data-bs-target="#xoaThanhVien">
+                                                                    <img style="width:16px;height:16px"
+                                                                    src="{{ asset('assets/img/trash.svg') }}" />
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

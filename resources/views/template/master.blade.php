@@ -40,7 +40,7 @@
 <body>
     <div class="wrapper">
         <!-- Pre-Loader Page -->
-        <span id="loader" class="loader"></span>
+        {{-- <span id="loader" class="loader"></span> --}}
         <!-- End Pre-Loader Page -->
 
         <header id="header" class="header fixed-top" data-scrollto-offset="0">
@@ -399,23 +399,24 @@
         </div>
 
     </div><!-- End Wrapper -->
-
+    <footer>
+        @yield('footer-script')
+    </footer>
     <!-- Vendor JS Files -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/assets/js/style.js') }}"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
 
     <!-- Plugins -->
     <script src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
-    @yield('footer-script')
+
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>
