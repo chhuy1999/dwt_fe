@@ -59,9 +59,9 @@ Route::get('khac', function () {
 // DWT & KPI
 
 // Kiểm soát NV & CV
-Route::get('ke-hoach', function () {
-    return view('KeHoach_GiaoViec.keHoach');
-});
+// Route::get('ke-hoach', function () {
+//     return view('KeHoach_GiaoViec.keHoach');
+// });
 Route::get('giao-viec', function () {
     return view('KeHoach_GiaoViec.giaoViec');
 });

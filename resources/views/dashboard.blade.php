@@ -2,7 +2,7 @@
 {{-- Trang chủ admin --}}
 @section('title', 'Bảng điều khiển')
 @section('content')
-@include('template.sidebar.sidebarMaster.sidebarLeft')
+    @include('template.sidebar.sidebarMaster.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -37,7 +37,8 @@
                                             <i class="bi bi-search"></i>
                                             <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" />
                                             <button id="exporttable" class="btn btn-primary btn-export"
-                                                data-toggle="tooltip" data-placement="top" title="Xuất file Excel">
+                                                data-toggle="tooltip" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Xuất file Excel">
                                                 <i class="bi bi-download"></i>
                                             </button>
                                         </div>
@@ -181,8 +182,9 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="table-responsive style_table-2 table-bordered mainSection_table w-100">
-                                            <table class="table">
+                                        <div
+                                            class="table-responsive style_table-2 table-bordered mainSection_table w-100 overflow-scroll">
+                                            <table class="table table-responsive">
                                                 <thead>
                                                     <td colspan="30"
                                                         style="
@@ -245,462 +247,462 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -939,462 +941,462 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">&nbsp;</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">&nbsp;</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">v</div>
+                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" style="cursor: pointer">v</div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1475,7 +1477,64 @@
             </div>
         </div>
     </div>
-@include('template.sidebar.sidebarMaster.sidebarRight')
+    @include('template.sidebar.sidebarMaster.sidebarRight')
+
+    <!-- Modal Báo cáo công việc -->
+    <div class="modal fade" id="baoCaoCongViec" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:34%;">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <div class="d-flex w-100 flex-md-column">
+                        <h5 class="modal-title">Báo cáo công việc</h5>
+                        <h6 class="text-capitalize fw-normal fs-5">Ngày 16/03/2023</h6>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 row">
+                        <div class="col-sm-12 d-flex  align-items-center">
+                            <label for="inputPassword" class="col-sm-2 col-form-label">Ghi chú</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="" id="" placeholder="Nhập ghi chú"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-6 d-flex  align-items-center">
+                            <label for="inputPassword" class="col-sm-4 col-form-label">Số lượng</label>
+                            <div class="col-sm-8" style="padding-left:3px">
+                                <input type="number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 d-flex  align-items-center">
+                            <label for="inputPassword" class="col-sm-4 col-form-label">Trạng thái</label>
+                            <div class="col-sm-8">
+                                <select class="selectpicker" title="Chọn trạng thái">
+                                    <option>Đã nhận</option>
+                                    <option>Đã hoàn thành</option>
+                                    <option>Đã nhắc nhở</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-md-12">
+                            <form action="" method="" enctype="multipart/for-data">
+                                <input type="file" id="files" name="files[]" multiple class="form-control" />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Xóa báo cáo</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
@@ -1552,6 +1611,33 @@
                 sidebarBodySelectWrapper.style.display = 'none';
                 document.removeEventListener('click', handleClickOutside);
             }
+        }
+        // Upload file
+        if (window.File && window.FileList && window.FileReader) {
+            $("#files").on("change", function(e) {
+                var files = e.target.files,
+                    filesLength = files.length;
+                for (var i = 0; i < filesLength; i++) {
+                    var f = files[i]
+                    var fileReader = new FileReader();
+                    fileReader.onload = (function(e) {
+                        var file = e.target;
+                        $("<div class=\"img-thumb-wrapper card shadow\">" +
+                            "<img class=\"img-thumb\" src=\"" + e.target.result + "\" title=\"" + file
+                            .name + "\"/>" +
+                            "<br/><span class=\"remove\">Xóa</span>" +
+                            "</div>").insertAfter("#files");
+                        $(".remove").click(function() {
+                            $(this).parent(".img-thumb-wrapper").remove();
+                        });
+
+                    });
+                    fileReader.readAsDataURL(f);
+                }
+                console.log(files);
+            });
+        } else {
+            alert("Your browser doesn't support to File API")
         }
     </script>
 @endsection

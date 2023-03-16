@@ -29,6 +29,22 @@
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center pb-2">
+                                        <div class="main_search d-flex">
+                                            <i class="bi bi-search"></i>
+                                            <input type="text" class="form-control" placeholder="Tìm kiếm định mức">
+                                        </div>
+                                        <div class="main_action">
+                                            <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#themMoiDinhMuc">
+                                                <i class="bi bi-plus"></i>
+                                                Thêm mới
+                                            </button>
+                                            <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
+                                                <i class="bi bi-download"></i>
+                                                Xuất Excel
+                                            </button>
+                                        </div>
+                                    </div>
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="repeater-hopPhongBan position-relative">
@@ -453,7 +469,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm mới định mức</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa định mức</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -461,7 +477,7 @@
                         <div class="col-sm-12">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
                                 <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:80%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên định mức">
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -494,16 +510,34 @@
                                 <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Vị trí</div>
-                                <input class="form-control" style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
+                                <div class="col-sm-9">
+                                    <select class="selectpicker" title="Chọn Vị trí">
+                                        <option>Quản lý phòng</option>
+                                        <option>Quản lý sàn TMĐT</option>
+                                        <option>Content Website</option>
+                                        <option>Content SEO</option>
+                                        <option>Google Ads</option>
+                                        <option>Content Facebook</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-7">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Đơn vị phòng ban</div>
-                                <input class="form-control" style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker" title="Chọn phòng/ban">
+                                        <option>Trade Marketing</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Quản trị Nhãn &amp; Đào tạo</option>
+                                        <option>Truyền thông</option>
+                                        <option>Sáng tạo nội dung</option>
+                                        <option>Dịch vụ bán hàng</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         
@@ -530,25 +564,67 @@
                         <div class="col-sm-12">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
                                 <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên định mức">
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                        <div class="col-sm-12">
+                            <div class="mb-3">
                                 <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
-                                <input class="form-control" style="width:51%" type="text" value="Nhập mô tả thực hiện">
+                                <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                            <div class="mb-3">
                                 <div class="modal_body-title">Kế hoạch thực hiện <span class="text-danger">*</span></div>
-                                <input class="form-control" style="width:51%" type="text" value="Nhập kế hoạch thực hiện">
+                                <textarea class="form-control" placeholder="Nhập kế hoạch thực hiện"></textarea>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-4">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Nguyên nhân</div>
-                                <input class="form-control" style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                <div class="modal_body-title">Đơn vị</div>
+                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Manday</div>
+                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Số lượng</div>
+                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
+                                <div class="col-sm-9">
+                                    <select class="selectpicker" title="Chọn Vị trí">
+                                        <option>Quản lý phòng</option>
+                                        <option>Quản lý sàn TMĐT</option>
+                                        <option>Content Website</option>
+                                        <option>Content SEO</option>
+                                        <option>Google Ads</option>
+                                        <option>Content Facebook</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker" title="Chọn phòng/ban">
+                                        <option>Trade Marketing</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Quản trị Nhãn &amp; Đào tạo</option>
+                                        <option>Truyền thông</option>
+                                        <option>Sáng tạo nội dung</option>
+                                        <option>Dịch vụ bán hàng</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         
