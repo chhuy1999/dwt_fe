@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    public function search()
+    public function search(Request $request)
     {
-        $url = 'https://sdwtbe.sweetsica.com/api/v1/departments';
+        $data_search = $request['data_search'];
+        $url = 'https://sdwtbe.sweetsica.com/api/v1/departments/'.$data_search;
         $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vc2R3dGJlLnN3ZWV0c2ljYS5jb20vYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2Nzg4NTg0NDYsImV4cCI6MTY4MTQ1MDQ0NiwibmJmIjoxNjc4ODU4NDQ2LCJqdGkiOiJSbjJ6UjBhejRIWUlJdW5QIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.55jMT4e2MU1WsWQ2yckw3Ulekl-xIXSOjzkdl0E6RO4';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
