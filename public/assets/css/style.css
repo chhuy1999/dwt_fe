@@ -1588,6 +1588,13 @@ th {
 }
 
 /* Modal */
+.style_pickdate {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    font-size: var(--fz-14);
+}
+
 .modal_list-more {
     font-size: var(--fz-16);
     border: 1px solid #ced4da;

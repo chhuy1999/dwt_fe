@@ -85,7 +85,7 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
@@ -138,7 +138,7 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
@@ -190,7 +190,7 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
@@ -242,7 +242,7 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
@@ -294,7 +294,7 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
@@ -346,7 +346,7 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
@@ -447,64 +447,66 @@
             </div>
         </div>
     </div>
-    <!-- Modal Sửa Vấn Đề -->
-    <div class="modal fade" id="suaVanDeTonDong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <!-- Modal Sửa Định Mức -->
+    <div class="modal fade" id="suaMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Chỉnh sửa vấn đề tồn đọng</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm mới định mức</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Vấn đề tồn đọng <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Người nêu <span class="text-danger">*</span></div>
-                                <input class="form-control" style="width:51%" type="text" value="Nguyễn Ngọc Bảo">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Chịu trách nhiệm <span class="text-danger">*</span></div>
-                                <input class="form-control" style="width:51%" type="text" value="Nguyễn Ngọc Bảo">
+                                <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
+                                &nbsp;<input class="form-control"  style="width:80%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
                             </div>
                         </div>
                         <div class="col-sm-12">
+                            <div class="mb-3">
+                                <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
+                                <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-3">
+                                <div class="modal_body-title">Kế hoạch thực hiện <span class="text-danger">*</span></div>
+                                <textarea class="form-control" placeholder="Nhập kế hoạch thực hiện"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Nguyên nhân</div>
+                                <div class="modal_body-title">Đơn vị</div>
+                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Manday</div>
+                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Số lượng</div>
+                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Vị trí</div>
                                 <input class="form-control" style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-8">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Hướng giải quyết</div>
-                                <input class="form-control" style="width:76%" type="text" value="Sẽ gửi trong tuần">
+                                <div class="modal_body-title">Đơn vị phòng ban</div>
+                                <input class="form-control" style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
                             </div>
                         </div>
-                        <div class="col-sm-6 mb-3">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title">Thời hạn <span class="text-danger">*</span></div>
-                                    <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control" style="width:51%" type="text">
-                                </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Tình trạng <span class="text-danger">*</span></div>
-                                <select class="form-select w-75" aria-label="Default select example">
-                                    <option selected hidden>Chọn trạng thái</option>
-                                    <option>Đã có hướng giải quyết</option>
-                                    <option>Đã giải quyết</option>
-                                    <option>Không thể giải quyết</option>
-                                    <option>Không xác định được nguyên nhân</option>
-                                </select>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -515,16 +517,61 @@
         </div>
     </div>
 
-    {{-- Xóa thuộc tính --}}
+    <!-- Modal Thêm Định Mức -->
+    <div class="modal fade" id="themMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm mới định mức</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
+                                &nbsp;<input class="form-control"  style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
+                                <input class="form-control" style="width:51%" type="text" value="Nhập mô tả thực hiện">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Kế hoạch thực hiện <span class="text-danger">*</span></div>
+                                <input class="form-control" style="width:51%" type="text" value="Nhập kế hoạch thực hiện">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Nguyên nhân</div>
+                                <input class="form-control" style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Xóa đinh mức --}}
     <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa Thuộc tính này</h5>
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa định mức</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Bạn có thực sự muốn xoá thuộc tính đã chọn không?
+                    Bạn có thực sự muốn xoá đinh mức này không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>

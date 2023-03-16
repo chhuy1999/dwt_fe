@@ -528,9 +528,9 @@
                                     <div class="d-flex col-sm-4">
                                         <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input id="suaCreateUser" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="suaCreateUser" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
@@ -725,9 +725,9 @@
                                         <div class="modal_body-title">Ngày thử việc <span class="text-danger">*</span>
                                         </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input id="suaNgayThuViec" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="suaNgayThuViec" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
                             </div>
@@ -737,9 +737,9 @@
                                         <div class="modal_body-title">Ngày chính thức <span class="text-danger">*</span>
                                         </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input id="suaNgayChinhThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="suaNgayChinhThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
                             </div>
@@ -805,9 +805,9 @@
                                     <div class="d-flex col-sm-4">
                                         <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input id="createUser" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="createUser" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
@@ -1010,9 +1010,9 @@
                                         <div class="modal_body-title">Ngày thử việc <span class="text-danger">*</span>
                                         </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input id="ngayThuViec" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="ngayThuViec" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
                             </div>
@@ -1022,9 +1022,9 @@
                                         <div class="modal_body-title">Ngày chính thức <span class="text-danger">*</span>
                                         </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <input id="ngayChinhThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="ngayChinhThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
                             </div>

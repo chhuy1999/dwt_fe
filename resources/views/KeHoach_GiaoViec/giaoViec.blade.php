@@ -43,15 +43,14 @@
                                                         <tr>
                                                             <th scope="row">1</th>
                                                             <td>
-                                                                Triển khai các sự kiện nội bộ quy mô lớn
+                                                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="riển khai các sự kiện nội bộ quy mô lớn">Triển khai các sự kiện nội bộ quy mô</div>
                                                             </td>
                                                             <td>
-                                                                Mô tả Triển khai các sự kiện nội bộ quy mô lớn
+                                                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">Mô tả Triển khai các sự kiện nội bộ quy mô</div>
                                                             </td>
                                                             <td>
-                                                                1
+                                                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="1 manday">1</div>
                                                             </td>
-                                                            
                                                         </tr>
 
                                                     </tbody>
@@ -60,28 +59,27 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện nội
-                                                bộ quy mô lớn"</div>
+                                                bộ quy mô"</div>
                                             <div class="mb-3 row">
-                                                <div class="col-md-12 mb-2">
-                                                    <label for="title" class="col-form-label">* Tên nhiệm vụ </label>
-                                                    <div class="col">
+                                                <div class="col-md-12 mb-2 d-flex">
+                                                    <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-9">
                                                         <input type="text" class="form-control"
-                                                            value="Triển khai các sự kiện nội bộ quy mô lớn"
+                                                            value="Triển khai các sự kiện nội bộ quy mô"
                                                             id="title" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 mb-2">
-                                                    <label for="textarea" class="col-form-label">* Mô tả</label>
+                                                    <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span class="text-danger">*</span></label>
                                                     <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
                                                 </div>
                                                 <div class="col-md-12 mb-2">
-                                                    <label for="textarea" class="col-form-label">* Kế hoạch thực
-                                                        hiện</label>
+                                                    <label for="textarea" class="col-form-label">Kế hoạch thực hiện<span class="text-danger">*</span></label>
                                                     <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
                                                 </div>
-                                                <div class="col-md-6 mb-2">
-                                                    <label for="textarea" class="col-form-label">* Vị trí đảm nhiệm </label>
-                                                    <div class="col">
+                                                <div class="col-md-6 mb-2 d-flex">
+                                                    <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm nhiệm <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-7">
                                                         <select class='form-control' name="" id="">
                                                             <option value="">Truyền thông nội bộ</option>
                                                             <option value="">Truyền thông nội bộ 2</option>
@@ -89,9 +87,9 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mb-2">
-                                                    <label for="textarea" class="col-form-label">* Người đảm nhiệm </label>
-                                                    <div class="col">
+                                                <div class="col-md-6 mb-2 d-flex">
+                                                    <label for="textarea" class="col-sm-5 col-form-label">Người đảm nhiệm <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-7">
                                                         <select class='form-control' name="" id="">
                                                             <option value="">Người đảm nhiệm</option>
                                                             <option value="">Người đảm nhiệm 2</option>
@@ -99,25 +97,39 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mb-2">
-                                                    <label for="textarea" class="col-form-label">* Thời gian làm</label>
-                                                    <div class="col">
+                                                <div class="col-md-5 mb-2 d-flex">
+                                                    <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
+                                                    <div class="col-sm-4 me-2">
                                                         <div id="datepickerThoiGianLam"
                                                             class="d-flex align-items-center justify-content-between col-sm-12 datetimepicker_wrapper">
-                                                            <input type="text" value="<?php echo date('d/m/Y'); ?>"
-                                                                class="form-control date start" />
+                                                            <input type="text" placeholder="<?php echo date('d/m/y'); ?>"
+                                                                class="form-control date" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div id="datepickerThoiGianKetThuc"
+                                                            class="d-flex align-items-center justify-content-between col-sm-12 datetimepicker_wrapper">
+                                                            <input type="text" placeholder="<?php echo date('d/m/y'); ?>"
+                                                                class="form-control date" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mb-2">
-                                                    <label for="textarea" class="col-form-label">* Thời gian kết
-                                                        thúc</label>
-                                                    <div class="col">
-                                                        <div id="datepickerThoiGianKetThuc"
-                                                            class="d-flex align-items-center justify-content-between col-sm-12 datetimepicker_wrapper">
-                                                            <input type="text" value="<?php echo date('d/m/Y'); ?>"
-                                                                class="form-control date start" />
-                                                        </div>
+                                                <div class="col-md-2 mb-2 d-flex">
+                                                    <label for="textarea" class="col-sm-5 col-form-label">MD <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 mb-2 d-flex">
+                                                    <label for="textarea" class="col-sm-5 col-form-label">SL <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 mb-2 d-flex">
+                                                    <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" class="form-control" />
                                                     </div>
                                                 </div>
 
@@ -156,10 +168,310 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td>1</td>
+                                                                    <td>Triển khai các sự kiện nội bộ quy mô</td>
+                                                                    <td>Mai</td>
+                                                                    <td>Marketing</td>
+                                                                    <td>13-03</td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-center">
+                                                                            <div class="circle_tracking-wrapper"
+                                                                                style="border: 1px solid">
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                            data-bs-toggle="dropdown"
+                                                                            aria-expanded="false"><i
+                                                                                class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        <ul class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#suaVanDeTonDong">
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
                                                                     <td>1</td>
+                                                                    <td>Triển khai các sự kiện nội bộ quy mô</td>
+                                                                    <td>Mai</td>
+                                                                    <td>Marketing</td>
+                                                                    <td>13-03</td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-center">
+                                                                            <div class="circle_tracking-wrapper"
+                                                                                style="border: 1px solid">
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                            data-bs-toggle="dropdown"
+                                                                            aria-expanded="false"><i
+                                                                                class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        <ul class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#suaVanDeTonDong">
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
                                                                     <td>1</td>
+                                                                    <td>Triển khai các sự kiện nội bộ quy mô</td>
+                                                                    <td>Mai</td>
+                                                                    <td>Marketing</td>
+                                                                    <td>13-03</td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-center">
+                                                                            <div class="circle_tracking-wrapper"
+                                                                                style="border: 1px solid">
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                            data-bs-toggle="dropdown"
+                                                                            aria-expanded="false"><i
+                                                                                class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        <ul class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#suaVanDeTonDong">
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
                                                                     <td>1</td>
+                                                                    <td>Triển khai các sự kiện nội bộ quy mô</td>
+                                                                    <td>Mai</td>
+                                                                    <td>Marketing</td>
+                                                                    <td>13-03</td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-center">
+                                                                            <div class="circle_tracking-wrapper"
+                                                                                style="border: 1px solid">
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                            data-bs-toggle="dropdown"
+                                                                            aria-expanded="false"><i
+                                                                                class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        <ul class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#suaVanDeTonDong">
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
                                                                     <td>1</td>
+                                                                    <td>Triển khai các sự kiện nội bộ quy mô</td>
+                                                                    <td>Mai</td>
+                                                                    <td>Marketing</td>
+                                                                    <td>13-03</td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-center">
+                                                                            <div class="circle_tracking-wrapper"
+                                                                                style="border: 1px solid">
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                            data-bs-toggle="dropdown"
+                                                                            aria-expanded="false"><i
+                                                                                class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        <ul class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#suaVanDeTonDong">
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>1</td>
+                                                                    <td>Triển khai các sự kiện nội bộ quy mô</td>
+                                                                    <td>Mai</td>
+                                                                    <td>Marketing</td>
+                                                                    <td>13-03</td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-center">
+                                                                            <div class="circle_tracking-wrapper"
+                                                                                style="border: 1px solid">
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                                <div class="circle_tracking bg-white">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                            data-bs-toggle="dropdown"
+                                                                            aria-expanded="false"><i
+                                                                                class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        <ul class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#suaVanDeTonDong">
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px"
+                                                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>1</td>
+                                                                    <td>Triển khai các sự kiện nội bộ quy mô</td>
+                                                                    <td>Mai</td>
+                                                                    <td>Marketing</td>
+                                                                    <td>13-03</td>
                                                                     <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
@@ -316,8 +628,8 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
