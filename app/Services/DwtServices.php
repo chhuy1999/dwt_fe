@@ -47,6 +47,8 @@ class DwtServices
         $response->throw();
         //get data from response
         $response->throw()->json()['message'];
+
+        $data = $response->json();
         return $data['data'];
     }
 
