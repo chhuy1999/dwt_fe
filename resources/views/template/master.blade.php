@@ -23,18 +23,17 @@
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" />
+    <link href="{{ asset('assets/vendor/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
 
     <!-- Plugins -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}"
-        rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" />
+    @yield('header-style')
 
     <!-- Base -->
-    <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
+    <link href="{{ asset('assets/css/normalize.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/variables.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -60,6 +59,7 @@
                                 <a class="header_menu-link active" aria-current="page" href="#">
                                     <i class="bi bi-gear"></i>
                                     <span>Cấu hình</span>
+
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items">
@@ -403,20 +403,18 @@
         @yield('footer-script')
     </footer>
     <!-- Vendor JS Files -->
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('/assets/js/style.js') }}"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/style.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
 
-    <!-- Plugins -->
-    <script src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
-
+    @yield('footer-script')
     <script>
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script> --}}
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 </html>

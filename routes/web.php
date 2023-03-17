@@ -30,10 +30,17 @@ Route::get('/', function () {
 Route::get('ho-so-don-vi', function () {
     return view('CauHinh.hoSoDonVi');
 });
+
 Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
 Route::post('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'create']);
 Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'index']);
 Route::put('/phong-ban/{id}', [\App\Http\Controllers\Api\DepartmentController::class, 'update']);
+
+Route::get('dinh-muc-lao-dong', function () {
+    return view('CauHinh.dinhMucLaoDong');
+});
+Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
+
 
 // Quản lý nhân sự
 
@@ -62,9 +69,9 @@ Route::get('khac', function () {
 // DWT & KPI
 
 // Kiểm soát NV & CV
-Route::get('ke-hoach', function () {
-    return view('KeHoach_GiaoViec.keHoach');
-});
+// Route::get('ke-hoach', function () {
+//     return view('KeHoach_GiaoViec.keHoach');
+// });
 Route::get('giao-viec', function () {
     return view('KeHoach_GiaoViec.giaoViec');
 });

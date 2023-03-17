@@ -261,12 +261,17 @@
     .header_actions-wrapper .header_actions-notification {
         padding-right: 0px;
     }
+    .mainWrap {
+        display: none;
+    }
 }
 
 /* Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
+
 }
 
 /* Mobile */
 @media (max-width: 739px) {
+    
 }

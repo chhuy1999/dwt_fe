@@ -16,48 +16,53 @@
 
                     <div class="main_search mb-3 mt-3">
                         <i class="bi bi-search"></i>
-                        <input type="text" class="form-control" placeholder="Tìm kiếm">
+                        <input type="text" id="search_tree" class="form-control" placeholder="Tìm kiếm">
                     </div>
 
                     <ul class="tree">
-                        <li class="ps-0">
-                            <i style="font-size:16px" class="bi bi-house"></i> Toàn Công Ty
-                        </li>
-                        <li class="section">
-                            <input type="checkbox" id="groupA">
-                            <label for="groupA"><img src="{{ asset('assets/img/user.svg') }}" /> Khối kinh
-                                doanh</label>
+                        <li class="section ps-0">
+                            <input type="checkbox" checked id="all">
+                                <label class="d-flex" for="all"></label>
+                                <span class="clicktree d-block" style="padding-left: 20px" data-href="#body_content-1"> Toàn Công Ty</span>
                             <ul>
-                                <li>Kênh OTC</li>
-                                <li>Kênh ETC</li>
-                                <li>Kênh MT</li>
-                                <li>Kênh Online</li>
+                                <li class="section">
+                                        <input type="checkbox" id="groupA">
+                                        <label class="d-flex" for="groupA"></label>
+                                        <span class="clicktree d-block" data-href="#body_content-2"> Khối kinh doanh</span>
+                                    <ul>
+                                        <li>Kênh OTC</li>
+                                        <li>Kênh ETC</li>
+                                        <li>Kênh MT</li>
+                                        <li>Kênh Online</li>
+                                    </ul>
+                                </li>
+                                <li class="section">
+                                    <input type="checkbox" id="groupB">
+                                    <label class="d-flex" for="groupB"></label>
+                                    <span class="d-block"> Marketing</span>
+                                    <ul>
+                                        <li>Quản trị nhãn & Đào tạo</li>
+                                        <li class="clicktree" data-href="#body_content-3">Digital Marketing</li>
+                                        <li>Trade Marketing</li>
+                                        <li>Truyền thông nội bộ</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="clicktree d-block">Kế toán</span>
+                                </li>
+                                <li>
+                                    <span class="clicktree d-block">Hành chính nhân sự</span>
+                                </li>
+                                <li>
+                                    <span class="clicktree d-block">Kho & Giao vận</span>
+                                </li>
+                                <li>
+                                    <span class="clicktree d-block">Dịch vụ bán hàng</span>
+                                </li>
+                                <li>
+                                    <span class="clicktree d-block">Cung ứng</span>
+                                </li>
                             </ul>
-                        </li>
-                        <li class="section">
-                            <input type="checkbox" id="groupB">
-                            <label for="groupB"><img src="{{ asset('assets/img/user.svg') }}" /> Marketing</label>
-                            <ul>
-                                <li>Quản trị nhãn & Đào tạo</li>
-                                <li>Digital Marketing</li>
-                                <li>Trade Marketing</li>
-                                <li>Truyền thông nội bộ</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <img src="{{ asset('assets/img/box.svg') }}" /> Kế toán
-                        </li>
-                        <li>
-                            <img src="{{ asset('assets/img/heart.svg') }}" /> Hành chính nhân sự
-                        </li>
-                        <li>
-                            <img src="{{ asset('assets/img/ticket-discount.svg') }}" /> Kho & Giao vận
-                        </li>
-                        <li>
-                            <img src="{{ asset('assets/img/notification.svg') }}" /> Dịch vụ bán hàng
-                        </li>
-                        <li>
-                            <img src="{{ asset('assets/img/user-edit.svg') }}" /> Cung ứng
                         </li>
 
                     </ul>

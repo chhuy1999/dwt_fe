@@ -47,36 +47,28 @@ label.col-form-label {
     color: #939393;
 }
 
-/* (A) LIST TO MENU */
+
 .tree,
 .section ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.tree {
-}
 .tree li {
-    padding: 10px 6px 10px 16px;
+    padding: 10px 0 10px 16px;
     font-size: 1.2rem;
     font-weight: 500;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-.tree li img {
-    width: 16px;
-    height: 16px;
-    margin-right: 6px;
+    cursor: pointer;
 }
 
 .tree li:last-child {
     border: 0;
 }
 
-/* (B) SUB-SECTIONS */
-/* (B1) TOGGLE SHOW/HIDE */
+
 .section ul {
     display: none;
 }
@@ -84,48 +76,45 @@ label.col-form-label {
     display: block;
 }
 
-/* (B2) HIDE CHECKBOX */
 .section input[type="checkbox"] {
     display: none;
 }
 
-/* (B3) ADD EXPAND/COLLAPSE ICON  */
 .section {
     position: relative;
 }
 
 .section label {
-    display: flex;
-    align-items: center;
     font-size: 1.2rem;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
-.section label:after {
-    content: "\0002B";
-    position: absolute;
-    top: 8px;
-    right: 0;
-    padding: 0px 6px;
-    text-align: center;
-    /* font-size: 1.4rem; */
-    color: #f00;
-    transition: all 0.5s;
-}
-.section input:checked ~ label:after {
-    color: #23c37a;
-    transform: rotate(45deg);
-}
-
-/* (B4) SUB-SECTION ITEMS */
 .section ul {
     margin-top: 10px;
-    border-left: 1px solid;
+    border-left: 1px dashed var(--primary-color);
 }
 .section ul li {
     padding-left: 20px;
+    margin-left: 14px;
+}
+
+.section label:after {
+    content: "\F4FD";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    transition: all 0.5s;
+    font-family: "bootstrap-icons";
+    cursor: pointer;
+}
+.section input:checked ~ label:after {
+    content: '\F2E9';
+    font-family: "bootstrap-icons";
 }
 
 /*** Start Style Table ***/
@@ -302,6 +291,28 @@ td {
     width: 20%;
 }
 .style_table-5 tr th:nth-child(4) {
+    width: 5%;
+}
+
+.style_table-6 tr th:first-child {
+    width: 5%;
+}
+.style_table-6 tr th:nth-child(2) {
+    width: 40%;
+}
+.style_table-6 tr th:nth-child(3) {
+    width: 15%;
+}
+.style_table-6 tr th:nth-child(4) {
+    width: 15%;
+}
+.style_table-6 tr th:nth-child(5) {
+    width: 10%;
+}
+.style_table-6 tr th:nth-child(6) {
+    width: 10%;
+}
+.style_table-6 tr th:nth-child(7) {
     width: 5%;
 }
 
@@ -589,24 +600,42 @@ th {
     padding: 10px 10px;
 }
 
+.body_content-wrapper {
+    display: none;
+}
+
+.body_noContent-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    border: 1px dashed var(--primary-color);
+    border-radius: var(--border-radius-mini);
+    background-color: var(--pink-color-blur);
+}
+
 .text_wrapper {
     display: grid;
     grid-template-columns: 70% 30%;
     align-items: center;
 }
 
-.text_content{
+.text_content {
     padding: 10px;
     background: var(--pink-color-blur);
     border-radius: var(--border-radius-mini);
 }
-.text_action-wrapper{
+.text_action-wrapper {
     padding: 10px;
     background: var(--pink-color-blur);
     border-radius: var(--border-radius-mini);
 }
 
-.text_action  {
+.text_action {
     margin-left: 10px;
 }
 
@@ -621,6 +650,11 @@ th {
     padding-right: 10px;
 }
 
+.text_action-items strong,
+.text_action-items span {
+    font-size: var(--fz-12);
+}
+
 .text_action-label {
     font-size: var(--fz-14);
     font-weight: 700;
@@ -632,7 +666,6 @@ th {
     font-weight: normal;
     font-style: italic;
 }
-
 
 .table-sm > :not(caption) > * > * {
     padding: 0;
@@ -695,7 +728,7 @@ th {
 .bootstrap-select {
     border: 1px solid #ced4da;
     border-radius: var(--border-radius-mini);
-    width: 100%!important;
+    width: 100% !important;
 }
 
 .table > :not(caption) > * > * {
@@ -1317,7 +1350,7 @@ th {
 
 .main_search .bi-search {
     position: absolute;
-    top: 5px;
+    top: 3px;
     left: 6px;
     color: #9b9999;
     font-size: var(--fz-14);
@@ -1339,11 +1372,13 @@ th {
     margin: 0;
     width: 100%;
     /* overflow: auto; */
+    user-select: none;
 }
 
 .header_menu-list .header_menu-link:hover {
     color: var(--primary-color) !important;
     background-color: var(--white-color-blur);
+    transition: 0.3s;
 }
 .header_menu-list .header_menu-item {
     text-align: center;
@@ -1398,10 +1433,18 @@ th {
     transition: 0.5s padding, 0.5s background;
     width: 150px;
     top: 57px;
-    border-radius: var(--border-radius-main);
+    border-radius: 0 0 var(--border-radius-main) var(--border-radius-main);
     box-shadow: rgb(0 0 0 / 16%) 0px 2px 4px;
-    display: none;
-    /* overflow: hidden; */
+    pointer-events: none;
+    transform: translateY(10px);
+    opacity: 0;
+    transition-property: transform, opacity;
+}
+.header_menu-list > li:hover > #header_submenu {
+    pointer-events: all;
+    transform: translateY(0);
+    opacity: 1;
+    transition: 0.3s;
 }
 
 .header_menu-list > li > #header_submenu::before {
@@ -1418,10 +1461,6 @@ th {
 .header_submenu-items .header_submenu-link:hover {
     background-color: var(--white-color-blur);
     color: var(--primary-color);
-}
-
-.header_menu-list li:hover #header_submenu {
-    display: block;
 }
 
 .header_submenu-items {
@@ -1562,6 +1601,22 @@ th {
 }
 
 /* Modal */
+.style_pickdate {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    font-size: var(--fz-14);
+}
+
+.modal_list-more {
+    font-size: var(--fz-16);
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-left: 4px;
+    cursor: pointer;
+    padding: 2px 0;
+}
+
 .modal_body-title {
     font-size: var(--fz-12);
 }
@@ -1579,7 +1634,7 @@ th {
     padding: 0 16px;
 }
 
-.modal-body .form-select option:first-child{
+.modal-body .form-select option:first-child {
     color: #a4a2a2;
 }
 
@@ -1610,6 +1665,7 @@ th {
     font-size: var(--fz-14);
     text-transform: uppercase;
     font-weight: 700;
+    color: var(--primary-color);
 }
 .create_user-title {
     font-size: var(--fz-12);
@@ -1658,3 +1714,28 @@ th {
     color: #9abcd1;
     margin-bottom: 0;
 }
+
+
+.img-thumb {
+    max-height: 75px;
+    border: 2px solid none;
+     border-radius:3px;
+    padding: 1px;
+    cursor: pointer;
+  }
+  .img-thumb-wrapper {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+  }
+  .remove {
+    display: block;
+    background: #444;
+    border: 1px solid none;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+  }
+  .remove:hover {
+    background: white;
+    color: black;
+  }

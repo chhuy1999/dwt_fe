@@ -36,7 +36,7 @@
 html {
     font-size: 62.5%;
     line-height: 1.6rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     box-sizing: border-box;
 }
 
@@ -66,7 +66,6 @@ button {
     font-size: var(--fz-12);
     height: 28px;
 }
-
 
 input.disableText {
     background-color: var(--white-color-blur);
@@ -112,7 +111,11 @@ option:hover {
 
 .xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_default,
 .xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_current,
-.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box > div > div.xdsoft_current {
+.xdsoft_datetimepicker
+    .xdsoft_timepicker
+    .xdsoft_time_box
+    > div
+    > div.xdsoft_current {
     background: var(--primary-color);
     box-shadow: none;
     color: #fff;
@@ -164,7 +167,7 @@ option:hover {
 }
 
 .loader:before {
-    content: '';
+    content: "";
     background-image: url(../img/logo-thaihung-1.jpg);
     width: 100%;
     height: 100%;
@@ -199,4 +202,56 @@ option:hover {
     100% {
         transform: scale(0.75);
     }
+}
+
+/* Blink Blink */
+@-webkit-keyframes blink {
+    0% {
+        background-color: var(--yellow-color-blur);
+    }
+    50% {
+        background-color: var(--blue-color-blur);
+    }
+    100% {
+        background-color: var(--yellow-color-blur);
+    }
+}
+@-moz-keyframes blink {
+    0% {
+        background-color: var(--yellow-color-blur);
+    }
+    50% {
+        background-color: var(--blue-color-blur);
+    }
+    100% {
+        background-color: var(--yellow-color-blur);
+    }
+}
+@-o-keyframes blink {
+    0% {
+        background-color: var(--yellow-color-blur);
+    }
+    50% {
+        background-color: var(--blue-color-blur);
+    }
+    100% {
+        background-color: var(--yellow-color-blur);
+    }
+}
+@keyframes blink {
+    0% {
+        background-color: var(--yellow-color-blur);
+    }
+    50% {
+        background-color: var(--blue-color-blur);
+    }
+    100% {
+        background-color: var(--yellow-color-blur);
+    }
+}
+#bg-blink {
+    -webkit-animation: blink 700ms infinite;
+    -moz-animation: blink 700ms infinite;
+    -o-animation: blink 700ms infinite;
+    animation: blink 700ms infinite;
 }

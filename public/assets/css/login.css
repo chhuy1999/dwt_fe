@@ -49,7 +49,7 @@ body {
     z-index: 2;
 }
 .login_content {
-    --width: 400px;
+    --width: 500px;
     background-color: var(--white-color);
     border-radius: var(--border-radius-main);
     max-width: calc(100vw - 32px);
