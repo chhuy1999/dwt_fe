@@ -3,40 +3,43 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Services\DwtServices;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
     //
+    private $dwtServices;
+    //constructor
+    public function __construct()
+    {
+        $this->dwtServices = new DwtServices();
+    }
 
     public function login(Request $request)
     {
         //validate request
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
 
-        $url = 'https://sdwtbe.sweetsica.com/api/v1/auth/login';
-
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-        ])->post($url, [
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
-
-        if (!$response->successful()) {
-            return redirect()->back()->with('error', 'Invalid Credentials');
+            $response = $this->dwtServices->login($request->email, $request->password);
+            $token = $response['token'];
+            $request->session()->put('token', $token);
+            $user = $response['user'];
+            $request->session()->put('user', $user);
+            // //regenerate session id
+            $request->session()->regenerate();
+            return redirect('/');
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            // parse json to array
+            //return back with login error
+            return back()->with('loginError', $error);
         }
-        $data = $response->json();
-        $token = $data['data']['token'];
-        $request->session()->put('token', $token);
-        $user = $data['data']['user'];
-        $request->session()->put('user', $user);
-        //regenerate session id
-        $request->session()->regenerate();
-        return redirect('/');
     }
 }

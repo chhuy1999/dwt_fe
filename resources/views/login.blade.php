@@ -20,18 +20,30 @@
                         <!-- <h1 class="login_title">Đăng nhập hệ thống DWT</h1> -->
                     </div>
                     <div class="login_body">
-                        <form>
+                        {{-- login error --}}
+                        @if (session('loginError'))
+                            <div class="alert alert-danger">
+                                {{ session('loginError') }}
+                            </div>
+                        @endif
+                        <form action="/login" method="POST">
+                            @csrf
                             <div class="form-floating mb-3">
                                 <input type="text" autocomplete="off" class="form-control" id="floatingInput"
-                                    placeholder="admin" />
+                                    placeholder="admin" name="email" />
                                 <label for="floatingInput">Tên đăng nhập</label>
                             </div>
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-floating mb-3">
                                 <input type="password" autocomplete="off" class="form-control" id="floatingPassword"
-                                    placeholder="matkhau" />
+                                    placeholder="matkhau" name="password" />
                                 <label for="floatingPassword">Mật khẩu</label>
                             </div>
-
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="d-grid">
                                 <button class="btn btn-primary btn-login text-uppercase fw-bold h-100" type="submit">
                                     Đăng nhập
@@ -41,37 +53,6 @@
                     </div>
                     <div class="login_acceptTerm">Nếu gặp vấn đề hãy liên hệ đến <a href="#">Admin</a></div>
                 </div>
-                <div class="login_body">
-                    <form method="POST" action='/login'>
-                        @error('error')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                        @csrf
-                        <div class="form-floating mb-3">
-                            <input type="text" autocomplete="off" class="form-control" id="floatingInput"
-                                placeholder="admin" name='email' />
-                            <label for="floatingInput">Tên đăng nhập</label>
-                            @error('email')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="password" autocomplete="off" class="form-control" id="floatingPassword"
-                                placeholder="matkhau" name='password' />
-                            <label for="floatingPassword">Mật khẩu</label>
-                            @error('password')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="d-grid">
-                            <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">
-                                Đăng nhập
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="login_acceptTerm">Nếu gặp vấn đề hãy liên hệ đến <a href="#">Admin</a></div>
             </div>
             <div class="login_about">
                 Copyright © 2023 - STEAM

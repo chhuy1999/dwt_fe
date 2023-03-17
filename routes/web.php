@@ -24,17 +24,21 @@ Route::post('/login', [AuthController::class, 'login']);
 // Trang chủ
 Route::get('/', function () {
     return view('dashboard');
-});
+})->middleware('auth.role:user,admin,manager');
 
 // Cấu hình
 Route::get('ho-so-don-vi', function () {
     return view('CauHinh.hoSoDonVi');
 });
 
-Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
-Route::post('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'create']);
-Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'index']);
-Route::put('/phong-ban/{id}', [\App\Http\Controllers\Api\DepartmentController::class, 'update']);
+Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
+    Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
+    Route::post('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'create']);
+    Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'index']);
+    Route::put('/phong-ban/{id}', [\App\Http\Controllers\Api\DepartmentController::class, 'update']);
+});
+
+
 
 Route::get('dinh-muc-lao-dong', function () {
     return view('CauHinh.dinhMucLaoDong');
