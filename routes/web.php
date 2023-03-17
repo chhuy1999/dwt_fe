@@ -30,6 +30,9 @@ Route::get('/', function () {
 Route::get('ho-so-don-vi', function () {
     return view('CauHinh.hoSoDonVi');
 });
+Route::get('danh-sach-phong-ban', function () {
+    return view('CauHinh.danhSachPhongBan');
+});
 
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
@@ -40,9 +43,17 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
 
 
 
-Route::get('dinh-muc-lao-dong', function () {
-    return view('CauHinh.dinhMucLaoDong');
+// Route::get('dinh-muc-lao-dong', function () {
+//     return view('CauHinh.dinhMucLaoDong');
+// });
+Route::get('danh-muc-dinh-muc', function () {
+    return view('CauHinh.danhMucDinhMuc');
 });
+Route::get('danh-muc-nhiem-vu', function () {
+    return view('CauHinh.danhMucNhiemVu');
+});
+
+
 Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
 
 
@@ -86,3 +97,9 @@ Route::get('giao-viec', function () {
 // VBDH
 
 // Orther
+// Route::get('thong-tin-ca-nhan', function () {
+//     return view('page.information');
+// });
+Route::get('kpi-nhan-vien', function () {
+    return view('page.staff.kpiStaff');
+});

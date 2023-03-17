@@ -70,9 +70,9 @@
                 </div>
             </div>
         </div>
-        {{-- <span id="btn-left"
+        <span id="btn-left"
             ><i class="bi bi-arrow-bar-left"></i
-        ></span> --}}
+        ></span>
     </div>
 </div>
 
@@ -147,7 +147,7 @@
                                 <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
                             </div>
                             <div class="col-sm-8">
-                                <select class="selectpicker" title="Chọn cấp tổ chức">
+                                <select class="selectpicker" title="Chọn trưởng đơn vị">
                                     <option>Nguyễn Ngọc Bảo</option>
                                     <option>Đặng Nguyễn Lam Mai</option>
                                     <option>Hồ Thị Hồng Vân</option>

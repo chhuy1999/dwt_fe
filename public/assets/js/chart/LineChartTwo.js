@@ -1,4 +1,4 @@
-const lineChart = document.getElementById('lineChart');
+const LineChartTwo = document.getElementById('LineChartTwo');
 
 function dynamicColors() {
     var r = Math.floor(Math.random() * 255);
@@ -7,7 +7,7 @@ function dynamicColors() {
     return 'rgba(' + r + ',' + g + ',' + b + ')';
 }
 
-new Chart(lineChart, {
+new Chart(LineChartTwo, {
     type: 'line',
     data: {
         labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],

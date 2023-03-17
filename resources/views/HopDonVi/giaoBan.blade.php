@@ -150,7 +150,8 @@
                                             </div>
 
                                             <div class="table-responsive rounded">
-                                                <table class="table table-responsive table-hover table-bordered m-0 style_disableAll">
+                                                <table
+                                                    class="table table-responsive table-hover table-bordered m-0 style_disableAll">
                                                     <thead>
                                                         <tr>
                                                             <th>STT</th>
@@ -163,7 +164,8 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <div class="d-flex align-items-center justify-content-center">
+                                                                <div
+                                                                    class="d-flex align-items-center justify-content-center">
                                                                     1
                                                                 </div>
                                                             </td>
@@ -188,7 +190,8 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <div class="d-flex align-items-center justify-content-center">
+                                                                <div
+                                                                    class="d-flex align-items-center justify-content-center">
                                                                     2
                                                                 </div>
                                                             </td>
@@ -213,7 +216,8 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <div class="d-flex align-items-center justify-content-center">
+                                                                <div
+                                                                    class="d-flex align-items-center justify-content-center">
                                                                     3
                                                                 </div>
                                                             </td>
@@ -285,7 +289,7 @@
                                                                 NN1
                                                             </td>
                                                             <td>
-                                                                Sẽ gửi trong ngày	
+                                                                Sẽ gửi trong ngày
                                                             </td>
                                                             <td>
                                                                 Vân
@@ -317,14 +321,20 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#suaVanDeTonDong">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-repeater-delete>
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-repeater-delete>
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            Xóa
                                                                         </a>
                                                                     </li>
                                                                 </ul>
@@ -348,7 +358,7 @@
                                                                 NN2
                                                             </td>
                                                             <td>
-                                                                Sẽ gửi trong tuần	
+                                                                Sẽ gửi trong tuần
                                                             </td>
                                                             <td>
                                                                 Vân
@@ -379,14 +389,20 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#suaVanDeTonDong">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-repeater-delete>
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-repeater-delete>
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            Xóa
                                                                         </a>
                                                                     </li>
                                                                 </ul>
@@ -441,14 +457,20 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#suaVanDeTonDong">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-repeater-delete>
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-repeater-delete>
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            Xóa
                                                                         </a>
                                                                     </li>
                                                                 </ul>
@@ -503,14 +525,20 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#suaVanDeTonDong">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-repeater-delete>
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-repeater-delete>
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            Xóa
                                                                         </a>
                                                                     </li>
                                                                 </ul>
@@ -564,14 +592,20 @@
                                                                 <ul class="dropdown-menu"
                                                                     aria-labelledby="dropdownMenuButton1">
                                                                     <li>
-                                                                        <div class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        <div class="dropdown-item" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#suaVanDeTonDong">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </div>
                                                                     </li>
                                                                     <li>
-                                                                        <div class="dropdown-item" href="#" data-repeater-delete>
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                        <div class="dropdown-item" href="#"
+                                                                            data-repeater-delete>
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            Xóa
                                                                         </div>
                                                                     </li>
                                                                 </ul>
@@ -710,7 +744,8 @@
                         <div class="col-sm-12">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
                                 <div class="modal_body-title">Vấn đề tồn đọng <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                &nbsp;<input class="form-control" style="width:76%" type="text"
+                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -728,7 +763,8 @@
                         <div class="col-sm-12">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
                                 <div class="modal_body-title">Nguyên nhân</div>
-                                <input class="form-control" style="width:76%" type="text" value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                <input class="form-control" style="width:76%" type="text"
+                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -738,10 +774,11 @@
                             </div>
                         </div>
                         <div class="col-sm-6 mb-3">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title">Thời hạn <span class="text-danger">*</span></div>
-                                    <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control" style="width:51%" type="text">
-                                </div>
+                            <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title">Thời hạn <span class="text-danger">*</span></div>
+                                <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control"
+                                    style="width:51%" type="text">
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center  justify-content-between">
@@ -789,13 +826,14 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
-    
+
     <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript"
+        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>

@@ -4,7 +4,7 @@
 
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
-    <div id="mainWrap" class="mainWrap me-0">
+    <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
@@ -53,8 +53,8 @@
                                             </div>
                                             <div class="info_content">
                                                 <div class="info_label">Chức năng, nhiệm vụ:&nbsp;</div>
-                                                <div class="info_content">Xây dựng chiến lược truyền thông và chiến lược
-                                                    Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.
+                                                <div class="info_content" data-bs-toggle="tooltip" data-bs-placement="top" title="Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số">Xây dựng chiến lược truyền thông và chiến lược
+                                                    Marketing để tiếp cận với nhóm khách hàng.
                                                 </div>
                                             </div>
                                             <div class="info_content">
@@ -1015,6 +1015,7 @@
             </div>
         </div>
     </div>
+    @include('template.sidebar.sidebarCoCauToChuc.sidebarRight')
 
     {{-- Xóa Cơ cấu tổ chức --}}
     <div class="modal fade" id="xoaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1461,7 +1462,7 @@
                                         <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8 position-relative">
-                                        <input id="createUser" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <input id="createUser" placeholder="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -1666,7 +1667,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 position-relative">
-                                        <input id="ngayThuViec" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <input id="ngayThuViec" placeholder="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -1678,7 +1679,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 position-relative">
-                                        <input id="ngayChinhThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <input id="ngayChinhThuc" placeholder="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -3016,38 +3017,10 @@
     </div>
 @endsection
 @section('footer-script')
+    
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-
-    <script>
-        $('#onchangePhongBan').change(function() {
-            var opval = $(this).val();
-            if (opval == "themPhongBan") {
-                $('#themPhongBan').modal("show");
-                $('#themThanhVien').modal("hide");
-            }
-        });
-        $('#onchangeViTriCongViec').change(function() {
-            var opval = $(this).val();
-            if (opval == "themViTriCongViec") {
-                $('#themViTriCongViec').modal("show");
-                $('#themThanhVien').modal("hide");
-            }
-        });
-    </script>
-    <script>
-        function fileValue(value) {
-            var path = value.value;
-            var extenstion = path.split('.').pop();
-            if (extenstion == "jpg" || extenstion == "svg" || extenstion == "jpeg" || extenstion == "png" || extenstion ==
-                "gif") {
-                document.getElementById('image-preview').src = window.URL.createObjectURL(value.files[0]);
-            } else {
-                alert("Không hỗ trợ định dạng này. ")
-            }
-        }
-    </script>
 
     <script>
         $(document).ready(function() {
@@ -3081,7 +3054,34 @@
                 format: 'd/m/Y',
                 timepicker: false,
             });
+            $('#onchangePhongBan').change(function() {
+            var opval = $(this).val();
+            if (opval == "themPhongBan") {
+                $('#themPhongBan').modal("show");
+                $('#themThanhVien').modal("hide");
+            }
+            });
+            $('#onchangeViTriCongViec').change(function() {
+                var opval = $(this).val();
+                if (opval == "themViTriCongViec") {
+                    $('#themViTriCongViec').modal("show");
+                    $('#themThanhVien').modal("hide");
+                }
+            });
         });
+        
+    </script>
+    <script>
+        function fileValue(value) {
+            var path = value.value;
+            var extenstion = path.split('.').pop();
+            if (extenstion == "jpg" || extenstion == "svg" || extenstion == "jpeg" || extenstion == "png" || extenstion ==
+                "gif") {
+                document.getElementById('image-preview').src = window.URL.createObjectURL(value.files[0]);
+            } else {
+                alert("Không hỗ trợ định dạng này. ")
+            }
+        }
     </script>
 
 <script type="text/javascript">

@@ -69,12 +69,15 @@
                                                         <th scope="col" style="font-weight: bold">
                                                             Thời hạn
                                                         </th>
+                                                        <th scope="col" style="font-weight: bold">
+                                                            SL
+                                                        </th>
                                                         <th scope="col"
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
                                                             font-weight: bold;
                                                         ">
-                                                            Lũy kế
+                                                            Σ Lũy kế
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -91,12 +94,16 @@
                                                         <td>
                                                             <div class="content_table">31/01</div>
                                                         </td>
+                                                        <td>
+                                                            <div class="content_table">10</div>
+                                                        </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">5</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -111,12 +118,16 @@
                                                         <td>
                                                             <div class="content_table">31/01</div>
                                                         </td>
+                                                        <td>
+                                                            <div class="content_table">10</div>
+                                                        </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">6</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -131,12 +142,16 @@
                                                         <td>
                                                             <div class="content_table">21/01</div>
                                                         </td>
+                                                        <td>
+                                                            <div class="content_table">10</div>
+                                                        </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">7</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -151,12 +166,16 @@
                                                         <td>
                                                             <div class="content_table">13/01</div>
                                                         </td>
+                                                        <td>
+                                                            <div class="content_table">10</div>
+                                                        </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">8</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -171,12 +190,16 @@
                                                         <td>
                                                             <div class="content_table">23/01</div>
                                                         </td>
+                                                        <td>
+                                                            <div class="content_table">10</div>
+                                                        </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">9</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -747,24 +770,26 @@
                                                         Mục tiêu nhiệm vụ tháng
                                                     </td>
                                                     <tr>
-                                                        <th scope="col" style="font-weight: bold">TT</th>
+                                                        <th scope="col" style="font-weight: bold;width:5%;">TT</th>
                                                         <th scope="col"
                                                             style="
                                                             text-align: left;
                                                             font-weight: bold;
                                                             padding-left: 4px;
+                                                            width:40%;
                                                         ">
                                                             Mục tiêu nhiệm vụ
                                                         </th>
-                                                        <th scope="col" style="font-weight: bold">
-                                                            Thời hạn
+                                                        <th scope="col" style="font-weight: bold;width:10%;">
+                                                            SL
                                                         </th>
                                                         <th scope="col"
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
                                                             font-weight: bold;
+                                                            width:14%;
                                                         ">
-                                                            Lũy kế
+                                                            Σ Lũy kế
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -780,15 +805,17 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">31/01</div>
+                                                            <div class="content_table">10</div>
                                                         </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">5</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
+                                                        
                                                     </tr>
                                                     <tr>
                                                         <td scope="row">
@@ -801,15 +828,17 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">31/01</div>
+                                                            <div class="content_table">10</div>
                                                         </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">6</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
+                                                        
                                                     </tr>
                                                     <tr>
                                                         <td scope="row">
@@ -822,15 +851,17 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">21/01</div>
+                                                            <div class="content_table">10</div>
                                                         </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">7</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
+                                                        
                                                     </tr>
                                                     <tr>
                                                         <td scope="row">
@@ -843,15 +874,17 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">13/01</div>
+                                                            <div class="content_table">10</div>
                                                         </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">8</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
+                                                        
                                                     </tr>
                                                     <tr>
                                                         <td scope="row">
@@ -864,15 +897,17 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="content_table">23/01</div>
+                                                            <div class="content_table">10</div>
                                                         </td>
                                                         <td
                                                             style="
                                                             border-right: 1px solid #e3e3e3;
-                                                            font-weight: 700;
-                                                        ">
-                                                            <div class="content_table">9</div>
+                                                            font-weight: 700; ">
+                                                            <div  class="progress-half" >
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
                                                         </td>
+                                                        
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -1407,39 +1442,51 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="card-title">PieChart</div>
                                     </div>
-                                    <div class="mainSection_chart-container">
+                                    <div class="mainSection_chart-container mt-3">
                                         <canvas id="pieChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="card-title">DoughnutChart</div>
                                     </div>
-                                    <div class="mainSection_chart-container">
+                                    <div class="mainSection_chart-container mt-3">
                                         <canvas id="doughnutChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="card-title">PieChart 2</div>
+                                        <div class="card-title">BarChart 2</div>
                                     </div>
-                                    <div class="mainSection_chart-container">
-                                        <canvas id="pieChartTwo"></canvas>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="BarChartTwo"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">BarChart 3</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="BarChartThree"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -1449,26 +1496,28 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                        <div class="card-title">BarChart</div>
-                                    </div>
-                                    <div>
-                                        <canvas id="barChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
                                         <div class="card-title">LineChart</div>
                                     </div>
-                                    <div>
+                                    <div class="mainSection_chart-container mt-3">
                                         <canvas id="lineChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                        <div class="card-title">LineChart 2</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="LineChartTwo"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -1550,8 +1599,10 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChartTwo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
 

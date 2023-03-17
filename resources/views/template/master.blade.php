@@ -27,13 +27,14 @@
 
     <!-- Plugins -->
     <link href="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" />
-    @yield('header-style')
+   
 
     <!-- Base -->
     <link href="{{ asset('assets/css/normalize.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/variables.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" />
+    @yield('header-style')
 </head>
 
 <body>
@@ -62,8 +63,15 @@
 
                                 </a>
                                 <ul id="header_submenu">
-                                    <li class="header_submenu-items">
-                                        <a href="ho-so-don-vi" class="header_submenu-link">Hồ sơ đơn vị</a>
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="ho-so-don-vi" class="header_submenu-link more_btn">
+                                            Hồ sơ đơn vị <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="danh-sach-phong-ban" class="header_more-link">Danh mục phòng ban</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li class="header_submenu-items">
                                         <a href="ho-so-nhan-vien" class="header_submenu-link">Hồ sơ nhân viên</a>
@@ -71,8 +79,18 @@
                                     <li class="header_submenu-items">
                                         <a href="mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
                                     </li>
-                                    <li class="header_submenu-items">
-                                        <a href="dinh-muc-lao-dong" class="header_submenu-link">Định mức lao động</a>
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="#" class="header_submenu-link more_btn">
+                                            Định mức lao động <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh mục định mức</a>
+                                            </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-nhiem-vu" class="header_more-link">Danh mục nhiệm vụ</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li class="header_submenu-items">
                                         <a href="" class="header_submenu-link">Quy trình</a>
@@ -399,9 +417,7 @@
         </div>
 
     </div><!-- End Wrapper -->
-    <footer>
-        @yield('footer-script')
-    </footer>
+    
     <!-- Vendor JS Files -->
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

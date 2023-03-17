@@ -2,11 +2,16 @@ body {
     margin: 0;
 }
 
+.alert {
+    font-size: var(--fz-12);
+}
+
 .login_wrapper {
-    align-items: center;
     display: flex;
-    height: 100vh;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    height: 100vh;
     overflow: hidden;
     position: relative;
     -webkit-user-select: none;
@@ -101,6 +106,7 @@ body {
     margin-top: 12px;
     font-size: var(--fz-14);
     color: var(--white-color);
+    z-index: 2;
 }
 
 .btn-login {
@@ -109,9 +115,11 @@ body {
     background-color: var(--primary-color);
     outline: none;
     border: none;
+    color: var(--white-color);
 }
 .btn-login:hover {
     background-color: var(--primary-color-bold);
+    color: var(--white-color);
 }
 
 .form-floating > label {

@@ -16,25 +16,24 @@ new Chart(doughnut, {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-            y: {
-                scaleLabel: {
-                    display: true,
-                    labelString: 'probability',
+            y: [
+                {
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'probability',
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                    },
                 },
-                ticks: {
-                    beginAtZero: true,
-                },
-            },
+            ],
         },
         plugins: {
             legend: {
-                position: 'top',
-                labels: {
-                    usePointStyle: true,
-                    pointStyle: 'rectRounded',
-                },
+                display: false,
+                
             },
-            tooltip: { enabled: false },
+            tooltip: { enabled: true },
         },
     },
 });

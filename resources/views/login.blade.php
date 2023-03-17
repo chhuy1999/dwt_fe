@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Đăng nhập - THAI HUNG CORP</title>
+<!-- Favicon -->
+<link rel="shortcut icon" href="{{ asset('assets/img/favicon.jpg') }}">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 
 <!-- Vendor CSS Files -->
 <link href="{{ asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -45,7 +55,7 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <div class="d-grid">
-                                <button class="btn btn-primary btn-login text-uppercase fw-bold h-100" type="submit">
+                                <button class="btn btn-login text-uppercase fw-bold h-100" type="submit">
                                     Đăng nhập
                                 </button>
                             </div>

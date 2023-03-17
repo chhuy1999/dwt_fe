@@ -46,6 +46,7 @@ body {
     overscroll-behavior: contain;
     direction: ltr;
     -webkit-font-smoothing: antialiased;
+    font-family: "Roboto", sans-serif;
 }
 
 ul {

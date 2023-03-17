@@ -53,7 +53,7 @@
                                 </div>
 
                                 <div class="d-grid">
-                                    <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">
+                                    <button class="btn btn-login text-uppercase fw-bold" type="submit">
                                         Đăng nhập
                                     </button>
                                 </div>
