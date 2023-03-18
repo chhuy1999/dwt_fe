@@ -1,4 +1,5 @@
 Chart.register(ChartjsPluginStacked100.default);
+
 new Chart(document.getElementById('stackedChart_chiPhi'), {
     type: 'bar',
     data: {
@@ -7,15 +8,15 @@ new Chart(document.getElementById('stackedChart_chiPhi'), {
             {
                 label: 'Tổng tháng',
                 data: [15],
-                backgroundColor: ['rgba(255, 26, 104, 0.2)'],
-                borderColor: ['rgba(255, 26, 104, 1)'],
+                backgroundColor: ['rgb(255 99 132)'],
+                borderColor: ['rgb(255 99 132)'],
                 borderWidth: 1,
             },
             {
                 label: 'Tổng năm',
                 data: [75],
-                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
-                borderColor: ['rgba(54, 162, 235, 1)'],
+                backgroundColor: ['rgb(54 162 235)'],
+                borderColor: ['rgb(54 162 235)'],
                 borderWidth: 1,
             },
         ],
@@ -35,6 +36,7 @@ new Chart(document.getElementById('stackedChart_chiPhi'), {
                 formatter: function (value) {
                     return Math.round(value) + '%';
                 },
+                color: "white",
             },
             tooltip: {
                 padding: 4,
@@ -44,6 +46,7 @@ new Chart(document.getElementById('stackedChart_chiPhi'), {
                 bodyFont: {
                     size: 8,
                 },
+                
             },
         },
         scales: {

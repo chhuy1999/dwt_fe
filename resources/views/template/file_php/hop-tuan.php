@@ -26,7 +26,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
                             </div>
                         </div>
-                        <div id="thismonth" class="mainSection_thismonth"></div>
+                        <div id="" class="mainSection_thismonth">
+                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text">
+                        </div>
                         
                     </div>
 

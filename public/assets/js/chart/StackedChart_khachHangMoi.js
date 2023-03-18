@@ -6,15 +6,15 @@ new Chart(document.getElementById('stackedChart_khachHangMoi'), {
             {
                 label: 'Tổng tháng',
                 data: [12],
-                backgroundColor: ['rgba(255, 26, 104, 0.2)'],
-                borderColor: ['rgba(255, 26, 104, 1)'],
+                backgroundColor: ['rgb(255 99 132)'],
+                borderColor: ['rgb(255 99 132)'],
                 borderWidth: 1,
             },
             {
                 label: 'Tổng năm',
                 data: [9],
-                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
-                borderColor: ['rgba(54, 162, 235, 1)'],
+                backgroundColor: ['rgb(54 162 235)'],
+                borderColor: ['rgb(54 162 235)'],
                 borderWidth: 1,
             },
         ],
@@ -34,6 +34,7 @@ new Chart(document.getElementById('stackedChart_khachHangMoi'), {
                 formatter: function (value) {
                     return Math.round(value) + '%';
                 },
+                color: "white",
             },
             tooltip: {
                 padding: 4,

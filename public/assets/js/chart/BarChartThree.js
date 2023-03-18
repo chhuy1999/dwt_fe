@@ -1,40 +1,25 @@
 const BarChartThree = document.getElementById('BarChartThree');
 
-function dynamicColors() {
-    var r = Math.floor(Math.random() * 255);
-    var g = Math.floor(Math.random() * 255);
-    var b = Math.floor(Math.random() * 255);
-    return 'rgba(' + r + ',' + g + ',' + b + ', 0.5)';
-}
-
 new Chart(BarChartThree, {
-    type: 'bar',
+    type: "bar",
     data: {
-        labels: ['Sản phẩm '],
+        labels: ["Sản phẩm 1", "Sản phẩm 2", "Sản phẩm 3", "Sản phẩm 4"],
         datasets: [
             {
-                label: 'Sản phẩm 1',
-                data: [65],
-                backgroundColor: [dynamicColors()],
-                borderWidth: 1,
-            },
-            {
-                label: 'Sản phẩm 2',
-                data: [80],
-                backgroundColor: [dynamicColors()],
-                borderWidth: 1,
-            },
-            {
-                label: 'Sản phẩm 3',
-                data: [42],
-                backgroundColor: [dynamicColors()],
-                borderWidth: 1,
-            },
-            {
-                label: 'Sản phẩm 4',
-                data: [50],
-                backgroundColor: [dynamicColors()],
-                borderWidth: 1,
+                label: "Chỉ số",
+                data: [12, 19, 3, 5],
+                backgroundColor: [
+                    "rgba(255, 99, 132)",
+                    "rgba(255, 159, 64)",
+                    "rgba(255, 205, 86)",
+                    "rgba(75, 192, 192)",
+                ],
+                borderWidth: [
+                    "rgba(255, 99, 132)",
+                    "rgba(255, 159, 64)",
+                    "rgba(255, 205, 86)",
+                    "rgba(75, 192, 192)",
+                ],
             },
         ],
     },
@@ -42,22 +27,16 @@ new Chart(BarChartThree, {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-            y: [
-                {
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'probability',
-                    },
-                    ticks: {
-                        beginAtZero: true,
-                    },
-                },
-            ],
+            y: {
+                display: false
+            },
+            x: {
+                display: false
+            }
         },
         plugins: {
             legend: {
                 display: false,
-                
             },
             tooltip: { enabled: true },
         },

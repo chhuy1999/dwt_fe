@@ -58,6 +58,12 @@ a {
     box-shadow: none !important;
 }
 
+input[readonly],
+input[readonly]:focus {
+    background-color: rgb(180 179 178 / 30%);
+    cursor: not-allowed;
+}
+
 button {
     outline: none;
     border: none;

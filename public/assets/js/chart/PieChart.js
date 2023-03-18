@@ -3,7 +3,7 @@ const ctx = document.getElementById('pieChart');
 new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['Nhân sự', 'Marketing', 'Tuyển Dụng', 'Kiếm Soát'],
+        labels: ['Công việc 1', 'Công việc 2', 'Công việc 3', 'Công việc 4'],
         datasets: [
             {
                 label: 'Chỉ số',

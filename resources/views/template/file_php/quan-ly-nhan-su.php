@@ -12,7 +12,9 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">Quản lý nhân sự</h5>
-                        <div id="thismonth" class="mainSection_thismonth"></div>
+                        <div id="" class="mainSection_thismonth">
+                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -334,7 +336,9 @@
                                 <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
                             </div>
                         </div>
-                        <div id="thismonth" class="mainSection_thismonth"></div>
+                        <div id="" class="mainSection_thismonth">
+                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">

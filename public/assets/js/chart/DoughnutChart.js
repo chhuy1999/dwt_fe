@@ -6,7 +6,7 @@ new Chart(doughnut, {
         labels: ['Nhân sự', 'Marketing', 'Tuyển Dụng', 'Kiếm Soát'],
         datasets: [
             {
-                label: '# of Votes',
+                label: 'Chỉ số',
                 data: [12, 19, 3, 5],
                 borderWidth: 1,
             },

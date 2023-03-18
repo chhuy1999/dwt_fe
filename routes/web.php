@@ -52,6 +52,9 @@ Route::get('danh-muc-dinh-muc', function () {
 Route::get('danh-muc-nhiem-vu', function () {
     return view('CauHinh.danhMucNhiemVu');
 });
+Route::get('danh-muc-chi-so-key', function () {
+    return view('CauHinh.danhMucChiSoKey');
+});
 
 
 Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);

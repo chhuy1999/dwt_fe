@@ -1,6 +1,7 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Danh sách phòng ban')
+@section('title', 'Hồ sơ đơn vị')
+
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -9,237 +10,993 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">
-                            Danh sách phòng ban
+                            Hồ sơ đơn vị
                         </h5>
-                        <div class="mainSection_card">
-                            <div class="mainSection_content">
-                                <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong>
-                                </div>
-                            </div>
-                            <div class="mainSection_content">
-                                <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
-                            </div>
-                        </div>
-                        <div id="thismonth" class="mainSection_thismonth"></div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div class='row'>
+                        <div class="col-md-12">
                             <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="main_search d-flex">
-                                            <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm phòng ban">
+                                <div class="card-body position-relative body_content-wrapper" style="display:block" id="body_content-1">
+                                    <div class="text_wrapper mb-3">
+                                        <div class="text_content">
+                                            <div class="pb-2 d-flex align-items-center">
+                                                <div class="card-title">Toàn Công Ty</div>
+                                                <div class="btn" data-bs-toggle="modal"
+                                                    data-bs-target="#suaDonViPhongBan">
+                                                    <img style="width:16px;height:16px"
+                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                </div>
+                                                <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
+                                                    <img style="width:16px;height:16px"
+                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                </div>
+                                            </div>
+                                            <div class="info_wrapper">
+                                                <div class="info_content">
+                                                    <div class="info_label">Đơn vị cha:&nbsp;</div>
+                                                    <div class="info_content">Công ty Cổ phần Mastertran</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Mã đơn vị:&nbsp;</div>
+                                                    <div class="info_content">DMKT</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Cấp tổ chức:&nbsp;</div>
+                                                    <div class="info_content">Tổ/Đội/Nhóm</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Tên viết tắt:&nbsp;</div>
+                                                    <div class="info_content">DMKT</div>
+                                                </div>
+
+                                            </div>
+                                            <div class="info_content">
+                                                <div class="info_label">Chức năng, nhiệm vụ:&nbsp;</div>
+                                                <div class="info_content" data-bs-toggle="tooltip" data-bs-placement="top" title="Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số">Xây dựng chiến lược truyền thông và chiến lược
+                                                    Marketing để tiếp cận với nhóm khách hàng.
+                                                </div>
+                                            </div>
+                                            <div class="info_content">
+                                                <div class="info_label">Trụ sở chính:&nbsp;</div>
+                                                <div class="info_content">Tầng 6, tháp A, Toà nhà Central Point, số 219
+                                                    Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội.</div>
+                                            </div>
                                         </div>
-                                        <div class="main_action">
-                                            <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#themMoiDinhMuc">
-                                                <i class="bi bi-plus"></i>
-                                                Thêm mới
-                                            </button>
-                                            <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
-                                                <i class="bi bi-download"></i>
-                                                Xuất Excel
-                                            </button>
+
+                                        <div class="text_action">
+                                            <div class="text_action-wrapper">
+                                                <div class="text_action-content">
+                                                    <div class="text_action-label">
+                                                        Thông tin nhân sự
+                                                        <span class="text_action-mini">(Hiện có/Tổng định mức)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text_action-title-wrapper">
+                                                    <div class="text_action-items">
+                                                        <strong>Trưởng bộ phận: </strong>
+                                                        <span>1/1</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Chuyên viên: </strong>
+                                                        <span>1/2</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Nhân viên: </strong>
+                                                        <span>5/15</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Chính thức: </strong>
+                                                        <span>4/7</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Thử việc: </strong>
+                                                        <span>2/7</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Cộng tác viên: </strong>
+                                                        <span>1/7</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="main_search d-flex mt-2">
+                                                <i class="bi bi-search"></i>
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                                                <button class="btn btn-danger d-block w-50" data-bs-toggle="modal"
+                                                    data-bs-target="#themThanhVien">Thêm thành
+                                                    viên</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="repeater-hopPhongBan position-relative">
-                                                <table class="table table-responsive table-hover table-bordered">
+                                            <div class="table-responsive dataTables_wrapper">
+                                                <table id="coCauToChuc"
+                                                    class="table table-responsive table-hover table-bordered">
                                                     <thead>
-                                                        <tr>
-                                                            <th style="width: 2%">STT</th>
-                                                            <th style="width: 8%">Mã đơn vị</th>
-                                                            <th style="width: 8%">Tên đơn vị</th>
-                                                            <th style="width: 8%">Đơn vị cha</th>
-                                                            <th style="width: 8%">Cấp tổ chức</th>
-                                                            <th style="width: 14%">Trưởng đơn vị</th>
-                                                            <th style="width: 22%">Chức năng, nhiệm vụ</th>
-                                                            <th style="width: 14%">Trụ sở chính</th>
-                                                            <th style="width: 6%">Định biên</th>
-                                                            <th style="width: 10%">Quỹ lương năm</th>
+                                                        <tr class="bg-light">
+                                                            <th>STT</th>
+                                                            <th>Vị trí/Chức danh</th>
+                                                            <th>Chức danh</th>
+                                                            <th>MTCV(Tóm tắt)</th>
+                                                            <th>Quý lương (năm)</th>
+                                                            <th>Trang bị hành chính</th>
+                                                            <th>Người đảm nhiệm</th>
+                                                            <th>Hành động</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody data-repeater-list="group-a">
-                                                        <tr data-repeater-item>
-                                                            <td>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
                                                                 <div
-                                                                    class="d-flex align-items-center justify-content-center">
-                                                                    1
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    1</div>
+                                                            </th>
+                                                            <td>
+                                                                Digital Marketing
+                                                            </td>
+                                                            <td>
+                                                                Trưởng Bộ phận
+                                                            </td>
+                                                            <td>
+                                                                Quản lý các hoạt động của phòng
+                                                            </td>
+                                                            <td>
+                                                                325.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div>QTN</div>
+                                                                Vũ Thị Hà
                                                             </td>
                                                             <td>
-                                                                <div>Quản trị Nhãn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tổ/đội/nhóm</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi">Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội">219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội</div>
-                                                                                                                            </td>
-                                                            <td>
-                                                                <div>6</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>600.000.000</div>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
-                                                        <tr data-repeater-item>
-                                                            <td>
+                                                        <tr>
+                                                            <th scope="row">
                                                                 <div
-                                                                    class="d-flex align-items-center justify-content-center">
-                                                                    2
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    2</div>
+                                                            </th>
+                                                            <td>
+                                                                Content website
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Viết thương hiệu sản phẩm & sự kiện nội bộ trên website
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Ngọc Lan
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    3</div>
+                                                            </th>
+                                                            <td>
+                                                                Sale Online
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Giới thiệu sản phẩm đến khách hàng, chăm sóc khách hàng
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Hồng Oanh
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    4</div>
+                                                            </th>
+                                                            <td>
+                                                                Sale Online
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Giới thiệu sản phẩm đến khách hàng, chăm sóc khách hàng
+                                                            </td>
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Hồng Oanh
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    5</div>
+                                                            </th>
+                                                            <td>
+                                                                Quản lý sàn TMDT
+                                                            </td>
+                                                            <td>
+                                                                Chuyên viên
+                                                            </td>
+                                                            <td>
+                                                                Lên kế hoạch về chiển dịch Marketing trên sàn TMĐT
+                                                            </td>
+                                                            <td>
+                                                                182.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Nhân viên
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Hà Nguyễn Minh Hiếu
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body position-relative body_content-wrapper" id="body_content-2">
+                                    <div class="text_wrapper mb-3">
+                                        <div class="text_content">
+                                            <div class="pb-2 d-flex align-items-center">
+                                                <div class="card-title">Khôi Kinh Doanh</div>
+                                                <div class="btn" data-bs-toggle="modal"
+                                                    data-bs-target="#suaDonViPhongBan">
+                                                    <img style="width:16px;height:16px"
+                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                </div>
+                                                <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
+                                                    <img style="width:16px;height:16px"
+                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                </div>
+                                            </div>
+                                            <div class="info_wrapper">
+                                                <div class="info_content">
+                                                    <div class="info_label">Đơn vị cha:&nbsp;</div>
+                                                    <div class="info_content">Công ty Cổ phần Mastertran</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Mã đơn vị:&nbsp;</div>
+                                                    <div class="info_content">DMKT</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Cấp tổ chức:&nbsp;</div>
+                                                    <div class="info_content">Tổ/Đội/Nhóm</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Tên viết tắt:&nbsp;</div>
+                                                    <div class="info_content">DMKT</div>
+                                                </div>
+
+                                            </div>
+                                            <div class="info_content">
+                                                <div class="info_label">Chức năng, nhiệm vụ:&nbsp;</div>
+                                                <div class="info_content">Xây dựng chiến lược truyền thông và chiến lược
+                                                    Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.
+                                                </div>
+                                            </div>
+                                            <div class="info_content">
+                                                <div class="info_label">Trụ sở chính:&nbsp;</div>
+                                                <div class="info_content">Tầng 6, tháp A, Toà nhà Central Point, số 219
+                                                    Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text_action">
+                                            <div class="text_action-wrapper">
+                                                <div class="text_action-content">
+                                                    <div class="text_action-label">
+                                                        Thông tin nhân sự
+                                                        <span class="text_action-mini">(Hiện có/Tổng định mức)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text_action-title-wrapper">
+                                                    <div class="text_action-items">
+                                                        <strong>Trưởng bộ phận: </strong>
+                                                        <span>1/1</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Chuyên viên: </strong>
+                                                        <span>1/2</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Nhân viên: </strong>
+                                                        <span>5/15</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Chính thức: </strong>
+                                                        <span>4/7</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Thử việc: </strong>
+                                                        <span>2/7</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Cộng tác viên: </strong>
+                                                        <span>1/7</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="main_search d-flex mt-2">
+                                                <i class="bi bi-search"></i>
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                                                <button class="btn btn-danger d-block w-50" data-bs-toggle="modal"
+                                                    data-bs-target="#themThanhVien">Thêm thành
+                                                    viên</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class="col-md-12">
+                                            <div class="table-responsive dataTables_wrapper">
+                                                <table id="coCauToChuc"
+                                                    class="table table-responsive table-hover table-bordered">
+                                                    <thead>
+                                                        <tr class="bg-light">
+                                                            <th>STT</th>
+                                                            <th>Vị trí/Chức danh</th>
+                                                            <th>Chức danh</th>
+                                                            <th>MTCV(Tóm tắt)</th>
+                                                            <th>Quý lương (năm)</th>
+                                                            <th>Trang bị hành chính</th>
+                                                            <th>Người đảm nhiệm</th>
+                                                            <th>Hành động</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    1</div>
+                                                            </th>
+                                                            <td>
+                                                                Digital Marketing
+                                                            </td>
+                                                            <td>
+                                                                Trưởng Bộ phận
+                                                            </td>
+                                                            <td>
+                                                                Quản lý các hoạt động của phòng
+                                                            </td>
+                                                            <td>
+                                                                325.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div>TMTK</div>
+                                                                Vũ Thị Hà
                                                             </td>
                                                             <td>
-                                                                <div>Quản trị Nhãn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tổ/đội/nhóm</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi">Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội">219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội</div>
-                                                                                                                            </td>
-                                                            <td>
-                                                                <div>6</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>600.000.000</div>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
-                                                        <tr data-repeater-item>
-                                                            <td>
+                                                        <tr>
+                                                            <th scope="row">
                                                                 <div
-                                                                    class="d-flex align-items-center justify-content-center">
-                                                                    3
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    2</div>
+                                                            </th>
+                                                            <td>
+                                                                Content website
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Viết thương hiệu sản phẩm & sự kiện nội bộ trên website
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Ngọc Lan
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    3</div>
+                                                            </th>
+                                                            <td>
+                                                                Sale Online
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Giới thiệu sản phẩm đến khách hàng, chăm sóc khách hàng
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Hồng Oanh
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    4</div>
+                                                            </th>
+                                                            <td>
+                                                                Sale Online
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Giới thiệu sản phẩm đến khách hàng, chăm sóc khách hàng
+                                                            </td>
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Hồng Oanh
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    5</div>
+                                                            </th>
+                                                            <td>
+                                                                Quản lý sàn TMDT
+                                                            </td>
+                                                            <td>
+                                                                Chuyên viên
+                                                            </td>
+                                                            <td>
+                                                                Lên kế hoạch về chiển dịch Marketing trên sàn TMĐT
+                                                            </td>
+                                                            <td>
+                                                                182.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Nhân viên
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Hà Nguyễn Minh Hiếu
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body position-relative body_content-wrapper" id="body_content-3">
+                                    <div class="text_wrapper mb-3">
+                                        <div class="text_content">
+                                            <div class="pb-2 d-flex align-items-center">
+                                                <div class="card-title">Digital Marketing</div>
+                                                <div class="btn" data-bs-toggle="modal"
+                                                    data-bs-target="#suaDonViPhongBan">
+                                                    <img style="width:16px;height:16px"
+                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                </div>
+                                                <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
+                                                    <img style="width:16px;height:16px"
+                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                </div>
+                                            </div>
+                                            <div class="info_wrapper">
+                                                <div class="info_content">
+                                                    <div class="info_label">Đơn vị cha:&nbsp;</div>
+                                                    <div class="info_content">Công ty Cổ phần Mastertran</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Mã đơn vị:&nbsp;</div>
+                                                    <div class="info_content">DMKT</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Cấp tổ chức:&nbsp;</div>
+                                                    <div class="info_content">Tổ/Đội/Nhóm</div>
+                                                </div>
+                                                <div class="info_content">
+                                                    <div class="info_label">Tên viết tắt:&nbsp;</div>
+                                                    <div class="info_content">DMKT</div>
+                                                </div>
+
+                                            </div>
+                                            <div class="info_content">
+                                                <div class="info_label">Chức năng, nhiệm vụ:&nbsp;</div>
+                                                <div class="info_content">Xây dựng chiến lược truyền thông và chiến lược
+                                                    Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.
+                                                </div>
+                                            </div>
+                                            <div class="info_content">
+                                                <div class="info_label">Trụ sở chính:&nbsp;</div>
+                                                <div class="info_content">Tầng 6, tháp A, Toà nhà Central Point, số 219
+                                                    Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text_action">
+                                            <div class="text_action-wrapper">
+                                                <div class="text_action-content">
+                                                    <div class="text_action-label">
+                                                        Thông tin nhân sự
+                                                        <span class="text_action-mini">(Hiện có/Tổng định mức)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text_action-title-wrapper">
+                                                    <div class="text_action-items">
+                                                        <strong>Trưởng bộ phận: </strong>
+                                                        <span>1/1</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Chuyên viên: </strong>
+                                                        <span>1/2</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Nhân viên: </strong>
+                                                        <span>5/15</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Chính thức: </strong>
+                                                        <span>4/7</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Thử việc: </strong>
+                                                        <span>2/7</span>
+                                                    </div>
+                                                    <div class="text_action-items">
+                                                        <strong>Cộng tác viên: </strong>
+                                                        <span>1/7</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="main_search d-flex mt-2">
+                                                <i class="bi bi-search"></i>
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                                                <button class="btn btn-danger d-block w-50" data-bs-toggle="modal"
+                                                    data-bs-target="#themThanhVien">Thêm thành
+                                                    viên</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class="col-md-12">
+                                            <div class="table-responsive dataTables_wrapper">
+                                                <table id="coCauToChuc"
+                                                    class="table table-responsive table-hover table-bordered">
+                                                    <thead>
+                                                        <tr class="bg-light">
+                                                            <th>STT</th>
+                                                            <th>Vị trí/Chức danh</th>
+                                                            <th>Chức danh</th>
+                                                            <th>MTCV(Tóm tắt)</th>
+                                                            <th>Quý lương (năm)</th>
+                                                            <th>Trang bị hành chính</th>
+                                                            <th>Người đảm nhiệm</th>
+                                                            <th>Hành động</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    1</div>
+                                                            </th>
+                                                            <td>
+                                                                Digital Marketing
+                                                            </td>
+                                                            <td>
+                                                                Trưởng Bộ phận
+                                                            </td>
+                                                            <td>
+                                                                Quản lý các hoạt động của phòng
+                                                            </td>
+                                                            <td>
+                                                                325.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div>DMKT</div>
+                                                                Vũ Thị Hà
                                                             </td>
                                                             <td>
-                                                                <div>Quản trị Nhãn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tổ/đội/nhóm</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi">Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội">219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội</div>
-                                                                                                                            </td>
-                                                            <td>
-                                                                <div>6</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>600.000.000</div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-repeater-item>
-                                                            <td>
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center">
-                                                                    4
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
                                                                 </div>
                                                             </td>
-                                                            <td>
-                                                                <div>STND</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản trị Nhãn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tổ/đội/nhóm</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi">Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội">219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội</div>
-                                                                                                                            </td>
-                                                            <td>
-                                                                <div>6</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>600.000.000</div>
-                                                            </td>
                                                         </tr>
-                                                        <tr data-repeater-item>
-                                                            <td>
+                                                        <tr>
+                                                            <th scope="row">
                                                                 <div
-                                                                    class="d-flex align-items-center justify-content-center">
-                                                                    5
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    2</div>
+                                                            </th>
+                                                            <td>
+                                                                Content website
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Viết thương hiệu sản phẩm & sự kiện nội bộ trên website
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
                                                                 </div>
                                                             </td>
-                                                            <td>
-                                                                <div>HCNS</div>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Ngọc Lan
                                                             </td>
                                                             <td>
-                                                                <div>Quản trị Nhãn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tổ/đội/nhóm</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi">Các hoạt động liên quan đến thương hiệu và sản phẩm: Quản lý sản phẩm, đào tạo, chương trình khuyến mãi</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-html="true" title="219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội">219 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội</div>
-                                                                                                                            </td>
-                                                            <td>
-                                                                <div>6</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>600.000.000</div>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                         </tr>
-                                                        
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    3</div>
+                                                            </th>
+                                                            <td>
+                                                                Sale Online
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Giới thiệu sản phẩm đến khách hàng, chăm sóc khách hàng
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Hồng Oanh
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    4</div>
+                                                            </th>
+                                                            <td>
+                                                                Sale Online
+                                                            </td>
+                                                            <td>
+                                                                Nhân viên
+                                                            </td>
+                                                            <td>
+                                                                Giới thiệu sản phẩm đến khách hàng, chăm sóc khách hàng
+                                                            </td>
+                                                            <td>
+                                                                130.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Quản lý
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Nguyễn Thị Hồng Oanh
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    5</div>
+                                                            </th>
+                                                            <td>
+                                                                Quản lý sàn TMDT
+                                                            </td>
+                                                            <td>
+                                                                Chuyên viên
+                                                            </td>
+                                                            <td>
+                                                                Lên kế hoạch về chiển dịch Marketing trên sàn TMĐT
+                                                            </td>
+                                                            <td>
+                                                                182.000.000
+                                                            </td>
+                                                            <td>
+                                                                <div data-bs-toggle="modal"
+                                                                    data-bs-target="#trangBiHanhChinh">
+                                                                    Pack Nhân viên
+                                                                </div>
+                                                            </td>
+                                                            <td style="letter-spacing: -1px">
+                                                                Hà Nguyễn Minh Hiếu
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
 
                                                     </tbody>
                                                 </table>
@@ -252,160 +1009,135 @@
                     </div>
                 </div>
             </div>
+
             <div class="footer">
                 <div class="container">Copyright © 2023 S-Team. All rights reserved.</div>
             </div>
         </div>
     </div>
     @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
-    <!-- Modal Phản Hồi Vấn Đề -->
-    <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
+
+    {{-- Xóa Cơ cấu tổ chức --}}
+    <div class="modal fade" id="xoaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Phản hồi vấn đề tồn đọng</h5>
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center">
-                            <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng
-                            </label>
-                            <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" readonly class="contenteditable"
-                                    placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-4 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:18px;">Cấp giải
-                                quyết</label>
-                            <div class="w-100" style="flex:1">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="2">Phòng ban</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời hạn</label>
-                            <div class="w-100" style="flex:1">
-                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                    type="text">
-                            </div>
-                        </div>
-                        <div class="col-sm-5 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Trạng
-                                thái</label>
-                            <div class="w-100" style="flex:1">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected hidden>Chọn trạng thái</option>
-                                    <option>Đã có hướng giải quyết</option>
-                                    <option>Đã giải quyết</option>
-                                    <option>Không thể giải quyết</option>
-                                    <option>Không xác định được nguyên nhân</option>
-                                </select>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label"
-                                style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
-                            <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" class="contenteditable"
-                                    placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
-                            </div>
-                        </div>
-
-                    </div>
+                    Bạn có thực sự muốn xoá cơ cấu tổ chức đã chọn không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
+                    <button type="button" class="btn btn-danger">Có, xóa dữ liệu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Xóa Thanh vien --}}
+    <div class="modal fade" id="xoaThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">XOÁ THÀNH VIÊN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có thực sự muốn xoá thành viên Vũ Thị Hà không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Có, xóa dữ liệu</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Sửa phòng ban -->
-    <div class="modal fade" id="suaMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
+    {{-- Modal SỬA ĐƠN VỊ/PHÒNG BAN --}}
+    <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa phòng ban</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">SỬA ĐƠN VỊ/PHÒNG BAN</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Tên phòng ban <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên phòng ban">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3">
-                                <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
-                                <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3">
-                                <div class="modal_body-title">Kế hoạch thực hiện <span class="text-danger">*</span></div>
-                                <textarea class="form-control" placeholder="Nhập kế hoạch thực hiện"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Đơn vị</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Manday</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Số lượng</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
-                                <div class="col-sm-9">
-                                    <select class="selectpicker" title="Chọn Vị trí">
-                                        <option>Quản lý phòng</option>
-                                        <option>Quản lý sàn TMĐT</option>
-                                        <option>Content Website</option>
-                                        <option>Content SEO</option>
-                                        <option>Google Ads</option>
-                                        <option>Content Facebook</option>
-                                    </select>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Tên đơn vị<span class="text-danger">*</span></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
                                 <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn phòng/ban">
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Quản trị Nhãn &amp; Đào tạo</option>
-                                        <option>Truyền thông</option>
-                                        <option>Sáng tạo nội dung</option>
-                                        <option>Dịch vụ bán hàng</option>
-                                    </select>
+                                    <input class="form-control" type="text" value="Digital Marketing">
                                 </div>
                             </div>
                         </div>
-                        
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Mã đơn vị<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="DMKT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Thuộc đơn vị<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="CTCP Mastertran">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Cấp tổ chức<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Trụ sở chính<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-2">
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ*<span
+                                            class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -416,12 +1148,1320 @@
         </div>
     </div>
 
-    <!-- Modal Thêm phòng ban -->
-    <div class="modal fade" id="themMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
+    {{-- Modal Sua thanh vien --}}
+    <div class="modal fade" id="suaThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 44%">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm đơn vị</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa thành viên</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="create_user-wrapper">
+                        <div class="create_user-title mb-2">Thông tin cá nhân</div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="image-upload">
+                                    <input type="file" name="" id="logo" onchange="fileValue(this)">
+                                    <label for="logo" class="upload-field" id="file-label">
+                                        <div class="file-thumbnail">
+                                            <img id="image-preview" src="{{ asset('assets/img/preview.jpg') }}"
+                                                alt="">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Họ và tên <span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" value="Vũ Thị Hà">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="suaCreateUser" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Số điện thoại <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class=" col-sm-8">
+                                        <input class="form-control" type="text" value="0123456789">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Giới tính <span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" checked type="radio"
+                                                    name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Email liên hệ <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" value="vuha@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Địa chỉ liên hệ <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" value="219 trung kính">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="create_user-wrapper">
+                        <div class="create_user-title mb-2">Thông tin công việc</div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Mã nhân viên <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" value="MTT123">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Email công ty <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" value="digital@doppelherz.vn">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Đơn vị công tác <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker">
+                                            <option checked>CTCP Mastertran</option>
+                                            <option>Doppelherz</option>
+                                            <option>CTCP Thái Bình Hưng Thịnh</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Phòng ban <span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select id="onchangePhongBanfix" class="selectpicker">
+                                            <option>Digital Marketing</option>
+                                            <option>Trade Marketing</option>
+                                            <option>Quản trị Nhãn & Đào tạo</option>
+                                            <option>Truyền thông</option>
+                                            <option>Sáng tạo nội dung</option>
+                                            <option>Dịch vụ bán hàng</option>
+                                            <option value="themPhongBanfix">Thêm phòng ban mới</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Vị trí/Chức danh <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select id="onchangeViTriCongViecfix" class="selectpicker">
+                                            <option>Quản lý phòng</option>
+                                            <option>Quản lý sàn TMĐT</option>
+                                            <option>Content Website</option>
+                                            <option>Content SEO</option>
+                                            <option>Google Ads</option>
+                                            <option>Content Facebook</option>
+                                            <option value="themViTriCongViecfix">Thêm vị trí mới</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Cấp nhân sự <span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker">
+                                            <option>Trưởng phòng</option>
+                                            <option>Chủ tịch HĐQT</option>
+                                            <option>Tổng Giám đốc</option>
+                                            <option>Phó Tổng Giám đốc</option>
+                                            <option>Giám đốc điều hành</option>
+                                            <option>Quản lý cấp cao</option>
+                                            <option>Quản lý cấp trung</option>
+                                            <option>Phó phòng</option>
+                                            <option>Trưởng nhóm</option>
+                                            <option>Chuyên viên</option>
+                                            <option>Nhân viên</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Quản lý trực tiếp <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker">
+                                            <option>Bùi Thị Minh Hoa - GĐĐH</option>
+                                            <option>Nguyễn Ngọc Bảo</option>
+                                            <option>Đặng Nguyễn Lam Mai</option>
+                                            <option>Hồ Thị Hồng Vân</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Trang bị hành chính <span
+                                                class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker">
+                                            <option>Trang bị hành chính</option>
+                                            <option>Trang bị cơ bản</option>
+                                            <option>Trang bị Nhân viên</option>
+                                            <option>Trang bị Chuyên viên</option>
+                                            <option>Trang bị Quản lý</option>
+                                            <option>Trang bị Giám đốc</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Ngày thử việc <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="suaNgayThuViec" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Ngày chính thức <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="suaNgayChinhThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Trạng thái làm việc <span
+                                                class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker">
+                                            <option>Đang làm việc</option>
+                                            <option>Đã nghỉ việc</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Them thanh vien --}}
+    <div class="modal fade" id="themThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 44%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm thành viên</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="create_user-wrapper">
+                        <div class="create_user-title mb-2">Thông tin cá nhân</div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="image-upload">
+                                    <input type="file" name="" id="logo" onchange="fileValue(this)">
+                                    <label for="logo" class="upload-field" id="file-label">
+                                        <div class="file-thumbnail">
+                                            <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}"
+                                                alt="">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Họ và tên <span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập họ và tên">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="createUser" placeholder="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Số điện thoại <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class=" col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập số điện thoại">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Giới tính <span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Email liên hệ <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập email liên hệ">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Địa chỉ liên hệ <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập địa chỉ liên hệ">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="create_user-wrapper">
+                        <div class="create_user-title mb-2">Thông tin công việc</div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Mã nhân viên <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập Mã nhân viên">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Email công ty <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập email công ty">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Đơn vị công tác <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" title="Chọn đơn vị">
+                                            <option>Doppelherz</option>
+                                            <option>CTCP Mastertran</option>
+                                            <option>CTCP Thái Bình Hưng Thịnh</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Phòng ban <span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8 d-flex align-items-center">
+                                        <select id="onchangePhongBan" class="selectpicker" title="Chọn phòng/ban">
+                                            <option>Trade Marketing</option>
+                                            <option>Digital Marketing</option>
+                                            <option>Quản trị Nhãn & Đào tạo</option>
+                                            <option>Truyền thông</option>
+                                            <option>Sáng tạo nội dung</option>
+                                            <option>Dịch vụ bán hàng</option>
+                                            <option value="themPhongBan" class="text-danger">+ Thêm phòng ban mới</option>
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#danhsachPhongBan">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Vị trí/Chức danh <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select id="onchangeViTriCongViec" class="selectpicker"
+                                            title="Chọn Vị trí/Chức danh">
+                                            <option>Quản lý phòng</option>
+                                            <option>Quản lý sàn TMĐT</option>
+                                            <option>Content Website</option>
+                                            <option>Content SEO</option>
+                                            <option>Google Ads</option>
+                                            <option>Content Facebook</option>
+                                            <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Cấp nhân sự <span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8 d-flex align-items-center">
+                                        <select class="selectpicker" title="Chọn cấp nhân sự">
+                                            <option>Chủ tịch HĐQT</option>
+                                            <option>Tổng Giám đốc</option>
+                                            <option>Phó Tổng Giám đốc</option>
+                                            <option>Giám đốc điều hành</option>
+                                            <option>Quản lý cấp cao</option>
+                                            <option>Quản lý cấp trung</option>
+                                            <option>Trưởng phòng</option>
+                                            <option>Phó phòng</option>
+                                            <option>Trưởng nhóm</option>
+                                            <option>Chuyên viên</option>
+                                            <option>Nhân viên</option>
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#danhsachChucDanh">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Quản lý trực tiếp <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" title="Chọn quản lý">
+                                            <option>Nguyễn Ngọc Bảo</option>
+                                            <option>Đặng Nguyễn Lam Mai</option>
+                                            <option>Hồ Thị Hồng Vân</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Trang bị hành chính <span
+                                                class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" title="Chọn gói trang bị">
+                                            <option>Trang bị hành chính</option>
+                                            <option>Trang bị cơ bản</option>
+                                            <option>Trang bị Nhân viên</option>
+                                            <option>Trang bị Chuyên viên</option>
+                                            <option>Trang bị Quản lý</option>
+                                            <option>Trang bị Giám đốc</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Ngày thử việc <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="ngayThuViec" placeholder="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Ngày chính thức <span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 position-relative">
+                                        <input id="ngayChinhThuc" placeholder="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Trạng thái làm việc <span
+                                                class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" title="Chọn trạng thái">
+                                            <option>Đang làm việc</option>
+                                            <option>Đã nghỉ việc</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Danh sach phong ban -->
+    <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Danh sách phòng ban</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault1">
+                                        Cung ứng
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault2">
+                                        Trade Marketing
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault3">
+                                        Digital Marketing
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault4">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault4">
+                                        Truyền thông
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault5">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault5">
+                                        Quản trị Nhãn/Đào tạo
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault6">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault6">
+                                        Kho & Giao vận
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault7">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault7">
+                                        Hành chính nhân sự
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault8">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault8">
+                                        Kế toán
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault9">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault9">
+                                        Tài chính
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault10">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault10">
+                                        Dịch vụ bán hàng
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault11">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault11">
+                                        Kinh doanh OTC
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault12">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault12">
+                                        Kinh doanh ETC
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault13">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault13">
+                                        Kinh doanh MT
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault14">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault14">
+                                        Kinh doanh online
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <div class="btn text-primary" data-bs-toggle="modal" data-bs-target="#themPhongBan">
+                                <i class="bi bi-plus"></i>
+                                Thêm mới
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Danh sach cap to chuc -->
+    <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH CẤP TỔ CHỨC</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault1">
+                                        Công ty con
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault2">
+                                        Chi nhánh
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault3">
+                                        Văn phòng đại diện
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault4">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault4">
+                                        Văn phòng
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault5">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault5">
+                                        Trung tâm
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault6">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault6">
+                                        Phòng ban
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault7">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault7">
+                                        Nhóm/tổ/đội
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault8">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault8">
+                                        Phân xưởng
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault9">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault9">
+                                        Nhà máy
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault10">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault10">
+                                        Công ty thành viên
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn text-primary mt-3" data-bs-toggle="modal" data-bs-target="#themPhongBan">
+                                <i class="bi bi-plus"></i>
+                                Thêm mới
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#themPhongBan">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Danh sach chuc danh -->
+    <div class="modal fade" id="danhsachChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH CHỨC DANH</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault1">
+                                        Chủ tịch HĐQT
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault2">
+                                        Tổng Giám đốc
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault3">
+                                        Phó Tổng Giám đốc
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault4">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault4">
+                                        Giám đốc điều hành
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault5">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault5">
+                                        Quản lý cấp cao
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault6">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault6">
+                                        Quản lý cấp trung
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault7">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault7">
+                                        Trưởng phòng
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault8">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault8">
+                                        Phó phòng
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault9">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault9">
+                                        Trưởng nhóm
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault10">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault10">
+                                        Chuyên viên
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault10">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault10">
+                                        Nhân viên
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn text-primary mt-3" {{-- data-bs-toggle="modal" data-bs-target="#themChucDanh" --}}>
+                                <i class="bi bi-plus"></i>
+                                Thêm mới
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Them phong ban -->
+    <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM ĐƠN VỊ/PHÒNG BAN</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -454,6 +2494,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <select class="selectpicker" title="Chọn đơn vị">
+                                        <option>Doppelherz</option>
                                         <option>CTCP Mastertran</option>
                                         <option>CTCP Thái Bình Hưng Thịnh</option>
                                     </select>
@@ -465,7 +2506,7 @@
                                 <div class="d-flex col-sm-4">
                                     <div class="modal_body-title">Cấp tổ chức <span class="text-danger">*</span></div>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-8 d-flex align-items-center">
                                     <select class="selectpicker" title="Chọn cấp tổ chức">
                                         <option>Công ty con</option>
                                         <option>Chi nhánh</option>
@@ -478,6 +2519,10 @@
                                         <option>Nhà máy</option>
                                         <option>Công ty thành viên</option>
                                     </select>
+                                    <div class="modal_list-more" data-bs-toggle="modal"
+                                        data-bs-target="#danhsachCapToChuc">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -491,11 +2536,7 @@
                                         <option>Nguyễn Ngọc Bảo</option>
                                         <option>Đặng Nguyễn Lam Mai</option>
                                         <option>Hồ Thị Hồng Vân</option>
-                                        <option>Nguyễn Thị Ngọc Lan</option>
-                                        <option>Nguyễn Thị Hồng Oanh</option>
-                                        <option>Hà Nguyễn Minh Hiếu</option>
                                     </select>
-
                                 </div>
                             </div>
                         </div>
@@ -509,36 +2550,459 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Định biên <span class="text-danger">*</span></div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-2">
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span
+                                            class="text-danger">*</span></div>
                                 </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" placeholder="Nhập định biên">
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" placeholder="Nhập Chức năng, nhiệm vụ">
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Them Vi Tri Cong Viec -->
+    <div class="modal fade" id="themViTriCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM Vị trí/Chức danh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center mb-3">
                                 <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Quỹ lương năm <span class="text-danger">*</span></div>
+                                    <div class="modal_body-title">Mã vị trí<span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="text" placeholder="Nhập quỹ lương năm">
+                                    <input class="form-control" type="text" placeholder="Nhập mã vị trí">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng<br> nhiệm vụ<span class="text-danger">*</span>
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" placeholder="Nhập tên vị trí">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Phòng ban<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8 d-flex align-items-center">
+                                    <select class="selectpicker" title="Chọn phòng ban">
+                                        <option>Cung ứng</option>
+                                        <option>Trade Marketing</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Truyền thông</option>
+                                        <option>Quản trị Nhãn/Đào tạo</option>
+                                        <option>Kho & Giao vận</option>
+                                        <option>Hành chính nhân sự</option>
+                                        <option>Kế toán</option>
+                                        <option>Tài chính</option>
+                                        <option>Dịch vụ bán hàng</option>
+                                        <option>Kinh doanh OTC</option>
+                                        <option>Kinh doanh ETC</option>
+                                        <option>Kinh doanh MT</option>
+                                        <option>Kinh doanh online</option>
+                                    </select>
+                                    <div class="modal_list-more" data-bs-toggle="modal"
+                                        data-bs-target="#danhsachPhongBan">
+                                        <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" placeholder="Nhập Chức năng, nhiệm vụ">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8 d-flex align-items-center">
+                                    <select class="selectpicker" title="Chọn cấp nhân sự">
+                                        <option>Chủ tịch HĐQT</option>
+                                        <option>Tổng Giám đốc</option>
+                                        <option>Phó Tổng Giám đốc</option>
+                                        <option>Giám đốc điều hành</option>
+                                        <option>Quản lý cấp cao</option>
+                                        <option>Quản lý cấp trung</option>
+                                        <option>Trưởng phòng</option>
+                                        <option>Phó phòng</option>
+                                        <option>Trưởng nhóm</option>
+                                        <option>Chuyên viên</option>
+                                        <option>Nhân viên</option>
+                                    </select>
+                                    <div class="modal_list-more" data-bs-toggle="modal"
+                                        data-bs-target="#danhsachChucDanh">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Đơn vị công tác<span class="text-danger">*</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" placeholder="Nhập đơn vị công tác">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal TRANG BỊ HÀNH CHÍNH -->
+    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">TRANG BỊ HÀNH CHÍNH</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-start">
+                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab"
+                                aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
+                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-profile" type="button" role="tab"
+                                aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
+                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-messages" type="button" role="tab"
+                                aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-settings" type="button" role="tab"
+                                aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-settings2" type="button" role="tab"
+                                aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
+                        </div>
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="1" checked>
+                                    <label class="form-check-label" for="1">
+                                        Hộp đựng bút
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="2" checked>
+                                    <label class="form-check-label" for="2">
+                                        Bàn ghế
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="3" checked>
+                                    <label class="form-check-label" for="3">
+                                        Áo phông Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="4" checked>
+                                    <label class="form-check-label" for="4">
+                                        Áo sơ mi Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="5" checked>
+                                    <label class="form-check-label" for="5">
+                                        Sổ tay
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="6" checked>
+                                    <label class="form-check-label" for="6">
+                                        Tủ
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="7" checked>
+                                    <label class="form-check-label" for="7">
+                                        Máy tính
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="8" checked>
+                                    <label class="form-check-label" for="8">
+                                        Ô tô
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="1" checked>
+                                    <label class="form-check-label" for="1">
+                                        Hộp đựng bút
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="2" checked>
+                                    <label class="form-check-label" for="2">
+                                        Bàn ghế
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="3">
+                                    <label class="form-check-label" for="3">
+                                        Áo phông Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="4">
+                                    <label class="form-check-label" for="4">
+                                        Áo sơ mi Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="5">
+                                    <label class="form-check-label" for="5">
+                                        Sổ tay
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="6" checked>
+                                    <label class="form-check-label" for="6">
+                                        Tủ
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="7" checked>
+                                    <label class="form-check-label" for="7">
+                                        Máy tính
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="8" checked>
+                                    <label class="form-check-label" for="8">
+                                        Ô tô
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                                aria-labelledby="v-pills-messages-tab">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="1" checked>
+                                    <label class="form-check-label" for="1">
+                                        Hộp đựng bút
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="2" checked>
+                                    <label class="form-check-label" for="2">
+                                        Bàn ghế
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="3" checked>
+                                    <label class="form-check-label" for="3">
+                                        Áo phông Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="4">
+                                    <label class="form-check-label" for="4">
+                                        Áo sơ mi Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="5">
+                                    <label class="form-check-label" for="5">
+                                        Sổ tay
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="6" checked>
+                                    <label class="form-check-label" for="6">
+                                        Tủ
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="7" checked>
+                                    <label class="form-check-label" for="7">
+                                        Máy tính
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="8" checked>
+                                    <label class="form-check-label" for="8">
+                                        Ô tô
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                                aria-labelledby="v-pills-settings-tab">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="1">
+                                    <label class="form-check-label" for="1">
+                                        Hộp đựng bút
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="2">
+                                    <label class="form-check-label" for="2">
+                                        Bàn ghế
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="3">
+                                    <label class="form-check-label" for="3">
+                                        Áo phông Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="4" checked>
+                                    <label class="form-check-label" for="4">
+                                        Áo sơ mi Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="5" checked>
+                                    <label class="form-check-label" for="5">
+                                        Sổ tay
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="6" checked>
+                                    <label class="form-check-label" for="6">
+                                        Tủ
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="7" checked>
+                                    <label class="form-check-label" for="7">
+                                        Máy tính
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="8" checked>
+                                    <label class="form-check-label" for="8">
+                                        Ô tô
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel"
+                                aria-labelledby="v-pills-settings-tab">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="1" checked>
+                                    <label class="form-check-label" for="1">
+                                        Hộp đựng bút
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="2" checked>
+                                    <label class="form-check-label" for="2">
+                                        Bàn ghế
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="3" checked>
+                                    <label class="form-check-label" for="3">
+                                        Áo phông Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="4" checked>
+                                    <label class="form-check-label" for="4">
+                                        Áo sơ mi Doppelherz
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="5" checked>
+                                    <label class="form-check-label" for="5">
+                                        Sổ tay
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="6" checked>
+                                    <label class="form-check-label" for="6">
+                                        Tủ
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="7" checked>
+                                    <label class="form-check-label" for="7">
+                                        Máy tính
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
+                                        id="8" checked>
+                                    <label class="form-check-label" for="8">
+                                        Ô tô
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -551,35 +3015,115 @@
             </div>
         </div>
     </div>
-
-    {{-- Xóa đinh mức --}}
-    <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa phòng ban</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có thực sự muốn xoá đinh mức này không?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 @section('footer-script')
-    <!-- ChartJS -->
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
-
+    
+    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
-    <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $.datetimepicker.setLocale('vi');
+            $('#ngayThuViec').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            
+            $('#ngayChinhThuc').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            
+            $('#suaNgayThuViec').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            
+            $('#suaNgayChinhThuc').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            
+            $('#createUser').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            
+            $('#suaCreateUser').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('#onchangePhongBan').change(function() {
+            var opval = $(this).val();
+            if (opval == "themPhongBan") {
+                $('#themPhongBan').modal("show");
+                $('#themThanhVien').modal("hide");
+            }
+            });
+            $('#onchangeViTriCongViec').change(function() {
+                var opval = $(this).val();
+                if (opval == "themViTriCongViec") {
+                    $('#themViTriCongViec').modal("show");
+                    $('#themThanhVien').modal("hide");
+                }
+            });
+        });
+        
+    </script>
+    <script>
+        function fileValue(value) {
+            var path = value.value;
+            var extenstion = path.split('.').pop();
+            if (extenstion == "jpg" || extenstion == "svg" || extenstion == "jpeg" || extenstion == "png" || extenstion ==
+                "gif") {
+                document.getElementById('image-preview').src = window.URL.createObjectURL(value.files[0]);
+            } else {
+                alert("Không hỗ trợ định dạng này. ")
+            }
+        }
+    </script>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+        // Click Tree
+        const clickTrees = document.querySelectorAll(".clicktree");
+        clickTrees.forEach((clickTree) => {
+            clickTree.addEventListener("click", () => {
+            const id = clickTree.getAttribute("data-href");
+            const element = document.querySelector(id);
+            if (element) {
+                const items = document.querySelectorAll(".body_content-wrapper");
+                items.forEach((item) => {
+                    item.style.display = "none";
+                });
+                element.style.display = "block";
+                const noContent = document.querySelector(".body_noContent-wrapper");
+                noContent.style.display = "none";
+            } else {
+                const items = document.querySelectorAll(".body_content-wrapper");
+                items.forEach((item) => {
+                item.style.display = "none";
+                });
+            }
+            });
+        });
+
+        // Search Tree
+        document.querySelector("#search_tree").addEventListener("keyup", function() {
+            var value = this.value.toLowerCase();
+            var lis = document.querySelectorAll(".tree li");
+            for (var i = 0; i < lis.length; i++) {
+            var li = lis[i];
+            var text = li.textContent.toLowerCase();
+            if (text.indexOf(value) > -1) {
+                li.style.display = "";
+            } else {
+                li.style.display = "none";
+            }
+            }
+        });
+    });
+</script>
+
 @endsection

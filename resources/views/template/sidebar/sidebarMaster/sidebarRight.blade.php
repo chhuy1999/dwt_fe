@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="sidebarBody_wrapper">
                     <div class="sidebarBody_heading-wrapper">
-                        <h6 class="sidebarBody_heading">KPI năm của phòng/ban</h6>
+                        <h6 class="sidebarBody_heading">Chỉ số công việc đơn vị</h6>
                     </div>
                     <div class="sidebarBody_card" style="line-height: 26px;">
                         <div class="sidebarBody_cardmini">
@@ -57,7 +57,7 @@
                     
                     <div class="sidebarBody_card bg-pink-blur">
                         <div class="sidebarBody_heading-wrapper">
-                            <h6 class="sidebarBody_heading mt-2">Sỹ số phòng</h6>
+                            <h6 class="sidebarBody_heading mt-2">Sỹ số</h6>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-borderless" style="margin: 0">
@@ -77,7 +77,7 @@
                             </table>
                         </div>
                         <div class="sidebarBody_heading-wrapper">
-                            <h6 class="sidebarBody_heading">Vi phạm hành chính</h6>
+                            <h6 class="sidebarBody_heading">Số vi phạm hành chính</h6>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-borderless text-right" style="margin: 0">
@@ -97,7 +97,7 @@
                             </table>
                         </div>
                         <div class="sidebarBody_heading-wrapper">
-                            <h6 class="sidebarBody_heading">Vi phạm nghiệp vụ</h6>
+                            <h6 class="sidebarBody_heading">Số vi phạm nghiệp vụ</h6>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-borderless text-right" style="margin: 0">
@@ -118,7 +118,7 @@
                         </div>
                         <div class="sidebarBody_heading-wrapper">
                             <h6 class="sidebarBody_heading">
-                                Sự cố CCDC
+                                Số sự cố CCDC
                                 <span class="sidebarBody_heading-mini">( Phát sinh / Đã xử lý )</span>
                             </h6>
                         </div>
@@ -178,7 +178,7 @@
                 <div class="sidebarBody_wrapper">
                     <div class="sidebarBody_heading-wrapper">
                         <h6 class="sidebarBody_heading">
-                            Chi tiêu / mua sắm
+                            Số khoản chi tiêu mua sắm
                             <span class="sidebarBody_heading-mini">( Khoản: trị giá )</span>
                         </h6>
                     </div>
@@ -309,7 +309,7 @@
                 <div class="sidebarBody_wrapper">
                     <div class="sidebarBody_heading-wrapper">
                         <h6 class="sidebarBody_heading">
-                            Huẩn luyện & Đánh giá
+                            Huấn luyện & Đánh giá
                             <span class="sidebarBody_heading-mini">( Yêu cầu / Hoàn thành )</span>
                         </h6>
                     </div>
@@ -334,7 +334,7 @@
                                                     >/</span
                                                 >
                                                 <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
+                                                    >1</span
                                                 >
                                             </span>
                                         </td>
@@ -347,20 +347,20 @@
                                                     >/</span
                                                 >
                                                 <span class="sidebarBody_card-body-subtitle-after"
-                                                    >30</span
+                                                    >20</span
                                                 >
                                             </span>
                                         </td>
                                         <td style="font-weight: 700; padding: 0; text-align: left">
                                             <span class="sidebarBody_card-body-subtitle">
                                                 <span class="sidebarBody_card-body-subtitle-before"
-                                                    >10</span
+                                                    >40</span
                                                 >
                                                 <span class="sidebarBody_card-body-subtitle-separate"
                                                     >/</span
                                                 >
                                                 <span class="sidebarBody_card-body-subtitle-after"
-                                                    >160</span
+                                                    >30</span
                                                 >
                                             </span>
                                         </td>
@@ -396,7 +396,7 @@
                                                     >/</span
                                                 >
                                                 <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
+                                                    >1</span
                                                 >
                                             </span>
                                         </td>
@@ -409,20 +409,20 @@
                                                     >/</span
                                                 >
                                                 <span class="sidebarBody_card-body-subtitle-after"
-                                                    >30</span
+                                                    >20</span
                                                 >
                                             </span>
                                         </td>
                                         <td style="font-weight: 700; padding: 0; text-align: left">
                                             <span class="sidebarBody_card-body-subtitle">
                                                 <span class="sidebarBody_card-body-subtitle-before"
-                                                    >10</span
+                                                    >40</span
                                                 >
                                                 <span class="sidebarBody_card-body-subtitle-separate"
                                                     >/</span
                                                 >
                                                 <span class="sidebarBody_card-body-subtitle-after"
-                                                    >160</span
+                                                    >30</span
                                                 >
                                             </span>
                                         </td>

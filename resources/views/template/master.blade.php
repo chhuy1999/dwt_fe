@@ -90,6 +90,9 @@
                                             <li class="header_more-item">
                                                 <a href="danh-muc-nhiem-vu" class="header_more-link">Danh mục nhiệm vụ</a>
                                             </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-chi-so-key" class="header_more-link">Danh mục chỉ số key</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="header_submenu-items">
@@ -423,6 +426,8 @@
     <script type="text/javascript" src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/style.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
     @yield('footer-script')
     <script>
@@ -430,6 +435,15 @@
         var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.datetimepicker.setLocale('vi');
+            $('#thismonth').datetimepicker({
+                format: 'm/Y',
+                timepicker: false,
+            });
+        });
     </script>
 </body>
 
