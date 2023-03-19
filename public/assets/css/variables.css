@@ -60,7 +60,7 @@ a {
 
 input[readonly],
 input[readonly]:focus {
-    background-color: rgb(180 179 178 / 30%);
+    background-color: #f8f9fa;
     cursor: not-allowed;
 }
 

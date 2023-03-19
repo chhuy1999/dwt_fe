@@ -176,7 +176,7 @@
                                                                     data-bs-target="#phanHoiVanDe">Chưa hoàn thành
                                                                     báo cáo do
                                                                     abc chưa
-                                                                    gửi thông</div>
+                                                                    gửi thông tin</div>
                                                             </td>
                                                             <td>
                                                                 <div>Mai</div>
@@ -202,7 +202,7 @@
                                                                     data-bs-target="#phanHoiVanDe">Chưa hoàn thành
                                                                     báo cáo do
                                                                     abc chưa
-                                                                    gửi thông</div>
+                                                                    gửi thông tin</div>
                                                             </td>
                                                             <td>
                                                                 <div>Mai</div>
@@ -228,7 +228,7 @@
                                                                     data-bs-target="#phanHoiVanDe">Chưa hoàn thành
                                                                     báo cáo do
                                                                     abc chưa
-                                                                    gửi thông</div>
+                                                                    gửi thông tin</div>
                                                             </td>
                                                             <td>
                                                                 <div>Mai</div>
@@ -252,10 +252,18 @@
                                 </div>
                             </div>
 
-                            <div class="card mb-3">
+                            <div class="card mb-2">
                                 <div class="card-body">
-                                    <div class="mb-2 d-flex justify-content-between align-items-center">
-                                        <div class="card-title">Nội dung chính</div>
+                                    <div class="mb-2">
+                                        <div class="card-title mb-2">Nội dung chính</div>
+                                        <textarea name="" id="" rows="5" cols="" class="form-control" placeholder="Nhập nội dung cuộc họp"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="mb-2">
+                                        <div class="card-title">Vấn đề tồn đọng</div>
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-12">
@@ -282,7 +290,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div>Chưa hoàn thành báo cáo do abc chưa gửi thông</div>
+                                                                <div>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                             </td>
                                                             <td>
                                                                 <div>Mai</div>
@@ -350,7 +358,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div>Chưa hoàn thành báo cáo do abc chưa gửi thông
+                                                                <div>Chưa hoàn thành báo cáo do abc chưa gửi thông tin
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -418,7 +426,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div>Chưa hoàn thành báo cáo do abc chưa gửi thông
+                                                                <div>Chưa hoàn thành báo cáo do abc chưa gửi thông tin
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -486,7 +494,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div>Chưa hoàn thành báo cáo do abc chưa gửi thông
+                                                                <div>Chưa hoàn thành báo cáo do abc chưa gửi thông tin
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -554,7 +562,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin
                                                             </td>
                                                             <td>
                                                                 Mai
@@ -621,19 +629,25 @@
                                                 </div>
 
                                             </div>
-                                            <div class="action_table-wrapper text-end mt-4 mb-2">
-                                                <a href="kho-luu-tru-bien-ban-hop"
-                                                    class="btn btn-outline-danger action_table-btn"
-                                                    style="margin-right:6px;">
-                                                    Đến kho lưu trữ
-                                                </a>
-                                                <a href='bien-ban-hop' class="btn btn-danger action_table-btn">
-                                                    Duyệt & Lưu PDF
-                                                </a>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-12 d-flex justify-content-end">
+                            <div class="action_table-wrapper text-end mt-3 mb-3">
+                                <a href="kho-luu-tru-bien-ban-hop"
+                                    class="btn btn-outline-danger action_table-btn"
+                                    style="margin-right:6px;">
+                                    Đến kho lưu trữ
+                                </a>
+                                <a href='bien-ban-hop' class="btn btn-danger action_table-btn">
+                                    Duyệt & Lưu PDF
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-12 d-flex justify-content-end">
@@ -678,7 +692,7 @@
                             </label>
                             <div class="w-100" style="flex:1;overflow:hidden">
                                 <div contenteditable="true" readonly class="contenteditable"
-                                    placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông"></div>
+                                    placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông tin"></div>
                             </div>
                         </div>
                     </div>
@@ -747,7 +761,7 @@
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
                                 <div class="modal_body-title">Vấn đề tồn đọng <span class="text-danger">*</span></div>
                                 &nbsp;<input class="form-control" style="width:76%" type="text"
-                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -766,7 +780,7 @@
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
                                 <div class="modal_body-title">Nguyên nhân</div>
                                 <input class="form-control" style="width:76%" type="text"
-                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                             </div>
                         </div>
                         <div class="col-sm-12">

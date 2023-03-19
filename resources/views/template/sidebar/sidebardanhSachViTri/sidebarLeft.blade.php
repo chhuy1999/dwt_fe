@@ -8,8 +8,6 @@
                         <h6 class="sidebarBody_heading-big m-0">
                             Cơ cấu đơn vị
                         </h6>
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#themCoCau">Thêm cơ
-                            cấu</button>
                     </div>
 
                     <div class="main_search mb-3 mt-3">

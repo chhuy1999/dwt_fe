@@ -7,7 +7,6 @@
                         <h6 class="sidebarBody_heading-big m-0">
                             Cấp bộ phận
                         </h6>
-                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#neuvande">Nêu vấn đề</button>
                     </div>
                     <div class="sidebarBody_card bg-yellow-blur">
                         <div class="sidebarBody_heading-wrapper">

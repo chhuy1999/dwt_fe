@@ -33,6 +33,13 @@ Route::get('ho-so-don-vi', function () {
 Route::get('danh-sach-phong-ban', function () {
     return view('CauHinh.danhSachPhongBan');
 });
+Route::get('danh-sach-vi-tri', function () {    
+    return view('CauHinh.danhSachViTri');
+});
+Route::get('danh-sach-thanh-vien', function () {    
+    return view('CauHinh.danhSachThanhVien');
+});
+
 
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);

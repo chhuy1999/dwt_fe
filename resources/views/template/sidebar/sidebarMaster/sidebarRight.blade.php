@@ -2,11 +2,19 @@
     <div class="sidebar">
         <div class="sidebarBody">
             <div class="container">
-                <div class="sidebarBody_wrapper">
-                    <div class="sidebarBody_heading-wrapper">
-                        <h6 class="sidebarBody_heading">Chỉ số công việc đơn vị</h6>
+                <div class="sidebarBody_wrapper mt-3">
+                    <div class="sidebarBody_heading-wrapper mb-2 d-flex align-items-center justify-content-between">
+                        <h6 class="sidebarBody_heading-big m-0">
+                            Tổng quan đơn vị
+                        </h6>
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#neuvande">Nêu vấn
+                            đề</button>
                     </div>
+                    
                     <div class="sidebarBody_card" style="line-height: 26px;">
+                        <div class="sidebarBody_heading-wrapper">
+                            <h6 class="sidebarBody_heading">Chỉ số công việc đơn vị</h6>
+                        </div>
                         <div class="sidebarBody_cardmini">
                             <span class="sidebarBody_card-title">
                                 <i class="bi bi-person-add"></i>

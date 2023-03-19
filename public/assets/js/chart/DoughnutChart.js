@@ -1,12 +1,12 @@
-const doughnut = document.getElementById('doughnutChart');
+const doughnut = document.getElementById("doughnutChart");
 
 new Chart(doughnut, {
-    type: 'doughnut',
+    type: "doughnut",
     data: {
-        labels: ['Nhân sự', 'Marketing', 'Tuyển Dụng', 'Kiếm Soát'],
+        labels: ["Nhân sự", "Marketing", "Tuyển Dụng", "Kiếm Soát"],
         datasets: [
             {
-                label: 'Chỉ số',
+                label: "Chỉ số",
                 data: [12, 19, 3, 5],
                 borderWidth: 1,
             },
@@ -16,22 +16,19 @@ new Chart(doughnut, {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-            y: [
-                {
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'probability',
-                    },
-                    ticks: {
-                        beginAtZero: true,
-                    },
+            y: {
+                scaleLabel: {
+                    display: true,
+                    labelString: "probability",
                 },
-            ],
+                ticks: {
+                    beginAtZero: true,
+                },
+            },
         },
         plugins: {
             legend: {
                 display: false,
-                
             },
             tooltip: { enabled: true },
         },

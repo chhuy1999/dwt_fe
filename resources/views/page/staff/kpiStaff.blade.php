@@ -12,10 +12,10 @@
                         <div class="mainSection_card">
                             <div class="mainSection_content">
                                 <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong></div>
+                                <div class=" ms-4 d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong></div>
                             </div>
                             <div class="mainSection_content">
-                                <div class="me-3">Trưởng đơn vị: </div>
+                                <div class="me-3">Người thực hiện: </div>
                                 <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
                             </div>
                         </div>
@@ -2101,28 +2101,43 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="card-title">Vấn đề tồn đọng</div>
-                                        {{-- 
+                                        <div class="card-title">Danh sách vấn đề tồn đọng</div>
+
                                         <div class="main_search d-flex">
                                             <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" />
+                                            <input type="text" class="form-control"
+                                                placeholder="Tìm kiếm vấn đề" />
                                             <button id="exporttable" class="btn btn-primary btn-export"
                                                 data-toggle="tooltip" data-placement="top" title="Xuất file Excel">
                                                 <i class="bi bi-download"></i>
                                             </button>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                     <div class="position-relative">
                                         <table class="table table-responsive table-hover table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th style="width:2%">STT</th>
-                                                    <th style="width:25%">Vấn đề tồn đọng</th>
-                                                    <th style="width:8%">Người nêu</th>
-                                                    <th style="width:22%">Nguyên nhân</th>
-                                                    <th style="width:25%">Hướng giải quyết</th>
-                                                    <th style="width:5%">Thời hạn</th>
-                                                    <th style="width:5%" colspan="2"></th>
+                                                    <th style="width: 2%">STT</th>
+                                                    <th style="width: 20%">
+                                                        <div class="d-flex justify-content-between">
+                                                            Vấn đề tồn đọng
+                                                            <div>
+                                                                <i class="bi bi-chat-right-text"
+                                                                    style="font-size:1.4rem"></i>
+                                                            </div>
+
+                                                        </div>
+                                                    </th>
+                                                    <th style="width: 10%">
+                                                        Phân loại
+                                                    </th>
+                                                    <th style="width: 12%">Người nêu</th>
+                                                    <th style="width: 22%">Nguyên nhân</th>
+                                                    <th style="width: 21%">
+                                                        Hướng giải quyết
+                                                    </th>
+                                                    <th style="width: 6%">Thời hạn</th>
+                                                    <th colspan="2"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -2133,154 +2148,26 @@
                                                         </div>
                                                     </td>
                                                     <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
                                                         <div>
-                                                            Chưa hoàn thành báo cáo do abc chưa gửi thông
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>Mai</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">NN1</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">Sẽ gửi trong ngày</div>
-                                                    </td>
-                                                    <td>
-                                                        05/04
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="circle_tracking-wrapper"
-                                                                style="border: 1px solid">
-                                                                <div class="circle_tracking bg-white">
-                                                                </div>
-                                                                <div class="circle_tracking bg-white">
-                                                                </div>
-                                                                <div class="circle_tracking bg-white">
-                                                                </div>
-                                                                <div class="circle_tracking bg-white">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dotdotdot" id="dropdownMenuButton1"
-                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                class="bi bi-three-dots-vertical"></i>
-                                                        </div>
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                            <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong">
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    Sửa
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-repeater-delete>
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    Xóa
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            2
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Giải quyết" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            Chưa hoàn thành báo cáo do abc chưa gửi thông
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div>Mai</div>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                     </td>
                                                     <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">NN2</div>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                     </td>
                                                     <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">Sẽ gửi trong tuần</div>
-                                                    </td>
-                                                    <td>
-                                                        03/04
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="circle_tracking-wrapper">
-                                                                <div class="circle_tracking opacity-75 bg-success">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-success">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-success">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-success">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dotdotdot" id="dropdownMenuButton1"
-                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                class="bi bi-three-dots-vertical"></i>
-                                                        </div>
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                            <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong">
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    Sửa
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-repeater-delete>
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    Xóa
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            3
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            Chưa hoàn thành báo cáo do abc chưa gửi thông
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>Mai</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">NN3</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">Sẽ gửi trong tuần</div>
-                                                    </td>
-                                                    <td>
-                                                        02/04
+                                                        <div>19/03</div>
                                                     </td>
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-center">
@@ -2305,7 +2192,7 @@
                                                             <li>
                                                                 <a class="dropdown-item" href="#"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong">
+                                                                    data-bs-target="#phanHoiVanDe">
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/edit.svg') }}" />
                                                                     Sửa
@@ -2313,10 +2200,10 @@
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item" href="#"
-                                                                    data-repeater-delete>
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#xoaThuocTinh" data-repeater-delete>
                                                                     <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    Xóa
+                                                                        src="{{ asset('assets/img/trash.svg') }}" /> Xóa
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -2325,27 +2212,234 @@
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-center">
-                                                            4
+                                                            1
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            Chưa hoàn thành báo cáo do abc chưa gửi thông
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div>Mai</div>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                     </td>
                                                     <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">NN4</div>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                     </td>
                                                     <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">Sẽ gửi trong tuần</div>
+                                                        <div>18/03</div>
                                                     </td>
                                                     <td>
-                                                        01/04
+                                                        <div class="d-flex align-items-center justify-content-center">
+                                                            <div class="circle_tracking-wrapper">
+                                                                <div class="circle_tracking opacity-75 bg-success">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-success">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-success">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-success">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="bi bi-three-dots-vertical"></i>
+                                                        </div>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <li>
+                                                                <a class="dropdown-item" href="#"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#phanHoiVanDe">
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    Sửa
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="#"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center justify-content-center">
+                                                            1
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div>19/03</div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center justify-content-center">
+                                                            <div class="circle_tracking-wrapper">
+                                                                <div class="circle_tracking opacity-75 bg-danger">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-success">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-success">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-success">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="bi bi-three-dots-vertical"></i>
+                                                        </div>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <li>
+                                                                <a class="dropdown-item" href="#"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#phanHoiVanDe">
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    Sửa
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="#"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center justify-content-center">
+                                                            1
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div>17/03</div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center justify-content-center">
+                                                            <div class="circle_tracking-wrapper">
+                                                                <div class="circle_tracking opacity-75 bg-warning">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-warning">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-warning">
+                                                                </div>
+                                                                <div class="circle_tracking opacity-75 bg-warning">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                class="bi bi-three-dots-vertical"></i>
+                                                        </div>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <li>
+                                                                <a class="dropdown-item" href="#"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#phanHoiVanDe">
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    Sửa
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="#"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center justify-content-center">
+                                                            1
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                    </td>
+                                                    <td>
+                                                        <div>19/03</div>
                                                     </td>
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-center">
@@ -2370,7 +2464,7 @@
                                                             <li>
                                                                 <a class="dropdown-item" href="#"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong">
+                                                                    data-bs-target="#phanHoiVanDe">
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/edit.svg') }}" />
                                                                     Sửa
@@ -2378,80 +2472,16 @@
                                                             </li>
                                                             <li>
                                                                 <a class="dropdown-item" href="#"
-                                                                    data-repeater-delete>
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#xoaThuocTinh" data-repeater-delete>
                                                                     <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    Xóa
+                                                                        src="{{ asset('assets/img/trash.svg') }}" /> Xóa
                                                                 </a>
                                                             </li>
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            5
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            Chưa hoàn thành báo cáo do abc chưa gửi thông
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        Mai
-                                                    </td>
-                                                    <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">NN5</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="contenteditable" contenteditable="true"
-                                                            placeholder="...">Sẽ gửi trong tuần</div>
-                                                    </td>
-                                                    <td>
-                                                        31/03
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="circle_tracking-wrapper">
-                                                                <div class="circle_tracking opacity-75 bg-warning">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-warning">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-warning">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-warning">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dotdotdot" id="dropdownMenuButton1"
-                                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                class="bi bi-three-dots-vertical"></i>
-                                                        </div>
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                            <li>
-                                                                <div class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong">
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    Sửa
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="dropdown-item" href="#"
-                                                                    data-repeater-delete>
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    Xóa
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
+
 
                                             </tbody>
                                         </table>
@@ -2605,9 +2635,99 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Phản Hồi Vấn Đề -->
+    <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Phản hồi vấn đề tồn đọng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 row">
+                        <div class="col-sm-12 d-flex align-items-center">
+                            <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng
+                            </label>
+                            <div class="w-100" style="flex:1;overflow:hidden">
+                                <input type="text" class="form-control" class="contenteditable"
+                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-4 d-flex  align-items-center">
+                            <label for="inputPassword" class="col-form-label" style="padding-right:18px;">Cấp giải
+                                quyết</label>
+                            <div class="w-100" style="flex:1">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="2">Phòng ban</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 d-flex  align-items-center">
+                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời hạn</label>
+                            <div class="w-100" style="flex:1">
+                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control"
+                                    type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-5 d-flex  align-items-center">
+                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Trạng
+                                thái</label>
+                            <div class="w-100" style="flex:1">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected hidden>Chọn trạng thái</option>
+                                    <option>Đã có hướng giải quyết</option>
+                                    <option>Đã giải quyết</option>
+                                    <option>Không thể giải quyết</option>
+                                    <option>Không xác định được nguyên nhân</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-12 d-flex  align-items-center">
+                            <label for="inputPassword" class="col-form-label"
+                                style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
+                            <div class="w-100" style="flex:1;overflow:hidden">
+                                <div contenteditable="true" class="contenteditable"
+                                    placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Xóa thuộc tính --}}
+    <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa Thuộc tính này</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có thực sự muốn xoá thuộc tính đã chọn không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Vấn đề tồn đọng -->
     <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 34%">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
@@ -2621,19 +2741,18 @@
                                     <div class="modal_body-title">Vấn đề tồn đọng</div>
                                 </div>
                                 <div class="col-sm-10" style="padding-left: 12px">
-                                    <input type="text" class="form-control form-control-plaintext" id="staticEmail"
-                                        style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
+                                    <input type="text" class="form-control form-control-plaintext" id="staticEmail" style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-3 row">
-                        <div class="col-sm-8">
+                    <div class="row mt-3">
+                        <div class="col-sm-4">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-3">
+                                <div class="d-flex col-sm-5">
                                     <div class="modal_body-title">Cấp giải quyết</div>
                                 </div>
-                                <div class="col-sm-9" style="padding-left: 14px">
+                                <div class="col-sm-7">
                                     <select class="selectpicker" title="Chọn cấp giải quyết">
                                         <option value="1">Công ty</option>
                                         <option value="2">Phòng ban</option>
@@ -2643,12 +2762,25 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-5">
+                                    <div class="modal_body-title">Phân loại</div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="selectpicker" title="Chọn cấp giải quyết">
+                                        <option value="1">Cần giải quyết</option>
+                                        <option value="2">Than phiền</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center mb-3">
                                 <div class="d-flex col-sm-4">
                                     <div class="modal_body-title">Thời hạn</div>
                                 </div>
-                                <div class="col-sm-8">
-                                    <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                        type="text">
+                                <div class="col-sm-8 position-relative">
+                                    <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"  type="text">
+                                    <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                             </div>
                         </div>
@@ -2675,12 +2807,12 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script> --}}
     <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
 
     <script type="text/javascript">

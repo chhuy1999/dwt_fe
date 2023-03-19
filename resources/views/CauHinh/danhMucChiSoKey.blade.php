@@ -78,7 +78,7 @@
                                                                     
                                                             </td>
                                                             <td>
-                                                                <div></div>
+                                                                <div>Số lượt khách hàng được chăm sóc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="dotdotdot" id="dropdownMenuButton1"
@@ -118,7 +118,7 @@
                                                                     
                                                             </td>
                                                             <td>
-                                                                <div></div>
+                                                                <div>Số lượt khách hàng được chăm sóc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="dotdotdot" id="dropdownMenuButton1"
@@ -158,7 +158,7 @@
                                                                     
                                                             </td>
                                                             <td>
-                                                                <div></div>
+                                                                <div>Số lượt cấp phát vật tư trong ngày</div>
                                                             </td>
                                                             <td>
                                                                 <div class="dotdotdot" id="dropdownMenuButton1"
@@ -195,10 +195,9 @@
                                                                 <div>
                                                                     Buổi
                                                                 </div>
-                                                                    
                                                             </td>
                                                             <td>
-                                                                <div></div>
+                                                                <div>Số buổi Activation</div>
                                                             </td>
                                                             <td>
                                                                 <div class="dotdotdot" id="dropdownMenuButton1"
@@ -238,7 +237,7 @@
                                                                     
                                                             </td>
                                                             <td>
-                                                                <div></div>
+                                                                <div>Doanh thu từ Activation</div>
                                                             </td>
                                                             <td>
                                                                 <div class="dotdotdot" id="dropdownMenuButton1"
@@ -290,69 +289,36 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-8">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Tên chỉ số key <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên chỉ số key">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3">
-                                <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
-                                <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3">
-                                <div class="modal_body-title">Kế hoạch thực hiện <span class="text-danger">*</span></div>
-                                <textarea class="form-control" placeholder="Nhập kế hoạch thực hiện"></textarea>
+                                <div class="modal_body-title col-sm-3">
+                                    Tên chỉ số key <span class="text-danger">*</span>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" value="Số lượt khách hàng được chăm sóc">
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Đơn vị</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Manday</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Số lượng</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
+                                <div class="modal_body-title col-sm-3">
+                                    Đơn vị <span class="text-danger">*</span>
+                                </div>
                                 <div class="col-sm-9">
-                                    <select class="selectpicker" title="Chọn Vị trí">
-                                        <option>Quản lý phòng</option>
-                                        <option>Quản lý sàn TMĐT</option>
-                                        <option>Content Website</option>
-                                        <option>Content SEO</option>
-                                        <option>Google Ads</option>
-                                        <option>Content Facebook</option>
+                                    <select class="selectpicker" title="Chọn đơn vị">
+                                        <option selected>Lượt</option>
+                                        <option>Triệu Đồng</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-7">
+                        <div class="col-sm-12">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn phòng/ban">
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Quản trị Nhãn &amp; Đào tạo</option>
-                                        <option>Truyền thông</option>
-                                        <option>Sáng tạo nội dung</option>
-                                        <option>Dịch vụ bán hàng</option>
-                                    </select>
+                                <div class="modal_body-title col-sm-2">
+                                    Mô tả chỉ số <span class="text-danger">*</span>
+                                </div>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control">Số lượt khách hàng được chăm sóc</textarea>
                                 </div>
                             </div>
                         </div>
@@ -394,12 +360,8 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <select class="selectpicker" title="Chọn đơn vị">
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Quản trị Nhãn & Đào tạo</option>
-                                        <option>Truyền thông</option>
-                                        <option>Sáng tạo nội dung</option>
-                                        <option>Dịch vụ bán hàng</option>
+                                        <option>Lượt</option>
+                                        <option>Triệu Đồng</option>
                                     </select>
                                 </div>
                             </div>

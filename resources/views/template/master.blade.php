@@ -71,10 +71,20 @@
                                             <li class="header_more-item">
                                                 <a href="danh-sach-phong-ban" class="header_more-link">Danh mục phòng ban</a>
                                             </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-sach-vi-tri" class="header_more-link">Danh sách vị trí</a>
+                                            </li>
                                         </ul>
                                     </li>
-                                    <li class="header_submenu-items">
-                                        <a href="ho-so-nhan-vien" class="header_submenu-link">Hồ sơ nhân viên</a>
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="ho-so-nhan-vien" class="header_submenu-link more_btn">
+                                            Hồ sơ nhân viên <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="danh-sach-thanh-vien" class="header_more-link">Danh sách thành viên</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li class="header_submenu-items">
                                         <a href="mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
@@ -428,6 +438,7 @@
     <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+
 
     @yield('footer-script')
     <script>

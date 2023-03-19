@@ -267,10 +267,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -341,10 +341,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -415,10 +415,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -489,10 +489,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -563,10 +563,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -637,10 +637,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -711,10 +711,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -785,10 +785,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -859,10 +859,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -933,10 +933,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -1007,10 +1007,10 @@
                                                     <div class="col-md-5 mb-3 d-flex">
                                                         <label for="textarea" class="col-sm-4 col-form-label">Thời gian<span class="text-danger">*</span></label>
                                                         <div class="col-sm-4 me-2">
-                                                            <input id="ngayBatDau" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayBatDau" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input id="ngayKetThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                                            <input id="ngayKetThuc" value="<?php echo date('d/m'); ?>" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 mb-3 d-flex">
@@ -1038,7 +1038,7 @@
                                                     <div class="btn btn-danger px-4">Lưu</div>
                                                 </div>
                                             </div>
-                                            <div class="body_noContent-wrapper">Vui lòng chọn danh sách định mức <button type="button" class="btn btn-danger ms-2" id="toggleDinhMuc">tại đây</button></div>
+                                            <div class="body_noContent-wrapper">Vui lòng chọn định mức để giao việc <button type="button" class="btn btn-danger ms-2" id="toggleDinhMuc">tại đây</button></div>
                                         </div>
                                     </div>
 

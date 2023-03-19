@@ -1,16 +1,16 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Hồ sơ đơn vị')
+@section('title', 'Danh sách thành viên')
 
 @section('content')
-    @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
+    @include('template.sidebar.sidebardanhSachThanhVien.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">
-                            Hồ sơ đơn vị
+                            Danh sách thành viên
                         </h5>
                     </div>
 
@@ -18,80 +18,65 @@
                         <div class="col-md-12">
                             <div class="card mb-3">
                                 <div class="card-body position-relative body_content-wrapper" id="body_content-1" style="display:block">
-                                    <div class="pb-2 d-flex align-items-center">
-                                        <div class="card-title">Toàn công ty</div>
-                                        <div class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#suaCoCauToChuc">
-                                            <img style="width:16px;height:16px"
-                                                src="{{ asset('assets/img/edit.svg') }}" />
-                                        </div>
-                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
-                                            <img style="width:16px;height:16px"
-                                                src="{{ asset('assets/img/trash.svg') }}" />
-                                        </div>
-                                    </div>
-                                    <div class="text_wrapper mb-3">
-                                        <div class="text_content">
-                                            <div class="d-flex">
-                                                <div class="info_content">
-                                                    <div class="info_label">Mã đơn vị:&nbsp;</div>
-                                                    <div class="info_content">MKT</div>
-                                                </div>
-                                                <div class="info_content">
-                                                    <div class="info_label">Cấp tổ chức:&nbsp;</div>
-                                                    <div class="info_content">Khối</div>
-                                                </div>
-
-                                            </div>
-                                            <div class="info_content">
-                                                <div class="info_label">Chức năng, nhiệm vụ:&nbsp;</div>
-                                                <div class="info_content">Xây dựng chiến lược truyền thông và chiến lược
-                                                    Marketing để tiếp cận với nhóm khách hàng trên
-                                                </div>
-                                            </div>
-                                            <div class="info_content">
-                                                <div class="info_label">Trụ sở chính:&nbsp;</div>
-                                                <div class="info_content">Tầng 6, tháp A, Toà nhà Central Point, số 219
-                                                    Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="text_action">
-                                            <div class="text_action-wrapper">
-                                                <div class="text_action-title-wrapper">
-                                                    <div class="text_action-items">
-                                                        <strong>Chính thức: </strong>
-                                                        <span>4/7</span>
-                                                    </div>
-                                                    <div class="text_action-items">
-                                                        <strong>Thử việc: </strong>
-                                                        <span>2/7</span>
-                                                    </div>
-                                                    <div class="text_action-items">
-                                                        <strong>Cộng tác viên: </strong>
-                                                        <span>1/7</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text_action-items">
-                                                    <strong>Định biên/Sỹ số: </strong>
-                                                    <span>30/15</span>
-                                                </div>
-                                                <div class="text_action-items">
-                                                    <strong>Quỹ lương năm: </strong>
-                                                    <span>300.000.000 VNĐ</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">
-                                                <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
+                                            <div
+                                                class="title_wrapper d-flex align-items-center justify-content-between mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="card-title">Toàn công ty</div>
+                                                    <div class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#suaCoCauToChuc">
+                                                        <img style="width:16px;height:16px"
+                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                    </div>
+                                                    <div class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#xoaCoCauToChuc">
+                                                        <img style="width:16px;height:16px"
+                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                    </div>
+                                                </div>
+                                                <div class="title_filter d-flex align-items-center" style="gap:10px">
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-live-search="true"
+                                                            title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-width="100%"
+                                                            data-live-search="true" title="Chọn trạng thái..."
+                                                            data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-width="100%"
+                                                            data-live-search="true" title="Chọn Vị trí/Chức danh..."
+                                                            data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="main_search d-flex mt-2">
                                                     <i class="bi bi-search"></i>
                                                     <input type="text" class="form-control" placeholder="Tìm kiếm...">
                                                     <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCau">Thêm cơ cấu</button>
+                                                        data-bs-target="#themThanhVien">Thêm thành viên</button>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
@@ -100,11 +85,15 @@
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th>STT</th>
-                                                            <th>Mã đơn vị</th>
-                                                            <th>Tên đơn vị</th>
-                                                            <th>Cấp tổ chức</th>
-                                                            <th>Trưởng đơn vị</th>
-                                                            <th>Chức năng nhiệm vụ</th>
+                                                            <th>Họ và tên</th>
+                                                            <th>Mã nhân viên</th>
+                                                            <th>Đơn vị công tác</th>
+                                                            <th>Vị trí/chức danh</th>
+                                                            <th>Cấp nhân sự</th>
+                                                            <th>Email công ty</th>
+                                                            <th>SĐT liên hệ</th>
+                                                            <th>Hình thức</th>
+                                                            <th>Trạng thái</th>
                                                             <th>Hành động</th>
                                                         </tr>
                                                     </thead>
@@ -116,19 +105,31 @@
                                                                     1</div>
                                                             </th>
                                                             <td>
-                                                                <div>QTN</div>
+                                                                <div>Đặng Vũ Lam Mai</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT123</div>
                                                             </td>
                                                             <td>
                                                                 <div>Quản trị Nhãn</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Trợ lý Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
+                                                                <div>Chuyên viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>bmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456789</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Chính thức</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -149,22 +150,35 @@
                                                             <th scope="row">
                                                                 <div
                                                                     class="d-flex justify-content-center align-items-center">
-                                                                    2</div>
+                                                                    2
+                                                                </div>
                                                             </th>
                                                             <td>
-                                                                <div>TMKT</div>
+                                                                <div>Nguyễn Thuỳ Linh</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT124</div>
                                                             </td>
                                                             <td>
                                                                 <div>Trade Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Quản lý Activation</div>
                                                             </td>
                                                             <td>
-                                                                <div>Đinh Thị Hà</div>
+                                                                <div>Nhân viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>tmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456790</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>TTS</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -188,19 +202,31 @@
                                                                     3</div>
                                                             </th>
                                                             <td>
-                                                                <div>DMKT</div>
+                                                                <div>Nguyễn Thị Ngọc Lan</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT125</div>
                                                             </td>
                                                             <td>
                                                                 <div>Digital Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Content SEO</div>
                                                             </td>
                                                             <td>
-                                                                <div>Vũ Thị Hà</div>
+                                                                <div>Nhân viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>dmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456791</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>CTV</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -224,19 +250,79 @@
                                                                     4</div>
                                                             </th>
                                                             <td>
-                                                                <div>STND</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Truyền thông & Sáng tạo nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Phòng ban</div>
-                                                            </td>
-                                                            <td>
                                                                 <div>Nguyễn Thị Mai Phượng</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>MTT126</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Sáng tạo Nội dung</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Sáng tạo nội dung</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng đơn vị</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>stnd@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456792</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Chính thức</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đã nghỉ việc</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex justify-content-center">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    5</div>
+                                                            </th>
+                                                            <td>
+                                                                <div>Đỗ Thị Kim Liên</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT127</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Hành chính nhân sự</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng VP HCM</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng đơn vị</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>hcns@mastertran.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456793</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Thử việc</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -263,86 +349,71 @@
                                         <div class="signature_con">
                                             <div class="signature_items">
                                                 <div class="signature_title">Xác lập và đề xuất</div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body position-relative body_content-wrapper" id="body_content-2">
-                                    <div class="pb-2 d-flex align-items-center">
-                                        <div class="card-title">Phòng Kinh Doanh</div>
-                                        <div class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#suaCoCauToChuc">
-                                            <img style="width:16px;height:16px"
-                                                src="{{ asset('assets/img/edit.svg') }}" />
-                                        </div>
-                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
-                                            <img style="width:16px;height:16px"
-                                                src="{{ asset('assets/img/trash.svg') }}" />
-                                        </div>
-                                    </div>
-                                    <div class="text_wrapper mb-3">
-                                        <div class="text_content">
-                                            <div class="d-flex">
-                                                <div class="info_content">
-                                                    <div class="info_label">Mã đơn vị:&nbsp;</div>
-                                                    <div class="info_content">MKT</div>
-                                                </div>
-                                                <div class="info_content">
-                                                    <div class="info_label">Cấp tổ chức:&nbsp;</div>
-                                                    <div class="info_content">Khối</div>
-                                                </div>
-
-                                            </div>
-                                            <div class="info_content">
-                                                <div class="info_label">Chức năng, nhiệm vụ:&nbsp;</div>
-                                                <div class="info_content">Xây dựng chiến lược truyền thông và chiến lược
-                                                    Marketing để tiếp cận với nhóm khách hàng trên
-                                                </div>
-                                            </div>
-                                            <div class="info_content">
-                                                <div class="info_label">Trụ sở chính:&nbsp;</div>
-                                                <div class="info_content">Tầng 6, tháp A, Toà nhà Central Point, số 219
-                                                    Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="text_action">
-                                            <div class="text_action-wrapper">
-                                                <div class="text_action-title-wrapper">
-                                                    <div class="text_action-items">
-                                                        <strong>Chính thức: </strong>
-                                                        <span>4/7</span>
-                                                    </div>
-                                                    <div class="text_action-items">
-                                                        <strong>Thử việc: </strong>
-                                                        <span>2/7</span>
-                                                    </div>
-                                                    <div class="text_action-items">
-                                                        <strong>Cộng tác viên: </strong>
-                                                        <span>1/7</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text_action-items">
-                                                    <strong>Định biên/Sỹ số: </strong>
-                                                    <span>30/15</span>
-                                                </div>
-                                                <div class="text_action-items">
-                                                    <strong>Quỹ lương năm: </strong>
-                                                    <span>300.000.000 VNĐ</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">
-                                                <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
+                                            <div
+                                                class="title_wrapper d-flex align-items-center justify-content-between mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="card-title">Phòng kinh doanh</div>
+                                                    <div class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#suaCoCauToChuc">
+                                                        <img style="width:16px;height:16px"
+                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                    </div>
+                                                    <div class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#xoaCoCauToChuc">
+                                                        <img style="width:16px;height:16px"
+                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                    </div>
+                                                </div>
+                                                <div class="title_filter d-flex align-items-center" style="gap:10px">
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-live-search="true"
+                                                            title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-width="100%"
+                                                            data-live-search="true" title="Chọn hình thức..."
+                                                            data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-width="100%"
+                                                            data-live-search="true" title="Chọn hình thức..."
+                                                            data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="main_search d-flex mt-2">
                                                     <i class="bi bi-search"></i>
                                                     <input type="text" class="form-control" placeholder="Tìm kiếm...">
                                                     <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCau">Thêm cơ cấu</button>
+                                                        data-bs-target="#themThanhVien">Thêm thành viên</button>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
@@ -351,11 +422,15 @@
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th>STT</th>
-                                                            <th>Mã đơn vị</th>
-                                                            <th>Tên đơn vị</th>
-                                                            <th>Cấp tổ chức</th>
-                                                            <th>Trưởng đơn vị</th>
-                                                            <th>Chức năng nhiệm vụ</th>
+                                                            <th>Họ và tên</th>
+                                                            <th>Mã nhân viên</th>
+                                                            <th>Đơn vị công tác</th>
+                                                            <th>Vị trí/chức danh</th>
+                                                            <th>Cấp nhân sự</th>
+                                                            <th>Email công ty</th>
+                                                            <th>SĐT liên hệ</th>
+                                                            <th>Hình thức</th>
+                                                            <th>Trạng thái</th>
                                                             <th>Hành động</th>
                                                         </tr>
                                                     </thead>
@@ -367,19 +442,31 @@
                                                                     1</div>
                                                             </th>
                                                             <td>
-                                                                <div>QTN</div>
+                                                                <div>Đặng Vũ Lam Mai</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT123</div>
                                                             </td>
                                                             <td>
                                                                 <div>Quản trị Nhãn</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Trợ lý Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
+                                                                <div>Chuyên viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>bmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456789</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Chính thức</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -400,22 +487,35 @@
                                                             <th scope="row">
                                                                 <div
                                                                     class="d-flex justify-content-center align-items-center">
-                                                                    2</div>
+                                                                    2
+                                                                </div>
                                                             </th>
                                                             <td>
-                                                                <div>TMKT</div>
+                                                                <div>Nguyễn Thuỳ Linh</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT124</div>
                                                             </td>
                                                             <td>
                                                                 <div>Trade Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Quản lý Activation</div>
                                                             </td>
                                                             <td>
-                                                                <div>Đinh Thị Hà</div>
+                                                                <div>Nhân viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>tmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456790</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>TTS</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -439,19 +539,31 @@
                                                                     3</div>
                                                             </th>
                                                             <td>
-                                                                <div>DMKT</div>
+                                                                <div>Nguyễn Thị Ngọc Lan</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT125</div>
                                                             </td>
                                                             <td>
                                                                 <div>Digital Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Content SEO</div>
                                                             </td>
                                                             <td>
-                                                                <div>Vũ Thị Hà</div>
+                                                                <div>Nhân viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>dmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456791</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>CTV</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -475,19 +587,79 @@
                                                                     4</div>
                                                             </th>
                                                             <td>
-                                                                <div>STND</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Truyền thông & Sáng tạo nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Phòng ban</div>
-                                                            </td>
-                                                            <td>
                                                                 <div>Nguyễn Thị Mai Phượng</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>MTT126</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Sáng tạo Nội dung</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Sáng tạo nội dung</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng đơn vị</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>stnd@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456792</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Chính thức</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đã nghỉ việc</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex justify-content-center">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    5</div>
+                                                            </th>
+                                                            <td>
+                                                                <div>Đỗ Thị Kim Liên</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT127</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Hành chính nhân sự</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng VP HCM</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng đơn vị</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>hcns@mastertran.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456793</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Thử việc</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -514,86 +686,71 @@
                                         <div class="signature_con">
                                             <div class="signature_items">
                                                 <div class="signature_title">Xác lập và đề xuất</div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body position-relative body_content-wrapper" id="body_content-3">
-                                    <div class="pb-2 d-flex align-items-center">
-                                        <div class="card-title">Phòng Marketing</div>
-                                        <div class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#suaCoCauToChuc">
-                                            <img style="width:16px;height:16px"
-                                                src="{{ asset('assets/img/edit.svg') }}" />
-                                        </div>
-                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
-                                            <img style="width:16px;height:16px"
-                                                src="{{ asset('assets/img/trash.svg') }}" />
-                                        </div>
-                                    </div>
-                                    <div class="text_wrapper mb-3">
-                                        <div class="text_content">
-                                            <div class="d-flex">
-                                                <div class="info_content">
-                                                    <div class="info_label">Mã đơn vị:&nbsp;</div>
-                                                    <div class="info_content">MKT</div>
-                                                </div>
-                                                <div class="info_content">
-                                                    <div class="info_label">Cấp tổ chức:&nbsp;</div>
-                                                    <div class="info_content">Khối</div>
-                                                </div>
-
-                                            </div>
-                                            <div class="info_content">
-                                                <div class="info_label">Chức năng, nhiệm vụ:&nbsp;</div>
-                                                <div class="info_content">Xây dựng chiến lược truyền thông và chiến lược
-                                                    Marketing để tiếp cận với nhóm khách hàng trên
-                                                </div>
-                                            </div>
-                                            <div class="info_content">
-                                                <div class="info_label">Trụ sở chính:&nbsp;</div>
-                                                <div class="info_content">Tầng 6, tháp A, Toà nhà Central Point, số 219
-                                                    Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="text_action">
-                                            <div class="text_action-wrapper">
-                                                <div class="text_action-title-wrapper">
-                                                    <div class="text_action-items">
-                                                        <strong>Chính thức: </strong>
-                                                        <span>4/7</span>
-                                                    </div>
-                                                    <div class="text_action-items">
-                                                        <strong>Thử việc: </strong>
-                                                        <span>2/7</span>
-                                                    </div>
-                                                    <div class="text_action-items">
-                                                        <strong>Cộng tác viên: </strong>
-                                                        <span>1/7</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text_action-items">
-                                                    <strong>Định biên/Sỹ số: </strong>
-                                                    <span>30/15</span>
-                                                </div>
-                                                <div class="text_action-items">
-                                                    <strong>Quỹ lương năm: </strong>
-                                                    <span>300.000.000 VNĐ</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">
-                                                <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
+                                            <div
+                                                class="title_wrapper d-flex align-items-center justify-content-between mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="card-title">Phòng Marketing</div>
+                                                    <div class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#suaCoCauToChuc">
+                                                        <img style="width:16px;height:16px"
+                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                    </div>
+                                                    <div class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#xoaCoCauToChuc">
+                                                        <img style="width:16px;height:16px"
+                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                    </div>
+                                                </div>
+                                                <div class="title_filter d-flex align-items-center" style="gap:10px">
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-live-search="true"
+                                                            title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-width="100%"
+                                                            data-live-search="true" title="Chọn hình thức..."
+                                                            data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="title_filter-item">
+                                                        <select class="selectpicker" data-width="100%"
+                                                            data-live-search="true" title="Chọn hình thức..."
+                                                            data-selected-text-format="count > 1"
+                                                            data-count-selected-text="Có {0} thành viên"
+                                                            data-live-search-placeholder="Tìm kiếm...">
+                                                            <option>Chính thức</option>
+                                                            <option>Thử việc</option>
+                                                            <option>CTV</option>
+                                                            <option>TTS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="main_search d-flex mt-2">
                                                     <i class="bi bi-search"></i>
                                                     <input type="text" class="form-control" placeholder="Tìm kiếm...">
                                                     <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCau">Thêm cơ cấu</button>
+                                                        data-bs-target="#themThanhVien">Thêm thành viên</button>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
@@ -602,11 +759,15 @@
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th>STT</th>
-                                                            <th>Mã đơn vị</th>
-                                                            <th>Tên đơn vị</th>
-                                                            <th>Cấp tổ chức</th>
-                                                            <th>Trưởng đơn vị</th>
-                                                            <th>Chức năng nhiệm vụ</th>
+                                                            <th>Họ và tên</th>
+                                                            <th>Mã nhân viên</th>
+                                                            <th>Đơn vị công tác</th>
+                                                            <th>Vị trí/chức danh</th>
+                                                            <th>Cấp nhân sự</th>
+                                                            <th>Email công ty</th>
+                                                            <th>SĐT liên hệ</th>
+                                                            <th>Hình thức</th>
+                                                            <th>Trạng thái</th>
                                                             <th>Hành động</th>
                                                         </tr>
                                                     </thead>
@@ -618,19 +779,31 @@
                                                                     1</div>
                                                             </th>
                                                             <td>
-                                                                <div>QTN</div>
+                                                                <div>Đặng Vũ Lam Mai</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT123</div>
                                                             </td>
                                                             <td>
                                                                 <div>Quản trị Nhãn</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Trợ lý Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
+                                                                <div>Chuyên viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>bmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456789</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Chính thức</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -651,22 +824,35 @@
                                                             <th scope="row">
                                                                 <div
                                                                     class="d-flex justify-content-center align-items-center">
-                                                                    2</div>
+                                                                    2
+                                                                </div>
                                                             </th>
                                                             <td>
-                                                                <div>TMKT</div>
+                                                                <div>Nguyễn Thuỳ Linh</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT124</div>
                                                             </td>
                                                             <td>
                                                                 <div>Trade Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Quản lý Activation</div>
                                                             </td>
                                                             <td>
-                                                                <div>Đinh Thị Hà</div>
+                                                                <div>Nhân viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>tmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456790</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>TTS</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -690,19 +876,31 @@
                                                                     3</div>
                                                             </th>
                                                             <td>
-                                                                <div>DMKT</div>
+                                                                <div>Nguyễn Thị Ngọc Lan</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT125</div>
                                                             </td>
                                                             <td>
                                                                 <div>Digital Marketing</div>
                                                             </td>
                                                             <td>
-                                                                <div>Phòng ban</div>
+                                                                <div>Content SEO</div>
                                                             </td>
                                                             <td>
-                                                                <div>Vũ Thị Hà</div>
+                                                                <div>Nhân viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>dmkt@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456791</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>CTV</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -726,19 +924,79 @@
                                                                     4</div>
                                                             </th>
                                                             <td>
-                                                                <div>STND</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Truyền thông & Sáng tạo nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Phòng ban</div>
-                                                            </td>
-                                                            <td>
                                                                 <div>Nguyễn Thị Mai Phượng</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>MTT126</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Sáng tạo Nội dung</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Sáng tạo nội dung</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng đơn vị</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>stnd@doppelherz.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456792</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Chính thức</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đã nghỉ việc</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="table_actions d-flex justify-content-center">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    5</div>
+                                                            </th>
+                                                            <td>
+                                                                <div>Đỗ Thị Kim Liên</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>MTT127</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Hành chính nhân sự</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng VP HCM</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Trưởng đơn vị</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>hcns@mastertran.vn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>0123456793</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Thử việc</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -765,11 +1023,12 @@
                                         <div class="signature_con">
                                             <div class="signature_items">
                                                 <div class="signature_title">Xác lập và đề xuất</div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -781,7 +1040,7 @@
             </div>
         </div>
     </div>
-    @include('template.sidebar.sidebarCoCauToChuc.sidebarRight')
+    @include('template.sidebar.sidebardanhSachThanhVien.sidebarRight')
 
     {{-- Xóa Cơ cấu tổ chức --}}
     <div class="modal fade" id="xoaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -821,8 +1080,7 @@
     </div>
 
     {{-- Modal Sửa Cơ cấu tổ chức --}}
-    <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -913,7 +1171,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal Them Co Cau -->
     <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
@@ -976,14 +1234,15 @@
                                         <option>Nhà máy</option>
                                         <option>Công ty thành viên</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachCapToChuc">
+                                    <div class="modal_list-more" data-bs-toggle="modal"
+                                        data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                        
+
                             <div class="d-flex align-items-center mb-3">
                                 <div class="d-flex col-sm-4">
                                     <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
@@ -1007,7 +1266,8 @@
                                     <div class="modal_body-title">Trụ sở chính <span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="219 Trung Kính, Yên Hòa, Cầu Giấy, Hà Nội">
+                                    <input class="form-control" type="text"
+                                        value="219 Trung Kính, Yên Hòa, Cầu Giấy, Hà Nội">
                                 </div>
                             </div>
                         </div>
@@ -1018,7 +1278,8 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng.">
+                                    <input class="form-control" type="text"
+                                        value="Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng.">
                                 </div>
                             </div>
                         </div>
@@ -1069,7 +1330,8 @@
                                         <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8 position-relative">
-                                        <input id="suaCreateUser" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <input id="suaCreateUser" value="<?php echo date('d/m/Y'); ?>" class="form-control"
+                                            type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -1162,18 +1424,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Đơn vị công tác <span class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Đơn vị công tác <span class="text-danger">*</span>
+                                        </div>
                                     </div>
                                     <div class="col-sm-8 d-flex align-items-center">
                                         <select class="selectpicker" title="Chọn đơn vị công tác">
                                             <option>Doppelherz</option>
-                                                <option selected>CTCP Mastertran</option>
-                                                <option>CTCP Thái Bình Hưng Thịnh</option>
+                                            <option selected>CTCP Mastertran</option>
+                                            <option>CTCP Thái Bình Hưng Thịnh</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1213,7 +1476,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                        {{-- <select id="onchangeViTriCongViec" class="selectpicker"
+                                        <select id="onchangeViTriCongViecdemo" class="selectpicker"
                                             title="Chọn Vị trí/Chức danh">
                                             <option selected>Quản lý phòng</option>
                                             <option>Quản lý sàn TMĐT</option>
@@ -1221,12 +1484,12 @@
                                             <option>Content SEO</option>
                                             <option>Google Ads</option>
                                             <option>Content Facebook</option>
-                                            <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới</option>
-                                        </select> --}}
+                                            {{-- <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới</option> --}}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
@@ -1246,8 +1509,8 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Quỹ lương năm <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Quỹ lương năm <span class="text-danger">*</span>
+                                        </div>
                                     </div>
                                     <div class="col-sm-8">
                                         <input type="text" readonly class="form-control" />
@@ -1272,7 +1535,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
@@ -1350,7 +1613,8 @@
                                         <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8 position-relative">
-                                        <input id="createUser" placeholder="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                        <input id="createUser" placeholder="<?php echo date('d/m/Y'); ?>" class="form-control"
+                                            type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -1448,13 +1712,14 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Đơn vị công tác <span class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Đơn vị công tác <span class="text-danger">*</span>
+                                        </div>
                                     </div>
                                     <div class="col-sm-8 d-flex align-items-center">
                                         <select class="selectpicker" title="Chọn đơn vị công tác">
                                             <option>Doppelherz</option>
-                                                <option>CTCP Mastertran</option>
-                                                <option>CTCP Thái Bình Hưng Thịnh</option>
+                                            <option>CTCP Mastertran</option>
+                                            <option>CTCP Thái Bình Hưng Thịnh</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1502,12 +1767,13 @@
                                             <option>Content SEO</option>
                                             <option>Google Ads</option>
                                             <option>Content Facebook</option>
-                                            <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới</option>
+                                            <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
@@ -1526,8 +1792,8 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Quỹ lương năm <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Quỹ lương năm <span class="text-danger">*</span>
+                                        </div>
                                     </div>
                                     <div class="col-sm-8">
                                         <input type="text" readonly class="form-control" />
@@ -1552,7 +1818,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
@@ -1904,7 +2170,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -2901,10 +3168,11 @@
     </div>
 @endsection
 @section('footer-script')
-    
+
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript"
+        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -2913,27 +3181,27 @@
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#ngayChinhThuc').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaNgayThuViec').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaNgayChinhThuc').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#createUser').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaCreateUser').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
@@ -2953,7 +3221,6 @@
                 }
             });
         });
-        
     </script>
     <script>
         function fileValue(value) {
@@ -2968,46 +3235,46 @@
         }
     </script>
 
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", () => {
-        // Click Tree
-        const clickTrees = document.querySelectorAll(".clicktree");
-        clickTrees.forEach((clickTree) => {
-            clickTree.addEventListener("click", () => {
-            const id = clickTree.getAttribute("data-href");
-            const element = document.querySelector(id);
-            if (element) {
-                const items = document.querySelectorAll(".body_content-wrapper");
-                items.forEach((item) => {
-                    item.style.display = "none";
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            // Click Tree
+            const clickTrees = document.querySelectorAll(".clicktree");
+            clickTrees.forEach((clickTree) => {
+                clickTree.addEventListener("click", () => {
+                    const id = clickTree.getAttribute("data-href");
+                    const element = document.querySelector(id);
+                    if (element) {
+                        const items = document.querySelectorAll(".body_content-wrapper");
+                        items.forEach((item) => {
+                            item.style.display = "none";
+                        });
+                        element.style.display = "block";
+                        const noContent = document.querySelector(".body_noContent-wrapper");
+                        noContent.style.display = "none";
+                    } else {
+                        const items = document.querySelectorAll(".body_content-wrapper");
+                        items.forEach((item) => {
+                            item.style.display = "none";
+                        });
+                    }
                 });
-                element.style.display = "block";
-                const noContent = document.querySelector(".body_noContent-wrapper");
-                noContent.style.display = "none";
-            } else {
-                const items = document.querySelectorAll(".body_content-wrapper");
-                items.forEach((item) => {
-                item.style.display = "none";
-                });
-            }
+            });
+
+            // Search Tree
+            document.querySelector("#search_tree").addEventListener("keyup", function() {
+                var value = this.value.toLowerCase();
+                var lis = document.querySelectorAll(".tree li");
+                for (var i = 0; i < lis.length; i++) {
+                    var li = lis[i];
+                    var text = li.textContent.toLowerCase();
+                    if (text.indexOf(value) > -1) {
+                        li.style.display = "";
+                    } else {
+                        li.style.display = "none";
+                    }
+                }
             });
         });
-
-        // Search Tree
-        document.querySelector("#search_tree").addEventListener("keyup", function() {
-            var value = this.value.toLowerCase();
-            var lis = document.querySelectorAll(".tree li");
-            for (var i = 0; i < lis.length; i++) {
-            var li = lis[i];
-            var text = li.textContent.toLowerCase();
-            if (text.indexOf(value) > -1) {
-                li.style.display = "";
-            } else {
-                li.style.display = "none";
-            }
-            }
-        });
-    });
-</script>
+    </script>
 
 @endsection

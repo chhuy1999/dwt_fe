@@ -155,7 +155,7 @@
                                                                 Vũ Thị Hà
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -198,7 +198,7 @@
                                                                 Nguyễn Thị Ngọc Lan
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -241,7 +241,7 @@
                                                                 Nguyễn Thị Hồng Oanh
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -283,7 +283,7 @@
                                                                 Nguyễn Thị Hồng Oanh
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -325,7 +325,7 @@
                                                                 Hà Nguyễn Minh Hiếu
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -484,7 +484,7 @@
                                                                 Vũ Thị Hà
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -527,7 +527,7 @@
                                                                 Nguyễn Thị Ngọc Lan
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -570,7 +570,7 @@
                                                                 Nguyễn Thị Hồng Oanh
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -612,7 +612,7 @@
                                                                 Nguyễn Thị Hồng Oanh
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -654,7 +654,7 @@
                                                                 Hà Nguyễn Minh Hiếu
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -813,7 +813,7 @@
                                                                 Vũ Thị Hà
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -856,7 +856,7 @@
                                                                 Nguyễn Thị Ngọc Lan
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -899,7 +899,7 @@
                                                                 Nguyễn Thị Hồng Oanh
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -941,7 +941,7 @@
                                                                 Nguyễn Thị Hồng Oanh
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
@@ -983,7 +983,7 @@
                                                                 Hà Nguyễn Minh Hiếu
                                                             </td>
                                                             <td>
-                                                                <div class="table_actions d-flex">
+                                                                <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaThanhVien">
                                                                         <img style="width:16px;height:16px"
