@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\KeyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -33,10 +34,10 @@ Route::get('ho-so-don-vi', function () {
 Route::get('danh-sach-phong-ban', function () {
     return view('CauHinh.danhSachPhongBan');
 });
-Route::get('danh-sach-vi-tri', function () {    
+Route::get('danh-sach-vi-tri', function () {
     return view('CauHinh.danhSachViTri');
 });
-Route::get('danh-sach-thanh-vien', function () {    
+Route::get('danh-sach-thanh-vien', function () {
     return view('CauHinh.danhSachThanhVien');
 });
 
@@ -46,6 +47,15 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::post('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'create']);
     Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'index']);
     Route::put('/phong-ban/{id}', [\App\Http\Controllers\Api\DepartmentController::class, 'update']);
+});
+
+
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('danh-muc-chi-so-key', [KeyController::class, 'index']);
+    Route::post('danh-muc-chi-so-key', [KeyController::class, 'store']);
+    Route::put('danh-muc-chi-so-key/{id}', [KeyController::class, 'update']);
+    Route::delete('danh-muc-chi-so-key/{id}', [KeyController::class, 'delete']);
+
 });
 
 
@@ -59,9 +69,7 @@ Route::get('danh-muc-dinh-muc', function () {
 Route::get('danh-muc-nhiem-vu', function () {
     return view('CauHinh.danhMucNhiemVu');
 });
-Route::get('danh-muc-chi-so-key', function () {
-    return view('CauHinh.danhMucChiSoKey');
-});
+
 
 
 Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);

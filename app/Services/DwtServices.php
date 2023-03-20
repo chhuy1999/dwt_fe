@@ -35,6 +35,13 @@ class DwtServices
             )
         );
     }
+    //private helper function to transform response array to object
+    private function _toObject($array)
+    {
+        $objectStr = json_encode($array);
+        $object = json_decode($objectStr);
+        return $object;
+    }
 
     public function login($email, $password)
     {
@@ -60,6 +67,70 @@ class DwtServices
         $response->throw()->json()['message'];
         //get data from response
         $data = $response->json();
+        $dataObj = (object) $data;
+        return $dataObj->data;
+    }
+
+    public function searchKpiKeys($q = "", $page = 1, $limit = 10)
+    {
+        $url = $this->url . '/kpi-keys';
+        $response = $this->client->get($url, [
+            'q' => $q,
+            'page' => $page,
+            'limit' => $limit
+        ]);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        return $this->_toObject($data)->data;
+    }
+
+    public function createKpiKey($data)
+    {
+        $url = $this->url . '/kpi-keys';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
         return $data['data'];
+    }
+
+    public function listUnits()
+    {
+        $url = $this->url . '/units';
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function updateKpiKey($id, $data)
+    {
+        $url = $this->url . '/kpi-keys/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public
+    function deleteKpiKey($id)
+    {
+        $url = $this->url . '/kpi-keys/' . $id;
+        $response = $this->client->delete($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
     }
 }
