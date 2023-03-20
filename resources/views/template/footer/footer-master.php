@@ -29,11 +29,6 @@
 <script src="<?php echo $template_path?>/assets/js/chart/StackedChart_doanhSo.js"></script>
 <script src="<?php echo $template_path?>/assets/js/chart/StackedChart_nhanSu.js"></script>
 <script src="<?php echo $template_path?>/assets/js/chart/StackedChart_chiPhi.js"></script>
-<script src="<?php echo $template_path?>/assets/js/chart/DoughnutChart.js"></script>
-<script src="<?php echo $template_path?>/assets/js/chart/PieChartTwo.js"></script>
-<script src="<?php echo $template_path?>/assets/js/chart/BarChart.js"></script>
-<script src="<?php echo $template_path?>/assets/js/chart/LineChart.js"></script>
-<script src="<?php echo $template_path?>/assets/js/chart/PieChart.js"></script>
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();

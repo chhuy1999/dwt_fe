@@ -17,6 +17,7 @@ new Chart(doughnut, {
         maintainAspectRatio: false,
         scales: {
             y: {
+                display: false,
                 scaleLabel: {
                     display: true,
                     labelString: "probability",
@@ -24,6 +25,9 @@ new Chart(doughnut, {
                 ticks: {
                     beginAtZero: true,
                 },
+            },
+            x: {
+                display: false,
             },
         },
         plugins: {

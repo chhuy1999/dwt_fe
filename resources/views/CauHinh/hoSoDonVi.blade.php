@@ -262,7 +262,7 @@
                                     <div class="signature_wrapper">
                                         <div class="signature_con">
                                             <div class="signature_items">
-                                                <div class="signature_title">Xác lập và đề xuất</div>
+                                                <div class="signature_title"></div>
                                                 
                                             </div>
                                         </div>
@@ -513,7 +513,7 @@
                                     <div class="signature_wrapper">
                                         <div class="signature_con">
                                             <div class="signature_items">
-                                                <div class="signature_title">Xác lập và đề xuất</div>
+                                                <div class="signature_title"></div>
                                                 
                                             </div>
                                         </div>
@@ -764,7 +764,7 @@
                                     <div class="signature_wrapper">
                                         <div class="signature_con">
                                             <div class="signature_items">
-                                                <div class="signature_title">Xác lập và đề xuất</div>
+                                                <div class="signature_title"></div>
                                                 
                                             </div>
                                         </div>

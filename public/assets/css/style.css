@@ -613,7 +613,7 @@ th {
     font-weight: 500;
     border: 1px dashed var(--primary-color);
     border-radius: var(--border-radius-mini);
-    background-color: var(--pink-color-blur);
+    background-color: var(--white-color-blur);
 }
 
 .text_wrapper {
@@ -1745,6 +1745,16 @@ th {
     font-weight: 700;
     color: var(--primary-color);
 }
+
+.modal-title_mini {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.modal_items {
+    font-size: var(--fz-12);
+}
+
 .create_user-title {
     font-size: var(--fz-12);
     color: var(--primary-color);

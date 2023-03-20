@@ -85,8 +85,14 @@ Route::get('kho-luu-tru-bien-ban-hop', function () {
 Route::get('bien-ban-hop', function () {
     return view('HopDonVi.bienBanHop');
 });
-Route::get('khac', function () {
-    return ('Nothing');
+Route::get('su-co-phat-sinh', function () {
+    return view('HopDonVi.suCoPhatSinh');
+});
+Route::get('quan-ly-nhan-su', function () {
+    return view('HopDonVi.quanLyNhanSu');
+});
+Route::get('ho-so-nhan-vien', function () {
+    return view('HopDonVi.hoSoNhanVien');
 });
 
 // Kế hoạch & giao việc
@@ -112,4 +118,20 @@ Route::get('giao-viec', function () {
 // });
 Route::get('kpi-nhan-vien', function () {
     return view('page.staff.kpiStaff');
+});
+
+
+// Trang Dịch vụ Bán Hàng
+Route::get('dich-vu-ban-hang', function () {
+    return view('page.sell.serviceSell');
+});
+
+// Trang Kế Toán
+Route::get('ke-toan', function () {
+    return view('page.sell.ketoan');
+});
+
+// Trang kinh doanh
+Route::get('kinh-doanh', function () {
+    return view('page.sell.kinhdoanh');
 });
