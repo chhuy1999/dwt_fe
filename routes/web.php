@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KeyController;
+use App\Http\Controllers\Api\TargetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -49,7 +50,7 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::put('/phong-ban/{id}', [\App\Http\Controllers\Api\DepartmentController::class, 'update']);
 });
 
-
+//kpi key
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('danh-muc-chi-so-key', [KeyController::class, 'index']);
     Route::post('danh-muc-chi-so-key', [KeyController::class, 'store']);
@@ -58,14 +59,26 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 });
 
+//target
+
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('danh-muc-dinh-muc', [TargetController::class, 'index']);
+    Route::post('danh-muc-dinh-muc', [TargetController::class, 'store']);
+    Route::put('danh-muc-dinh-muc/{id}', [TargetController::class, 'update']);
+    Route::delete('danh-muc-dinh-muc/{id}', [TargetController::class, 'delete']);
+});
+
+
+
+
 
 
 // Route::get('dinh-muc-lao-dong', function () {
 //     return view('CauHinh.dinhMucLaoDong');
 // });
-Route::get('danh-muc-dinh-muc', function () {
-    return view('CauHinh.danhMucDinhMuc');
-});
+// Route::get('danh-muc-dinh-muc', function () {
+//     return view('CauHinh.danhMucDinhMuc');
+// });
 Route::get('danh-muc-nhiem-vu', function () {
     return view('CauHinh.danhMucNhiemVu');
 });
