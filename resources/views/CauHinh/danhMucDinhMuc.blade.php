@@ -395,6 +395,7 @@
         </div>
     </div>
     @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
+
     <!-- Modal Phản Hồi Vấn Đề -->
     <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
@@ -475,75 +476,73 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên định mức">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3">
-                                <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
-                                <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3">
-                                <div class="modal_body-title">Kế hoạch thực hiện <span class="text-danger">*</span></div>
-                                <textarea class="form-control" placeholder="Nhập kế hoạch thực hiện"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Đơn vị</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Manday</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Số lượng</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
-                                <div class="col-sm-9">
-                                    <select class="selectpicker" title="Chọn Vị trí">
-                                        <option>Quản lý phòng</option>
-                                        <option>Quản lý sàn TMĐT</option>
-                                        <option>Content Website</option>
-                                        <option>Content SEO</option>
-                                        <option>Google Ads</option>
-                                        <option>Content Facebook</option>
-                                    </select>
+                    <form action="" method="">
+                        @csrf
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
+                                    &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên định mức">
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn phòng/ban">
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Quản trị Nhãn &amp; Đào tạo</option>
-                                        <option>Truyền thông</option>
-                                        <option>Sáng tạo nội dung</option>
-                                        <option>Dịch vụ bán hàng</option>
-                                    </select>
+                            <div class="col-sm-12">
+                                <div class="mb-3">
+                                    <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
+                                    <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
                                 </div>
                             </div>
+                            <div class="col-sm-4">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="modal_body-title">Đơn vị</div>
+                                    <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="modal_body-title">Manday</div>
+                                    <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="modal_body-title">Số lượng</div>
+                                    <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
+                                    <div class="col-sm-9">
+                                        <select class="selectpicker" title="Chọn Vị trí">
+                                            <option>Quản lý phòng</option>
+                                            <option>Quản lý sàn TMĐT</option>
+                                            <option>Content Website</option>
+                                            <option>Content SEO</option>
+                                            <option>Google Ads</option>
+                                            <option>Content Facebook</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" title="Chọn phòng/ban">
+                                            <option>Trade Marketing</option>
+                                            <option>Digital Marketing</option>
+                                            <option>Quản trị Nhãn &amp; Đào tạo</option>
+                                            <option>Truyền thông</option>
+                                            <option>Sáng tạo nội dung</option>
+                                            <option>Dịch vụ bán hàng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
-                        
-                    </div>
+                    </form>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
@@ -562,75 +561,73 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên định mức">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3">
-                                <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
-                                <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3">
-                                <div class="modal_body-title">Kế hoạch thực hiện <span class="text-danger">*</span></div>
-                                <textarea class="form-control" placeholder="Nhập kế hoạch thực hiện"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Đơn vị</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Manday</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Số lượng</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
-                                <div class="col-sm-9">
-                                    <select class="selectpicker" title="Chọn Vị trí">
-                                        <option>Quản lý phòng</option>
-                                        <option>Quản lý sàn TMĐT</option>
-                                        <option>Content Website</option>
-                                        <option>Content SEO</option>
-                                        <option>Google Ads</option>
-                                        <option>Content Facebook</option>
-                                    </select>
+                    <form action="" method="">
+                        @csrf
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
+                                    &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên định mức">
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn phòng/ban">
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Quản trị Nhãn &amp; Đào tạo</option>
-                                        <option>Truyền thông</option>
-                                        <option>Sáng tạo nội dung</option>
-                                        <option>Dịch vụ bán hàng</option>
-                                    </select>
+                            <div class="col-sm-12">
+                                <div class="mb-3">
+                                    <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
+                                    <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
                                 </div>
                             </div>
+                            <div class="col-sm-4">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="modal_body-title">Đơn vị</div>
+                                    <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="modal_body-title">Manday</div>
+                                    <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="modal_body-title">Số lượng</div>
+                                    <input class="form-control" style="width:76%" type="text" placeholder="Nhập Số lượng">
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
+                                    <div class="col-sm-9">
+                                        <select class="selectpicker" title="Chọn Vị trí">
+                                            <option>Quản lý phòng</option>
+                                            <option>Quản lý sàn TMĐT</option>
+                                            <option>Content Website</option>
+                                            <option>Content SEO</option>
+                                            <option>Google Ads</option>
+                                            <option>Content Facebook</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" title="Chọn phòng/ban">
+                                            <option>Trade Marketing</option>
+                                            <option>Digital Marketing</option>
+                                            <option>Quản trị Nhãn &amp; Đào tạo</option>
+                                            <option>Truyền thông</option>
+                                            <option>Sáng tạo nội dung</option>
+                                            <option>Dịch vụ bán hàng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
-                        
-                    </div>
+                    </form>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>

@@ -3,7 +3,7 @@
 @section('title', 'Danh sách thành viên')
 
 @section('content')
-    @include('template.sidebar.sidebardanhSachThanhVien.sidebarLeft')
+    @include('template.sidebar.sidebardanhSachViTri.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -24,16 +24,6 @@
                                                 class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="card-title">Toàn công ty</div>
-                                                    <div class="btn" data-bs-toggle="modal"
-                                                        data-bs-target="#suaCoCauToChuc">
-                                                        <img style="width:16px;height:16px"
-                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                    </div>
-                                                    <div class="btn" data-bs-toggle="modal"
-                                                        data-bs-target="#xoaCoCauToChuc">
-                                                        <img style="width:16px;height:16px"
-                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                    </div>
                                                 </div>
                                                 <div class="title_filter d-flex align-items-center" style="gap:10px">
                                                     <div class="title_filter-item">
@@ -348,7 +338,7 @@
                                     <div class="signature_wrapper">
                                         <div class="signature_con">
                                             <div class="signature_items">
-                                                <div class="signature_title">Xác lập và đề xuất</div>
+                                                <div class="signature_title"></div>
 
                                             </div>
                                         </div>
@@ -361,16 +351,6 @@
                                                 class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="card-title">Phòng kinh doanh</div>
-                                                    <div class="btn" data-bs-toggle="modal"
-                                                        data-bs-target="#suaCoCauToChuc">
-                                                        <img style="width:16px;height:16px"
-                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                    </div>
-                                                    <div class="btn" data-bs-toggle="modal"
-                                                        data-bs-target="#xoaCoCauToChuc">
-                                                        <img style="width:16px;height:16px"
-                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                    </div>
                                                 </div>
                                                 <div class="title_filter d-flex align-items-center" style="gap:10px">
                                                     <div class="title_filter-item">
@@ -685,7 +665,7 @@
                                     <div class="signature_wrapper">
                                         <div class="signature_con">
                                             <div class="signature_items">
-                                                <div class="signature_title">Xác lập và đề xuất</div>
+                                                <div class="signature_title"></div>
 
                                             </div>
                                         </div>
@@ -698,16 +678,6 @@
                                                 class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="card-title">Phòng Marketing</div>
-                                                    <div class="btn" data-bs-toggle="modal"
-                                                        data-bs-target="#suaCoCauToChuc">
-                                                        <img style="width:16px;height:16px"
-                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                    </div>
-                                                    <div class="btn" data-bs-toggle="modal"
-                                                        data-bs-target="#xoaCoCauToChuc">
-                                                        <img style="width:16px;height:16px"
-                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                    </div>
                                                 </div>
                                                 <div class="title_filter d-flex align-items-center" style="gap:10px">
                                                     <div class="title_filter-item">
@@ -1022,7 +992,7 @@
                                     <div class="signature_wrapper">
                                         <div class="signature_con">
                                             <div class="signature_items">
-                                                <div class="signature_title">Xác lập và đề xuất</div>
+                                                <div class="signature_title"></div>
 
                                             </div>
                                         </div>
@@ -1040,7 +1010,7 @@
             </div>
         </div>
     </div>
-    @include('template.sidebar.sidebardanhSachThanhVien.sidebarRight')
+    @include('template.sidebar.sidebardanhSachViTri.sidebarRight')
 
     {{-- Xóa Cơ cấu tổ chức --}}
     <div class="modal fade" id="xoaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
