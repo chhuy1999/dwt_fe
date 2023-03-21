@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class TargetDetailController extends Controller
 {
-    //
+    //init serviceS
     private $dwtService;
     //constructor
     public function __construct()
@@ -53,7 +53,7 @@ class TargetDetailController extends Controller
                 'description' => 'required',
                 'quantity' => 'required|numeric',
                 'manday' => 'required|numeric',
-                
+
                 'target_status' => 'required',
 
             ]);
