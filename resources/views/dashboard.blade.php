@@ -38,12 +38,14 @@
                                                 <strong>40</strong>
                                                 KPI
                                             </div>
-                                            <div class="main_search d-flex">
-                                                <i class="bi bi-search"></i>
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
-                                                <button id="exporttable" class="btn btn-outline-danger   btn-export" data-toggle="tooltip" data-placement="top" title="Xuất file Excel">
-                                                    <i class="bi bi-download"></i>
-                                                </button>
+                                            <div class="action_wrapper d-flex">
+                                                <div class="form-group has-search">
+                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                </div>
+                                                <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
+                                                    <button class="btn-export"><i class="bi bi-download"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="d-flex bg-blue-blur">
@@ -1878,13 +1880,14 @@
                                             <strong>140</strong>
                                             KPI
                                         </div>
-                                        <div class="main_search d-flex">
-                                            <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" />
-                                            <button id="exporttable" class="btn btn-primary btn-export"
-                                                data-toggle="tooltip" data-placement="top" title="Xuất file Excel">
-                                                <i class="bi bi-download"></i>
-                                            </button>
+                                        <div class="action_wrapper d-flex">
+                                            <div class="form-group has-search me-3">
+                                                <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                            </div>
+                                            <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
+                                                <button class="btn-export"><i class="bi bi-download"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="d-flex">
@@ -2730,13 +2733,14 @@
                                     <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="card-title">Danh sách vấn đề</div>
     
-                                        <div class="main_search d-flex">
-                                            <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm vấn đề" />
-                                            <button id="exporttable" class="btn btn-primary btn-export"
-                                                data-toggle="tooltip" data-placement="top" title="Xuất file Excel">
-                                                <i class="bi bi-download"></i>
-                                            </button>
+                                        <div class="action_wrapper d-flex">
+                                            <div class="form-group has-search me-3">
+                                                <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm vấn đề">
+                                            </div>
+                                            <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
+                                                <button class="btn-export"><i class="bi bi-download"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="position-relative">
