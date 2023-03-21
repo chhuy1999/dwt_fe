@@ -83,13 +83,13 @@
                                                                     </p>
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->unit->name }}
+                                                                    {{ $target->unit && $target->unit->name }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->position->name }}
+                                                                    {{ $target->position && $target->position->name }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->departement->name }}
+                                                                    {{ $target->departement && $target->departement->name }}
                                                                 </td>
                                                                 <td>
                                                                     {{ $target->manday }}

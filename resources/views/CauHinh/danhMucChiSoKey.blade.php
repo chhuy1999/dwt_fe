@@ -78,7 +78,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        {{ $key->unit->name }}
+                                                                        {{ $key->unit && $key->unit->name }}
                                                                     </div>
 
                                                                 </td>
