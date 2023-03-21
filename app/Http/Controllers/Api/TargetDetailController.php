@@ -44,31 +44,57 @@ class TargetDetailController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = $request->validate([
-                'target_id' => 'required|numeric',
-                'unit_id' => 'required|numeric',
-                'position_id' => 'required|numeric',
-                'departement_id' => 'required|numeric',
-                'name' => 'required',
-                'description' => 'required',
-                'quantity' => 'required|numeric',
-                'manday' => 'required|numeric',
+            // $data = $request->validate([
+            //     'target_id' => 'required|numeric',
+            //     'unit_id' => 'required|numeric',
+            //     'position_id' => 'required|numeric',
+            //     'departement_id' => 'required|numeric',
+            //     'name' => 'required',
+            //     'description' => 'required',
+            //     'quantity' => 'required|numeric',
+            //     'manday' => 'required|numeric',
 
-                'target_status' => 'required',
+            //     'target_status' => 'required',
 
-            ]);
-
-        }catch (Exception $e){
+            // ]);
+            return back()->with('success', 'Thêm mới thành công');
+        } catch (Exception $e) {
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
     }
 
-    public function update()
+    public function update($id, Request $request)
     {
+        try {
+
+            $data = $request->validate([
+                'target_id' => 'nullable|numeric',
+                'unit_id' => 'nullable|numeric',
+                'position_id' => 'nullable|numeric',
+                'departement_id' => 'nullable|numeric',
+                'name' => 'nullable',
+                'description' => 'nullable',
+                'quantity' => 'nullable|numeric',
+                'manday' => 'nullable|numeric',
+
+            ]);
+            $this->dwtService->updateKpiTargetDetail($id, $data);
+            return back()->with('success', 'Cập nhật thành công');
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
     }
 
-    public function delete()
+    public function delete($id)
     {
+        try {
+            $this->dwtService->deleteKpiTargetDetail($id);
+            return back()->with('success', 'Xóa thành công');
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
     }
 }

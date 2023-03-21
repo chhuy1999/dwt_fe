@@ -67,7 +67,8 @@
                                                 <i class="bi bi-plus"></i>
                                                 Thêm mới
                                             </button> --}}
-                                            <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
+                                            <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" title="Xuất file Excel">
                                                 <i class="bi bi-download"></i>
                                                 Xuất Excel
                                             </button>
@@ -168,7 +169,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        {{ $targetDetail->unit->name }}}
+                                                                        {{ $targetDetail->unit->name }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -191,7 +192,7 @@
                                                                         <li>
                                                                             <a class="dropdown-item" href="#"
                                                                                 data-bs-toggle="modal"
-                                                                                data-bs-target="#suaMoiDinhMuc">
+                                                                                data-bs-target="#suaMoiDinhMuc{{ $targetDetail->id }}">
                                                                                 <img style="width:16px;height:16px"
                                                                                     src="{{ asset('assets/img/edit.svg') }}" />
                                                                                 Sửa
@@ -200,7 +201,7 @@
                                                                         <li>
                                                                             <a class="dropdown-item" href="#"
                                                                                 data-bs-toggle="modal"
-                                                                                data-bs-target="#xoaThuocTinh"
+                                                                                data-bs-target="#xoaThuocTinh{{ $targetDetail->id }}"
                                                                                 data-repeater-delete>
                                                                                 <img style="width:16px;height:16px"
                                                                                     src="{{ asset('assets/img/trash.svg') }}" />
@@ -210,6 +211,256 @@
                                                                     </ul>
                                                                 </td>
                                                             </tr>
+
+                                                            <!-- Modal Sửa nhiệm vụ -->
+                                                            <div class="modal fade"
+                                                                id="suaMoiDinhMuc{{ $targetDetail->id }}" tabindex="-1"
+                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered"
+                                                                    style="max-width:38%;">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header text-center">
+                                                                            <h5 class="modal-title w-100"
+                                                                                id="exampleModalLabel">Sửa nhiệm vụ</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <form
+                                                                            action="/danh-muc-nhiem-vu/{{ $targetDetail->id }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('PUT')
+                                                                            <div class="modal-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <div
+                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
+                                                                                            <div
+                                                                                                class="modal_body-title col-sm-2">
+                                                                                                Tên nhiệm vụ <span
+                                                                                                    class="text-danger">*</span>
+                                                                                            </div>
+                                                                                            <div class="col-sm-10">
+                                                                                                <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    name="name"
+                                                                                                    placeholder="Nhập tên nhiệm vụ"
+                                                                                                    value="{{ $targetDetail->name }}">
+                                                                                                >
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-12">
+                                                                                        <div
+                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
+                                                                                            <div
+                                                                                                class="modal_body-title col-sm-2">
+                                                                                                Thuộc định mức <span
+                                                                                                    class="text-danger">*</span>
+                                                                                            </div>
+                                                                                            <div class="col-sm-10">
+                                                                                                <select name="target_id"
+                                                                                                    class="selectpicker"
+                                                                                                    title="Chọn định mức">
+
+                                                                                                    @foreach ($listTargets->data as $target)
+                                                                                                        @if ($targetDetail->target && $targetDetail->target->id == $target->id)
+                                                                                                            <option
+                                                                                                                value="{{ $target->id }}"
+                                                                                                                selected>
+                                                                                                                {{ $target->name }}
+                                                                                                            </option>
+                                                                                                        @else
+                                                                                                            <option
+                                                                                                                value="{{ $target->id }}">
+                                                                                                                {{ $target->name }}
+                                                                                                            </option>
+                                                                                                        @endif
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-12">
+                                                                                        <div
+                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
+                                                                                            <div
+                                                                                                class="modal_body-title col-sm-2">
+                                                                                                Mô tả/Diễn giải <span
+                                                                                                    class="text-danger">*</span>
+                                                                                            </div>
+                                                                                            <div class="col-sm-10">
+                                                                                                <textarea class="form-control" name="description" placeholder="Nhập mô tả thực hiện">
+                                                                                                    {{ $targetDetail->description }}
+                                                                                                </textarea>
+                                                                                            </div>
+                                                                                        </div>$targetDetail->departement
+                                                                                    </div>
+                                                                                    <div class="col-sm-4">
+                                                                                        <div
+                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
+                                                                                            <div class="modal_body-title">
+                                                                                                Đơn
+                                                                                                vị</div>
+                                                                                            <select class="selectpicker"
+                                                                                                name="unit_id">
+                                                                                                @foreach ($listUnits->data as $unit)
+                                                                                                    @if ($targetDetail->unit && $targetDetail->unit->id == $unit->id)
+                                                                                                        <option
+                                                                                                            value="{{ $unit->id }}"
+                                                                                                            selected>
+                                                                                                            {{ $unit->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option
+                                                                                                            value="{{ $unit->id }}">
+                                                                                                            {{ $unit->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-3">
+                                                                                        <div
+                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
+                                                                                            <div class="modal_body-title">
+                                                                                                Manday</div>
+                                                                                            <input class="form-control"
+                                                                                                style="width:76%"
+                                                                                                type="text"
+                                                                                                placeholder="Nhập Manday"
+                                                                                                name="manday"
+                                                                                                value="{{ $targetDetail->manday }}">
+                                                                                            >
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-5">
+                                                                                        <div
+                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
+                                                                                            <div class="modal_body-title">
+                                                                                                Số
+                                                                                                lượng</div>
+                                                                                            <input class="form-control"
+                                                                                                style="width:76%"
+                                                                                                type="text"
+                                                                                                placeholder="Nhập Số lượng"
+                                                                                                name="quantity"
+                                                                                                value="{{ $targetDetail->quantity }}">
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-5">
+                                                                                        <div
+                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
+                                                                                            <div class="col-sm-3">
+                                                                                                <div
+                                                                                                    class=" modal_body-title">
+                                                                                                    Vị trí</div>
+                                                                                            </div>
+                                                                                            <div class="col-sm-9">
+                                                                                                <select name="position_id"
+                                                                                                    class="selectpicker"
+                                                                                                    title="Chọn Vị trí">
+                                                                                                    @foreach ($listPositions->data as $position)
+                                                                                                        @if ($targetDetail->position && $targetDetail->position->id == $position->id)
+                                                                                                            <option
+                                                                                                                value="{{ $position->id }}"
+                                                                                                                selected>
+                                                                                                                {{ $position->name }}
+                                                                                                            </option>
+                                                                                                        @else
+                                                                                                            <option
+                                                                                                                value="{{ $position->id }}">
+                                                                                                                {{ $position->name }}
+                                                                                                            </option>
+                                                                                                        @endif
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-7">
+                                                                                        <div
+                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
+                                                                                            <div class="col-sm-4">
+                                                                                                <div
+                                                                                                    class="modal_body-title">
+                                                                                                    Đơn vị phòng ban</div>
+                                                                                            </div>
+                                                                                            <div class="col-sm-8">
+                                                                                                <select
+                                                                                                    name="departement_id"
+                                                                                                    class="selectpicker"
+                                                                                                    title="Chọn phòng/ban">
+                                                                                                    @foreach ($listDepartments->data as $departement)
+                                                                                                        @if ($targetDetail->departement && $targetDetail->departement->id == $departement->id)
+                                                                                                            <option
+                                                                                                                value="{{ $departement->id }}"
+                                                                                                                selected>
+                                                                                                                {{ $departement->name }}
+                                                                                                            </option>
+                                                                                                        @else
+                                                                                                            <option
+                                                                                                                value="{{ $departement->id }}">
+                                                                                                                {{ $departement->name }}
+                                                                                                            </option>
+                                                                                                        @endif
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-outline-danger"
+                                                                                    data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger">Lưu</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            {{-- Xóa đinh mức --}}
+                                                            <div class="modal fade"
+                                                                id="xoaThuocTinh{{ $targetDetail->id }}" tabindex="-1"
+                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title text-danger"
+                                                                                id="exampleModalLabel">Xóa nhiệm vụ</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            Bạn có thực sự muốn xoá đinh mức này không?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-danger"
+                                                                                data-bs-dismiss="modal">Hủy</button>
+                                                                            <form
+                                                                                action="/danh-muc-nhiem-vu/{{ $targetDetail->id }}"
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger"
+                                                                                    id="deleteRowElement">Có, tôi muốn
+                                                                                    xóa</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -299,110 +550,7 @@
         </div>
     </div>
 
-    <!-- Modal Sửa nhiệm vụ -->
-    <div class="modal fade" id="suaMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa nhiệm vụ</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title col-sm-2">Tên nhiệm vụ <span class="text-danger">*</span>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" placeholder="Nhập tên nhiệm vụ">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title col-sm-2">Thuộc định mức <span class="text-danger">*</span>
-                                </div>
-                                <div class="col-sm-10">
-                                    <select class="selectpicker" title="Chọn định mức">
-                                        <option>Tham gia xây dựng...</option>
-                                        <option>Cập nhật, theo...</option>
-                                        <option>Giám sát chỉ tiêu...</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title col-sm-2">Mô tả/Diễn giải <span class="text-danger">*</span>
-                                </div>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" placeholder="Nhập mô tả thực hiện"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Đơn vị</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Đơn vị">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Manday</div>
-                                <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Số lượng</div>
-                                <input class="form-control" style="width:76%" type="text"
-                                    placeholder="Nhập Số lượng">
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-3">
-                                    <div class=" modal_body-title">Vị trí</div>
-                                </div>
-                                <div class="col-sm-9">
-                                    <select class="selectpicker" title="Chọn Vị trí">
-                                        <option>Quản lý phòng</option>
-                                        <option>Quản lý sàn TMĐT</option>
-                                        <option>Content Website</option>
-                                        <option>Content SEO</option>
-                                        <option>Google Ads</option>
-                                        <option>Content Facebook</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-4">
-                                    <div class="modal_body-title">Đơn vị phòng ban</div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn phòng/ban">
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Quản trị Nhãn &amp; Đào tạo</option>
-                                        <option>Truyền thông</option>
-                                        <option>Sáng tạo nội dung</option>
-                                        <option>Dịch vụ bán hàng</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Modal Them nhiệm vụ -->
     {{-- <div class="modal fade" id="themMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
@@ -513,24 +661,7 @@
         </div>
     </div> --}}
 
-    {{-- Xóa đinh mức --}}
-    <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa nhiệm vụ</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có thực sự muốn xoá đinh mức này không?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
