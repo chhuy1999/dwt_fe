@@ -19,8 +19,9 @@
                                 <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
                             </div>
                         </div>
-                        <div id="" class="mainSection_thismonth">
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text">
+                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
+                            <label class="">Tháng</label>
+                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
 
@@ -2727,7 +2728,7 @@
 
     <!-- Modal Vấn đề tồn đọng -->
     <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
@@ -2740,7 +2741,7 @@
                                 <div class="col-sm-2">
                                     <div class="modal_body-title">Vấn đề tồn đọng</div>
                                 </div>
-                                <div class="col-sm-10" style="padding-left: 12px">
+                                <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-plaintext" id="staticEmail" style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
                                 </div>
                             </div>
@@ -2749,11 +2750,11 @@
                     <div class="row mt-3">
                         <div class="col-sm-4">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-5">
+                                <div class="d-flex col-sm-6" style="margin-right: 6px">
                                     <div class="modal_body-title">Cấp giải quyết</div>
                                 </div>
-                                <div class="col-sm-7">
-                                    <select class="selectpicker" title="Chọn cấp giải quyết">
+                                <div class="col-sm-6">
+                                    <select class="selectpicker" title="Chọn">
                                         <option value="1">Công ty</option>
                                         <option value="2">Phòng ban</option>
                                     </select>
@@ -2762,11 +2763,11 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-5">
+                                <div class="d-flex col-sm-4">
                                     <div class="modal_body-title">Phân loại</div>
                                 </div>
-                                <div class="col-sm-7">
-                                    <select class="selectpicker" title="Chọn cấp giải quyết">
+                                <div class="col-sm-8">
+                                    <select class="selectpicker" title="Chọn">
                                         <option value="1">Cần giải quyết</option>
                                         <option value="2">Than phiền</option>
                                     </select>
@@ -2781,6 +2782,46 @@
                                 <div class="col-sm-8 position-relative">
                                     <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"  type="text">
                                     <i class="bi bi-calendar-plus style_pickdate"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4" style="margin-right: 4px">
+                                    <div class="modal_body-title">Đơn vị <br> chịu trách nhiệm</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker" title="Chọn đơn vị">
+                                        <option>Cung ứng</option>
+                                        <option>Trade Marketing</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Truyền thông</option>
+                                        <option>Quản trị Nhãn/Đào tạo</option>
+                                        <option>Kho & Giao vận</option>
+                                        <option>Hành chính nhân sự</option>
+                                        <option>Kế toán</option>
+                                        <option>Tài chính</option>
+                                        <option>Dịch vụ bán hàng</option>
+                                        <option>Kinh doanh OTC</option>
+                                        <option>Kinh doanh ETC</option>
+                                        <option>Kinh doanh MT</option>
+                                        <option>Kinh doanh online</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Vị trí <br> chịu trách nhiệm</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker" title="Chọn vị trí chịu trách nhiệm">
+                                        <option>Trợ lý Marketing</option>
+                                        <option>Quản lý Activation</option>
+                                        <option>Content SEO</option>
+                                        <option>Sáng tạo nội dung</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

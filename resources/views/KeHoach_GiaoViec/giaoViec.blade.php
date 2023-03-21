@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
 @endsection
 @section('content')
-    @include('template.sidebar.sidebarMaster.sidebarLeft')
+    @include('template.sidebar.sidebarGiaoViec.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -22,8 +22,9 @@
                                 <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
                             </div>
                         </div>
-                        <div id="" class="mainSection_thismonth">
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text">
+                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
+                            <label class="">Tháng</label>
+                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
                     <div class="row">
@@ -31,7 +32,7 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class='row'>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="danhSachDinhMuc"
                                                     class="table table-responsive table-hover table-bordered">
@@ -40,7 +41,7 @@
                                                             <th>TT</th>
                                                             <th>Tên định mức</th>
                                                             <th>Mô tả</th>
-                                                            <th>Manday</th>
+                                                            <th>MD</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -54,7 +55,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -62,7 +63,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -83,7 +84,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -91,7 +92,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -112,7 +113,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -120,7 +121,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -141,7 +142,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -149,7 +150,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -170,7 +171,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -178,7 +179,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -199,7 +200,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -207,7 +208,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -228,7 +229,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -236,7 +237,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -257,7 +258,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -265,7 +266,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -286,7 +287,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -294,7 +295,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -315,7 +316,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -323,7 +324,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -344,7 +345,7 @@
                                                             </th>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
                                                                     Tham gia xây dựng và/hoặc điều phối dự án Marketing theo
@@ -352,7 +353,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="text-nowrap d-inline-block text-truncate"
-                                                                    style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                    style="max-width:185px;" data-bs-toggle="tooltip"
                                                                     data-bs-placement="top"
                                                                     title="Mô tả Triển khai các sự kiện nội bộ quy mô lớn">
                                                                     Mô tả Triển khai các sự kiện nội bộ quy mô</div>
@@ -368,8 +369,8 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="body_content-wrapper" id="body_content-1">
+                                        <div class="col-md-7">
+                                            <div class="body_content-wrapper" id="body_content-1" style="display:block">
                                                 <form action="" method="">
                                                     <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
                                                         nội
@@ -394,6 +395,7 @@
                                                                 hiện</label>
                                                             <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
                                                         </div>
+
                                                         <div class="col-md-6 mb-3 d-flex">
                                                             <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
                                                                 nhiệm <span class="text-danger">*</span></label>
@@ -417,23 +419,18 @@
                                                             </div>
                                                         </div>
 
-
                                                         <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
+                                                            <label for="textarea" class="col-sm-5 col-form-label">Người liên quan<span class="text-danger">*</span></label>
                                                             <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
+                                                                <select class='form-control' name="" id="">
+                                                                    <option value="">Người liên quan</option>
+                                                                    <option value="">Người liên quan 2</option>
+                                                                    <option value="">Người liên quan 3</option>
+                                                                </select>
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-6 mb-3 d-flex">
+                                                        <div class="col-md-2 mb-3 d-flex">
                                                             <label for="textarea" class="col-sm-5 col-form-label">MD <span
                                                                     class="text-danger">*</span></label>
                                                             <div class="col-sm-7">
@@ -441,19 +438,50 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
+                                                        <div class="col-md-4 mb-3 d-flex">
+                                                            <label class="col-sm-3 col-form-label">Thời
                                                                 hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
+                                                            <div class="col-sm-9 me-2">
                                                                 <input type="text" name="daterange" class="form-control"
                                                                     value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
                                                             </div>
                                                         </div>
 
+                                                        <div class="col-md-7 mb-3 d-flex">
+                                                            <label class="col-sm-4 col-form-label" style="margin-right: 6px">Tiêu chí <span
+                                                                    class="text-danger">*</span></label>
+                                                            <div class="col-sm-8">
+                                                                <select class='selectpicker' data-live-search="true" title="Thêm tiêu chí key">
+                                                                    <option>Số lượt khách hàng được chăm sóc</option>
+                                                                    <option>Số buổi Activation</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5 mb-3 d-flex">
+                                                            <label for="textarea" class="col-sm-5 col-form-label">Giá trị <span
+                                                                    class="text-danger">*</span></label>
+                                                            <div class="col-sm-7">
+                                                                <input type="text" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12 mb-2">
+                                                            <div class="d-flex justify-content-start">
+                                                                <button class="form-check_btn btn btn-outline-danger px-3">Thêm tiêu chí</button>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
+                                                    
+                                                    <div class="justify-content-between d-flex">
+                                                        <div class="form-check">
+                                                            <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh">
+                                                            <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh">Lưu thành mẫu</label>
+                                                        </div>
+                                                        <div class="action_btn">
+                                                            <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
+                                                            <div class="btn btn-danger px-4">Lưu</div>
+                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
@@ -1249,10 +1277,10 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div class="body_noContent-wrapper">
+                                            {{-- <div class="body_noContent-wrapper">
                                                 Vui lòng chọn định mức để giao việc 
                                                 <button type="button" class="btn btn-danger ms-2" id="toggleDinhMuc">tại đây</button>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -1271,21 +1299,23 @@
                                                             class="table table-responsive table-hover table-bordered  style_table-6">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>STT</th>
+                                                                    <th style="width: 2%" class="text-center">STT</th>
                                                                     <th>Tên nhiệm vụ</th>
                                                                     <th>Người được giao</th>
                                                                     <th>Vị trí</th>
                                                                     <th>Thời hạn</th>
-                                                                    <th>Tình trạng</th>
-                                                                    <th></th>
+                                                                    {{-- <th>Tình trạng</th> --}}
+                                                                    <th style="width: 2%"></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1296,8 +1326,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1312,7 +1342,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1332,7 +1362,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1342,10 +1373,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1356,8 +1389,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1372,7 +1405,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1392,7 +1425,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1402,10 +1436,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1416,8 +1452,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1432,7 +1468,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1452,7 +1488,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1462,10 +1499,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1476,8 +1515,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1492,7 +1531,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1512,7 +1551,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1522,10 +1562,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1536,8 +1578,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1552,7 +1594,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1572,7 +1614,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1582,10 +1625,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1596,8 +1641,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1612,7 +1657,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1632,7 +1677,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1642,10 +1688,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1656,8 +1704,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1672,7 +1720,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1692,7 +1740,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1702,10 +1751,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1716,8 +1767,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1732,7 +1783,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1752,7 +1803,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1762,10 +1814,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1776,8 +1830,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1792,7 +1846,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1812,7 +1866,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1822,10 +1877,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>1</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center justify-content-center">1</div>
+                                                                    </td>
                                                                     <td>
                                                                         <div class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:420px;"
+                                                                            style="max-width:450px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="triển khai các sự kiện nội bộ quy mô lớn">
@@ -1836,8 +1893,8 @@
                                                                     </td>
                                                                     <td>Mai</td>
                                                                     <td>Marketing</td>
-                                                                    <td>13-03</td>
-                                                                    <td>
+                                                                    <td>13/03/2023</td>
+                                                                    {{-- <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
                                                                             <div class="circle_tracking-wrapper"
@@ -1852,7 +1909,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1"
                                                                             data-bs-toggle="dropdown"
@@ -1872,7 +1929,8 @@
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#"
-                                                                                    data-repeater-delete>
+                                                                                data-bs-toggle="modal" data-bs-target="#xoaThuocTinh"    
+                                                                                data-repeater-delete>
                                                                                     <img style="width:16px;height:16px"
                                                                                         src="{{ asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
@@ -1897,74 +1955,127 @@
             </div>
         </div>
     </div>
-    @include('template.sidebar.sidebarMaster.sidebarRight')
+    @include('template.sidebar.sidebarGiaoViec.sidebarRight')
 
     <!-- Modal Sửa Vấn Đề -->
     <div class="modal fade" id="suaVanDeTonDong" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:42%;">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Chỉnh sửa vấn đề tồn đọng</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Chỉnh sửa nhiệm vụ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Vấn đề tồn đọng <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control" style="width:76%" type="text"
-                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                    <form action="" method="">
+                        
+                        <div class="mb-3 row">
+                            <div class="col-md-12 mb-3 d-flex">
+                                <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control"
+                                        value="Triển khai các sự kiện nội bộ quy mô"
+                                        id="title" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Người nêu <span class="text-danger">*</span></div>
-                                <input class="form-control" style="width:51%" type="text"
-                                    value="Nguyễn Ngọc Bảo">
+                            <div class="col-md-12 mb-3 d-flex">
+                                <label for="title" class="col-sm-3 col-form-label">Thuộc định mức
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" readonly
+                                        value="Triển khai các sự kiện nội bộ quy mô"
+                                        id="title" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Chịu trách nhiệm <span class="text-danger">*</span></div>
-                                <input class="form-control" style="width:51%" type="text"
-                                    value="Nguyễn Ngọc Bảo">
+                            <div class="col-md-12 mb-3">
+                                <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
+                                        class="text-danger">*</span></label>
+                                <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Nguyên nhân</div>
-                                <input class="form-control" style="width:76%" type="text"
-                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông">
+                            <div class="col-md-12 mb-3">
+                                <label for="textarea" class="col-form-label">Kế hoạch thực
+                                    hiện</label>
+                                <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Hướng giải quyết</div>
-                                <input class="form-control" style="width:76%" type="text"
-                                    value="Sẽ gửi trong tuần">
+
+                            <div class="col-md-6 mb-3 d-flex">
+                                <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
+                                    nhiệm <span class="text-danger">*</span></label>
+                                <div class="col-sm-7">
+                                    <select class='form-control' name="" id="">
+                                        <option value="">Truyền thông nội bộ</option>
+                                        <option value="">Truyền thông nội bộ 2</option>
+                                        <option value="">Truyền thông nội bộ 3</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Thời hạn <span class="text-danger">*</span></div>
-                                <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                    style="width:51%" type="text">
+                            <div class="col-md-6 mb-3 d-flex">
+                                <label for="textarea" class="col-sm-5 col-form-label">Người đảm
+                                    nhiệm <span class="text-danger">*</span></label>
+                                <div class="col-sm-7">
+                                    <select class='form-control' name="" id="">
+                                        <option value="">Người đảm nhiệm</option>
+                                        <option value="">Người đảm nhiệm 2</option>
+                                        <option value="">Người đảm nhiệm 3</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Tình trạng <span class="text-danger">*</span></div>
-                                <select class="form-select w-75" aria-label="Default select example">
-                                    <option selected hidden>Chọn trạng thái</option>
-                                    <option>Đã có hướng giải quyết</option>
-                                    <option>Đã giải quyết</option>
-                                    <option>Không thể giải quyết</option>
-                                    <option>Không xác định được nguyên nhân</option>
-                                </select>
+
+                            <div class="col-md-6 mb-3 d-flex">
+                                <label for="textarea" class="col-sm-5 col-form-label">Người liên quan<span class="text-danger">*</span></label>
+                                <div class="col-sm-7">
+                                    <select class='form-control' name="" id="">
+                                        <option value="">Người liên quan</option>
+                                        <option value="">Người liên quan 2</option>
+                                        <option value="">Người liên quan 3</option>
+                                    </select>
+                                </div>
                             </div>
+
+                            <div class="col-md-2 mb-3 d-flex">
+                                <label for="textarea" class="col-sm-5 col-form-label">MD <span
+                                        class="text-danger">*</span></label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3 d-flex">
+                                <label class="col-sm-3 col-form-label">Thời
+                                    hạn<span class="text-danger">*</span></label>
+                                <div class="col-sm-9 me-2">
+                                    <input type="text" name="daterange" class="form-control"
+                                        value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-7 mb-3 d-flex">
+                                <label class="col-sm-4 col-form-label" style="margin-right: 6px">Tiêu chí <span
+                                        class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <select class='selectpicker' data-live-search="true" title="Thêm tiêu chí key">
+                                        <option>Số lượt khách hàng được chăm sóc</option>
+                                        <option>Số buổi Activation</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3 d-flex">
+                                <label for="textarea" class="col-sm-5 col-form-label">Giá trị <span
+                                        class="text-danger">*</span></label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 mb-2">
+                                <div class="d-flex justify-content-start">
+                                    <button class="form-check_btn btn btn-outline-danger px-3">Thêm tiêu chí</button>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
@@ -1980,11 +2091,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa Thuộc tính này</h5>
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa nhiệm vụ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Bạn có thực sự muốn xoá thuộc tính đã chọn không?
+                    Bạn có thực sự muốn xoá nhiệm vụ đã chọn không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
@@ -2147,7 +2258,27 @@
             dom: '<"dataTables_top justify-content-between align-items-center"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
         });
         $('div.card-title-wrapper').html(`
-            <div class="card-title">Danh sách định mức</div>
+            <div class="d-flex align-items-center">
+                <div class="card-title me-2">Danh sách định mức</div>
+                <div class="select">
+                    <select class="selectpicker" title="Chọn phòng ban">
+                        <option>Cung ứng</option>
+                        <option>Trade Marketing</option>
+                        <option>Digital Marketing</option>
+                        <option>Truyền thông</option>
+                        <option>Quản trị Nhãn/Đào tạo</option>
+                        <option>Kho & Giao vận</option>
+                        <option>Hành chính nhân sự</option>
+                        <option>Kế toán</option>
+                        <option>Tài chính</option>
+                        <option>Dịch vụ bán hàng</option>
+                        <option>Kinh doanh OTC</option>
+                        <option>Kinh doanh ETC</option>
+                        <option>Kinh doanh MT</option>
+                        <option>Kinh doanh online</option>
+                    </select>
+                </div>
+            </div>
         `);
 
         $('#listDanhSach').DataTable({
@@ -2173,6 +2304,7 @@
         $('div.card-titles-wrapper').html(`
             <div class="card-title">Lịch sử giao việc</div>
         `);
+       
     </script>
 
 @endsection

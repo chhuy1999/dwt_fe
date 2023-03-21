@@ -19,8 +19,9 @@
                                 <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
                             </div>
                         </div>
-                        <div id="" class="mainSection_thismonth">
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text">
+                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
+                            <label class="">Tháng</label>
+                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
     
@@ -28,41 +29,32 @@
     
                         <div class="col-lg-12">
                             <div class="card mb-3">
-                                <div class="card-body ">
-                                    <div class="position-absolute" style="top:9px;right:19%">
-                                        <select class="selectpicker" title="Chọn danh mục hiển thị...">
-                                            <option>Danh mục nhiệm vụ</option>
-                                            <option>Báo cáo ngày của bộ phận</option>
-                                        </select>
-                                    </div>
+                                <div class="card-body">
                                     <div class="table" data-href="dataTable-1">
                                         <div class="d-flex justify-content-between align-items-center pb-2">
-                                            <div class="card-title">Danh mục nhiệm vụ cá nhân theo kế hoạch tháng</div>
+                                            <div class="card-title">Mục tiêu nhiệm vụ cá nhân</div>
                                             <div class="mainSection_total-kpi">
                                                 Tổng KPI cá nhân tạm tính:
                                                 <strong>40</strong>
                                                 KPI
                                             </div>
                                             <div class="main_search d-flex">
-        
                                                 <i class="bi bi-search"></i>
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" />
-                                                <button id="exporttable" class="btn btn-primary btn-export"
-                                                    data-toggle="tooltip" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Xuất file Excel">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                <button id="exporttable" class="btn btn-outline-danger   btn-export" data-toggle="tooltip" data-placement="top" title="Xuất file Excel">
                                                     <i class="bi bi-download"></i>
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="d-flex">
+                                        <div class="d-flex bg-blue-blur">
                                             <div class="table-responsive style_table-1 table-bordered mainSection_table w-50">
                                                 <table class="table">
                                                     <thead>
-                                                        <td colspan="6" style="
+                                                        <td class="bg-white" colspan="6" style="
                                                                 text-align: center;
                                                                 color: inherit;
                                                                 font-weight: 700;
-                                                                data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu" role="button">
+                                                                data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu">
                                                                                                     Mục tiêu nhiệm vụ tháng
                                                                                                 </td>
                                                                                                 <tr>
@@ -223,7 +215,7 @@
                                                 class="table-responsive style_table-2 table-bordered mainSection_table w-100 overflow-scroll">
                                                 <table class="table table-responsive">
                                                     <thead>
-                                                        <td colspan="30" class="text-center fw-bold">
+                                                        <td colspan="30" class="text-center fw-bold bg-white">
                                                             Nhật kí công việc
                                                         </td>
                                                         <tr>
@@ -1041,45 +1033,32 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="table" data-href="dataTable-2" style="display: none">
-                                        <div class="d-flex justify-content-between align-items-center pb-2">
-                                            <div class="card-title">Báo cáo ngày của bộ phận</div>
-        
-                                            <div class="mainSection_total-kpi">
-                                                Tổng KPI bộ phận tạm tính:
-                                                <strong>140</strong>
-                                                KPI
-                                            </div>
-                                            <div class="main_search d-flex">
-                                                <i class="bi bi-search"></i>
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" />
-                                                <button id="exporttable" class="btn btn-primary btn-export"
-                                                    data-toggle="tooltip" data-placement="top" title="Xuất file Excel">
-                                                    <i class="bi bi-download"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="table-responsive style_table-1 table-bordered mainSection_table w-50">
+                                    
+                                    <div class="table">
+                                        
+                                        <div class="d-flex bg-yellow-blur">
+                                            <div class="table-responsive table-bordered border-warning mainSection_table w-50">
                                                 <table class="table">
                                                     <thead>
-                                                        <td colspan="6" class="fw-bold text-center">
-                                                            Mục tiêu nhiệm vụ tháng
-                                                        </td>
-                                                        <tr>
-                                                            <th scope="col" class="fw-bold">STT</th>
-                                                            <th scope="col" class="fw-bold text-start">
-                                                                Mục tiêu nhiệm vụ
-                                                            </th>
-                                                            <th scope="col" class="fw-bold">
-                                                                ĐVT
-                                                            </th>
-                                                            <th scope="col" class="fw-bold">
-                                                                SL
-                                                            </th>
-                                                            <th scope="col" class="border-end fw-bold">
-                                                                Σ Lũy kế
-                                                            </th>
+                                                        
+                                                                                                <tr>
+                                                                                                    <th scope=" col"
+                                                            class="fw-bold">STT</th>
+                                                        <th scope="col" class="fw-bold text-start">
+                                                            Nhiệm vụ phát sinh
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            Thời hạn
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            ĐVT
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            SL
+                                                        </th>
+                                                        <th scope="col" class="border-end fw-bold">
+                                                            Σ Lũy kế
+                                                        </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -1093,6 +1072,9 @@
                                                                     role="button">
                                                                     Tìm kiếm nhà cung cấp
                                                                 </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="content_table">31/01</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table">Hợp đồng</div>
@@ -1118,6 +1100,9 @@
                                                                 </div>
                                                             </td>
                                                             <td>
+                                                                <div class="content_table">31/01</div>
+                                                            </td>
+                                                            <td>
                                                                 <div class="content_table">Hợp đồng</div>
                                                             </td>
                                                             <td>
@@ -1139,6 +1124,9 @@
                                                                     role="button">
                                                                     Viết bài
                                                                 </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="content_table">21/01</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table">Bài</div>
@@ -1164,6 +1152,9 @@
                                                                 </div>
                                                             </td>
                                                             <td>
+                                                                <div class="content_table">13/01</div>
+                                                            </td>
+                                                            <td>
                                                                 <div class="content_table">Màn</div>
                                                             </td>
                                                             <td>
@@ -1187,6 +1178,9 @@
                                                                 </div>
                                                             </td>
                                                             <td>
+                                                                <div class="content_table">23/01</div>
+                                                            </td>
+                                                            <td>
                                                                 <div class="content_table">Bài</div>
                                                             </td>
                                                             <td>
@@ -1201,12 +1195,9 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="table-responsive style_table-2 table-bordered mainSection_table w-100">
+                                            <div class="table-responsive style_table-2 table-bordered border-warning mainSection_table w-100">
                                                 <table class="table">
                                                     <thead>
-                                                        <td colspan="30" class="text-center fw-bold">
-                                                            Nhật kí công việc
-                                                        </td>
                                                         <tr>
                                                             <th scope="col">1</th>
                                                             <th scope="col">2</th>
@@ -1260,108 +1251,87 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
@@ -1896,27 +1866,17 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="card-title">Danh mục nhiệm vụ phát sinh</div>
+                                        <div class="card-title">Báo cáo ngày của đơn vị</div>
     
-                                        <div class="mainSection_total-kpi d-flex align-items-center">
-                                            <div class="mainSection_total-content">
-                                                Tổng KPI bộ phận tạm tính:
-                                                <strong>140</strong>
-                                                KPI
-                                            </div>
-                                            <div class="mainSection_total-filter ms-3">
-                                                <select class="selectpicker" data-live-search="true" title="Chi phí gồm..."
-                                                    data-live-search-placeholder="Tìm kiếm...">
-                                                    <option>Tính phí</option>
-                                                    <option>Không tính phí</option>
-                                                </select>
-                                            </div>
-    
+                                        <div class="mainSection_total-kpi">
+                                            Tổng KPI bộ phận tạm tính:
+                                            <strong>140</strong>
+                                            KPI
                                         </div>
                                         <div class="main_search d-flex">
                                             <i class="bi bi-search"></i>
@@ -1928,25 +1888,24 @@
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <div class="table-responsive table-bordered mainSection_table w-50">
+                                        <div class="table-responsive style_table-1 table-bordered mainSection_table w-50">
                                             <table class="table">
                                                 <thead>
-                                                    <td colspan="5" class="text-center fw-bold">
+                                                    <td colspan="6" class="fw-bold text-center">
                                                         Mục tiêu nhiệm vụ tháng
                                                     </td>
                                                     <tr>
-                                                        <th scope="col" class="fw-bold" style="width:5%;">STT</th>
-                                                        <th scope="col" class="text-start fw-bold" style="width:40%;">
+                                                        <th scope="col" class="fw-bold">STT</th>
+                                                        <th scope="col" class="fw-bold text-start">
                                                             Mục tiêu nhiệm vụ
                                                         </th>
-                                                        <th scope="col" class="fw-bold" style="width:20%;">
+                                                        <th scope="col" class="fw-bold">
                                                             ĐVT
                                                         </th>
-    
-                                                        <th scope="col" class="fw-bold" style="width:10%;">
+                                                        <th scope="col" class="fw-bold">
                                                             SL
                                                         </th>
-                                                        <th scope="col" class="fw-bold border-end" style="width:14%;">
+                                                        <th scope="col" class="border-end fw-bold">
                                                             Σ Lũy kế
                                                         </th>
                                                     </tr>
@@ -1974,7 +1933,6 @@
                                                                 <div class="text-dark content_table">5</div>
                                                             </div>
                                                         </td>
-    
                                                     </tr>
                                                     <tr>
                                                         <td scope="row">
@@ -1998,7 +1956,6 @@
                                                                 <div class="text-dark content_table">5</div>
                                                             </div>
                                                         </td>
-    
                                                     </tr>
                                                     <tr>
                                                         <td scope="row">
@@ -2022,7 +1979,6 @@
                                                                 <div class="text-dark content_table">5</div>
                                                             </div>
                                                         </td>
-    
                                                     </tr>
                                                     <tr>
                                                         <td scope="row">
@@ -2046,7 +2002,6 @@
                                                                 <div class="text-dark content_table">5</div>
                                                             </div>
                                                         </td>
-    
                                                     </tr>
                                                     <tr>
                                                         <td scope="row">
@@ -2070,7 +2025,6 @@
                                                                 <div class="text-dark content_table">5</div>
                                                             </div>
                                                         </td>
-    
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -2134,87 +2088,108 @@
                                                     <tr>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">2</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">2
+                                                            </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">1</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">1
+                                                            </div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">
+                                                                &nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
@@ -2753,7 +2728,7 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="card-title">Danh sách vấn đề tồn đọng</div>
+                                        <div class="card-title">Danh sách vấn đề</div>
     
                                         <div class="main_search d-flex">
                                             <i class="bi bi-search"></i>
@@ -3638,217 +3613,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal Thông tin nhiệm vụ -->
-    <div class="modal fade" id="thongTinNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div>Tên nhiệm vụ</div>
-                                            </td>
-                                            <td>
-                                                <div>Sửa chữa văn phòng</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>Thuộc định mức lao động</div>
-                                            </td>
-                                            <td>
-                                                <div>Sửa chữa văn phòng</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>Mô tả</div>
-                                            </td>
-                                            <td>
-                                                <div>Sửa chữa hoàn thiện văn phòng Tổng Giám đốc</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>Người phụ trách</div>
-                                            </td>
-                                            <td>
-                                                <div>Nguyễn Sỹ Sơn</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>Vụ trí phụ trách</div>
-                                            </td>
-                                            <td>
-                                                <div>Nhân viên HCNS</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>Ngày bắt đầu</div>
-                                            </td>
-                                            <td>
-                                                <div>13/03/2023</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>Hạn hoàn thành</div>
-                                            </td>
-                                            <td>
-                                                <div>10/04/2023</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>Số lượng</div>
-                                            </td>
-                                            <td>
-                                                <div>1 Lần</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>Man day</div>
-                                            </td>
-                                            <td>
-                                                <div>20 ngày</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <div>
-                                                <td>Kế hoạch thực hiện</td>
-                                                <td></td>
-                                            </div>
-                                        </tr>
-                                        <tr>
-                                            <div>
-                                                <td>Ý kiến TPB</td>
-                                                <td></td>
-                                            </div>
-                                        </tr>
-                                        <tr>
-                                            <div>
-                                                <td>Chấm điểm</td>
-                                                <td></td>
-                                            </div>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
     
-                        </div>
-    
-                        <div class="col-sm-12 mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="modal-title">Tổng hợp báo cáo</div>
-                                <span class="modal-title_mini ms-2">
-                                    Kết quả tạm tính
-                                </span>
-                            </div>
-                            <div class="modal_list row">
-                                <div class="modal_items col-sm-6">
-                                    Số báo cáo đã lập trong tháng: <span class="text-danger">0 file</span>
-                                </div>
-                                <div class="modal_items col-sm-6">
-                                    Số tiêu chí đạt được trong tháng: <span class="text-danger">0 tiêu chí</span>
-                                </div>
-                                <div class="modal_items col-sm-6">
-                                    Số nhân sự thực hiện: <span class="text-danger">1 nhân sự</span>
-                                </div>
-                                <div class="modal_items col-sm-6">
-                                    Giá trị doanh thu: <span class="text-danger">0 ₫</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center">
-                                <div class="modal-title">Danh sách tiêu chí công việc</div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Ngày tạo</th>
-                                            <th scope="col">Tiêu chí</th>
-                                            <th scope="col">Giá trị</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry the Bird</td>
-                                            <td>Larry the Bird</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center">
-                                <div class="modal-title">Danh sách báo cáo công việc</div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Ngày tạo</th>
-                                            <th scope="col">Số lượng</th>
-                                            <th scope="col">Trạng thái công việc</th>
-                                            <th scope="col">File báo cáo</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>Otto</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>Thornton</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry the Bird</td>
-                                            <td>Larry the Bird</td>
-                                            <td>Larry the Bird</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
-                </div>
-            </div>
-        </div>
-    </div>
     @include('template.sidebar.sidebarMaster.sidebarRight')
     <!-- Modal Báo cáo công việc -->
     <div class="modal fade" id="baoCaoCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -4198,9 +3963,10 @@
             </div>
         </div>
     </div>
+
     <!-- Modal Thông tin nhiệm vụ -->
     <div class="modal fade" id="thongTinNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
@@ -4238,7 +4004,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div>Người phụ trách</div>
+                                                <div>Người đảm nhiệm</div>
                                             </td>
                                             <td>
                                                 <div>Nguyễn Sỹ Sơn</div>
@@ -4246,7 +4012,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div>Vụ trí phụ trách</div>
+                                                <div>Vị trí đảm nhiệm</div>
                                             </td>
                                             <td>
                                                 <div>Nhân viên HCNS</div>
@@ -4305,9 +4071,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+    
                         </div>
-
+    
                         <div class="col-sm-12 mb-3">
                             <div class="d-flex align-items-center">
                                 <div class="modal-title">Tổng hợp báo cáo</div>
@@ -4338,26 +4104,26 @@
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Ngày tạo</th>
-                                        <th scope="col">Tiêu chí</th>
-                                        <th scope="col">Giá trị</th>
+                                            <th scope="col">Ngày báo cáo</th>
+                                            <th scope="col">Tiêu chí</th>
+                                            <th scope="col">Giá trị</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
+                                            <th class="fw-normal">22/03/2023</th>
+                                            <td>Số lượt khách hàng được chăm sóc</td>
+                                            <td>12</td>
                                         </tr>
                                         <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
+                                            <th class="fw-normal">21/03/2023</th>
+                                            <td>Số buổi Activation</td>
+                                            <td>8</td>
                                         </tr>
                                         <tr>
-                                        <th scope="row">3</th>
-                                        <td >Larry the Bird</td>
-                                        <td >Larry the Bird</td>
+                                            <th class="fw-normal">20/03/2023</th>
+                                            <td>Doanh thu từ Activation</td>
+                                            <td>10.000.000 VNĐ</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -4371,30 +4137,44 @@
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Ngày tạo</th>
-                                        <th scope="col">Số lượng</th>
-                                        <th scope="col">Trạng thái công việc</th>
-                                        <th scope="col">File báo cáo</th>
+                                            <th scope="col" style="width: 15%">Ngày báo cáo</th>
+                                            <th scope="col" style="width: 45%">Nội dung báo cáo</th>
+                                            <th scope="col" style="width: 40%">File báo cáo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>Otto</td>
+                                            <th class="fw-normal">23/03/2023</th>
+                                            <td>Mark</td>
+                                            <td>
+                                                <div class="text-break">
+                                                    <span class="d-flex align-items-center">
+                                                        <i class="bi bi-link-45deg"></i> 4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
+                                                    </span>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>Thornton</td>
+                                            <th class="fw-normal">22/03/2023</th>
+                                            <td>Jacob</td>
+                                            <td>
+                                                <div class="text-break">
+                                                    <span class="d-flex align-items-center">
+                                                        <i class="bi bi-link-45deg"></i> 4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
+                                                    </span>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr>
-                                        <th scope="row">3</th>
-                                        <td >Larry the Bird</td>
-                                        <td >Larry the Bird</td>
-                                        <td >Larry the Bird</td>
+                                            <th class="fw-normal">21/03/2023</th>
+                                            <td>Larry the Bird</td>
+                                            <td>
+                                                <div class="text-break">
+                                                    <span class="d-flex align-items-center">
+                                                        <i class="bi bi-link-45deg"></i> 4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
+                                                    </span>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -4403,8 +4183,44 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#nhanXetNhiemVu">Nhận xét nhiệm vụ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Nhận Xét Nhiệm Vụ --}}
+    <div class="modal fade" id="nhanXetNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Nhận xét nhiệm vụ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="mb-3">
+                            <div class="col-sm-12 d-flex  align-items-center">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Nhận xét</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" placeholder="Nhập nhận xét"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="col-sm-4 d-flex  align-items-center">
+                                <label for="inputPassword" class="col-sm-6 col-form-label">Điểm KPI</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
+                    <button type="button" class="btn btn-danger">Gửi nhận xét</button>
                 </div>
             </div>
         </div>

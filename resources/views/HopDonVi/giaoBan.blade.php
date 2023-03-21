@@ -1,29 +1,67 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Biên bản họp Giao Ban')
+
+@section('header-style')
+<style>
+    .mainSection_width-select{
+        width: 160px!important;
+        border: none;
+    }
+
+    .mainSection_width-select button.btn.dropdown-toggle.btn-light {
+        padding: 5px 0;
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
+    .mainSection_width-select button.btn.dropdown-toggle.btn-light:hover {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        box-shadow: none;
+    }
+    
+</style>
+@endsection
+
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
-                    <div class="mainSection_heading">
-                        <h5 class="mainSection_heading-title">
-                            Biên bản họp Giao Ban
-                        </h5>
-                        <div class="mainSection_card">
-                            <div class="mainSection_content">
-                                <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong>
+                    <div class="mainSection_heading d-flex align-items-center justify-content-between">
+                        <div class="mainSection_card position-relative">
+                            <div class="mainSection_content row">
+                                <div class="col-sm-3" >Đơn vị: </div>
+                                <div class="col-sm-9">
+                                    <strong>Kế toán</strong>
                                 </div>
                             </div>
-                            <div class="mainSection_content">
-                                <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                            <div class="mainSection_content row">
+                                <div class="col-sm-3">Chủ trì: </div>
+                                <div class="col-sm-9">
+                                    <select class="selectpicker mainSection_width-select"
+                                        data-actions-box="true"
+                                        data-live-search="true" title="Chọn chủ trì..."
+                                        data-live-search-placeholder="Tìm kiếm...">
+                                        <option>Nguyễn Ngọc Bảo</option>
+                                        <option>Đặng Nguyễn Lam Mai</option>
+                                        <option>Hồ Thị Hồng Vân</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div id="" class="mainSection_thismonth">
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text">
+                        <div>
+                            <h5 class="mainSection_heading-title">
+                                Biên bản họp Giao Ban
+                            </h5>
+                        </div>
+                        
+                        <div id="mainSection_width" class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
+                            <label class="">Tháng</label>
+                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
 
@@ -62,34 +100,14 @@
                                                                 Chủ đề&nbsp;
                                                             </div>
                                                             <div style="flex:1">
-                                                                <textarea name="" id="" rows="3" cols="" class="form-control"
+                                                                <textarea name="" id="" rows="1" cols="" class="form-control"
                                                                     placeholder="Nhập chủ đề/mục tiêu cuộc họp"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <div class="mb-3 d-flex align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center" style="flex:1">
-                                                                <img src="{{ asset('assets/img/person-check.svg') }}" />
-                                                                Chủ trì
-                                                            </div>
-                                                            <div style="flex:2">
-                                                                <select class="selectpicker" multiple
-                                                                    data-actions-box="true" data-width="100%"
-                                                                    data-live-search="true" title="Chọn chủ trì..."
-                                                                    data-select-all-text="Chọn tất cả"
-                                                                    data-deselect-all-text="Bỏ chọn" data-size="3"
-                                                                    data-selected-text-format="count > 1"
-                                                                    data-count-selected-text="Có {0} Chủ trì"
-                                                                    data-live-search-placeholder="Tìm kiếm...">
-                                                                    <option>Nguyễn Ngọc Bảo</option>
-                                                                    <option>Đặng Nguyễn Lam Mai</option>
-                                                                    <option>Hồ Thị Hồng Vân</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
                                                         <div
-                                                            class="mt-3 mb-3 d-flex align-items-center justify-content-between">
+                                                            class="mb-3 d-flex align-items-center justify-content-between">
                                                             <div class="d-flex align-items-center" style="flex:1">
                                                                 <img src="{{ asset('assets/img/pencil.svg') }}" />
                                                                 Thư ký

@@ -581,7 +581,6 @@ th {
 }
 
 /*** END Style DateTimePicker ***/
-
 .tooltip {
     font-size: var(--fz-12);
 }
@@ -1004,10 +1003,12 @@ th {
     background-color: var(--pink-color-blur);
 }
 
-.sidebarBody_card.bg-yellow-blur {
+.sidebarBody_card.bg-yellow-blur,
+.bg-yellow-blur {
     background-color: var(--yellow-color-blur);
 }
-.sidebarBody_card.bg-blue-blur {
+.sidebarBody_card.bg-blue-blur,
+.bg-blue-blur {
     background-color: var(--blue-color-blur);
 }
 
@@ -1274,6 +1275,12 @@ th {
     border-left: 1px solid var(--grey-color);
     border-top: 1px solid var(--grey-color);
 }
+
+#mainSection_width {
+    width: 120px;
+    padding: 2px 0px 2px 8px;
+}
+
 .mainSection_heading {
     position: relative;
     display: flex;
@@ -1377,8 +1384,8 @@ th {
 
 .main_search .bi-search {
     position: absolute;
-    top: 4px;
-    left: 8px;
+    top: 0;
+    left: 4px;
     color: #9b9999;
     font-size: var(--fz-12);
 }
