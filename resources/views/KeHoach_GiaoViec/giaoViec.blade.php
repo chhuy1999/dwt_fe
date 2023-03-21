@@ -32,7 +32,6 @@
                                 <div class="card-body">
                                     <div class='row'>
                                         <div class="col-md-6">
-
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="danhSachDinhMuc"
                                                     class="table table-responsive table-hover table-bordered">
@@ -370,7 +369,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="body_content-wrapper" id="body_content-1" style="display:block">
+                                            <div class="body_content-wrapper" id="body_content-1">
                                                 <form action="" method="">
                                                     <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
                                                         nội
@@ -457,13 +456,12 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-2">
                                                 <form action="" method="">
                                                     <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
                                                         nội
-                                                        bộ quy mô"</div>
+                                                        bộ quy mô2"</div>
                                                     <div class="mb-3 row">
                                                         <div class="col-md-12 mb-3 d-flex">
                                                             <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
@@ -546,13 +544,12 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-3">
                                                 <form action="" method="">
                                                     <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
                                                         nội
-                                                        bộ quy mô"</div>
+                                                        bộ quy mô3"</div>
                                                     <div class="mb-3 row">
                                                         <div class="col-md-12 mb-3 d-flex">
                                                             <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
@@ -635,13 +632,12 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-4">
                                                 <form action="" method="">
                                                     <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
                                                         nội
-                                                        bộ quy mô"</div>
+                                                        bộ quy mô4"</div>
                                                     <div class="mb-3 row">
                                                         <div class="col-md-12 mb-3 d-flex">
                                                             <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
@@ -724,7 +720,6 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-5">
                                                 <form action="" method="">
@@ -813,7 +808,6 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-6">
                                                 <form action="" method="">
@@ -902,7 +896,6 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-7">
                                                 <form action="" method="">
@@ -991,7 +984,6 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-8">
                                                 <form action="" method="">
@@ -1080,7 +1072,6 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-9">
                                                 <form action="" method="">
@@ -1169,7 +1160,6 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
                                             </div>
                                             <div class="body_content-wrapper" id="body_content-10">
                                                 <form action="" method="">
@@ -1258,7 +1248,10 @@
                                                         <div class="btn btn-danger px-4">Lưu</div>
                                                     </div>
                                                 </form>
-                                                <div class="body_noContent-wrapper" style="display: none">Nội dung này hiện tại chưa có dữ liệu</div>
+                                            </div>
+                                            <div class="body_noContent-wrapper">
+                                                Vui lòng chọn định mức để giao việc 
+                                                <button type="button" class="btn btn-danger ms-2" id="toggleDinhMuc">tại đây</button>
                                             </div>
                                         </div>
                                     </div>
