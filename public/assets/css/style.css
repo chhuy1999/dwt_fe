@@ -1,4 +1,16 @@
 /* OVERRIDE STYLE BOOTSTRAP */
+.progress-full {
+    width: 100%;
+    background-color: rgb(82 157 86 / 25%);
+}
+.progress-half {
+    width: 50%;
+    background-color: rgb(82 157 86 / 25%);
+}
+.progress-quarter {
+    width: 25%;
+    background-color: rgb(82 157 86 / 25%);
+}
 
 label.col-form-label {
     font-size: 1.2rem;
@@ -22,14 +34,6 @@ label.col-form-label {
 .modal-ku {
     width: 750px;
     margin: auto;
-}
-
-#datetimepicker4,
-#datetimepicker5,
-#datetimepicker6,
-#datetimepicker7,
-#datetimepicker8 {
-    text-align: center;
 }
 
 .contenteditable {
@@ -1329,7 +1333,7 @@ th {
     font-size: var(--fz-14);
     color: var(--primary-color);
     font-weight: 600;
-    border: none!important;
+    border: none !important;
     background-color: transparent;
     max-width: 120px;
     width: 100%;
@@ -1339,6 +1343,10 @@ th {
     font-size: var(--fz-14);
     flex: 1;
     margin-left: 10px;
+}
+.mainSection_total-kpi strong {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .card-title {
@@ -1844,11 +1852,11 @@ ul.modal_upload-list li {
     border-bottom: 1px solid #ddd;
     padding: 5px;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 ul.modal_upload-list li:last-child {
-    border-bottom: none
+    border-bottom: none;
 }
 
 .modal_upload-remote {
@@ -1856,17 +1864,15 @@ ul.modal_upload-list li:last-child {
     margin-left: 10px;
 }
 
-.progress-full {
-    width: 100%;
-    background-color: rgb(82 157 86 / 25%);
+.modal_upload-action .modal_upload-addFile button,
+.modal_upload-action .modal_upload-addLink button {
+    color: var(--primary-color);
+    border: 1px solid #B4B3B2;
+    font-weight: 500;
 }
-.progress-half {
-    width: 50%;
-    background-color: rgb(82 157 86 / 25%);
-}
-.progress-quarter {
-    width: 25%;
-    background-color: rgb(82 157 86 / 25%);
+.modal_upload-action .modal_upload-addFile button:hover,
+.modal_upload-action .modal_upload-addLink button:hover {
+    background-color: var(--white-color-blur);
 }
 
 .form-check_wrapper {

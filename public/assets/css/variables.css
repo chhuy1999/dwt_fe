@@ -13,7 +13,7 @@
     --border-radius-mini: 4px;
     --box-shadow: 0 0 0 0.25rem rgb(253 13 13 / 11%);
 
-    --width-sidebar: 275px;
+    --width-sidebar: 265px;
 
     /* FontSize */
     --fz-10: 1rem;
@@ -62,6 +62,11 @@ input[readonly],
 input[readonly]:focus {
     background-color: #f8f9fa;
     cursor: not-allowed;
+}
+
+input[type=file], /* FF, IE7+, chrome (except button) */
+input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
+    cursor: pointer; 
 }
 
 button {
