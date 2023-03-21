@@ -63,13 +63,11 @@
 
 
                                         <div class="main_action">
-                                            <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#themMoiDinhMuc">
+                                            {{-- <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#themMoiDinhMuc">
                                                 <i class="bi bi-plus"></i>
                                                 Thêm mới
-                                            </button>
-                                            <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="Xuất file Excel">
+                                            </button> --}}
+                                            <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
                                                 <i class="bi bi-download"></i>
                                                 Xuất Excel
                                             </button>
@@ -406,7 +404,7 @@
         </div>
     </div>
     <!-- Modal Them nhiệm vụ -->
-    <div class="modal fade" id="themMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="themMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -513,7 +511,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Xóa đinh mức --}}
     <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
