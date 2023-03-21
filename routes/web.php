@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\TargetController;
+use App\Http\Controllers\Api\TargetDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -59,7 +60,7 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 });
 
-//target
+//target => danh muc dinh muc
 
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('danh-muc-dinh-muc', [TargetController::class, 'index']);
@@ -67,6 +68,17 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::put('danh-muc-dinh-muc/{id}', [TargetController::class, 'update']);
     Route::delete('danh-muc-dinh-muc/{id}', [TargetController::class, 'delete']);
 });
+
+//target detail => danh muc nhiem vu
+
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('danh-muc-nhiem-vu', [TargetDetailController::class, 'index']);
+    Route::post('danh-muc-nhiem-vu', [TargetDetailController::class, 'store']);
+    Route::put('danh-muc-nhiem-vu/{id}', [TargetDetailController::class, 'update']);
+    Route::delete('danh-muc-nhiem-vu/{id}', [TargetDetailController::class, 'delete']);
+});
+
+
 
 
 
@@ -79,9 +91,9 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 // Route::get('danh-muc-dinh-muc', function () {
 //     return view('CauHinh.danhMucDinhMuc');
 // });
-Route::get('danh-muc-nhiem-vu', function () {
-    return view('CauHinh.danhMucNhiemVu');
-});
+// Route::get('danh-muc-nhiem-vu', function () {
+//     return view('CauHinh.danhMucNhiemVu');
+// });
 
 
 

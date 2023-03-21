@@ -208,4 +208,20 @@ class DwtServices
         $dataObj = $this->_toObject($data);
         return $dataObj->data;
     }
+
+    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10)
+    {
+        $url = $this->url . '/target-details';
+        $response = $this->client->get($url, [
+            'q' => $q,
+            'page' => $page,
+            'limit' => $limit
+        ]);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 }
