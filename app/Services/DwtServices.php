@@ -59,18 +59,6 @@ class DwtServices
         return $data['data'];
     }
 
-    public function searchDepartment()
-    {
-        $url = $this->url . '/departments';
-        $response = $this->client->get($url);
-        //throw exception if response is not successful
-        $response->throw()->json()['message'];
-        //get data from response
-        $data = $response->json();
-        $dataObj = (object) $data;
-        return $dataObj->data;
-    }
-
     public function searchKpiKeys($q = "", $page = 1, $limit = 10)
     {
         $url = $this->url . '/kpi-keys';
@@ -173,18 +161,6 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function listDepartments()
-    {
-        $url = $this->url . '/departments';
-        $response = $this->client->get($url);
-        //throw exception if response is not successful
-        $response->throw()->json()['message'];
-        //get data from response
-        $data = $response->json();
-        $dataObj = $this->_toObject($data);
-        return $dataObj->data;
-    }
-
     public function updateKpiTarget($id, $data)
     {
         $url = $this->url . '/targets/' . $id;
@@ -200,6 +176,69 @@ class DwtServices
     public function deleteKpiTarget($id)
     {
         $url = $this->url . '/targets/' . $id;
+        $response = $this->client->delete($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+
+
+    // màn hồ sơ đơn vị
+    public function listDepartments()
+    {
+        $url = $this->url . '/departments';
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function createDepartment($data)
+    {
+        $url = $this->url . '/departments';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function searchDepartment()
+    {
+        $url = $this->url . '/departments';
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        // $dataObj = (object) $data;
+        return $data['data'];
+    }
+
+    public function updateDepartment($id, $data)
+    {
+        $url = $this->url . '/departments/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function deleteDepartment($id)
+    {
+        $url = $this->url . '/departments/'. $id;
         $response = $this->client->delete($url);
         //throw exception if response is not successful
         $response->throw()->json()['message'];

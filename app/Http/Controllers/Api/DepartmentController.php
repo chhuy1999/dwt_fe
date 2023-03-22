@@ -17,92 +17,69 @@ class DepartmentController extends Controller
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
-    public function search(Request $request)
-    {
-        try {
-            $data_search = $request['data_search'];
-            $listDepartmentPaginated = $this->dwtService->searchDepartment($data_search);
-            return view('page.department.profileDepartment')->with('data', $listDepartmentPaginated);
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            return view('page.department.profileDepartment')->with('data', []);
-        }
-    }
-
+    
 
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
+
     {
-        $url = 'https://sdwtbe.sweetsica.com/api/v1/departments';
-        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vc2R3dGJlLnN3ZWV0c2ljYS5jb20vYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2Nzg4NTg0NDYsImV4cCI6MTY4MTQ1MDQ0NiwibmJmIjoxNjc4ODU4NDQ2LCJqdGkiOiJSbjJ6UjBhejRIWUlJdW5QIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.55jMT4e2MU1WsWQ2yckw3Ulekl-xIXSOjzkdl0E6RO4';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            "Authorization: Bearer $token"
-        ));
-        $response = curl_exec($ch);
-        curl_close($ch);
-        $datas = json_decode($response);
-        return view('page.department.profileDepartment')->with('datas', $datas);
+        try {
+
+            $q = $request->get('q');
+            $page = $request->get('page');
+            $limit = $request->get('limit');
+            $data = $this->dwtService->searchKpiTargets($q, $page, $limit);
+            $listDepartments = $this->dwtService->listDepartments();
+
+            return view('Cauhinh.hoSoDonVi')
+                ->with('listDepartments', $listDepartments);
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return view('Cauhinh.hoSoDonVi')->with('listDepartments', []);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-    /**
-     * Store a newly created resource in storage.
-     */
+
+
     public function store(Request $request)
     {
+        try {
+
+            $data = $request->validate([
+                'name' => 'required',
+            ]);
+            $this->dwtService->createDepartment($data);
+            return back()->with('success', 'Thêm mới thành công');
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update($id, Request $request)
     {
-        //
+        try {
+            $data = $request->validate([
+                'name' => 'nullable',
+            ]);
+            $this->dwtService->updateDepartment($id, $data);
+            return back()->with('success', 'Cập nhật thành công');
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function delete($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update($id)
-    {
-        $url = 'https://sdwtbe.sweetsica.com/api/v1/departments/1';
-        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vc2R3dGJlLnN3ZWV0c2ljYS5jb20vYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2Nzg4NTg0NDYsImV4cCI6MTY4MTQ1MDQ0NiwibmJmIjoxNjc4ODU4NDQ2LCJqdGkiOiJSbjJ6UjBhejRIWUlJdW5QIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.55jMT4e2MU1WsWQ2yckw3Ulekl-xIXSOjzkdl0E6RO4';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            "Authorization: Bearer $token"
-        ));
-        $response = curl_exec($ch);
-        curl_close($ch);
-        $datas = json_decode($response);
-        return view('page.department.profileDepartment')->with('updatedata', $datas);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        try {
+            $this->dwtService->deleteDepartment($id);
+            return back()->with('success', 'Xóa thành công');
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
     }
 }
