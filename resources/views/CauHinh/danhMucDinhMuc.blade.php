@@ -22,8 +22,9 @@
                                 <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
                             </div>
                         </div>
-                        <div id="" class="mainSection_thismonth">
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text">
+                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
+                            <label class="">Tháng</label>
+                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
 
@@ -83,13 +84,13 @@
                                                                     </p>
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->unit->name }}
+                                                                    {{ $target->unit && $target->unit->name }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->position->name }}
+                                                                    {{ $target->position && $target->position->name }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->departement->name }}
+                                                                    {{ $target->departement && $target->departement->name }}
                                                                 </td>
                                                                 <td>
                                                                     {{ $target->manday }}

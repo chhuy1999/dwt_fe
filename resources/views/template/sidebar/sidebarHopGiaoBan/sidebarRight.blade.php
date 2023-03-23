@@ -7,7 +7,6 @@
                         <h6 class="sidebarBody_heading-big m-0">
                             Cấp bộ phận
                         </h6>
-                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#neuvande">Nêu vấn đề</button>
                     </div>
                     <div class="sidebarBody_card bg-yellow-blur">
                         <div class="sidebarBody_heading-wrapper">
@@ -368,59 +367,5 @@
         <span id="btn-right"
             ><i class="bi bi-arrow-bar-right"></i
         ></span>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 34%">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="col-sm-2">
-                                <div class="modal_body-title">Vấn đề tồn đọng</div>
-                            </div>
-                            <div class="col-sm-10" style="padding-left: 12px">
-                                <input type="text" class="form-control form-control-plaintext" id="staticEmail" style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3 row">
-                    <div class="col-sm-8">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="d-flex col-sm-3">
-                                <div class="modal_body-title">Cấp giải quyết</div>
-                            </div>
-                            <div class="col-sm-9" style="padding-left: 14px">
-                                <select class="selectpicker" title="Chọn cấp giải quyết">
-                                    <option value="1">Công ty</option>
-                                    <option value="2">Phòng ban</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="d-flex col-sm-4">
-                                <div class="modal_body-title">Thời hạn</div>
-                            </div>
-                            <div class="col-sm-8">
-                                <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"  type="text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-danger">Gửi</button>
-            </div>
-        </div>
     </div>
 </div>

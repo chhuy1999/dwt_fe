@@ -1,4 +1,16 @@
 /* OVERRIDE STYLE BOOTSTRAP */
+.progress-full {
+    width: 100%;
+    background-color: rgb(82 157 86 / 25%);
+}
+.progress-half {
+    width: 50%;
+    background-color: rgb(82 157 86 / 25%);
+}
+.progress-quarter {
+    width: 25%;
+    background-color: rgb(82 157 86 / 25%);
+}
 
 label.col-form-label {
     font-size: 1.2rem;
@@ -22,14 +34,6 @@ label.col-form-label {
 .modal-ku {
     width: 750px;
     margin: auto;
-}
-
-#datetimepicker4,
-#datetimepicker5,
-#datetimepicker6,
-#datetimepicker7,
-#datetimepicker8 {
-    text-align: center;
 }
 
 .contenteditable {
@@ -577,16 +581,34 @@ th {
 }
 
 /*** END Style DateTimePicker ***/
-
 .tooltip {
     font-size: var(--fz-12);
+}
+
+
+.has-search .form-control {
+    padding-left: 2rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.8rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
 }
 
 .btn-export {
     background-color: var(--primary-color);
     border: 1px solid transparent;
     display: inline-block;
-    padding: 0px 8px;
+    padding: 7px 8px;
+    border-radius: var(--border-radius-mini);
+    color: var(--white-color)
 }
 .btn-export:hover {
     background-color: transparent;
@@ -1000,10 +1022,12 @@ th {
     background-color: var(--pink-color-blur);
 }
 
-.sidebarBody_card.bg-yellow-blur {
+.sidebarBody_card.bg-yellow-blur,
+.bg-yellow-blur {
     background-color: var(--yellow-color-blur);
 }
-.sidebarBody_card.bg-blue-blur {
+.sidebarBody_card.bg-blue-blur,
+.bg-blue-blur {
     background-color: var(--blue-color-blur);
 }
 
@@ -1270,6 +1294,12 @@ th {
     border-left: 1px solid var(--grey-color);
     border-top: 1px solid var(--grey-color);
 }
+
+#mainSection_width {
+    width: 120px;
+    padding: 2px 0px 2px 8px;
+}
+
 .mainSection_heading {
     position: relative;
     display: flex;
@@ -1329,7 +1359,7 @@ th {
     font-size: var(--fz-14);
     color: var(--primary-color);
     font-weight: 600;
-    border: none!important;
+    border: none !important;
     background-color: transparent;
     max-width: 120px;
     width: 100%;
@@ -1339,6 +1369,10 @@ th {
     font-size: var(--fz-14);
     flex: 1;
     margin-left: 10px;
+}
+.mainSection_total-kpi strong {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .card-title {
@@ -1369,8 +1403,8 @@ th {
 
 .main_search .bi-search {
     position: absolute;
-    top: 4px;
-    left: 8px;
+    top: 0;
+    left: 4px;
     color: #9b9999;
     font-size: var(--fz-12);
 }
@@ -1844,11 +1878,11 @@ ul.modal_upload-list li {
     border-bottom: 1px solid #ddd;
     padding: 5px;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 ul.modal_upload-list li:last-child {
-    border-bottom: none
+    border-bottom: none;
 }
 
 .modal_upload-remote {
@@ -1856,17 +1890,15 @@ ul.modal_upload-list li:last-child {
     margin-left: 10px;
 }
 
-.progress-full {
-    width: 100%;
-    background-color: rgb(82 157 86 / 25%);
+.modal_upload-action .modal_upload-addFile button,
+.modal_upload-action .modal_upload-addLink button {
+    color: var(--primary-color);
+    border: 1px solid #B4B3B2;
+    font-weight: 500;
 }
-.progress-half {
-    width: 50%;
-    background-color: rgb(82 157 86 / 25%);
-}
-.progress-quarter {
-    width: 25%;
-    background-color: rgb(82 157 86 / 25%);
+.modal_upload-action .modal_upload-addFile button:hover,
+.modal_upload-action .modal_upload-addLink button:hover {
+    background-color: var(--white-color-blur);
 }
 
 .form-check_wrapper {
