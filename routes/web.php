@@ -94,10 +94,12 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 
 
+// Màn báo lỗi
+Route::get('404-not-found', function () {
+    return view('404NotFound');
+});
 
-// Route::get('dinh-muc-lao-dong', function () {
-//     return view('CauHinh.dinhMucLaoDong');
-// });
+
 // Route::get('danh-muc-dinh-muc', function () {
 //     return view('CauHinh.danhMucDinhMuc');
 // });

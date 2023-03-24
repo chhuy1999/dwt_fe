@@ -279,8 +279,7 @@
                                 <div class="card-body">
                                     <div class="mb-2">
                                         <div class="card-title mb-2">Nội dung chính</div>
-                                        {{-- <textarea name="" id="" rows="5" cols="" class="form-control" placeholder="Nhập nội dung cuộc họp"></textarea> --}}
-                                        <textarea id="editor" class="form-control" placeholder="Nhập nội dung cuộc họp"></textarea>
+                                        <textarea name="" id="" rows="5" cols="" class="form-control" placeholder="Nhập nội dung cuộc họp"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -967,6 +966,11 @@
                                       </table>
                                 </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
+                            </div>
+                        </div>
                         <div class="col-md-4 ms-auto">
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
@@ -992,7 +996,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-danger">Lưu</button>
+                        <button type="button" class="btn btn-danger">Xác nhận</button>
                     </div>
                 </div>
             </div>
@@ -1070,31 +1074,5 @@
 
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-         tinymce.init({
-            selector:'#editor',
-            menubar: false,
-            statusbar: false,
-            plugins: 'autoresize anchor autolink charmap code codesample directionality fullpage help hr image imagetools insertdatetime link lists media nonbreaking pagebreak preview print searchreplace table template textpattern toc visualblocks visualchars',
-            toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help fullscreen ',
-            skin: 'bootstrap',
-            toolbar_drawer: 'floating',
-            min_height: 200,           
-            autoresize_bottom_margin: 16,
-            setup: (editor) => {
-                editor.on('init', () => {
-                    editor.getContainer().style.transition="border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
-                });
-                editor.on('focus', () => {
-                    editor.getContainer().style.boxShadow="0 0 0 .2rem rgba(0, 123, 255, .25)",
-                    editor.getContainer().style.borderColor="#80bdff"
-                });
-                editor.on('blur', () => {
-                    editor.getContainer().style.boxShadow="",
-                    editor.getContainer().style.borderColor=""
-                });
-            }
-        });
-    </script>
 
 @endsection
