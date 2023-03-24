@@ -5,7 +5,7 @@
 @section('header-style')
 <style>
     .mainSection_width-select{
-        width: 160px!important;
+        width: 140px!important;
         border: none;
     }
 
@@ -21,6 +21,10 @@
         border: none;
         box-shadow: none;
     }
+
+    .bootstrap-select>.dropdown-toggle:after {
+        display: none;
+    }
     
 </style>
 @endsection
@@ -34,14 +38,14 @@
                     <div class="mainSection_heading d-flex align-items-center justify-content-between">
                         <div class="mainSection_card position-relative">
                             <div class="mainSection_content row">
-                                <div class="col-sm-3" >Đơn vị: </div>
-                                <div class="col-sm-9">
+                                <div class="col-sm-4" >Đơn vị: </div>
+                                <div class="col-sm-8">
                                     <strong>Kế toán</strong>
                                 </div>
                             </div>
                             <div class="mainSection_content row">
-                                <div class="col-sm-3">Chủ trì: </div>
-                                <div class="col-sm-9">
+                                <div class="col-sm-4">Chủ trì: </div>
+                                <div class="col-sm-8">
                                     <select class="selectpicker mainSection_width-select"
                                         data-actions-box="true"
                                         data-live-search="true" title="Chọn chủ trì..."
@@ -767,7 +771,7 @@
     </div>
     <!-- Modal Sửa Vấn Đề -->
     <div class="modal fade" id="suaVanDeTonDong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Chỉnh sửa vấn đề tồn đọng</h5>
@@ -776,54 +780,82 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Vấn đề tồn đọng <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control" style="width:76%" type="text"
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-3">
+                                    <div class="modal_body-title">Vấn đề tồn đọng <span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text"
                                     value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Người nêu <span class="text-danger">*</span></div>
-                                <input class="form-control" style="width:51%" type="text" value="Nguyễn Ngọc Bảo">
+                        <div class="col-sm-7">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-5" style="margin-right: 6px;">
+                                    <div class="modal_body-title">Người nêu <span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input class="form-control" type="text" value="Nguyễn Ngọc Bảo">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Chịu trách nhiệm <span class="text-danger">*</span></div>
-                                <input class="form-control" style="width:51%" type="text" value="Nguyễn Ngọc Bảo">
+                        <div class="col-sm-5">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">PIC <span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="Nguyễn Ngọc Bảo">
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Nguyên nhân</div>
-                                <input class="form-control" style="width:76%" type="text"
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-3">
+                                    <div class="modal_body-title">Nguyên nhân</div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text"
                                     value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Hướng giải quyết</div>
-                                <input class="form-control" style="width:76%" type="text" value="Sẽ gửi trong tuần">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Thời hạn <span class="text-danger">*</span></div>
-                                <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                    style="width:51%" type="text">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-3">
+                                    <div class="modal_body-title">Hướng giải quyết</div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" value="Sẽ gửi trong tuần">
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title">Tình trạng <span class="text-danger">*</span></div>
-                                <select class="form-select w-75" aria-label="Default select example">
-                                    <option selected hidden>Chọn trạng thái</option>
-                                    <option>Đã có hướng giải quyết</option>
-                                    <option>Đã giải quyết</option>
-                                    <option>Không thể giải quyết</option>
-                                    <option>Không xác định được nguyên nhân</option>
-                                </select>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-6" style="margin-right: 4px;">
+                                    <div class="modal_body-title">Thời hạn <span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-6 position-relative">
+                                    <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                    <i class="bi bi-calendar-plus style_pickdate"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Tình trạng <span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected hidden>Chọn trạng thái</option>
+                                        <option>Đã có hướng giải quyết</option>
+                                        <option>Đã giải quyết</option>
+                                        <option>Không thể giải quyết</option>
+                                        <option>Không xác định được nguyên nhân</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -841,11 +873,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa Thuộc tính này</h5>
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa vấn đề này</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Bạn có thực sự muốn xoá thuộc tính đã chọn không?
+                    Bạn có thực sự muốn xoá vấn đề đã chọn không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>

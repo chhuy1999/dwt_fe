@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="d-flex bg-blue-blur">
                                             <div class="table-responsive style_table-1 table-bordered mainSection_table w-50">
-                                                <table class="table">
+                                                <table class="table m-0">
                                                     <thead>
                                                         <td class="bg-white" colspan="6" style="
                                                                 text-align: center;
@@ -215,7 +215,7 @@
                                             </div>
                                             <div
                                                 class="table-responsive style_table-2 table-bordered mainSection_table w-100 overflow-scroll">
-                                                <table class="table table-responsive">
+                                                <table class="table table-responsive m-0">
                                                     <thead>
                                                         <td colspan="30" class="text-center fw-bold bg-white">
                                                             Nhật kí công việc
@@ -1040,7 +1040,7 @@
                                         
                                         <div class="d-flex bg-yellow-blur">
                                             <div class="table-responsive table-bordered border-warning mainSection_table w-50">
-                                                <table class="table">
+                                                <table class="table m-0">
                                                     <thead>
                                                         
                                                                                                 <tr>
@@ -1198,7 +1198,7 @@
                                                 </table>
                                             </div>
                                             <div class="table-responsive style_table-2 table-bordered border-warning mainSection_table w-100">
-                                                <table class="table">
+                                                <table class="table m-0">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">1</th>
@@ -3528,16 +3528,16 @@
         </div>
     </div>
     
-    {{-- Xóa thuộc tính --}}
+    {{-- Xóa vấn đề --}}
     <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa Thuộc tính này</h5>
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa vấn đề</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Bạn có thực sự muốn xoá thuộc tính đã chọn không?
+                    Bạn có thực sự muốn xoá vấn đề đã chọn không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
@@ -3562,7 +3562,7 @@
                                 <div class="col-sm-2">
                                     <div class="modal_body-title">Vấn đề tồn đọng</div>
                                 </div>
-                                <div class="col-sm-10" style="padding-left: 12px">
+                                <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-plaintext" id="staticEmail"
                                         style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
                                 </div>
@@ -3570,8 +3570,8 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
+                        <div class="col-sm-5">
+                            <div class="d-flex align-items-center">
                                 <div class="d-flex col-sm-5">
                                     <div class="modal_body-title">Cấp giải quyết</div>
                                 </div>
@@ -3584,372 +3584,22 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-5">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4">
                                     <div class="modal_body-title">Phân loại</div>
                                 </div>
-                                <div class="col-sm-7">
-                                    <select class="selectpicker" title="Chọn cấp giải quyết">
+                                <div class="col-sm-8">
+                                    <select class="selectpicker" title="Chọn phân loại">
                                         <option value="1">Cần giải quyết</option>
                                         <option value="2">Than phiền</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Thời hạn</div>
-                                </div>
-                                <div class="col-sm-8 position-relative">
-                                    <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                        type="text">
-                                    <i class="bi bi-calendar-plus style_pickdate"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    @include('template.sidebar.sidebarMaster.sidebarRight')
-    <!-- Modal Báo cáo công việc -->
-    <div class="modal fade" id="baoCaoCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <div class="d-flex w-100 flex-md-column">
-                        <h5 class="modal-title">Báo cáo công việc</h5>
-                        <h6 class="text-capitalize fw-normal fs-5">Ngày 16/03/2023</h6>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="">
-                        @csrf
-                        <div class="mb-3 row">
-                            <div class="col-sm-12 d-flex  align-items-center">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Tên nhiệm vụ</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" readonly
-                                        value="Tìm kiếm nhà cung cấp"></input>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-sm-12 d-flex  align-items-center">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">
-                                    Ghi chú
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" placeholder="Vui lòng nhập nội dung báo cáo vào đây"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            {{-- <div class="col-sm-5 d-flex  align-items-center">
-                        <label for="inputPassword" class="col-sm-5 col-form-label">
-                            Số lượng
-                            <span class="text-danger">*</span>
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="number" class="form-control">
-                        </div>
-                    </div> --}}
-                            <div class="d-flex  align-items-center">
-                                <div class="form-check">
-                                    <input role="button" type="checkbox" class="form-check-input fs-5"
-                                        id="datGiaTriKinhDoanh">
-                                    <label role="button" class="form-check-label user-select-none"
-                                        for="datGiaTriKinhDoanh">Đạt giá trị
-                                        kinh doanh</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="form-check_wrapper">
-                                <div class="form-check_content">
-                                    <div class="form-check_repeater">
-                                        <div class="form-check_item position-relative row mb-3">
-                                            <div class="col-sm-8 d-flex  align-items-center">
-                                                <label for="inputPassword" class="col-sm-3 col-form-label">
-                                                    Tiêu chí
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-select" title="Chọn trạng thái">
-                                                        <option value="" disabled selected hidden class="text-danger">
-                                                            Chọn tiêu chí</option>
-                                                        <option>Đã nhận</option>
-                                                        <option>Đã hoàn thành</option>
-                                                        <option>Đã nhắc nhở</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 d-flex  align-items-center">
-                                                <label for="inputPassword" class="col-sm-4 col-form-label">
-                                                    Giá trị
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-sm-8" id="addTrash">
-                                                    <input type="number" class="form-control">
-                                                </div>
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button class="form-check_btn btn btn-outline-danger px-3">Thêm tiêu chí</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-md-12">
-                                <div class="modal_upload-wrapper">
-                                    <label class="modal_upload-label" for="file">
-                                        Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                    <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích thước tệp không quá 10MB</div>
-                                    <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                        <div class="modal_upload-addFile me-3">
-                                            <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}"/>
-                                                Tải file lên
-                                                <input role="button" type="file" class="modal_upload-input" id="modal_upload-file" multiple onchange="javascript:updateList()">
-                                            </button>
-                                        </div>
-
-                                        <div class="modal_upload-addLink">
-                                            <button role="button" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#themLinkOnline">
-                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}"/>
-                                                Thêm liên kết
-                                            </button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="alert alert-danger" id="alertNotSupport" role="alert" style="display:none">
-                                    File bạn tải lên hiện tại không hỗ trợ !
-                                </div>
-                                <ul id="modal_upload-list" class="modal_upload-list"></ul>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Xóa báo
-                        cáo</button>
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Modal Thêm Link Online --}}
-    <div class="modal fade" id="themLinkOnline" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Tải file từ link online</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/img/upload-file-from-link-img.jpg') }}" />
-                        </div>
-                    </div>
-                    <form action="" method="">
-                        @csrf
-                        <div class="mb-3 row">
-                            <div class="col-sm-12 d-flex align-items-center">
-                                <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Dán link tại đây
-                                </label>
-                                <div class="col-sm-9" style="">
-                                    <input type="text" class="form-control"
-                                        placeholder="Nhập link báo cáo tại đây" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-sm-12 d-flex align-items-center">
-                                <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Tên hiển thị
-                                </label>
-                                <div class="col-sm-9" style="">
-                                    <input type="text" class="form-control"
-                                        placeholder="Nhập tên hiển thị" />
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="deleteRowElement">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Phản Hồi Vấn Đề -->
-    <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Phản hồi vấn đề tồn đọng</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center">
-                            <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng
-                            </label>
-                            <div class="w-100" style="flex:1;overflow:hidden">
-                                <input type="text" class="form-control" class="contenteditable"
-                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-4 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:18px;">Cấp giải
-                                quyết</label>
-                            <div class="w-100" style="flex:1">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="2">Phòng ban</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời
-                                hạn</label>
-                            <div class="w-100" style="flex:1">
-                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                    type="text">
-                            </div>
-                        </div>
-                        <div class="col-sm-5 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Trạng
-                                thái</label>
-                            <div class="w-100" style="flex:1">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected hidden>Chọn trạng thái</option>
-                                    <option>Đã có hướng giải quyết</option>
-                                    <option>Đã giải quyết</option>
-                                    <option>Không thể giải quyết</option>
-                                    <option>Không xác định được nguyên nhân</option>
-                                </select>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label"
-                                style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
-                            <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" class="contenteditable"
-                                    placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Xóa thuộc tính --}}
-    <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa Thuộc tính này</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có thực sự muốn xoá thuộc tính đã chọn không?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Vấn đề tồn đọng -->
-    <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="col-sm-2">
-                                    <div class="modal_body-title">Vấn đề tồn đọng</div>
-                                </div>
-                                <div class="col-sm-10" style="padding-left: 12px">
-                                    <input type="text" class="form-control form-control-plaintext" id="staticEmail"
-                                        style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-5">
-                                    <div class="modal_body-title">Cấp giải quyết</div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <select class="selectpicker" title="Chọn cấp giải quyết">
-                                        <option value="1">Công ty</option>
-                                        <option value="2">Phòng ban</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-5">
-                                    <div class="modal_body-title">Phân loại</div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <select class="selectpicker" title="Chọn cấp giải quyết">
-                                        <option value="1">Cần giải quyết</option>
-                                        <option value="2">Than phiền</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Thời hạn</div>
+                        <div class="col-sm-3">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4" style="margin: 0 4px 0 -4px">
+                                    <div class="modal_body-title">Thời hạn </div>
                                 </div>
                                 <div class="col-sm-8 position-relative">
                                     <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"
@@ -4232,140 +3882,143 @@
 
 @endsection
 @section('footer-script')
-            <!-- ChartJS -->
-            <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
+    <!-- ChartJS -->
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
 
-            <!-- Chart Types -->
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
+    <!-- Chart Types -->
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
 
+    <script>
+        $(function() {
+            $('#datGiaTriKinhDoanh').on('click', function() {
+                $('.form-check_wrapper').toggle(this.checked);
+            });
+            $(document).on('click', '.form-check_btn', function(e) {
+                e.preventDefault();
+                $('#delete_value').show()
+                $('.form-check_repeater').parent('div.form-check_content').append($('.form-check_content')
+                    .children('div:first').html());
+                // $('#addTrash').append(`<div role="button" id="delete_value"><img style="height:20px" src="{{ asset('assets/img/trash.svg') }}" / ></div>`)
+            });
+            $(document).on('click', '#delete_value img', function(e) {
+                e.preventDefault();
+                $(this).closest('.form-check_item').remove();
+            });
 
-            <script>
-                $(function() {
-                    $('#datGiaTriKinhDoanh').on('click', function() {
-                        $('.form-check_wrapper').toggle(this.checked);
-                    });
-                    $(document).on('click', '.form-check_btn', function(e) {
-                        e.preventDefault();
-                        $('#delete_value').show()
-                        $('.form-check_repeater').parent('div.form-check_content').append($('.form-check_content')
-                            .children('div:first').html());
-                        // $('#addTrash').append(`<div role="button" id="delete_value"><img style="height:20px" src="{{ asset('assets/img/trash.svg') }}" / ></div>`)
-                    });
-                    $(document).on('click', '#delete_value img', function(e) {
-                        e.preventDefault();
-                        $(this).closest('.form-check_item').remove();
-                    });
+        });
+    </script>
 
-                });
-            </script>
-
-            <script type="text/javascript">
-                updateList = function() {
-                    const input = document.getElementById('modal_upload-file');
-                    const output = document.getElementById('modal_upload-list');
-                    let children = '';
-                    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-                    const maxFileSize = 10485760; //10MB in bytes
-                    for (let i = 0; i < input.files.length; ++i) {
-                        const file = input.files.item(i);
-                        if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
-                            children += `<li>
-                        <span class="fs-5">
-                            <i class="bi bi-link-45deg"></i> ${file.name}
-                        </span>
-                        <span class="modal_upload-remote" onclick="return this.parentNode.remove()">
-                            <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
-                        </span>
-                    </li>`;
-                        } else {
-                            const notSupport = document.getElementById('alertNotSupport');
-                            notSupport.style.display = 'block';
-                            setTimeout(() => {
-                                notSupport.style.display = 'none';
-                            }, 3500);
-                        }
-                    }
-                    output.innerHTML = children;
+    <script type="text/javascript">
+        updateList = function() {
+            const input = document.getElementById('modal_upload-file');
+            const output = document.getElementById('modal_upload-list');
+            let children = '';
+            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            const maxFileSize = 10485760; //10MB in bytes
+            for (let i = 0; i < input.files.length; ++i) {
+                const file = input.files.item(i);
+                if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
+                    children += `<li>
+                <span class="fs-5">
+                    <i class="bi bi-link-45deg"></i> ${file.name}
+                </span>
+                <span class="modal_upload-remote" onclick="return this.parentNode.remove()">
+                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                </span>
+            </li>`;
+                } else {
+                    const notSupport = document.getElementById('alertNotSupport');
+                    notSupport.style.display = 'block';
+                    setTimeout(() => {
+                        notSupport.style.display = 'none';
+                    }, 3500);
                 }
-                // SELECT MULTIPLE LEFT SIDEBAR
-                const select = document.getElementById('select');
-                const elems = document.querySelectorAll('.data_chart-items');
-                const obj = {};
+            }
+            output.innerHTML = children;
+        }
+        // SELECT MULTIPLE LEFT SIDEBAR
+        const select = document.getElementById('select');
+        const elems = document.querySelectorAll('.data_chart-items');
+        const obj = {};
 
-                const filtered = [...elems].filter((el) => {
-                    if (!obj[el.id]) {
-                        obj[el.id] = true;
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
+        const filtered = [...elems].filter((el) => {
+            if (!obj[el.id]) {
+                obj[el.id] = true;
+                return true;
+            } else {
+                return false;
+            }
+        });
 
-                const selectOpt = filtered.map((el) => {
-                    el.style.display = 'block';
-                    return `<option> ${el.id} </option>`;
-                });
+        const selectOpt = filtered.map((el) => {
+            el.style.display = 'block';
+            return `<option> ${el.id} </option>`;
+        });
 
-                select.innerHTML = selectOpt.join('');
+        select.innerHTML = selectOpt.join('');
 
-                select.addEventListener('change', function() {
-                    for (let i = 0, iLen = select.options.length; i < iLen; i++) {
-                        const opt = select.options[i];
+        select.addEventListener('change', function() {
+            for (let i = 0, iLen = select.options.length; i < iLen; i++) {
+                const opt = select.options[i];
+                const noPick = document.getElementById('data_chart-nopick')
 
-                        const val = opt.value || opt.text;
-                        if (opt.selected) {
-                            document.getElementById(val).style.display = 'block';
-                        } else {
-                            document.getElementById(val).style.display = 'none';
-                        }
-                    }
-                });
+                const val = opt.value || opt.text;
+                if (opt.selected) {
+                    document.getElementById(val).style.display = 'block';
+                    noPick.style.display = 'none';
 
-                // BTN SETTINGS
-                document.getElementById('sidebarBody_settings-body').addEventListener('click', handleClickSettings, false);
-
-                function handleClickSettings() {
-                    const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
-                    if (sidebarBodySelectWrapper.style.display === 'none') {
-                        sidebarBodySelectWrapper.style.display = 'block';
-                        document.addEventListener('click', handleClickOutside);
-                    } else {
-                        sidebarBodySelectWrapper.style.display = 'none';
-                        document.removeEventListener('click', handleClickOutside);
-                    }
+                } else {
+                    document.getElementById(val).style.display = 'none';
+                    noPick.style.display = 'block';
                 }
+            }
+        });
 
-                function handleClickOutside(event) {
-                    const sidebarBodySettings = document.getElementsByClassName('sidebarBody_settings-body')[0];
-                    const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
-                    if (!sidebarBodySettings.contains(event.target) && !sidebarBodySelectWrapper.contains(event.target)) {
-                        sidebarBodySelectWrapper.style.display = 'none';
-                        document.removeEventListener('click', handleClickOutside);
-                    }
-                }
-            </script>
+        // BTN SETTINGS
+        document.getElementById('sidebarBody_settings-body').addEventListener('click', handleClickSettings, false);
 
-            <script>
-                $(document).ready(function() {
-                    $.datetimepicker.setLocale('vi');
-                    $('#vanDeTonDong').datetimepicker({
-                        format: 'd/m/Y',
-                        timepicker: false,
-                    });
-                });
-            </script>
+        function handleClickSettings() {
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (sidebarBodySelectWrapper.style.display === 'none') {
+                sidebarBodySelectWrapper.style.display = 'block';
+                document.addEventListener('click', handleClickOutside);
+            } else {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+
+        function handleClickOutside(event) {
+            const sidebarBodySettings = document.getElementsByClassName('sidebarBody_settings-body')[0];
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (!sidebarBodySettings.contains(event.target) && !sidebarBodySelectWrapper.contains(event.target)) {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $.datetimepicker.setLocale('vi');
+            $('#vanDeTonDong').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+        });
+    </script>
 @endsection

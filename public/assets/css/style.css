@@ -587,7 +587,8 @@ th {
 
 
 .has-search .form-control {
-    padding-left: 2rem;
+    padding-left: 0;
+    text-indent: 24px;
 }
 
 .has-search .form-control-feedback {
@@ -940,9 +941,16 @@ th {
 .data_chart-items {
     padding-bottom: 10px;
 }
+
 .data_chart-items:last-child {
     padding-bottom: initial;
 }
+
+#data_chart-nopick {
+    text-align: center;
+    color: var(--primary-color);
+}
+
 .sidebarBody_heading-wrapper {
     position: relative;
 }
@@ -1363,6 +1371,11 @@ th {
     background-color: transparent;
     max-width: 120px;
     width: 100%;
+    box-shadow: none!important;
+}
+
+.mainSection_thismonth input:focus {
+    background-color: transparent;
 }
 
 .mainSection_total-kpi {
@@ -1715,7 +1728,7 @@ th {
 .style_pickdate {
     position: absolute;
     top: 2px;
-    right: 6px;
+    right: 4px;
     font-size: var(--fz-14);
 }
 

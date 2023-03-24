@@ -75,6 +75,9 @@
                                         <canvas id="stackedChart_chiPhi"></canvas>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <span id="data_chart-nopick" style="display: none">Hiện không chọn biểu đồ nào</span>
+                                </div>
                             </div>
                         </div>
                     </div>
