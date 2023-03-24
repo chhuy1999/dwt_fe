@@ -58,9 +58,14 @@
                             </div>
                         </div>
                         <div>
-                            <h5 class="mainSection_heading-title">
-                                Biên bản họp Giao Ban
-                            </h5>
+                                <div style="">
+                                    <select style="font-size: 20px" class="form-select form-select-lg mb-3 fw-bold" >
+                                        <option >BIÊN BẢN HỌP GIAO BAN</option>
+                                        <option >BIÊN BẢN HỌP TỔNG KẾT TUẦN</option>
+                                        <option >BIÊN BẢN HỌP TỔNG KẾT THÁNG</option>
+                                        {{-- <option value="other" class="text-danger">Khác</option> --}}
+                                    </select>
+                                </div>
                         </div>
                         
                         <div id="mainSection_width" class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
@@ -283,7 +288,7 @@
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body" style="padding-bottom: 30px">
                                     <div class="mb-2">
                                         <div class="card-title">Vấn đề tồn đọng</div>
                                     </div>
@@ -646,12 +651,10 @@
 
                                                     </tbody>
                                                 </table>
-                                                <div data-repeater-create class="add-row-btn">
+                                                <div data-repeater-create class="add-row-btn" >
                                                     <i class="bi bi-plus-circle"></i>
                                                 </div>
-
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -662,14 +665,16 @@
 
                         <div class="col-lg-12 d-flex justify-content-end">
                             <div class="action_table-wrapper text-end mt-3 mb-3">
-                                <a href="kho-luu-tru-bien-ban-hop"
+                                {{-- <a href="kho-luu-tru-bien-ban-hop"
                                     class="btn btn-outline-danger action_table-btn"
                                     style="margin-right:6px;">
                                     Đến kho lưu trữ
-                                </a>
-                                <a href='bien-ban-hop' class="btn btn-danger action_table-btn">
-                                    Duyệt & Lưu PDF
-                                </a>
+                                </a> --}}
+                                {{-- <a href='bien-ban-hop' class="btn btn-danger action_table-btn">
+                                    Duyệt 
+                                </a> --}}
+                                <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                                     data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
                             </div>
                         </div>
                         <div class="col-lg-12 d-flex justify-content-end">
@@ -868,6 +873,169 @@
         </div>
     </div>
 
+    <!-- Modal duyệt biên bản họp -->
+    <div class="modal fade" id="duyetbienbanhop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 21cm">
+            <div class="modal-content">
+                <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
+                    <div class="row">
+                        <div class="text-center" style="">
+                            <p class="text-uppercase fs-2 fw-bolder"  style="margin: 0">BIÊN BẢN HỌP GIAO BAN</p>
+                            <p>Phòng Marketing</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title fw-bolder">Thời gian:</div>
+                                <p class="mt-3" style="width:82%" type="text">23/03/2023 09:03 - 23/03/2023 10:03</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title fw-bolder">Chủ đề:</div>
+                                <p class="mt-3" type="text" style="width:82%">Họp báo cáo kết quả tuần 3 tháng 3/2023 phòng Marketing</p>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between" >
+                                <div class="modal_body-title fw-bolder">Chủ trì:</div>
+                                <p class="mt-3" style="width:82%" type="text">Nguyễn Vũ Nguyệt Minh - MTT123</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title fw-bolder">Thư kí:</div>
+                                <p class="mt-3" style="width:82%" type="text">Đặng Vũ Lam Mai - MTT239</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title fw-bolder">Thành viên tham gia:</div>
+                                <p class="mt-3" style="width:82%" type="text">Nguyễn Vũ Nguyệt Minh - MTT123, Đặng Vũ Lam Mai - MTT239, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng Vân - MTT125</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class=" mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title fw-bolder">Thành viên vắng:</div>
+                                <p class="mt-3" style="width:82%" type="text">Chu Văn Linh - MTT123, Nguyễn Ngọc Bảo - MTT124</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title fw-bolder">I. NỘI DUNG CUỘC HỌP</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="mt-3 modal_body-title">
+                                    <p class="" type="text">
+                                    1. Chỉnh sửa giao diện Họp giao ban <br>
+                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                    2. Chỉnh sửa giao diện Họp giao ban <br>
+                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal_body-title fw-bolder">II. VẤN ĐỀ TỒN ĐỌNG</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                                <div class="mt-4 modal_body-title">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Vấn đề</th>
+                                            <th scope="col">Người nêu</th>
+                                            <th scope="col">Nguyên nhân</th>
+                                            <th scope="col">Hướng giải quyết</th>
+                                            <th scope="col">PIC</th>
+                                            <th scope="col">Thời hạn</th>
+                                            <th scope="col">Tình trạng</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
+                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
+                                            <td>Sẽ gửi trong tuần</td>
+                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                            <td>05/04/2023</td>
+                                            <td>Có hướng giải quyết</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">2</th>
+                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
+                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
+                                            <td>Sẽ gửi trong tuần</td>
+                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                            <td>05/04/2023</td>
+                                            <td>Có hướng giải quyết</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">3</th>
+                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
+                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
+                                            <td>Sẽ gửi trong tuần</td>
+                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                            <td>05/04/2023</td>
+                                            <td>Có hướng giải quyết</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ms-auto">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ms-auto">
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ms-auto">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <p class="modal_body-title"></p>
+                                <img src="" height="80px" alt="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 ms-auto">
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+
     {{-- Xóa thuộc tính --}}
     <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -886,6 +1054,40 @@
             </div>
         </div>
     </div>
+
+    {{-- Modal title other (khác) --}}
+    <div class="modal fade" id="orther" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM Vị trí/Chức danh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Đơn vị công tác<span class="text-danger">*</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" placeholder="Nhập đơn vị công tác">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
@@ -903,4 +1105,6 @@
     <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 @endsection

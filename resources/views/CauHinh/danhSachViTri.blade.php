@@ -50,80 +50,34 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($listPositions->data as $value)
                                                         <tr>
                                                             <th scope="row">
                                                                 <div
                                                                     class="d-flex justify-content-center align-items-center">
-                                                                    1</div>
+                                                                    {{ $loop->iteration }}
+                                                                </div>
                                                             </th>
                                                             <td>
                                                                 <div>AMKT</div>
                                                             </td>
                                                             <td>
-                                                                <div>Trợ lý Marketing</div>
+                                                                <div>{{ $value->name}}</div>
                                                             </td>
                                                             <td>
                                                                 <div>Chuyên viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>Quản trị Nhãn</div>
+                                                                <div>{{ $value->parent}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div>{{ $value->description}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>1</div>
+                                                                <div>{{ $value->max_employees}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>182.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    2</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>ACT</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản lý Activation</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nhân viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trade Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>4</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>624.000.000</div>
+                                                                <div>{{ $value->salary_fund}}</div>
                                                             </td>
                                                             <td>
                                                                 <div data-bs-toggle="modal"
@@ -134,156 +88,12 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaViTriChucDanh{{ $value->id}}">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    3</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>ACT</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản lý Activation</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Chuyên viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trade Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>2</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>364.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    4</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>SEO</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Content SEO</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nhân viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Digital Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>2</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>312.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    5</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>STND</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Sáng tạo nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trưởng đơn vị</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Sáng tạo Nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>1</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>260.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
+                                                                        data-bs-target="#xoaViTri{{ $value->id}}">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
@@ -291,6 +101,167 @@
                                                             </td>
                                                         </tr>
 
+                                                        {{-- Xóa Vi tri--}}
+                                                        <div class="modal fade" id="xoaViTri{{ $value->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa vị trí</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Bạn có thực sự muốn xoá vị trí này không?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                        <form
+                                                                            action="/danh-sach-vi-tri/{{ $value->id }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                                                        
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                            <!-- Modal Sua Vi Tri chức danh -->
+                                                            <div class="modal fade" id="suaViTriChucDanh{{ $value->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header text-center">
+                                                                        <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Vị trí/Chức danh</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+
+                                                                    <form method="POST" action="/danh-sach-vi-tri/{{ $value->id }}">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="d-flex align-items-center mb-3">
+                                                                                        <div class="d-flex col-sm-4">
+                                                                                            <div class="modal_body-title">Mã vị trí<span class="text-danger">*</span></div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input class="form-control" type="text" value="AMKT">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="d-flex align-items-center">
+                                                                                        <div class="d-flex col-sm-4">
+                                                                                            <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input class="form-control" type="text" name="name" value="{{ $value->name}}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="d-flex align-items-center">
+                                                                                        <div class="d-flex col-sm-4">
+                                                                                            <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-8 d-flex align-items-center">
+                                                                                            <select class="selectpicker" title="Chọn cấp nhân sự">
+                                                                                                <option selected>Chủ tịch HĐQT</option>
+                                                                                                <option>Tổng Giám đốc</option>
+                                                                                                <option>Phó Tổng Giám đốc</option>
+                                                                                                <option>Giám đốc điều hành</option>
+                                                                                                <option>Quản lý cấp cao</option>
+                                                                                                <option>Quản lý cấp trung</option>
+                                                                                                <option>Trưởng phòng</option>
+                                                                                                <option>Phó phòng</option>
+                                                                                                <option>Trưởng nhóm</option>
+                                                                                                <option>Chuyên viên</option>
+                                                                                                <option>Nhân viên</option>
+                                                                                            </select>
+                                                                                            <div class="modal_list-more" data-bs-toggle="modal"
+                                                                                                data-bs-target="#danhsachChucDanh">
+                                                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="d-flex align-items-center mb-3">
+                                                                                        <div class="d-flex col-sm-4">
+                                                                                            <div class="modal_body-title">Đơn vị công tác<span class="text-danger">*</span></div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-8">
+                                                                                            <select class="selectpicker" title="Chọn đơn vị công tác">
+                                                                                                <option selected>Cung ứng</option>
+                                                                                                <option>Trade Marketing</option>
+                                                                                                <option>Digital Marketing</option>
+                                                                                                <option>Truyền thông</option>
+                                                                                                <option>Quản trị Nhãn/Đào tạo</option>
+                                                                                                <option>Kho & Giao vận</option>
+                                                                                                <option>Hành chính nhân sự</option>
+                                                                                                <option>Kế toán</option>
+                                                                                                <option>Tài chính</option>
+                                                                                                <option>Dịch vụ bán hàng</option>
+                                                                                                <option>Kinh doanh OTC</option>
+                                                                                                <option>Kinh doanh ETC</option>
+                                                                                                <option>Kinh doanh MT</option>
+                                                                                                <option>Kinh doanh online</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="d-flex align-items-center mb-3">
+                                                                                        <div class="d-flex col-sm-4">
+                                                                                            <div class="modal_body-title">Định biên<span class="text-danger">*</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input class="form-control" type="number" name="max_employees" value="{{ $value->max_employees}}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="d-flex align-items-center mb-3">
+                                                                                        <div class="d-flex col-sm-4">
+                                                                                            <div class="modal_body-title">Quỹ lương năm<span class="text-danger">*</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input class="form-control" type="text" name="salary_fund" value="{{ $value->salary_fund}}" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="d-flex align-items-center mb-3">
+                                                                                        <div class="d-flex col-sm-4">
+                                                                                            <div class="modal_body-title">Gói trang bị<span class="text-danger">*</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input class="form-control" type="text" readonly value="2 gói"/>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Hủy</button>
+                                                                            <button type="submit" class="btn btn-danger">Lưu</button>
+                                                                        </div>
+
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -2265,129 +2236,135 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">THÊM Vị trí/Chức danh</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Mã vị trí<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" placeholder="Nhập mã vị trí">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" placeholder="Nhập tên vị trí">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8 d-flex align-items-center">
-                                    <select class="selectpicker" title="Chọn Cấp nhân sự">
-                                        <option>Cung ứng</option>
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Truyền thông</option>
-                                        <option>Quản trị Nhãn/Đào tạo</option>
-                                        <option>Kho & Giao vận</option>
-                                        <option>Hành chính nhân sự</option>
-                                        <option>Kế toán</option>
-                                        <option>Tài chính</option>
-                                        <option>Dịch vụ bán hàng</option>
-                                        <option>Kinh doanh OTC</option>
-                                        <option>Kinh doanh ETC</option>
-                                        <option>Kinh doanh MT</option>
-                                        <option>Kinh doanh online</option>
-                                    </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachPhongBan">
-                                        <i class="bi bi-three-dots-vertical"></i>
+                <form action="/danh-sach-vi-tri" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Mã vị trí<span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập mã vị trí">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8 d-flex align-items-center">
-                                    <select class="selectpicker" title="Chọn cấp nhân sự">
-                                        <option>Chủ tịch HĐQT</option>
-                                        <option>Tổng Giám đốc</option>
-                                        <option>Phó Tổng Giám đốc</option>
-                                        <option>Giám đốc điều hành</option>
-                                        <option>Quản lý cấp cao</option>
-                                        <option>Quản lý cấp trung</option>
-                                        <option>Trưởng phòng</option>
-                                        <option>Phó phòng</option>
-                                        <option>Trưởng nhóm</option>
-                                        <option>Chuyên viên</option>
-                                        <option>Nhân viên</option>
-                                    </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachChucDanh">
-                                        <i class="bi bi-three-dots-vertical"></i>
+    
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập tên vị trí" name="name">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Định biên<span class="text-danger">*</span>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
                                     </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="number">
+                                    <div class="col-sm-8 d-flex align-items-center">
+                                        <select class="selectpicker" title="Chọn Cấp nhân sự">
+                                            <option>Cung ứng</option>
+                                            <option>Trade Marketing</option>
+                                            <option>Digital Marketing</option>
+                                            <option>Truyền thông</option>
+                                            <option>Quản trị Nhãn/Đào tạo</option>
+                                            <option>Kho & Giao vận</option>
+                                            <option>Hành chính nhân sự</option>
+                                            <option>Kế toán</option>
+                                            <option>Tài chính</option>
+                                            <option>Dịch vụ bán hàng</option>
+                                            <option>Kinh doanh OTC</option>
+                                            <option>Kinh doanh ETC</option>
+                                            <option>Kinh doanh MT</option>
+                                            <option>Kinh doanh online</option>
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#danhsachPhongBan">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Quỹ lương năm<span class="text-danger">*</span>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
                                     </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" readonly />
+                                    <div class="col-sm-8 d-flex align-items-center">
+                                        <select class="selectpicker" title="Chọn cấp nhân sự">
+                                            <option>Chủ tịch HĐQT</option>
+                                            <option>Tổng Giám đốc</option>
+                                            <option>Phó Tổng Giám đốc</option>
+                                            <option>Giám đốc điều hành</option>
+                                            <option>Quản lý cấp cao</option>
+                                            <option>Quản lý cấp trung</option>
+                                            <option>Trưởng phòng</option>
+                                            <option>Phó phòng</option>
+                                            <option>Trưởng nhóm</option>
+                                            <option>Chuyên viên</option>
+                                            <option>Nhân viên</option>
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#danhsachChucDanh">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Gói trang bị<span class="text-danger">*</span>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Định biên<span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" name="max_employees">
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" readonly />
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Quỹ lương năm<span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" name="salary_fund"  />
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Gói trang bị<span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" readonly />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Hủy</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
 
     <!-- Modal Sua Vi Tri chức danh -->
-    <div class="modal fade" id="suaViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal fade" id="suaViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
@@ -2511,7 +2488,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Modal TRANG BỊ HÀNH CHÍNH -->
     <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"

@@ -3,7 +3,8 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\TargetController;
-use App\Http\Controllers\Api\TargetDetailController;
+use App\Http\Controllers\Api\DepartmentController;
+use App\Http\Controllers\Api\PositionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -30,25 +31,34 @@ Route::get('/', function () {
 })->middleware('auth.role:user,admin,manager');
 
 // Cấu hình
-Route::get('ho-so-don-vi', function () {
-    return view('CauHinh.hoSoDonVi');
-});
-Route::get('danh-sach-phong-ban', function () {
-    return view('CauHinh.danhSachPhongBan');
-});
-Route::get('danh-sach-vi-tri', function () {
-    return view('CauHinh.danhSachViTri');
-});
+// Route::get('ho-so-don-vi', function () {
+//     return view('CauHinh.hoSoDonVi');
+// });
+// Route::get('danh-sach-phong-ban', function () {
+//     return view('CauHinh.danhSachPhongBan');
+// });
+// Route::get('danh-sach-vi-tri', function () {
+//     return view('CauHinh.danhSachViTri');
+// });
 Route::get('danh-sach-thanh-vien', function () {
     return view('CauHinh.danhSachThanhVien');
 });
 
-
+// danh sách vị trí
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
-    Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
-    Route::post('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'create']);
-    Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'index']);
-    Route::put('/phong-ban/{id}', [\App\Http\Controllers\Api\DepartmentController::class, 'update']);
+    Route::get('danh-sach-vi-tri', [PositionController::class, 'index']);
+    Route::post('danh-sach-vi-tri', [PositionController::class, 'store']);
+    Route::put('danh-sach-vi-tri/{id}', [PositionController::class, 'update']);
+    Route::delete('danh-sach-vi-tri/{id}', [PositionController::class, 'delete']);
+});
+
+
+// hồ sơ đơn vị
+Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
+    Route::get('ho-so-don-vi', [DepartmentController::class, 'index']);
+    Route::post('ho-so-don-vi', [DepartmentController::class, 'store']);
+    Route::put('ho-so-don-vi/{id}', [DepartmentController::class, 'update']);
+    Route::delete('ho-so-don-vi/{id}', [DepartmentController::class, 'delete']);
 });
 
 //kpi key
@@ -84,10 +94,12 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 
 
+// Màn báo lỗi
+Route::get('404-not-found', function () {
+    return view('404NotFound');
+});
 
-// Route::get('dinh-muc-lao-dong', function () {
-//     return view('CauHinh.dinhMucLaoDong');
-// });
+
 // Route::get('danh-muc-dinh-muc', function () {
 //     return view('CauHinh.danhMucDinhMuc');
 // });
@@ -97,7 +109,7 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 
 
-Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
+// Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
 
 
 // Quản lý nhân sự
@@ -146,9 +158,10 @@ Route::get('giao-viec', function () {
 // VBDH
 
 // Orther
-// Route::get('thong-tin-ca-nhan', function () {
-//     return view('page.information');
-// });
+Route::get('thong-tin-ca-nhan', function () {
+    return view('page.information.profile');
+});
+
 Route::get('kpi-nhan-vien', function () {
     return view('page.staff.kpiStaff');
 });

@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
 
-class DepartmentController extends Controller
+class PositionController extends Controller
 {
     private $dwtService;
     //contructor
@@ -32,16 +32,17 @@ class DepartmentController extends Controller
             $limit = $request->get('limit');
             $data = $this->dwtService->searchKpiTargets($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
+            $listPositions = $this->dwtService->listPositions();
 
-            return view('Cauhinh.hoSoDonVi')
-                ->with('listDepartments', $listDepartments);
+            return view('CauHinh.danhSachViTri')
+                ->with('data', $data)
+                ->with('listDepartments', $listDepartments)
+                ->with('listPositions', $listPositions);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('Cauhinh.hoSoDonVi')->with('listDepartments', []);
+            return view('CauHinh.danhSachViTri')->with('listPositions', []);
         }
     }
-
-
 
     public function store(Request $request)
     {
@@ -49,8 +50,10 @@ class DepartmentController extends Controller
 
             $data = $request->validate([
                 'name' => 'required',
+                'salary_fund' => 'required|numeric',
+                'max_employees' => 'required|numeric',
             ]);
-            $this->dwtService->createDepartment($data);
+            $this->dwtService->createPosition($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();
@@ -63,8 +66,10 @@ class DepartmentController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
+                'salary_fund' => 'nullable|numeric',
+                'max_employees' => 'nullable|numeric',
             ]);
-            $this->dwtService->updateDepartment($id, $data);
+            $this->dwtService->updatePosition($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();
@@ -75,7 +80,7 @@ class DepartmentController extends Controller
     public function delete($id)
     {
         try {
-            $this->dwtService->deleteDepartment($id);
+            $this->dwtService->deletePosition($id);
             return back()->with('success', 'Xóa thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();
