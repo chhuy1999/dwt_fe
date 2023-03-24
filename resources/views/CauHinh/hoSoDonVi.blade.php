@@ -198,7 +198,7 @@
                                                                                                 <div class="modal_body-title">Tên đơn vị<span class="text-danger">*</span></div>
                                                                                             </div>
                                                                                             <div class="col-sm-8">
-                                                                                                <input class="form-control" type="text" value="{{ $value->name}}">
+                                                                                                <input class="form-control" type="text" value="{{ $value->name}}" name="name">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -1823,6 +1823,100 @@
             </div>
         </div>
     </div>
+
+    {{-- Modal SỬA ĐƠN VỊ/PHÒNG BAN --}}
+    {{-- <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">SỬA ĐƠN VỊ/PHÒNG BAN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Tên đơn vị<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="Digital Marketing">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Mã đơn vị<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="DMKT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Thuộc đơn vị<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="CTCP Mastertran">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Cấp tổ chức<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Trụ sở chính<span class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex col-sm-2">
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ*<span
+                                            class="text-danger">*</span></div>
+                                </div>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>    --}}
 
     
 @endsection

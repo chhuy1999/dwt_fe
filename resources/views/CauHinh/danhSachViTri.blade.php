@@ -159,7 +159,7 @@
                                                                                             <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
                                                                                         </div>
                                                                                         <div class="col-sm-8">
-                                                                                            <input class="form-control" type="text" value="{{ $value->name}}">
+                                                                                            <input class="form-control" type="text" name="name" value="{{ $value->name}}">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -222,7 +222,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-sm-8">
-                                                                                            <input class="form-control" type="number" value="{{ $value->max_employees}}">
+                                                                                            <input class="form-control" type="number" name="max_employees" value="{{ $value->max_employees}}">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -233,7 +233,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-sm-8">
-                                                                                            <input class="form-control" type="text" value="{{ $value->salary_fund}}" />
+                                                                                            <input class="form-control" type="text" name="salary_fund" value="{{ $value->salary_fund}}" />
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
