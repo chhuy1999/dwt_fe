@@ -3574,7 +3574,7 @@
     
     <!-- Modal Vấn đề tồn đọng -->
     <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
@@ -3582,36 +3582,35 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-6 mb-3">
+                        <div class="col-sm-7 mb-3">
                             <input type="text" class="form-control form-control-plaintext" id="staticEmail"
                                 style="text-indent: 8px" placeholder="Họ và tên">
                         </div>
-                        <div class="col-sm-6 mb-3 position-relative">
+                        <div class="col-sm-5 mb-3 position-relative">
                             <input id="gioTaoVanDeTonDong" placeholder="Giờ tạo" class="form-control" type="text" />
                             <i class="bi bi-alarm style_pickdate-two"></i>
                         </div>
-                        <div class="col-sm-6 mb-3">
+                        <div class="col-sm-7 mb-3">
                             <select class="selectpicker" title="Vị trí">
                                 <option value="2">Phòng ban 1</option>
                                 <option value="2">Phòng ban 2</option>
                                 <option value="2">Phòng ban 3</option>
                             </select>
                         </div>
-                        <div class="col-sm-6 mb-3 position-relative">
-                            <input id="hopGiaoBanNgayVanDeTonDong" placeholder="Họp giao ban ngày" class="form-control" type="text" />
+                        <div class="col-sm-5 mb-3 position-relative">
+                            <input id="hopGiaoBanNgayVanDeTonDong" placeholder="Thời gian" class="form-control" type="text" />
                             <i class="bi bi-calendar-plus style_pickdate-two"></i>
                         </div>
                         <div class="col-sm-12 mb-3">
                             <textarea name="" class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
                         </div>
-                        <div class="col-sm-6 mb-3">
-                            <select class="selectpicker" title="Phân loại">
-                                <option value="2">Phân loại 1</option>
-                                <option value="2">Phân loại 2</option>
-                                <option value="2">Phân loại 3</option>
+                        <div class="col-sm-7 mb-3">
+                            <select class="selectpicker" title="Cấp giải quyết">
+                                <option value="1">Giải quyết</option>
+                                <option value="2">Than phiền</option>
                             </select>
                         </div>
-                        <div class="col-sm-6 mb-3 position-relative">
+                        <div class="col-sm-5 mb-3 position-relative">
                             <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" />
                             <i class="bi bi-calendar-plus style_pickdate-two"></i>
                         </div>

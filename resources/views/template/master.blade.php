@@ -189,10 +189,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                             <li class="header_more-item">
                                                 <a href="danh-sach-vi-tri" class="header_more-link">Danh sách vị trí</a>
                                             </li>
-                                            <li class="header_more-item">
-                                                <a href="danh-sach-phong-ban" class="header_more-link">Danh mục phòng ban</a>
-                                            </li>
-                                            
                                         </ul>
                                     </li>
                                     <li class="header_submenu-items more position-relative">
@@ -238,11 +234,14 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                     </li>
                                     <li class="header_submenu-items more position-relative">
                                         <a href="#" class="header_submenu-link more_btn">
-                                            Hệ thống <i class="bi bi-chevron-right"></i>
+                                            Biểu đồ <i class="bi bi-chevron-right"></i>
                                         </a>
                                         <ul class="header_more">
                                             <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Biểu đồ</a>
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách key chart</a>
+                                            </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách chart</a>
                                             </li>
                                         </ul>
                                     </li>

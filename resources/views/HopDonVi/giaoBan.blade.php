@@ -3,36 +3,37 @@
 @section('title', 'Biên bản họp Giao Ban')
 
 @section('header-style')
-<style>
-    .mainSection_width-select{
-        width: 140px!important;
-        border: none;
-    }
+    <style>
+        .mainSection_width-select {
+            width: 140px !important;
+            border: none;
+        }
 
-    .mainSection_width-select button.btn.dropdown-toggle.btn-light {
-        padding: 5px 0;
-        background-color: transparent;
-        outline: none;
-        border: none;
-    }
-    .style_input {
-        background-color: transparent;
-        outline: none;
-        border: none;
-        box-shadow: none!important;
-    }
-    .mainSection_width-select button.btn.dropdown-toggle.btn-light:hover {
-        background-color: transparent;
-        outline: none;
-        border: none;
-        box-shadow: none;
-    }
+        .mainSection_width-select button.btn.dropdown-toggle.btn-light {
+            padding: 5px 0;
+            background-color: transparent;
+            outline: none;
+            border: none;
+        }
 
-    .bootstrap-select>.dropdown-toggle:after {
-        display: none;
-    }
-    
-</style>
+        .style_input {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            box-shadow: none !important;
+        }
+
+        .mainSection_width-select button.btn.dropdown-toggle.btn-light:hover {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            box-shadow: none;
+        }
+
+        .bootstrap-select>.dropdown-toggle:after {
+            display: none;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -44,7 +45,7 @@
                     <div class="mainSection_heading d-flex align-items-center justify-content-between">
                         <div class="mainSection_card position-relative">
                             <div class="mainSection_content row">
-                                <div class="col-sm-4" >Đơn vị: </div>
+                                <div class="col-sm-4">Đơn vị: </div>
                                 <div class="col-sm-8">
                                     <strong>Kế toán</strong>
                                 </div>
@@ -52,8 +53,7 @@
                             <div class="mainSection_content row">
                                 <div class="col-sm-4">Chủ trì: </div>
                                 <div class="col-sm-8">
-                                    <select class="selectpicker mainSection_width-select"
-                                        data-actions-box="true"
+                                    <select class="selectpicker mainSection_width-select" data-actions-box="true"
                                         data-live-search="true" title="Chọn chủ trì..."
                                         data-live-search-placeholder="Tìm kiếm...">
                                         <option>Nguyễn Ngọc Bảo</option>
@@ -70,16 +70,17 @@
                                 </h5>
                             </div>
                             <div>
-                                <select class="form-select form-select-lg ms-2 fs-4 style_input" >
-                                    <option >Ngày</option>
-                                    <option >Tuần</option>
-                                    <option >Tháng</option>
-                                    <option >Quý</option>
+                                <select class="form-select form-select-lg ms-2 style_input fw-bolder">
+                                    <option>Ngày</option>
+                                    <option>Tuần</option>
+                                    <option>Tháng</option>
+                                    <option>Quý</option>
                                 </select>
                             </div>
                         </div>
-                        
-                        <div id="mainSection_width" class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
+
+                        <div id="mainSection_width"
+                            class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
                             <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
@@ -99,7 +100,8 @@
                                                     <div class="col-md-7">
                                                         <div class="d-flex align-items-center mb-3">
                                                             <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
+                                                                <img style="height:14px; width:14px; margin-right:6px"
+                                                                    src="{{ asset('assets/img/time.svg') }}" />
                                                             </div>
                                                             <div id="date_time-hopgiaoban"
                                                                 class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
@@ -112,7 +114,8 @@
                                                         </div>
                                                         <div class="d-flex align-items-start">
                                                             <div class="d-flex">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
+                                                                <img style="height:14px; width:14px; margin-right:6px"
+                                                                    src="{{ asset('assets/img/muiten.svg') }}" />
                                                             </div>
                                                             <div style="flex:1">
                                                                 <textarea name="" id="" rows="1" cols="" class="form-control"
@@ -121,10 +124,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <div
-                                                            class="mb-3 d-flex align-items-center justify-content-between">
+                                                        <div class="mb-3 d-flex align-items-center justify-content-between">
                                                             <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
+                                                                <img style="height:14px; width:14px; margin-right:6px"
+                                                                    src="{{ asset('assets/img/pencil.svg') }}" />
                                                             </div>
                                                             <div style="flex:1">
                                                                 <select class="selectpicker" multiple
@@ -143,7 +146,8 @@
                                                         </div>
                                                         <div class="mt-3 d-flex align-items-center justify-content-between">
                                                             <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
+                                                                <img style="height:14px; width:14px; margin-right:6px"
+                                                                    src="{{ asset('assets/img/person-check.svg') }}" />
                                                             </div>
                                                             <div style="flex:1">
                                                                 <select class="selectpicker" multiple
@@ -285,60 +289,261 @@
                             <div class="card mb-2">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <div class="card-title mb-2">Nội dung trao đổi</div>
-                                            <div class="row">
-                                            <div class="col-md-11 col-lg-9 col-xl-12">
-                                                <div class="d-flex flex-start mb-4">
-                                                <img class="rounded-circle shadow-1-strong me-3"
-                                                    src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar" width="65"
-                                                    height="65" />
-                                                <div class="card w-100">
-                                                    <div class="card-body p-3">
-                                                    <div class="">
-                                                        <h5>Đặng Vũ Lam Mai</h5>
-                                                        <p class="fs-6 mb-1">3 tiếng trước</p>
-                                                        <p class="mb-2">
-                                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint cupiditate in aspernatur a quasi porro beatae aliquid sapiente doloremque, saepe corrupti quas iure amet harum accusamus dolorem omnis ducimus expedita?
-                                                        </p>
-                                        
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="d-flex align-items-center">
-                                                            <a href="#!" class="link-muted text-danger fs-5 me-2"><i class="bi bi-hand-thumbs-up me-1"></i>132</a>
-                                                            <a href="#!" class="link-muted text-danger fs-5"><i class="bi bi-hand-thumbs-down me-1"></i>15</a>
+                                        <div class="card-title mb-3">Nội dung trao đổi</div>
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="col-md-12 col-lg-10 col-xl-12">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="d-flex flex-start">
+                                                            <img class="rounded-circle shadow-1-strong me-3"
+                                                                src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
+                                                                width="50" height="50" />
+                                                            <div class="flex-grow-1 flex-shrink-1">
+                                                                <div>
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center">
+                                                                        <p class="mb-1 fw-bolder fs-5">Nguyễn Ngọc Bảo</p>
+                                                                    </div>
+                                                                    <p class="mb-0">
+                                                                        It is a long established fact that a reader will be
+                                                                        distracted by
+                                                                        the readable content of a page.
+                                                                    </p>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <a href="#"
+                                                                            class="link-muted text-danger fs-6 me-4"><i
+                                                                                class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                        {{-- <a href="#"
+                                                                            class="link-muted text-danger fs-6"><i
+                                                                                class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                        <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                        <p class="fs-6 mb-1">5 phút trước</p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="d-flex flex-start mt-4">
+                                                                    <a class="me-3" href="#">
+                                                                        <img class="rounded-circle shadow-1-strong"
+                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                            alt="avatar" width="50"
+                                                                            height="50" />
+                                                                    </a>
+                                                                    <div class="flex-grow-1 flex-shrink-1">
+                                                                        <div>
+                                                                            <div
+                                                                                class="d-flex justify-content-between align-items-center">
+                                                                                <p class="mb-1 fw-bolder fs-5">
+                                                                                    Nguyễn Ngọc Bảo
+                                                                                </p>
+                                                                            </div>
+                                                                            <p class="mb-0">
+                                                                                letters, as opposed to using 'Content here,
+                                                                                content here',
+                                                                                making it look like readable English.
+                                                                            </p>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <a href="#"
+                                                                                    class="link-muted text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                {{-- <a href="#"
+                                                                                    class="link-muted text-danger fs-6"><i
+                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="d-flex flex-start mt-4">
+                                                                    <a class="me-3" href="#">
+                                                                        <img class="rounded-circle shadow-1-strong"
+                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                            alt="avatar" width="50"
+                                                                            height="50" />
+                                                                    </a>
+                                                                    <div class="flex-grow-1 flex-shrink-1">
+                                                                        <div>
+                                                                            <div
+                                                                                class="d-flex justify-content-between align-items-center">
+                                                                                <p class="mb-1 fw-bolder fs-5">
+                                                                                    Nguyễn Ngọc Bảo 
+                                                                                </p>
+                                                                            </div>
+                                                                            <p class="mb-0">
+                                                                                the majority have suffered alteration in
+                                                                                some form, by
+                                                                                injected humour, or randomised words.
+                                                                            </p>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <a href="#"
+                                                                                    class="link-muted text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                {{-- <a href="#"
+                                                                                    class="link-muted text-danger fs-6"><i
+                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <a href="#!" class="link-muted text-danger fs-5"><i class="bi bi-reply me-1"></i> Trả lời</a>
+
+                                                        <div class="d-flex flex-start mt-4">
+                                                            <img class="rounded-circle shadow-1-strong me-3"
+                                                                src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
+                                                                width="50" height="50" />
+                                                            <div class="flex-grow-1 flex-shrink-1">
+                                                                <div>
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center">
+                                                                        <p class="mb-1 fw-bolder fs-5">
+                                                                            Nguyễn Ngọc Bảo 
+                                                                        </p>
+
+                                                                    </div>
+                                                                    <p class="mb-0">
+                                                                        The standard chunk of Lorem Ipsum used since the
+                                                                        1500s is
+                                                                        reproduced below for those interested. Sections
+                                                                        1.10.32 and
+                                                                        1.10.33.
+                                                                    </p>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <a href="#"
+                                                                            class="link-muted text-danger fs-6 me-4"><i
+                                                                                class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                        {{-- <a href="#"
+                                                                            class="link-muted text-danger fs-6"><i
+                                                                                class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                        <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                        <p class="fs-6 mb-1">5 phút trước</p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="d-flex flex-start mt-4">
+                                                                    <a class="me-3" href="#">
+                                                                        <img class="rounded-circle shadow-1-strong"
+                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                            alt="avatar" width="50"
+                                                                            height="50" />
+                                                                    </a>
+                                                                    <div class="flex-grow-1 flex-shrink-1">
+                                                                        <div>
+                                                                            <div
+                                                                                class="d-flex justify-content-between align-items-center">
+                                                                                <p class="mb-1 fw-bolder fs-5">
+                                                                                    Nguyễn Ngọc Bảo 
+                                                                                </p>
+                                                                            </div>
+                                                                            <p class="mb-0">
+                                                                                Cras sit amet nibh libero, in gravida nulla.
+                                                                                Nulla vel metus
+                                                                                scelerisque ante sollicitudin commodo. Cras
+                                                                                purus odio,
+                                                                                vestibulum in vulputate at, tempus viverra
+                                                                                turpis.
+                                                                            </p>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <a href="#"
+                                                                                    class="link-muted text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                {{-- <a href="#"
+                                                                                    class="link-muted text-danger fs-6"><i
+                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="d-flex flex-start mt-4">
+                                                                    <a class="me-3" href="#">
+                                                                        <img class="rounded-circle shadow-1-strong"
+                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                            alt="avatar" width="50"
+                                                                            height="50" />
+                                                                    </a>
+                                                                    <div class="flex-grow-1 flex-shrink-1">
+                                                                        <div>
+                                                                            <div
+                                                                                class="d-flex justify-content-between align-items-center">
+                                                                                <p class="mb-1 fw-bolder fs-5">
+                                                                                    Nguyễn Ngọc Bảo 
+                                                                                </p>
+                                                                            </div>
+                                                                            <p class="mb-0">
+                                                                                a Latin professor at Hampden-Sydney College
+                                                                                in Virginia,
+                                                                                looked up one of the more obscure Latin
+                                                                                words, consectetur
+                                                                            </p>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <a href="#"
+                                                                                    class="link-muted text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                {{-- <a href="#"
+                                                                                    class="link-muted text-danger fs-6"><i
+                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="d-flex flex-start mt-4">
+                                                                    <a class="me-3" href="#">
+                                                                        <img class="rounded-circle shadow-1-strong"
+                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                            alt="avatar" width="50"
+                                                                            height="50" />
+                                                                    </a>
+                                                                    <div class="flex-grow-1 flex-shrink-1">
+                                                                        <div>
+                                                                            <div
+                                                                                class="d-flex justify-content-between align-items-center">
+                                                                                <p class="mb-1 fw-bolder fs-5">
+                                                                                    Nguyễn Ngọc Bảo 
+                                                                                </p>
+                                                                            </div>
+                                                                            <p class="mb-0">
+                                                                                Autem, totam debitis suscipit saepe sapiente
+                                                                                magnam officiis
+                                                                                quaerat necessitatibus odio assumenda,
+                                                                                perferendis quae iusto
+                                                                                labore laboriosam minima numquam impedit
+                                                                                quam dolorem!
+                                                                            </p>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <a href="#"
+                                                                                    class="link-muted text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                {{-- <a href="#"
+                                                                                    class="link-muted text-danger fs-6"><i
+                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                        
-                                                <div class="d-flex flex-start">
-                                                <img class="rounded-circle shadow-1-strong me-3"
-                                                src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar" width="65"
-                                                    height="65" />
-                                                <div class="card w-100">
-                                                    <div class="card-body p-3">
-                                                    <div class="">
-                                                        <h5>Đặng Vũ Lam Mai</h5>
-                                                        <p class="fs-6 mb-1">5 phút trước</p>
-                                                        <p class="mb-2">
-                                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint cupiditate in aspernatur a quasi porro beatae aliquid sapiente doloremque, saepe corrupti quas iure amet harum accusamus dolorem omnis ducimus expedita?
-                                                        </p>
-                                        
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="d-flex align-items-center">
-                                                            <a href="#!" class="link-muted text-danger fs-5 me-2"><i class="bi bi-hand-thumbs-up me-1"></i>158</a>
-                                                            <a href="#!" class="link-muted text-danger fs-5"><i class="bi bi-hand-thumbs-down me-1"></i>13</a>
-                                                        </div>
-                                                        <a href="#!" class="link-muted text-danger fs-5"><i class="bi bi-reply me-1"></i> Trả lời</a>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                </div>
                                                 </div>
                                             </div>
-                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -706,7 +911,7 @@
 
                                                     </tbody>
                                                 </table>
-                                                <div data-repeater-create class="add-row-btn" >
+                                                <div data-repeater-create class="add-row-btn">
                                                     <i class="bi bi-plus-circle"></i>
                                                 </div>
                                             </div>
@@ -729,7 +934,7 @@
                                     Duyệt 
                                 </a> --}}
                                 <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                                     data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
+                                    data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
                             </div>
                         </div>
                         <div class="col-lg-12 d-flex justify-content-end">
@@ -846,7 +1051,7 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <input class="form-control" type="text"
-                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                        value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                 </div>
                             </div>
                         </div>
@@ -877,7 +1082,7 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <input class="form-control" type="text"
-                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                        value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                 </div>
                             </div>
                         </div>
@@ -897,7 +1102,8 @@
                                     <div class="modal_body-title">Thời hạn <span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-6 position-relative">
-                                    <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                    <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control"
+                                        type="text">
                                     <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                             </div>
@@ -932,82 +1138,112 @@
     <div class="modal fade" id="duyetbienbanhop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 21cm">
             <div class="modal-content">
+
                 <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
+                    <div class="d-block text-center mb-3">
+                        <h5 class="modal-title w-100 fs-3">BIÊN BẢN HỌP GIAO BAN</h5>
+                        <p class="m-0 fs-5 fst-italic">Phòng Marketing</p>
+                    </div>
                     <div class="row">
-                        <div class="text-center" style="">
-                            <p class="text-uppercase fs-2 fw-bolder"  style="margin: 0">BIÊN BẢN HỌP GIAO BAN</p>
-                            <p>Phòng Marketing</p>
+                        <div class="col-sm-12">
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">23/03/2023 09:03 - 23/03/2023 10:03</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ đề:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">Họp báo cáo kết quả tuần 3 tháng 3/2023 phòng Marketing
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ trì:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">Nguyễn Vũ Nguyệt Minh - MTT123</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thư kí:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">Đặng Vũ Lam Mai - MTT239</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
+                                                    gia:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">Nguyễn Vũ Nguyệt Minh - MTT123, Đặng Vũ Lam Mai -
+                                                    MTT239, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng
+                                                    Vân - MTT125</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">Chu Văn Linh - MTT123, Nguyễn Ngọc Bảo - MTT124</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title fw-bolder">Thời gian:</div>
-                                <p class="mt-3" style="width:82%" type="text">23/03/2023 09:03 - 23/03/2023 10:03</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title fw-bolder">Chủ đề:</div>
-                                <p class="mt-3" type="text" style="width:82%">Họp báo cáo kết quả tuần 3 tháng 3/2023 phòng Marketing</p>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center  justify-content-between" >
-                                <div class="modal_body-title fw-bolder">Chủ trì:</div>
-                                <p class="mt-3" style="width:82%" type="text">Nguyễn Vũ Nguyệt Minh - MTT123</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title fw-bolder">Thư kí:</div>
-                                <p class="mt-3" style="width:82%" type="text">Đặng Vũ Lam Mai - MTT239</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title fw-bolder">Thành viên tham gia:</div>
-                                <p class="mt-3" style="width:82%" type="text">Nguyễn Vũ Nguyệt Minh - MTT123, Đặng Vũ Lam Mai - MTT239, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng Vân - MTT125</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class=" mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title fw-bolder">Thành viên vắng:</div>
-                                <p class="mt-3" style="width:82%" type="text">Chu Văn Linh - MTT123, Nguyễn Ngọc Bảo - MTT124</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title fw-bolder">I. NỘI DUNG CUỘC HỌP</div>
+                                <div class="modal-title fw-bolder">I. NỘI DUNG CUỘC HỌP</div>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center  justify-content-between">
                                 <div class="mt-3 modal_body-title">
                                     <p class="" type="text">
-                                    1. Chỉnh sửa giao diện Họp giao ban <br>
-                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                    2. Chỉnh sửa giao diện Họp giao ban <br>
-                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                    - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        1. Chỉnh sửa giao diện Họp giao ban <br>
+                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        2. Chỉnh sửa giao diện Họp giao ban <br>
+                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
                                     </p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal_body-title fw-bolder">II. VẤN ĐỀ TỒN ĐỌNG</div>
+                                <div class="modal-title fw-bolder">II. VẤN ĐỀ TỒN ĐỌNG</div>
                             </div>
                         </div>
                         <div class="col-sm-12">
-                                <div class="mt-4 modal_body-title">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                          <tr>
+                            <div class="mt-4 modal_body-title">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
                                             <th scope="col">STT</th>
                                             <th scope="col">Vấn đề</th>
                                             <th scope="col">Người nêu</th>
@@ -1016,10 +1252,10 @@
                                             <th scope="col">PIC</th>
                                             <th scope="col">Thời hạn</th>
                                             <th scope="col">Tình trạng</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
                                             <th scope="row">1</th>
                                             <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
                                             <td>Nguyễn Ngọc Bảo - MTT123</td>
@@ -1028,8 +1264,8 @@
                                             <td>Nguyễn Ngọc Bảo - MTT123</td>
                                             <td>05/04/2023</td>
                                             <td>Có hướng giải quyết</td>
-                                          </tr>
-                                          <tr>
+                                        </tr>
+                                        <tr>
                                             <th scope="row">2</th>
                                             <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
                                             <td>Nguyễn Ngọc Bảo - MTT123</td>
@@ -1038,8 +1274,8 @@
                                             <td>Nguyễn Ngọc Bảo - MTT123</td>
                                             <td>05/04/2023</td>
                                             <td>Có hướng giải quyết</td>
-                                          </tr>
-                                          <tr>
+                                        </tr>
+                                        <tr>
                                             <th scope="row">3</th>
                                             <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
                                             <td>Nguyễn Ngọc Bảo - MTT123</td>
@@ -1048,48 +1284,68 @@
                                             <td>Nguyễn Ngọc Bảo - MTT123</td>
                                             <td>05/04/2023</td>
                                             <td>Có hướng giải quyết</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="col-md-4 ms-auto">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 d-flex flex-column justify-content-between">
                             <div class="d-flex align-items-center justify-content-center">
-                                <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
+                                <div class="mt-3 modal_body-title fw-bolder">Trưởng bộ phận</div>
                             </div>
-                        </div>
-                        <div class="col-md-4 ms-auto">
                             <div class="d-flex align-items-center  justify-content-center">
                                 <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
                             </div>
-                        </div>
-                        <div class="col-md-4 ms-auto">
                             <div class="d-flex align-items-center justify-content-center">
                                 <p class="modal_body-title"></p>
-                                <img src="" height="80px" alt="" />
+                                <img src="" height="60" alt="" />
                             </div>
-                        </div>
-                        <div class="col-md-4 ms-auto">
                             <div class="d-flex align-items-center  justify-content-center">
                                 <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
                             </div>
                         </div>
-                        
+                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-3 modal_body-title fw-bolder">Thành viên tham gia</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <p class="modal_body-title m-0">
+                                    Nguyễn Ngọc Bảo, Hồ Thị Hồng Van, Đặng Lam Mai
+                                </p>
+                            </div>
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title m-0">Chúng tôi xác nhận nội dung cuộc hop</p>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
+                            </div>
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <p class="modal_body-title"></p>
+                                <img src="" height="60" alt="" />
+                            </div>
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-danger">Xác nhận</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger ps-5 pe-5" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Xác nhận</button>
                 </div>
             </div>
         </div>
-    </div>    
-    
+    </div>
+    </div>
+
 
     {{-- Xóa thuộc tính --}}
     <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1111,8 +1367,7 @@
     </div>
 
     {{-- Modal title other (khác) --}}
-    <div class="modal fade" id="orther" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="orther" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1135,14 +1390,14 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#themThanhVien">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
         </div>
     </div>
-    
+
 @endsection
 @section('footer-script')
     <!-- ChartJS -->

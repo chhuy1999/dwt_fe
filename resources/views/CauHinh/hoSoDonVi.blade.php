@@ -92,7 +92,7 @@
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
                                                     <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
                                                 </div>
-                                                    <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
+                                                    <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                         data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
                                                 </div>
                                             </div>

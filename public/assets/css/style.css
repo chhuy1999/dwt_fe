@@ -1295,6 +1295,7 @@ th {
     height: 100vh;
     line-height: var(--fz-20);
     background-color: var(--white-color-blur);
+    position: relative;
 }
 .mainSection {
     background-color: var(--white-color-blur);
@@ -1667,7 +1668,7 @@ th {
 }
 
 .main {
-    margin: 70px 0 50px;
+    padding: 70px 0 50px;
 }
 .mainContent {
     background-color: #4f5f71;

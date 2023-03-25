@@ -374,16 +374,14 @@
                                                     <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
                                                         nội
                                                         bộ quy mô"</div>
-                                                    <div class="mb-3 row">
+                                                    <div class="mb-3 row align-items-center">
                                                         <div class="col-md-7 mb-3">
                                                             <input type="text" class="form-control"
                                                                 value="Triển khai các sự kiện nội bộ quy mô"
                                                                 id="title" />
                                                         </div>
                                                         <div class="col-md-5 mb-3">
-                                                            <input type="text" class="form-control"
-                                                                value="Triển khai các sự kiện nội bộ quy mô"
-                                                                id="title" />
+                                                            <input type="text" name="daterange" class="form-control" placeholder="Thời hạn" />
                                                         </div>
                                                         <div class="col-md-9 mb-3">
                                                             <textarea class="form-control" name="" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
@@ -393,12 +391,14 @@
                                                                 placeholder="Manday"
                                                                 id="title" />
                                                         </div>
-                                                        <div class="col-md-7 mb-3">
-                                                            <textarea class="form-control" name="" id="" placeholder="Kế hoạch"></textarea>
+                                                        <div class="col-md-9 mb-3">
+                                                            <textarea class="form-control" rows="1" placeholder="Kế hoạch"></textarea>
                                                         </div>
-                                                        <div class="col-md-5 mb-3">
-                                                            <input type="text" name="daterange" class="form-control"
-                                                                    placeholder="Thời hạn" />
+                                                        <div class="col-md-3 mb-3">
+                                                            <div class="form-check">
+                                                                <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh">
+                                                                <label role="button" class="form-check-label user-select-none fs-5" for="datGiaTriKinhDoanh">Lưu thành mẫu</label>
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-6 mb-3">
                                                             <select class='selectpicker' title="Phụ trách">
@@ -417,7 +417,7 @@
                                                         <div class="repeater">
                                                             <div data-repeater-list="group-a">
                                                                 <div class="row" data-repeater-item>
-                                                                    <div class="col-md-9 mb-3">
+                                                                    <div class="col-md-8 mb-3">
                                                                         <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true">
                                                                                 <option>Số lượt khách hàng được chăm sóc</option>
                                                                                 <option>Số buổi Activation</option>
@@ -425,6 +425,9 @@
                                                                     </div>
                                                                     <div class="col-md-3 mb-3">
                                                                         <input type="number" class="form-control" placeholder="Giá trị"/>
+                                                                    </div>
+                                                                    <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                                        <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -438,11 +441,7 @@
 
                                                     </div>
                                                     
-                                                    <div class="justify-content-between d-flex">
-                                                        <div class="form-check">
-                                                            <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh">
-                                                            <label role="button" class="form-check-label user-select-none fs-5" for="datGiaTriKinhDoanh">Lưu thành mẫu</label>
-                                                        </div>
+                                                    <div class="justify-content-end d-flex">
                                                         <div class="action_btn">
                                                             <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
                                                             <div class="btn btn-danger px-4">Giao</div>
@@ -1416,6 +1415,7 @@
         $('#danhSachDinhMuc').DataTable({
             paging: true,
             ordering: false,
+            pageLength: 5,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',

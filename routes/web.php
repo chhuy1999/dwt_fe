@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\TargetController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\PositionController;
+use App\Http\Controllers\Api\TargetDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -94,10 +95,6 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 
 
-// Màn báo lỗi
-Route::get('404-not-found', function () {
-    return view('404NotFound');
-});
 
 
 // Route::get('danh-muc-dinh-muc', function () {
@@ -175,4 +172,9 @@ Route::get('ke-toan', function () {
 // Trang kinh doanh
 Route::get('kinh-doanh', function () {
     return view('page.sell.kinhdoanh');
+});
+
+// 404
+Route::fallback(function () {
+    return view('404');
 });
