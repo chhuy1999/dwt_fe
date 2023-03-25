@@ -20,8 +20,7 @@
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <label class="">Tháng</label>
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
     
@@ -174,6 +173,32 @@
                                                             </td>
                                                             <td>
                                                                 <div class="content_table">Màn</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="content_table">10</div>
+                                                            </td>
+                                                            <td class="border-end fw-bold">
+                                                                <div class="progress-half">
+                                                                    <div class="text-dark content_table">5</div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td scope="row">
+                                                                <div class="content_table">5</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="content_table justify-content-start"
+                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
+                                                                    role="button">
+                                                                    Viết bài
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="content_table">23/01</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="content_table">Bài</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table">10</div>
@@ -3549,7 +3574,7 @@
     
     <!-- Modal Vấn đề tồn đọng -->
     <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
@@ -3557,56 +3582,38 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="col-sm-2">
-                                    <div class="modal_body-title">Vấn đề tồn đọng</div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-plaintext" id="staticEmail"
-                                        style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
-                                </div>
-                            </div>
+                        <div class="col-sm-6 mb-3">
+                            <input type="text" class="form-control form-control-plaintext" id="staticEmail"
+                                style="text-indent: 8px" placeholder="Họ và tên">
                         </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-5">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-5">
-                                    <div class="modal_body-title">Cấp giải quyết</div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <select class="selectpicker" title="Chọn cấp giải quyết">
-                                        <option value="1">Công ty</option>
-                                        <option value="2">Phòng ban</option>
-                                    </select>
-                                </div>
-                            </div>
+                        <div class="col-sm-6 mb-3 position-relative">
+                            <input id="gioTaoVanDeTonDong" placeholder="Giờ tạo" class="form-control" type="text" />
+                            <i class="bi bi-alarm style_pickdate-two"></i>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Phân loại</div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn phân loại">
-                                        <option value="1">Cần giải quyết</option>
-                                        <option value="2">Than phiền</option>
-                                    </select>
-                                </div>
-                            </div>
+                        <div class="col-sm-6 mb-3">
+                            <select class="selectpicker" title="Vị trí">
+                                <option value="2">Phòng ban 1</option>
+                                <option value="2">Phòng ban 2</option>
+                                <option value="2">Phòng ban 3</option>
+                            </select>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4" style="margin: 0 4px 0 -4px">
-                                    <div class="modal_body-title">Thời hạn </div>
-                                </div>
-                                <div class="col-sm-8 position-relative">
-                                    <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                        type="text">
-                                    <i class="bi bi-calendar-plus style_pickdate"></i>
-                                </div>
-                            </div>
+                        <div class="col-sm-6 mb-3 position-relative">
+                            <input id="hopGiaoBanNgayVanDeTonDong" placeholder="Họp giao ban ngày" class="form-control" type="text" />
+                            <i class="bi bi-calendar-plus style_pickdate-two"></i>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                            <textarea name="" class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <select class="selectpicker" title="Phân loại">
+                                <option value="2">Phân loại 1</option>
+                                <option value="2">Phân loại 2</option>
+                                <option value="2">Phân loại 3</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6 mb-3 position-relative">
+                            <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" />
+                            <i class="bi bi-calendar-plus style_pickdate-two"></i>
                         </div>
                     </div>
                 </div>
@@ -4018,6 +4025,18 @@
             $('#vanDeTonDong').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
+            });
+            $('#gioTaoVanDeTonDong').datetimepicker({
+                format: 'H:i',
+                datepicker:false,
+            });
+            $('#thoiHanVanDeTonDong').datetimepicker({
+                format: 'd/m/Y',
+                timepicker:false,
+            });
+            $('#hopGiaoBanNgayVanDeTonDong').datetimepicker({
+                format: 'd/m/Y',
+                timepicker:false,
             });
         });
     </script>

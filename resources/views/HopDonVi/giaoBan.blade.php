@@ -15,6 +15,12 @@
         outline: none;
         border: none;
     }
+    .style_input {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        box-shadow: none!important;
+    }
     .mainSection_width-select button.btn.dropdown-toggle.btn-light:hover {
         background-color: transparent;
         outline: none;
@@ -57,20 +63,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
-                                <div style="">
-                                    <select style="font-size: 20px" class="form-select form-select-lg mb-3 fw-bold" >
-                                        <option >BIÊN BẢN HỌP GIAO BAN</option>
-                                        <option >BIÊN BẢN HỌP TỔNG KẾT TUẦN</option>
-                                        <option >BIÊN BẢN HỌP TỔNG KẾT THÁNG</option>
-                                        {{-- <option value="other" class="text-danger">Khác</option> --}}
-                                    </select>
-                                </div>
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h5 class="mainSection_heading-title">
+                                    Biên bản họp Giao Ban
+                                </h5>
+                            </div>
+                            <div>
+                                <select class="form-select form-select-lg ms-2 fs-4 style_input" >
+                                    <option >Ngày</option>
+                                    <option >Tuần</option>
+                                    <option >Tháng</option>
+                                    <option >Quý</option>
+                                </select>
+                            </div>
                         </div>
                         
                         <div id="mainSection_width" class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
-                            <label class="">Tháng</label>
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
 
@@ -88,25 +98,21 @@
                                                 <div class="row">
                                                     <div class="col-md-7">
                                                         <div class="d-flex align-items-center mb-3">
-                                                            <div class="d-flex align-items-center"><img
-                                                                    src="{{ asset('assets/img/time.svg') }}" /> Thời
-                                                                gian&nbsp;
+                                                            <div class="d-flex align-items-center">
+                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
                                                             </div>
-                                                            <div style="flex:1">
-                                                                <div id="date_time-hopgiaoban"
-                                                                    class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                    <input id="datetimepicker" value="<?php echo date('d/m/Y h:m'); ?>"
-                                                                        class="form-control" type="text">
-                                                                    <div class="datetimepicker_separate">-</div>
-                                                                    <input id="datetimepicker2" value="<?php echo date('d/m/Y h:m'); ?>"
-                                                                        class="form-control" type="text">
-                                                                </div>
+                                                            <div id="date_time-hopgiaoban"
+                                                                class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
+                                                                <input id="datetimepicker" value="<?php echo date('d/m/Y h:m'); ?>"
+                                                                    class="form-control" type="text">
+                                                                <div class="datetimepicker_separate">-</div>
+                                                                <input id="datetimepicker2" value="<?php echo date('d/m/Y h:m'); ?>"
+                                                                    class="form-control" type="text">
                                                             </div>
                                                         </div>
                                                         <div class="d-flex align-items-start">
-                                                            <div class="d-flex" style="padding-right:10px"><img
-                                                                    src="{{ asset('assets/img/muiten.svg') }}" />
-                                                                Chủ đề&nbsp;
+                                                            <div class="d-flex">
+                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
                                                             </div>
                                                             <div style="flex:1">
                                                                 <textarea name="" id="" rows="1" cols="" class="form-control"
@@ -117,11 +123,10 @@
                                                     <div class="col-md-5">
                                                         <div
                                                             class="mb-3 d-flex align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center" style="flex:1">
-                                                                <img src="{{ asset('assets/img/pencil.svg') }}" />
-                                                                Thư ký
+                                                            <div class="d-flex align-items-center">
+                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
                                                             </div>
-                                                            <div style="flex:2">
+                                                            <div style="flex:1">
                                                                 <select class="selectpicker" multiple
                                                                     data-actions-box="true" data-width="100%"
                                                                     data-live-search="true" title="Chọn thư ký..."
@@ -137,12 +142,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="mt-3 d-flex align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center" style="flex:1">
-                                                                <img src="{{ asset('assets/img/person-check.svg') }}" />
-                                                                Thành
-                                                                viên
+                                                            <div class="d-flex align-items-center">
+                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
                                                             </div>
-                                                            <div style="flex:2">
+                                                            <div style="flex:1">
                                                                 <select class="selectpicker" multiple
                                                                     data-actions-box="true" data-width="100%"
                                                                     data-live-search="true" title="Chọn thành viên..."
@@ -169,7 +172,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-2 d-flex justify-content-between align-items-center">
-                                                <div class="card-title">Vấn đề tồn đọng</div>
+                                                <div class="card-title">Vấn đề tiếp nhận</div>
                                                 <div class="alert alert-warning border-warning m-0"
                                                     style="padding: 0 6px">
                                                     <i class="bi bi-exclamation-triangle pe-2"></i><strong>03</strong>
@@ -282,15 +285,67 @@
                             <div class="card mb-2">
                                 <div class="card-body">
                                     <div class="mb-2">
-                                        <div class="card-title mb-2">Nội dung chính</div>
-                                        <textarea name="" id="" rows="5" cols="" class="form-control" placeholder="Nhập nội dung cuộc họp"></textarea>
+                                        <div class="card-title mb-2">Nội dung trao đổi</div>
+                                            <div class="row">
+                                            <div class="col-md-11 col-lg-9 col-xl-12">
+                                                <div class="d-flex flex-start mb-4">
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar" width="65"
+                                                    height="65" />
+                                                <div class="card w-100">
+                                                    <div class="card-body p-3">
+                                                    <div class="">
+                                                        <h5>Đặng Vũ Lam Mai</h5>
+                                                        <p class="fs-6 mb-1">3 tiếng trước</p>
+                                                        <p class="mb-2">
+                                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint cupiditate in aspernatur a quasi porro beatae aliquid sapiente doloremque, saepe corrupti quas iure amet harum accusamus dolorem omnis ducimus expedita?
+                                                        </p>
+                                        
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="#!" class="link-muted text-danger fs-5 me-2"><i class="bi bi-hand-thumbs-up me-1"></i>132</a>
+                                                            <a href="#!" class="link-muted text-danger fs-5"><i class="bi bi-hand-thumbs-down me-1"></i>15</a>
+                                                        </div>
+                                                        <a href="#!" class="link-muted text-danger fs-5"><i class="bi bi-reply me-1"></i> Trả lời</a>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                        
+                                                <div class="d-flex flex-start">
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar" width="65"
+                                                    height="65" />
+                                                <div class="card w-100">
+                                                    <div class="card-body p-3">
+                                                    <div class="">
+                                                        <h5>Đặng Vũ Lam Mai</h5>
+                                                        <p class="fs-6 mb-1">5 phút trước</p>
+                                                        <p class="mb-2">
+                                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint cupiditate in aspernatur a quasi porro beatae aliquid sapiente doloremque, saepe corrupti quas iure amet harum accusamus dolorem omnis ducimus expedita?
+                                                        </p>
+                                        
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="#!" class="link-muted text-danger fs-5 me-2"><i class="bi bi-hand-thumbs-up me-1"></i>158</a>
+                                                            <a href="#!" class="link-muted text-danger fs-5"><i class="bi bi-hand-thumbs-down me-1"></i>13</a>
+                                                        </div>
+                                                        <a href="#!" class="link-muted text-danger fs-5"><i class="bi bi-reply me-1"></i> Trả lời</a>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="card-body" style="padding-bottom: 30px">
+                                <div class="card-body pb-4">
                                     <div class="mb-2">
-                                        <div class="card-title">Vấn đề tồn đọng</div>
+                                        <div class="card-title">Đã được phản hồi</div>
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-12">

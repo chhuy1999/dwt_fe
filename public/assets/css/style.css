@@ -320,7 +320,7 @@ td {
 
 .add-row-btn {
     position: absolute;
-    bottom: -30px;
+    bottom: -24px;
     left: 8px;
     /* -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -1303,11 +1303,6 @@ th {
     border-top: 1px solid var(--grey-color);
 }
 
-#mainSection_width {
-    width: 120px;
-    padding: 2px 0px 2px 8px;
-}
-
 .mainSection_heading {
     position: relative;
     display: flex;
@@ -1369,7 +1364,7 @@ th {
     font-weight: 600;
     border: none !important;
     background-color: transparent;
-    max-width: 120px;
+    max-width: 140px;
     width: 100%;
     box-shadow: none!important;
 }
@@ -1727,8 +1722,15 @@ th {
 /* Modal */
 .style_pickdate {
     position: absolute;
-    top: 2px;
-    right: 4px;
+    top: 3px;
+    right: 12px;
+    font-size: var(--fz-14);
+}
+
+.style_pickdate-two {
+    position: absolute;
+    top: 3px;
+    right: 12px;
     font-size: var(--fz-14);
 }
 
@@ -1834,7 +1836,7 @@ th {
 }
 
 .upload-field .file-thumbnail img {
-    width: 90px;
+    width: 68px;
     border-radius: 50%;
 }
 

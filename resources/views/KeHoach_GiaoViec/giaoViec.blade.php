@@ -23,8 +23,7 @@
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <label class="">Tháng</label>
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
                     <div class="row">
@@ -32,7 +31,7 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class='row'>
-                                        <div class="col-md-5">
+                                        <div class="col-md-7">
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="danhSachDinhMuc"
                                                     class="table table-responsive table-hover table-bordered">
@@ -369,105 +368,71 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-5">
                                             <div class="body_content-wrapper" id="body_content-1" style="display:block">
                                                 <form action="" method="">
                                                     <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
                                                         nội
                                                         bộ quy mô"</div>
                                                     <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
+                                                        <div class="col-md-7 mb-3">
+                                                            <input type="text" class="form-control"
+                                                                value="Triển khai các sự kiện nội bộ quy mô"
+                                                                id="title" />
+                                                        </div>
+                                                        <div class="col-md-5 mb-3">
+                                                            <input type="text" class="form-control"
+                                                                value="Triển khai các sự kiện nội bộ quy mô"
+                                                                id="title" />
+                                                        </div>
+                                                        <div class="col-md-9 mb-3">
+                                                            <textarea class="form-control" name="" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
+                                                        </div>
+                                                        <div class="col-md-3 mb-3">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Manday"
+                                                                id="title" />
+                                                        </div>
+                                                        <div class="col-md-7 mb-3">
+                                                            <textarea class="form-control" name="" id="" placeholder="Kế hoạch"></textarea>
+                                                        </div>
+                                                        <div class="col-md-5 mb-3">
+                                                            <input type="text" name="daterange" class="form-control"
+                                                                    placeholder="Thời hạn" />
+                                                        </div>
+                                                        <div class="col-md-6 mb-3">
+                                                            <select class='selectpicker' title="Phụ trách">
+                                                                <option value="">Người phụ trách</option>
+                                                                <option value="">Người phụ trách 2</option>
+                                                                <option value="">Người phụ trách 3</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6 mb-3">
+                                                            <select class='selectpicker' title="Liên quan">
+                                                                <option value="">Người liên quan</option>
+                                                                <option value="">Người liên quan 2</option>
+                                                                <option value="">Người liên quan 3</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="repeater">
+                                                            <div data-repeater-list="group-a">
+                                                                <div class="row" data-repeater-item>
+                                                                    <div class="col-md-9 mb-3">
+                                                                        <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true">
+                                                                                <option>Số lượt khách hàng được chăm sóc</option>
+                                                                                <option>Số buổi Activation</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-3 mb-3">
+                                                                        <input type="number" class="form-control" placeholder="Giá trị"/>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người liên quan<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người liên quan</option>
-                                                                    <option value="">Người liên quan 2</option>
-                                                                    <option value="">Người liên quan 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-2 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-4 mb-3 d-flex">
-                                                            <label class="col-sm-3 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-7 mb-3 d-flex">
-                                                            <label class="col-sm-4 col-form-label" style="margin-right: 6px">Tiêu chí <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-8">
-                                                                <select class='selectpicker' data-live-search="true" title="Thêm tiêu chí key">
-                                                                    <option>Số lượt khách hàng được chăm sóc</option>
-                                                                    <option>Số buổi Activation</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-5 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Giá trị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="col-md-12 mb-2">
-                                                            <div class="d-flex justify-content-start">
-                                                                <button class="form-check_btn btn btn-outline-danger px-3">Thêm tiêu chí</button>
+                                                            
+                                                            <div class="col-md-12 mb-2">
+                                                                <div class="d-flex justify-content-start">
+                                                                    <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -476,807 +441,16 @@
                                                     <div class="justify-content-between d-flex">
                                                         <div class="form-check">
                                                             <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh">
-                                                            <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh">Lưu thành mẫu</label>
+                                                            <label role="button" class="form-check-label user-select-none fs-5" for="datGiaTriKinhDoanh">Lưu thành mẫu</label>
                                                         </div>
                                                         <div class="action_btn">
                                                             <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                            <div class="btn btn-danger px-4">Lưu</div>
+                                                            <div class="btn btn-danger px-4">Giao</div>
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div class="body_content-wrapper" id="body_content-2">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô2"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="body_content-wrapper" id="body_content-3">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô3"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="body_content-wrapper" id="body_content-4">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô4"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="body_content-wrapper" id="body_content-5">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="body_content-wrapper" id="body_content-6">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="body_content-wrapper" id="body_content-7">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="body_content-wrapper" id="body_content-8">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="body_content-wrapper" id="body_content-9">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="body_content-wrapper" id="body_content-10">
-                                                <form action="" method="">
-                                                    <div class="card-title mb-2">Giao việc cho định mức "Triển khai các sự kiện
-                                                        nội
-                                                        bộ quy mô"</div>
-                                                    <div class="mb-3 row">
-                                                        <div class="col-md-12 mb-3 d-flex">
-                                                            <label for="title" class="col-sm-3 col-form-label">Tên nhiệm vụ
-                                                                <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    value="Triển khai các sự kiện nội bộ quy mô"
-                                                                    id="title" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Mô tả/Diễn giải<span
-                                                                    class="text-danger">*</span></label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập mô tả nhiệm vụ"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="textarea" class="col-form-label">Kế hoạch thực
-                                                                hiện</label>
-                                                            <textarea class="form-control" name="" id="" placeholder="Nhập kê hoạch thực hiẹn"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Vị trí đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Truyền thông nội bộ</option>
-                                                                    <option value="">Truyền thông nội bộ 2</option>
-                                                                    <option value="">Truyền thông nội bộ 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Người đảm
-                                                                nhiệm <span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <select class='form-control' name="" id="">
-                                                                    <option value="">Người đảm nhiệm</option>
-                                                                    <option value="">Người đảm nhiệm 2</option>
-                                                                    <option value="">Người đảm nhiệm 3</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">SL <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="number" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Đơn vị <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">MD <span
-                                                                    class="text-danger">*</span></label>
-                                                            <div class="col-sm-7">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 mb-3 d-flex">
-                                                            <label for="textarea" class="col-sm-5 col-form-label">Thời
-                                                                hạn<span class="text-danger">*</span></label>
-                                                            <div class="col-sm-7 me-2">
-                                                                <input type="text" name="daterange" class="form-control"
-                                                                    value="<?php echo date('d/m/Y - d/m/Y'); ?>" />
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="justify-content-end d-flex">
-                                                        <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                        <div class="btn btn-danger px-4">Lưu</div>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                            
                                             {{-- <div class="body_noContent-wrapper">
                                                 Vui lòng chọn định mức để giao việc 
                                                 <button type="button" class="btn btn-danger ms-2" id="toggleDinhMuc">tại đây</button>
@@ -2112,7 +1286,9 @@
     <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    
+    <!-- Plugins -->
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>

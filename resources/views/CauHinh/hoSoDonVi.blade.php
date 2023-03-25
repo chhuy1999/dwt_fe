@@ -88,8 +88,10 @@
                                             <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
                                                 <div class="main_search d-flex mt-2">
-                                                    <i class="bi bi-search"></i>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                                                   <div class="form-group has-search">
+                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                </div>
                                                     <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
                                                         data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
                                                 </div>

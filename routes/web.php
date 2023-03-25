@@ -118,12 +118,7 @@ Route::get('404-not-found', function () {
 Route::get('giao-ban', function () {
     return view('HopDonVi.giaoBan');
 });
-Route::get('tong-ket-tuan', function () {
-    return view('HopDonVi.tongKetTuan');
-});
-Route::get('tong-ket-thang', function () {
-    return view('HopDonVi.tongKetThang');
-});
+
 Route::get('kho-luu-tru-bien-ban-hop', function () {
     return view('HopDonVi.khoLuuTruBienBanHop');
 });

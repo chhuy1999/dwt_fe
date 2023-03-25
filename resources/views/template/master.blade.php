@@ -1,6 +1,8 @@
 <?php
 
 //$template_path
+
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,79 +59,17 @@
                     <div class="header_menu">
                         <ul class="header_menu-list">
                             <li class="header_menu-item">
-                                <a class="header_menu-link active" aria-current="page" href="#">
-                                    <i class="bi bi-gear"></i>
-                                    <span>Cấu hình</span>
-
-                                </a>
-                                <ul id="header_submenu">
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="ho-so-don-vi" class="header_submenu-link more_btn">
-                                            Hồ sơ đơn vị <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            <li class="header_more-item">
-                                                <a href="danh-sach-phong-ban" class="header_more-link">Danh mục phòng ban</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="danh-sach-vi-tri" class="header_more-link">Danh sách vị trí</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="ho-so-nhan-vien" class="header_submenu-link more_btn">
-                                            Hồ sơ nhân viên <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            <li class="header_more-item">
-                                                <a href="danh-sach-thanh-vien" class="header_more-link">Danh sách thành viên</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
-                                    </li>
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="#" class="header_submenu-link more_btn">
-                                            Định mức lao động <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh mục định mức</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="danh-muc-nhiem-vu" class="header_more-link">Danh mục nhiệm vụ</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="danh-muc-chi-so-key" class="header_more-link">Danh mục chỉ số key</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Quy trình</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">KPI</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Phân quyền</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Chữ ký</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="quan-ly-nhan-su">
-                                    <i class="bi bi-person-add"></i>
-                                    <span>Quản lý nhân sự</span>
+                                <a class="header_menu-link" href="">
+                                    <i class="bi bi-compass"></i>
+                                    <span>Kế hoạch & Giao việc</span>
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items">
-                                        <a href="quan-ly-tuyen-dung" class="header_submenu-link">Tuyển dụng</a>
+                                        <a href="" class="header_submenu-link">Kế
+                                            hoạch</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Đánh giá nhân viên</a>
+                                        <a href="giao-viec" class="header_submenu-link">Giao Việc</a>
                                     </li>
                                 </ul>
                             </li>
@@ -145,33 +85,26 @@
                                             ban</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="tong-ket-tuan" class="header_submenu-link">Tổng kết
-                                            tuần</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="tong-ket-thang" class="header_submenu-link">Tổng kết
-                                            tháng</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="khac" class="header_submenu-link">Khác</a>
+                                        <a href="kho-luu-tru-bien-ban-hop" class="header_submenu-link">Kho biên bản</a>
                                     </li>
                                 </ul>
                             </li>
+                            
                             <li class="header_menu-item">
-                                <a class="header_menu-link" href="">
-                                    <i class="bi bi-compass"></i>
-                                    <span>Kế hoạch & Giao việc</span>
+                                <a class="header_menu-link" href="quan-ly-nhan-su">
+                                    <i class="bi bi-person-add"></i>
+                                    <span>Quản lý nhân sự</span>
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items">
-                                        <a href="ke-hoach" class="header_submenu-link">Kế
-                                            hoạch</a>
+                                        <a href="quan-ly-tuyen-dung" class="header_submenu-link">Tuyển dụng</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="giao-viec" class="header_submenu-link">Giao Việc</a>
+                                        <a href="#" class="header_submenu-link">Đánh giá nhân viên</a>
                                     </li>
                                 </ul>
                             </li>
+                            
                             <li class="header_menu-item">
                                 <a class="header_menu-link" href="#">
                                     <i class="bi bi-journal-arrow-up"></i>
@@ -240,6 +173,80 @@
                                     <i class="bi bi-share"></i>
                                     <span>VBĐH tham khảo</span>
                                 </a>
+                            </li>
+                            <li class="header_menu-item">
+                                <a class="header_menu-link active" aria-current="page" href="#">
+                                    <i class="bi bi-gear"></i>
+                                    <span>Cấu hình</span>
+
+                                </a>
+                                <ul id="header_submenu">
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="ho-so-don-vi" class="header_submenu-link more_btn">
+                                            Hồ sơ đơn vị <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="danh-sach-vi-tri" class="header_more-link">Danh sách vị trí</a>
+                                            </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-sach-phong-ban" class="header_more-link">Danh mục phòng ban</a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="ho-so-nhan-vien" class="header_submenu-link more_btn">
+                                            Hồ sơ nhân viên <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="danh-sach-thanh-vien" class="header_more-link">Danh sách thành viên</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="header_submenu-items">
+                                        <a href="mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
+                                    </li>
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="#" class="header_submenu-link more_btn">
+                                            Định mức lao động <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh mục định mức</a>
+                                            </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-nhiem-vu" class="header_more-link">Danh mục nhiệm vụ</a>
+                                            </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-chi-so-key" class="header_more-link">Danh mục chỉ số key</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="header_submenu-items">
+                                        <a href="" class="header_submenu-link">Quy trình</a>
+                                    </li>
+                                    <li class="header_submenu-items">
+                                        <a href="" class="header_submenu-link">KPI</a>
+                                    </li>
+                                    <li class="header_submenu-items">
+                                        <a href="" class="header_submenu-link">Phân quyền</a>
+                                    </li>
+                                    <li class="header_submenu-items">
+                                        <a href="" class="header_submenu-link">Chữ ký</a>
+                                    </li>
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="#" class="header_submenu-link more_btn">
+                                            Hệ thống <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Biểu đồ</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -451,7 +458,7 @@
         $(document).ready(function () {
             $.datetimepicker.setLocale('vi');
             $('#thismonth').datetimepicker({
-                format: 'm/Y',
+                format: 'H:i - d/m/Y',
                 timepicker: false,
             });
         });
