@@ -209,32 +209,6 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td scope="row">
-                                                                <div class="content_table">5</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
-                                                                    role="button">
-                                                                    Viết bài
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="content_table">23/01</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="content_table">Bài</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="content_table">10</div>
-                                                            </td>
-                                                            <td class="border-end fw-bold">
-                                                                <div class="progress-half">
-                                                                    <div class="text-dark content_table">5</div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
