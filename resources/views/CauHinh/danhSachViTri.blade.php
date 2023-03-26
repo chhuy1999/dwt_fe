@@ -25,7 +25,9 @@
                                         </div>
                                         <div class="main_search d-flex mt-2">
                                             <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                                            <form action="/danh-sach-vi-tri" method="GET">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="q" value="{{request()->q}}">
+                                            </form>
                                             <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
                                                 data-bs-target="#themViTriChucDanh">Thêm vị trí</button>
                                         </div>
@@ -50,7 +52,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listPositions->data as $value)
+                                                        @foreach ($data->data as $value)
                                                         <tr>
                                                             <th scope="row">
                                                                 <div

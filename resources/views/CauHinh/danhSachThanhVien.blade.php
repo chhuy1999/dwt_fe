@@ -10,6 +10,7 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">
+                            
                             Danh sách thành viên
                         </h5>
                     </div>
@@ -65,7 +66,10 @@
                                                 <div class="main_search d-flex mt-2">
                                                    <div class="form-group has-search">
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm thành viên">
+
+                                                    <form action="/danh-sach-thanh-vien" method="GET">
+                                                        <input type="text" class="form-control" placeholder="Tìm kiếm thành viên" name="q" value="{{request()->q}}">
+                                                    </form>
                                                 </div>
                                                     <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                         data-bs-target="#themThanhVien">Thêm thành viên</button>
@@ -90,17 +94,19 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($data->data as $value)
                                                         <tr>
                                                             <th scope="row">
                                                                 <div
                                                                     class="d-flex justify-content-center align-items-center">
-                                                                    1</div>
+                                                                    {{ $loop->iteration }}
+                                                                </div>
                                                             </th>
                                                             <td>
-                                                                <div>Đặng Vũ Lam Mai</div>
+                                                                <div>{{ $value->name}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>MTT123</div>
+                                                                <div>{{ $value->code}}</div>
                                                             </td>
                                                             <td>
                                                                 <div>Quản trị Nhãn</div>
@@ -112,208 +118,15 @@
                                                                 <div>Chuyên viên</div>
                                                             </td>
                                                             <td>
-                                                                <div>bmkt@doppelherz.vn</div>
+                                                                <div>{{ $value->email}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>0123456789</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Chính thức</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Đang làm việc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    2
-                                                                </div>
-                                                            </th>
-                                                            <td>
-                                                                <div>Nguyễn Thuỳ Linh</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>MTT124</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trade Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản lý Activation</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nhân viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>tmkt@doppelherz.vn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>0123456790</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>TTS</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Đang làm việc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    3</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>Nguyễn Thị Ngọc Lan</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>MTT125</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Digital Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Content SEO</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nhân viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>dmkt@doppelherz.vn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>0123456791</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>CTV</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Đang làm việc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    4</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>Nguyễn Thị Mai Phượng</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>MTT126</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Sáng tạo Nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Sáng tạo nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trưởng đơn vị</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>stnd@doppelherz.vn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>0123456792</div>
+                                                                <div>{{ $value->phone}}</div>
                                                             </td>
                                                             <td>
                                                                 <div>Chính thức</div>
                                                             </td>
                                                             <td>
-                                                                <div>Đã nghỉ việc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    5</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>Đỗ Thị Kim Liên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>MTT127</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Hành chính nhân sự</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trưởng VP HCM</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trưởng đơn vị</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>hcns@mastertran.vn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>0123456793</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Thử việc</div>
-                                                            </td>
-                                                            <td>
                                                                 <div>Đang làm việc</div>
                                                             </td>
                                                             <td>
@@ -331,7 +144,7 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -394,7 +207,11 @@
                                                 <div class="main_search d-flex mt-2">
                                                    <div class="form-group has-search">
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm thành viên">
+                                                   
+                                                   <form method="GET" action="/danh-sach-thanh-vien">
+
+                                                       <input type="text" name ="q" dclass="form-control" placeholder="Tìm kiếm thành viên">
+                                                    </form>
                                                 </div>
                                                     <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                         data-bs-target="#themThanhVien">Thêm thành viên</button>
@@ -1560,161 +1377,164 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Thêm thành viên</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="create_user-wrapper">
-                        <div class="create_user-title mb-2">Thông tin cá nhân</div>
-                        <div class="row align-items-center">
-                            <div class="col-sm-2">
-                                <div class="image-upload">
-                                    <input type="file" name="" id="logo" onchange="fileValue(this)">
-                                    <label for="logo" class="upload-field" id="file-label">
-                                        <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}"
-                                                alt="">
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="text" placeholder="Nhập họ và tên">
-                                </div>
-                                
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="password" placeholder="Mật khẩu">
-                                </div>
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="text" placeholder="Số điện thoại">
-                                </div>
 
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="row">
-                                    <div class="col-sm-5 mb-2">
-                                        <select class="selectpicker" title="Giới tính">
-                                            <option>Nam</option>
-                                            <option>Nữ</option>
-                                        </select>
+                <form action="/danh-sach-thanh-vien" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="create_user-wrapper">
+                            <div class="create_user-title mb-2">Thông tin cá nhân</div>
+                            <div class="row align-items-center">
+                                <div class="col-sm-2">
+                                    <div class="image-upload">
+                                        <input type="file" name="" id="logo" onchange="fileValue(this)">
+                                        <label for="logo" class="upload-field" id="file-label">
+                                            <div class="file-thumbnail">
+                                                <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}"
+                                                    alt="">
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="col-sm-12 mb-2">
+                                        <input class="form-control" type="text" name="name" placeholder="Nhập họ và tên">
                                     </div>
                                     
-                                    <div class="col-sm-7 mb-2 position-relative">
-                                        <input id="createUser" placeholder="Ngày sinh" class="form-control"
-                                                type="text">
-                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                    <div class="col-sm-12 mb-2">
+                                        <input class="form-control" type="password" name="password" placeholder="Mật khẩu">
                                     </div>
+                                    <div class="col-sm-12 mb-2">
+                                        <input class="form-control" type="text" placeholder="Số điện thoại" name="phone">
+                                    </div>
+
                                 </div>
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="text" placeholder="Email liên hệ">
-                                </div>
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="text" placeholder="Địa chỉ liên hệ">
+                                <div class="col-sm-5">
+                                    <div class="row">
+                                        <div class="col-sm-5 mb-2">
+                                            <select class="selectpicker" title="Giới tính" name="sex">
+                                                <option value="male">Nam</option>
+                                                <option value="female">Nữ</option>
+                                                <option value="other">Khác</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="col-sm-7 mb-2 position-relative">
+                                            <input id="createUser" placeholder="Ngày sinh" class="form-control"
+                                                    type="text" name="dob">
+                                            <i class="bi bi-calendar-plus style_pickdate"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 mb-2">
+                                        <input class="form-control" type="text" placeholder="Email liên hệ">
+                                    </div>
+                                    <div class="col-sm-12 mb-2">
+                                        <input class="form-control" type="text" placeholder="Địa chỉ liên hệ" name="address">
+                                    </div>
+                                    
                                 </div>
                                 
                             </div>
-                            
                         </div>
-                    </div>
 
-                    <div class="create_user-wrapper">
-                        <div class="create_user-title mb-2">Thông tin công việc</div>
-                        <div class="row">
-                            <div class="col-sm-4 mb-2">
-                                <input class="form-control" type="text" placeholder="Mã nhân viên">
-                            </div>
+                        <div class="create_user-wrapper">
+                            <div class="create_user-title mb-2">Thông tin công việc</div>
+                            <div class="row">
+                                <div class="col-sm-4 mb-2">
+                                    <input class="form-control" type="text" placeholder="Mã nhân viên" name="code">
+                                </div>
 
-                            <div class="col-sm-4 mb-2">
-                                <input class="form-control" type="text" placeholder="Nhập sđt liên hệ">
-                            </div>
+                                <div class="col-sm-4 mb-2">
+                                    <input class="form-control" type="text" placeholder="Nhập sđt liên hệ">
+                                </div>
 
-                            <div class="col-sm-4 mb-2">
-                                <input class="form-control" type="text" placeholder="Nhập email công ty">
-                            </div>
+                                <div class="col-sm-4 mb-2">
+                                    <input class="form-control" type="text" placeholder="Nhập email công ty" name="email">
+                                </div>
 
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker" title="Chọn đơn vị công tác">
-                                    <option>Doppelherz</option>
-                                    <option>CTCP Mastertran</option>
-                                    <option>CTCP Thái Bình Hưng Thịnh</option>
-                                </select>
-                            </div>
-
-                            <div class="col-sm-6 mb-2">
-                                <div class="d-flex align-items-center">
-                                    <select class="selectpicker" title="Chọn cấp nhân sự">
-                                        <option>Chủ tịch HĐQT</option>
-                                        <option>Tổng Giám đốc</option>
-                                        <option>Phó Tổng Giám đốc</option>
-                                        <option>Giám đốc điều hành</option>
-                                        <option>Quản lý cấp cao</option>
-                                        <option>Quản lý cấp trung</option>
-                                        <option>Trưởng phòng</option>
-                                        <option>Phó phòng</option>
-                                        <option>Trưởng nhóm</option>
-                                        <option>Chuyên viên</option>
-                                        <option>Nhân viên</option>
+                                <div class="col-sm-6 mb-2">
+                                    <select class="selectpicker" title="Chọn đơn vị công tác">
+                                        <option>Doppelherz</option>
+                                        <option>CTCP Mastertran</option>
+                                        <option>CTCP Thái Bình Hưng Thịnh</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachChucDanh">
-                                        <i class="bi bi-three-dots-vertical"></i>
+                                </div>
+
+                                <div class="col-sm-6 mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <select class="selectpicker" title="Chọn cấp nhân sự">
+                                            <option>Chủ tịch HĐQT</option>
+                                            <option>Tổng Giám đốc</option>
+                                            <option>Phó Tổng Giám đốc</option>
+                                            <option>Giám đốc điều hành</option>
+                                            <option>Quản lý cấp cao</option>
+                                            <option>Quản lý cấp trung</option>
+                                            <option>Trưởng phòng</option>
+                                            <option>Phó phòng</option>
+                                            <option>Trưởng nhóm</option>
+                                            <option>Chuyên viên</option>
+                                            <option>Nhân viên</option>
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#danhsachChucDanh">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-6 mb-2">
-                                <select id="onchangeViTriCongViec" class="selectpicker"
-                                    title="Chọn Vị trí/Chức danh">
-                                    <option>Quản lý phòng</option>
-                                    <option>Quản lý sàn TMĐT</option>
-                                    <option>Content Website</option>
-                                    <option>Content SEO</option>
-                                    <option>Google Ads</option>
-                                    <option>Content Facebook</option>
-                                    <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới
-                                    </option>
-                                </select>
-                            </div>
+                                <div class="col-sm-6 mb-2">
+                                    <select id="onchangeViTriCongViec" class="selectpicker"
+                                        title="Chọn Vị trí/Chức danh" name="position_id">
+                                        @foreach ($listPositions->data as $value)
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @endforeach
+                                        <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới
+                                        </option>
+                                    </select>
+                                </div>
 
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker" title="Chọn quản lý">
-                                    <option>Nguyễn Ngọc Bảo</option>
-                                    <option>Đặng Nguyễn Lam Mai</option>
-                                    <option>Hồ Thị Hồng Vân</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6 mb-2">
-                                <input type="text" readonly class="form-control" placeholder="Quỹ lương năm" />
-                            </div>
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker" title="Chọn gói trang bị">
-                                    <option>Trang bị hành chính</option>
-                                    <option>Trang bị cơ bản</option>
-                                    <option>Trang bị Nhân viên</option>
-                                    <option>Trang bị Chuyên viên</option>
-                                    <option>Trang bị Quản lý</option>
-                                    <option>Trang bị Giám đốc</option>
-                                </select>
-                            </div>
+                                <div class="col-sm-6 mb-2">
+                                    <select class="selectpicker" title="Chọn quản lý">
+                                        <option>Nguyễn Ngọc Bảo</option>
+                                        <option>Đặng Nguyễn Lam Mai</option>
+                                        <option>Hồ Thị Hồng Vân</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 mb-2">
+                                    <input type="text" readonly class="form-control" placeholder="Quỹ lương năm" />
+                                </div>
+                                <div class="col-sm-6 mb-2">
+                                    <select class="selectpicker" title="Chọn gói trang bị">
+                                        <option>Trang bị hành chính</option>
+                                        <option>Trang bị cơ bản</option>
+                                        <option>Trang bị Nhân viên</option>
+                                        <option>Trang bị Chuyên viên</option>
+                                        <option>Trang bị Quản lý</option>
+                                        <option>Trang bị Giám đốc</option>
+                                    </select>
+                                </div>
 
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker" title="Chọn trạng thái">
-                                    <option>Toàn thời gian</option>
-                                    <option>Bán thời gian</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker" title="Chọn trạng thái">
-                                    <option>Đang làm việc</option>
-                                    <option>Đã nghỉ việc</option>
-                                </select>
-                            </div>
+                                <div class="col-sm-6 mb-2">
+                                    <select class="selectpicker" title="Chọn trạng thái">
+                                        <option>Toàn thời gian</option>
+                                        <option>Bán thời gian</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 mb-2">
+                                    <select class="selectpicker" title="Chọn trạng thái">
+                                        <option>Đang làm việc</option>
+                                        <option>Đã nghỉ việc</option>
+                                    </select>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -3037,35 +2857,35 @@
     <script>
         $(document).ready(function() {
             $.datetimepicker.setLocale('vi');
-            $('#ngayThuViec').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
+            // $('#ngayThuViec').datetimepicker({
+            //     format: 'Y/m/d',
+            //     timepicker: false,
+            // });
 
-            $('#ngayChinhThuc').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
+            // $('#ngayChinhThuc').datetimepicker({
+            //     format: 'Y/m/d',
+            //     timepicker: false,
+            // });
 
-            $('#suaNgayThuViec').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
+            // $('#suaNgayThuViec').datetimepicker({
+            //     format: 'Y/m/d',
+            //     timepicker: false,
+            // });
 
-            $('#suaNgayChinhThuc').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
+            // $('#suaNgayChinhThuc').datetimepicker({
+            //     format: 'Y/m/d',
+            //     timepicker: false,
+            // });
 
-            $('#createUser').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
+            // $('#createUser').datetimepicker({
+            //     format: 'Y/m/d',
+            //     timepicker: false,
+            // });
 
-            $('#suaCreateUser').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
+            // $('#suaCreateUser').datetimepicker({
+            //     format: 'Y/m/d',
+            //     timepicker: false,
+            // });
             // $('#onchangePhongBan').change(function() {
             // var opval = $(this).val();
             // if (opval == "themPhongBan") {

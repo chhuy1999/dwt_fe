@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\TargetController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\PositionController;
+use App\Http\Controllers\Api\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -40,11 +41,21 @@ Route::get('/', function () {
 // Route::get('danh-sach-vi-tri', function () {
 //     return view('CauHinh.danhSachViTri');
 // });
-Route::get('danh-sach-thanh-vien', function () {
-    return view('CauHinh.danhSachThanhVien');
+// Route::get('danh-sach-thanh-vien', function () {
+//     return view('CauHinh.danhSachThanhVien');
+// });
+
+
+
+// user => danh sách thành viên
+Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
+    Route::get('danh-sach-thanh-vien', [UsersController::class, 'index']);
+    Route::post('danh-sach-thanh-vien', [UsersController::class, 'store']);
+    Route::put('danh-sach-thanh-vien/{id}', [UsersController::class, 'update']);
+    Route::delete('danh-sach-thanh-vien/{id}', [UsersController::class, 'delete']);
 });
 
-// danh sách vị trí
+// position => danh sách vị trí
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::get('danh-sach-vi-tri', [PositionController::class, 'index']);
     Route::post('danh-sach-vi-tri', [PositionController::class, 'store']);
@@ -53,7 +64,7 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
 });
 
 
-// hồ sơ đơn vị
+//department => hồ sơ đơn vị
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::get('ho-so-don-vi', [DepartmentController::class, 'index']);
     Route::post('ho-so-don-vi', [DepartmentController::class, 'store']);

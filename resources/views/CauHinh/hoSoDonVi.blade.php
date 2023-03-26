@@ -90,7 +90,9 @@
                                                 <div class="main_search d-flex mt-2">
                                                    <div class="form-group has-search">
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                    <form action="/ho-so-don-vi" method="GET">
+                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" name="q" value="{{request()->q}}">
+                                                    </form>
                                                 </div>
                                                     <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
                                                         data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
@@ -111,7 +113,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listDepartments->data as $value)
+                                                        @foreach ($data->data as $value)
                                                         <tr>
                                                             <th scope="row">
                                                                 <div

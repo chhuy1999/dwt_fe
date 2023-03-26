@@ -30,10 +30,11 @@ class DepartmentController extends Controller
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchKpiTargets($q, $page, $limit);
+            $data = $this->dwtService->searchDepartment($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
 
             return view('Cauhinh.hoSoDonVi')
+                 ->with('data', $data)
                 ->with('listDepartments', $listDepartments);
         } catch (Exception $e) {
             $error = $e->getMessage();
