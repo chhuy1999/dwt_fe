@@ -23,46 +23,44 @@
                                             <div
                                                 class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="card-title">Toàn công ty</div>
-                                                </div>
-                                                <div class="title_filter d-flex align-items-center" style="gap:10px">
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-live-search="true"
-                                                            title="Chọn hình thức..." data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-width="100%"
-                                                            data-live-search="true" title="Chọn trạng thái..."
-                                                            data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-width="100%"
-                                                            data-live-search="true" title="Chọn Vị trí/Chức danh..."
-                                                            data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
+                                                    <div class="card-title me-3">Toàn công ty</div>
+                                                    <div class="title_filter d-flex align-items-center" style="gap:10px">
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-live-search="true"
+                                                                title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Chính thức</option>
+                                                                <option>Thử việc</option>
+                                                                <option>CTV</option>
+                                                                <option>TTS</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-width="100%"
+                                                                data-live-search="true" title="Chọn trạng thái..."
+                                                                data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Đã nghỉ việc</option>
+                                                                <option>Đang làm việc</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-width="100%"
+                                                                data-live-search="true" title="Chọn Vị trí/Chức danh..."
+                                                                data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Giám đốc</option>
+                                                                <option>Trưởng phòng</option>
+                                                                <option>Thư kí</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="main_search d-flex mt-2">
+                                                
+                                                <div class="main_search d-flex">
                                                    <div class="form-group has-search">
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
                                                     <input type="text" class="form-control" placeholder="Tìm kiếm thành viên">
@@ -352,46 +350,44 @@
                                             <div
                                                 class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="card-title">Phòng kinh doanh</div>
-                                                </div>
-                                                <div class="title_filter d-flex align-items-center" style="gap:10px">
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-live-search="true"
-                                                            title="Chọn hình thức..." data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-width="100%"
-                                                            data-live-search="true" title="Chọn hình thức..."
-                                                            data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-width="100%"
-                                                            data-live-search="true" title="Chọn hình thức..."
-                                                            data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
+                                                    <div class="card-title me-3">Phòng kinh doanh</div>
+                                                    <div class="title_filter d-flex align-items-center" style="gap:10px">
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-live-search="true"
+                                                                title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Chính thức</option>
+                                                                <option>Thử việc</option>
+                                                                <option>CTV</option>
+                                                                <option>TTS</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-width="100%"
+                                                                data-live-search="true" title="Chọn trạng thái..."
+                                                                data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Đã nghỉ việc</option>
+                                                                <option>Đang làm việc</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-width="100%"
+                                                                data-live-search="true" title="Chọn Vị trí/Chức danh..."
+                                                                data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Giám đốc</option>
+                                                                <option>Trưởng phòng</option>
+                                                                <option>Thư kí</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="main_search d-flex mt-2">
+                                                
+                                                <div class="main_search d-flex">
                                                    <div class="form-group has-search">
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
                                                     <input type="text" class="form-control" placeholder="Tìm kiếm thành viên">
@@ -681,46 +677,44 @@
                                             <div
                                                 class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="card-title">Phòng Marketing</div>
-                                                </div>
-                                                <div class="title_filter d-flex align-items-center" style="gap:10px">
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-live-search="true"
-                                                            title="Chọn hình thức..." data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-width="100%"
-                                                            data-live-search="true" title="Chọn hình thức..."
-                                                            data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="title_filter-item">
-                                                        <select class="selectpicker" data-width="100%"
-                                                            data-live-search="true" title="Chọn hình thức..."
-                                                            data-selected-text-format="count > 1"
-                                                            data-count-selected-text="Có {0} thành viên"
-                                                            data-live-search-placeholder="Tìm kiếm...">
-                                                            <option>Chính thức</option>
-                                                            <option>Thử việc</option>
-                                                            <option>CTV</option>
-                                                            <option>TTS</option>
-                                                        </select>
+                                                    <div class="card-title me-3">Phòng marketing</div>
+                                                    <div class="title_filter d-flex align-items-center" style="gap:10px">
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-live-search="true"
+                                                                title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Chính thức</option>
+                                                                <option>Thử việc</option>
+                                                                <option>CTV</option>
+                                                                <option>TTS</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-width="100%"
+                                                                data-live-search="true" title="Chọn trạng thái..."
+                                                                data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Đã nghỉ việc</option>
+                                                                <option>Đang làm việc</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="title_filter-item">
+                                                            <select class="selectpicker" data-width="100%"
+                                                                data-live-search="true" title="Chọn Vị trí/Chức danh..."
+                                                                data-selected-text-format="count > 1"
+                                                                data-count-selected-text="Có {0} thành viên"
+                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                <option>Giám đốc</option>
+                                                                <option>Trưởng phòng</option>
+                                                                <option>Thư kí</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="main_search d-flex mt-2">
+                                                
+                                                <div class="main_search d-flex">
                                                    <div class="form-group has-search">
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
                                                     <input type="text" class="form-control" placeholder="Tìm kiếm thành viên">
@@ -1004,7 +998,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1271,274 +1264,158 @@
 
     {{-- Modal Sua thanh vien --}}
     <div class="modal fade" id="suaThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:530px">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa thành viên</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm thành viên</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="create_user-wrapper">
                         <div class="create_user-title mb-2">Thông tin cá nhân</div>
-                        <div class="row">
+                        <div class="row align-items-center">
                             <div class="col-sm-2">
                                 <div class="image-upload">
-                                    <input type="file" name="" id="logo" onchange="fileValue(this)">
+                                    <input type="file" name="" id="logo" onchange="editImg(this)">
                                     <label for="logo" class="upload-field" id="file-label">
                                         <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ asset('assets/img/preview.jpg') }}"
+                                            <img id="edit_image-preview" src="{{ asset('assets/img/avatar.jpeg') }}"
                                                 alt="">
                                         </div>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-sm-5">
-                                <div class="d-flex align-items-center mb-2">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Họ và tên <span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" value="Vũ Thị Hà">
-                                    </div>
+                                <div class="col-sm-12 mb-2">
+                                    <input class="form-control" type="text" value="Vũ Thị Hà">
                                 </div>
-                                <div class="d-flex align-items-center mb-2">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8 position-relative">
-                                        <input id="suaCreateUser" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
-                                        <i class="bi bi-calendar-plus style_pickdate"></i>
-                                    </div>
+                                
+                                <div class="col-sm-12 mb-2">
+                                    <input class="form-control" type="password" value="hihihihi">
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Số điện thoại <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class=" col-sm-8">
-                                        <input class="form-control" type="text" value="0123456789">
-                                    </div>
+                                <div class="col-sm-12 mb-2">
+                                    <input class="form-control" type="text" value="0123456789">
                                 </div>
 
                             </div>
                             <div class="col-sm-5">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Giới tính <span class="text-danger">*</span></div>
+                                <div class="row">
+                                    <div class="col-sm-5 mb-2">
+                                        <select class="selectpicker">
+                                            <option>Nam</option>
+                                            <option selected>Nữ</option>
+                                        </select>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
-                                            <label class="form-check-label" for="inlineRadio1">Nam</label>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" checked type="radio"
-                                                    name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                <label class="form-check-label" for="inlineRadio2">Nữ</label>
-                                            </div>
-                                        </div>
+                                    
+                                    <div class="col-sm-7 mb-2 position-relative">
+                                        <input id="createUser" value="26/03/2023" class="form-control"
+                                                type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Email liên hệ <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" value="vuha@gmail.com">
-                                    </div>
+                                <div class="col-sm-12 mb-2">
+                                    <input class="form-control" type="text" value="vuha@gmail.com">
                                 </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Địa chỉ liên hệ <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" value="219 trung kính">
-                                    </div>
+                                <div class="col-sm-12 mb-2">
+                                    <input class="form-control" type="text" value="219 trung kính">
                                 </div>
-
+                                
                             </div>
+                            
                         </div>
                     </div>
 
                     <div class="create_user-wrapper">
                         <div class="create_user-title mb-2">Thông tin công việc</div>
                         <div class="row">
-                            <div class="col-sm-4">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-5">
-                                        <div class="modal_body-title">Mã nhân viên <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <input class="form-control" type="text" value="MTT123">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-5">
-                                        <div class="modal_body-title">SĐT liên hệ <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <input class="form-control" type="text" value="0123456789">
-                                    </div>
-                                </div>
+                            <div class="col-sm-4 mb-2">
+                                <input class="form-control" type="text" value="MTT123">
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-4 mb-2">
+                                <input class="form-control" type="text" value="0123456789">
+                            </div>
+
+                            <div class="col-sm-4 mb-2">
+                                <input class="form-control" type="text" value="digital@doppelherz.vn">
+                            </div>
+
+                            <div class="col-sm-6 mb-2">
+                                <select class="selectpicker">
+                                    <option>Doppelherz</option>
+                                    <option selected>CTCP Mastertran</option>
+                                    <option>CTCP Thái Bình Hưng Thịnh</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6 mb-2">
                                 <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-5">
-                                        <div class="modal_body-title">Email công ty <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <input class="form-control" type="text" value="digital@doppelherz.vn">
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Đơn vị công tác <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8 d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn đơn vị công tác">
-                                            <option>Doppelherz</option>
-                                            <option selected>CTCP Mastertran</option>
-                                            <option>CTCP Thái Bình Hưng Thịnh</option>
-                                        </select>
+                                    <select class="selectpicker">
+                                        <option>Chủ tịch HĐQT</option>
+                                        <option>Tổng Giám đốc</option>
+                                        <option>Phó Tổng Giám đốc</option>
+                                        <option>Giám đốc điều hành</option>
+                                        <option>Quản lý cấp cao</option>
+                                        <option>Quản lý cấp trung</option>
+                                        <option selected>Trưởng phòng</option>
+                                        <option>Phó phòng</option>
+                                        <option>Trưởng nhóm</option>
+                                        <option>Chuyên viên</option>
+                                        <option>Nhân viên</option>
+                                    </select>
+                                    <div class="modal_list-more" data-bs-toggle="modal"
+                                        data-bs-target="#danhsachChucDanh">
+                                        <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Cấp nhân sự <span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8 d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn cấp nhân sự">
-                                            <option>Chủ tịch HĐQT</option>
-                                            <option>Tổng Giám đốc</option>
-                                            <option>Phó Tổng Giám đốc</option>
-                                            <option>Giám đốc điều hành</option>
-                                            <option>Quản lý cấp cao</option>
-                                            <option>Quản lý cấp trung</option>
-                                            <option selected>Trưởng phòng</option>
-                                            <option>Phó phòng</option>
-                                            <option>Trưởng nhóm</option>
-                                            <option>Chuyên viên</option>
-                                            <option>Nhân viên</option>
-                                        </select>
-                                        <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachChucDanh">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-2">
+                                <select id="onchangeViTriCongViec" class="selectpicker">
+                                    <option selected>Quản lý phòng</option>
+                                    <option>Quản lý sàn TMĐT</option>
+                                    <option>Content Website</option>
+                                    <option>Content SEO</option>
+                                    <option>Google Ads</option>
+                                    <option>Content Facebook</option>
+                                    <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới
+                                    </option>
+                                </select>
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Vị trí/Chức danh <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select id="onchangeViTriCongViecdemo" class="selectpicker"
-                                            title="Chọn Vị trí/Chức danh">
-                                            <option selected>Quản lý phòng</option>
-                                            <option>Quản lý sàn TMĐT</option>
-                                            <option>Content Website</option>
-                                            <option>Content SEO</option>
-                                            <option>Google Ads</option>
-                                            <option>Content Facebook</option>
-                                            {{-- <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới</option> --}}
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-2">
+                                <select class="selectpicker">
+                                    <option selected>Bùi Thị Minh Hoa - GĐĐH</option>
+                                    <option>Nguyễn Ngọc Bảo</option>
+                                    <option>Đặng Nguyễn Lam Mai</option>
+                                    <option>Hồ Thị Hồng Vân</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <input type="text" readonly class="form-control" readonly placeholder="Quỹ lương năm" />
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <select class="selectpicker" title="Chọn gói trang bị">
+                                    <option selected>Trang bị hành chính</option>
+                                    <option>Trang bị cơ bản</option>
+                                    <option>Trang bị Nhân viên</option>
+                                    <option>Trang bị Chuyên viên</option>
+                                    <option>Trang bị Quản lý</option>
+                                    <option>Trang bị Giám đốc</option>
+                                </select>
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Quản lý trực tiếp <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select class="selectpicker" title="Chọn quản lý">
-                                            <option selected>Bùi Thị Minh Hoa - GĐĐH</option>
-                                            <option>Nguyễn Ngọc Bảo</option>
-                                            <option>Đặng Nguyễn Lam Mai</option>
-                                            <option>Hồ Thị Hồng Vân</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-2">
+                                <select class="selectpicker" title="Chọn trạng thái">
+                                    <option selected>Toàn thời gian</option>
+                                    <option>Bán thời gian</option>
+                                </select>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Quỹ lương năm <span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" readonly class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trang bị hành chính <span
-                                                class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select class="selectpicker" title="Chọn gói trang bị">
-                                            <option selected>Trang bị hành chính</option>
-                                            <option>Trang bị cơ bản</option>
-                                            <option>Trang bị Nhân viên</option>
-                                            <option>Trang bị Chuyên viên</option>
-                                            <option>Trang bị Quản lý</option>
-                                            <option>Trang bị Giám đốc</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Hình thức làm việc <span
-                                                class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select class="selectpicker" title="Chọn trạng thái">
-                                            <option selected>Toàn thời gian</option>
-                                            <option>Bán thời gian</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trạng thái làm việc <span
-                                                class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select class="selectpicker" title="Chọn trạng thái">
-                                            <option selected>Đang làm việc</option>
-                                            <option>Đã nghỉ việc</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-2">
+                                <select class="selectpicker" title="Chọn trạng thái">
+                                    <option selected>Đang làm việc</option>
+                                    <option>Đã nghỉ việc</option>
+                                </select>
                             </div>
 
                         </div>
@@ -1566,10 +1443,10 @@
                         <div class="row align-items-center">
                             <div class="col-sm-2">
                                 <div class="image-upload">
-                                    <input type="file" name="" id="logo" onchange="fileValue(this)">
+                                    <input type="file" name="" id="logo" onchange="createImg(this)">
                                     <label for="logo" class="upload-field" id="file-label">
                                         <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}"
+                                            <img id="create_image-preview" src="{{ asset('assets/img/preview-image.svg') }}"
                                                 alt="">
                                         </div>
                                     </label>
@@ -3083,12 +2960,22 @@
         });
     </script>
     <script>
-        function fileValue(value) {
+        function editImg(value) {
             var path = value.value;
             var extenstion = path.split('.').pop();
             if (extenstion == "jpg" || extenstion == "svg" || extenstion == "jpeg" || extenstion == "png" || extenstion ==
                 "gif") {
-                document.getElementById('image-preview').src = window.URL.createObjectURL(value.files[0]);
+                document.getElementById('edit_image-preview').src = window.URL.createObjectURL(value.files[0]);
+            } else {
+                alert("Không hỗ trợ định dạng này. ")
+            }
+        }
+        function createImg(value) {
+            var path = value.value;
+            var extenstion = path.split('.').pop();
+            if (extenstion == "jpg" || extenstion == "svg" || extenstion == "jpeg" || extenstion == "png" || extenstion ==
+                "gif") {
+                document.getElementById('create_image-preview').src = window.URL.createObjectURL(value.files[0]);
             } else {
                 alert("Không hỗ trợ định dạng này. ")
             }

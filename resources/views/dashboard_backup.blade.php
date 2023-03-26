@@ -1,57 +1,6 @@
 @extends('template.master')
 {{-- Trang chủ admin --}}
 @section('title', 'Bảng điều khiển')
-@section('header-style')
-<style type="text/css">
-    .div_maintb {
-        height: 250px;
-        /* width: 500px; */
-        overflow: scroll;
-        border: 1px solid #b4b4b4;
-    }
-
-        .div_maintb table {
-            border-spacing: 0;
-        }
-
-        .div_maintb th {
-            position: sticky;
-            top: 0;
-            background: #464646;
-            color: #b7b7b7;
-            padding: 6px;
-            outline: 1px solid #7a7a7a;
-        }
-
-        .div_maintb td {
-            padding: 6px;
-            outline: 1px solid #c3c3c3;
-        }
-
-            .div_maintb th:nth-child(1),
-            .div_maintb td:nth-child(1) {
-                position: sticky;
-                left: 0;
-            }
-
-            .div_maintb th:nth-child(2),
-            .div_maintb td:nth-child(2) {
-                position: sticky;
-                left: 100px;
-            }
-
-            .div_maintb td:nth-child(1),
-            .div_maintb td:nth-child(2) {
-                background: #fff2ab;
-                z-index: 200;
-            }
-
-            .div_maintb th:nth-child(1),
-            .div_maintb th:nth-child(2) {
-                z-index: 300;
-            }
-</style>
-@endsection
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -76,203 +25,119 @@
                     </div>
     
                     <div class="row ">
-                        {{-- <div class="col-lg-12">
+                        <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <div class="div_maintb">
-                                        <table>
+                                    <div class="table-responsive">
+                                        <table class="table overflow-scroll">
+                                            
+                                            <thead>
+                                                <th class="text-center" colspan="6">Mục tiêu nhiệm vụ tháng</th>
+                                                <th class="text-center" colspan="30">Nhật kí công việc</th>
+                                              <tr>
+                                                <th scope="col" class="text-nowrap">STT</th>
+                                                <th scope="col" class="text-nowrap">Mục tiêu nhiệm vụ</th>
+                                                <th scope="col" class="text-nowrap">Thời hạn</th>
+                                                <th scope="col" class="text-nowrap">ĐVT</th>
+                                                <th scope="col" class="text-nowrap">SL</th>
+                                                <th scope="col" class="text-nowrap">Σ Lũy kế</th>
+                                                <th class="text-center" scope="col">1</th>
+                                                <th class="text-center" scope="col">2</th>
+                                                <th class="text-center" scope="col">3</th>
+                                                <th scope="col" class="text-center bg-warning bg-opacity-10 text-warning">
+                                                    4
+                                                </th>
+                                                <th scope="col" class="text-center bg-danger bg-opacity-10 text-danger">
+                                                    5
+                                                </th>
+                                                <th class="text-center" scope="col">6</th>
+                                                <th class="text-center" scope="col">7</th>
+                                                <th class="text-center" scope="col">8</th>
+                                                <th class="text-center" scope="col">9</th>
+                                                <th class="text-center" scope="col">10</th>
+                                                <th scope="col" class="text-center bg-warning bg-opacity-10 text-warning">
+                                                    11
+                                                </th>
+                                                <th scope="col" class="text-center bg-danger bg-opacity-10 text-danger">
+                                                    12
+                                                </th>
+                                                <th class="text-center" scope="col">13</th>
+                                                <th class="text-center" scope="col">14</th>
+                                                <th class="text-center" scope="col">15</th>
+                                                <th class="text-center" scope="col">16</th>
+                                                <th class="text-center" scope="col">17</th>
+                                                <th scope="col" class="text-center bg-warning bg-opacity-10 text-warning">
+                                                    18
+                                                </th>
+                                                <th scope="col" class="text-center bg-danger bg-opacity-10 text-danger">
+                                                    19
+                                                </th>
+                                                <th class="text-center" scope="col">20</th>
+                                                <th class="text-center" scope="col">21</th>
+                                                <th class="text-center" scope="col">22</th>
+                                                <th class="text-center" scope="col">23</th>
+                                                <th class="text-center" scope="col">24</th>
+                                                <th scope="col" class="text-center bg-warning bg-opacity-10 text-warning">
+                                                    25
+                                                </th>
+                                                <th scope="col" class="text-center bg-danger bg-opacity-10 text-danger">
+                                                    26
+                                                </th>
+                                                <th class="text-center" scope="col">27</th>
+                                                <th class="text-center" scope="col">28</th>
+                                                <th class="text-center" scope="col">29</th>
+                                                <th class="text-center" scope="col">30</th>
+                                              </tr>
+                                            </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th class="text-nowrap">STT</th>
-                                                    <th class="text-nowrap">Mục tiêu nhiệm vụ</th>
-                                                    <th class="text-nowrap">Thời hạn</th>
-                                                    <th class="text-nowrap">ĐVT</th>
-                                                    <th class="text-nowrap">SL</th>
-                                                    <th class="text-nowrap">Σ Lũy kế</th>
-                                                    <th scope="col">1</th>
-                                                    <th scope="col">2</th>
-                                                    <th scope="col">3</th>
-                                                    <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                        4
-                                                    </th>
-                                                    <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                        5
-                                                    </th>
-                                                    <th scope="col">6</th>
-                                                    <th scope="col">7</th>
-                                                    <th scope="col">8</th>
-                                                    <th scope="col">9</th>
-                                                    <th scope="col">10</th>
-                                                    <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                        11
-                                                    </th>
-                                                    <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                        12
-                                                    </th>
-                                                    <th scope="col">13</th>
-                                                    <th scope="col">14</th>
-                                                    <th scope="col">15</th>
-                                                    <th scope="col">16</th>
-                                                    <th scope="col">17</th>
-                                                    <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                        18
-                                                    </th>
-                                                    <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                        19
-                                                    </th>
-                                                    <th scope="col">20</th>
-                                                    <th scope="col">21</th>
-                                                    <th scope="col">22</th>
-                                                    <th scope="col">23</th>
-                                                    <th scope="col">24</th>
-                                                    <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                        25
-                                                    </th>
-                                                    <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                        26
-                                                    </th>
-                                                    <th scope="col">27</th>
-                                                    <th scope="col">28</th>
-                                                    <th scope="col">29</th>
-                                                    <th scope="col">30</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Tìm kiếm nhà cung cấp</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
+                                              <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                              </tr>
+                                              
                                             </tbody>
-                                        </table>
+                                          </table>
                                     </div>
                                 </div>
                             </div>
                             
-                        </div> --}}
+                        </div>
     
-                        <div class="col-lg-12">
+                        {{-- <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="table" data-href="dataTable-1">
@@ -3423,7 +3288,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
     
                         <div class="col-lg-3">
                             <div class="card mb-3">

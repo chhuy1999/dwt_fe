@@ -12,6 +12,117 @@
     background-color: rgb(82 157 86 / 25%);
 }
 
+
+
+
+
+
+
+
+.div1 {
+    width: 600px;
+    height: 400px;
+    overflow: scroll;
+    border: 1px solid #777777;
+}
+
+.div1 table {
+    border-spacing: 0;
+}
+
+.div1 th {
+    border-left: none;
+    border-right: 1px solid #bbbbbb;
+    padding: 5px;
+    width: 80px;
+    min-width: 80px;
+    position: sticky;
+    top: 0;
+    background: #727272;
+    color: #e0e0e0;
+    font-weight: normal;
+}
+
+.div1 td {
+    border-left: none;
+    border-right: 1px solid #bbbbbb;
+    border-bottom: 1px solid #bbbbbb;
+    padding: 5px;
+    width: 80px;
+    min-width: 80px;
+}
+
+.div1 th:nth-child(1),
+.div1 td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    width: 150px;
+    min-width: 150px;
+}
+
+.div1 th:nth-child(2),
+.div1 td:nth-child(2) {
+    position: sticky;
+    /* 1st cell left/right padding + 1st cell width + 1st cell left/right border width */
+    /* 0 + 5 + 150 + 5 + 1 */
+    left: 161px;
+    width: 50px;
+    min-width: 50px;
+}
+
+.div1 td:nth-child(1),
+.div1 td:nth-child(2) {
+    background: #ffebb5;
+}
+
+.div1 th:nth-child(1),
+.div1 th:nth-child(2) {
+    z-index: 2;
+}
+.div1 {
+    width: 600px;
+    height: 400px;
+    overflow: scroll;
+    border: 1px solid #777777;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 label.col-form-label {
     font-size: 1.2rem;
     /* font-weight: 500; */
@@ -1838,6 +1949,7 @@ th {
 
 .upload-field .file-thumbnail img {
     width: 68px;
+    height: 68px;
     border-radius: 50%;
 }
 

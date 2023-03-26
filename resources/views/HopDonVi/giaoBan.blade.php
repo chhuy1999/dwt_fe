@@ -33,6 +33,15 @@
         .bootstrap-select>.dropdown-toggle:after {
             display: none;
         }
+
+        .style_input {
+            border: none;
+            background-color: transparent;
+            font-size: 1.1rem;
+            box-shadow: none;
+            outline: none;
+        }
+
     </style>
 @endsection
 
@@ -217,7 +226,7 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="selectpicker" data-width="100%">
+                                                                <select class="form-select style_input">
                                                                     <option>Đã nêu</option>
                                                                     <option>Đã phản hồi</option>
                                                                     <option>Đã giải quyết</option>
@@ -243,7 +252,7 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="selectpicker" data-width="100%">
+                                                                <select class="form-select style_input">
                                                                     <option>Đã phản hồi</option>
                                                                     <option>Đã nêu</option>
                                                                     <option>Đã giải quyết</option>
@@ -269,7 +278,7 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="selectpicker" data-width="100%">
+                                                                <select class="form-select style_input">
                                                                     <option>Đã giải quyết</option>
                                                                     <option>Đã nêu</option>
                                                                     <option>Đã phản hồi</option>
@@ -317,80 +326,82 @@
                                                                             class="link-muted text-danger fs-6"><i
                                                                                 class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
                                                                         <a href="#" class="text-danger fs-6 me-4"><i
-                                                                                class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                                class="bi bi-reply"></i>Trả lời</span></a>
                                                                         <p class="fs-6 mb-1">5 phút trước</p>
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="d-flex flex-start mt-4">
-                                                                    <a class="me-3" href="#">
-                                                                        <img class="rounded-circle shadow-1-strong"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
-                                                                            alt="avatar" width="50"
-                                                                            height="50" />
-                                                                    </a>
-                                                                    <div class="flex-grow-1 flex-shrink-1">
-                                                                        <div>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center">
-                                                                                <p class="mb-1 fw-bolder fs-5">
-                                                                                    Nguyễn Ngọc Bảo
+                                                                <div class="comment_replay-wrapper" style="display:none">
+                                                                    <div class="d-flex flex-start mt-4">
+                                                                        <a class="me-3" href="#">
+                                                                            <img class="rounded-circle shadow-1-strong"
+                                                                                src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                                alt="avatar" width="50"
+                                                                                height="50" />
+                                                                        </a>
+                                                                        <div class="flex-grow-1 flex-shrink-1">
+                                                                            <div>
+                                                                                <div
+                                                                                    class="d-flex justify-content-between align-items-center">
+                                                                                    <p class="mb-1 fw-bolder fs-5">
+                                                                                        Nguyễn Ngọc Bảo
+                                                                                    </p>
+                                                                                </div>
+                                                                                <p class="mb-0">
+                                                                                    letters, as opposed to using 'Content here,
+                                                                                    content here',
+                                                                                    making it look like readable English.
                                                                                 </p>
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <a href="#"
+                                                                                        class="link-muted text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                    {{-- <a href="#"
+                                                                                        class="link-muted text-danger fs-6"><i
+                                                                                            class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                    <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-reply"></i>Trả lời</span></a>
+                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
+                                                                                </div>
                                                                             </div>
-                                                                            <p class="mb-0">
-                                                                                letters, as opposed to using 'Content here,
-                                                                                content here',
-                                                                                making it look like readable English.
-                                                                            </p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <a href="#"
-                                                                                    class="link-muted text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
-                                                                                {{-- <a href="#"
-                                                                                    class="link-muted text-danger fs-6"><i
-                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
-                                                                                <a href="#" class="text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
-                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                        </div>
+                                                                    </div>
+    
+                                                                    <div class="d-flex flex-start mt-4">
+                                                                        <a class="me-3" href="#">
+                                                                            <img class="rounded-circle shadow-1-strong"
+                                                                                src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                                alt="avatar" width="50"
+                                                                                height="50" />
+                                                                        </a>
+                                                                        <div class="flex-grow-1 flex-shrink-1">
+                                                                            <div>
+                                                                                <div
+                                                                                    class="d-flex justify-content-between align-items-center">
+                                                                                    <p class="mb-1 fw-bolder fs-5">
+                                                                                        Nguyễn Ngọc Bảo 
+                                                                                    </p>
+                                                                                </div>
+                                                                                <p class="mb-0">
+                                                                                    the majority have suffered alteration in
+                                                                                    some form, by
+                                                                                    injected humour, or randomised words.
+                                                                                </p>
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <a href="#"
+                                                                                        class="link-muted text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                    {{-- <a href="#"
+                                                                                        class="link-muted text-danger fs-6"><i
+                                                                                            class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                    <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-reply"></i>Trả lời</span></a>
+                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="d-flex flex-start mt-4">
-                                                                    <a class="me-3" href="#">
-                                                                        <img class="rounded-circle shadow-1-strong"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
-                                                                            alt="avatar" width="50"
-                                                                            height="50" />
-                                                                    </a>
-                                                                    <div class="flex-grow-1 flex-shrink-1">
-                                                                        <div>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center">
-                                                                                <p class="mb-1 fw-bolder fs-5">
-                                                                                    Nguyễn Ngọc Bảo 
-                                                                                </p>
-                                                                            </div>
-                                                                            <p class="mb-0">
-                                                                                the majority have suffered alteration in
-                                                                                some form, by
-                                                                                injected humour, or randomised words.
-                                                                            </p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <a href="#"
-                                                                                    class="link-muted text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
-                                                                                {{-- <a href="#"
-                                                                                    class="link-muted text-danger fs-6"><i
-                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
-                                                                                <a href="#" class="text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
-                                                                                <p class="fs-6 mb-1">5 phút trước</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
 
@@ -422,118 +433,120 @@
                                                                             class="link-muted text-danger fs-6"><i
                                                                                 class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
                                                                         <a href="#" class="text-danger fs-6 me-4"><i
-                                                                                class="bi bi-reply fa-xs"></i>Trả lời</span></a>
+                                                                                class="bi bi-reply"></i>Trả lời</span></a>
                                                                         <p class="fs-6 mb-1">5 phút trước</p>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="d-flex flex-start mt-4">
-                                                                    <a class="me-3" href="#">
-                                                                        <img class="rounded-circle shadow-1-strong"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
-                                                                            alt="avatar" width="50"
-                                                                            height="50" />
-                                                                    </a>
-                                                                    <div class="flex-grow-1 flex-shrink-1">
-                                                                        <div>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center">
-                                                                                <p class="mb-1 fw-bolder fs-5">
-                                                                                    Nguyễn Ngọc Bảo 
+                                                                <div class="comment_replay-wrapper" style="display:none">
+                                                                    <div class="d-flex flex-start mt-4">
+                                                                        <a class="me-3" href="#">
+                                                                            <img class="rounded-circle shadow-1-strong"
+                                                                                src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                                alt="avatar" width="50"
+                                                                                height="50" />
+                                                                        </a>
+                                                                        <div class="flex-grow-1 flex-shrink-1">
+                                                                            <div>
+                                                                                <div
+                                                                                    class="d-flex justify-content-between align-items-center">
+                                                                                    <p class="mb-1 fw-bolder fs-5">
+                                                                                        Nguyễn Ngọc Bảo 
+                                                                                    </p>
+                                                                                </div>
+                                                                                <p class="mb-0">
+                                                                                    Cras sit amet nibh libero, in gravida nulla.
+                                                                                    Nulla vel metus
+                                                                                    scelerisque ante sollicitudin commodo. Cras
+                                                                                    purus odio,
+                                                                                    vestibulum in vulputate at, tempus viverra
+                                                                                    turpis.
                                                                                 </p>
-                                                                            </div>
-                                                                            <p class="mb-0">
-                                                                                Cras sit amet nibh libero, in gravida nulla.
-                                                                                Nulla vel metus
-                                                                                scelerisque ante sollicitudin commodo. Cras
-                                                                                purus odio,
-                                                                                vestibulum in vulputate at, tempus viverra
-                                                                                turpis.
-                                                                            </p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <a href="#"
-                                                                                    class="link-muted text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
-                                                                                {{-- <a href="#"
-                                                                                    class="link-muted text-danger fs-6"><i
-                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
-                                                                                <a href="#" class="text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
-                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <a href="#"
+                                                                                        class="link-muted text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                    {{-- <a href="#"
+                                                                                        class="link-muted text-danger fs-6"><i
+                                                                                            class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                    <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-reply"></i>Trả lời</span></a>
+                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-
-                                                                <div class="d-flex flex-start mt-4">
-                                                                    <a class="me-3" href="#">
-                                                                        <img class="rounded-circle shadow-1-strong"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
-                                                                            alt="avatar" width="50"
-                                                                            height="50" />
-                                                                    </a>
-                                                                    <div class="flex-grow-1 flex-shrink-1">
-                                                                        <div>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center">
-                                                                                <p class="mb-1 fw-bolder fs-5">
-                                                                                    Nguyễn Ngọc Bảo 
+    
+                                                                    <div class="d-flex flex-start mt-4">
+                                                                        <a class="me-3" href="#">
+                                                                            <img class="rounded-circle shadow-1-strong"
+                                                                                src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                                alt="avatar" width="50"
+                                                                                height="50" />
+                                                                        </a>
+                                                                        <div class="flex-grow-1 flex-shrink-1">
+                                                                            <div>
+                                                                                <div
+                                                                                    class="d-flex justify-content-between align-items-center">
+                                                                                    <p class="mb-1 fw-bolder fs-5">
+                                                                                        Nguyễn Ngọc Bảo 
+                                                                                    </p>
+                                                                                </div>
+                                                                                <p class="mb-0">
+                                                                                    a Latin professor at Hampden-Sydney College
+                                                                                    in Virginia,
+                                                                                    looked up one of the more obscure Latin
+                                                                                    words, consectetur
                                                                                 </p>
-                                                                            </div>
-                                                                            <p class="mb-0">
-                                                                                a Latin professor at Hampden-Sydney College
-                                                                                in Virginia,
-                                                                                looked up one of the more obscure Latin
-                                                                                words, consectetur
-                                                                            </p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <a href="#"
-                                                                                    class="link-muted text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
-                                                                                {{-- <a href="#"
-                                                                                    class="link-muted text-danger fs-6"><i
-                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
-                                                                                <a href="#" class="text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
-                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <a href="#"
+                                                                                        class="link-muted text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                    {{-- <a href="#"
+                                                                                        class="link-muted text-danger fs-6"><i
+                                                                                            class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                    <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-reply"></i>Trả lời</span></a>
+                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-
-                                                                <div class="d-flex flex-start mt-4">
-                                                                    <a class="me-3" href="#">
-                                                                        <img class="rounded-circle shadow-1-strong"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
-                                                                            alt="avatar" width="50"
-                                                                            height="50" />
-                                                                    </a>
-                                                                    <div class="flex-grow-1 flex-shrink-1">
-                                                                        <div>
-                                                                            <div
-                                                                                class="d-flex justify-content-between align-items-center">
-                                                                                <p class="mb-1 fw-bolder fs-5">
-                                                                                    Nguyễn Ngọc Bảo 
+    
+                                                                    <div class="d-flex flex-start mt-4">
+                                                                        <a class="me-3" href="#">
+                                                                            <img class="rounded-circle shadow-1-strong"
+                                                                                src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                                alt="avatar" width="50"
+                                                                                height="50" />
+                                                                        </a>
+                                                                        <div class="flex-grow-1 flex-shrink-1">
+                                                                            <div>
+                                                                                <div
+                                                                                    class="d-flex justify-content-between align-items-center">
+                                                                                    <p class="mb-1 fw-bolder fs-5">
+                                                                                        Nguyễn Ngọc Bảo 
+                                                                                    </p>
+                                                                                </div>
+                                                                                <p class="mb-0">
+                                                                                    Autem, totam debitis suscipit saepe sapiente
+                                                                                    magnam officiis
+                                                                                    quaerat necessitatibus odio assumenda,
+                                                                                    perferendis quae iusto
+                                                                                    labore laboriosam minima numquam impedit
+                                                                                    quam dolorem!
                                                                                 </p>
-                                                                            </div>
-                                                                            <p class="mb-0">
-                                                                                Autem, totam debitis suscipit saepe sapiente
-                                                                                magnam officiis
-                                                                                quaerat necessitatibus odio assumenda,
-                                                                                perferendis quae iusto
-                                                                                labore laboriosam minima numquam impedit
-                                                                                quam dolorem!
-                                                                            </p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <a href="#"
-                                                                                    class="link-muted text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-hand-thumbs-up me-1"></i>12</a>
-                                                                                {{-- <a href="#"
-                                                                                    class="link-muted text-danger fs-6"><i
-                                                                                        class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
-                                                                                <a href="#" class="text-danger fs-6 me-4"><i
-                                                                                        class="bi bi-reply fa-xs"></i>Trả lời</span></a>
-                                                                                <p class="fs-6 mb-1">5 phút trước</p>
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <a href="#"
+                                                                                        class="link-muted text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-hand-thumbs-up me-1"></i>12</a>
+                                                                                    {{-- <a href="#"
+                                                                                        class="link-muted text-danger fs-6"><i
+                                                                                            class="bi bi-hand-thumbs-down me-1"></i>13</a> --}}
+                                                                                    <a href="#" class="text-danger fs-6 me-4"><i
+                                                                                            class="bi bi-reply"></i>Trả lời</span></a>
+                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1410,11 +1423,12 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
-    <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
+    <script type="text/javascript">
+
+    </script>
 @endsection
