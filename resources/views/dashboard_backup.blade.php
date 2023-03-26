@@ -1,57 +1,6 @@
 @extends('template.master')
 {{-- Trang chủ admin --}}
 @section('title', 'Bảng điều khiển')
-@section('header-style')
-<style type="text/css">
-    .div_maintb {
-        height: 250px;
-        /* width: 500px; */
-        overflow: scroll;
-        border: 1px solid #b4b4b4;
-    }
-
-        .div_maintb table {
-            border-spacing: 0;
-        }
-
-        .div_maintb th {
-            position: sticky;
-            top: 0;
-            background: #464646;
-            color: #b7b7b7;
-            padding: 6px;
-            outline: 1px solid #7a7a7a;
-        }
-
-        .div_maintb td {
-            padding: 6px;
-            outline: 1px solid #c3c3c3;
-        }
-
-            .div_maintb th:nth-child(1),
-            .div_maintb td:nth-child(1) {
-                position: sticky;
-                left: 0;
-            }
-
-            .div_maintb th:nth-child(2),
-            .div_maintb td:nth-child(2) {
-                position: sticky;
-                left: 100px;
-            }
-
-            .div_maintb td:nth-child(1),
-            .div_maintb td:nth-child(2) {
-                background: #fff2ab;
-                z-index: 200;
-            }
-
-            .div_maintb th:nth-child(1),
-            .div_maintb th:nth-child(2) {
-                z-index: 300;
-            }
-</style>
-@endsection
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -74,206 +23,121 @@
                             <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
-
+    
                     <div class="row ">
-
-                        {{-- <div class="col-lg-12">
+                        <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <div class="div_maintb">
-                                        <table>
+                                    <div class="table-responsive">
+                                        <table class="table overflow-scroll">
+                                            
+                                            <thead>
+                                                <th class="text-center" colspan="6">Mục tiêu nhiệm vụ tháng</th>
+                                                <th class="text-center" colspan="30">Nhật kí công việc</th>
+                                              <tr>
+                                                <th scope="col" class="text-nowrap">STT</th>
+                                                <th scope="col" class="text-nowrap">Mục tiêu nhiệm vụ</th>
+                                                <th scope="col" class="text-nowrap">Thời hạn</th>
+                                                <th scope="col" class="text-nowrap">ĐVT</th>
+                                                <th scope="col" class="text-nowrap">SL</th>
+                                                <th scope="col" class="text-nowrap">Σ Lũy kế</th>
+                                                <th class="text-center" scope="col">1</th>
+                                                <th class="text-center" scope="col">2</th>
+                                                <th class="text-center" scope="col">3</th>
+                                                <th scope="col" class="text-center bg-warning bg-opacity-10 text-warning">
+                                                    4
+                                                </th>
+                                                <th scope="col" class="text-center bg-danger bg-opacity-10 text-danger">
+                                                    5
+                                                </th>
+                                                <th class="text-center" scope="col">6</th>
+                                                <th class="text-center" scope="col">7</th>
+                                                <th class="text-center" scope="col">8</th>
+                                                <th class="text-center" scope="col">9</th>
+                                                <th class="text-center" scope="col">10</th>
+                                                <th scope="col" class="text-center bg-warning bg-opacity-10 text-warning">
+                                                    11
+                                                </th>
+                                                <th scope="col" class="text-center bg-danger bg-opacity-10 text-danger">
+                                                    12
+                                                </th>
+                                                <th class="text-center" scope="col">13</th>
+                                                <th class="text-center" scope="col">14</th>
+                                                <th class="text-center" scope="col">15</th>
+                                                <th class="text-center" scope="col">16</th>
+                                                <th class="text-center" scope="col">17</th>
+                                                <th scope="col" class="text-center bg-warning bg-opacity-10 text-warning">
+                                                    18
+                                                </th>
+                                                <th scope="col" class="text-center bg-danger bg-opacity-10 text-danger">
+                                                    19
+                                                </th>
+                                                <th class="text-center" scope="col">20</th>
+                                                <th class="text-center" scope="col">21</th>
+                                                <th class="text-center" scope="col">22</th>
+                                                <th class="text-center" scope="col">23</th>
+                                                <th class="text-center" scope="col">24</th>
+                                                <th scope="col" class="text-center bg-warning bg-opacity-10 text-warning">
+                                                    25
+                                                </th>
+                                                <th scope="col" class="text-center bg-danger bg-opacity-10 text-danger">
+                                                    26
+                                                </th>
+                                                <th class="text-center" scope="col">27</th>
+                                                <th class="text-center" scope="col">28</th>
+                                                <th class="text-center" scope="col">29</th>
+                                                <th class="text-center" scope="col">30</th>
+                                              </tr>
+                                            </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th class="text-nowrap">STT</th>
-                                                    <th class="text-nowrap">Mục tiêu nhiệm vụ</th>
-                                                    <th class="text-nowrap">Thời hạn</th>
-                                                    <th class="text-nowrap">ĐVT</th>
-                                                    <th class="text-nowrap">SL</th>
-                                                    <th class="text-nowrap">Σ Lũy kế</th>
-                                                    <th scope="col">1</th>
-                                                    <th scope="col">2</th>
-                                                    <th scope="col">3</th>
-                                                    <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                        4
-                                                    </th>
-                                                    <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                        5
-                                                    </th>
-                                                    <th scope="col">6</th>
-                                                    <th scope="col">7</th>
-                                                    <th scope="col">8</th>
-                                                    <th scope="col">9</th>
-                                                    <th scope="col">10</th>
-                                                    <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                        11
-                                                    </th>
-                                                    <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                        12
-                                                    </th>
-                                                    <th scope="col">13</th>
-                                                    <th scope="col">14</th>
-                                                    <th scope="col">15</th>
-                                                    <th scope="col">16</th>
-                                                    <th scope="col">17</th>
-                                                    <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                        18
-                                                    </th>
-                                                    <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                        19
-                                                    </th>
-                                                    <th scope="col">20</th>
-                                                    <th scope="col">21</th>
-                                                    <th scope="col">22</th>
-                                                    <th scope="col">23</th>
-                                                    <th scope="col">24</th>
-                                                    <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                        25
-                                                    </th>
-                                                    <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                        26
-                                                    </th>
-                                                    <th scope="col">27</th>
-                                                    <th scope="col">28</th>
-                                                    <th scope="col">29</th>
-                                                    <th scope="col">30</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Tìm kiếm nhà cung cấp</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td class="text-nowrap">Row Data 2</td>
-                                                    <td class="text-nowrap">Row Data 3</td>
-                                                    <td class="text-nowrap">Row Data 4</td>
-                                                    <td class="text-nowrap">Row Data 5</td>
-                                                    <td class="text-nowrap">Row Data 6</td>
-                                                </tr>
+                                              <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                              </tr>
+                                              
                                             </tbody>
-                                        </table>
+                                          </table>
                                     </div>
                                 </div>
                             </div>
-
-                        </div> --}}
-
-                        <div class="col-lg-12">
+                            
+                        </div>
+    
+                        {{-- <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="table" data-href="dataTable-1">
@@ -287,45 +151,42 @@
                                             <div class="action_wrapper d-flex">
                                                 <div class="form-group has-search">
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Tìm kiếm nhiệm vụ">
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
                                                 </div>
-                                                <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Xuất file Excel">
+                                                <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
                                                     <button class="btn-export"><i class="bi bi-download"></i></button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="d-flex bg-blue-blur">
                                             <div class="table-responsive style_table-1 table-bordered mainSection_table w-50">
-                                                <table class="table">
+                                                <table class="table m-0">
                                                     <thead>
-                                                        <td class="bg-white" colspan="6"
-                                                            style="
+                                                        <td class="bg-white" colspan="6" style="
                                                                 text-align: center;
                                                                 color: inherit;
                                                                 font-weight: 700;
-                                                                data-bs-toggle="modal"
-                                                            data-bs-target="#thongTinNhiemVu">
-                                                            Mục tiêu nhiệm vụ tháng
-                                                        </td>
-                                                        <tr>
-                                                            <th scope=" col" class="fw-bold">STT</th>
-                                                            <th scope="col" class="fw-bold text-start">
-                                                                Mục tiêu nhiệm vụ
-                                                            </th>
-                                                            <th scope="col" class="fw-bold">
-                                                                Thời hạn
-                                                            </th>
-                                                            <th scope="col" class="fw-bold">
-                                                                ĐVT
-                                                            </th>
-                                                            <th scope="col" class="fw-bold">
-                                                                SL
-                                                            </th>
-                                                            <th scope="col" class="border-end fw-bold">
-                                                                Σ Lũy kế
-                                                            </th>
+                                                                data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu">
+                                                                                                    Mục tiêu nhiệm vụ tháng
+                                                                                                </td>
+                                                                                                <tr>
+                                                                                                    <th scope=" col"
+                                                            class="fw-bold">STT</th>
+                                                        <th scope="col" class="fw-bold text-start">
+                                                            Mục tiêu nhiệm vụ
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            Thời hạn
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            ĐVT
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            SL
+                                                        </th>
+                                                        <th scope="col" class="border-end fw-bold">
+                                                            Σ Lũy kế
+                                                        </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -413,8 +274,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#thongTinNhiemVu" role="button">
+                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
+                                                                    role="button">
                                                                     Thiết kế giao diện
                                                                 </div>
                                                             </td>
@@ -439,8 +300,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#thongTinNhiemVu" role="button">
+                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
+                                                                    role="button">
                                                                     Viết bài
                                                                 </div>
                                                             </td>
@@ -473,12 +334,10 @@
                                                             <th scope="col">1</th>
                                                             <th scope="col">2</th>
                                                             <th scope="col">3</th>
-                                                            <th scope="col"
-                                                                class="bg-warning bg-opacity-10 text-warning">
+                                                            <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 4
                                                             </th>
-                                                            <th scope="col"
-                                                                class="bg-danger bg-opacity-10 text-danger">
+                                                            <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 5
                                                             </th>
                                                             <th scope="col">6</th>
@@ -486,12 +345,10 @@
                                                             <th scope="col">8</th>
                                                             <th scope="col">9</th>
                                                             <th scope="col">10</th>
-                                                            <th scope="col"
-                                                                class="bg-warning bg-opacity-10 text-warning">
+                                                            <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 11
                                                             </th>
-                                                            <th scope="col"
-                                                                class="bg-danger bg-opacity-10 text-danger">
+                                                            <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 12
                                                             </th>
                                                             <th scope="col">13</th>
@@ -499,12 +356,10 @@
                                                             <th scope="col">15</th>
                                                             <th scope="col">16</th>
                                                             <th scope="col">17</th>
-                                                            <th scope="col"
-                                                                class="bg-warning bg-opacity-10 text-warning">
+                                                            <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 18
                                                             </th>
-                                                            <th scope="col"
-                                                                class="bg-danger bg-opacity-10 text-danger">
+                                                            <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 19
                                                             </th>
                                                             <th scope="col">20</th>
@@ -512,12 +367,10 @@
                                                             <th scope="col">22</th>
                                                             <th scope="col">23</th>
                                                             <th scope="col">24</th>
-                                                            <th scope="col"
-                                                                class="bg-warning bg-opacity-10 text-warning">
+                                                            <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 25
                                                             </th>
-                                                            <th scope="col"
-                                                                class="bg-danger bg-opacity-10 text-danger">
+                                                            <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 26
                                                             </th>
                                                             <th scope="col">27</th>
@@ -1292,31 +1145,32 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    
                                     <div class="table">
-
+                                        
                                         <div class="d-flex bg-yellow-blur">
                                             <div class="table-responsive table-bordered border-warning mainSection_table w-50">
-                                                <table class="table">
+                                                <table class="table m-0">
                                                     <thead>
-
-                                                        <tr>
-                                                            <th scope=" col" class="fw-bold">STT</th>
-                                                            <th scope="col" class="fw-bold text-start">
-                                                                Nhiệm vụ phát sinh
-                                                            </th>
-                                                            <th scope="col" class="fw-bold">
-                                                                Thời hạn
-                                                            </th>
-                                                            <th scope="col" class="fw-bold">
-                                                                ĐVT
-                                                            </th>
-                                                            <th scope="col" class="fw-bold">
-                                                                SL
-                                                            </th>
-                                                            <th scope="col" class="border-end fw-bold">
-                                                                Σ Lũy kế
-                                                            </th>
+                                                        
+                                                                                                <tr>
+                                                                                                    <th scope=" col"
+                                                            class="fw-bold">STT</th>
+                                                        <th scope="col" class="fw-bold text-start">
+                                                            Nhiệm vụ phát sinh
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            Thời hạn
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            ĐVT
+                                                        </th>
+                                                        <th scope="col" class="fw-bold">
+                                                            SL
+                                                        </th>
+                                                        <th scope="col" class="border-end fw-bold">
+                                                            Σ Lũy kế
+                                                        </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -1326,8 +1180,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#thongTinNhiemVu" role="button">
+                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
+                                                                    role="button">
                                                                     Tìm kiếm nhà cung cấp
                                                                 </div>
                                                             </td>
@@ -1352,8 +1206,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#thongTinNhiemVu" role="button">
+                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
+                                                                    role="button">
                                                                     Mua hàng nội địa
                                                                 </div>
                                                             </td>
@@ -1378,8 +1232,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#thongTinNhiemVu" role="button">
+                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
+                                                                    role="button">
                                                                     Viết bài
                                                                 </div>
                                                             </td>
@@ -1404,8 +1258,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#thongTinNhiemVu" role="button">
+                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
+                                                                    role="button">
                                                                     Thiết kế giao diện
                                                                 </div>
                                                             </td>
@@ -1430,8 +1284,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#thongTinNhiemVu" role="button">
+                                                                    data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu"
+                                                                    role="button">
                                                                     Viết bài
                                                                 </div>
                                                             </td>
@@ -1454,18 +1308,16 @@
                                                 </table>
                                             </div>
                                             <div class="table-responsive style_table-2 table-bordered border-warning mainSection_table w-100">
-                                                <table class="table">
+                                                <table class="table m-0">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">1</th>
                                                             <th scope="col">2</th>
                                                             <th scope="col">3</th>
-                                                            <th scope="col"
-                                                                class="bg-warning bg-opacity-10 text-warning">
+                                                            <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 4
                                                             </th>
-                                                            <th scope="col"
-                                                                class="bg-danger bg-opacity-10 text-danger">
+                                                            <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 5
                                                             </th>
                                                             <th scope="col">6</th>
@@ -1473,12 +1325,10 @@
                                                             <th scope="col">8</th>
                                                             <th scope="col">9</th>
                                                             <th scope="col">10</th>
-                                                            <th scope="col"
-                                                                class="bg-warning bg-opacity-10 text-warning">
+                                                            <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 11
                                                             </th>
-                                                            <th scope="col"
-                                                                class="bg-danger bg-opacity-10 text-danger">
+                                                            <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 12
                                                             </th>
                                                             <th scope="col">13</th>
@@ -1486,12 +1336,10 @@
                                                             <th scope="col">15</th>
                                                             <th scope="col">16</th>
                                                             <th scope="col">17</th>
-                                                            <th scope="col"
-                                                                class="bg-warning bg-opacity-10 text-warning">
+                                                            <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 18
                                                             </th>
-                                                            <th scope="col"
-                                                                class="bg-danger bg-opacity-10 text-danger">
+                                                            <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 19
                                                             </th>
                                                             <th scope="col">20</th>
@@ -1499,12 +1347,10 @@
                                                             <th scope="col">22</th>
                                                             <th scope="col">23</th>
                                                             <th scope="col">24</th>
-                                                            <th scope="col"
-                                                                class="bg-warning bg-opacity-10 text-warning">
+                                                            <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 25
                                                             </th>
-                                                            <th scope="col"
-                                                                class="bg-danger bg-opacity-10 text-danger">
+                                                            <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 26
                                                             </th>
                                                             <th scope="col">27</th>
@@ -1517,761 +1363,611 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>danh-muc-dinh-muc
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">
-                                                                    &nbsp;</div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-warning bg-opacity-10 text-warning">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td class="bg-danger bg-opacity-10 text-danger">
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">2
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">2</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                             <td>
                                                                 <div class="content_table" data-bs-toggle="modal"
-                                                                    data-bs-target="#baoCaoCongViec" role="button">1
-                                                                </div>
+                                                                    data-bs-target="#baoCaoCongViec" role="button">1</div>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -2288,7 +1984,7 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="card-title">Báo cáo ngày của đơn vị</div>
-
+    
                                         <div class="mainSection_total-kpi">
                                             Tổng KPI bộ phận tạm tính:
                                             <strong>140</strong>
@@ -2297,11 +1993,9 @@
                                         <div class="action_wrapper d-flex">
                                             <div class="form-group has-search me-3">
                                                 <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Tìm kiếm nhiệm vụ">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
                                             </div>
-                                            <div class="action_export" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="Xuất file Excel">
+                                            <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
                                                 <button class="btn-export"><i class="bi bi-download"></i></button>
                                             </div>
                                         </div>
@@ -2448,8 +2142,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div
-                                            class="table-responsive style_table-2 table-bordered mainSection_table w-100">
+                                        <div class="table-responsive style_table-2 table-bordered mainSection_table w-100">
                                             <table class="table">
                                                 <thead>
                                                     <td colspan="30" class="text-center fw-bold">
@@ -2459,8 +2152,7 @@
                                                         <th scope="col">1</th>
                                                         <th scope="col">2</th>
                                                         <th scope="col">3</th>
-                                                        <th scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning">
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             4
                                                         </th>
                                                         <th scope="col" class="bg-danger bg-opacity-10 text-danger">
@@ -2471,8 +2163,7 @@
                                                         <th scope="col">8</th>
                                                         <th scope="col">9</th>
                                                         <th scope="col">10</th>
-                                                        <th scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning">
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             11
                                                         </th>
                                                         <th scope="col" class="bg-danger bg-opacity-10 text-danger">
@@ -2483,8 +2174,7 @@
                                                         <th scope="col">15</th>
                                                         <th scope="col">16</th>
                                                         <th scope="col">17</th>
-                                                        <th scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning">
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             18
                                                         </th>
                                                         <th scope="col" class="bg-danger bg-opacity-10 text-danger">
@@ -2495,8 +2185,7 @@
                                                         <th scope="col">22</th>
                                                         <th scope="col">23</th>
                                                         <th scope="col">24</th>
-                                                        <th scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning">
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             25
                                                         </th>
                                                         <th scope="col" class="bg-danger bg-opacity-10 text-danger">
@@ -2617,23 +2306,19 @@
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
@@ -2727,68 +2412,55 @@
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -2830,58 +2502,47 @@
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
@@ -2947,8 +2608,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
@@ -2960,28 +2620,23 @@
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
@@ -3009,70 +2664,57 @@
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-warning bg-opacity-10 text-warning">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td class="bg-danger bg-opacity-10 text-danger">
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
-                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;
-                                                            </div>
+                                                                data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table" data-bs-toggle="modal"
@@ -3194,21 +2836,19 @@
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="card-title">Danh sách vấn đề</div>
-
+    
                                         <div class="action_wrapper d-flex">
                                             <div class="form-group has-search me-3">
                                                 <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Tìm kiếm vấn đề">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm vấn đề">
                                             </div>
-                                            <div class="action_export" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="Xuất file Excel">
+                                            <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
                                                 <button class="btn-export"><i class="bi bi-download"></i></button>
                                             </div>
                                         </div>
@@ -3225,7 +2865,7 @@
                                                                 <i class="bi bi-chat-right-text"
                                                                     style="font-size:1.4rem"></i>
                                                             </div>
-
+    
                                                         </div>
                                                     </th>
                                                     <th style="width: 10%">
@@ -3256,16 +2896,14 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Giải quyết" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Giải quyết" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Nguyễn Ngọc Bảo" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Nguyễn Ngọc Bảo" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -3306,8 +2944,7 @@
                                                         </div>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#phanHoiVanDe">
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/edit.svg') }}" />
@@ -3315,8 +2952,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#xoaThuocTinh" data-repeater-delete>
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/trash.svg') }}" /> Xóa
@@ -3340,16 +2976,14 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Than phiền" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Than phiền" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Nguyễn Ngọc Bảo" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Nguyễn Ngọc Bảo" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -3390,8 +3024,7 @@
                                                         </div>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#phanHoiVanDe">
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/edit.svg') }}" />
@@ -3399,8 +3032,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#xoaThuocTinh" data-repeater-delete>
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/trash.svg') }}" /> Xóa
@@ -3424,16 +3056,14 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Than phiền" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Than phiền" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Nguyễn Ngọc Bảo" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Nguyễn Ngọc Bảo" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -3474,8 +3104,7 @@
                                                         </div>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#phanHoiVanDe">
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/edit.svg') }}" />
@@ -3483,8 +3112,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#xoaThuocTinh" data-repeater-delete>
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/trash.svg') }}" /> Xóa
@@ -3508,16 +3136,14 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Than phiền" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Than phiền" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Nguyễn Ngọc Bảo" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Nguyễn Ngọc Bảo" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -3558,8 +3184,7 @@
                                                         </div>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#phanHoiVanDe">
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/edit.svg') }}" />
@@ -3567,8 +3192,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#xoaThuocTinh" data-repeater-delete>
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/trash.svg') }}" /> Xóa
@@ -3592,16 +3216,14 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Than phiền" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Than phiền" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                class="form-control border-0 bg-transparent" readonly
-                                                                value="Nguyễn Ngọc Bảo" />
+                                                            <input type="text" class="form-control border-0 bg-transparent"
+                                                                readonly value="Nguyễn Ngọc Bảo" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -3642,8 +3264,7 @@
                                                         </div>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#phanHoiVanDe">
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/edit.svg') }}" />
@@ -3651,8 +3272,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal"
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#xoaThuocTinh" data-repeater-delete>
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/trash.svg') }}" /> Xóa
@@ -3661,15 +3281,15 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
-
-
+    
+    
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                        </div> --}}
+    
                         <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3682,7 +3302,7 @@
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3695,7 +3315,7 @@
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3708,7 +3328,7 @@
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3721,7 +3341,7 @@
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="col-lg-6">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3734,7 +3354,7 @@
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="col-lg-6">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3747,7 +3367,7 @@
                                 </div>
                             </div>
                         </div>
-
+    
                     </div>
                 </div>
             </div>
@@ -3758,8 +3378,7 @@
     </div>
     @include('template.sidebar.sidebarMaster.sidebarRight')
     <!-- Modal Báo cáo công việc -->
-    <div class="modal fade" id="baoCaoCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="baoCaoCongViec" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -3776,8 +3395,7 @@
                             <div class="col-sm-12 d-flex  align-items-center">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Tên nhiệm vụ</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" readonly
-                                        value="Tìm kiếm nhà cung cấp"></input>
+                                    <input class="form-control" type="text" readonly value="Tìm kiếm nhà cung cấp"></input>
                                 </div>
                             </div>
                         </div>
@@ -3788,7 +3406,8 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" placeholder="Vui lòng nhập nội dung báo cáo vào đây"></textarea>
+                                    <textarea class="form-control"
+                                        placeholder="Vui lòng nhập nội dung báo cáo vào đây"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -3812,7 +3431,7 @@
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="row mb-3">
                             <div class="form-check_wrapper">
                                 <div class="form-check_content">
@@ -3825,8 +3444,7 @@
                                                 </label>
                                                 <div class="col-sm-9">
                                                     <select class="form-select" title="Chọn trạng thái">
-                                                        <option value="" disabled selected hidden
-                                                            class="text-danger">
+                                                        <option value="" disabled selected hidden class="text-danger">
                                                             Chọn tiêu chí</option>
                                                         <option>Đã nhận</option>
                                                         <option>Đã hoàn thành</option>
@@ -3842,9 +3460,9 @@
                                                 <div class="col-sm-8" id="addTrash">
                                                     <input type="number" class="form-control">
                                                 </div>
-
+    
                                             </div>
-
+    
                                         </div>
                                     </div>
                                 </div>
@@ -3852,7 +3470,7 @@
                                     <button class="form-check_btn btn btn-outline-danger px-3">Thêm tiêu chí</button>
                                 </div>
                             </div>
-
+    
                         </div>
                         <div class="mb-3 row">
                             <div class="col-md-12">
@@ -3861,11 +3479,9 @@
                                         Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
                                     <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích
                                         thước tệp không quá 10MB</div>
-                                    <div
-                                        class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                    <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                         <div class="modal_upload-addFile me-3">
-                                            <button role="button" type="button"
-                                                class="btn position-relative pe-4 ps-4">
+                                            <button role="button" type="button" class="btn position-relative pe-4 ps-4">
                                                 <img style="width:16px;height:16px"
                                                     src="{{ asset('assets/img/upload-file.svg') }}" />
                                                 Tải file lên
@@ -3873,20 +3489,19 @@
                                                     id="modal_upload-file" multiple onchange="javascript:updateList()">
                                             </button>
                                         </div>
-
+    
                                         <div class="modal_upload-addLink">
-                                            <button role="button" type="button" class="btn"
-                                                data-bs-toggle="modal" data-bs-target="#themLinkOnline">
+                                            <button role="button" type="button" class="btn" data-bs-toggle="modal"
+                                                data-bs-target="#themLinkOnline">
                                                 <img style="width:16px;height:16px"
                                                     src="{{ asset('assets/img/add-link.svg') }}" />
                                                 Thêm liên kết
                                             </button>
                                         </div>
-
+    
                                     </div>
                                 </div>
-                                <div class="alert alert-danger" id="alertNotSupport" role="alert"
-                                    style="display:none">
+                                <div class="alert alert-danger" id="alertNotSupport" role="alert" style="display:none">
                                     File bạn tải lên hiện tại không hỗ trợ !
                                 </div>
                                 <ul id="modal_upload-list" class="modal_upload-list"></ul>
@@ -3903,10 +3518,9 @@
             </div>
         </div>
     </div>
-
+    
     {{-- Modal Thêm Link Online --}}
-    <div class="modal fade" id="themLinkOnline" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themLinkOnline" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -3923,20 +3537,17 @@
                         @csrf
                         <div class="mb-3 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <label for="staticEmail" class="col-sm-3 col-form-label"
-                                    style="padding-right:6px;">Dán link
+                                <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Dán link
                                     tại đây
                                 </label>
                                 <div class="col-sm-9" style="">
-                                    <input type="text" class="form-control"
-                                        placeholder="Nhập link báo cáo tại đây" />
+                                    <input type="text" class="form-control" placeholder="Nhập link báo cáo tại đây" />
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <div class="col-sm-12 d-flex align-items-center">
-                                <label for="staticEmail" class="col-sm-3 col-form-label"
-                                    style="padding-right:6px;">Tên hiển
+                                <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Tên hiển
                                     thị
                                 </label>
                                 <div class="col-sm-9" style="">
@@ -3947,17 +3558,16 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#baoCaoCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#baoCaoCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger" id="deleteRowElement">Lưu</button>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <!-- Modal Phản Hồi Vấn Đề -->
-    <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -3989,8 +3599,8 @@
                             <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời
                                 hạn</label>
                             <div class="w-100" style="flex:1">
-                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                    type="text">
+                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>"
+                                    class="form-control" type="text">
                             </div>
                         </div>
                         <div class="col-sm-5 d-flex  align-items-center">
@@ -4006,7 +3616,7 @@
                                 </select>
                             </div>
                         </div>
-
+    
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-12 d-flex  align-items-center">
@@ -4017,7 +3627,7 @@
                                     placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
                             </div>
                         </div>
-
+    
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -4027,8 +3637,8 @@
             </div>
         </div>
     </div>
-
-    {{-- Xóa thuộc tính --}}
+    
+    {{-- Xóa vấn đề --}}
     <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -4046,7 +3656,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Modal Vấn đề tồn đọng -->
     <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -4099,359 +3709,8 @@
         </div>
     </div>
 
-    @include('template.sidebar.sidebarMaster.sidebarRight')
-    <!-- Modal Báo cáo công việc -->
-    <div class="modal fade" id="baoCaoCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <div class="d-flex w-100 flex-md-column">
-                        <h5 class="modal-title">Báo cáo công việc</h5>
-                        <h6 class="text-capitalize fw-normal fs-5">Ngày 16/03/2023</h6>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="">
-                        @csrf
-                        <div class="mb-3 row">
-                            <div class="col-sm-12 d-flex  align-items-center">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Tên nhiệm vụ</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" readonly
-                                        value="Tìm kiếm nhà cung cấp"></input>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-sm-12 d-flex  align-items-center">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">
-                                    Ghi chú
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" placeholder="Vui lòng nhập nội dung báo cáo vào đây"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            {{-- <div class="col-sm-5 d-flex  align-items-center">
-                        <label for="inputPassword" class="col-sm-5 col-form-label">
-                            Số lượng
-                            <span class="text-danger">*</span>
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="number" class="form-control">
-                        </div>
-                    </div> --}}
-                            <div class="d-flex  align-items-center">
-                                <div class="form-check">
-                                    <input role="button" type="checkbox" class="form-check-input fs-5"
-                                        id="datGiaTriKinhDoanh">
-                                    <label role="button" class="form-check-label user-select-none"
-                                        for="datGiaTriKinhDoanh">Đạt giá trị
-                                        kinh doanh</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="form-check_wrapper">
-                                <div class="form-check_content">
-                                    <div class="form-check_repeater">
-                                        <div class="form-check_item position-relative row mb-3">
-                                            <div class="col-sm-8 d-flex  align-items-center">
-                                                <label for="inputPassword" class="col-sm-3 col-form-label">
-                                                    Tiêu chí
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-select" title="Chọn trạng thái">
-                                                        <option value="" disabled selected hidden class="text-danger">
-                                                            Chọn tiêu chí</option>
-                                                        <option>Đã nhận</option>
-                                                        <option>Đã hoàn thành</option>
-                                                        <option>Đã nhắc nhở</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 d-flex  align-items-center">
-                                                <label for="inputPassword" class="col-sm-4 col-form-label">
-                                                    Giá trị
-                                                    <span class="text-danger">*</span>
-                                                </label>
-                                                <div class="col-sm-8" id="addTrash">
-                                                    <input type="number" class="form-control">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button class="form-check_btn btn btn-outline-danger px-3">Thêm tiêu chí</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-md-12">
-                                <div class="modal_upload-wrapper">
-                                    <label class="modal_upload-label" for="file">
-                                        Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                    <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích thước tệp không quá 10MB</div>
-                                    <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                        <div class="modal_upload-addFile me-3">
-                                            <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}"/>
-                                                Tải file lên
-                                                <input role="button" type="file" class="modal_upload-input" id="modal_upload-file" multiple onchange="javascript:updateList()">
-                                            </button>
-                                        </div>
-
-                                        <div class="modal_upload-addLink">
-                                            <button role="button" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#themLinkOnline">
-                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}"/>
-                                                Thêm liên kết
-                                            </button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="alert alert-danger" id="alertNotSupport" role="alert" style="display:none">
-                                    File bạn tải lên hiện tại không hỗ trợ !
-                                </div>
-                                <ul id="modal_upload-list" class="modal_upload-list"></ul>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Xóa báo
-                        cáo</button>
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Modal Thêm Link Online --}}
-    <div class="modal fade" id="themLinkOnline" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Tải file từ link online</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/img/upload-file-from-link-img.jpg') }}" />
-                        </div>
-                    </div>
-                    <form action="" method="">
-                        @csrf
-                        <div class="mb-3 row">
-                            <div class="col-sm-12 d-flex align-items-center">
-                                <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Dán link tại đây
-                                </label>
-                                <div class="col-sm-9" style="">
-                                    <input type="text" class="form-control"
-                                        placeholder="Nhập link báo cáo tại đây" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-sm-12 d-flex align-items-center">
-                                <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Tên hiển thị
-                                </label>
-                                <div class="col-sm-9" style="">
-                                    <input type="text" class="form-control"
-                                        placeholder="Nhập tên hiển thị" />
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="deleteRowElement">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Phản Hồi Vấn Đề -->
-    <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Phản hồi vấn đề tồn đọng</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center">
-                            <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng
-                            </label>
-                            <div class="w-100" style="flex:1;overflow:hidden">
-                                <input type="text" class="form-control" class="contenteditable"
-                                    value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-4 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:18px;">Cấp giải
-                                quyết</label>
-                            <div class="w-100" style="flex:1">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="2">Phòng ban</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời
-                                hạn</label>
-                            <div class="w-100" style="flex:1">
-                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                    type="text">
-                            </div>
-                        </div>
-                        <div class="col-sm-5 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Trạng
-                                thái</label>
-                            <div class="w-100" style="flex:1">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected hidden>Chọn trạng thái</option>
-                                    <option>Đã có hướng giải quyết</option>
-                                    <option>Đã giải quyết</option>
-                                    <option>Không thể giải quyết</option>
-                                    <option>Không xác định được nguyên nhân</option>
-                                </select>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label"
-                                style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
-                            <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" class="contenteditable"
-                                    placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Xóa thuộc tính --}}
-    <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa Thuộc tính này</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có thực sự muốn xoá thuộc tính đã chọn không?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Vấn đề tồn đọng -->
-    <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="col-sm-2">
-                                    <div class="modal_body-title">Vấn đề tồn đọng</div>
-                                </div>
-                                <div class="col-sm-10" style="padding-left: 12px">
-                                    <input type="text" class="form-control form-control-plaintext" id="staticEmail"
-                                        style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-5">
-                                    <div class="modal_body-title">Cấp giải quyết</div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <select class="selectpicker" title="Chọn cấp giải quyết">
-                                        <option value="1">Công ty</option>
-                                        <option value="2">Phòng ban</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-5">
-                                    <div class="modal_body-title">Phân loại</div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <select class="selectpicker" title="Chọn cấp giải quyết">
-                                        <option value="1">Cần giải quyết</option>
-                                        <option value="2">Than phiền</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Thời hạn</div>
-                                </div>
-                                <div class="col-sm-8 position-relative">
-                                    <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                        type="text">
-                                    <i class="bi bi-calendar-plus style_pickdate"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Thông tin nhiệm vụ -->
-    <div class="modal fade" id="thongTinNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="thongTinNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -4557,9 +3816,9 @@
                                     </tbody>
                                 </table>
                             </div>
-
+    
                         </div>
-
+    
                         <div class="col-sm-12 mb-3">
                             <div class="d-flex align-items-center">
                                 <div class="modal-title">Tổng hợp báo cáo</div>
@@ -4635,8 +3894,7 @@
                                             <td>
                                                 <div class="text-break">
                                                     <span class="d-flex align-items-center">
-                                                        <i class="bi bi-link-45deg"></i>
-                                                        4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
+                                                        <i class="bi bi-link-45deg"></i> 4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
                                                     </span>
                                                 </div>
                                             </td>
@@ -4647,8 +3905,7 @@
                                             <td>
                                                 <div class="text-break">
                                                     <span class="d-flex align-items-center">
-                                                        <i class="bi bi-link-45deg"></i>
-                                                        4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
+                                                        <i class="bi bi-link-45deg"></i> 4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
                                                     </span>
                                                 </div>
                                             </td>
@@ -4659,8 +3916,7 @@
                                             <td>
                                                 <div class="text-break">
                                                     <span class="d-flex align-items-center">
-                                                        <i class="bi bi-link-45deg"></i>
-                                                        4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
+                                                        <i class="bi bi-link-45deg"></i> 4a77082efa366ad9310c58aa443a2d7d_c5_100x100.jpeg
                                                     </span>
                                                 </div>
                                             </td>
@@ -4673,16 +3929,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#nhanXetNhiemVu">Nhận xét nhiệm vụ</button>
+                    <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#nhanXetNhiemVu">Nhận xét nhiệm vụ</button>
                 </div>
             </div>
         </div>
     </div>
 
     {{-- Modal Nhận Xét Nhiệm Vụ --}}
-    <div class="modal fade" id="nhanXetNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="nhanXetNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -4724,21 +3978,20 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
 
-            <!-- Chart Types -->
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
-
+    <!-- Chart Types -->
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
 
     <script>
         $(function() {
@@ -4760,38 +4013,38 @@
         });
     </script>
 
-            <script type="text/javascript">
-                updateList = function() {
-                    const input = document.getElementById('modal_upload-file');
-                    const output = document.getElementById('modal_upload-list');
-                    let children = '';
-                    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-                    const maxFileSize = 10485760; //10MB in bytes
-                    for (let i = 0; i < input.files.length; ++i) {
-                        const file = input.files.item(i);
-                        if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
-                            children += `<li>
-                        <span class="fs-5">
-                            <i class="bi bi-link-45deg"></i> ${file.name}
-                        </span>
-                        <span class="modal_upload-remote" onclick="return this.parentNode.remove()">
-                            <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
-                        </span>
-                    </li>`;
-                        } else {
-                            const notSupport = document.getElementById('alertNotSupport');
-                            notSupport.style.display = 'block';
-                            setTimeout(() => {
-                                notSupport.style.display = 'none';
-                            }, 3500);
-                        }
-                    }
-                    output.innerHTML = children;
+    <script type="text/javascript">
+        updateList = function() {
+            const input = document.getElementById('modal_upload-file');
+            const output = document.getElementById('modal_upload-list');
+            let children = '';
+            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            const maxFileSize = 10485760; //10MB in bytes
+            for (let i = 0; i < input.files.length; ++i) {
+                const file = input.files.item(i);
+                if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
+                    children += `<li>
+                <span class="fs-5">
+                    <i class="bi bi-link-45deg"></i> ${file.name}
+                </span>
+                <span class="modal_upload-remote" onclick="return this.parentNode.remove()">
+                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                </span>
+            </li>`;
+                } else {
+                    const notSupport = document.getElementById('alertNotSupport');
+                    notSupport.style.display = 'block';
+                    setTimeout(() => {
+                        notSupport.style.display = 'none';
+                    }, 3500);
                 }
-                // SELECT MULTIPLE LEFT SIDEBAR
-                const select = document.getElementById('select');
-                const elems = document.querySelectorAll('.data_chart-items');
-                const obj = {};
+            }
+            output.innerHTML = children;
+        }
+        // SELECT MULTIPLE LEFT SIDEBAR
+        const select = document.getElementById('select');
+        const elems = document.querySelectorAll('.data_chart-items');
+        const obj = {};
 
         const filtered = [...elems].filter((el) => {
             if (!obj[el.id]) {
@@ -4809,18 +4062,22 @@
 
         select.innerHTML = selectOpt.join('');
 
-                select.addEventListener('change', function() {
-                    for (let i = 0, iLen = select.options.length; i < iLen; i++) {
-                        const opt = select.options[i];
+        select.addEventListener('change', function() {
+            for (let i = 0, iLen = select.options.length; i < iLen; i++) {
+                const opt = select.options[i];
+                const noPick = document.getElementById('data_chart-nopick')
 
-                        const val = opt.value || opt.text;
-                        if (opt.selected) {
-                            document.getElementById(val).style.display = 'block';
-                        } else {
-                            document.getElementById(val).style.display = 'none';
-                        }
-                    }
-                });
+                const val = opt.value || opt.text;
+                if (opt.selected) {
+                    document.getElementById(val).style.display = 'block';
+                    noPick.style.display = 'none';
+
+                } else {
+                    document.getElementById(val).style.display = 'none';
+                    noPick.style.display = 'block';
+                }
+            }
+        });
 
         // BTN SETTINGS
         document.getElementById('sidebarBody_settings-body').addEventListener('click', handleClickSettings, false);
@@ -4846,13 +4103,25 @@
         }
     </script>
 
-            <script>
-                $(document).ready(function() {
-                    $.datetimepicker.setLocale('vi');
-                    $('#vanDeTonDong').datetimepicker({
-                        format: 'd/m/Y',
-                        timepicker: false,
-                    });
-                });
-            </script>
+    <script>
+        $(document).ready(function() {
+            $.datetimepicker.setLocale('vi');
+            $('#vanDeTonDong').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('#gioTaoVanDeTonDong').datetimepicker({
+                format: 'H:i',
+                datepicker:false,
+            });
+            $('#thoiHanVanDeTonDong').datetimepicker({
+                format: 'd/m/Y',
+                timepicker:false,
+            });
+            $('#hopGiaoBanNgayVanDeTonDong').datetimepicker({
+                format: 'd/m/Y',
+                timepicker:false,
+            });
+        });
+    </script>
 @endsection

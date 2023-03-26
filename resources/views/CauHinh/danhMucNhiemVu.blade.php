@@ -32,8 +32,7 @@
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <label class="">Tháng</label>
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
 
@@ -166,16 +165,18 @@
                                                                     <div>{{ $targetDetail->departement->name }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div> {{ $targetDetail->position->name }}</div>
-                                                                </td>
-                                                                <td>
                                                                     <div>
-                                                                        {{ $targetDetail->unit->name }}
+                                                                        {{ $targetDetail->position && $targetDetail->position->name }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        {{ $targetDetail->quantity }}
+                                                                        {{ '' }}
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        {{ '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -307,18 +308,10 @@
                                                                                             <select class="selectpicker"
                                                                                                 name="unit_id">
                                                                                                 @foreach ($listUnits->data as $unit)
-                                                                                                    @if ($targetDetail->unit && $targetDetail->unit->id == $unit->id)
-                                                                                                        <option
-                                                                                                            value="{{ $unit->id }}"
-                                                                                                            selected>
-                                                                                                            {{ $unit->name }}
-                                                                                                        </option>
-                                                                                                    @else
-                                                                                                        <option
-                                                                                                            value="{{ $unit->id }}">
-                                                                                                            {{ $unit->name }}
-                                                                                                        </option>
-                                                                                                    @endif
+                                                                                                    <option
+                                                                                                        value="{{ $unit->id }}">
+                                                                                                        {{ $unit->name }}
+                                                                                                    </option>
                                                                                                 @endforeach
                                                                                             </select>
                                                                                         </div>
@@ -347,8 +340,7 @@
                                                                                                 style="width:76%"
                                                                                                 type="text"
                                                                                                 placeholder="Nhập Số lượng"
-                                                                                                name="quantity"
-                                                                                                value="{{ $targetDetail->quantity }}">
+                                                                                                name="quantity">
 
                                                                                         </div>
                                                                                     </div>
@@ -364,6 +356,7 @@
                                                                                                 <select name="position_id"
                                                                                                     class="selectpicker"
                                                                                                     title="Chọn Vị trí">
+
                                                                                                     @foreach ($listPositions->data as $position)
                                                                                                         @if ($targetDetail->position && $targetDetail->position->id == $position->id)
                                                                                                             <option

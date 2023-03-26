@@ -12,8 +12,8 @@
                             cấu</button>
                     </div>
 
-                    <div class="main_search mb-3 mt-3">
-                        <i class="bi bi-search"></i>
+                    <div class="main_search form-group has-search mb-3 mt-3">
+                        <span class="bi bi-search form-control-feedback fs-5"></span>
                         <input type="text" id="search_tree" class="form-control" placeholder="Tìm kiếm">
                     </div>
 
@@ -21,15 +21,31 @@
                         <li class="section ps-0 tree_list-item">
                             <input type="checkbox" checked id="all">
                             <label class="d-flex" for="all"></label>
-                            <span class="clicktree d-block" style="padding-left: 20px" data-href="#body_content-1"> Toàn
-                                Công Ty</span>
+                            <span class="clicktree d-block" style="padding-left: 20px" data-href="#body_content-1"> Công ty Cổ phần Mastertran</span>
                             <ul class="tree_sublist">
                                 <li class="section tree_sublist-item">
                                     <input type="checkbox" id="groupA">
                                     <label class="d-flex" for="groupA"></label>
-                                    <span class="clicktree d-block" data-href="#body_content-2">Phòng kinh doanh</span>
+                                    <span class="clicktree d-block" data-href="#body_content-2">Khối Kinh doanh</span>
                                     <ul class="tree_sublist-more">
-                                        <li class="tree_sublist-more-item">Kinh doanh OTC</li>
+                                        <li class="tree_sublist-more-item">
+                                            <input type="checkbox" id="groupOTC">
+                                            <label class="d-flex" for="groupOTC"></label>
+                                            <span class="clicktree d-block" data-href="#">Kinh doanh OTC</span>
+                                            <ul class="tree_sublist-more">
+                                                <li class="tree_sublist-more-item">
+                                                    <input type="checkbox" id="groupv1OTC">
+                                                    <label class="d-flex" for="groupv1OTC"></label>
+                                                    <span class="clicktree d-block" data-href="#">Vùng 1: Hà Nội và Tây Bắc</span>
+                                                    <ul class="tree_sublist-more">
+                                                        <li class="tree_sublist-more-item">Đội O1A</li>
+                                                        <li class="tree_sublist-more-item">Đội O1B</li>
+                                                        <li class="tree_sublist-more-item">Đội O2B</li>
+                                                        <li class="tree_sublist-more-item">Đội O2B</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
                                         <li class="tree_sublist-more-item">Kinh doanh ETC</li>
                                         <li class="tree_sublist-more-item">Kinh doanh MT</li>
                                         <li class="tree_sublist-more-item">Kinh doanh Online</li>
@@ -38,7 +54,18 @@
                                 <li class="section tree_sublist-item">
                                     <input type="checkbox" id="groupB">
                                     <label class="d-flex" for="groupB"></label>
-                                    <span class="clicktree d-block" data-href="#body_content-3"> Phòng Marketing</span>
+                                    <span class="clicktree d-block" data-href="#body_content-3">Khối Marketing</span>
+                                    <ul class="tree_sublist-more">
+                                        <li class="tree_sublist-more-item">Quản trị nhãn & Đào tạo</li>
+                                        <li class="tree_sublist-more-item">Digital Marketing</li>
+                                        <li class="tree_sublist-more-item">Trade Marketing</li>
+                                        <li class="tree_sublist-more-item">Truyền thông nội bộ</li>
+                                    </ul>
+                                </li>
+                                <li class="section tree_sublist-item">
+                                    <input type="checkbox" id="groupB">
+                                    <label class="d-flex" for="groupB"></label>
+                                    <span class="clicktree d-block" data-href="">Khối văn phòng</span>
                                     <ul class="tree_sublist-more">
                                         <li class="tree_sublist-more-item">Quản trị nhãn & Đào tạo</li>
                                         <li class="tree_sublist-more-item">Digital Marketing</li>

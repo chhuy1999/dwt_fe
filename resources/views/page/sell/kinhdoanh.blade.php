@@ -20,8 +20,7 @@
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <label class="">Tháng</label>
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
 
@@ -39,22 +38,14 @@
                                             >
                                             KPI
                                         </div>
-                                        <div class="main_search d-flex">
-                                            <i class="bi bi-search"></i>
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Tìm kiếm nhiệm vụ"
-                                            />
-                                            <button
-                                                id="exporttable"
-                                                class="btn btn-primary btn-export"
-                                                data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="Xuất file Excel"
-                                            >
-                                                <i class="bi bi-download"></i>
-                                            </button>
+                                        <div class="action_wrapper d-flex">
+                                            <div class="form-group has-search">
+                                                <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                            </div>
+                                            <div class="action_export ms-2" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
+                                                <button class="btn-export"><i class="bi bi-download"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="d-flex">
@@ -795,22 +786,14 @@
                                             >
                                             KPI
                                         </div>
-                                        <div class="main_search d-flex">
-                                            <i class="bi bi-search"></i>
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Tìm kiếm nhiệm vụ"
-                                            />
-                                            <button
-                                                id="exporttable"
-                                                class="btn btn-primary btn-export"
-                                                data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="Xuất file Excel"
-                                            >
-                                                <i class="bi bi-download"></i>
-                                            </button>
+                                        <div class="action_wrapper d-flex">
+                                            <div class="form-group has-search">
+                                                <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                            </div>
+                                            <div class="action_export ms-2" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
+                                                <button class="btn-export"><i class="bi bi-download"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="d-flex">
@@ -1656,4 +1639,67 @@
     </script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_soSkuActive.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_soDoiDiaBan.js') }}"></script>
+
+    <script type="text/javascript" >
+        // SELECT MULTIPLE LEFT SIDEBAR
+        const select = document.getElementById('select');
+        const elems = document.querySelectorAll('.data_chart-items');
+        const obj = {};
+
+        const filtered = [...elems].filter((el) => {
+            if (!obj[el.id]) {
+                obj[el.id] = true;
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        const selectOpt = filtered.map((el) => {
+            el.style.display = 'block';
+            return `<option> ${el.id} </option>`;
+        });
+
+        select.innerHTML = selectOpt.join('');
+
+        select.addEventListener('change', function() {
+            for (let i = 0, iLen = select.options.length; i < iLen; i++) {
+                const opt = select.options[i];
+                const noPick = document.getElementById('data_chart-nopick')
+
+                const val = opt.value || opt.text;
+                if (opt.selected) {
+                    document.getElementById(val).style.display = 'block';
+                    noPick.style.display = 'none';
+
+                } else {
+                    document.getElementById(val).style.display = 'none';
+                    noPick.style.display = 'block';
+                }
+            }
+        });
+
+        // BTN SETTINGS
+        document.getElementById('sidebarBody_settings-body').addEventListener('click', handleClickSettings, false);
+
+        function handleClickSettings() {
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (sidebarBodySelectWrapper.style.display === 'none') {
+                sidebarBodySelectWrapper.style.display = 'block';
+                document.addEventListener('click', handleClickOutside);
+            } else {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+
+        function handleClickOutside(event) {
+            const sidebarBodySettings = document.getElementsByClassName('sidebarBody_settings-body')[0];
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (!sidebarBodySettings.contains(event.target) && !sidebarBodySelectWrapper.contains(event.target)) {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+    </script>
 @endsection

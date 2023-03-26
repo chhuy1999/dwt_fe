@@ -20,8 +20,7 @@
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <label class="">Tháng</label>
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
                     <div class="row">
@@ -314,12 +313,80 @@
         </div>
     </div>
     @include('template.sidebar.sidebarMaster.sidebarRight')
+    <!-- Modal Vấn đề tồn đọng -->
+    <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="col-sm-2">
+                                    <div class="modal_body-title">Vấn đề tồn đọng</div>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-plaintext" id="staticEmail"
+                                        style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-5">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-5">
+                                    <div class="modal_body-title">Cấp giải quyết</div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="selectpicker" title="Chọn cấp giải quyết">
+                                        <option value="1">Công ty</option>
+                                        <option value="2">Phòng ban</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4">
+                                    <div class="modal_body-title">Phân loại</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="selectpicker" title="Chọn phân loại">
+                                        <option value="1">Cần giải quyết</option>
+                                        <option value="2">Than phiền</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex col-sm-4" style="margin: 0 4px 0 -4px">
+                                    <div class="modal_body-title">Thời hạn </div>
+                                </div>
+                                <div class="col-sm-8 position-relative">
+                                    <input id="vanDeTonDong" value="<?php echo date('d/m/Y'); ?>" class="form-control"
+                                        type="text">
+                                    <i class="bi bi-calendar-plus style_pickdate"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer-script')
     <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <!-- ChartJS -->
-    <!-- ChartJS -->
-    
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
@@ -331,11 +398,67 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
+
+    <script type="text/javascript" >
+        // SELECT MULTIPLE LEFT SIDEBAR
+        const select = document.getElementById('select');
+        const elems = document.querySelectorAll('.data_chart-items');
+        const obj = {};
+
+        const filtered = [...elems].filter((el) => {
+            if (!obj[el.id]) {
+                obj[el.id] = true;
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        const selectOpt = filtered.map((el) => {
+            el.style.display = 'block';
+            return `<option> ${el.id} </option>`;
+        });
+
+        select.innerHTML = selectOpt.join('');
+
+        select.addEventListener('change', function() {
+            for (let i = 0, iLen = select.options.length; i < iLen; i++) {
+                const opt = select.options[i];
+                const noPick = document.getElementById('data_chart-nopick')
+
+                const val = opt.value || opt.text;
+                if (opt.selected) {
+                    document.getElementById(val).style.display = 'block';
+                    noPick.style.display = 'none';
+
+                } else {
+                    document.getElementById(val).style.display = 'none';
+                    noPick.style.display = 'block';
+                }
+            }
+        });
+
+        // BTN SETTINGS
+        document.getElementById('sidebarBody_settings-body').addEventListener('click', handleClickSettings, false);
+
+        function handleClickSettings() {
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (sidebarBodySelectWrapper.style.display === 'none') {
+                sidebarBodySelectWrapper.style.display = 'block';
+                document.addEventListener('click', handleClickOutside);
+            } else {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+
+        function handleClickOutside(event) {
+            const sidebarBodySettings = document.getElementsByClassName('sidebarBody_settings-body')[0];
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (!sidebarBodySettings.contains(event.target) && !sidebarBodySelectWrapper.contains(event.target)) {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+    </script>
 @endsection

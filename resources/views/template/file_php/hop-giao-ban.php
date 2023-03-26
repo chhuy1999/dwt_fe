@@ -2,10 +2,6 @@
 <?php require_once($template_path.'header/header-master.php'); ?>
 <!--index page start-->
 
-<?php 
-date_default_timezone_set('Asia/Ho_Chi_Minh');
-?>
-
 <div class="pageWithSidebar">
     <?php require_once($template_path.'sidebar/sidebarHopGiaoBan/sidebarLeft.php'); ?>
     <div id="mainWrap" class="mainWrap">
@@ -27,8 +23,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <label class="">Tháng</label>
-                            <input id="thismonth" value="<?php echo date('m/Y'); ?>" class="form-control" type="text" />
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
 
