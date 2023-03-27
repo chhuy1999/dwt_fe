@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\AssignTaskController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\TargetController;
 use App\Http\Controllers\Api\DepartmentController;
@@ -27,9 +29,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 // Trang chủ
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware('auth.role:user,admin,manager');
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth.role:user,admin,manager');
 
 // Cấu hình
 // Route::get('ho-so-don-vi', function () {
@@ -99,6 +99,11 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::delete('danh-muc-nhiem-vu/{id}', [TargetDetailController::class, 'delete']);
 });
 
+//assign target => giao nhiem vu
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('giao-viec', [AssignTaskController::class, 'index']);
+    Route::post('giao-viec', [AssignTaskController::class, 'assignTask']);
+});
 
 
 
@@ -150,9 +155,7 @@ Route::get('ho-so-nhan-vien', function () {
 // Route::get('ke-hoach', function () {
 //     return view('KeHoach_GiaoViec.keHoach');
 // });
-Route::get('giao-viec', function () {
-    return view('KeHoach_GiaoViec.giaoViec');
-});
+
 // Xết duyệt
 
 // Đề xuất

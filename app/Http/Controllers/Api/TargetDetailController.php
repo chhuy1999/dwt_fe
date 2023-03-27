@@ -70,15 +70,38 @@ class TargetDetailController extends Controller
 
             $data = $request->validate([
                 'target_id' => 'nullable|numeric',
-                'unit_id' => 'nullable|numeric',
                 'position_id' => 'nullable|numeric',
                 'departement_id' => 'nullable|numeric',
                 'name' => 'nullable',
+                'executionPlan' => 'nullable',
                 'description' => 'nullable',
-                'quantity' => 'nullable|numeric',
                 'manday' => 'nullable|numeric',
-
+                "daterange" => "nullable",
             ]);
+            $data['users'] = [];
+            if (isset($request['user1'])) {
+                array_push($data['users'], $request['user1']);
+            }
+            if (isset($request['user2'])) {
+                array_push($data['users'], $request['user2']);
+            }
+            if (isset($request['daterange'])) {
+                $dateRange = $data['daterange'];
+                $startDate = explode(" - ", $dateRange)[0];
+                //remove space
+                $startDate = str_replace(" ", "", $startDate);
+                //replace / to -
+                $startDate = str_replace("/", "-", $startDate);
+                $endDate = explode(" - ", $dateRange)[1];
+                //remove space
+                $endDate = str_replace(" ", "", $endDate);
+                //replace / to -
+                $endDate = str_replace("/", "-", $endDate);
+
+                $data['startDate'] = date('Y-m-d', strtotime($startDate));
+                $data['deadline'] = date('Y-m-d', strtotime($endDate));
+            }
+
             $this->dwtService->updateKpiTargetDetail($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {

@@ -197,13 +197,14 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10)
+    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status="")
     {
         $url = $this->url . '/target-details';
         $response = $this->client->get($url, [
             'q' => $q,
             'page' => $page,
-            'limit' => $limit
+            'limit' => $limit,
+            'status' => $status
         ]);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
@@ -279,29 +280,29 @@ class DwtServices
             return $dataObj->data;
         }
 
-        public function updateDepartment($id, $data)
-        {
-            $url = $this->url . '/departments/' . $id;
-            $response = $this->client->put($url, $data);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
+    public function updateDepartment($id, $data)
+    {
+        $url = $this->url . '/departments/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
-        public function deleteDepartment($id)
-        {
-            $url = $this->url . '/departments/'. $id;
-            $response = $this->client->delete($url);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
+    public function deleteDepartment($id)
+    {
+        $url = $this->url . '/departments/' . $id;
+        $response = $this->client->delete($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
 
     // màn danh sách vị trí
@@ -347,7 +348,7 @@ class DwtServices
     
 
 
-        public function updatePosition($id, $data)
+    public function updatePosition($id, $data)
     {
         $url = $this->url . '/positions/' . $id;
         $response = $this->client->put($url, $data);

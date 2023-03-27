@@ -34,7 +34,10 @@
                                     <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="main_search d-flex">
                                             <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm định mức">
+                                            <form action="/danh-muc-dinh-muc" method="GET">
+                                                <input type="text" class="form-control" name="q"
+                                                    placeholder="Tìm kiếm định mức" value="{{request()->q}}">
+                                            </form>
                                         </div>
                                         <div class="main_action">
                                             <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal"
