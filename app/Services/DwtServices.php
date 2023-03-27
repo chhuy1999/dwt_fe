@@ -7,6 +7,7 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Http;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Termwind\Components\Dd;
 
 class DwtServices
 {
@@ -209,9 +210,10 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status="")
+    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status = "")
     {
         $url = $this->url . '/target-details';
+
         $response = $this->client->get($url, [
             'q' => $q,
             'page' => $page,
@@ -376,7 +378,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function listUsers() {
+    public function listUsers()
+    {
         $url = $this->url . '/users';
         $response = $this->client->get($url);
         //throw exception if response is not successful
@@ -387,9 +390,81 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function createKpiTargetDetail($data) {
+    public function createKpiTargetDetail($data)
+    {
         $url = $this->url . '/target-details';
         $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function uploadFileToRemoteHost($file)
+    {
+        $fileStream = fopen($file, 'r');
+        $url = "https://report.sweetsica.com/api/report/upload";
+        //send form data
+        $response = Http::attach(
+            'files',
+            $fileStream,
+            basename($file)
+        )->post($url);
+        //throw exception if response is not successful
+        $response->throw()->json();
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->downloadLink;
+    }
+
+    public function createTargetLog($data)
+    {
+        $url = $this->url . '/target-logs';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+
+    public function createTargetLogDetail($data)
+    {
+        $url = $this->url . '/target-log-details';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function searchTargetLogs($targetDetailId, $reportedDate)
+    {
+        $url = $this->url . '/target-logs/';
+        $response = $this->client->get($url, [
+            'target_detail_id' => $targetDetailId,
+            'report_date' => $reportedDate
+        ]);
+
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function updateTargetLogDetail($id, $data)
+    {
+        $url = $this->url . '/target-log-details/' . $id;
+        $response = $this->client->put($url, $data);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
         //get data from response

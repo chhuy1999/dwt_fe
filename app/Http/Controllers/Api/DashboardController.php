@@ -25,11 +25,13 @@ class DashboardController extends Controller
             $currentYear = date('Y');
             //get list assigned task
             $listAssignedTasks = $this->dwtServices->searchKpiTargetDetails("", 1, 100, "assigned");
-
+            $kpiKeys = $this->dwtServices->searchKpiKeys("", 1, 100);
+            $kpiKeys = $kpiKeys->data;
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
                 ->with('searchYear', $currentYear)
-                ->with('listAssignedTasks', $listAssignedTasks);
+                ->with('listAssignedTasks', $listAssignedTasks)
+                ->with('kpiKeys', $kpiKeys);
         } catch (Exception $e) {
             $error = $e->getMessage();
             return view('dashboard')->with('error', $error);

@@ -27,6 +27,7 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 
 // Trang chủ
