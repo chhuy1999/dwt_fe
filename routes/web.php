@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AssignTaskController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\TargetController;
 use App\Http\Controllers\Api\DepartmentController;
@@ -28,9 +29,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 // Trang chủ
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware('auth.role:user,admin,manager');
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth.role:user,admin,manager');
 
 // Cấu hình
 // Route::get('ho-so-don-vi', function () {
