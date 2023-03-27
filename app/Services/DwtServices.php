@@ -209,13 +209,14 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10)
+    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status="")
     {
         $url = $this->url . '/target-details';
         $response = $this->client->get($url, [
             'q' => $q,
             'page' => $page,
-            'limit' => $limit
+            'limit' => $limit,
+            'status' => $status
         ]);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
@@ -251,107 +252,107 @@ class DwtServices
 
 
     // màn hồ sơ đơn vị
-        public function listDepartments()
-        {
-            $url = $this->url . '/departments';
-            $response = $this->client->get($url);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
+    public function listDepartments()
+    {
+        $url = $this->url . '/departments';
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
-        public function createDepartment($data)
-        {
-            $url = $this->url . '/departments';
-            $response = $this->client->post($url, $data);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
+    public function createDepartment($data)
+    {
+        $url = $this->url . '/departments';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
-        public function searchDepartment()
-        {
-            $url = $this->url . '/departments';
-            $response = $this->client->get($url);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            // $dataObj = (object) $data;
-            return $data['data'];
-        }
+    public function searchDepartment()
+    {
+        $url = $this->url . '/departments';
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        // $dataObj = (object) $data;
+        return $data['data'];
+    }
 
-        public function updateDepartment($id, $data)
-        {
-            $url = $this->url . '/departments/' . $id;
-            $response = $this->client->put($url, $data);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
+    public function updateDepartment($id, $data)
+    {
+        $url = $this->url . '/departments/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
-        public function deleteDepartment($id)
-        {
-            $url = $this->url . '/departments/'. $id;
-            $response = $this->client->delete($url);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
+    public function deleteDepartment($id)
+    {
+        $url = $this->url . '/departments/' . $id;
+        $response = $this->client->delete($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
 
     // màn danh sách vị trí
-        public function listPositions()
-        {
-            $url = $this->url . '/positions';
-            $response = $this->client->get($url);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
-    
-        public function createPosition($data)
-        {
-            $url = $this->url . '/positions';
-            $response = $this->client->post($url, $data);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
-    
-        // public function searchPosition()
-        // {
-        //     $url = $this->url . '/positions';
-        //     $response = $this->client->get($url);
-        //     //throw exception if response is not successful
-        //     $response->throw()->json()['message'];
-        //     //get data from response
-        //     $data = $response->json();
-        //     // $dataObj = (object) $data;
-        //     return $data['data'];
-        // }
-    
+    public function listPositions()
+    {
+        $url = $this->url . '/positions';
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function createPosition($data)
+    {
+        $url = $this->url . '/positions';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    // public function searchPosition()
+    // {
+    //     $url = $this->url . '/positions';
+    //     $response = $this->client->get($url);
+    //     //throw exception if response is not successful
+    //     $response->throw()->json()['message'];
+    //     //get data from response
+    //     $data = $response->json();
+    //     // $dataObj = (object) $data;
+    //     return $data['data'];
+    // }
 
 
-        public function updatePosition($id, $data)
+
+    public function updatePosition($id, $data)
     {
         $url = $this->url . '/positions/' . $id;
         $response = $this->client->put($url, $data);
@@ -362,16 +363,38 @@ class DwtServices
         $dataObj = $this->_toObject($data);
         return $dataObj->data;
     }
-    
-        public function deletePosition($id)
-        {
-            $url = $this->url . '/positions/'. $id;
-            $response = $this->client->delete($url);
-            //throw exception if response is not successful
-            $response->throw()->json()['message'];
-            //get data from response
-            $data = $response->json();
-            $dataObj = $this->_toObject($data);
-            return $dataObj->data;
-        }
+
+    public function deletePosition($id)
+    {
+        $url = $this->url . '/positions/' . $id;
+        $response = $this->client->delete($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function listUsers() {
+        $url = $this->url . '/users';
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function createKpiTargetDetail($data) {
+        $url = $this->url . '/target-details';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 }
