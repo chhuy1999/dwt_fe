@@ -276,9 +276,11 @@
                                             <div class="card-title">Phòng kinh doanh</div>
                                         </div>
                                         <div class="main_search d-flex mt-2">
-                                            <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                                            <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
+                                            <div class="form-group has-search">
+                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm thành viên" wfd-id="id12">
+                                                </div>
+                                            <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                 data-bs-target="#themViTriChucDanh">Thêm vị trí</button>
                                         </div>
                                     </div>
@@ -555,9 +557,11 @@
                                             <div class="card-title">Phòng Marketing</div>
                                         </div>
                                         <div class="main_search d-flex mt-2">
-                                            <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                                            <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
+                                            <div class="form-group has-search">
+                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm thành viên" wfd-id="id12">
+                                                </div>
+                                            <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                 data-bs-target="#themViTriChucDanh">Thêm vị trí</button>
                                         </div>
                                     </div>

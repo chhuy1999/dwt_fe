@@ -94,7 +94,7 @@
                                                         <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" name="q" value="{{request()->q}}">
                                                     </form>
                                                 </div>
-                                                    <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
+                                                    <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                         data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
                                                 </div>
                                             </div>

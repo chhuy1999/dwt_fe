@@ -137,7 +137,7 @@ option:hover {
 /* STYLE SCROLLBAR */
 ::-webkit-scrollbar {
     width: 8px;
-    height: 8px;
+    height: 4px;
 }
 /* *:hover::-webkit-scrollbar {
     height: 10px;
@@ -156,6 +156,11 @@ option:hover {
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--primary-color-bold);
 }
+
+
+/* div:not(.dataTables_scrollFoot)::-webkit-scrollbar {
+    display: none; //Dòng con cạc
+} */
 .bootstrap-select .btn:focus {
     outline: none !important;
 }
