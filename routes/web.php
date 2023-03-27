@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\TargetController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\PositionController;
 use App\Http\Controllers\Api\TargetDetailController;
+use App\Http\Controllers\Api\TargetLogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -94,7 +95,10 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('giao-viec', [AssignTaskController::class, 'index']);
     Route::post('giao-viec', [AssignTaskController::class, 'assignTask']);
 });
-
+//bao cao cv
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
+    Route::post('bao-cao-cong-viec/{id}', [TargetLogController::class, 'store']);
+});
 
 
 
