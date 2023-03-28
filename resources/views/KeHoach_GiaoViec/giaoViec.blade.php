@@ -124,7 +124,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Phụ trách"
+                                                                <select class='selectpicker' title="Phụ trách" multiple data-live-search="true" 
                                                                     name="user1">
                                                                     <option value="">Người phụ trách</option>
                                                                     @foreach ($listUsers as $user)
@@ -134,7 +134,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Liên quan"
+                                                                <select class='selectpicker' title="Liên quan" multiple data-live-search="true"
                                                                     name="user2">
                                                                     <option value="">Người liên quan</option>
                                                                     @foreach ($listUsers as $user)

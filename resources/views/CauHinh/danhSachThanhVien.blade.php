@@ -1084,7 +1084,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width:530px">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm thành viên</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa thành viên</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -1125,7 +1125,7 @@
                                     </div>
                                     
                                     <div class="col-sm-7 mb-2 position-relative">
-                                        <input id="createUser" value="26/03/2023" class="form-control"
+                                        <input id="suaCreateUser" value="26/03/2023" class="form-control"
                                                 type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
