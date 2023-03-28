@@ -128,10 +128,20 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 // Quản lý nhân sự
 
-// Họp đơn vị
-// Route::get('giao-ban', function () {
-//     return view('HopDonVi.giaoBan');
-// });
+// Danh sách cấp tổ chức
+Route::get('danh-sach-cap-to-chuc', function () {
+    return view('CauHinh.danhSachCapToChuc');
+});
+
+// Danh sách cấp nhân sự
+Route::get('danh-sach-cap-nhan-su', function () {
+    return view('CauHinh.danhSachCapNhanSu');
+});
+
+
+
+
+
 
 //Reports => Họp đơn vị
 
