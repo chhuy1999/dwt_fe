@@ -958,9 +958,9 @@
 
                                                     </tbody>
                                                 </table>
-                                                <div data-repeater-create class="add-row-btn">
+                                                {{-- <div data-repeater-create class="add-row-btn">
                                                     <i class="bi bi-plus-circle"></i>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
