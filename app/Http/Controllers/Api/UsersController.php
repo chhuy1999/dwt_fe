@@ -63,6 +63,7 @@ class UsersController extends Controller
                 'sex' => 'required',
                 'address' => 'required',
                 'dob' => 'required',
+                'departement_id' => 'required|numeric',
                 'position_id' => 'required|numeric',               
                
             ]);

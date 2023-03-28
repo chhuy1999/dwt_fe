@@ -34,7 +34,9 @@
                                     <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="main_search d-flex">
                                             <i class="bi bi-search"></i>
-                                            <input type="text" class="form-control" placeholder="Tìm kiếm chỉ số key">
+                                            <form action="/danh-muc-chi-so-key" method="GET">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm chỉ số key" name="q" value="{{request()->q}}">
+                                            </form>
                                         </div>
                                         <div class="main_action">
                                             <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal"
@@ -63,7 +65,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listKeys->data as $key)
+                                                        @foreach ($data->data as $key)
                                                             <tr>
                                                                 <td>
                                                                     <div

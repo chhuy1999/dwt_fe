@@ -44,7 +44,9 @@
                                         <div class="main_content d-flex">
                                             <div class="main_search d-flex">
                                                 <i class="bi bi-search"></i>
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                <form action="/danh-muc-nhiem-vu" method="GET">
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" name="q" value="{{request()->q}}">
+                                                </form>
                                             </div>
                                             <div class="main_content d-flex align-items-center">
                                                 <select class="selectpicker" data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn phòng ban..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-live-search-placeholder="Tìm kiếm...">
@@ -119,7 +121,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody data-repeater-list="group-a">
-                                                        @foreach ($listTargetDetails->data as $targetDetail)
+                                                        @foreach ($data->data as $targetDetail)
                                                             <tr data-repeater-item>
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-center">

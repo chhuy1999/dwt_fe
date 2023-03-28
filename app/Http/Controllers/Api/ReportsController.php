@@ -8,43 +8,50 @@ use Exception;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
 
-class KeyController extends Controller
+class ReportsController extends Controller
 {
     private $dwtService;
-    //constructor
+    //contructor
     public function __construct()
     {
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
-    //
+    
+
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
+
     {
         try {
+
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchKpiKeys($q, $page, $limit);
-            $listUnits = $this->dwtService->listUnits();
+            $data = $this->dwtService->searchReports($q, $page, $limit);
+            $listDepartments = $this->dwtService->listReports();
 
-            return view('CauHinh.danhMucChiSoKey')
-                ->with('data', $data)
-                ->with('listUnits', $listUnits);
+            return view('HopDonVi.giaoBan')
+                 ->with('data', $data)
+                ->with('listReports', $listReports);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('CauHinh.danhMucChiSoKey')->with('data', []);
+            return view('HopDonVi.giaoBan')->with('listReports', []);
         }
     }
+
+
 
     public function store(Request $request)
     {
         try {
+
             $data = $request->validate([
                 'name' => 'required',
-                'description' => 'required',
-                'unit_id' => 'required|numeric',
             ]);
-            $this->dwtService->createKpiKey($data);
+            $this->dwtService->createReports($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();
@@ -52,16 +59,13 @@ class KeyController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         try {
             $data = $request->validate([
                 'name' => 'nullable',
-                'description' => 'nullable',
-                'unit_id' => 'nullable|numeric',
             ]);
-
-            $this->dwtService->updateKpiKey($id, $data);
+            $this->dwtService->updateReports($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();
@@ -72,7 +76,7 @@ class KeyController extends Controller
     public function delete($id)
     {
         try {
-            $this->dwtService->deleteKpiKey($id);
+            $this->dwtService->deleteReports($id);
             return back()->with('success', 'Xóa thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();

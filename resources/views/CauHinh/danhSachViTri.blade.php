@@ -24,12 +24,12 @@
                                             
                                         </div>
                                         <div class="main_search d-flex mt-2">
-                                            <i class="bi bi-search"></i>
+                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
                                             <form action="/danh-sach-vi-tri" method="GET">
                                                 <input type="text" class="form-control" placeholder="Tìm kiếm..." name="q" value="{{request()->q}}">
                                             </form>
-                                            <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh">Thêm vị trí</button>
+                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
+                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm vị trí</button>
                                         </div>
                                     </div>
                                     <div class='row'>
@@ -73,10 +73,10 @@
                                                                 <div>{{ $value->parent}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>{{ $value->description}}</div>
+                                                                <div title="{{ $value->description}}">{{ $value->description}}</div>
                                                             </td>
-                                                            <td>
-                                                                <div>{{ $value->max_employees}}</div>
+                                                            <td >
+                                                                <div class="d-flex justify-content-center align-items-center">{{ $value->max_employees}}</div>
                                                             </td>
                                                             <td>
                                                                 <div>{{ $value->salary_fund}}</div>
@@ -1649,7 +1649,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themViTriCongViec">Hủy</button>
+                        data-bs-target="#themViTriChucDanh">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -2109,7 +2109,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                        data-bs-toggle="modal" data-bs-target="#themViTriChucDanh">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -2271,10 +2271,10 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Đơn vị công tác<span class="text-danger">*</span></div>
                                     </div>
-                                    <div class="col-sm-8 d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn Cấp nhân sự">
+                                    <div class="col-sm-8 d-flex align-items-center" >
+                                        <select class="selectpicker" title="Chọn đơn vị công tác">
                                             <option>Cung ứng</option>
                                             <option>Trade Marketing</option>
                                             <option>Digital Marketing</option>

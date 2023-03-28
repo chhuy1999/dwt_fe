@@ -1472,7 +1472,7 @@ th {
 
 .main_search .bi-search {
     position: absolute;
-    top: 0;
+    top: 2px;
     left: 4px;
     color: #9b9999;
     font-size: var(--fz-12);
@@ -1980,4 +1980,23 @@ ul.modal_upload-list li:last-child {
 
 .form-check_wrapper {
     display: none;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    margin-left: inherit;
+    /* text-align: center; */
+
+}
+
+
+.dropdown-menu{
+    /* overflow-y: scroll; */
+    height: 140px;
+    inset: 0px;
 }

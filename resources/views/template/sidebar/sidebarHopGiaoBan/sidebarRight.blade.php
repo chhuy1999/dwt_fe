@@ -7,6 +7,7 @@
                         <h6 class="sidebarBody_heading-big m-0">
                             Cấp bộ phận
                         </h6>
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#neuvande">Nêu vấn đề</button>
                     </div>
                     <div class="sidebarBody_card bg-yellow-blur">
                         <div class="sidebarBody_heading-wrapper">
@@ -367,5 +368,57 @@
         <span id="btn-right"
             ><i class="bi bi-arrow-bar-right"></i
         ></span>
+    </div>
+</div>
+<!-- Modal Vấn đề tồn đọng -->
+<div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-7 mb-3">
+                        <input type="text" class="form-control form-control-plaintext" id="staticEmail" style="text-indent: 8px" placeholder="Họ và tên">
+                    </div>
+                    <div class="col-sm-5 mb-3 position-relative">
+                        <input id="gioTaoVanDeTonDong" placeholder="Giờ tạo" class="form-control" type="text" />
+                        <i class="bi bi-alarm style_pickdate-two"></i>
+                    </div>
+                    <div class="col-sm-7 mb-3">
+                        <select class="selectpicker" title="Vị trí">
+                            <option value="2">Phòng ban 1</option>
+                            <option value="2">Phòng ban 2</option>
+                            <option value="2">Phòng ban 3</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5 mb-3 position-relative">
+                        <input id="hopGiaoBanNgayVanDeTonDong" placeholder="Thời gian" class="form-control"
+                            type="text" />
+                        <i class="bi bi-calendar-plus style_pickdate-two"></i>
+                    </div>
+                    <div class="col-sm-12 mb-3">
+                        <textarea name="" class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
+                    </div>
+                    <div class="col-sm-7 mb-3">
+                        <select class="selectpicker" title="Cấp giải quyết">
+                            <option value="1">Giải quyết</option>
+                            <option value="2">Than phiền</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5 mb-3 position-relative">
+                        <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control"
+                            type="text" />
+                        <i class="bi bi-calendar-plus style_pickdate-two"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-danger">Gửi</button>
+            </div>
+        </div>
     </div>
 </div>

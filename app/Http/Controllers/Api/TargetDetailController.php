@@ -30,7 +30,7 @@ class TargetDetailController extends Controller
             $listPositions = $this->dwtService->listPositions();
             $listDepartments = $this->dwtService->listDepartments();
             return view('CauHinh.danhMucNhiemVu')
-                ->with('listTargetDetails', $data)
+                ->with('data', $data)
                 ->with('listUnits', $listUnits)
                 ->with('listPositions', $listPositions)
                 ->with('listDepartments', $listDepartments)

@@ -1380,18 +1380,25 @@
                                     <input type="text" readonly class="form-control" placeholder="Quỹ lương năm" />
                                 </div>
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Chọn gói trang bị">
-                                        <option>Trang bị hành chính</option>
-                                        <option>Trang bị cơ bản</option>
-                                        <option>Trang bị Nhân viên</option>
-                                        <option>Trang bị Chuyên viên</option>
-                                        <option>Trang bị Quản lý</option>
-                                        <option>Trang bị Giám đốc</option>
-                                    </select>
+                                    <div class="d-flex align-items-center">
+
+                                        <select class="selectpicker" title="Chọn gói trang bị">
+                                            <option>Trang bị hành chính</option>
+                                            <option>Trang bị cơ bản</option>
+                                            <option>Trang bị Nhân viên</option>
+                                            <option>Trang bị Chuyên viên</option>
+                                            <option>Trang bị Quản lý</option>
+                                            <option>Trang bị Giám đốc</option>
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                                data-bs-target="#danhsachtrangbi">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Chọn trạng thái">
+                                    <select class="selectpicker" title="Chọn chế độ">
                                         <option>Toàn thời gian</option>
                                         <option>Bán thời gian</option>
                                     </select>
@@ -1928,7 +1935,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH CHỨC DANH</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH CÁC CẤP NHÂN SỰ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -2155,7 +2162,173 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                        data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Danh sach trang bị -->
+    <div class="modal fade" id="danhsachtrangbi" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH TRANG BỊ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                            <div
+                                class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault1">
+                                        Trang bị hành chính
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div
+                                class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault2">
+                                        Trang bị cơ bản
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div
+                                class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault3">
+                                        Trang bị Nhân viên
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div
+                                class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault4">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault4">
+                                        Trang bị Chuyên viên
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault5">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault5">
+                                        Quản lý cấp cao
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div
+                                class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault6">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault6">
+                                        Quản lý cấp trung
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div
+                                class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault7">
+                                    <label class="form-check-label ms-3" for="flexRadioDefault7">
+                                        Trưởng phòng
+                                    </label>
+                                </div>
+                                <div class="form-check_actions">
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                    </div>
+                                    <div class="btn">
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 btn text-primary" {{-- data-bs-toggle="modal" data-bs-target="#themChucDanh" --}}>
+                                <i class="bi bi-plus"></i>
+                                Thêm mới
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -2763,6 +2936,9 @@
             //     format: 'Y/m/d',
             //     timepicker: false,
             // });
+
+
+            
             // $('#onchangePhongBan').change(function() {
             // var opval = $(this).val();
             // if (opval == "themPhongBan") {

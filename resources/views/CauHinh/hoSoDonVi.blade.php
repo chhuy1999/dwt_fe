@@ -134,7 +134,7 @@
                                                                 <div>Nguyễn Vũ Nguyệt Minh</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div title="">Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -461,10 +461,13 @@
                                             <option>Nhà máy</option>
                                             <option>Công ty thành viên</option>
                                         </select>
+                                        
                                         <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachCapToChuc">
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </div>
                                     </div>
+
+
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -473,7 +476,7 @@
                                     <div class="d-flex col-sm-4">
                                         <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
                                     </div>
-                                    <div class="col-sm-8">
+                                    {{-- <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn trưởng đơn vị">
                                             <option>Nguyễn Ngọc Bảo</option>
                                             <option>Đặng Nguyễn Lam Mai</option>
@@ -483,6 +486,23 @@
                                             <option>Hà Nguyễn Minh Hiếu</option>
                                         </select>
         
+                                    </div> --}}
+                                    <div class="col-sm-8" style="flex:1">
+                                        <select class="selectpicker" multiple
+                                            data-actions-box="true" data-width="100%"
+                                            data-live-search="true" title="Chọn trưởng đơn vị"
+                                            data-select-all-text="Chọn tất cả"
+                                            data-deselect-all-text="Bỏ chọn" data-size="3"
+                                            data-selected-text-format="count > 1"
+                                            data-count-selected-text="Có {0} Thư ký"
+                                            data-live-search-placeholder="Tìm kiếm...">
+                                            <option>Nguyễn Ngọc Bảo</option>
+                                            <option>Đặng Nguyễn Lam Mai</option>
+                                            <option>Hồ Thị Hồng Vân</option>
+                                            <option>Nguyễn Thị Ngọc Lan</option>
+                                            <option>Nguyễn Thị Hồng Oanh</option>
+                                            <option>Hà Nguyễn Minh Hiếu</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -1019,7 +1039,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themPhongBan">Hủy</button>
+                        data-bs-toggle="modal" data-bs-target="#themCoCauToChuc">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1349,6 +1369,7 @@
                                         <option>Hồ Thị Hồng Vân</option>
                                     </select>
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -2031,6 +2052,7 @@
             }
             }
         });
+
     });
 </script>
 

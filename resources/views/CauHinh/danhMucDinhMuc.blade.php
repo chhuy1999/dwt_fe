@@ -149,28 +149,15 @@
 
                                                                                 <div class="row">
                                                                                     <div class="col-sm-12">
-                                                                                        <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div class="modal_body-title">
-                                                                                                Tên định mức <span
-                                                                                                    class="text-danger">*</span>
-                                                                                            </div>
-                                                                                            &nbsp;<input
+                                                                                        <input
                                                                                                 class="form-control"
-                                                                                                style="width:80%"
                                                                                                 type="text"
                                                                                                 value="{{ $target->name }}"
                                                                                                 name="name"
                                                                                                 placeholder="Nhập tên định mức">
-                                                                                        </div>
                                                                                     </div>
-                                                                                    <div class="col-sm-12">
+                                                                                    <div class="col-sm-12 mt-3">
                                                                                         <div class="mb-3">
-                                                                                            <div class="modal_body-title">
-                                                                                                Mô
-                                                                                                tả/Diễn giải <span
-                                                                                                    class="text-danger">*</span>
-                                                                                            </div>
                                                                                             <textarea class="form-control" name="description" placeholder="Nhập mô tả thực hiện">
                                                                                                 {{ $target->description }}
                                                                                             </textarea>
@@ -178,9 +165,7 @@
                                                                                     </div>
                                                                                     <div class="col-sm-4">
                                                                                         <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div class="modal_body-title">
-                                                                                                Đơn vị</div>
+                                                                                            class="mb-3">
                                                                                             <select name="unit_id"
                                                                                                 class="selectpicker">
 
@@ -201,41 +186,31 @@
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-sm-3">
+                                                                                    <div class="col-sm-4">
                                                                                         <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div class="modal_body-title">
-                                                                                                Manday</div>
+                                                                                            class="mb-3">
+                                                                                            
                                                                                             <input class="form-control"
-                                                                                                style="width:76%"
+                                                                                                
                                                                                                 type="text"
                                                                                                 name="manday"
                                                                                                 value="{{ $target->manday }}"
                                                                                                 placeholder="Nhập Manday">
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-sm-5">
+                                                                                    <div class="col-sm-4">
                                                                                         <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div class="modal_body-title">
-                                                                                                Số lượng</div>
+                                                                                            class="mb-3">
                                                                                             <input class="form-control"
-                                                                                                style="width:76%"
                                                                                                 type="text"
                                                                                                 name="quantity"
                                                                                                 value="{{ $target->quantity }}"
                                                                                                 placeholder="Nhập Số lượng">
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-sm-5">
+                                                                                    <div class="col-sm-6">
                                                                                         <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div class="col-sm-3">
-                                                                                                <div
-                                                                                                    class=" modal_body-title">
-                                                                                                    Vị trí</div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-9">
+                                                                                            class="mb-3">
                                                                                                 <select
                                                                                                     class="selectpicker"
                                                                                                     name="position_id"
@@ -255,18 +230,12 @@
                                                                                                         @endif
                                                                                                     @endforeach
                                                                                                 </select>
-                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-sm-7">
+                                                                                    <div class="col-sm-6">
                                                                                         <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div class="col-sm-4">
-                                                                                                <div
-                                                                                                    class="modal_body-title">
-                                                                                                    Đơn vị phòng ban</div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-8">
+                                                                                            class="mb-3">
+                                                
                                                                                                 <select
                                                                                                     class="selectpicker"
                                                                                                     name="departement_id"
@@ -286,7 +255,6 @@
                                                                                                         @endif
                                                                                                     @endforeach
                                                                                                 </select>
-                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
 
@@ -445,67 +413,52 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
-                                    &nbsp;<input class="form-control" style="width:80%" type="text"
+                                    <input class="form-control" type="text"
                                         placeholder="Nhập tên định mức" name="name">
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="mb-3">
-                                    <div class="modal_body-title">Mô tả/Diễn giải <span class="text-danger">*</span></div>
                                     <textarea class="form-control" placeholder="Nhập mô tả thực hiện" name="description"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title">Đơn vị</div>
-                                    <select class="selectpicker" title="Chọn đơn vị" name="unit_id" style="width:80%">
+                                <div class=" d-flex align-items-center  justify-content-between">
+                                    <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
                                         @foreach ($listUnits->data as $unit)
                                             <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title">Manday</div>
-                                    <input class="form-control" style="width:76%" type="text"
+                                    <input class="form-control" type="text"
                                         placeholder="Nhập Manday" name="manday">
                                 </div>
                             </div>
-                            <div class="col-sm-5">
+                            <div class="col-sm-4">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title">Số lượng</div>
-                                    <input class="form-control" style="width:76%" type="text"
+                                    <input class="form-control" type="text"
                                         placeholder="Nhập Số lượng" name="quantity">
                                 </div>
                             </div>
-                            <div class="col-sm-5">
+                            <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="col-sm-3">
-                                        <div class=" modal_body-title">Vị trí</div>
-                                    </div>
-                                    <div class="col-sm-9">
                                         <select class="selectpicker" title="Chọn Vị trí" name="position_id">
                                             @foreach ($listPositions->data as $pos)
                                                 <option value="{{ $pos->id }}">{{ $pos->name }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-7">
+                            <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="col-sm-4">
-                                        <div class="modal_body-title">Đơn vị phòng ban</div>
-                                    </div>
-                                    <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn phòng/ban" name="departement_id">
                                             @foreach ($listDepartments->data as $dep)
                                                 <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
                                 </div>
                             </div>
 

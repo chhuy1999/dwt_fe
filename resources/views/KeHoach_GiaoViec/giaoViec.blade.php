@@ -171,7 +171,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-md-12 mb-2">
+                                                                <div class="col-md-12">
                                                                     <div class="d-flex justify-content-start">
                                                                         <div role="button" class="fs-4 text-danger"
                                                                             data-repeater-create><i
@@ -798,6 +798,7 @@
                 });
             }
         });
+
 
         $('div.card-title-wrapper').html(`
             <div class="d-flex align-items-center">

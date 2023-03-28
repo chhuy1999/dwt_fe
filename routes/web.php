@@ -5,9 +5,11 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\TargetController;
+use App\Http\Controllers\Api\TargetDetailController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\PositionController;
 use App\Http\Controllers\Api\UsersController;
+use App\Http\Controllers\Api\ReportsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -127,8 +129,17 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 // Quản lý nhân sự
 
 // Họp đơn vị
-Route::get('giao-ban', function () {
-    return view('HopDonVi.giaoBan');
+// Route::get('giao-ban', function () {
+//     return view('HopDonVi.giaoBan');
+// });
+
+//Reports => Họp đơn vị
+
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('giao-ban', [ReportsController::class, 'index']);
+    Route::post('giao-ban', [ReportsController::class, 'store']);
+    Route::put('giao-ban/{id}', [ReportsController::class, 'update']);
+    Route::delete('giao-ban/{id}', [ReportsController::class, 'delete']);
 });
 
 Route::get('kho-luu-tru-bien-ban-hop', function () {
