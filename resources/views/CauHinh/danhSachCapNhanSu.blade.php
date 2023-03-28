@@ -25,11 +25,11 @@
                                         </div> --}}
                                         <div class="main_search d-flex mt-2">
                                             <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
-                                            <form action="/danh-sach-vi-tri" method="GET">
+                                            <form action="/danh-sach-cap-nhan-su" method="GET">
                                                 <input type="text" class="form-control" placeholder="Tìm kiếm..." name="q" value="{{request()->q}}">
                                             </form>
                                             <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm cấp nhân sự</button>
+                                                data-bs-target="#themCapNhanSu" style="margin-left: 10px">Thêm cấp nhân sự</button>
                                         </div>
                                     </div>
                                     <div class='row'>
@@ -40,56 +40,58 @@
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th style="width: 2%">STT</th>
-                                                            <th style="width: 45%">Mã cấp tổ chức</th>
-                                                            <th style="width: 45%">Tên cấp tổ chức</th>
+                                                            <th style="width: 45%">Mã cấp cấp nhân sự</th>
+                                                            <th style="width: 45%">Tên cấp nhân sự</th>
                                                             <th style="width: 8%">Hành động</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($data->data as $value)
                                                         <tr>
                                                             <th scope="row">
                                                                 <div
                                                                     class="d-flex justify-content-center align-items-center">
-                                                                    1
+                                                                    {{ $loop->iteration }}
                                                                 </div>
                                                             </th>
                                                             <td>
                                                                 <div>AMKT</div>
                                                             </td>
                                                             <td>
-                                                                <div>1</div>
+                                                                <div>{{ $value->name}}</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suacapnhansu{{ $value->id }}">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
+                                                                        data-bs-target="#xoacapnhansu{{ $value->id }}">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        
 
                                                         {{-- Xóa Vi tri--}}
-                                                        <div class="modal fade" id="xoaViTri" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="xoacapnhansu{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title text-danger" id="exampleModalLabel">XÓA CẤP TỔ CHỨC</h5>
+                                                                        <h5 class="modal-title text-danger" id="exampleModalLabel">XÓA CẤP NHÂN SỰ</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        Bạn có thực sự muốn xoá cấp tổ chức này không?
+                                                                        Bạn có thực sự muốn xoá cấp nhân sự này không?
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                                                                         <form
-                                                                            action="/danh-sach-vi-tri/"
+                                                                            action="/danh-sach-cap-nhan-su/{{ $value->id }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
@@ -102,16 +104,16 @@
                                                         </div>
 
                                                         <!-- Modal Sua Vi Tri chức danh -->
-                                                        <div class="modal fade" id="suaViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        <div class="modal fade" id="suacapnhansu{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header text-center">
-                                                                        <h5 class="modal-title w-100" id="exampleModalLabel">SỬA CẤP TỔ CHỨC</h5>
+                                                                        <h5 class="modal-title w-100" id="exampleModalLabel">SỬA CẤP NHÂN SỰC</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
 
-                                                                    <form method="POST" action="/danh-sach-vi-tri/">
+                                                                    <form method="POST" action="/danh-sach-cap-nhan-su/{{ $value->id }}">
                                                                     @csrf
                                                                     @method('PUT')
                                                                         <div class="modal-body">
@@ -173,7 +175,10 @@
                                                             </div>
 
                                                         
-                                                    </tbody>
+                                                    
+                                                            @endforeach
+                                                        </tbody>
+
                                                 </table>
                                             </div>
                                         </div>
@@ -194,152 +199,25 @@
 
 
 
-    
-    <!-- Modal Them Co Cau -->
-    <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa cơ cấu tốt chức</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Tên đơn vị <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="Digital Marketing">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Mã đơn vị <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="DMKT">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Thuộc cấp nhân sự<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn cấp nhân sự">
-                                        <option>Công ty con</option>
-                                        <option>Chi nhánh</option>
-                                        <option>Văn phòng đại diện</option>
-                                        <option>Văn phòng</option>
-                                        <option>Trung tâm</option>
-                                        <option>Phòng ban</option>
-                                        <option>Nhóm/tổ/đội</option>
-                                        <option>Phân xưởng</option>
-                                        <option>Nhà máy</option>
-                                        <option>Công ty thành viên</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Cấp tổ chức <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8 d-flex align-items-center">
-                                    <select class="selectpicker" title="Chọn cấp tổ chức">
-                                        <option selected>Công ty con</option>
-                                        <option>Chi nhánh</option>
-                                        <option>Văn phòng đại diện</option>
-                                        <option>Văn phòng</option>
-                                        <option>Trung tâm</option>
-                                        <option>Phòng ban</option>
-                                        <option>Nhóm/tổ/đội</option>
-                                        <option>Phân xưởng</option>
-                                        <option>Nhà máy</option>
-                                        <option>Công ty thành viên</option>
-                                    </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachCapToChuc">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                        
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn trưởng đơn vị">
-                                        <option selected>Nguyễn Ngọc Bảo</option>
-                                        <option>Đặng Nguyễn Lam Mai</option>
-                                        <option>Hồ Thị Hồng Vân</option>
-                                        <option>Nguyễn Thị Ngọc Lan</option>
-                                        <option>Nguyễn Thị Hồng Oanh</option>
-                                        <option>Hà Nguyễn Minh Hiếu</option>
-                                    </select>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Trụ sở chính <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="219 Trung Kính, Yên Hòa, Cầu Giấy, Hà Nội">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng<br> nhiệm vụ<span class="text-danger">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng.">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal Them Vi Tri chức danh -->
-    <div class="modal fade" id="themViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <!-- Modal Them cấp nhân sự-->
+    <div class="modal fade" id="themCapNhanSu" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CẤP TỔ CHỨC</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CẤP NHÂN SỰ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-vi-tri" method="POST">
+                <form action="/danh-sach-cap-nhan-su" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Mã cấp tổ chứ<span class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Mã cấp nhân sự<span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="text" placeholder="Nhập mã cấp nhân sự">
@@ -350,7 +228,7 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Tên cấp tổ chức<span class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Tên cấp nhân sự<span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="text" placeholder="Nhập tên cấp nhân sự" name="name">

@@ -19,8 +19,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -29,7 +28,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     <!-- Plugins -->
     <link href="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" />
-   
+    {{-- toastify --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <!-- Base -->
     <link href="{{ asset('assets/css/normalize.css') }}" rel="stylesheet" />
@@ -89,7 +89,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                     </li>
                                 </ul>
                             </li>
-                            
+
                             <li class="header_menu-item">
                                 <a class="header_menu-link" href="quan-ly-nhan-su">
                                     <i class="bi bi-person-add"></i>
@@ -104,7 +104,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                     </li>
                                 </ul>
                             </li>
-                            
+
                             <li class="header_menu-item">
                                 <a class="header_menu-link" href="#">
                                     <i class="bi bi-journal-arrow-up"></i>
@@ -327,12 +327,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
                 <div class="header_actions-wrapper d-flex align-items-center dropdown">
                     <div class="header_actions-chat">
-                        <span class="header_icons" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="cursor: pointer" id="dropdownActions">
+                        <span class="header_icons" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer" id="dropdownActions">
                             <i class="bi bi-question-circle"></i>
                         </span>
-                        <ul class="dropdown-menu header_actions-notification-list p-0"
-                            aria-labelledby="dropdownActions">
+                        <ul class="dropdown-menu header_actions-notification-list p-0" aria-labelledby="dropdownActions">
                             <div class="header_actions-notification-heading bg-light">Hỗ trợ</div>
                             <li class="header_actions-notification-item">
                                 <a class="dropdown-item" href="thong-tin-ca-nhan">
@@ -367,12 +365,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         </ul>
                     </div>
                     <div class="header_actions-notification">
-                        <span class="header_icons" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="cursor: pointer" id="dropdownNotification">
+                        <span class="header_icons" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer" id="dropdownNotification">
                             <i class="bi bi-bell"></i>
                         </span>
-                        <ul class="dropdown-menu header_actions-notification-list"
-                            aria-labelledby="dropdownNotification">
+                        <ul class="dropdown-menu header_actions-notification-list" aria-labelledby="dropdownNotification">
                             <div class="header_actions-notification-heading bg-light">Thông báo</div>
                             <li class="header_actions-notification-item">
                                 <a class="dropdown-item" href="thong-tin-ca-nhan">
@@ -407,8 +403,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         </ul>
                     </div>
                     <div class="header_user dropdown">
-                        <button class="dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <button class="dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
                             <img class="header_user-img" src="{{ asset('assets/img/avatar.jpeg') }}" />
                         </button>
                         <ul class="dropdown-menu header_user-list" aria-labelledby="dropdownUser">
@@ -426,10 +421,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </li>
                             <div class="dropdown-divider"></div>
                             <li class="header_user-item">
-                                <a class="dropdown-item" href="/login">
-                                    <i class="bi bi-box-arrow-right"></i>
-                                    <span>Đăng xuất</span>
-                                </a>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button class="dropdown-item" type="submit">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        <span>Đăng xuất</span>
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -442,7 +440,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         </div>
 
     </div><!-- End Wrapper -->
-    
+
     <!-- Vendor JS Files -->
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -460,13 +458,41 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         })
     </script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $.datetimepicker.setLocale('vi');
             $('#thismonth').datetimepicker({
                 format: 'H:i - d/m/Y',
                 timepicker: false,
             });
         });
+    </script>
+    {{-- show toastify --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        @if (Session::has('success'))
+            Toastify({
+
+                text: "{!! session('success') !!}",
+                duration: 3000,
+                stopOnFocus: true,
+
+            }).showToast();
+        @endif
+
+        @if (Session::has('error'))
+            Toastify({
+
+                text: "{!! session('error') !!}",
+                // gravity: "top", // `top` or `bottom`
+                // position: "center"
+                duration: 3000,
+                stopOnFocus: true,
+                style: {
+                    background: "#FE6244",
+                },
+
+            }).showToast();
+        @endif
     </script>
 </body>
 

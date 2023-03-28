@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\PositionController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\ReportsController;
+use App\Http\Controllers\Api\TargetLogController;
+use App\Http\Controllers\Api\PositionLevelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -28,6 +30,7 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 
 // Trang chủ
@@ -106,7 +109,10 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('giao-viec', [AssignTaskController::class, 'index']);
     Route::post('giao-viec', [AssignTaskController::class, 'assignTask']);
 });
-
+//bao cao cv
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
+    Route::post('bao-cao-cong-viec/{id}', [TargetLogController::class, 'store']);
+});
 
 
 
@@ -133,12 +139,19 @@ Route::get('danh-sach-cap-to-chuc', function () {
     return view('CauHinh.danhSachCapToChuc');
 });
 
+
+
 // Danh sách cấp nhân sự
-Route::get('danh-sach-cap-nhan-su', function () {
-    return view('CauHinh.danhSachCapNhanSu');
+// Route::get('danh-sach-cap-nhan-su', function () {
+//     return view('CauHinh.danhSachCapNhanSu');
+// });
+
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('danh-sach-cap-nhan-su', [PositionLevelController::class, 'index']);
+    Route::post('danh-sach-cap-nhan-su', [PositionLevelController::class, 'store']);
+    Route::put('danh-sach-cap-nhan-su/{id}', [PositionLevelController::class, 'update']);
+    Route::delete('danh-sach-cap-nhan-su/{id}', [PositionLevelController::class, 'delete']);
 });
-
-
 
 
 

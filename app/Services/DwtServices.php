@@ -7,6 +7,7 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Http;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Termwind\Components\Dd;
 
 class DwtServices
 {
@@ -197,9 +198,10 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status="")
+    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status = "")
     {
         $url = $this->url . '/target-details';
+
         $response = $this->client->get($url, [
             'q' => $q,
             'page' => $page,
@@ -441,10 +443,108 @@ class DwtServices
 
 
 
-    // màn danh sách vấn đề
-    public function listReports()
+    // // màn danh sách vấn đề
+    // public function listReports()
+    // {
+    //     $url = $this->url . '/reports';
+    //     $response = $this->client->get($url);
+    //     //throw exception if response is not successful
+    //     $response->throw()->json()['message'];
+    //     //get data from response
+    //     $data = $response->json();
+    //     $dataObj = $this->_toObject($data);
+    //     return $dataObj->data;
+    // }
+
+    public function createKpiTargetDetail($data)
     {
-        $url = $this->url . '/reports';
+        $url = $this->url . '/target-details';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function uploadFileToRemoteHost($file)
+    {
+        $fileStream = fopen($file, 'r');
+        $url = "https://report.sweetsica.com/api/report/upload";
+        //send form data
+        $response = Http::attach(
+            'files',
+            $fileStream,
+            basename($file)
+        )->post($url);
+        //throw exception if response is not successful
+        $response->throw()->json();
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->downloadLink;
+    }
+
+    public function createTargetLog($data)
+    {
+        $url = $this->url . '/target-logs';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+
+    public function createTargetLogDetail($data)
+    {
+        $url = $this->url . '/target-log-details';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function searchTargetLogs($targetDetailId, $reportedDate)
+    {
+        $url = $this->url . '/target-logs/';
+        $response = $this->client->get($url, [
+            'target_detail_id' => $targetDetailId,
+            'report_date' => $reportedDate
+        ]);
+
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function updateTargetLogDetail($id, $data)
+    {
+        $url = $this->url . '/target-log-details/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+
+
+    // màn danh sách cấp nhân sự
+    public function listPositionLevel()
+    {
+        $url = $this->url . '/position-levels';
         $response = $this->client->get($url);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
@@ -454,9 +554,9 @@ class DwtServices
         return $dataObj->data;
     }
 
-        public function createReports($data)
+        public function createPositionLevel($data)
         {
-            $url = $this->url . '/reports';
+            $url = $this->url . '/position-levels';
             $response = $this->client->post($url, $data);
             //throw exception if response is not successful
             $response->throw()->json()['message'];
@@ -467,9 +567,9 @@ class DwtServices
             
         }
 
-        public function searchReports($q = "", $page = 1, $limit = 10)
+        public function searchPositionLevel($q = "", $page = 1, $limit = 10)
         {
-            $url = $this->url . '/reports';
+            $url = $this->url . '/position-levels';
             $response = $this->client->get($url, [
                 'q' => $q,
                 'page' => $page,
@@ -483,9 +583,9 @@ class DwtServices
             return $dataObj->data;
         }
 
-    public function updateReports($id, $data)
+    public function updatePositionLevel($id, $data)
     {
-    $url = $this->url . '/reports/' . $id;
+    $url = $this->url . '/position-levels/' . $id;
     $response = $this->client->put($url, $data);
     //throw exception if response is not successful
     $response->throw()->json()['message'];
@@ -495,9 +595,9 @@ class DwtServices
     return $dataObj->data;
     }
 
-    public function deleteReports($id)
+    public function deletePositionLevel($id)
     {
-        $url = $this->url . '/reports/'. $id;
+        $url = $this->url . '/position-levels/'. $id;
         $response = $this->client->delete($url);
         //throw exception if response is not successful
         $response->throw()->json()['message'];

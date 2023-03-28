@@ -67,7 +67,7 @@ class AssignTaskController extends Controller
                 'user2' => 'nullable',
                 'kpiKeys' => 'nullable|array',
                 "target_id" => "required|numeric",
- 
+
             ]);
 
             $data['users'] = [$data['user1'], $data['user2']];

@@ -1338,18 +1338,10 @@
 
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn cấp nhân sự">
-                                            <option>Chủ tịch HĐQT</option>
-                                            <option>Tổng Giám đốc</option>
-                                            <option>Phó Tổng Giám đốc</option>
-                                            <option>Giám đốc điều hành</option>
-                                            <option>Quản lý cấp cao</option>
-                                            <option>Quản lý cấp trung</option>
-                                            <option>Trưởng phòng</option>
-                                            <option>Phó phòng</option>
-                                            <option>Trưởng nhóm</option>
-                                            <option>Chuyên viên</option>
-                                            <option>Nhân viên</option>
+                                        <select class="selectpicker" title="Chọn cấp nhân sự" name="position_level">
+                                            @foreach ($listPositionLevel->data as $value)
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @endforeach
                                         </select>
                                         <div class="modal_list-more" data-bs-toggle="modal"
                                             data-bs-target="#danhsachChucDanh">
@@ -1360,7 +1352,7 @@
 
                                 <div class="col-sm-6 mb-2">
                                     <select id="onchangeViTriCongViec" class="selectpicker"
-                                        title="Chọn Vị trí/Chức danh" name="position_id">
+                                        title="Chọn Vị trí/Chức danh" name="position">
                                         @foreach ($listPositions->data as $value)
                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                         @endforeach

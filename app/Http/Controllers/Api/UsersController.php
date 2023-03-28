@@ -36,12 +36,14 @@ class UsersController extends Controller
             // dd($data);
             $listDepartments = $this->dwtService->listDepartments();
             $listPositions = $this->dwtService->listPositions();
-            $listUsers = $this->dwtService->listUsers(); // lay cai bien nay de render view trong khi search result thi o dong 35 ???
+            $listPositionLevel = $this->dwtService->listPositionLevel();
+            $listUsers = $this->dwtService->listUsers();
 
             return view('CauHinh.danhSachThanhVien')
                 ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
                 ->with('listPositions', $listPositions)
+                ->with('listPositionLevel', $listPositionLevel)
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
             $error = $e->getMessage();
