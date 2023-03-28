@@ -5,12 +5,11 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\KeyController;
 use App\Http\Controllers\Api\TargetController;
-use App\Http\Controllers\Api\TargetDetailController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\PositionController;
-use App\Http\Controllers\Api\UsersController;
-use App\Http\Controllers\Api\ReportsController;
+use App\Http\Controllers\Api\TargetDetailController;
 use App\Http\Controllers\Api\TargetLogController;
+use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\PositionLevelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
@@ -51,7 +50,6 @@ Route::get('/', [DashboardController::class, 'index'])->middleware('auth.role:us
 // });
 
 
-
 // user => danh sách thành viên
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::get('danh-sach-thanh-vien', [UsersController::class, 'index']);
@@ -60,7 +58,7 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::delete('danh-sach-thanh-vien/{id}', [UsersController::class, 'delete']);
 });
 
-// position => danh sách vị trí
+// danh sách vị trí
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::get('danh-sach-vi-tri', [PositionController::class, 'index']);
     Route::post('danh-sach-vi-tri', [PositionController::class, 'store']);
@@ -69,7 +67,7 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
 });
 
 
-//department => hồ sơ đơn vị
+// hồ sơ đơn vị
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::get('ho-so-don-vi', [DepartmentController::class, 'index']);
     Route::post('ho-so-don-vi', [DepartmentController::class, 'store']);
@@ -132,8 +130,6 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 // Route::get('/phong-ban', [\App\Http\Controllers\Api\DepartmentController::class, 'search']);
 
 
-// Quản lý nhân sự
-
 // Danh sách cấp tổ chức
 Route::get('danh-sach-cap-to-chuc', function () {
     return view('CauHinh.danhSachCapToChuc');
@@ -142,10 +138,6 @@ Route::get('danh-sach-cap-to-chuc', function () {
 
 
 // Danh sách cấp nhân sự
-// Route::get('danh-sach-cap-nhan-su', function () {
-//     return view('CauHinh.danhSachCapNhanSu');
-// });
-
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('danh-sach-cap-nhan-su', [PositionLevelController::class, 'index']);
     Route::post('danh-sach-cap-nhan-su', [PositionLevelController::class, 'store']);
@@ -154,15 +146,9 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 });
 
 
-
-
-//Reports => Họp đơn vị
-
-Route::group(['middleware' => 'auth.role:manager,admin'], function () {
-    Route::get('giao-ban', [ReportsController::class, 'index']);
-    Route::post('giao-ban', [ReportsController::class, 'store']);
-    Route::put('giao-ban/{id}', [ReportsController::class, 'update']);
-    Route::delete('giao-ban/{id}', [ReportsController::class, 'delete']);
+// Họp đơn vị
+Route::get('giao-ban', function () {
+    return view('HopDonVi.giaoBan');
 });
 
 Route::get('kho-luu-tru-bien-ban-hop', function () {

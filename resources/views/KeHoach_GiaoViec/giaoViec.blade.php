@@ -124,8 +124,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Phụ trách" multiple data-live-search="true" 
-                                                                    name="user1">
+                                                                <select class='selectpicker' title="Phụ trách" multiple
+                                                                    data-live-search="true" name="user1">
                                                                     <option value="">Người phụ trách</option>
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
@@ -134,8 +134,8 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Liên quan" multiple data-live-search="true"
-                                                                    name="user2">
+                                                                <select class='selectpicker' title="Liên quan" multiple
+                                                                    data-live-search="true" name="user2">
                                                                     <option value="">Người liên quan</option>
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
@@ -748,7 +748,7 @@
     <script type="text/javascript">
         const targetTable = $('#danhSachDinhMuc').DataTable({
             paging: true,
-            ordering: false,
+            ordering: true,
             pageLength: 5,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',

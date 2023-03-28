@@ -134,7 +134,7 @@
                                                                 <div>Nguyễn Vũ Nguyệt Minh</div>
                                                             </td>
                                                             <td>
-                                                                <div title="">Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc</div>
+                                                                <div title="">{{ $value->description}}</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
@@ -264,7 +264,7 @@
                                                                                                         class="text-danger">*</span></div>
                                                                                             </div>
                                                                                             <div class="col-sm-10">
-                                                                                                <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
+                                                                                                <textarea class="form-control" type="text" value="{{ $value->description}}" name="description"></textarea>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -523,7 +523,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" placeholder="Nhập chức năng, nhiệm vụ đơn vị">
+                                        <input class="form-control" type="text" placeholder="Nhập chức năng, nhiệm vụ đơn vị" name="description">
                                     </div>
                                 </div>
                             </div>

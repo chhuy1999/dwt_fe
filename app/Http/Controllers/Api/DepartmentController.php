@@ -50,6 +50,7 @@ class DepartmentController extends Controller
 
             $data = $request->validate([
                 'name' => 'required',
+                'description' => 'required',
             ]);
             $this->dwtService->createDepartment($data);
             return back()->with('success', 'Thêm mới thành công');
@@ -64,6 +65,8 @@ class DepartmentController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
+                'description' => 'required',
+
             ]);
             $this->dwtService->updateDepartment($id, $data);
             return back()->with('success', 'Cập nhật thành công');

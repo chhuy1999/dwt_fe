@@ -10,7 +10,7 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">
-                            
+
                             Danh sách thành viên
                         </h5>
                     </div>
@@ -18,7 +18,8 @@
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="card mb-3">
-                                <div class="card-body position-relative body_content-wrapper" id="body_content-1" style="display:block">
+                                <div class="card-body position-relative body_content-wrapper" id="body_content-1"
+                                    style="display:block">
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div
@@ -28,7 +29,8 @@
                                                     <div class="title_filter d-flex align-items-center" style="gap:10px">
                                                         <div class="title_filter-item">
                                                             <select class="selectpicker" data-live-search="true"
-                                                                title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                                title="Chọn hình thức..."
+                                                                data-selected-text-format="count > 1"
                                                                 data-count-selected-text="Có {0} thành viên"
                                                                 data-live-search-placeholder="Tìm kiếm...">
                                                                 <option>Chính thức</option>
@@ -60,15 +62,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
-                                                <div class="main_search d-flex">
-                                                   <div class="form-group has-search">
-                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
 
-                                                    <form action="/danh-sach-thanh-vien" method="GET">
-                                                        <input type="text" class="form-control" placeholder="Tìm kiếm thành viên" name="q" value="{{request()->q}}">
-                                                    </form>
-                                                </div>
+                                                <div class="main_search d-flex">
+                                                    <div class="form-group has-search">
+                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
+
+                                                        <form action="/danh-sach-thanh-vien" method="GET">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Tìm kiếm thành viên" name="q"
+                                                                value="{{ request()->q }}">
+                                                        </form>
+                                                    </div>
                                                     <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                         data-bs-target="#themThanhVien">Thêm thành viên</button>
                                                 </div>
@@ -93,56 +97,366 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($data->data as $value)
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    {{ $loop->iteration }}
-                                                                </div>
-                                                            </th>
-                                                            <td>
-                                                                <div>{{ $value->name}}</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>{{ $value->code}}</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản trị Nhãn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trợ lý Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Chuyên viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>{{ $value->email}}</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>{{ $value->phone}}</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Chính thức</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Đang làm việc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    <div
+                                                                        class="d-flex justify-content-center align-items-center">
+                                                                        {{ $loop->iteration }}
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                </th>
+                                                                <td>
+                                                                    <div>{{ $value->name }}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>{{ $value->code }}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>{{ $value->departement }}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>{{ $value->position }}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>{{ $value->position_level }}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>{{ $value->email }}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>{{ $value->phone }}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>Chính thức</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>Đang làm việc</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="table_actions d-flex justify-content-center">
+                                                                        <div class="btn" data-bs-toggle="modal"
+                                                                            data-bs-target="#suaThanhVien{{ $value->id }}">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        </div>
+                                                                        <div class="btn" data-bs-toggle="modal"
+                                                                            data-bs-target="#xoaThanhVien{{ $value->id }}">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            {{-- Modal Sua thanh vien --}}
+                                                            <div class="modal fade" id="suaThanhVien{{ $value->id }}"
+                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered"
+                                                                    style="max-width:530px">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header text-center">
+                                                                            <h5 class="modal-title w-100"
+                                                                                id="exampleModalLabel">Sửa thành viên</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+
+                                                                        <form method="POST"
+                                                                            action="/danh-sach-thanh-vien/{{ $value->id }}">
+                                                                            @csrf
+                                                                            @method('PUT')
+                                                                            <div class="modal-body">
+                                                                                <div class="create_user-wrapper">
+                                                                                    <div class="create_user-title mb-2">
+                                                                                        Thông tin cá nhân</div>
+                                                                                    <div class="row align-items-center">
+                                                                                        <div class="col-sm-2">
+                                                                                            <div class="image-upload">
+                                                                                                <input type="file"
+                                                                                                    name=""
+                                                                                                    id="logo"
+                                                                                                    onchange="editImg(this)">
+                                                                                                <label for="logo"
+                                                                                                    class="upload-field"
+                                                                                                    id="file-label">
+                                                                                                    <div
+                                                                                                        class="file-thumbnail">
+                                                                                                        <img id="edit_image-preview"
+                                                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
+                                                                                                            alt="">
+                                                                                                    </div>
+                                                                                                </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-5">
+                                                                                            <div class="col-sm-12 mb-2">
+                                                                                                <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="{{ $value->name }}"
+                                                                                                    name="name">
+                                                                                            </div>
+
+                                                                                            <div class="col-sm-12 mb-2">
+                                                                                                <input class="form-control"
+                                                                                                    type="password"
+                                                                                                    value="123456"
+                                                                                                    name="password">
+                                                                                            </div>
+                                                                                            <div class="col-sm-12 mb-2">
+                                                                                                <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="{{ $value->phone }}"
+                                                                                                    name="phone">
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="col-sm-5">
+                                                                                            <div class="row">
+                                                                                                <div class="col-sm-5 mb-2">
+                                                                                                    <select
+                                                                                                        class="selectpicker">
+                                                                                                        <option>Nam</option>
+                                                                                                        <option selected>Nữ
+                                                                                                        </option>
+                                                                                                    </select>
+                                                                                                </div>
+
+                                                                                                <div
+                                                                                                    class="col-sm-7 mb-2 position-relative">
+                                                                                                    <input
+                                                                                                        id="suaCreateUser"
+                                                                                                        value="26/03/2023"
+                                                                                                        class="form-control"
+                                                                                                        type="text">
+                                                                                                    <i
+                                                                                                        class="bi bi-calendar-plus style_pickdate"></i>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-sm-12 mb-2">
+                                                                                                <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="vuha@gmail.com">
+                                                                                            </div>
+                                                                                            <div class="col-sm-12 mb-2">
+                                                                                                <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="{{ $value->address }}"
+                                                                                                    name="address">
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="create_user-wrapper">
+                                                                                    <div class="create_user-title mb-2">
+                                                                                        Thông tin công việc</div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-4 mb-2">
+                                                                                            <input class="form-control"
+                                                                                                type="text"
+                                                                                                value="{{ $value->code }}"
+                                                                                                name="code">
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-4 mb-2">
+                                                                                            <input class="form-control"
+                                                                                                type="text"
+                                                                                                value="0123456789">
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-4 mb-2">
+                                                                                            <input class="form-control"
+                                                                                                type="text"
+                                                                                                value="{{ $value->email }}"
+                                                                                                name="email">
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select class="selectpicker"
+                                                                                                name="departement">
+                                                                                                <option>Chủ tịch HĐQT
+                                                                                                </option>
+                                                                                                <option>Tổng Giám đốc
+                                                                                                </option>
+                                                                                                <option>Phó Tổng Giám đốc
+                                                                                                </option>
+                                                                                                <option>Giám đốc điều hành
+                                                                                                </option>
+                                                                                                <option>Quản lý cấp cao
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <div
+                                                                                                class="d-flex align-items-center">
+                                                                                                <select
+                                                                                                    class="selectpicker">
+                                                                                                    <option>Chủ tịch HĐQT
+                                                                                                    </option>
+                                                                                                    <option>Tổng Giám đốc
+                                                                                                    </option>
+                                                                                                    <option>Phó Tổng Giám
+                                                                                                        đốc</option>
+                                                                                                    <option>Giám đốc điều
+                                                                                                        hành</option>
+                                                                                                    <option>Quản lý cấp cao
+                                                                                                    </option>
+                                                                                                    <option>Quản lý cấp
+                                                                                                        trung</option>
+                                                                                                    <option selected>Trưởng
+                                                                                                        phòng</option>
+                                                                                                    <option>Phó phòng
+                                                                                                    </option>
+                                                                                                    <option>Trưởng nhóm
+                                                                                                    </option>
+                                                                                                    <option>Chuyên viên
+                                                                                                    </option>
+                                                                                                    <option>Nhân viên
+                                                                                                    </option>
+                                                                                                </select>
+                                                                                                <div class="modal_list-more"
+                                                                                                    data-bs-toggle="modal"
+                                                                                                    data-bs-target="#danhsachChucDanh">
+                                                                                                    <i
+                                                                                                        class="bi bi-three-dots-vertical"></i>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select
+                                                                                                id="onchangeViTriCongViec"
+                                                                                                class="selectpicker">
+                                                                                                <option selected>Quản lý
+                                                                                                    phòng</option>
+                                                                                                <option>Quản lý sàn TMĐT
+                                                                                                </option>
+                                                                                                <option>Content Website
+                                                                                                </option>
+                                                                                                <option>Content SEO</option>
+                                                                                                <option>Google Ads</option>
+                                                                                                <option>Content Facebook
+                                                                                                </option>
+                                                                                                <option
+                                                                                                    value="themViTriCongViec"
+                                                                                                    class="text-danger">+
+                                                                                                    Thêm vị trí mới
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select class="selectpicker">
+                                                                                                <option selected>Bùi Thị
+                                                                                                    Minh Hoa - GĐĐH</option>
+                                                                                                <option>Nguyễn Ngọc Bảo
+                                                                                                </option>
+                                                                                                <option>Đặng Nguyễn Lam Mai
+                                                                                                </option>
+                                                                                                <option>Hồ Thị Hồng Vân
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <input type="text" readonly
+                                                                                                class="form-control"
+                                                                                                readonly
+                                                                                                placeholder="Quỹ lương năm" />
+                                                                                        </div>
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select class="selectpicker"
+                                                                                                title="Chọn gói trang bị">
+                                                                                                <option selected>Trang bị
+                                                                                                    hành chính</option>
+                                                                                                <option>Trang bị cơ bản
+                                                                                                </option>
+                                                                                                <option>Trang bị Nhân viên
+                                                                                                </option>
+                                                                                                <option>Trang bị Chuyên viên
+                                                                                                </option>
+                                                                                                <option>Trang bị Quản lý
+                                                                                                </option>
+                                                                                                <option>Trang bị Giám đốc
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select class="selectpicker"
+                                                                                                title="Chọn trạng thái">
+                                                                                                <option selected>Toàn thời
+                                                                                                    gian</option>
+                                                                                                <option>Bán thời gian
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select class="selectpicker"
+                                                                                                title="Chọn trạng thái">
+                                                                                                <option selected>Đang làm
+                                                                                                    việc</option>
+                                                                                                <option>Đã nghỉ việc
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-outline-danger"
+                                                                                    data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger">Lưu</button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
-                                                            </td>
-                                                        </tr>
+                                                            </div>
+
+                                                            {{-- Xóa Thanh vien --}}
+                                                            <div class="modal fade" id="xoaThanhVien{{ $value->id }}"
+                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title text-danger"
+                                                                                id="exampleModalLabel">XOÁ THÀNH VIÊN</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            Bạn có thực sự muốn xoá thành viên này không?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-danger"
+                                                                                data-bs-dismiss="modal">Hủy</button>
+                                                                            <form
+                                                                                action="/danh-sach-thanh-vien/{{ $value->id }}"
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger"
+                                                                                    id="deleteRowElement">Xóa</button>
+                                                                            </form>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         @endforeach
+
+
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -167,7 +481,8 @@
                                                     <div class="title_filter d-flex align-items-center" style="gap:10px">
                                                         <div class="title_filter-item">
                                                             <select class="selectpicker" data-live-search="true"
-                                                                title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                                title="Chọn hình thức..."
+                                                                data-selected-text-format="count > 1"
                                                                 data-count-selected-text="Có {0} thành viên"
                                                                 data-live-search-placeholder="Tìm kiếm...">
                                                                 <option>Chính thức</option>
@@ -199,16 +514,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
-                                                <div class="main_search d-flex">
-                                                   <div class="form-group has-search">
-                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                   
-                                                   <form method="GET" action="/danh-sach-thanh-vien">
 
-                                                       <input type="text" name ="q" dclass="form-control" placeholder="Tìm kiếm thành viên">
-                                                    </form>
-                                                </div>
+                                                <div class="main_search d-flex">
+                                                    <div class="form-group has-search">
+                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
+
+                                                        <form method="GET" action="/danh-sach-thanh-vien">
+
+                                                            <input type="text" name="q" dclass="form-control"
+                                                                placeholder="Tìm kiếm thành viên">
+                                                        </form>
+                                                    </div>
                                                     <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                         data-bs-target="#themThanhVien">Thêm thành viên</button>
                                                 </div>
@@ -498,7 +814,8 @@
                                                     <div class="title_filter d-flex align-items-center" style="gap:10px">
                                                         <div class="title_filter-item">
                                                             <select class="selectpicker" data-live-search="true"
-                                                                title="Chọn hình thức..." data-selected-text-format="count > 1"
+                                                                title="Chọn hình thức..."
+                                                                data-selected-text-format="count > 1"
                                                                 data-count-selected-text="Có {0} thành viên"
                                                                 data-live-search-placeholder="Tìm kiếm...">
                                                                 <option>Chính thức</option>
@@ -530,12 +847,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="main_search d-flex">
-                                                   <div class="form-group has-search">
-                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm thành viên">
-                                                </div>
+                                                    <div class="form-group has-search">
+                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Tìm kiếm thành viên">
+                                                    </div>
                                                     <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
                                                         data-bs-target="#themThanhVien">Thêm thành viên</button>
                                                 </div>
@@ -1106,7 +1424,7 @@
                                 <div class="col-sm-12 mb-2">
                                     <input class="form-control" type="text" value="Vũ Thị Hà">
                                 </div>
-                                
+
                                 <div class="col-sm-12 mb-2">
                                     <input class="form-control" type="password" value="hihihihi">
                                 </div>
@@ -1123,10 +1441,10 @@
                                             <option selected>Nữ</option>
                                         </select>
                                     </div>
-                                    
+
                                     <div class="col-sm-7 mb-2 position-relative">
                                         <input id="suaCreateUser" value="26/03/2023" class="form-control"
-                                                type="text">
+                                            type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -1136,9 +1454,9 @@
                                 <div class="col-sm-12 mb-2">
                                     <input class="form-control" type="text" value="219 trung kính">
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -1209,7 +1527,8 @@
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-2">
-                                <input type="text" readonly class="form-control" readonly placeholder="Quỹ lương năm" />
+                                <input type="text" readonly class="form-control" readonly
+                                    placeholder="Quỹ lương năm" />
                             </div>
                             <div class="col-sm-6 mb-2">
                                 <select class="selectpicker" title="Chọn gói trang bị">
@@ -1274,14 +1593,17 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" name="name" placeholder="Nhập họ và tên">
+                                        <input class="form-control" type="text" name="name"
+                                            placeholder="Nhập họ và tên">
                                     </div>
-                                    
+
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="password" name="password" placeholder="Mật khẩu">
+                                        <input class="form-control" type="password" name="password"
+                                            placeholder="Mật khẩu">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" placeholder="Số điện thoại" name="phone">
+                                        <input class="form-control" type="text" placeholder="Số điện thoại"
+                                            name="phone">
                                     </div>
 
                                 </div>
@@ -1294,10 +1616,10 @@
                                                 <option value="other">Khác</option>
                                             </select>
                                         </div>
-                                        
+
                                         <div class="col-sm-7 mb-2 position-relative">
                                             <input id="createUser" placeholder="Ngày sinh" class="form-control"
-                                                    type="text" name="dob">
+                                                type="text" name="dob">
                                             <i class="bi bi-calendar-plus style_pickdate"></i>
                                         </div>
                                     </div>
@@ -1305,11 +1627,12 @@
                                         <input class="form-control" type="text" placeholder="Email liên hệ">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" placeholder="Địa chỉ liên hệ" name="address">
+                                        <input class="form-control" type="text" placeholder="Địa chỉ liên hệ"
+                                            name="address">
                                     </div>
-                                    
+
                                 </div>
-                                
+
                             </div>
                         </div>
 
@@ -1317,7 +1640,8 @@
                             <div class="create_user-title mb-2">Thông tin công việc</div>
                             <div class="row">
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="text" placeholder="Mã nhân viên" name="code">
+                                    <input class="form-control" type="text" placeholder="Mã nhân viên"
+                                        name="code">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
@@ -1325,14 +1649,15 @@
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="text" placeholder="Nhập email công ty" name="email">
+                                    <input class="form-control" type="text" placeholder="Nhập email công ty"
+                                        name="email">
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Chọn đơn vị công tác">
-                                        <option>Doppelherz</option>
-                                        <option>CTCP Mastertran</option>
-                                        <option>CTCP Thái Bình Hưng Thịnh</option>
+                                    <select class="selectpicker" title="Chọn đơn vị công tác" name="departement">
+                                        @foreach ($listDepartments->data as $value)
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -1340,8 +1665,8 @@
                                     <div class="d-flex align-items-center">
                                         <select class="selectpicker" title="Chọn cấp nhân sự" name="position_level">
                                             @foreach ($listPositionLevel->data as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                        @endforeach
+                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="modal_list-more" data-bs-toggle="modal"
                                             data-bs-target="#danhsachChucDanh">
@@ -1351,8 +1676,8 @@
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select id="onchangeViTriCongViec" class="selectpicker"
-                                        title="Chọn Vị trí/Chức danh" name="position">
+                                    <select id="onchangeViTriCongViec" class="selectpicker" title="Chọn Vị trí/Chức danh"
+                                        name="position">
                                         @foreach ($listPositions->data as $value)
                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                         @endforeach
@@ -1383,7 +1708,7 @@
                                             <option>Trang bị Giám đốc</option>
                                         </select>
                                         <div class="modal_list-more" data-bs-toggle="modal"
-                                                data-bs-target="#danhsachtrangbi">
+                                            data-bs-target="#danhsachtrangbi">
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </div>
                                     </div>
@@ -1495,7 +1820,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1513,7 +1839,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1531,7 +1858,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1549,7 +1877,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1569,7 +1898,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1587,7 +1917,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1605,7 +1936,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1623,7 +1955,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1641,7 +1974,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1659,7 +1993,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1677,7 +2012,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1692,8 +2028,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1963,7 +2299,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -1982,7 +2319,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2001,7 +2339,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2020,7 +2359,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2039,7 +2379,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2058,7 +2399,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2079,7 +2421,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2098,7 +2441,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2117,7 +2461,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2136,7 +2481,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2172,150 +2518,143 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                            <div
-                                class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
-                                    <label class="form-check-label ms-3" for="flexRadioDefault1">
-                                        Trang bị hành chính
-                                    </label>
+                        <div
+                            class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label ms-3" for="flexRadioDefault1">
+                                    Trang bị hành chính
+                                </label>
+                            </div>
+                            <div class="form-check_actions">
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                 </div>
-                                <div class="form-check_actions">
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                    </div>
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                    </div>
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                 </div>
                             </div>
-                            
-                            <div
-                                class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
-                                    <label class="form-check-label ms-3" for="flexRadioDefault2">
-                                        Trang bị cơ bản
-                                    </label>
-                                </div>
-                                <div class="form-check_actions">
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                    </div>
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            <div
-                                class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
-                                    <label class="form-check-label ms-3" for="flexRadioDefault3">
-                                        Trang bị Nhân viên
-                                    </label>
-                                </div>
-                                <div class="form-check_actions">
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                    </div>
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div
-                                class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
-                                    <label class="form-check-label ms-3" for="flexRadioDefault4">
-                                        Trang bị Chuyên viên
-                                    </label>
-                                </div>
-                                <div class="form-check_actions">
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                    </div>
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
 
-                            <div
-                                class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
-                                    <label class="form-check-label ms-3" for="flexRadioDefault5">
-                                        Quản lý cấp cao
-                                    </label>
+                        <div
+                            class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2">
+                                <label class="form-check-label ms-3" for="flexRadioDefault2">
+                                    Trang bị cơ bản
+                                </label>
+                            </div>
+                            <div class="form-check_actions">
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                 </div>
-                                <div class="form-check_actions">
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                    </div>
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                    </div>
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                 </div>
                             </div>
-                            
-                            <div
-                                class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
-                                    <label class="form-check-label ms-3" for="flexRadioDefault6">
-                                        Quản lý cấp trung
-                                    </label>
-                                </div>
-                                <div class="form-check_actions">
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                    </div>
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div
-                                class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
-                                <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
-                                    <label class="form-check-label ms-3" for="flexRadioDefault7">
-                                        Trưởng phòng
-                                    </label>
-                                </div>
-                                <div class="form-check_actions">
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                    </div>
-                                    <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
 
-                            <div class="col-md-6 btn text-primary" {{-- data-bs-toggle="modal" data-bs-target="#themChucDanh" --}}>
-                                <i class="bi bi-plus"></i>
-                                Thêm mới
+                        <div
+                            class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault3">
+                                <label class="form-check-label ms-3" for="flexRadioDefault3">
+                                    Trang bị Nhân viên
+                                </label>
                             </div>
+                            <div class="form-check_actions">
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                </div>
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault4">
+                                <label class="form-check-label ms-3" for="flexRadioDefault4">
+                                    Trang bị Chuyên viên
+                                </label>
+                            </div>
+                            <div class="form-check_actions">
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                </div>
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault5">
+                                <label class="form-check-label ms-3" for="flexRadioDefault5">
+                                    Quản lý cấp cao
+                                </label>
+                            </div>
+                            <div class="form-check_actions">
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                </div>
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault6">
+                                <label class="form-check-label ms-3" for="flexRadioDefault6">
+                                    Quản lý cấp trung
+                                </label>
+                            </div>
+                            <div class="form-check_actions">
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                </div>
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class=" col-md-6 form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault7">
+                                <label class="form-check-label ms-3" for="flexRadioDefault7">
+                                    Trưởng phòng
+                                </label>
+                            </div>
+                            <div class="form-check_actions">
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                </div>
+                                <div class="btn">
+                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 btn text-primary" {{-- data-bs-toggle="modal" data-bs-target="#themChucDanh" --}}>
+                            <i class="bi bi-plus"></i>
+                            Thêm mới
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -2899,38 +3238,33 @@
     <script>
         $(document).ready(function() {
             $.datetimepicker.setLocale('vi');
-            // $('#ngayThuViec').datetimepicker({
-            //     format: 'Y/m/d',
-            //     timepicker: false,
-            // });
-
-            // $('#ngayChinhThuc').datetimepicker({
-            //     format: 'Y/m/d',
-            //     timepicker: false,
-            // });
-
-            // $('#suaNgayThuViec').datetimepicker({
-            //     format: 'Y/m/d',
-            //     timepicker: false,
-            // });
-
-            // $('#suaNgayChinhThuc').datetimepicker({
-            //     format: 'Y/m/d',
-            //     timepicker: false,
-            // });
-
-            // $('#createUser').datetimepicker({
-            //     format: 'Y/m/d',
-            //     timepicker: false,
-            // });
-
-            // $('#suaCreateUser').datetimepicker({
-            //     format: 'Y/m/d',
-            //     timepicker: false,
-            // });
+            $('#ngayThuViec').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('#ngayChinhThuc').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('#suaNgayThuViec').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('#suaNgayChinhThuc').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('#createUser').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('#suaCreateUser').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
 
 
-            
+
             // $('#onchangePhongBan').change(function() {
             // var opval = $(this).val();
             // if (opval == "themPhongBan") {
@@ -2958,6 +3292,7 @@
                 alert("Không hỗ trợ định dạng này. ")
             }
         }
+
         function createImg(value) {
             var path = value.value;
             var extenstion = path.split('.').pop();

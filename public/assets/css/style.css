@@ -1995,9 +1995,9 @@ ul.modal_upload-list li:last-child {
 
 }
 
-
+/* 
 .dropdown-menu{
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
     height: 140px;
     inset: 0px;
-}
+} */

@@ -7,6 +7,7 @@ use App\Services\DwtServices;
 use Exception;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
+use Illuminate\Support\Carbon; 
 
 class UsersController extends Controller
 {
@@ -54,8 +55,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         try {
-            
-
+            // dd($request->dob);
             $data = $request->validate([
                 'name' => 'required',
                 'email' => 'required',
@@ -65,21 +65,29 @@ class UsersController extends Controller
                 'sex' => 'required',
                 'address' => 'required',
                 'dob' => 'required',
-                'departement_id' => 'required|numeric',
-                'position_id' => 'required|numeric',               
+                'departement' => 'required',
+                'position' => 'required',  
+                'position_level' => 'required',            
                
             ]);
             //format fe date to api required date dd/mm/yyyy to yyyy-MM-DD
             //replace / to -
-            $dob = str_replace("/", "-", $data['dob']);
-            $dob = date('Y-m-d', strtotime($data['dob']));
-         
+            $dob = Carbon::parse($request['dob'])->format('d/m/Y H:i:s');
+            // $dob = str_replace("/", "-", $data['dob']);
+            // $dob = date('d-m-Y', strtotime($data['dob']));
+            // dd($dob);
+            
+
             //update the dob to send to api
             $data['dob'] = $dob;
             //set date of join is current day
             $data['doj'] = date('Y-m-d');
             //set role  defaut is user TODO: need to pick from fe
             $data['role'] = 'user';
+            $data['position_id'] = '2';
+            $data['departement_id'] = '1';
+            $data['position_level_id'] = '1';
+            $data['salary_fund'] = '10000';
             //department ? position ? positionLevel ? fe cura may cai nay dau >
          
             $this->dwtService->createUser($data);
@@ -97,9 +105,17 @@ class UsersController extends Controller
     {
         try {
             $data = $request->validate([
-                'name' => 'nullable',
-                'salary_fund' => 'nullable|numeric',
-                'max_employees' => 'nullable|numeric',
+                'name' => 'required',
+                'email' => 'required',
+                'password' => 'required|numeric',
+                'code' => 'required',
+                'phone' => 'required|numeric',
+                'sex' => 'required',
+                'address' => 'required',
+                'dob' => 'required',
+                'departement' => 'required',
+                'position' => 'required',  
+                'position_level' => 'required',   
             ]);
             $this->dwtService->updateUser($id, $data);
             return back()->with('success', 'Cập nhật thành công');
