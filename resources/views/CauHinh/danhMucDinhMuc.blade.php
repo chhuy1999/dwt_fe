@@ -419,8 +419,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" type="text"
-                                        placeholder="Tên định mức" name="name">
+                                    <input class="form-control" type="text" required
+                                        placeholder="Tên định mức *" name="name">
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -430,12 +430,12 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control comboTreeInputBox" autocomplete="off" id="thuocDonVi" placeholder="Đơn vị phụ trách *">
+                                    <input type="text" required class="form-control comboTreeInputBox" autocomplete="off" id="thuocDonVi" placeholder="Đơn vị phụ trách *">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <select class="selectpicker" title="Vị trí phụ trách" data-size="5" name="position_id">
+                                    <select class="selectpicker" required data-live-search="true" title="Vị trí phụ trách *" data-size="5" name="position_id">
                                         @foreach ($listPositions->data as $pos)
                                             <option value="{{ $pos->id }}">{{ $pos->name }}</option>
                                         @endforeach
@@ -453,8 +453,7 @@
                             </div> --}}
                             <div class="col-sm-3">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" type="number"
-                                        placeholder="Manday" name="manday">
+                                    <input class="form-control" required type="number" placeholder="Manday *" name="manday">
                                 </div>
                             </div>
                             {{-- <div class="col-sm-6">
