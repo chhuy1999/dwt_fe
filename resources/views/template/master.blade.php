@@ -198,6 +198,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                             <li class="header_more-item">
                                                 <a href="danh-sach-cap-nhan-su" class="header_more-link">Danh sách cấp nhân sự</a>
                                             </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-goi-trang-bi" class="header_more-link">Danh mục gói trang bị</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="header_submenu-items more position-relative">

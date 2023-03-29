@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
 @endsection
 
+<style>
+    .description-department {
+        width: 480px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+    }
+</style>
+
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -134,12 +143,10 @@
                                                                     <div>Phòng ban</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>{{ $value->in_charge }}</div>
+                                                                    <div>{{ $value->in_charge}}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div class="d-inline-block text-truncate" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc">Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                        theo yêu cầu của Ban Giám đốc</div>
+                                                                    <div class="d-inline-block text-truncate description-department" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
                                                                 </td>
                                                                 <td>
                                                                     <div
