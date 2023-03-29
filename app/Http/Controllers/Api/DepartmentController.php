@@ -37,7 +37,7 @@ class DepartmentController extends Controller
                 ->with('listDepartments', $listDepartments);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('Cauhinh.profile')->with('listDepartments', []);1
+            return view('Cauhinh.profile')->with('listDepartments', []);
         }
     }
 
