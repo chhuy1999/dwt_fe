@@ -105,17 +105,17 @@ class UsersController extends Controller
     {
         try {
             $data = $request->validate([
-                'name' => 'required',
-                'email' => 'required',
-                'password' => 'required|numeric',
-                'code' => 'required',
-                'phone' => 'required|numeric',
-                'sex' => 'required',
-                'address' => 'required',
-                'dob' => 'required',
-                'departement' => 'required',
-                'position' => 'required',  
-                'position_level' => 'required',   
+                'name' => 'nullable',
+                'email' => 'nullable',
+                'password' => 'nullable|numeric',
+                'code' => 'nullable',
+                'phone' => 'nullable|numeric',
+                'sex' => 'nullable',
+                'address' => 'nullable',
+                'dob' => 'nullable',
+                'departement' => 'nullable',
+                'position' => 'nullable',  
+                'position_level' => 'nullable',   
             ]);
             $this->dwtService->updateUser($id, $data);
             return back()->with('success', 'Cập nhật thành công');
