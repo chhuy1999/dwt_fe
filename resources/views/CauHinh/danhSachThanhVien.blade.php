@@ -86,8 +86,8 @@
                                                         </form>
                                                     </div>
                                                     <div class="action_export ms-3" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" aria-label="Xuất file Excel"
-                                                        data-bs-original-title="Xuất file Excel">
+                                                        data-bs-placement="top" aria-label="Thêm thành viên"
+                                                        data-bs-original-title="Thêm thành viên">
                                                         <button class="btn btn-danger d-block" data-bs-toggle="modal"
                                                             data-bs-target="#themThanhVien">Thêm thành viên</button>
                                                     </div>
@@ -1621,17 +1621,17 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" autocomplete="off" type="text" name="name"
-                                            placeholder="Nhập họ và tên">
+                                        <input class="form-control" required autocomplete="off" type="text" name="name"
+                                            placeholder="Nhập họ và tên *">
                                     </div>
 
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" autocomplete="off"  type="password" name="password"
-                                            placeholder="Mật khẩu">
+                                        <input class="form-control" required autocomplete="off"  type="password" name="password"
+                                            placeholder="Mật khẩu *">
                                     </div>
                                     <div class="col-sm-12 mb-2">
                                         <input class="form-control" autocomplete="off"  type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                                            required placeholder="Số điện thoại" name="phone">
+                                            required placeholder="SĐT cá nhân" name="phone">
                                     </div>
 
                                 </div>
@@ -1677,23 +1677,23 @@
                             <div class="create_user-title mb-2">Thông tin công việc</div>
                             <div class="row">
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" autocomplete="off"  type="text" placeholder="Nhập mã nhân viên"
+                                    <input class="form-control" autocomplete="off" required  type="text" placeholder="Nhập mã nhân viên *"
                                         name="code">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
                                     <input class="form-control" autocomplete="off"  type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                                        required placeholder="Nhập Sđt liên hệ">
+                                        required placeholder="SĐT liên hệ *">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" autocomplete="off"  type="email" placeholder="Nhập email công ty"
+                                    <input class="form-control" autocomplete="off" required  type="email" placeholder="Nhập email công ty *"
                                         name="email">
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" data-live-search="true" name="departement"
-                                        data-width="100%" title="Chọn đơn vị công tác"
+                                    <select class="selectpicker" required data-live-search="true" name="departement"
+                                        data-width="100%" title="Chọn đơn vị công tác *"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listDepartments->data as $value)
                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -1703,7 +1703,7 @@
 
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn cấp nhân sự" name="position_level"
+                                        <select class="selectpicker" required title="Chọn cấp nhân sự *" name="position_level"
                                             data-width="100%" data-live-search="true"
                                             data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                             @foreach ($listPositionLevel->data as $value)
@@ -1721,8 +1721,8 @@
                                     <div class="">
                                         <div class="d-flex align-items-center">
 
-                                            <select id="onchangeViTriChucDanh" class="selectpicker"
-                                                title="Chọn Vị trí/Chức danh" name="position" data-width="100%"
+                                            <select id="onchangeViTriChucDanh" required class="selectpicker"
+                                                title="Chọn Vị trí/Chức danh *" name="position" data-width="100%"
                                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                 data-size="3">
                                                 @foreach ($listPositions->data as $value)
@@ -3587,15 +3587,6 @@
                 timepicker: false,
             });
 
-
-
-            // $('#onchangePhongBan').change(function() {
-            // var opval = $(this).val();
-            // if (opval == "themPhongBan") {
-            //     $('#themPhongBan').modal("show");
-            //     $('#themThanhVien').modal("hide");
-            // }
-            // });
             $('#onchangeViTriCongViec').change(function() {
                 var opval = $(this).val();
                 if (opval == "themViTriCongViec") {
