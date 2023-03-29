@@ -32,12 +32,14 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="main_search d-flex">
-                                            <i class="bi bi-search"></i>
-                                            <form action="/danh-muc-dinh-muc" method="GET">
-                                                <input type="text" class="form-control" name="q"
-                                                    placeholder="Tìm kiếm định mức" value="{{request()->q}}">
-                                            </form>
+                                        <div class="action_wrapper d-flex">
+                                            <div class="form-group has-search">
+                                                <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                <form action="/danh-muc-dinh-muc" method="GET">
+                                                    <input type="text" class="form-control" name="q"
+                                                        placeholder="Tìm kiếm định mức" value="{{request()->q}}">
+                                                </form>
+                                            </div>
                                         </div>
                                         <div class="main_action">
                                             <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal"
