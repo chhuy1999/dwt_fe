@@ -443,44 +443,41 @@
 
                                                                                         <div class="row mb-3">
                                                                                             <div class="form-check_wrapper">
-                                                                                                <div class="form-check_content">
-                                                                                                    <div class="form-check_repeater">
-                                                                                                        <div class="form-check_item position-relative row mb-3">
-                                                                                                            <div class="col-sm-8 d-flex  align-items-center">
-                                                                                                                <label for="inputPassword" class="col-sm-3 col-form-label">
-                                                                                                                    Tiêu chí
-                                                                                                                    <span class="text-danger">*</span>
-                                                                                                                </label>
-                                                                                                                <div class="col-sm-9">
-                                                                                                                    <select class="form-select" title="Chọn trạng thái" name="kpiKeyIds[]">
-                                                                                                                        <option value="" disabled selected hidden class="text-danger">
-                                                                                                                            Chọn tiêu chí</option>
-                                                                                                                        @foreach ($kpiKeys as $kpiKey)
-                                                                                                                            <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
-                                                                                                                        @endforeach
-                                                                                                                    </select>
-                                                                                                                </div>
+                                                                                                <div class="repeater-datGiaTriKinhDoanh">
+                                                                                                    <div data-repeater-list="kpiKeys-edit">
+                                                                                                        <div class="row" data-repeater-item>
+                                                                                                            <div class="col-md-6 mb-3">
+                                                                                                                <select
+                                                                                                                    class='selectpicker'
+                                                                                                                    data-live-search="true"
+                                                                                                                    title="Chọn trạng thái" name="kpiKeyIds[]">
+                                                                                                                    @foreach ($kpiKeys as $kpiKey)
+                                                                                                                        <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
+                                                                                                                    @endforeach
+                                                                                                                </select>
                                                                                                             </div>
-                                                                                                            <div class="col-sm-4 d-flex  align-items-center">
-                                                                                                                <label for="inputPassword" class="col-sm-4 col-form-label">
-                                                                                                                    Giá trị
-                                                                                                                    <span class="text-danger">*</span>
-                                                                                                                </label>
-                                                                                                                <div class="col-sm-8" id="addTrash">
-                                                                                                                    <input type="number" class="form-control" name="kpiKeyQuantity[]">
-                                                                                                                </div>
-
+                                                                                                            <div class="col-md-5 mb-3">
+                                                                                                                <input type="number" class="form-control"
+                                                                                                                    placeholder="Giá trị" name="kpiKeyQuantity[]" />
                                                                                                             </div>
-
+                                                                                                            <div
+                                                                                                                class="col-md-1 mb-3 d-flex align-items-center">
+                                                                                                                <img data-repeater-delete role="button"
+                                                                                                                    src="{{ asset('/assets/img/trash.svg') }}"
+                                                                                                                    width="20px" height="20px" />
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                    
+                                                                                                    <div class="col-md-12">
+                                                                                                        <div class="d-flex justify-content-start">
+                                                                                                            <div role="button" class="fs-4 text-danger"
+                                                                                                                data-repeater-create><i
+                                                                                                                    class="bi bi-plus-circle"></i></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="d-flex justify-content-end">
-                                                                                                    <button class="form-check_btn btn btn-outline-danger px-3">Thêm tiêu chí</button>
-                                                                                                </div>
-
                                                                                             </div>
-
                                                                                         </div>
                                                                                         <div class="mb-3 row">
                                                                                             <div class="col-md-12">
@@ -2523,6 +2520,10 @@
 <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
 
+<!-- Plugins -->
+<script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
+
 <!-- Chart Types -->
 <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
@@ -2541,22 +2542,8 @@
 <script>
     $(function() {
         $('#datGiaTriKinhDoanh').on('change', function() {
-            console.log(this.checked);
             $('.form-check_wrapper').toggle(this.checked);
         });
-        $(document).on('click', '.form-check_btn', function(e) {
-            e.preventDefault();
-            $('#delete_value').show()
-            //append new row
-            $('.form-check_repeater').parent('div.form-check_content').append($('.form-check_content')
-                .children('div:first').html());
-            // $('#addTrash').append(`<div role="button" id="delete_value"><img style="height:20px" src="{{ asset('assets/img/trash.svg') }}" / ></div>`)
-        });
-        $(document).on('click', '#delete_value img', function(e) {
-            e.preventDefault();
-            $(this).closest('.form-check_item').remove();
-        });
-
     });
 </script>
 

@@ -1,8 +1,8 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Biên bản họp Giao Ban')
-
 @section('header-style')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
     <style>
         .mainSection_width-select {
             width: 140px !important;
@@ -17,10 +17,11 @@
         }
 
         .style_input {
-            background-color: transparent;
-            outline: none;
             border: none;
-            box-shadow: none !important;
+            background-color: transparent;
+            font-size: 1.1rem;
+            outline: none;
+            box-shadow: none!important;
         }
 
         .mainSection_width-select button.btn.dropdown-toggle.btn-light:hover {
@@ -93,7 +94,7 @@
                                 </h5>
                             </div>
                             <div>
-                                <select class="form-select form-select-lg ms-2 style_input fw-bolder">
+                                <select class="form-select form-select-lg style_input ms-2 fw-bolder">
                                     <option>Ngày</option>
                                     <option>Tuần</option>
                                     <option>Tháng</option>
@@ -126,14 +127,16 @@
                                                                 <img style="height:14px; width:14px; margin-right:6px"
                                                                     src="{{ asset('assets/img/time.svg') }}" />
                                                             </div>
-                                                            <div id="date_time-hopgiaoban"
+                                                            {{-- <div id="date_time-hopgiaoban"
                                                                 class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                <input id="datetimepicker" value="<?php echo date('d/m/Y h:m'); ?>"
+                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?>"
                                                                     class="form-control" type="text">
                                                                 <div class="datetimepicker_separate">-</div>
-                                                                <input id="datetimepicker2" value="<?php echo date('d/m/Y h:m'); ?>"
+                                                                <input id="datetimepicker2" value="<?php //echo date('d/m/Y h:m'); ?>"
                                                                     class="form-control" type="text">
-                                                            </div>
+                                                            </div> --}}
+                                                            <input type="text" name="daterange" autocomplete="off" class="form-control"
+                                                                    placeholder="Thời hạn" />
                                                         </div>
                                                         <div class="d-flex align-items-start">
                                                             <div class="d-flex">
@@ -1130,6 +1133,9 @@
 
 @endsection
 @section('footer-script')
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}">
+    </script>
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
@@ -1145,7 +1151,17 @@
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
-    <script type="text/javascript">
-
+    <script>
+        $(function() {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left',
+                locale: {
+                    format: 'DD/MM/YYYY'
+                },
+                language: 'ru'
+            });
+            $('input[name="daterange"]').val('');
+            $('input[name="daterange"]').attr("placeholder","Chọn thời hạn");
+        });
     </script>
 @endsection

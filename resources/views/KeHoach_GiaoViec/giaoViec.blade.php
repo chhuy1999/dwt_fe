@@ -37,10 +37,10 @@
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th>TT</th>
-                                                            <th>Tên định mức</th>
-                                                            <th>Mô tả</th>
-                                                            <th>MD</th>
+                                                            <th class="text-center">STT</th>
+                                                            <th class="text-nowrap">Tên định mức</th>
+                                                            <th class="text-nowrap">Mô tả</th>
+                                                            <th class="text-center">MD</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -98,18 +98,18 @@
                                                                     placeholder="Tên công việc" />
                                                             </div>
                                                             <div class="col-md-5 mb-3">
-                                                                <input type="text" name="daterange" class="form-control"
+                                                                <input type="text" name="daterange" autocomplete="off" class="form-control"
                                                                     placeholder="Thời hạn" />
                                                             </div>
                                                             <div class="col-md-9 mb-3">
                                                                 <textarea class="form-control" name="description" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control"
                                                                     placeholder="Manday" id="title" name="manday" />
                                                             </div>
                                                             <div class="col-md-9 mb-3">
-                                                                <textarea class="form-control" rows="1" placeholder="Kế hoạch" name="executionPlan"></textarea>
+                                                                <textarea class="form-control" rows="1" placeholder="Kế hoạch thực hiện" name="executionPlan"></textarea>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
                                                                 <div class="form-check">
@@ -219,8 +219,9 @@
                                                                 <tr>
                                                                     <th style="width: 2%" class="text-center">STT</th>
                                                                     <th>Tên nhiệm vụ</th>
-                                                                    <th>Người được giao</th>
-                                                                    <th>Vị trí</th>
+                                                                    <th>Thuộc định mức</th>
+                                                                    <th>Người đảm nhiệm</th>
+                                                                    <th>Vị trí/Chức danh</th>
                                                                     <th>Thời hạn</th>
                                                                     {{-- <th>Tình trạng</th> --}}
                                                                     <th style="width: 2%"></th>
@@ -243,6 +244,15 @@
                                                                                 data-bs-placement="top"
                                                                                 title="{{ $assignedTask->name }}">
                                                                                 {{ $assignedTask->name }}
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                                style="max-width:250px;"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Thuộc định mức">
+                                                                                Thuộc định mức
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -310,13 +320,12 @@
                                                                         id="suaVanDeTonDong{{ $assignedTask->id }}"
                                                                         tabindex="-1" aria-labelledby="exampleModalLabel"
                                                                         aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered"
-                                                                            style="max-width:42%;">
+                                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header text-center">
                                                                                     <h5 class="modal-title w-100"
                                                                                         id="exampleModalLabel">Chỉnh sửa
-                                                                                        nhiệm vụ</h5>
+                                                                                        nhiệm vụ đã giao</h5>
                                                                                     <button type="button"
                                                                                         class="btn-close"
                                                                                         data-bs-dismiss="modal"
@@ -329,206 +338,146 @@
                                                                                     @method('PUT')
                                                                                     <div class="modal-body">
                                                                                         <div class="mb-3 row">
-                                                                                            <div
-                                                                                                class="col-md-12 mb-3 d-flex">
-                                                                                                <label
-                                                                                                    class="col-sm-3 col-form-label">Tên
-                                                                                                    nhiệm vụ
-                                                                                                    <span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-9">
-                                                                                                    <input type="text"
-                                                                                                        class="form-control"
-                                                                                                        name="name"
-                                                                                                        value="{{ $assignedTask->name }}" />
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="col-md-12 mb-3 d-flex">
-                                                                                                <label
-                                                                                                    class="col-sm-3 col-form-label">Thuộc
-                                                                                                    định mức
-                                                                                                    <span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-9">
-                                                                                                    <input type="text"
-                                                                                                        class="form-control"
-                                                                                                        readonly
-                                                                                                        value="{{ $assignedTask->target->name ?? '' }}" />
-                                                                                                </div>
+                                                                                            <div class="col-md-12 mb-3">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    name="name"
+                                                                                                    value="{{ $assignedTask->name }}" />
                                                                                             </div>
                                                                                             <div class="col-md-12 mb-3">
-                                                                                                <label for="textarea"
-                                                                                                    class="col-form-label">Mô
-                                                                                                    tả/Diễn giải<span
-                                                                                                        class="text-danger">*</span></label>
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    readonly
+                                                                                                    value="{{ $assignedTask->target->name ?? '' }}" />
+                                                                                            </div>
+
+                                                                                            <div class="col-md-12 mb-3">
                                                                                                 <textarea class="form-control" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
                                                                                             </div>
                                                                                             <div class="col-md-12 mb-3">
-                                                                                                <label for="textarea"
-                                                                                                    class="col-form-label">Kế
-                                                                                                    hoạch thực
-                                                                                                    hiện</label>
                                                                                                 <textarea class="form-control" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
                                                                                             </div>
 
-                                                                                            <div
-                                                                                                class="col-md-6 mb-3 d-flex">
-                                                                                                <label for="textarea"
-                                                                                                    class="col-sm-5 col-form-label">Vị
-                                                                                                    trí đảm
-                                                                                                    nhiệm <span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-7">
-                                                                                                    <select
-                                                                                                        class='form-control'
-                                                                                                        name="position_id"
-                                                                                                        id="">
-                                                                                                        @foreach ($listPositions->data as $pos)
-                                                                                                            @if ($pos->id == ($assignedTask->position->id ?? '-1'))
-                                                                                                                <option
-                                                                                                                    value="{{ $pos->id }}"
-                                                                                                                    selected>
-                                                                                                                    {{ $pos->name }}
-                                                                                                                </option>
-                                                                                                            @else
-                                                                                                                <option
-                                                                                                                    value="{{ $pos->id }}">
-                                                                                                                    {{ $pos->name }}
-                                                                                                                </option>
-                                                                                                            @endif
-                                                                                                        @endforeach
+                                                                                            <div class="col-md-6 mb-3">
+                                                                                                <select
+                                                                                                    class='form-control'
+                                                                                                    name="position_id"
+                                                                                                    id="">
+                                                                                                    @foreach ($listPositions->data as $pos)
+                                                                                                        @if ($pos->id == ($assignedTask->position->id ?? '-1'))
+                                                                                                            <option
+                                                                                                                value="{{ $pos->id }}"
+                                                                                                                selected>
+                                                                                                                {{ $pos->name }}
+                                                                                                            </option>
+                                                                                                        @else
+                                                                                                            <option
+                                                                                                                value="{{ $pos->id }}">
+                                                                                                                {{ $pos->name }}
+                                                                                                            </option>
+                                                                                                        @endif
+                                                                                                    @endforeach
 
-                                                                                                    </select>
-                                                                                                </div>
+                                                                                                </select>
                                                                                             </div>
-                                                                                            <div
-                                                                                                class="col-md-6 mb-3 d-flex">
-                                                                                                <label for="textarea"
-                                                                                                    class="col-sm-5 col-form-label">Người
-                                                                                                    đảm
-                                                                                                    nhiệm <span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-7">
-                                                                                                    <select
-                                                                                                        class='form-control'
-                                                                                                        name="user1"
-                                                                                                        id="">
-                                                                                                        @foreach ($listUsers as $user)
-                                                                                                            @if ($user->id == ($assignedTask->users[0]->id ?? '-1'))
-                                                                                                                <option
-                                                                                                                    value="{{ $user->id }}"
-                                                                                                                    selected>
-                                                                                                                    {{ $user->name }}
-                                                                                                                </option>
-                                                                                                            @else
-                                                                                                                <option
-                                                                                                                    value="{{ $user->id }}">
-                                                                                                                    {{ $user->name }}
-                                                                                                                </option>
-                                                                                                            @endif
-                                                                                                        @endforeach
-                                                                                                    </select>
-                                                                                                </div>
+                                                                                            <div class="col-md-6 mb-3">
+                                                                                                <select
+                                                                                                    class='selectpicker'
+                                                                                                    multiple
+                                                                                                    data-live-search="true"
+                                                                                                    name="user1"
+                                                                                                    id="">
+                                                                                                    @foreach ($listUsers as $user)
+                                                                                                        @if ($user->id == ($assignedTask->users[0]->id ?? '-1'))
+                                                                                                            <option
+                                                                                                                value="{{ $user->id }}"
+                                                                                                                selected>
+                                                                                                                {{ $user->name }}
+                                                                                                            </option>
+                                                                                                        @else
+                                                                                                            <option
+                                                                                                                value="{{ $user->id }}">
+                                                                                                                {{ $user->name }}
+                                                                                                            </option>
+                                                                                                        @endif
+                                                                                                    @endforeach
+                                                                                                </select>
                                                                                             </div>
 
-                                                                                            <div
-                                                                                                class="col-md-6 mb-3 d-flex">
-                                                                                                <label for="textarea"
-                                                                                                    class="col-sm-5 col-form-label">Người
-                                                                                                    liên quan<span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-7">
-                                                                                                    <select
-                                                                                                        class='form-control'
-                                                                                                        name="user2"
-                                                                                                        id="">
-                                                                                                        @foreach ($listUsers as $user)
-                                                                                                            @if (count($assignedTask->users) > 1 && $user->id == ($assignedTask->users[1]->id ?? '-1'))
-                                                                                                                <option
-                                                                                                                    value="{{ $user->id }}"
-                                                                                                                    selected>
-                                                                                                                    {{ $user->name }}
+                                                                                            <div class="col-md-6 mb-3">
+                                                                                                <select
+                                                                                                    class='selectpicker'
+                                                                                                    multiple
+                                                                                                    data-live-search="true"
+                                                                                                    name="user2"
+                                                                                                    id="">
+                                                                                                    @foreach ($listUsers as $user)
+                                                                                                        @if (count($assignedTask->users) > 1 && $user->id == ($assignedTask->users[1]->id ?? '-1'))
+                                                                                                            <option
+                                                                                                                value="{{ $user->id }}"
+                                                                                                                selected>
+                                                                                                                {{ $user->name }}
+                                                                                                            </option>
+                                                                                                        @else
+                                                                                                            <option
+                                                                                                                value="{{ $user->id }}">
+                                                                                                                {{ $user->name }}
+                                                                                                            </option>
+                                                                                                        @endif
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </div>
+
+                                                                                            <div class="col-md-2 mb-3">
+                                                                                                <input type="text"
+                                                                                                    name="manday"
+                                                                                                    value="{{ $assignedTask->manday }}"
+                                                                                                    class="form-control" />
+                                                                                            </div>
+
+                                                                                            <div class="col-md-4 mb-3">
+                                                                                                <input type="text"
+                                                                                                    name="daterange"
+                                                                                                    class="form-control"
+                                                                                                    value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
+                                                                                            </div>
+
+                                                                                            <div class="repeater-edit">
+                                                                                                <div data-repeater-list="kpiKeys-edit">
+                                                                                                    <div class="row" data-repeater-item>
+                                                                                                        <div class="col-md-6 mb-3">
+                                                                                                            <select
+                                                                                                                class='selectpicker'
+                                                                                                                data-live-search="true"
+                                                                                                                title="Thêm tiêu chí key">
+                                                                                                                <option>Số lượt
+                                                                                                                    khách hàng được
+                                                                                                                    chăm sóc
                                                                                                                 </option>
-                                                                                                            @else
-                                                                                                                <option
-                                                                                                                    value="{{ $user->id }}">
-                                                                                                                    {{ $user->name }}
+                                                                                                                <option>Số buổi
+                                                                                                                    Activation
                                                                                                                 </option>
-                                                                                                            @endif
-                                                                                                        @endforeach
-                                                                                                    </select>
+                                                                                                            </select>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-5 mb-3">
+                                                                                                            <input type="number" class="form-control"
+                                                                                                                placeholder="Giá trị" name="quantity" />
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            class="col-md-1 mb-3 d-flex align-items-center">
+                                                                                                            <img data-repeater-delete role="button"
+                                                                                                                src="{{ asset('/assets/img/trash.svg') }}"
+                                                                                                                width="20px" height="20px" />
+                                                                                                        </div>
+                                                                                                    </div>
                                                                                                 </div>
-                                                                                            </div>
-
-                                                                                            <div
-                                                                                                class="col-md-2 mb-3 d-flex">
-                                                                                                <label for="textarea"
-                                                                                                    class="col-sm-5 col-form-label">MD
-                                                                                                    <span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-7">
-                                                                                                    <input type="text"
-                                                                                                        name="manday"
-                                                                                                        value="{{ $assignedTask->manday }}"
-                                                                                                        class="form-control" />
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div
-                                                                                                class="col-md-4 mb-3 d-flex">
-                                                                                                <label
-                                                                                                    class="col-sm-3 col-form-label">Thời
-                                                                                                    hạn<span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-9 me-2">
-                                                                                                    <input type="text"
-                                                                                                        name="daterange"
-                                                                                                        class="form-control"
-                                                                                                        value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div
-                                                                                                class="col-md-7 mb-3 d-flex">
-                                                                                                <label
-                                                                                                    class="col-sm-4 col-form-label"
-                                                                                                    style="margin-right: 6px">Tiêu
-                                                                                                    chí <span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-8">
-                                                                                                    <select
-                                                                                                        class='selectpicker'
-                                                                                                        data-live-search="true"
-                                                                                                        title="Thêm tiêu chí key">
-                                                                                                        <option>Số lượt
-                                                                                                            khách hàng được
-                                                                                                            chăm sóc
-                                                                                                        </option>
-                                                                                                        <option>Số buổi
-                                                                                                            Activation
-                                                                                                        </option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="col-md-5 mb-3 d-flex">
-                                                                                                <label for="textarea"
-                                                                                                    class="col-sm-5 col-form-label">Giá
-                                                                                                    trị <span
-                                                                                                        class="text-danger">*</span></label>
-                                                                                                <div class="col-sm-7">
-                                                                                                    <input type="text"
-                                                                                                        class="form-control" />
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-md-12 mb-2">
-                                                                                                <div
-                                                                                                    class="d-flex justify-content-start">
-                                                                                                    <button type="button"
-                                                                                                        class="form-check_btn btn btn-outline-danger px-3">Thêm
-                                                                                                        tiêu chí</button>
+                                
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="d-flex justify-content-start">
+                                                                                                        <div role="button" class="fs-4 text-danger"
+                                                                                                            data-repeater-create><i
+                                                                                                                class="bi bi-plus-circle"></i></div>
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
 
@@ -615,7 +564,6 @@
     <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
@@ -718,17 +666,18 @@
                 });
             });
 
-            // Toggle List Table
-            const handleBtn = document.querySelector('#toggleDinhMuc');
-            handleBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const dataTable = document.querySelector('.dataTables_wrapper')
-                dataTable.setAttribute('id', 'bg-blink');
-                setTimeout(() => {
-                    dataTable.removeAttribute('id', 'bg-blink');
-                }, 2000);
-            })
+
         }
+        // Toggle List Table
+        const handleBtn = document.querySelector('#toggleDinhMuc');
+        handleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dataTable = document.querySelector('.dataTables_wrapper')
+            dataTable.setAttribute('id', 'bg-blink');
+            setTimeout(() => {
+                dataTable.removeAttribute('id', 'bg-blink');
+            }, 2000);
+        })
         // init when DOM is ready
         // document.addEventListener("DOMContentLoaded", handleTargetTableRowClick);
     </script>
@@ -742,6 +691,8 @@
                 },
                 language: 'ru'
             });
+            $('input[name="daterange"]').val('');
+            $('input[name="daterange"]').attr("placeholder","Chọn thời hạn");
         });
     </script>
 
@@ -749,6 +700,7 @@
         const targetTable = $('#danhSachDinhMuc').DataTable({
             paging: true,
             ordering: true,
+            order: [[0, 'desc']],
             pageLength: 5,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
@@ -804,7 +756,7 @@
             <div class="d-flex align-items-center">
                 <div class="card-title me-2">Danh sách định mức</div>
                 <div class="select">
-                    <select class="selectpicker" title="Chọn phòng ban">
+                    <select class="selectpicker" title="Chọn phòng ban" data-live-search="true" data-size="5">
                         <option>Cung ứng</option>
                         <option>Trade Marketing</option>
                         <option>Digital Marketing</option>
@@ -848,5 +800,4 @@
             <div class="card-title">Lịch sử giao việc</div>
         `);
     </script>
-
 @endsection

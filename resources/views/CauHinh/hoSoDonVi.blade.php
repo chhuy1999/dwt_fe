@@ -2,6 +2,10 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Hồ sơ đơn vị')
 
+@section('header-style')
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
+@endsection
+
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -17,17 +21,15 @@
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="card mb-3">
-                                <div class="card-body position-relative body_content-wrapper" id="body_content-1" style="display:block">
+                                <div class="card-body position-relative body_content-wrapper" id="body_content-1"
+                                    style="display:block">
                                     <div class="pb-2 d-flex align-items-center">
                                         <div class="card-title">Toàn công ty</div>
-                                        <div class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#suaCoCauToChuc">
-                                            <img style="width:16px;height:16px"
-                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#suaCoCauToChuc">
+                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                         </div>
                                         <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
-                                            <img style="width:16px;height:16px"
-                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                         </div>
                                     </div>
                                     <div class="text_wrapper mb-3">
@@ -85,17 +87,18 @@
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">
+                                            <div
+                                                class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
-                                                <div class="main_search d-flex mt-2">
-                                                   <div class="form-group has-search">
-                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <form action="/ho-so-don-vi" method="GET">
-                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" name="q" value="{{request()->q}}">
-                                                    </form>
-                                                </div>
-                                                    <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
+                                                <div class="action_wrapper d-flex">
+                                                    <div class="form-group has-search">
+                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                    </div>
+                                                    <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
+                                                        <button class="btn btn-danger d-block" data-bs-toggle="modal"
                                                         data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
@@ -103,183 +106,168 @@
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
-                                                            <th>STT</th>
-                                                            <th>Mã đơn vị</th>
-                                                            <th>Tên đơn vị</th>
-                                                            <th>Cấp tổ chức</th>
-                                                            <th>Trưởng đơn vị</th>
-                                                            <th>Chức năng nhiệm vụ</th>
-                                                            <th>Hành động</th>
+                                                            <th class="text-center">STT</th>
+                                                            <th class="text-nowrap">Mã đơn vị</th>
+                                                            <th class="text-nowrap">Tên đơn vị</th>
+                                                            <th class="text-nowrap">Cấp tổ chức</th>
+                                                            <th class="text-nowrap">Trưởng đơn vị</th>
+                                                            <th class="text-nowrap">Chức năng nhiệm vụ</th>
+                                                            <th class="text-nowrap">Hành động</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($data->data as $value)
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    {{ $loop->iteration }}
-                                                                </div>
-                                                            </th>
-                                                            <td>
-                                                                <div>QTN</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>{{ $value->name}}</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Phòng ban</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nguyễn Vũ Nguyệt Minh</div>
-                                                            </td>
-                                                            <td>
-                                                                <div title="">{{ $value->description}}</div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaCoCauToChuc{{ $value->id }}">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                        @foreach ($listDepartments->data as $value)
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    <div
+                                                                        class="d-flex justify-content-center align-items-center">
+                                                                        {{ $loop->iteration }}
                                                                     </div>
-                                                                    <div class="btn" href="#" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaCoCauToChuc{{ $value->id }}">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                </th>
+                                                                <td class="text-nowrap">
+                                                                    <div>QTN</div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div>{{ $value->name }}</div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div>Phòng ban</div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div>Nguyễn Vũ Nguyệt Minh</div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="d-inline-block text-truncate" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing
+                                                                    theo yêu cầu của Ban Giám đốc">Tham gia xây dựng và/hoặc điều phối dự án Marketing
+                                                                        theo yêu cầu của Ban Giám đốc</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="table_actions d-flex justify-content-center">
+                                                                        <div class="btn" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#suaCoCauToChuc{{ $value->id }}">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        </div>
+                                                                        <div class="btn" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#xoaCoCauToChuc{{ $value->id }}">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        {{-- Xóa Cơ cấu tổ chức --}}
-                                                        <div class="modal fade" id="xoaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title text-danger" id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC</h5>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        Bạn có thực sự muốn xoá cơ cấu tổ chức đã chọn không?
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                        <form
-                                                                            action="/ho-so-don-vi/{{ $value->id }}"
-                                                                            method="POST">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button type="submit"
-                                                                                class="btn btn-danger"
-                                                                                id="deleteRowElement">Xóa</button>
-                                                                        </form>                    
+                                                                </td>
+                                                            </tr>
+                                                            {{-- Xóa Cơ cấu tổ chức --}}
+                                                            <div class="modal fade" id="xoaCoCauToChuc{{ $value->id }}"
+                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title text-danger"
+                                                                                id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            Bạn có thực sự muốn xoá cơ cấu tổ chức đã chọn
+                                                                            không?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-danger"
+                                                                                data-bs-dismiss="modal">Hủy</button>
+                                                                            <form
+                                                                                action="/ho-so-don-vi/{{ $value->id }}"
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger"
+                                                                                    id="deleteRowElement">Xóa</button>
+                                                                            </form>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
 
                                                             {{-- Modal Sửa Cơ cấu tổ chức --}}
-                                                        <div class="modal fade" id="suaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header text-center">
-                                                                        <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Cơ cấu tổ chức</h5>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
+                                                            <div class="modal fade"
+                                                                id="suaCoCauToChuc{{ $value->id }}" tabindex="-1"
+                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header text-center">
+                                                                            <h5 class="modal-title w-100"
+                                                                                id="exampleModalLabel">Sửa Cơ cấu tổ chức
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
 
-                                                                    <form method="POST"
+                                                                        <form method="POST"
                                                                             action="/ho-so-don-vi/{{ $value->id }}">
                                                                             @csrf
                                                                             @method('PUT')
 
-                                                                            
+
                                                                             <div class="modal-body">
                                                                                 <div class="row">
-                                                                                    <div class="col-sm-6">
-                                                                                        <div class="d-flex align-items-center">
-                                                                                            <div class="d-flex col-sm-4">
-                                                                                                <div class="modal_body-title">Tên đơn vị<span class="text-danger">*</span></div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-8">
-                                                                                                <input class="form-control" type="text" value="{{ $value->name}}" name="name">
-                                                                                            </div>
-                                                                                        </div>
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="{{ $value->name }}"
+                                                                                                    name="name">
                                                                                     </div>
-                                                                                    <div class="col-sm-6">
-                                                                                        <div class="d-flex align-items-center mb-3">
-                                                                                            <div class="d-flex col-sm-4">
-                                                                                                <div class="modal_body-title">Mã đơn vị<span class="text-danger">*</span></div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-8">
-                                                                                                <input class="form-control" type="text" value="DMKT">
-                                                                                            </div>
-                                                                                        </div>
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="DMKT">
                                                                                     </div>
-                                                                                    <div class="col-sm-6">
-                                                                                        <div class="d-flex align-items-center mb-3">
-                                                                                            <div class="d-flex col-sm-4">
-                                                                                                <div class="modal_body-title">Thuộc đơn vị<span class="text-danger">*</span></div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-8">
-                                                                                                <input class="form-control" type="text" value="CTCP Mastertran">
-                                                                                            </div>
-                                                                                        </div>
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="CTCP Mastertran">
                                                                                     </div>
-        
-                                                                                    <div class="col-sm-6">
-                                                                                        <div class="d-flex align-items-center">
-                                                                                            <div class="d-flex col-sm-4">
-                                                                                                <div class="modal_body-title">Cấp tổ chức<span class="text-danger">*</span></div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-8">
-                                                                                                <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
-                                                                                            </div>
-                                                                                        </div>
+
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="Tổ/Đội/Nhóm">
                                                                                     </div>
-                                                                                    <div class="col-sm-6">
-                                                                                        <div class="d-flex align-items-center mb-3">
-                                                                                            <div class="d-flex col-sm-4">
-                                                                                                <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-8">
-                                                                                                <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
-                                                                                            </div>
-                                                                                        </div>
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="Vũ Thị Hà - MTT123">
                                                                                     </div>
-                                                                                    <div class="col-sm-6">
-                                                                                        <div class="d-flex align-items-center mb-3">
-                                                                                            <div class="d-flex col-sm-4">
-                                                                                                <div class="modal_body-title">Trụ sở chính<span class="text-danger">*</span></div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-8">
-                                                                                                <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
-                                                                                            </div>
-                                                                                        </div>
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <input class="form-control"
+                                                                                                    type="text"
+                                                                                                    value="219 Trung Kính, Yên Hoà, Cầu...">
                                                                                     </div>
-                                                                                    <div class="col-sm-12">
-                                                                                        <div class="d-flex align-items-center mb-3">
-                                                                                            <div class="d-flex col-sm-2">
-                                                                                                <div class="modal_body-title">Chức năng <br> nhiệm vụ*<span
-                                                                                                        class="text-danger">*</span></div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-10">
-                                                                                                <textarea class="form-control" type="text" value="{{ $value->description}}" name="description"></textarea>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                    <div class="col-sm-12 mb-3">
+                                                                                        <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
                                                                                     </div>
-        
+
                                                                                 </div>
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                                <button type="submit" class="btn btn-danger">Lưu</button>
+                                                                                <button type="button"
+                                                                                    class="btn btn-outline-danger"
+                                                                                    data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger">Lưu</button>
                                                                             </div>
-                                                                        
-                                                                    </form>
+
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -300,12 +288,12 @@
     </div>
     @include('template.sidebar.sidebarCoCauToChuc.sidebarRight')
 
-    
+
 
     {{-- Modal Sửa Cơ cấu tổ chức --}}
     <div class="modal fade" id="suaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Cơ cấu tổ chức</h5>
@@ -314,76 +302,26 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Tên đơn vị<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="Digital Marketing">
-                                </div>
-                            </div>
+                            <input class="form-control" type="text" value="Digital Marketing">
                         </div>
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Mã đơn vị<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="DMKT">
-                                </div>
-                            </div>
+                            <input class="form-control" type="text" value="DMKT">
                         </div>
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Thuộc đơn vị<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="CTCP Mastertran">
-                                </div>
-                            </div>
+                            <input class="form-control" type="text" value="CTCP Mastertran">
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Cấp tổ chức<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
-                                </div>
-                            </div>
+                            <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
                         </div>
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
-                                </div>
-                            </div>
+                            <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
                         </div>
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Trụ sở chính<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
-                                </div>
-                            </div>
+                            <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
                         </div>
                         <div class="col-sm-12">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ*<span
-                                            class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
-                                </div>
-                            </div>
+                            <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
                         </div>
 
                     </div>
@@ -395,10 +333,10 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal Them Co Cau -->
     <div class="modal fade" id="themCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CƠ CẤU</h5>
@@ -409,123 +347,53 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Tên đơn vị <span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" placeholder="Nhập Tên đơn vị" name="name">
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" required type="text" placeholder="Nhập Tên đơn vị *" name="name">
                             </div>
-        
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Mã đơn vị <span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" placeholder="Nhập Mã đơn vị">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Thuộc đơn vị <span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select class="selectpicker" title="Chọn đơn vị mẹ">
-                                            <option>CTCP Mastertran</option>
-                                            <option>CTCP Thái Bình Hưng Thịnh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Cấp tổ chức <span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8 d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn cấp tổ chức">
-                                            <option>Công ty con</option>
-                                            <option>Chi nhánh</option>
-                                            <option>Văn phòng đại diện</option>
-                                            <option>Văn phòng</option>
-                                            <option>Trung tâm</option>
-                                            <option>Phòng ban</option>
-                                            <option>Nhóm/tổ/đội</option>
-                                            <option>Phân xưởng</option>
-                                            <option>Nhà máy</option>
-                                            <option>Công ty thành viên</option>
-                                        </select>
-                                        
-                                        <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachCapToChuc">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </div>
-                                    </div>
 
-
-                                </div>
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" required type="text" placeholder="Nhập Mã đơn vị *">
                             </div>
-                            <div class="col-sm-6">
-                            
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
-                                    </div>
-                                    {{-- <div class="col-sm-8">
-                                        <select class="selectpicker" title="Chọn trưởng đơn vị">
-                                            <option>Nguyễn Ngọc Bảo</option>
-                                            <option>Đặng Nguyễn Lam Mai</option>
-                                            <option>Hồ Thị Hồng Vân</option>
-                                            <option>Nguyễn Thị Ngọc Lan</option>
-                                            <option>Nguyễn Thị Hồng Oanh</option>
-                                            <option>Hà Nguyễn Minh Hiếu</option>
-                                        </select>
-        
-                                    </div> --}}
-                                    <div class="col-sm-8" style="flex:1">
-                                        <select class="selectpicker" multiple
-                                            data-actions-box="true" data-width="100%"
-                                            data-live-search="true" title="Chọn trưởng đơn vị"
-                                            data-select-all-text="Chọn tất cả"
-                                            data-deselect-all-text="Bỏ chọn" data-size="3"
-                                            data-selected-text-format="count > 1"
-                                            data-count-selected-text="Có {0} Thư ký"
-                                            data-live-search-placeholder="Tìm kiếm...">
-                                            <option>Nguyễn Ngọc Bảo</option>
-                                            <option>Đặng Nguyễn Lam Mai</option>
-                                            <option>Hồ Thị Hồng Vân</option>
-                                            <option>Nguyễn Thị Ngọc Lan</option>
-                                            <option>Nguyễn Thị Hồng Oanh</option>
-                                            <option>Hà Nguyễn Minh Hiếu</option>
-                                        </select>
+                            <div class="col-sm-6 mb-3">
+                                <input type="text" class="form-control" autocomplete="off" required id="thuocDonVi" placeholder="Chọn đơn vị mẹ *" />
+                            </div>
+                            <div class="col-sm-6 mb-3 d-flex">
+                                <div class="col-sm-11">
+                                    <select class="selectpicker" title="Chọn cấp tổ chức">
+                                        <option>Công ty con</option>
+                                        <option>Chi nhánh</option>
+                                        <option>Văn phòng đại diện</option>
+                                        <option>Văn phòng</option>
+                                        <option>Trung tâm</option>
+                                        <option>Phòng ban</option>
+                                        <option>Nhóm/tổ/đội</option>
+                                        <option>Phân xưởng</option>
+                                        <option>Nhà máy</option>
+                                        <option>Công ty thành viên</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="modal_list-more" data-bs-toggle="modal"
+                                    data-bs-target="#danhsachCapToChuc">
+                                        <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trụ sở chính <span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" placeholder="Nhập địa chỉ">
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-3">
+                                <select class="selectpicker" title="Chọn trưởng đơn vị">
+                                    <option>Nguyễn Ngọc Bảo</option>
+                                    <option>Đặng Nguyễn Lam Mai</option>
+                                    <option>Hồ Thị Hồng Vân</option>
+                                    <option>Nguyễn Thị Ngọc Lan</option>
+                                    <option>Nguyễn Thị Hồng Oanh</option>
+                                    <option>Hà Nguyễn Minh Hiếu</option>
+                                </select>
                             </div>
-                            <div class="col-sm-12">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-2">
-                                        <div class="modal_body-title">Chức năng<br> nhiệm vụ<span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" placeholder="Nhập chức năng, nhiệm vụ đơn vị" name="description">
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" required type="text" placeholder="Nhập trụ sở chính *">
+                            </div>
+                            <div class="col-sm-12 mb-3">
+                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị"></textarea>
                             </div>
                         </div>
                     </div>
@@ -537,9 +405,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <!-- Modal Danh sach phong ban -->
     <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -870,8 +735,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -889,8 +753,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -908,8 +771,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -927,8 +789,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -946,8 +807,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -965,8 +825,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -986,8 +845,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1005,8 +863,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1024,8 +881,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1038,8 +894,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themCoCauToChuc">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#themPhongBan">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1072,8 +928,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1091,8 +946,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1110,8 +964,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1129,8 +982,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1148,8 +1000,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1167,8 +1018,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1186,8 +1036,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1207,8 +1056,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1226,8 +1074,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1245,8 +1092,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1264,8 +1110,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1278,8 +1123,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1287,8 +1132,7 @@
     </div>
 
     <!-- Modal Them phong ban -->
-    <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1369,7 +1213,6 @@
                                         <option>Hồ Thị Hồng Vân</option>
                                     </select>
                                 </div>
-                                
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -1943,13 +1786,14 @@
         </div>
     </div>    --}}
 
-    
 @endsection
 @section('footer-script')
-    
+
+    <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript"
+        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -1958,27 +1802,27 @@
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#ngayChinhThuc').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaNgayThuViec').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaNgayChinhThuc').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#createUser').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaCreateUser').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
@@ -1998,7 +1842,6 @@
                 }
             });
         });
-        
     </script>
     <script>
         function fileValue(value) {
@@ -2013,47 +1856,108 @@
         }
     </script>
 
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", () => {
-        // Click Tree
-        const clickTrees = document.querySelectorAll(".clicktree");
-        clickTrees.forEach((clickTree) => {
-            clickTree.addEventListener("click", () => {
-            const id = clickTree.getAttribute("data-href");
-            const element = document.querySelector(id);
-            if (element) {
-                const items = document.querySelectorAll(".body_content-wrapper");
-                items.forEach((item) => {
-                    item.style.display = "none";
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            // Click Tree
+            const clickTrees = document.querySelectorAll(".clicktree");
+            clickTrees.forEach((clickTree) => {
+                clickTree.addEventListener("click", () => {
+                    const id = clickTree.getAttribute("data-href");
+                    const element = document.querySelector(id);
+                    if (element) {
+                        const items = document.querySelectorAll(".body_content-wrapper");
+                        items.forEach((item) => {
+                            item.style.display = "none";
+                        });
+                        element.style.display = "block";
+                        const noContent = document.querySelector(".body_noContent-wrapper");
+                        noContent.style.display = "none";
+                    } else {
+                        const items = document.querySelectorAll(".body_content-wrapper");
+                        items.forEach((item) => {
+                            item.style.display = "none";
+                        });
+                    }
                 });
-                element.style.display = "block";
-                const noContent = document.querySelector(".body_noContent-wrapper");
-                noContent.style.display = "none";
-            } else {
-                const items = document.querySelectorAll(".body_content-wrapper");
-                items.forEach((item) => {
-                item.style.display = "none";
-                });
-            }
+            });
+
+            // Search Tree
+            document.querySelector("#search_tree").addEventListener("keyup", function() {
+                var value = this.value.toLowerCase();
+                var lis = document.querySelectorAll(".tree_list li");
+                for (var i = 0; i < lis.length; i++) {
+                    var li = lis[i];
+                    var text = li.textContent.toLowerCase();
+                    if (text.indexOf(value) > -1) {
+                        li.style.display = "";
+                    } else {
+                        li.style.display = "none";
+                    }
+                }
             });
         });
+    </script>
 
-        // Search Tree
-        document.querySelector("#search_tree").addEventListener("keyup", function() {
-            var value = this.value.toLowerCase();
-            var lis = document.querySelectorAll(".tree_list li");
-            for (var i = 0; i < lis.length; i++) {
-            var li = lis[i];
-            var text = li.textContent.toLowerCase();
-            if (text.indexOf(value) > -1) {
-                li.style.display = "";
-            } else {
-                li.style.display = "none";
-            }
-            }
+    <script type="text/javascript">
+        var data = [{
+            id: 0,
+            title: 'choice 1  '
+        }, {
+            id: 1,
+            title: 'choice 2',
+            subs: [{
+                id: 10,
+                title: 'choice 2 1'
+            }, {
+                id: 11,
+                title: 'choice 2 2'
+            }, {
+                id: 12,
+                title: 'choice 2 3'
+            }]
+        }, {
+            id: 2,
+            title: 'choice 3'
+        }, {
+            id: 3,
+            title: 'choice 4'
+        }, {
+            id: 4,
+            title: 'choice 5'
+        }, {
+            id: 5,
+            title: 'choice 6',
+            subs: [{
+                id: 50,
+                title: 'choice 6 1'
+            }, {
+                id: 51,
+                title: 'choice 6 2',
+                subs: [{
+                    id: 510,
+                    title: 'choice 6 2 1'
+                }, {
+                    id: 511,
+                    title: 'choice 6 2 2'
+                }, {
+                    id: 512,
+                    title: 'choice 6 2 3'
+                }]
+            }]
+        }, {
+            id: 6,
+            title: 'choice 7'
+        }];
+        var comboTree1
+
+        $(document).ready(function($) {
+            comboTree1 = $('#thuocDonVi').comboTree({
+                source: data,
+                isMultiple: false,
+                cascadeSelect: true
+            });
+
         });
-
-    });
-</script>
+    </script>
 
 @endsection

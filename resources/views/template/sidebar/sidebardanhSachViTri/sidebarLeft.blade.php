@@ -17,7 +17,7 @@
 
                     <ul class="tree_list">
                         <li class="section ps-0 tree_list-item">
-                            <input type="checkbox" checked id="all">
+                            <input type="checkbox" id="all">
                             <label class="d-flex" for="all"></label>
                             <span class="clicktree d-block" style="padding-left: 20px" data-href="#body_content-1"> Toàn
                                 Công Ty</span>

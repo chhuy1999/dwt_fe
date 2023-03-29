@@ -76,7 +76,7 @@ button {
 
 .btn {
     font-size: var(--fz-12);
-    height: 28px;
+    /* height: 28px; */
 }
 
 input.disableText {
