@@ -278,7 +278,7 @@
     <!-- Modal Them Vi Tri chức danh -->
     <div class="modal fade" id="themViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CẤP TỔ CHỨC</h5>
@@ -289,39 +289,12 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Mã cấp tổ chứ<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" placeholder="Nhập mã cấp tổ chức">
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" type="text" placeholder="Mã cấp tổ chức">
                             </div>
     
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Tên cấp tổ chức<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" placeholder="Nhập tên cấp tổ chức" name="name">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Cấp tổ chức trực thu<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8 d-flex align-items-center" >
-                                        <select class="selectpicker" title="Chọn cấp tổ chức trục thuộc">
-                                            <option>Toàn công ty</option>
-                                            <option>công ty con</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" type="text" placeholder="Tên cấp tổ chức" name="name">
                             </div>
  
                         </div>
