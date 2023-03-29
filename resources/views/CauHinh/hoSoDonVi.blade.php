@@ -389,7 +389,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" required type="text" placeholder="Nhập trụ sở chính *">
+                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính *">
                             </div>
                             <div class="col-sm-12 mb-3">
                                 <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị" name="description"></textarea>

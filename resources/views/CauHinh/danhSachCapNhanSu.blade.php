@@ -233,20 +233,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Cấp tổ chức trực thu<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8 d-flex align-items-center" >
-                                        <select class="selectpicker" title="Chọn cấp tổ chức trục thuộc">
-                                            <option>Toàn công ty</option>
-                                            <option>công ty con</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
- 
                         </div>
                     </div>
                     <div class="modal-footer">

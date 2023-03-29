@@ -29,9 +29,13 @@
                                                     <div class="title_filter d-flex align-items-center" style="gap:10px">
                                                         <div class="title_filter-item">
                                                             <select class="selectpicker" data-live-search="true"
-                                                                title="Chọn hình thức làm việc..."
+                                                            multiple    
+                                                            title="Chọn hình thức làm việc..."
                                                                 data-selected-text-format="count > 1"
                                                                 data-count-selected-text="Có {0} thành viên"
+                                                                data-actions-box="true"
+                                                                data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                                                data-size="3"
                                                                 data-live-search-placeholder="Tìm kiếm...">
                                                                 <option>Chính thức</option>
                                                                 <option>Thử việc</option>
@@ -41,9 +45,13 @@
                                                         </div>
                                                         <div class="title_filter-item">
                                                             <select class="selectpicker" data-width="100%"
-                                                                data-live-search="true" title="Chọn trạng thái..."
+                                                            multiple    
+                                                            data-live-search="true" title="Chọn trạng thái..."
                                                                 data-selected-text-format="count > 1"
                                                                 data-count-selected-text="Có {0} thành viên"
+                                                                data-actions-box="true"
+                                                                data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                                                data-size="3"
                                                                 data-live-search-placeholder="Tìm kiếm...">
                                                                 <option>Đã nghỉ việc</option>
                                                                 <option>Đang làm việc</option>
@@ -51,9 +59,13 @@
                                                         </div>
                                                         <div class="title_filter-item">
                                                             <select class="selectpicker" data-width="100%"
-                                                                data-live-search="true" title="Chọn Vị trí..."
+                                                            multiple    
+                                                            data-live-search="true" title="Chọn Vị trí..."
                                                                 data-selected-text-format="count > 1"
                                                                 data-count-selected-text="Có {0} thành viên"
+                                                                data-actions-box="true"
+                                                                data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                                                data-size="3"
                                                                 data-live-search-placeholder="Tìm kiếm...">
                                                                 <option>Giám đốc</option>
                                                                 <option>Trưởng phòng</option>
@@ -68,6 +80,7 @@
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
                                                         <form action="/danh-sach-thanh-vien" method="GET">
                                                             <input type="text" class="form-control"
+                                                            autocomplete="off"
                                                                 placeholder="Tìm kiếm thành viên" name="q"
                                                                 value="{{ request()->q }}">
                                                         </form>
@@ -1608,16 +1621,16 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" name="name"
+                                        <input class="form-control" autocomplete="off" type="text" name="name"
                                             placeholder="Nhập họ và tên">
                                     </div>
 
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="password" name="password"
+                                        <input class="form-control" autocomplete="off"  type="password" name="password"
                                             placeholder="Mật khẩu">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                        <input class="form-control" autocomplete="off"  type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                             required placeholder="Số điện thoại" name="phone">
                                     </div>
 
@@ -1642,16 +1655,16 @@
                                         </div>
 
                                         <div class="col-sm-7 mb-2 position-relative">
-                                            <input id="createUser" placeholder="Ngày sinh" class="form-control"
+                                            <input id="createUser" autocomplete="off"  placeholder="Ngày sinh" class="form-control"
                                                 type="text" name="dob" autocomplete="off">
                                             <i class="bi bi-calendar-plus style_pickdate"></i>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" placeholder="Email liên hệ">
+                                        <input class="form-control" autocomplete="off"  type="text" placeholder="Email liên hệ">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" placeholder="Địa chỉ liên hệ"
+                                        <input class="form-control" autocomplete="off"  type="text" placeholder="Địa chỉ liên hệ"
                                             name="address">
                                     </div>
 
@@ -1664,17 +1677,17 @@
                             <div class="create_user-title mb-2">Thông tin công việc</div>
                             <div class="row">
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="text" placeholder="Nhập mã nhân viên"
+                                    <input class="form-control" autocomplete="off"  type="text" placeholder="Nhập mã nhân viên"
                                         name="code">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                    <input class="form-control" autocomplete="off"  type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                                         required placeholder="Nhập Sđt liên hệ">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="email" placeholder="Nhập email công ty"
+                                    <input class="form-control" autocomplete="off"  type="email" placeholder="Nhập email công ty"
                                         name="email">
                                 </div>
 
@@ -1715,7 +1728,7 @@
                                                 @foreach ($listPositions->data as $value)
                                                     <option value="{{ $value->id }}">{{ $value->name }}</option>
                                                 @endforeach
-                                                <option value="themViTriChucDanh"><i class="bi bi-plus"></i> Thêm mới</option>
+                                                <option value="themViTriChucDanh" class="text-danger">+ Thêm mới</option>
                                             </select>
                                             <div class="modal_list-more" data-bs-toggle="modal"
                                                 data-bs-target="#danhsachVitriChucdanh">

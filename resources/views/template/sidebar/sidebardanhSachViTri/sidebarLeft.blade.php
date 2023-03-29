@@ -12,7 +12,7 @@
 
                     <div class="main_search mb-3 mt-3">
                         <i class="bi bi-search" style="top: 6px;left: 8px;"></i>
-                        <input type="text" id="search_tree" class="form-control" placeholder="Tìm kiếm">
+                        <input type="text" id="search_tree" autocomplete="off" class="form-control" placeholder="Tìm kiếm">
                     </div>
 
                     <ul class="tree_list">

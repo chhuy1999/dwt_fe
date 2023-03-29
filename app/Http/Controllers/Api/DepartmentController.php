@@ -32,18 +32,24 @@ class DepartmentController extends Controller
             $limit = $request->get('limit');
             $data = $this->dwtService->searchDepartment($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
+            $listUsers = $this->dwtService->listUsers();
             // return view('CauHinh.profile')
             //     ->with('data', $data)
             //     ->with('listDepartments', $listDepartments);
-            $listUsers = $this->dwtService->listUsers();
-
-            return view('Cauhinh.profile')
+            // return view('CauHinh.profile')
+            //     ->with('data', $data)
+            //     ->with('listDepartments', $listDepartments);
+            // $listUsers = $this->dwtService->listUsers();
+// return view('CauHinh.profile')
+            //     ->with('data', $data)
+            //     ->with('listDepartments', $listDepartments);
+            return view('Cauhinh.hoSoDonVi')
                  ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('Cauhinh.profile')->with('listDepartments', []);
+            return view('Cauhinh.hoSoDonVi')->with('listDepartments', []);
         }
     }
 
