@@ -1,6 +1,11 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Danh sách định mức lao động')
+
+@section('header-style')
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
+@endsection
+
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -40,12 +45,15 @@
                                                         placeholder="Tìm kiếm định mức" value="{{request()->q}}">
                                                 </form>
                                             </div>
+                                            <div class="action_export ms-3" >
+                                                <input type="text" class="form-control" autocomplete="off" id="filter_thuocDonVi" placeholder="Đơn vị phụ trách *" />
+                                            </div>
                                         </div>
                                         <div class="main_action">
                                             <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#themMoiDinhMuc">
                                                 <i class="bi bi-plus"></i>
-                                                Thêm mới
+                                                Thêm định mức
                                             </button>
                                             <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip"
                                                 data-bs-placement="top" title="Xuất file Excel">
@@ -60,13 +68,13 @@
                                                 <table class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th>STT</th>
-                                                            <th>Mục tiêu/Nhiệm vụ</th>
-                                                            <th>Mô tả</th>
-                                                            <th>Đơn vị tính</th>
-                                                            <th>Vị trí</th>
-                                                            <th>Bộ phận</th>
-                                                            <th>Manday</th>
+                                                            <th class="text-nowrap text-center">STT</th>
+                                                            <th class="text-nowrap">Tên định mức</th>
+                                                            <th class="text-nowrap">Mô tả/Diễn giải</th>
+                                                            <th class="text-nowrap">Đơn vị phụ trách</th>
+                                                            <th class="text-nowrap">Vị trí phụ trách</th>
+                                                            {{-- <th class="text-nowrap">Bộ phận</th> --}}
+                                                            <th class="text-nowrap text-center">Manday</th>
                                                             <th></th>
                                                         </tr>
                                                     </thead>
@@ -93,11 +101,11 @@
                                                                 <td>
                                                                     {{ $target->position && $target->position->name }}
                                                                 </td>
-                                                                <td>
+                                                                {{-- <td>
                                                                     {{ $target->departement && $target->departement->name }}
-                                                                </td>
+                                                                </td> --}}
                                                                 <td>
-                                                                    {{ $target->manday }}
+                                                                    <div class="text-center">{{ $target->manday }}</div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1"
@@ -399,7 +407,7 @@
 
     <!-- Modal Thêm Định Mức -->
     <div class="modal fade" id="themMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Thêm định mức lao động</h5>
@@ -412,15 +420,29 @@
                             <div class="col-sm-12">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
                                     <input class="form-control" type="text"
-                                        placeholder="Nhập tên định mức" name="name">
+                                        placeholder="Tên định mức" name="name">
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="mb-3">
-                                    <textarea class="form-control" placeholder="Nhập mô tả thực hiện" name="description"></textarea>
+                                    <textarea class="form-control" placeholder="Mô tả/Diễn giải" name="description"></textarea>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control comboTreeInputBox" autocomplete="off" id="thuocDonVi" placeholder="Đơn vị phụ trách *">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                    <select class="selectpicker" title="Vị trí phụ trách" data-size="5" name="position_id">
+                                        @foreach ($listPositions->data as $pos)
+                                            <option value="{{ $pos->id }}">{{ $pos->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            {{-- <div class="col-sm-4">
                                 <div class=" d-flex align-items-center  justify-content-between">
                                     <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
                                         @foreach ($listUnits->data as $unit)
@@ -428,29 +450,14 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
+                            </div> --}}
+                            <div class="col-sm-3">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
                                     <input class="form-control" type="number"
-                                        placeholder="Nhập Manday" name="manday">
+                                        placeholder="Manday" name="manday">
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" type="text"
-                                        placeholder="Nhập Số lượng" name="quantity">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                        <select class="selectpicker" title="Chọn Vị trí" name="position_id">
-                                            @foreach ($listPositions->data as $pos)
-                                                <option value="{{ $pos->id }}">{{ $pos->name }}</option>
-                                            @endforeach
-                                        </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
                                         <select class="selectpicker" title="Chọn phòng/ban" name="departement_id">
                                             @foreach ($listDepartments->data as $dep)
@@ -458,7 +465,7 @@
                                             @endforeach
                                         </select>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
@@ -485,4 +492,153 @@
     <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var data = [{
+        id: 0,
+        title: 'Công ty Cổ phần Mastertran',
+        subs: [{
+                id: 00,
+                title: 'Khối Kinh doanh',
+                subs: [{
+                    id: 000,
+                    title: 'Kênh OTC',
+                    subs: [{
+                        id: 0000,
+                        title: 'Vùng 1: Hà Nội và Tây Bắc'
+                    }, {
+                        id: 0001,
+                        title: 'Vùng 2: Duyên Hải + Đông Bắc'
+                    }, {
+                        id: 0002,
+                        title: 'Vùng 3: Miền Trung'
+                    }, {
+                        id: 0003,
+                        title: 'Vùng 4: Tây Nguyên'
+                    }, {
+                        id: 0004,
+                        title: 'Vùng 5: HCM và Miền Đông'
+                    }, {
+                        id: 0005,
+                        title: 'Vùng 6: Miền Tây'
+                    }]
+                }, {
+                    id: 001,
+                    title: 'Kênh ETC',
+                    subs: [{
+                        id: 0010,
+                        title: 'ETC miền Bắc'
+                    }, {
+                        id: 0011,
+                        title: 'ETC miền Trung'
+                    }, {
+                        id: 0012,
+                        title: 'ETC miền Nam'
+                    }]
+                }, {
+                    id: 002,
+                    title: 'Kênh MT',
+                    subs: [{
+                        id: 0020,
+                        title: 'MT miền Bắc'
+                    }, {
+                        id: 0021,
+                        title: 'MT miền Trung'
+                    }, {
+                        id: 0022,
+                        title: 'MT miền Nam'
+                    }]
+                }, {
+                    id: 003,
+                    title: 'Kênh online',
+                    subs: [{
+                        id: 0030,
+                        title: 'Đại lý online'
+                    }, {
+                        id: 0031,
+                        title: 'Bán lẻ online'
+                    }]
+                }, {
+                    id: 004,
+                    title: 'Kênh TMĐT'
+                }]
+
+            },
+            {
+                id: 01,
+                title: 'Khối Marketing',
+                subs: [{
+                    id: 010,
+                    title: 'Quản tri Nhãn & Đào tạo'
+                }, {
+                    id: 011,
+                    title: 'Digital Marketing'
+                }, {
+                    id: 012,
+                    title: 'Trade Marketing'
+                }, {
+                    id: 013,
+                    title: 'Truyền thông & Sáng tạo nội dung'
+                }]
+            },
+            {
+                id: 02,
+                title: 'Khối văn phòng',
+                subs: [{
+                    id: 020,
+                    title: 'Kế toán'
+                }, {
+                    id: 021,
+                    title: 'Tài chính'
+                }, {
+                    id: 022,
+                    title: 'Hành chính nhân sự',
+                    subs: [{
+                        id: 0220,
+                        title: 'Hành chính'
+                    }, {
+                        id: 0221,
+                        title: 'Nhân sự'
+                    }, {
+                        id: 0222,
+                        title: 'Công nghệ thông tin (IT)'
+                    }]
+                }, {
+                    id: 023,
+                    title: 'Dịch vụ bán hàng'
+                }, {
+                    id: 024,
+                    title: 'Cung ứng/Mua hàng'
+                }, {
+                    id: 025,
+                    title: 'Kho & giao vận',
+                    subs: [{
+                        id: 0250,
+                        title: 'Kho'
+                    }, {
+                        id: 0251,
+                        title: 'Giao vận'
+                    }]
+                }]
+            }
+        ]
+
+    }];
+    var comboTree1,comboTree2
+
+    $(document).ready(function($) {
+        comboTree1 = $('#thuocDonVi').comboTree({
+            source: data,
+            isMultiple: false,
+            cascadeSelect: true
+        });
+        comboTree2 = $('#filter_thuocDonVi').comboTree({
+            source: data,
+            isMultiple: false,
+            cascadeSelect: true
+        });
+
+    });
+</script>
 @endsection
