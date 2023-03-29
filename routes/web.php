@@ -151,6 +151,13 @@ Route::get('giao-ban', function () {
     return view('HopDonVi.giaoBan');
 });
 
+
+// Danh mục gói trang bị
+Route::get('danh-muc-goi-trang-bi', function () {
+    return view('CauHinh.danhMucGoiTrangBi');
+});
+
+
 Route::get('kho-luu-tru-bien-ban-hop', function () {
     return view('HopDonVi.khoLuuTruBienBanHop');
 });
