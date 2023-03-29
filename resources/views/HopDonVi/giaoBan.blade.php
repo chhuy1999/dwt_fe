@@ -2,9 +2,7 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Biên bản họp Giao Ban')
 @section('header-style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
-@endsection
-@section('header-style')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
     <style>
         .mainSection_width-select {
             width: 140px !important;
@@ -19,10 +17,11 @@
         }
 
         .style_input {
-            background-color: transparent;
-            outline: none;
             border: none;
-            box-shadow: none !important;
+            background-color: transparent;
+            font-size: 1.1rem;
+            outline: none;
+            box-shadow: none!important;
         }
 
         .mainSection_width-select button.btn.dropdown-toggle.btn-light:hover {
@@ -34,14 +33,6 @@
 
         .bootstrap-select>.dropdown-toggle:after {
             display: none;
-        }
-
-        .style_input {
-            border: none;
-            background-color: transparent;
-            font-size: 1.1rem;
-            box-shadow: none;
-            outline: none;
         }
 
     </style>
@@ -81,7 +72,7 @@
                                 </h5>
                             </div>
                             <div>
-                                <select class="form-select form-select-lg ms-2 style_input fw-bolder">
+                                <select class="form-select form-select-lg style_input ms-2 fw-bolder">
                                     <option>Ngày</option>
                                     <option>Tuần</option>
                                     <option>Tháng</option>
