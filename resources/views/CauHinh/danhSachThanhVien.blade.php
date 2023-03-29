@@ -1680,7 +1680,7 @@
 
                                 <div class="col-sm-6 mb-2">
                                     <select class="selectpicker" data-live-search="true" name="departement"
-                                        data-width="100%" data-live-search="true" title="Chọn đơn vị công tác"
+                                        data-width="100%" title="Chọn đơn vị công tác"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listDepartments->data as $value)
                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -1708,13 +1708,14 @@
                                     <div class="">
                                         <div class="d-flex align-items-center">
 
-                                            <select id="onchangeViTriCongViec" class="selectpicker"
+                                            <select id="onchangeViTriChucDanh" class="selectpicker"
                                                 title="Chọn Vị trí/Chức danh" name="position" data-width="100%"
                                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                 data-size="3">
                                                 @foreach ($listPositions->data as $value)
                                                     <option value="{{ $value->id }}">{{ $value->name }}</option>
                                                 @endforeach
+                                                <option value="themViTriChucDanh"><i class="bi bi-plus"></i> Thêm mới</option>
                                             </select>
                                             <div class="modal_list-more" data-bs-toggle="modal"
                                                 data-bs-target="#danhsachVitriChucdanh">
@@ -2139,7 +2140,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH CẤP TỔ CHỨC</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH CẤP Nhân sự</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -3326,6 +3327,214 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Them Co Cau -->
+    <div class="modal fade" id="themCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CƠ CẤU</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="/ho-so-don-vi" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" required type="text" placeholder="Nhập Tên đơn vị *" name="name">
+                            </div>
+
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" required type="text" placeholder="Nhập Mã đơn vị *">
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <input type="text" class="form-control" autocomplete="off" required id="thuocDonVi" placeholder="Chọn đơn vị mẹ *" />
+                            </div>
+                            <div class="col-sm-6 mb-3 d-flex">
+                                <div class="col-sm-11">
+                                    <select class="selectpicker" title="Chọn cấp tổ chức">
+                                        <option>Công ty con</option>
+                                        <option>Chi nhánh</option>
+                                        <option>Văn phòng đại diện</option>
+                                        <option>Văn phòng</option>
+                                        <option>Trung tâm</option>
+                                        <option>Phòng ban</option>
+                                        <option>Nhóm/tổ/đội</option>
+                                        <option>Phân xưởng</option>
+                                        <option>Nhà máy</option>
+                                        <option>Công ty thành viên</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="modal_list-more" data-bs-toggle="modal"
+                                    data-bs-target="#danhsachCapToChuc">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <select class="selectpicker" title="Chọn trưởng đơn vị">
+                                    <option>Nguyễn Ngọc Bảo</option>
+                                    <option>Đặng Nguyễn Lam Mai</option>
+                                    <option>Hồ Thị Hồng Vân</option>
+                                    <option>Nguyễn Thị Ngọc Lan</option>
+                                    <option>Nguyễn Thị Hồng Oanh</option>
+                                    <option>Hà Nguyễn Minh Hiếu</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" required type="text" placeholder="Nhập trụ sở chính *">
+                            </div>
+                            <div class="col-sm-12 mb-3">
+                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Them Vi Tri chức danh -->
+    <div class="modal fade" id="themViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM Vị trí/Chức danh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="/danh-sach-vi-tri" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Mã vị trí<span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập mã vị trí">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Nhập tên vị trí" name="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Đơn vị công tác<span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8 d-flex align-items-center" >
+                                        <select class="selectpicker" title="Chọn đơn vị công tác">
+                                            <option>Cung ứng</option>
+                                            <option>Trade Marketing</option>
+                                            <option>Digital Marketing</option>
+                                            <option>Truyền thông</option>
+                                            <option>Quản trị Nhãn/Đào tạo</option>
+                                            <option>Kho & Giao vận</option>
+                                            <option>Hành chính nhân sự</option>
+                                            <option>Kế toán</option>
+                                            <option>Tài chính</option>
+                                            <option>Dịch vụ bán hàng</option>
+                                            <option>Kinh doanh OTC</option>
+                                            <option>Kinh doanh ETC</option>
+                                            <option>Kinh doanh MT</option>
+                                            <option>Kinh doanh online</option>
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#danhsachPhongBan">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
+                                    </div>
+                                    <div class="col-sm-8 d-flex align-items-center">
+                                        <select class="selectpicker" title="Chọn cấp nhân sự">
+                                            <option>Chủ tịch HĐQT</option>
+                                            <option>Tổng Giám đốc</option>
+                                            <option>Phó Tổng Giám đốc</option>
+                                            <option>Giám đốc điều hành</option>
+                                            <option>Quản lý cấp cao</option>
+                                            <option>Quản lý cấp trung</option>
+                                            <option>Trưởng phòng</option>
+                                            <option>Phó phòng</option>
+                                            <option>Trưởng nhóm</option>
+                                            <option>Chuyên viên</option>
+                                            <option>Nhân viên</option>
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#danhsachChucDanh">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Định biên<span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" name="max_employees">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Quỹ lương năm<span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" name="salary_fund"  />
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-flex col-sm-4">
+                                        <div class="modal_body-title">Gói trang bị<span class="text-danger">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Hủy</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer-script')
 
@@ -3378,6 +3587,13 @@
                 var opval = $(this).val();
                 if (opval == "themViTriCongViec") {
                     $('#themViTriCongViec').modal("show");
+                    $('#themThanhVien').modal("hide");
+                }
+            });
+            $('#onchangeViTriChucDanh').change(function() {
+                var opval = $(this).val();
+                if (opval == "themViTriChucDanh") {
+                    $('#themViTriChucDanh').modal("show");
                     $('#themThanhVien').modal("hide");
                 }
             });
