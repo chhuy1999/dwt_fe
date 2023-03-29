@@ -32,9 +32,15 @@ class DepartmentController extends Controller
             $limit = $request->get('limit');
             $data = $this->dwtService->searchDepartment($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
-            return view('CauHinh.profile')
-                ->with('data', $data)
-                ->with('listDepartments', $listDepartments);
+            // return view('CauHinh.profile')
+            //     ->with('data', $data)
+            //     ->with('listDepartments', $listDepartments);
+            $listUsers = $this->dwtService->listUsers();
+
+            return view('Cauhinh.profile')
+                 ->with('data', $data)
+                ->with('listDepartments', $listDepartments)
+                ->with('listUsers', $listUsers);
         } catch (Exception $e) {
             $error = $e->getMessage();
             return view('Cauhinh.profile')->with('listDepartments', []);
@@ -50,6 +56,7 @@ class DepartmentController extends Controller
             $data = $request->validate([
                 'name' => 'required',
                 'description' => 'required',
+                'in_charge' => 'required',
             ]);
             $this->dwtService->createDepartment($data);
             return back()->with('success', 'Thêm mới thành công');
@@ -64,8 +71,8 @@ class DepartmentController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
-                'description' => 'required',
-
+                'description' => 'nullable',
+                'in_charge' => 'nullable',
             ]);
             $this->dwtService->updateDepartment($id, $data);
             return back()->with('success', 'Cập nhật thành công');

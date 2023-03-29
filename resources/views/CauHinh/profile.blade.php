@@ -286,7 +286,85 @@
     </div>
     @include('template.sidebar.sidebarCoCauToChuc.sidebarRight')
 
+    {{-- Modal Sửa Cơ cấu tổ chức --}}
+    <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Cơ cấu tổ chức</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <input class="form-control" type="text" value="Digital Marketing">
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <input class="form-control" type="text" value="DMKT">
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <input class="form-control" type="text" value="CTCP Mastertran">
+                        </div>
 
+                        <div class="col-sm-6 mb-3">
+                            <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
+                        </div>
+                        <div class="col-sm-12">
+                            <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Xóa Cơ cấu tổ chức --}}
+    <div class="modal fade" id="xoaCoCauToChuc"
+        tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger"
+                        id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC
+                    </h5>
+                    <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có thực sự muốn xoá cơ cấu tổ chức đã chọn
+                    không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                        class="btn btn-outline-danger"
+                        data-bs-dismiss="modal">Hủy</button>
+                    <form
+                        action="/ho-so-don-vi/{{ $value->id }}"
+                        method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            class="btn btn-danger"
+                            id="deleteRowElement">Xóa</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {{-- Modal Sửa Cơ cấu tổ chức --}}
     <div class="modal fade" id="suaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
