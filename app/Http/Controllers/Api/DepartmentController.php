@@ -40,7 +40,8 @@ class DepartmentController extends Controller
             //     ->with('listDepartments', $listDepartments);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('Cauhinh.hoSoDonVi')->with('listDepartments', []);
+            return view('test')->with('listDepartments', []);
+            // return view('Cauhinh.hoSoDonVi')->with('listDepartments', []);1
         }
     }
 
