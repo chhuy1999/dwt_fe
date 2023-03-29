@@ -194,6 +194,11 @@ option:hover {
     animation: heartbeat 3.5s linear infinite alternate;
 }
 
+
+.form-control::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+}
+
 @keyframes spotlight {
     0%,
     100% {

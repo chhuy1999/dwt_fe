@@ -6,15 +6,6 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
 @endsection
 
-<style>
-    .description-department {
-        width: 480px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-    }
-</style>
-
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -143,10 +134,12 @@
                                                                     <div>Phòng ban</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>{{ $value->in_charge}}</div>
+                                                                    <div>Nguyễn Vũ Nguyệt Minh</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div class="d-inline-block text-truncate description-department" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
+                                                                    <div class="d-inline-block text-truncate" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing
+                                                                    theo yêu cầu của Ban Giám đốc">Tham gia xây dựng và/hoặc điều phối dự án Marketing
+                                                                        theo yêu cầu của Ban Giám đốc</div>
                                                                 </td>
                                                                 <td>
                                                                     <div
@@ -250,8 +243,7 @@
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
-                                                                                                    value="{{ $value->in_charge }}"
-                                                                                                    name="in_charge">
+                                                                                                    value="Vũ Thị Hà - MTT123">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
@@ -259,8 +251,7 @@
                                                                                                     value="219 Trung Kính, Yên Hoà, Cầu...">
                                                                                     </div>
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <input class="form-control" type="text" value="{{ $value->description }}"
-                                                                                        name="description">
+                                                                                        <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
                                                                                     </div>
 
                                                                                 </div>
@@ -387,19 +378,20 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
-                                data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                data-size="3" name="in_charge">
-                                    @foreach ($listUsers->data as $value)
-                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                    @endforeach
+                                <select class="selectpicker" title="Chọn trưởng đơn vị">
+                                    <option>Nguyễn Ngọc Bảo</option>
+                                    <option>Đặng Nguyễn Lam Mai</option>
+                                    <option>Hồ Thị Hồng Vân</option>
+                                    <option>Nguyễn Thị Ngọc Lan</option>
+                                    <option>Nguyễn Thị Hồng Oanh</option>
+                                    <option>Hà Nguyễn Minh Hiếu</option>
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính *">
+                                <input class="form-control" required type="text" placeholder="Nhập trụ sở chính *">
                             </div>
                             <div class="col-sm-12 mb-3">
-                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị" name="description"></textarea>
+                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị"></textarea>
                             </div>
                         </div>
                     </div>

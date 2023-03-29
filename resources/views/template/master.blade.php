@@ -465,10 +465,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     </script>
     <script>
         $(document).ready(function() {
-            $.datetimepicker.setLocale('vi');
+            // $.datetimepicker.setLocale('vi');
             $('#thismonth').datetimepicker({
                 format: 'H:i - d/m/Y',
-                timepicker: false,
+                timepicker: true,
+                useCurrent:false,
+                startDate: new Date,
+                autoclose: true,
             });
         });
     </script>

@@ -2,7 +2,7 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Biên bản họp Giao Ban')
 @section('header-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
     <style>
         .mainSection_width-select {
             width: 140px !important;
@@ -537,8 +537,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="col-lg-12 d-flex justify-content-end">
                             <div class="action_table-wrapper text-end mt-3 mb-3">
                                 {{-- <a href="kho-luu-tru-bien-ban-hop"
@@ -553,7 +551,7 @@
                                     data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
                             </div>
                         </div>
-                        <div class="col-lg-12 d-flex justify-content-end">
+                        <div class="col-lg-12 d-flex justify-content-end mb-3">
                             <div id='warning_notification'
                                 class="alert alert-warning alert-dismissible fade show border-left border-warning"
                                 role="alert">
@@ -574,9 +572,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">
-                <div class="container">Copyright © 2023 S-Team. All rights reserved.</div>
-            </div>
+            @include('template.footer.footer')
         </div>
     </div>
     @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')

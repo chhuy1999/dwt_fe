@@ -548,6 +548,7 @@
                     </div>
                 </div>
             </div>
+            @include('template.footer.footer')
         </div>
     </div>
     @include('template.sidebar.sidebarGiaoViec.sidebarRight')

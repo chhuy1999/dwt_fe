@@ -3,6 +3,12 @@
 @section('title', 'Bảng điều khiển')
 @section('header-style')
 <style>
+    .mainSection {
+        position: initial
+    }
+    .main {
+        height: initial;
+    }
     .mainWrap {
         display: flex;
         justify-content: center;
