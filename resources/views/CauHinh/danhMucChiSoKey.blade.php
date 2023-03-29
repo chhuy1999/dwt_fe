@@ -1,15 +1,15 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Danh sách chỉ số key')
+@section('title', 'Danh mục chỉ số key')
 @section('content')
-    @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
+    {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft') --}}
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">
-                            Danh sách chỉ số key
+                            Danh mục chỉ số key
                         </h5>
                         <div class="mainSection_card">
                             <div class="mainSection_content">
@@ -32,17 +32,19 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="main_search d-flex">
-                                            <i class="bi bi-search"></i>
-                                            <form action="/danh-muc-chi-so-key" method="GET">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm chỉ số key" name="q" value="{{request()->q}}">
-                                            </form>
+                                        <div class="action_wrapper d-flex">
+                                            <div class="form-group has-search">
+                                                <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                <form action="/danh-muc-chi-so-key" method="GET">
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm chỉ số key" name="q" value="{{request()->q}}">
+                                                </form>
+                                            </div>
                                         </div>
                                         <div class="main_action">
                                             <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#themMoiDinhMuc">
                                                 <i class="bi bi-plus"></i>
-                                                Thêm mới
+                                                Thêm chỉ số key
                                             </button>
                                             <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip"
                                                 data-bs-placement="top" title="Xuất file Excel">
@@ -57,10 +59,10 @@
                                                 <table class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 2%">STT</th>
+                                                            <th style="width: 2%" class="text-center">STT</th>
                                                             <th style="width: 20%">Tên chỉ số key</th>
-                                                            <th style="width: 10%">Đơn vị</th>
                                                             <th style="width: 66%">Mô tả</th>
+                                                            <th style="width: 10%">Đơn vị tính</th>
                                                             <th style="width: 2%"></th>
                                                         </tr>
                                                     </thead>
@@ -80,14 +82,14 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        {{ $key->unit && $key->unit->name }}
+                                                                        {{ $key->description }}
                                                                     </div>
-
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        {{ $key->description }}
+                                                                        {{ $key->unit && $key->unit->name }}
                                                                     </div>
+
                                                                 </td>
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1"
@@ -122,8 +124,7 @@
                                                             <div class="modal fade" id="{{ 'suaMoiDinhMuc' . $key->id }}"
                                                                 tabindex="-1" aria-labelledby="exampleModalLabel"
                                                                 aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered"
-                                                                    style="max-width:38%;">
+                                                                <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
                                                                             <h5 class="modal-title w-100"
@@ -138,65 +139,36 @@
                                                                             @method('PUT')
                                                                             <div class="modal-body">
                                                                                 <div class="row">
-                                                                                    <div class="col-sm-8">
-                                                                                        <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div
-                                                                                                class="modal_body-title col-sm-3">
-                                                                                                Tên chỉ số key <span
-                                                                                                    class="text-danger">*</span>
-                                                                                            </div>
-                                                                                            <div class="col-sm-9">
-                                                                                                <input class="form-control"
+                                                                                    <div class="col-sm-8 mb-3">
+                                                                                        <input class="form-control"
                                                                                                     type="text"
                                                                                                     name="name"
                                                                                                     value="{{ $key->name }}">
-                                                                                            </div>
-                                                                                        </div>
                                                                                     </div>
-                                                                                    <div class="col-sm-4">
-                                                                                        <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div
-                                                                                                class="modal_body-title col-sm-3">
-                                                                                                Đơn vị <span
-                                                                                                    class="text-danger">*</span>
-                                                                                            </div>
-                                                                                            <div class="col-sm-9">
-                                                                                                <select
-                                                                                                    class="selectpicker"
-                                                                                                    title="Chọn đơn vị"
-                                                                                                    name="unit_id">
-                                                                                                    @foreach ($listUnits->data as $unit)
-                                                                                                        @if ($unit->id != $key->unit_id)
-                                                                                                            <option
-                                                                                                                value="{{ $unit->id }}">
-                                                                                                                {{ $unit->name }}
-                                                                                                            </option>
-                                                                                                        @else
-                                                                                                            <option
-                                                                                                                value="{{ $unit->id }}"
-                                                                                                                selected>
-                                                                                                                {{ $unit->name }}
-                                                                                                            </option>
-                                                                                                        @endif
-                                                                                                    @endforeach
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                    <div class="col-sm-4 mb-3">
+                                                                                        
+                                                                                        <select
+                                                                                            class="selectpicker"
+                                                                                            title="Chọn đơn vị"
+                                                                                            name="unit_id">
+                                                                                            @foreach ($listUnits->data as $unit)
+                                                                                                @if ($unit->id != $key->unit_id)
+                                                                                                    <option
+                                                                                                        value="{{ $unit->id }}">
+                                                                                                        {{ $unit->name }}
+                                                                                                    </option>
+                                                                                                @else
+                                                                                                    <option
+                                                                                                        value="{{ $unit->id }}"
+                                                                                                        selected>
+                                                                                                        {{ $unit->name }}
+                                                                                                    </option>
+                                                                                                @endif
+                                                                                            @endforeach
+                                                                                        </select>
                                                                                     </div>
                                                                                     <div class="col-sm-12">
-                                                                                        <div
-                                                                                            class="mb-3 d-flex align-items-center  justify-content-between">
-                                                                                            <div
-                                                                                                class="modal_body-title col-sm-2">
-                                                                                                Mô tả chỉ số <span
-                                                                                                    class="text-danger">*</span>
-                                                                                            </div>
-                                                                                            <div class="col-sm-10">
-                                                                                                <textarea class="form-control" name="description">{{ $key->description }}</textarea>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                        <textarea class="form-control" name="description">{{ $key->description }}</textarea>
                                                                                     </div>
 
                                                                                 </div>
@@ -227,8 +199,7 @@
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            Bạn có thực sự muốn xoá đinh mức này không?
-
+                                                                            Bạn có thực sự muốn xoá chỉ số key này không?
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button"
@@ -265,53 +236,32 @@
             </div>
         </div>
     </div>
-    @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
+    {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarRight') --}}
     <!-- Modal Thêm chỉ số key -->
     <div class="modal fade" id="themMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm mới chỉ số key</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm chỉ số key</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="POST" action="/danh-muc-chi-so-key">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-sm-8">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title col-sm-3">
-                                        Tên chỉ số key <span class="text-danger">*</span>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="text" placeholder="Nhập tên chỉ số key"
+                            <div class="col-sm-8 mb-3">
+                                <input class="form-control" type="text" required placeholder="Nhập tên chỉ số key *"
                                             name="name">
-                                    </div>
-                                </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title col-sm-3">
-                                        Đơn vị <span class="text-danger">*</span>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
-                                            @foreach ($listUnits->data as $unit)
-                                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="col-sm-4 mb-3">
+                                <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">
+                                    @foreach ($listUnits->data as $unit)
+                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-sm-12">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <div class="modal_body-title col-sm-2">
-                                        Mô tả chỉ số <span class="text-danger">*</span>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" placeholder="Nhập mô tả chỉ số" name="description"></textarea>
-                                    </div>
-                                </div>
+                                <textarea class="form-control" placeholder="Nhập mô tả chỉ số" name="description"></textarea>
                             </div>
 
                         </div>

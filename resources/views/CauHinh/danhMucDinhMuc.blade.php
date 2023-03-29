@@ -135,7 +135,7 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
                                                                             <h5 class="modal-title w-100"
-                                                                                id="exampleModalLabel">Sửa định mức</h5>
+                                                                                id="exampleModalLabel">Sửa định mức lao động</h5>
                                                                             <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
@@ -158,9 +158,7 @@
                                                                                     </div>
                                                                                     <div class="col-sm-12 mt-3">
                                                                                         <div class="mb-3">
-                                                                                            <textarea class="form-control" name="description" placeholder="Nhập mô tả thực hiện">
-                                                                                                {{ $target->description }}
-                                                                                            </textarea>
+                                                                                            <textarea class="form-control" name="description" placeholder="Nhập mô tả thực hiện">{{ $target->description }}</textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-4">
@@ -281,13 +279,13 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title text-danger"
-                                                                                id="exampleModalLabel">Xóa định mức</h5>
+                                                                                id="exampleModalLabel">Xóa định mức lao động</h5>
                                                                             <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            Bạn có thực sự muốn xoá đinh mức này không?
+                                                                            Bạn có thực sự muốn xoá đinh mức lao động này không?
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button"
@@ -404,7 +402,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width:38%;">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm mới định mức</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm định mức lao động</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/danh-muc-dinh-muc" method="POST">
@@ -433,7 +431,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" type="text"
+                                    <input class="form-control" type="number"
                                         placeholder="Nhập Manday" name="manday">
                                 </div>
                             </div>

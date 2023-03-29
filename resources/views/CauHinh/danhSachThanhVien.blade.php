@@ -29,7 +29,7 @@
                                                     <div class="title_filter d-flex align-items-center" style="gap:10px">
                                                         <div class="title_filter-item">
                                                             <select class="selectpicker" data-live-search="true"
-                                                                title="Chọn hình thức..."
+                                                                title="Chọn hình thức làm việc..."
                                                                 data-selected-text-format="count > 1"
                                                                 data-count-selected-text="Có {0} thành viên"
                                                                 data-live-search-placeholder="Tìm kiếm...">
@@ -51,7 +51,7 @@
                                                         </div>
                                                         <div class="title_filter-item">
                                                             <select class="selectpicker" data-width="100%"
-                                                                data-live-search="true" title="Chọn Vị trí/Chức danh..."
+                                                                data-live-search="true" title="Chọn Vị trí..."
                                                                 data-selected-text-format="count > 1"
                                                                 data-count-selected-text="Có {0} thành viên"
                                                                 data-live-search-placeholder="Tìm kiếm...">
@@ -63,18 +63,21 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="main_search d-flex">
+                                                <div class="action_wrapper d-flex">
                                                     <div class="form-group has-search">
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
-
                                                         <form action="/danh-sach-thanh-vien" method="GET">
                                                             <input type="text" class="form-control"
                                                                 placeholder="Tìm kiếm thành viên" name="q"
                                                                 value="{{ request()->q }}">
                                                         </form>
                                                     </div>
-                                                    <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
-                                                        data-bs-target="#themThanhVien">Thêm thành viên</button>
+                                                    <div class="action_export ms-3" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" aria-label="Xuất file Excel"
+                                                        data-bs-original-title="Xuất file Excel">
+                                                        <button class="btn btn-danger d-block" data-bs-toggle="modal"
+                                                            data-bs-target="#themThanhVien">Thêm thành viên</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
@@ -82,17 +85,17 @@
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
-                                                            <th>STT</th>
-                                                            <th>Họ và tên</th>
-                                                            <th>Mã nhân viên</th>
-                                                            <th>Đơn vị công tác</th>
-                                                            <th>Vị trí/chức danh</th>
-                                                            <th>Cấp nhân sự</th>
-                                                            <th>Email công ty</th>
-                                                            <th>SĐT liên hệ</th>
-                                                            <th>Hình thức</th>
-                                                            <th>Trạng thái</th>
-                                                            <th>Hành động</th>
+                                                            <th class="text-nowrap text-center">STT</th>
+                                                            <th class="text-nowrap">Họ và tên</th>
+                                                            <th class="text-nowrap">Mã nhân viên</th>
+                                                            <th class="text-nowrap">Đơn vị công tác</th>
+                                                            <th class="text-nowrap">Vị trí/chức danh</th>
+                                                            <th class="text-nowrap">Cấp nhân sự</th>
+                                                            <th class="text-nowrap">Email công ty</th>
+                                                            <th class="text-nowrap">SĐT liên hệ</th>
+                                                            <th class="text-nowrap">Hình thức</th>
+                                                            <th class="text-nowrap">Trạng thái</th>
+                                                            <th class="text-nowrap">Hành động</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -104,31 +107,31 @@
                                                                         {{ $loop->iteration }}
                                                                     </div>
                                                                 </th>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>{{ $value->name }}</div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>{{ $value->code }}</div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>{{ $value->departement }}</div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>{{ $value->position }}</div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>{{ $value->position_level }}</div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>{{ $value->email }}</div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>{{ $value->phone }}</div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>Chính thức</div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     <div>Đang làm việc</div>
                                                                 </td>
                                                                 <td>
@@ -152,8 +155,7 @@
                                                             <div class="modal fade" id="suaThanhVien{{ $value->id }}"
                                                                 tabindex="-1" aria-labelledby="exampleModalLabel"
                                                                 aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered"
-                                                                    style="max-width:530px">
+                                                                <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
                                                                             <h5 class="modal-title w-100"
@@ -219,6 +221,8 @@
                                                                                                         class="selectpicker">
                                                                                                         <option>Nam</option>
                                                                                                         <option selected>Nữ
+                                                                                                        </option>
+                                                                                                        <option>Khác
                                                                                                         </option>
                                                                                                     </select>
                                                                                                 </div>
@@ -388,11 +392,11 @@
 
                                                                                         <div class="col-sm-6 mb-2">
                                                                                             <select class="selectpicker"
-                                                                                                title="Chọn trạng thái">
-                                                                                                <option selected>Toàn thời
-                                                                                                    gian</option>
-                                                                                                <option>Bán thời gian
-                                                                                                </option>
+                                                                                                title="Hình thức làm việc">
+                                                                                                <option selected>Chính thức</option>
+                                                                                                <option>Thử việc</option>
+                                                                                                <option>Cộng tác viên</option>
+                                                                                                <option>Thực tập sinh</option>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="col-sm-6 mb-2">
@@ -515,18 +519,21 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="main_search d-flex">
+                                                <div class="action_wrapper d-flex">
                                                     <div class="form-group has-search">
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
-
                                                         <form method="GET" action="/danh-sach-thanh-vien">
 
                                                             <input type="text" name="q" dclass="form-control"
                                                                 placeholder="Tìm kiếm thành viên">
                                                         </form>
                                                     </div>
-                                                    <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
-                                                        data-bs-target="#themThanhVien">Thêm thành viên</button>
+                                                    <div class="action_export ms-3" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" aria-label="Xuất file Excel"
+                                                        data-bs-original-title="Xuất file Excel">
+                                                        <button class="btn btn-danger d-block" data-bs-toggle="modal"
+                                                            data-bs-target="#themThanhVien">Thêm thành viên</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
@@ -848,14 +855,21 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="main_search d-flex">
+                                                <div class="action_wrapper d-flex">
                                                     <div class="form-group has-search">
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Tìm kiếm thành viên">
+                                                        <form method="GET" action="/danh-sach-thanh-vien">
+
+                                                            <input type="text" name="q" dclass="form-control"
+                                                                placeholder="Tìm kiếm thành viên">
+                                                        </form>
                                                     </div>
-                                                    <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
-                                                        data-bs-target="#themThanhVien">Thêm thành viên</button>
+                                                    <div class="action_export ms-3" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" aria-label="Xuất file Excel"
+                                                        data-bs-original-title="Xuất file Excel">
+                                                        <button class="btn btn-danger d-block" data-bs-toggle="modal"
+                                                            data-bs-target="#themThanhVien">Thêm thành viên</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
@@ -1399,7 +1413,7 @@
 
     {{-- Modal Sua thanh vien --}}
     <div class="modal fade" id="suaThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:530px">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Sửa thành viên</h5>
@@ -1567,7 +1581,7 @@
 
     {{-- Modal Them thanh vien --}}
     <div class="modal fade" id="themThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:530px">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Thêm thành viên</h5>
@@ -1582,11 +1596,11 @@
                             <div class="row align-items-center">
                                 <div class="col-sm-2">
                                     <div class="image-upload">
-                                        <input type="file" name="" id="logo" onchange="fileValue(this)">
+                                        <input type="file" name="" id="logo" onchange="createImg(this)">
                                         <label for="logo" class="upload-field" id="file-label">
                                             <div class="file-thumbnail">
-                                                <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}"
-                                                    alt="">
+                                                <img id="create_image-preview"
+                                                    src="{{ asset('assets/img/preview-image.svg') }}" alt="">
                                             </div>
                                         </label>
                                     </div>
@@ -1602,7 +1616,7 @@
                                             placeholder="Mật khẩu">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" placeholder="Số điện thoại"
+                                        <input class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required placeholder="Số điện thoại"
                                             name="phone">
                                     </div>
 
@@ -1640,21 +1654,22 @@
                             <div class="create_user-title mb-2">Thông tin công việc</div>
                             <div class="row">
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="text" placeholder="Mã nhân viên"
+                                    <input class="form-control" type="text" placeholder="Nhập mã nhân viên"
                                         name="code">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="text" placeholder="Nhập sđt liên hệ">
+                                    <input class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required placeholder="Nhập Sđt liên hệ">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="text" placeholder="Nhập email công ty"
+                                    <input class="form-control" type="email" placeholder="Nhập email công ty"
                                         name="email">
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Chọn đơn vị công tác" name="departement">
+                                    <select class="selectpicker" title="Chọn đơn vị công tác" data-live-search="true"
+                                        name="departement">
                                         @foreach ($listDepartments->data as $value)
                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                         @endforeach
@@ -1663,7 +1678,8 @@
 
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn cấp nhân sự" name="position_level">
+                                        <select class="selectpicker" title="Chọn cấp nhân sự" data-live-search="true"
+                                            name="position_level">
                                             @foreach ($listPositionLevel->data as $value)
                                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                                             @endforeach
@@ -1687,7 +1703,7 @@
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Chọn quản lý">
+                                    <select class="selectpicker" title="Chọn quản lý" data-live-search="true">
                                         <option>Nguyễn Ngọc Bảo</option>
                                         <option>Đặng Nguyễn Lam Mai</option>
                                         <option>Hồ Thị Hồng Vân</option>
@@ -1715,9 +1731,11 @@
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Chọn chế độ">
-                                        <option>Toàn thời gian</option>
-                                        <option>Bán thời gian</option>
+                                    <select class="selectpicker" title="Hình thức làm việc">
+                                        <option>Chính thức</option>
+                                        <option>Thử việc</option>
+                                        <option>Cộng tác viên</option>
+                                        <option>Thực tập sinh</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 mb-2">
@@ -1784,7 +1802,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1802,7 +1821,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>

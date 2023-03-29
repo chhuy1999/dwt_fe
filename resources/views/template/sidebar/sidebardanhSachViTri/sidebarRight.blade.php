@@ -259,7 +259,7 @@
                                 <div class="sidebarBody_card-items-left">
                                     <div class="sidebarBody_card-posts">
                                         <span
-                                            >Họp giao ban tuần 3 tháng 3/2023</span
+                                            >Danh sách thành viên phòng Marketing/phòng Cung ứng</span
                                         >
                                     </div>
                                     <div class="sidebarBody_card-description">
@@ -269,14 +269,14 @@
                                     </div>
                                 </div>
                                 <div class="sidebarBody_card-items-right">
-                                    <a class="sidebarBody_card-items-links" href="">Đọc thêm</a>
+                                    <a class="sidebarBody_card-items-links" href=""><i class="bi bi-eye fs-5"></i></a>
                                 </div>
                             </div>
                             <div class="sidebarBody_card-items-wrapper mb-2 d-flex align-items-start justify-content-between">
                                 <div class="sidebarBody_card-items-left">
                                     <div class="sidebarBody_card-posts">
                                         <span
-                                            >Họp giao ban tuần 3 tháng 3/2023</span
+                                            >Danh sách thành viên phòng Marketing/phòng Cung ứng</span
                                         >
                                     </div>
                                     <div class="sidebarBody_card-description">
@@ -286,14 +286,14 @@
                                     </div>
                                 </div>
                                 <div class="sidebarBody_card-items-right">
-                                    <a class="sidebarBody_card-items-links" href="">Đọc thêm</a>
+                                    <a class="sidebarBody_card-items-links" href=""><i class="bi bi-eye fs-5"></i></a>
                                 </div>
                             </div>
                             <div class="sidebarBody_card-items-wrapper mb-2 d-flex align-items-start justify-content-between">
                                 <div class="sidebarBody_card-items-left">
                                     <div class="sidebarBody_card-posts">
                                         <span
-                                            >Họp giao ban tuần 3 tháng 3/2023</span
+                                            >Danh sách thành viên phòng Marketing/phòng Cung ứng</span
                                         >
                                     </div>
                                     <div class="sidebarBody_card-description">
@@ -303,14 +303,14 @@
                                     </div>
                                 </div>
                                 <div class="sidebarBody_card-items-right">
-                                    <a class="sidebarBody_card-items-links" href="">Đọc thêm</a>
+                                    <a class="sidebarBody_card-items-links" href=""><i class="bi bi-eye fs-5"></i></a>
                                 </div>
                             </div>
                             <div class="sidebarBody_card-items-wrapper mb-2 d-flex align-items-start justify-content-between">
                                 <div class="sidebarBody_card-items-left">
                                     <div class="sidebarBody_card-posts">
                                         <span
-                                            >Họp giao ban tuần 3 tháng 3/2023</span
+                                            >Danh sách thành viên phòng Marketing/phòng Cung ứng</span
                                         >
                                     </div>
                                     <div class="sidebarBody_card-description">
@@ -320,14 +320,14 @@
                                     </div>
                                 </div>
                                 <div class="sidebarBody_card-items-right">
-                                    <a class="sidebarBody_card-items-links" href="">Đọc thêm</a>
+                                    <a class="sidebarBody_card-items-links" href=""><i class="bi bi-eye fs-5"></i></a>
                                 </div>
                             </div>
                             <div class="sidebarBody_card-items-wrapper mb-2 d-flex align-items-start justify-content-between">
                                 <div class="sidebarBody_card-items-left">
                                     <div class="sidebarBody_card-posts">
                                         <span
-                                            >Họp giao ban tuần 3 tháng 3/2023</span
+                                            >Danh sách thành viên phòng Marketing/phòng Cung ứng</span
                                         >
                                     </div>
                                     <div class="sidebarBody_card-description">
@@ -337,14 +337,14 @@
                                     </div>
                                 </div>
                                 <div class="sidebarBody_card-items-right">
-                                    <a class="sidebarBody_card-items-links" href="">Đọc thêm</a>
+                                    <a class="sidebarBody_card-items-links" href=""><i class="bi bi-eye fs-5"></i></a>
                                 </div>
                             </div>
                             <div class="sidebarBody_card-items-wrapper mb-2 d-flex align-items-start justify-content-between">
                                 <div class="sidebarBody_card-items-left">
                                     <div class="sidebarBody_card-posts">
                                         <span
-                                            >Họp giao ban tuần 3 tháng 3/2023</span
+                                            >Danh sách thành viên phòng Marketing/phòng Cung ứng</span
                                         >
                                     </div>
                                     <div class="sidebarBody_card-description">
@@ -354,14 +354,14 @@
                                     </div>
                                 </div>
                                 <div class="sidebarBody_card-items-right">
-                                    <a class="sidebarBody_card-items-links" href="">Đọc thêm</a>
+                                    <a class="sidebarBody_card-items-links" href=""><i class="bi bi-eye fs-5"></i></a>
                                 </div>
                             </div>
                             <div class="sidebarBody_card-items-wrapper mb-2 d-flex align-items-start justify-content-between">
                                 <div class="sidebarBody_card-items-left">
                                     <div class="sidebarBody_card-posts">
                                         <span
-                                            >Họp giao ban tuần 3 tháng 3/2023</span
+                                            >Danh sách thành viên phòng Marketing/phòng Cung ứng</span
                                         >
                                     </div>
                                     <div class="sidebarBody_card-description">
@@ -371,7 +371,7 @@
                                     </div>
                                 </div>
                                 <div class="sidebarBody_card-items-right">
-                                    <a class="sidebarBody_card-items-links" href="">Đọc thêm</a>
+                                    <a class="sidebarBody_card-items-links" href=""><i class="bi bi-eye fs-5"></i></a>
                                 </div>
                             </div>
                         </div>

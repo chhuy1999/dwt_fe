@@ -459,9 +459,9 @@ td {
     background-image: url("../img/search-datatable.svg");
     background-repeat: no-repeat;
     background-color: #fff;
-    background-position: 2px 2px !important;
+    background-position: 3px 4px !important;
     padding-left: 22px;
-    background-size: 18px 18px;
+    background-size: 16px 16px;
     box-shadow: none;
 }
 .dataTables_filter .form-control:focus,
@@ -1198,6 +1198,10 @@ th {
     border-bottom: none;
 }
 
+.sidebarBody_card-items-right {
+    margin: 0 10px;
+}
+
 .sidebarBody_notification-title {
     font-size: var(--fz-12);
     font-weight: 500;
@@ -1802,7 +1806,7 @@ th {
     border-radius: 4px;
     margin-left: 4px;
     cursor: pointer;
-    padding: 2px 0;
+    /* padding: 2px 0; */
 }
 
 .modal_body-title {
@@ -1820,7 +1824,7 @@ th {
 }
 
 .modal-footer .btn {
-    padding: 0 16px;
+    padding: 4px 16px;
 }
 
 .modal-body .form-select option:first-child {
