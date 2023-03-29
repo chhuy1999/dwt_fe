@@ -44,18 +44,20 @@
         }
 
         .description-problem {
-            width: 220px;
+            width: 210px;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
         }
 
         .description-problem-responded {
-            width: 360px;
+            width: 350px;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
         }
+
+
 
     </style>
 @endsection
@@ -244,7 +246,7 @@
                                                             <td>31/03</td>
                                                             <td>
                                                                 <select class="form-select style_input">
-                                                                    <option>Đã nêu</option>
+                                                                    <option>Đã tiếp nhận</option>
                                                                     <option>Đã có hướng giải quyết</option>
                                                                     <option>Đã giải quyết</option>
                                                                     <option>Không thể giải quyết</option>
@@ -273,7 +275,7 @@
                                                             <td>31/03</td>
                                                             <td>
                                                                 <select class="form-select style_input">
-                                                                    <option>Đã nêu</option>
+                                                                    <option>Đã tiếp nhận</option>
                                                                     <option>Đã có hướng giải quyết</option>
                                                                     <option>Đã giải quyết</option>
                                                                     <option>Không thể giải quyết</option>
@@ -302,7 +304,7 @@
                                                             <td>31/03</td>
                                                             <td>
                                                                 <select class="form-select style_input">
-                                                                    <option>Đã nêu</option>
+                                                                    <option>Đã tiếp nhận</option>
                                                                     <option>Đã có hướng giải quyết</option>
                                                                     <option>Đã giải quyết</option>
                                                                     <option>Không thể giải quyết</option>
@@ -333,10 +335,8 @@
                                                                 Nội dung trao đổi
                                                             </div>
                                                             <div class="" style="max-height: 240px; overflow-y: scroll;" >
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
+                                                                    <div class="d-flex flex-start mb-3" style="background: #f8f9fa">
+                                                                        <i class="bi bi-journal-check" style="padding-right: 4px; padding-left: 4px"></i>
                                                                         <div class="flex-grow-1 flex-shrink-1">
                                                                             <div>
                                                                                 <p class="mb-0">
@@ -351,10 +351,9 @@
         
                                                                         </div>
                                                                     </div>
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
+                                                                
+                                                                    <div class="d-flex flex-start mb-3" style="background: #f8f9fa">
+                                                                        <i class="bi bi-journal-check" style="padding-right: 4px; padding-left: 4px"></i>
                                                                         <div class="flex-grow-1 flex-shrink-1">
                                                                             <div>
                                                                                 <p class="mb-0">
@@ -369,67 +368,10 @@
         
                                                                         </div>
                                                                     </div>
-
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
-                                                                        <div class="flex-grow-1 flex-shrink-1">
-                                                                            <div>
-                                                                                <p class="mb-0">
-                                                                                    It is a long established fact that a reader will be
-                                                                                    distracted by
-                                                                                    the readable content of a page.
-                                                                                </p>
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
-                                                                                </div>
-                                                                            </div>
-        
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
-                                                                        <div class="flex-grow-1 flex-shrink-1">
-                                                                            <div>
-                                                                                <p class="mb-0">
-                                                                                    It is a long established fact that a reader will be
-                                                                                    distracted by
-                                                                                    the readable content of a page.
-                                                                                </p>
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
-                                                                                </div>
-                                                                            </div>
-        
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
-                                                                        <div class="flex-grow-1 flex-shrink-1">
-                                                                            <div>
-                                                                                <p class="mb-0">
-                                                                                    It is a long established fact that a reader will be
-                                                                                    distracted by
-                                                                                    the readable content of a page.
-                                                                                </p>
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
-                                                                                </div>
-                                                                            </div>
-        
-                                                                        </div>
-                                                                    </div>
-                                                                    
             
                                                             </div>
                                                             <div class="col-12 mt-4">
-                                                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập bình luận" rows="3"></textarea>
+                                                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung" rows="3"></textarea>
                                                             </div>
 
                                                         </div>
@@ -438,109 +380,50 @@
                                                     <div class="col-md-6" style="border: 1px solid #ced4da; border-radius: 0.375rem; width: 49.5%">
                                                         <div class="content" style="margin: 10px">
                                                             <div class="card-title mb-3">
-                                                                <i class="bi bi-cloud-arrow-down" style="padding-right: 4px"></i>
+                                                                <i class="bi bi-paperclip" style="padding-right: 4px"></i>
                                                                 File đính kèm
                                                             </div>
                                                             <div class="" style="max-height: 240px; overflow-y: scroll;" >
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
-                                                                        <div class="flex-grow-1 flex-shrink-1">
-                                                                            <div>
-                                                                                <p class="mb-0">
-                                                                                    It is a long established fact that a reader will be
-                                                                                    distracted by
-                                                                                    the readable content of a page.
-                                                                                </p>
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
-                                                                                </div>
+                                                                <div class="d-flex flex-start mb-3" style="background: #f8f9fa">
+                                                                    <i class="bi bi-paperclip" style="padding-right: 4px; padding-left: 4px"></i>
+                                                                    <div class="flex-grow-1 flex-shrink-1">
+                                                                        <div>
+                                                                            <p class="mb-0">
+                                                                                It is a long established fact that a reader will be
+                                                                                distracted by
+                                                                                the readable content of a page.
+                                                                            </p>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <p class="fs-6 mb-1">5 phút trước</p>
                                                                             </div>
-        
                                                                         </div>
+    
                                                                     </div>
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
-                                                                        <div class="flex-grow-1 flex-shrink-1">
-                                                                            <div>
-                                                                                <p class="mb-0">
-                                                                                    It is a long established fact that a reader will be
-                                                                                    distracted by
-                                                                                    the readable content of a page.
-                                                                                </p>
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
-                                                                                </div>
-                                                                            </div>
-        
-                                                                        </div>
-                                                                    </div>
+                                                                </div>
 
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
-                                                                        <div class="flex-grow-1 flex-shrink-1">
-                                                                            <div>
-                                                                                <p class="mb-0">
-                                                                                    It is a long established fact that a reader will be
-                                                                                    distracted by
-                                                                                    the readable content of a page.
-                                                                                </p>
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
-                                                                                </div>
+                                                                <div class="d-flex flex-start mb-3" style="background: #f8f9fa">
+                                                                    <i class="bi bi-paperclip" style="padding-right: 4px; padding-left: 4px"></i>
+                                                                    <div class="flex-grow-1 flex-shrink-1">
+                                                                        <div>
+                                                                            <p class="mb-0">
+                                                                                It is a long established fact that a reader will be
+                                                                                distracted by
+                                                                                the readable content of a page.
+                                                                            </p>
+                                                                            <div class="d-flex align-items-center">
+                                                                                <p class="fs-6 mb-1">5 phút trước</p>
                                                                             </div>
-        
                                                                         </div>
+    
                                                                     </div>
+                                                                </div>
 
-                                                                    <div class="d-flex flex-start mb-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
-                                                                        <div class="flex-grow-1 flex-shrink-1">
-                                                                            <div>
-                                                                                <p class="mb-0">
-                                                                                    It is a long established fact that a reader will be
-                                                                                    distracted by
-                                                                                    the readable content of a page.
-                                                                                </p>
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
-                                                                                </div>
-                                                                            </div>
-        
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="d-flex flex-start mt-3">
-                                                                        <img class="rounded-circle shadow-1-strong me-3"
-                                                                            src="{{ asset('assets/img/avatar.jpeg') }}" alt="avatar"
-                                                                            width="40" height="40" />
-                                                                        <div class="flex-grow-1 flex-shrink-1">
-                                                                            <div>
-                                                                                <p class="mb-0">
-                                                                                    It is a long established fact that a reader will be
-                                                                                    distracted by
-                                                                                    the readable content of a page.
-                                                                                </p>
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <p class="fs-6 mb-1">5 phút trước</p>
-                                                                                </div>
-                                                                            </div>
-        
-                                                                        </div>
-                                                                    </div>
-                                                                    
-            
                                                             </div>
                                                             <div class="col-12 mt-4">
-                                                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập bình luận" rows="3"></textarea>
+                                                                <input class="form-control form-control-lg" id="formFileLg" type="file">
                                                             </div>
 
+                                                            
                                                         </div>
                                                     </div>
 

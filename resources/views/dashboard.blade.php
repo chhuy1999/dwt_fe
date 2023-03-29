@@ -450,7 +450,7 @@
                                                                                                                 <select
                                                                                                                     class='selectpicker'
                                                                                                                     data-live-search="true"
-                                                                                                                    title="Chọn trạng thái" name="kpiKeyIds[]">
+                                                                                                                    title="Chọn tiêu chí" name="kpiKeyIds[]">
                                                                                                                     @foreach ($kpiKeys as $kpiKey)
                                                                                                                         <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
                                                                                                                     @endforeach

@@ -393,10 +393,13 @@
                                                                                         <div class="col-sm-6 mb-2">
                                                                                             <select class="selectpicker"
                                                                                                 title="Hình thức làm việc">
-                                                                                                <option selected>Chính thức</option>
+                                                                                                <option selected>Chính thức
+                                                                                                </option>
                                                                                                 <option>Thử việc</option>
-                                                                                                <option>Cộng tác viên</option>
-                                                                                                <option>Thực tập sinh</option>
+                                                                                                <option>Cộng tác viên
+                                                                                                </option>
+                                                                                                <option>Thực tập sinh
+                                                                                                </option>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="col-sm-6 mb-2">
@@ -1614,15 +1617,24 @@
                                             placeholder="Mật khẩu">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required placeholder="Số điện thoại"
-                                            name="phone">
+                                        <input class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                            required placeholder="Số điện thoại" name="phone">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="row">
-                                        <div class="col-sm-5 mb-2">
+                                        {{-- <div class="col-sm-5 mb-2">
                                             <select class="selectpicker" title="Giới tính" name="sex">
+                                                <option value="male">Nam</option>
+                                                <option value="female">Nữ</option>
+                                                <option value="other">Khác</option>
+                                            </select>
+                                        </div> --}}
+
+                                        <div class="col-sm-5 mb-2">
+                                            <select class="selectpicker"placeholder="Giới tính" title="Giới tính"
+                                                name="sex">
                                                 <option value="male">Nam</option>
                                                 <option value="female">Nữ</option>
                                                 <option value="other">Khác</option>
@@ -1631,7 +1643,7 @@
 
                                         <div class="col-sm-7 mb-2 position-relative">
                                             <input id="createUser" placeholder="Ngày sinh" class="form-control"
-                                                type="text" name="dob">
+                                                type="text" name="dob" autocomplete="off">
                                             <i class="bi bi-calendar-plus style_pickdate"></i>
                                         </div>
                                     </div>
@@ -1657,7 +1669,8 @@
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required placeholder="Nhập Sđt liên hệ">
+                                    <input class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                        required placeholder="Nhập Sđt liên hệ">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
@@ -1666,8 +1679,9 @@
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Chọn đơn vị công tác" data-live-search="true"
-                                        name="departement">
+                                    <select class="selectpicker" data-live-search="true" name="departement"
+                                        data-width="100%" data-live-search="true" title="Chọn đơn vị công tác"
+                                        data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listDepartments->data as $value)
                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                         @endforeach
@@ -1676,35 +1690,46 @@
 
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn cấp nhân sự" data-live-search="true"
-                                            name="position_level">
+                                        <select class="selectpicker" title="Chọn cấp nhân sự" name="position_level"
+                                            data-width="100%" data-live-search="true"
+                                            data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                             @foreach ($listPositionLevel->data as $value)
                                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                                             @endforeach
                                         </select>
                                         <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachChucDanh">
+                                            data-bs-target="#danhsachCapToChuc">
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select id="onchangeViTriCongViec" class="selectpicker" title="Chọn Vị trí/Chức danh"
-                                        name="position">
-                                        @foreach ($listPositions->data as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                        @endforeach
-                                        <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới
-                                        </option>
-                                    </select>
+                                    <div class="">
+                                        <div class="d-flex align-items-center">
+
+                                            <select id="onchangeViTriCongViec" class="selectpicker"
+                                                title="Chọn Vị trí/Chức danh" name="position" data-width="100%"
+                                                data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                data-size="3">
+                                                @foreach ($listPositions->data as $value)
+                                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="modal_list-more" data-bs-toggle="modal"
+                                                data-bs-target="#danhsachVitriChucdanh">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
                                     <select class="selectpicker" title="Chọn quản lý" data-live-search="true">
-                                        <option>Nguyễn Ngọc Bảo</option>
-                                        <option>Đặng Nguyễn Lam Mai</option>
-                                        <option>Hồ Thị Hồng Vân</option>
+                                        @foreach ($listUsers->data as $value)
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-sm-6 mb-2">
@@ -1713,7 +1738,9 @@
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
 
-                                        <select class="selectpicker" title="Chọn gói trang bị">
+                                        <select class="selectpicker" title="Chọn gói trang bị" data-width="100%"
+                                            data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                            data-size="3">
                                             <option>Trang bị hành chính</option>
                                             <option>Trang bị cơ bản</option>
                                             <option>Trang bị Nhân viên</option>
@@ -1729,7 +1756,9 @@
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Hình thức làm việc">
+                                    <select class="selectpicker" title="Hình thức làm việc" data-width="100%"
+                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                        data-size="2">
                                         <option>Chính thức</option>
                                         <option>Thử việc</option>
                                         <option>Cộng tác viên</option>
@@ -1782,7 +1811,8 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -2054,6 +2084,55 @@
         </div>
     </div>
 
+
+    <!-- Modal Danh sach vị trí/chức danh -->
+    <div class="modal fade" id="danhsachVitriChucdanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH VỊ TRÍ/ CHỨC DANH</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="repeater-dsViTri">
+                        <div class="row" data-repeater-list="kpiKeys">
+                            @foreach ($listPositions->data as $value)
+                            
+                                <div class="col-md-6" data-repeater-item>
+                                    <div
+                                        class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                                        <div class="form-check d-flex align-items-center">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="flexRadioDefault3">
+                                            <label value="{{ $value->id }}" class="form-check-label ms-3"
+                                                for="flexRadioDefault1">
+                                                {{ $value->name }}
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            
+                        </div>
+                        <div class="col-md-6 btn text-primary" {{-- data-bs-toggle="modal" data-bs-target="#themChucDanh" --}}>
+                            <div role="button" class="fs-4 text-danger"
+                                                                                                            data-repeater-create><i
+                                                                                                                class="bi bi-plus-circle"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#themPhongBan">Hủy</button>
+                    <button type="button" class="btn btn-danger">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Danh sach cap to chuc -->
     <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -2250,7 +2329,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -2281,7 +2361,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH CÁC CẤP NHÂN SỰ</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">DANH SÁCH CHỨC DANH</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -2298,7 +2378,8 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px"
+                                            src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
@@ -3252,6 +3333,9 @@
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript"
         src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <script>
         $(document).ready(function() {
