@@ -3,6 +3,9 @@
 @section('title', 'Bảng điều khiển')
 @section('header-style')
 <style>
+    .mainSection {
+        position: initial
+    }
     .mainWrap {
         display: flex;
         justify-content: center;

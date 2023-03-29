@@ -1360,13 +1360,14 @@ th {
     height: 100vh;
     line-height: var(--fz-20);
     background-color: var(--white-color-blur);
-    position: relative;
 }
 .mainSection {
     background-color: var(--white-color-blur);
     border-right: 1px solid var(--grey-color);
     border-left: 1px solid var(--grey-color);
     border-top: 1px solid var(--grey-color);
+    position: relative;
+
 }
 
 .mainSection_heading {
@@ -1988,7 +1989,7 @@ ul.modal_upload-list li:last-child {
 }
 
 .footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
 }
