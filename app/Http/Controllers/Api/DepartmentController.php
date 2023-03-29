@@ -32,7 +32,7 @@ class DepartmentController extends Controller
             $limit = $request->get('limit');
             $data = $this->dwtService->searchDepartment($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
-            return view('test')
+            return view('CauHinh.test')
             ->with('data', $data)
             ->with('listDepartments', $listDepartments);
             // return view('CauHinh.hoSoDonVi')
@@ -40,7 +40,7 @@ class DepartmentController extends Controller
             //     ->with('listDepartments', $listDepartments);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('test')->with('listDepartments', []);
+            return view('CauHinh.test')->with('listDepartments', []);
             // return view('Cauhinh.hoSoDonVi')->with('listDepartments', []);1
         }
     }
