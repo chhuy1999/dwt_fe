@@ -1360,14 +1360,13 @@ th {
     height: 100vh;
     line-height: var(--fz-20);
     background-color: var(--white-color-blur);
+    position: relative;
 }
 .mainSection {
     background-color: var(--white-color-blur);
     border-right: 1px solid var(--grey-color);
     border-left: 1px solid var(--grey-color);
     border-top: 1px solid var(--grey-color);
-    position: relative;
-
 }
 
 .mainSection_heading {
@@ -1735,6 +1734,7 @@ th {
 
 .main {
     padding: 70px 0 50px;
+    /* height: 100vh; */
 }
 .mainContent {
     background-color: #4f5f71;
@@ -1989,20 +1989,7 @@ ul.modal_upload-list li:last-child {
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    /* position: absolute;
+    width: 100%; */
+    /* bottom: 0; */
 }
-
-.container {
-    margin-left: inherit;
-    /* text-align: center; */
-
-}
-
-/* 
-.dropdown-menu{
-    overflow-y: scroll;
-    height: 140px;
-    inset: 0px;
-} */

@@ -262,6 +262,7 @@
                 </div>
 
             </div>
+            @include('template.footer.footer')
         </div>
 
     </div>

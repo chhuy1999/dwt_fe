@@ -6,6 +6,9 @@
     .mainSection {
         position: initial
     }
+    .main {
+        height: initial;
+    }
     .mainWrap {
         display: flex;
         justify-content: center;
