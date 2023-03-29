@@ -170,8 +170,8 @@
                                                                                 </div>
                                                                                 <div class="modal-body">
                                                                                     <div class="row">
-                                                                                        <div class="col-sm-12">
-                                                                                            <div class="table-responsive">
+                                                                                        <div class="col-sm-12 ">
+                                                                                            <div class="">
                                                                                                 <table class="table table-bordered table-hover">
                                                                                                     <tbody>
                                                                                                         <tr>
@@ -262,7 +262,7 @@
 
                                                                                         </div>
 
-                                                                                        <div class="col-sm-12 mb-3">
+                                                                                        <div class="col-sm-12 mt-3">
                                                                                             <div class="d-flex align-items-center">
                                                                                                 <div class="modal-title">Tổng hợp báo cáo</div>
                                                                                                 <span class="modal-title_mini ms-2">
@@ -284,11 +284,31 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="col-sm-12">
+
+                                                                                        <div class="col-sm-12 mt-3">
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <div class="modal-title">Nhận xét nhiệm vụ</div>
+                                                                                            </div>
+                                                                                            <div class="modal_list row">
+                                                                                                
+                                                                                                        <div class="col-sm-10 d-flex  align-items-center">
+                                                                                                            <input class="form-control" placeholder="Nhập nhận xét">
+                                                                                                            
+                                                                                                        </div>
+                                                                                                        <div class="col-sm-2 d-flex  align-items-center">
+                                                                                                            <input placeholder="Điểm KPI" class="form-control">
+                                                                                                            
+                                                                                                        </div>
+                                                                                                    
+                                                                                                
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-12 mt-3">
                                                                                             <div class="d-flex align-items-center">
                                                                                                 <div class="modal-title">Danh sách tiêu chí công việc</div>
                                                                                             </div>
-                                                                                            <div class="table-responsive">
+                                                                                            <div class="">
                                                                                                 <table class="table table-bordered table-hover">
                                                                                                     <thead>
                                                                                                         <tr>
@@ -312,11 +332,11 @@
                                                                                                 </table>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="col-sm-12">
+                                                                                        <div class="col-sm-12 mt-3">
                                                                                             <div class="d-flex align-items-center">
                                                                                                 <div class="modal-title">Danh sách báo cáo công việc</div>
                                                                                             </div>
-                                                                                            <div class="table-responsive">
+                                                                                            <div class="">
                                                                                                 <table class="table table-bordered table-hover">
                                                                                                     <thead>
                                                                                                         <tr>
@@ -348,7 +368,7 @@
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
-                                                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#nhanXetNhiemVu">Nhận xét nhiệm vụ</button>
+                                                                                    <button type="button" class="btn btn-danger">Lưu</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -2458,7 +2478,7 @@
 
 
 {{-- Modal Nhận Xét Nhiệm Vụ --}}
-<div class="modal fade" id="nhanXetNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="nhanXetNhiemVu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -2491,7 +2511,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
 @section('footer-script')
