@@ -1,6 +1,18 @@
 @extends('template.master')
 {{-- Trang chủ admin --}}
 @section('title', 'Bảng điều khiển')
+
+@section('header-style')
+
+<style>
+    .mainSection {
+        height: initial;
+    }
+</style>
+
+@endsection
+
+
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
 

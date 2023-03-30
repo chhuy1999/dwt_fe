@@ -1359,7 +1359,7 @@ th {
 }
 .mainWrap {
     /* width: calc(100% - var(--width-sidebar) * 2); */
-    /* height: 100vh; */
+    height: 100vh;
     line-height: var(--fz-20);
     background-color: var(--white-color-blur);
     position: relative;
@@ -1369,6 +1369,8 @@ th {
     border-right: 1px solid var(--grey-color);
     border-left: 1px solid var(--grey-color);
     border-top: 1px solid var(--grey-color);
+    position: relative;
+    height: 100%;
 }
 
 .mainSection_heading {
