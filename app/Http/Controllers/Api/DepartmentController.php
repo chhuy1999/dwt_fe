@@ -17,7 +17,7 @@ class DepartmentController extends Controller
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
-    
+
 
     /**
      * Display a listing of the resource.
@@ -33,14 +33,14 @@ class DepartmentController extends Controller
             $data = $this->dwtService->searchDepartment($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
             $listUsers = $this->dwtService->listUsers();
-            
-            return view('Cauhinh.configProfile')
+
+            return view('CauHinh.configProfile')
                  ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('Cauhinh.configProfile')->with('listDepartments', []);
+            return view('CauHinh.configProfile')->with('listDepartments', []);
         }
     }
 
