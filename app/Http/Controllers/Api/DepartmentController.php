@@ -17,7 +17,7 @@ class DepartmentController extends Controller
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
-    
+
 
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class DepartmentController extends Controller
             $data = $this->dwtService->searchDepartment($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
             $listUsers = $this->dwtService->listUsers();
-            
+
             return view('Cauhinh.profile')
                  ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
