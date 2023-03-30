@@ -251,7 +251,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#phanHoiVanDe"
+                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -283,7 +283,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#phanHoiVanDe"
+                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -315,7 +315,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#phanHoiVanDe"
+                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -567,12 +567,12 @@
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -605,7 +605,7 @@
                                                             </div>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#phanHoiVanDe">
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
                                                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
@@ -668,7 +668,7 @@
                                                             </div>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#phanHoiVanDe">
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
                                                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
@@ -731,7 +731,7 @@
                                                             </div>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#phanHoiVanDe">
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
                                                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
@@ -794,7 +794,7 @@
                                                             </div>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#phanHoiVanDe">
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
                                                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
@@ -857,7 +857,7 @@
                                                             </div>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#phanHoiVanDe">
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
                                                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
