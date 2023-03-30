@@ -1,4 +1,4 @@
-Chart.register(ChartjsPluginStacked100.default);
+// Chart.register(ChartjsPluginStacked100.default);
 new Chart(document.getElementById('stackedChart_nhanSu'), {
     type: 'bar',
     data: {

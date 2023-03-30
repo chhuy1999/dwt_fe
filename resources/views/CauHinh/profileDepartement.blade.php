@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
 @endsection
 
+<style>
+    .description-department {
+        width: 480px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+</style>
+
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -22,7 +31,7 @@
                         <div class="col-md-12">
                             <div class="card mb-3">
                                 <div class="card-body position-relative body_content-wrapper" id="body_content-1"
-                                    style="display:block">
+                                     style="display:block">
                                     <div class="pb-2 d-flex align-items-center">
                                         <div class="card-title">Toàn công ty</div>
                                         <div class="btn" data-bs-toggle="modal" data-bs-target="#suaCoCauToChuc">
@@ -93,182 +102,199 @@
                                                 <div class="action_wrapper d-flex">
                                                     <div class="form-group has-search">
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+
+                                                        <form action="/ho-so-don-vi" method="GET">
+                                                            <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                                   name="q" value="{{ request()->q }}">
+                                                        </form>
                                                     </div>
                                                     <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                                                         <button class="btn btn-danger d-block" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
+                                                                data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
+                                                       class="table table-responsive table-hover table-bordered">
                                                     <thead>
-                                                        <tr class="bg-light">
-                                                            <th class="text-center">STT</th>
-                                                            <th class="text-nowrap">Mã đơn vị</th>
-                                                            <th class="text-nowrap">Tên đơn vị</th>
-                                                            <th class="text-nowrap">Cấp tổ chức</th>
-                                                            <th class="text-nowrap">Trưởng đơn vị</th>
-                                                            <th class="text-nowrap">Chức năng nhiệm vụ</th>
-                                                            <th class="text-nowrap">Hành động</th>
-                                                        </tr>
+                                                    <tr class="bg-light">
+                                                        <th class="text-center">STT</th>
+                                                        <th class="text-nowrap">Mã đơn vị</th>
+                                                        <th class="text-nowrap">Tên đơn vị</th>
+                                                        <th class="text-nowrap">Cấp tổ chức</th>
+                                                        <th class="text-nowrap">Trưởng đơn vị</th>
+                                                        <th class="text-nowrap">Chức năng nhiệm vụ</th>
+                                                        <th class="text-nowrap">Hành động</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listDepartments->data as $value)
-                                                            <tr>
-                                                                <th scope="row">
-                                                                    <div
-                                                                        class="d-flex justify-content-center align-items-center">
-                                                                        {{ $loop->iteration }}
+                                                    @foreach ($$data->data as $value)
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex justify-content-center align-items-center">
+                                                                    {{ $loop->iteration }}
+                                                                </div>
+                                                            </th>
+                                                            <td class="text-nowrap">
+                                                                <div>QTN</div>
+                                                            </td>
+                                                            <td class="text-nowrap">
+                                                                <div>{{ $value->name }}</div>
+                                                            </td>
+                                                            <td class="text-nowrap">
+                                                                <div>Phòng ban</div>
+                                                            </td>
+                                                            <td class="text-nowrap">
+                                                                <div>{{ $value->in_charge}}</div>
+                                                            </td>
+                                                            <td class="text-nowrap">
+                                                                <div class="d-inline-block text-truncate description-department" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div
+                                                                    class="table_actions d-flex justify-content-center">
+                                                                    <div class="btn" href="#"
+                                                                         data-bs-toggle="modal"
+                                                                         data-bs-target="#suaCoCauToChuc{{ $value->id }}">
+                                                                        <img style="width:16px;height:16px"
+                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                </th>
-                                                                <td class="text-nowrap">
-                                                                    <div>QTN</div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->name }}</div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>Phòng ban</div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>Nguyễn Vũ Nguyệt Minh</div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="d-inline-block text-truncate" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc">Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                        theo yêu cầu của Ban Giám đốc</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div
-                                                                        class="table_actions d-flex justify-content-center">
-                                                                        <div class="btn" href="#"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#suaCoCauToChuc{{ $value->id }}">
-                                                                            <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/edit.svg') }}" />
-                                                                        </div>
-                                                                        <div class="btn" href="#"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#xoaCoCauToChuc{{ $value->id }}">
-                                                                            <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/trash.svg') }}" />
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            {{-- Xóa Cơ cấu tổ chức --}}
-                                                            <div class="modal fade" id="xoaCoCauToChuc{{ $value->id }}"
-                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title text-danger"
-                                                                                id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC
-                                                                            </h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            Bạn có thực sự muốn xoá cơ cấu tổ chức đã chọn
-                                                                            không?
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-outline-danger"
-                                                                                data-bs-dismiss="modal">Hủy</button>
-                                                                            <form
-                                                                                action="/ho-so-don-vi/{{ $value->id }}"
-                                                                                method="POST">
-                                                                                @csrf
-                                                                                @method('DELETE')
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger"
-                                                                                    id="deleteRowElement">Xóa</button>
-                                                                            </form>
-                                                                        </div>
+                                                                    <div class="btn" href="#"
+                                                                         data-bs-toggle="modal"
+                                                                         data-bs-target="#xoaCoCauToChuc{{ $value->id }}">
+                                                                        <img style="width:16px;height:16px"
+                                                                             src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
-                                                            </div>
-
-                                                            {{-- Modal Sửa Cơ cấu tổ chức --}}
-                                                            <div class="modal fade"
-                                                                id="suaCoCauToChuc{{ $value->id }}" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header text-center">
-                                                                            <h5 class="modal-title w-100"
-                                                                                id="exampleModalLabel">Sửa Cơ cấu tổ chức
-                                                                            </h5>
-                                                                            <button type="button" class="btn-close"
+                                                            </td>
+                                                        </tr>
+                                                        {{-- Xóa Cơ cấu tổ chức --}}
+                                                        <div class="modal fade" id="xoaCoCauToChuc{{ $value->id }}"
+                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title text-danger"
+                                                                            id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC
+                                                                        </h5>
+                                                                        <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
-                                                                        </div>
-
-                                                                        <form method="POST"
-                                                                            action="/ho-so-don-vi/{{ $value->id }}">
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Bạn có thực sự muốn xoá cơ cấu tổ chức đã chọn
+                                                                        không?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                                class="btn btn-outline-danger"
+                                                                                data-bs-dismiss="modal">Hủy</button>
+                                                                        <form
+                                                                            action="/ho-so-don-vi/{{ $value->id }}"
+                                                                            method="POST">
                                                                             @csrf
-                                                                            @method('PUT')
-
-
-                                                                            <div class="modal-body">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    value="{{ $value->name }}"
-                                                                                                    name="name">
-                                                                                    </div>
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    value="DMKT">
-                                                                                    </div>
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    value="CTCP Mastertran">
-                                                                                    </div>
-
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    value="Tổ/Đội/Nhóm">
-                                                                                    </div>
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    value="Vũ Thị Hà - MTT123">
-                                                                                    </div>
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    value="219 Trung Kính, Yên Hoà, Cầu...">
-                                                                                    </div>
-                                                                                    <div class="col-sm-12 mb-3">
-                                                                                        <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-outline-danger"
-                                                                                    data-bs-dismiss="modal">Hủy</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger">Lưu</button>
-                                                                            </div>
-
+                                                                            @method('DELETE')
+                                                                            <button type="submit"
+                                                                                    class="btn btn-danger"
+                                                                                    id="deleteRowElement">Xóa</button>
                                                                         </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endforeach
+                                                        </div>
+
+                                                        {{-- Modal Sửa Cơ cấu tổ chức --}}
+                                                        <div class="modal fade"
+                                                             id="suaCoCauToChuc{{ $value->id }}" tabindex="-1"
+                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header text-center">
+                                                                        <h5 class="modal-title w-100"
+                                                                            id="exampleModalLabel">Sửa Cơ cấu tổ chức
+                                                                        </h5>
+                                                                        <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                    </div>
+
+                                                                    <form method="POST"
+                                                                          action="/ho-so-don-vi/{{ $value->id }}">
+                                                                        @csrf
+                                                                        @method('PUT')
+
+
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control"
+                                                                                           type="text"
+                                                                                           value="{{ $value->name }}"
+                                                                                           name="name">
+                                                                                </div>
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control"
+                                                                                           type="text"
+                                                                                           value="DMKT">
+                                                                                </div>
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control"
+                                                                                           type="text"
+                                                                                           value="CTCP Mastertran">
+                                                                                </div>
+
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control"
+                                                                                           type="text"
+                                                                                           value="Tổ/Đội/Nhóm">
+                                                                                </div>
+                                                                                {{-- <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control"
+                                                                                                type="text"
+                                                                                                value="{{ $value->in_charge }}"
+                                                                                                name="in_charge">
+                                                                                </div> --}}
+
+                                                                                <div class="col-sm-12 mb-3">
+                                                                                    <input class="form-control" type="text" value="{{ $value->description }}"
+                                                                                           name="description">
+                                                                                </div>
+
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
+                                                                                            data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                            data-size="3" name="in_charge">
+                                                                                        @foreach ($listUsers->data as $value)
+                                                                                            <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control"
+                                                                                           type="text"
+                                                                                           value="219 Trung Kính, Yên Hoà, Cầu...">
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                    class="btn btn-outline-danger"
+                                                                                    data-bs-dismiss="modal">Hủy</button>
+                                                                            <button type="submit"
+                                                                                    class="btn btn-danger">Lưu</button>
+                                                                        </div>
+
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -290,7 +316,7 @@
 
     {{-- Modal Sửa Cơ cấu tổ chức --}}
     <div class="modal fade" id="suaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -357,8 +383,10 @@
                             </div>
                             <div class="col-sm-6 mb-3 d-flex">
                                 <div class="col-sm-11">
-                                    <select class="selectpicker" title="Chọn cấp tổ chức">
-                                        <option>Công ty con</option>
+                                    <select class="selectpicker" title="Chọn cấp tổ chức" data-actions-box="true"
+                                            data-live-search="true" title="Chọn chủ trì..."
+                                            data-live-search-placeholder="Tìm kiếm...">
+                                        <option>Công ty</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
                                         <option>Văn phòng</option>
@@ -370,28 +398,27 @@
                                         <option>Công ty thành viên</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-1">
+                                {{-- <div class="col-sm-1">
                                     <div class="modal_list-more" data-bs-toggle="modal"
                                     data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" title="Chọn trưởng đơn vị">
-                                    <option>Nguyễn Ngọc Bảo</option>
-                                    <option>Đặng Nguyễn Lam Mai</option>
-                                    <option>Hồ Thị Hồng Vân</option>
-                                    <option>Nguyễn Thị Ngọc Lan</option>
-                                    <option>Nguyễn Thị Hồng Oanh</option>
-                                    <option>Hà Nguyễn Minh Hiếu</option>
+                                <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
+                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                        data-size="3" name="in_charge">
+                                    @foreach ($listUsers->data as $value)
+                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" required type="text" placeholder="Nhập trụ sở chính *">
+                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính *">
                             </div>
                             <div class="col-sm-12 mb-3">
-                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị"></textarea>
+                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị" name="description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -406,7 +433,7 @@
 
     <!-- Modal Danh sach phong ban -->
     <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -420,7 +447,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                           id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Cung ứng
                                     </label>
@@ -438,7 +465,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                           id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Trade Marketing
                                     </label>
@@ -456,7 +483,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                           id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Digital Marketing
                                     </label>
@@ -474,7 +501,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                           id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Truyền thông
                                     </label>
@@ -492,7 +519,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                           id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Quản trị Nhãn/Đào tạo
                                     </label>
@@ -510,7 +537,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                           id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Kho & Giao vận
                                     </label>
@@ -528,7 +555,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                           id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Hành chính nhân sự
                                     </label>
@@ -548,7 +575,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                           id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Kế toán
                                     </label>
@@ -566,7 +593,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                           id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Tài chính
                                     </label>
@@ -584,7 +611,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                           id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Dịch vụ bán hàng
                                     </label>
@@ -602,7 +629,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault11">
+                                           id="flexRadioDefault11">
                                     <label class="form-check-label ms-3" for="flexRadioDefault11">
                                         Kinh doanh OTC
                                     </label>
@@ -620,7 +647,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault12">
+                                           id="flexRadioDefault12">
                                     <label class="form-check-label ms-3" for="flexRadioDefault12">
                                         Kinh doanh ETC
                                     </label>
@@ -638,7 +665,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault13">
+                                           id="flexRadioDefault13">
                                     <label class="form-check-label ms-3" for="flexRadioDefault13">
                                         Kinh doanh MT
                                     </label>
@@ -656,7 +683,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault14">
+                                           id="flexRadioDefault14">
                                     <label class="form-check-label ms-3" for="flexRadioDefault14">
                                         Kinh doanh online
                                     </label>
@@ -682,7 +709,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themViTriCongViec">Hủy</button>
+                            data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -691,7 +718,7 @@
 
     <!-- Modal Danh sach cap to chuc -->
     <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -705,7 +732,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                           id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Công ty con
                                     </label>
@@ -723,7 +750,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                           id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Chi nhánh
                                     </label>
@@ -741,7 +768,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                           id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Văn phòng đại diện
                                     </label>
@@ -759,7 +786,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                           id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Văn phòng
                                     </label>
@@ -777,7 +804,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                           id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Trung tâm
                                     </label>
@@ -795,7 +822,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                           id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Phòng ban
                                     </label>
@@ -813,7 +840,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                           id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Nhóm/tổ/đội
                                     </label>
@@ -833,7 +860,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                           id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Phân xưởng
                                     </label>
@@ -851,7 +878,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                           id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Nhà máy
                                     </label>
@@ -869,7 +896,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                           id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Công ty thành viên
                                     </label>
@@ -893,7 +920,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themPhongBan">Hủy</button>
+                            data-bs-target="#themPhongBan">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -902,7 +929,7 @@
 
     <!-- Modal Danh sach chuc danh -->
     <div class="modal fade" id="danhsachChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -916,7 +943,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                           id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Chủ tịch HĐQT
                                     </label>
@@ -934,7 +961,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                           id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Tổng Giám đốc
                                     </label>
@@ -952,7 +979,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                           id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Phó Tổng Giám đốc
                                     </label>
@@ -970,7 +997,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                           id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Giám đốc điều hành
                                     </label>
@@ -988,7 +1015,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                           id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Quản lý cấp cao
                                     </label>
@@ -1006,7 +1033,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                           id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Quản lý cấp trung
                                     </label>
@@ -1024,7 +1051,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                           id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Trưởng phòng
                                     </label>
@@ -1044,7 +1071,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                           id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Phó phòng
                                     </label>
@@ -1062,7 +1089,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                           id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Trưởng nhóm
                                     </label>
@@ -1080,7 +1107,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                           id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Chuyên viên
                                     </label>
@@ -1098,7 +1125,7 @@
                                 class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                           id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Nhân viên
                                     </label>
@@ -1122,7 +1149,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themViTriCongViec">Hủy</button>
+                            data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1193,7 +1220,7 @@
                                         <option>Công ty thành viên</option>
                                     </select>
                                     <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachCapToChuc">
+                                         data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -1238,7 +1265,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                            data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1247,7 +1274,7 @@
 
     <!-- Modal Them Vi Tri Cong Viec -->
     <div class="modal fade" id="themViTriCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1300,7 +1327,7 @@
                                         <option>Kinh doanh online</option>
                                     </select>
                                     <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachPhongBan">
+                                         data-bs-target="#danhsachPhongBan">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -1326,7 +1353,7 @@
                                         <option>Nhân viên</option>
                                     </select>
                                     <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachChucDanh">
+                                         data-bs-target="#danhsachChucDanh">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -1347,7 +1374,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                            data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1356,7 +1383,7 @@
 
     <!-- Modal TRANG BỊ HÀNH CHÍNH -->
     <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1366,314 +1393,314 @@
                 <div class="modal-body">
                     <div class="d-flex align-items-start">
                         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
-                            aria-orientation="vertical">
+                             aria-orientation="vertical">
                             <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-home" type="button" role="tab"
-                                aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
+                                    data-bs-target="#v-pills-home" type="button" role="tab"
+                                    aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
                             <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-profile" type="button" role="tab"
-                                aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
+                                    data-bs-target="#v-pills-profile" type="button" role="tab"
+                                    aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
                             <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-messages" type="button" role="tab"
-                                aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
+                                    data-bs-target="#v-pills-messages" type="button" role="tab"
+                                    aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
                             <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings" type="button" role="tab"
-                                aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
+                                    data-bs-target="#v-pills-settings" type="button" role="tab"
+                                    aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
                             <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings2" type="button" role="tab"
-                                aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
+                                    data-bs-target="#v-pills-settings2" type="button" role="tab"
+                                    aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                aria-labelledby="v-pills-home-tab">
+                                 aria-labelledby="v-pills-home-tab">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                           id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                           id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                           id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                           id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                           id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                           id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                           id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                           id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                aria-labelledby="v-pills-profile-tab">
+                                 aria-labelledby="v-pills-profile-tab">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                           id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                           id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                           id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                           id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                           id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                           id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                           id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                           id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                aria-labelledby="v-pills-messages-tab">
+                                 aria-labelledby="v-pills-messages-tab">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                           id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                           id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                           id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                           id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                           id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                           id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                           id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                           id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                                 aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1">
+                                           id="1">
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2">
+                                           id="2">
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                           id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                           id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                           id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                           id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                           id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                           id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                                 aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                           id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                           id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                           id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                           id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                           id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                           id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                           id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                           id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
@@ -1791,7 +1818,7 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript"
-        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+            src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {

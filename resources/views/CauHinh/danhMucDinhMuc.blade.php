@@ -36,37 +36,10 @@
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="action_wrapper d-flex">
-                                            <div class="form-group has-search">
-                                                <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                <form action="/danh-muc-dinh-muc" method="GET">
-                                                    <input type="text" class="form-control" name="q"
-                                                        placeholder="Tìm kiếm định mức" value="{{ request()->q }}">
-                                                </form>
-                                            </div>
-                                            <div class="action_export ms-3">
-                                                <input type="text" class="form-control" autocomplete="off"
-                                                    id="filter_thuocDonVi" placeholder="Đơn vị phụ trách *" />
-                                            </div>
-                                        </div>
-                                        <div class="main_action">
-                                            <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#themMoiDinhMuc">
-                                                <i class="bi bi-plus"></i>
-                                                Thêm định mức
-                                            </button>
-                                            <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="Xuất file Excel">
-                                                <i class="bi bi-download"></i>
-                                                Xuất Excel
-                                            </button>
-                                        </div>
-                                    </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="repeater-hopPhongBan position-relative">
-                                                <table class="table table-responsive table-hover table-bordered">
+                                            <div class="position-relative">
+                                                <table id="dsDinhMuc" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center">STT</th>
@@ -96,12 +69,12 @@
                                                                     </p>
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->departement && $target->departement->name }}
+                                                                    {{  $target->departement->name ?? "" }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->position && $target->position->name }}
+                                                                    {{  $target->position->name ?? "" }}
                                                                 </td>
-                                                                
+
                                                                 <td>
                                                                     <div class="text-center">{{ $target->manday }}</div>
                                                                 </td>
@@ -138,8 +111,7 @@
                                                             <div class="modal fade" id="suaMoiDinhMuc{{ $target->id }}"
                                                                 tabindex="-1" aria-labelledby="exampleModalLabel"
                                                                 aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered"
-                                                                    style="max-width:38%;">
+                                                                <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
                                                                             <h5 class="modal-title w-100"
@@ -169,75 +141,12 @@
                                                                                             <textarea class="form-control" name="description" placeholder="Nhập mô tả thực hiện">{{ $target->description }}</textarea>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-sm-4">
-                                                                                        <div class="mb-3">
-                                                                                            <select name="unit_id"
-                                                                                                class="selectpicker">
-
-                                                                                                @foreach ($listUnits->data as $unit)
-                                                                                                    @if ($unit->id == $target->unit_id)
-                                                                                                        <option
-                                                                                                            value="{{ $unit->id }}"
-                                                                                                            selected>
-                                                                                                            {{ $unit->name }}
-                                                                                                        </option>
-                                                                                                    @else
-                                                                                                        <option
-                                                                                                            value="{{ $unit->id }}">
-                                                                                                            {{ $unit->name }}
-                                                                                                        </option>
-                                                                                                    @endif
-                                                                                                @endforeach
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-sm-4">
-                                                                                        <div class="mb-3">
-
-                                                                                            <input class="form-control"
-                                                                                                type="text"
-                                                                                                name="manday"
-                                                                                                value="{{ $target->manday }}"
-                                                                                                placeholder="Nhập Manday">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-sm-4">
-                                                                                        <div class="mb-3">
-                                                                                            <input class="form-control"
-                                                                                                type="text"
-                                                                                                name="quantity"
-                                                                                                value="{{ $target->quantity }}"
-                                                                                                placeholder="Nhập Số lượng">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-sm-6">
-                                                                                        <div class="mb-3">
-                                                                                            <select class="selectpicker"
-                                                                                                name="position_id"
-                                                                                                title="Chọn Vị trí">
-                                                                                                @foreach ($listPositions->data as $pos)
-                                                                                                    @if ($pos->id == $target->position_id)
-                                                                                                        <option
-                                                                                                            value="{{ $pos->id }}"
-                                                                                                            selected>
-                                                                                                            {{ $pos->name }}
-                                                                                                        </option>
-                                                                                                    @else
-                                                                                                        <option
-                                                                                                            value="{{ $pos->id }}">
-                                                                                                            {{ $pos->name }}
-                                                                                                        </option>
-                                                                                                    @endif
-                                                                                                @endforeach
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
                                                                                     <div class="col-sm-6">
                                                                                         <div class="mb-3">
 
                                                                                             <select class="selectpicker"
                                                                                                 name="departement_id"
-                                                                                                title="Chọn phòng/ban"
+                                                                                                title="Đơn vị phụ trách"
                                                                                                 data-width="100%"
                                                                                                 data-live-search="true"
                                                                                                 data-live-search-placeholder="Tìm kiếm..."
@@ -259,6 +168,71 @@
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
+                                                                                    {{-- <div class="col-sm-4">
+                                                                                        <div class="mb-3">
+                                                                                            <select name="unit_id"
+                                                                                                class="s$target->position &&electpicker">
+
+                                                                                                @foreach ($listUnits->data as $unit)
+                                                                                                    @if ($unit->id == $target->unit_id)
+                                                                                                        <option
+                                                                                                            value="{{ $unit->id }}"
+                                                                                                            selected>
+                                                                                                            {{ $unit->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option
+                                                                                                            value="{{ $unit->id }}">
+                                                                                                            {{ $unit->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div> --}}
+
+                                                                                    {{-- <div class="col-sm-4">
+                                                                                        <div class="mb-3">
+                                                                                            <input class="form-control"
+                                                                                                type="text"
+                                                                                                name="quantity"
+                                                                                                value="{{ $target->quantity }}"
+                                                                                                placeholder="Nhập Số lượng">
+                                                                                        </div>
+                                                                                    </div> --}}
+                                                                                    <div class="col-sm-6">
+                                                                                        <div class="mb-3">
+                                                                                            <select class="selectpicker"
+                                                                                                name="position_id"
+                                                                                                title="Chọn Vị trí"
+                                                                                                data-size="5">
+                                                                                                @foreach ($listPositions->data as $pos)
+                                                                                                    @if ($pos->id == $target->position_id)
+                                                                                                        <option
+                                                                                                            value="{{ $pos->id }}"
+                                                                                                            selected>
+                                                                                                            {{ $pos->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option
+                                                                                                            value="{{ $pos->id }}">
+                                                                                                            {{ $pos->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-3">
+                                                                                        <div class="mb-3">
+                                                                                            <input class="form-control"
+                                                                                                type="number"
+                                                                                                name="manday"
+                                                                                                value="{{ $target->manday }}"
+                                                                                                placeholder="Nhập Manday">
+                                                                                        </div>
+                                                                                    </div>
+
 
                                                                                 </div>
 
@@ -436,8 +410,8 @@
                                     <select class="selectpicker" title="Đơn vị phụ trách" name="departement_id"
                                         data-width="100%" data-live-search="true"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                        @foreach ($listDepartments->data as $pos)
-                                            <option value="{{ $pos->name }}">{{ $pos->name }}</option>
+                                        @foreach ($listDepartments->data as $dep)
+                                            <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -448,7 +422,7 @@
                                         data-width="100%" data-live-search="true"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listPositions->data as $pos)
-                                            <option value="{{ $pos->name }}">{{ $pos->name }}</option>
+                                            <option value="{{ $pos->id }}">{{ $pos->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -495,7 +469,7 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
-
+    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript"
         src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
@@ -635,6 +609,7 @@
             ]
 
         }];
+
         var comboTree1, comboTree2
 
         $(document).ready(function($) {
@@ -643,12 +618,64 @@
                 isMultiple: false,
                 cascadeSelect: true
             });
+
             comboTree2 = $('#filter_thuocDonVi').comboTree({
                 source: data,
                 isMultiple: false,
                 cascadeSelect: true
             });
+            console.log(comboTree1);
+
 
         });
     </script>
+
+<script>
+    const targetTable = $('#dsDinhMuc').DataTable({
+        paging: true,
+        ordering: false,
+        order: [[0, 'desc']],
+        pageLength: 5,
+        language: {
+            info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+            infoEmpty: 'Hiện tại chưa có bản ghi nào',
+            search: 'Tìm kiếm biên bản',
+            paginate: {
+                previous: '<i class="bi bi-caret-left-fill"></i>',
+                next: '<i class="bi bi-caret-right-fill"></i>',
+            },
+            search: '',
+            searchPlaceholder: 'Tìm kiếm định mức...',
+            zeroRecords: 'Không tìm thấy kết quả',
+        },
+        oLanguage: {
+            sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+        },
+        dom: '<"d-flex justify-content-between mb-3"<"action_wrapper"><"d-flex align-items-center"<"card-title-wrapper">f>>rt<"dataTables_bottom  justify-content-end"p>',
+    });
+    $('div.action_wrapper').html(`
+        <div class="action_wrapper d-flex">
+            <div class="action_export">
+                <input type="text" class="form-control" autocomplete="off"
+                    id="filter_thuocDonVi" placeholder="Đơn vị phụ trách *" />
+            </div>
+        </div>
+    `);
+    $('div.card-title-wrapper').html(`
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div class="main_action">
+                <button id="exporttable" class="btn btn-danger me-3" data-bs-toggle="modal"
+                    data-bs-target="#themMoiDinhMuc">
+                    Thêm định mức
+                </button>
+                <button id="exporttable" class="btn btn-outline-danger me-3" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Xuất file Excel">
+                    <i class="bi bi-download"></i>
+                    Xuất Excel
+                </button>
+            </div>
+        </div>
+    `);
+</script>
 @endsection

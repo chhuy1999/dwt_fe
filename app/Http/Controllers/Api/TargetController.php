@@ -59,7 +59,7 @@ class TargetController extends Controller
             $this->dwtService->createKpiTarget($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
-            dd($e);
+            error_log($e->getMessage());
             $error = $e->getMessage();
             return back()->with('error', $error);
         }

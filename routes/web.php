@@ -71,8 +71,8 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
 
 // hồ sơ đơn vị
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
-    Route::get('ho-so-don-vi', [DepartmentController::class, 'index']);
-    Route::post('ho-so-don-vi', [DepartmentController::class, 'store']);
+    Route::get('/ho-so-don-vi', [DepartmentController::class, 'index']);
+    Route::post('/ho-so-don-vi', [DepartmentController::class, 'store']);
     Route::put('ho-so-don-vi/{id}', [DepartmentController::class, 'update']);
     Route::delete('ho-so-don-vi/{id}', [DepartmentController::class, 'delete']);
 });
@@ -108,6 +108,7 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('giao-viec', [AssignTaskController::class, 'index']);
     Route::post('giao-viec', [AssignTaskController::class, 'assignTask']);
+    Route::put('/huy-giao-viec/{id}', [AssignTaskController::class, 'unAssignTask']);
 });
 //bao cao cv
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
