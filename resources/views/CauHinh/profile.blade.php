@@ -368,8 +368,10 @@
                                 <input type="text" class="form-control" autocomplete="off" required id="thuocDonVi" placeholder="Chọn đơn vị mẹ *" />
                             </div>
                             <div class="col-sm-6 mb-3 d-flex">
-                                <div class="col-sm-11">
-                                    <select class="selectpicker" title="Chọn cấp tổ chức">
+                                <div class="col-sm-12">
+                                    <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%"
+                                    data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                    data-size="3">
                                         <option>Công ty con</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
@@ -382,12 +384,12 @@
                                         <option>Công ty thành viên</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-1">
+                                {{-- <div class="col-sm-1">
                                     <div class="modal_list-more" data-bs-toggle="modal"
                                     data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
