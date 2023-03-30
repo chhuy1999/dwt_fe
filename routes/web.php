@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\TargetDetailController;
 use App\Http\Controllers\Api\TargetLogController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\PositionLevelController;
+use App\Http\Controllers\Api\ReportsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -146,10 +147,21 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 });
 
 
-// Họp đơn vị
+
 Route::get('giao-ban', function () {
     return view('HopDonVi.giaoBan');
 });
+
+
+
+// Họp đơn vị
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('giao-ban', [ReportsController::class, 'index']);
+    Route::post('giao-ban', [ReportsController::class, 'store']);
+    Route::put('giao-ban/{id}', [ReportsController::class, 'update']);
+    Route::delete('giao-ban/{id}', [ReportsController::class, 'delete']);
+});
+
 
 
 // Danh mục gói trang bị

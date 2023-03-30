@@ -72,7 +72,7 @@
         }
 
         .information {
-            width: 400px;
+            /* width: 400px; */
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
@@ -99,10 +99,10 @@
                                 <div class="col-sm-8">
                                     <select class="selectpicker mainSection_width-select" data-actions-box="true"
                                         data-live-search="true" title="Chọn chủ trì..."
-                                        data-live-search-placeholder="Tìm kiếm...">
-                                        <option>Nguyễn Ngọc Bảo</option>
-                                        <option>Đặng Nguyễn Lam Mai</option>
-                                        <option>Hồ Thị Hồng Vân</option>
+                                        data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                        @foreach ($listUsers->data as $value)
+                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -186,9 +186,9 @@
                                                                     data-selected-text-format="count > 1"
                                                                     data-count-selected-text="Có {0} Thư ký"
                                                                     data-live-search-placeholder="Tìm kiếm...">
-                                                                    <option>Nguyễn Ngọc Bảo</option>
-                                                                    <option>Đặng Nguyễn Lam Mai</option>
-                                                                    <option>Hồ Thị Hồng Vân</option>
+                                                                    @foreach ($listUsers->data as $value)
+                                                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -206,12 +206,9 @@
                                                                     data-selected-text-format="count > 1"
                                                                     data-count-selected-text="Có {0} thành viên"
                                                                     data-live-search-placeholder="Tìm kiếm...">
-                                                                    <option>Nguyễn Ngọc Bảo</option>
-                                                                    <option>Đặng Nguyễn Lam Mai</option>
-                                                                    <option>Hồ Thị Hồng Vân</option>
-                                                                    <option>Nguyễn Thị Ngọc Lan</option>
-                                                                    <option>Nguyễn Thị Hồng Oanh</option>
-                                                                    <option>Hà Nguyễn Minh Hiếu</option>
+                                                                    @foreach ($listUsers->data as $value)
+                                                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -254,7 +251,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#phanHoiVanDe"
+                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -286,7 +283,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#phanHoiVanDe"
+                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -318,7 +315,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#phanHoiVanDe"
+                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -373,8 +370,8 @@
                                                                         <i class="col bi bi-journal-check"
                                                                             style="padding-right: 4px; padding-left: 25px"></i>
                                                                         
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
+                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="information col-sm-10">
+                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page
                                                                         </p>
                                                                         <div class="col">
                                                                             <p class="fs-6">9:58</p>
@@ -483,92 +480,348 @@
                                             <table class="table table-responsive table-hover table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>STT</th>
-                                                        <th>Vấn đề tồn đọng</th>
-                                                        <th>Người nêu</th>
-                                                        <th>Nguyên nhân</th>
-                                                        <th>Hướng giải quyết</th>
-                                                        <th>PIC</th>
-                                                        <th>Thời hạn</th>
+                                                        <th style="width: 2%">STT</th>
+                                                        <th style="width: 20%">
+                                                            <div class="d-flex justify-content-between">
+                                                                Vấn đề tồn đọng
+                                                                {{-- <div>
+                                                                    <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
+                                                                </div> --}}
+        
+                                                            </div>
+                                                        </th>
+                                                        <th style="width: 10%">
+                                                            Phân loại
+                                                        </th>
+                                                        <th style="width: 12%">Người nêu</th>
+                                                        <th style="width: 22%">Nguyên nhân</th>
+                                                        <th style="width: 21%">
+                                                            Hướng giải quyết
+                                                        </th>
+                                                        <th style="width: 6%">Thời hạn</th>
                                                         <th colspan="2"></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody data-repeater-list="group-a">
-                                                    <tr data-repeater-item>
+                                                <tbody>
+                                                    <tr>
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-center">
                                                                 1
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="description-problem-responded"
-                                                                title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
-                                                            <div class="name-issuer" title="Đặng Vũ Lam Mai - MTT123">Đặng
-                                                                Vũ Lam Mai - MTT123</div>
+                                                            <div>
+                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                            </div>
                                                         </td>
                                                         <td>
-                                                            NN1
+                                                            <div>
+                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                            </div>
                                                         </td>
                                                         <td>
-                                                            Sẽ gửi trong ngày
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
-                                                            Vân
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
-                                                            05/04
+                                                            <div>19/03</div>
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-center">
-                                                                <div class="circle_tracking-wrapper"
-                                                                    style="border: 1px solid">
-                                                                    <div class="circle_tracking bg-white">
+                                                                <div class="circle_tracking-wrapper">
+                                                                    <div class="circle_tracking opacity-75 bg-danger">
                                                                     </div>
-                                                                    <div class="circle_tracking bg-white">
+                                                                    <div class="circle_tracking opacity-75 bg-success">
                                                                     </div>
-                                                                    <div class="circle_tracking bg-white">
+                                                                    <div class="circle_tracking opacity-75 bg-success">
                                                                     </div>
-                                                                    <div class="circle_tracking bg-white">
+                                                                    <div class="circle_tracking opacity-75 bg-success">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                    class="bi bi-three-dots-vertical"></i>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                             </div>
-                                                            <ul class="dropdown-menu"
-                                                                aria-labelledby="dropdownMenuButton1">
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#suaVanDeTonDong">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#"
-                                                                        data-repeater-delete>
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                        Xóa
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
                                                                     </a>
                                                                 </li>
                                                             </ul>
                                                         </td>
                                                     </tr>
-
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                1
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <div type="text" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div>18/03</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <div class="circle_tracking-wrapper">
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            </div>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        Sửa
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                1
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <div type="text" class="form-control border-0 bg-transparent" value="Than phiên">Than phiền</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div>19/03</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <div class="circle_tracking-wrapper">
+                                                                    <div class="circle_tracking opacity-75 bg-danger">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            </div>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        Sửa
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                1
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <div type="text" class="form-control border-0 bg-transparent" value="Than phiền">Than phiền</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div>17/03</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <div class="circle_tracking-wrapper">
+                                                                    <div class="circle_tracking opacity-75 bg-warning">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-warning">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-warning">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-warning">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            </div>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        Sửa
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                1
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
+                                                        </td>
+                                                        <td>
+                                                            <div>19/03</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <div class="circle_tracking-wrapper">
+                                                                    <div class="circle_tracking opacity-75 bg-danger">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-danger">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-danger">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-danger">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            </div>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        Sửa
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+        
+        
                                                 </tbody>
                                             </table>
-                                            {{-- <div data-repeater-create class="add-row-btn">
-                                                    <i class="bi bi-plus-circle"></i>
-                                                </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -862,7 +1115,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal-title fw-bolder">I. NỘI DUNG CUỘC HỌP</div>
+                                <div class="modal-title fw-bolder">I. NỘI DUNG TRAO ĐỔI</div>
                             </div>
                         </div>
                         <div class="col-sm-12">
