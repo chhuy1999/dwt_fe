@@ -42,11 +42,12 @@
                                                 <span class="bi bi-search form-control-feedback fs-5"></span>
                                                 <form action="/danh-muc-dinh-muc" method="GET">
                                                     <input type="text" class="form-control" name="q"
-                                                        placeholder="Tìm kiếm định mức" value="{{request()->q}}">
+                                                        placeholder="Tìm kiếm định mức" value="{{ request()->q }}">
                                                 </form>
                                             </div>
-                                            <div class="action_export ms-3" >
-                                                <input type="text" class="form-control" autocomplete="off" id="filter_thuocDonVi" placeholder="Đơn vị phụ trách *" />
+                                            <div class="action_export ms-3">
+                                                <input type="text" class="form-control" autocomplete="off"
+                                                    id="filter_thuocDonVi" placeholder="Đơn vị phụ trách *" />
                                             </div>
                                         </div>
                                         <div class="main_action">
@@ -145,7 +146,8 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
                                                                             <h5 class="modal-title w-100"
-                                                                                id="exampleModalLabel">Sửa định mức lao động</h5>
+                                                                                id="exampleModalLabel">Sửa định mức lao động
+                                                                            </h5>
                                                                             <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
@@ -159,12 +161,11 @@
 
                                                                                 <div class="row">
                                                                                     <div class="col-sm-12">
-                                                                                        <input
-                                                                                                class="form-control"
-                                                                                                type="text"
-                                                                                                value="{{ $target->name }}"
-                                                                                                name="name"
-                                                                                                placeholder="Nhập tên định mức">
+                                                                                        <input class="form-control"
+                                                                                            type="text"
+                                                                                            value="{{ $target->name }}"
+                                                                                            name="name"
+                                                                                            placeholder="Nhập tên định mức">
                                                                                     </div>
                                                                                     <div class="col-sm-12 mt-3">
                                                                                         <div class="mb-3">
@@ -172,8 +173,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-4">
-                                                                                        <div
-                                                                                            class="mb-3">
+                                                                                        <div class="mb-3">
                                                                                             <select name="unit_id"
                                                                                                 class="selectpicker">
 
@@ -195,11 +195,9 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-4">
-                                                                                        <div
-                                                                                            class="mb-3">
-                                                                                            
+                                                                                        <div class="mb-3">
+
                                                                                             <input class="form-control"
-                                                                                                
                                                                                                 type="text"
                                                                                                 name="manday"
                                                                                                 value="{{ $target->manday }}"
@@ -207,8 +205,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-4">
-                                                                                        <div
-                                                                                            class="mb-3">
+                                                                                        <div class="mb-3">
                                                                                             <input class="form-control"
                                                                                                 type="text"
                                                                                                 name="quantity"
@@ -217,52 +214,52 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-6">
-                                                                                        <div
-                                                                                            class="mb-3">
-                                                                                                <select
-                                                                                                    class="selectpicker"
-                                                                                                    name="position_id"
-                                                                                                    title="Chọn Vị trí">
-                                                                                                    @foreach ($listPositions->data as $pos)
-                                                                                                        @if ($pos->id == $target->position_id)
-                                                                                                            <option
-                                                                                                                value="{{ $pos->id }}"
-                                                                                                                selected>
-                                                                                                                {{ $pos->name }}
-                                                                                                            </option>
-                                                                                                        @else
-                                                                                                            <option
-                                                                                                                value="{{ $pos->id }}">
-                                                                                                                {{ $pos->name }}
-                                                                                                            </option>
-                                                                                                        @endif
-                                                                                                    @endforeach
-                                                                                                </select>
+                                                                                        <div class="mb-3">
+                                                                                            <select class="selectpicker"
+                                                                                                name="position_id"
+                                                                                                title="Chọn Vị trí">
+                                                                                                @foreach ($listPositions->data as $pos)
+                                                                                                    @if ($pos->id == $target->position_id)
+                                                                                                        <option
+                                                                                                            value="{{ $pos->id }}"
+                                                                                                            selected>
+                                                                                                            {{ $pos->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option
+                                                                                                            value="{{ $pos->id }}">
+                                                                                                            {{ $pos->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                @endforeach
+                                                                                            </select>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-6">
-                                                                                        <div
-                                                                                            class="mb-3">
-                                                
-                                                                                                <select
-                                                                                                    class="selectpicker"
-                                                                                                    name="departement_id"
-                                                                                                    title="Chọn phòng/ban">
-                                                                                                    @foreach ($listDepartments->data as $dep)
-                                                                                                        @if ($dep->id == $target->departement_id)
-                                                                                                            <option
-                                                                                                                value="{{ $dep->id }}"
-                                                                                                                selected>
-                                                                                                                {{ $dep->name }}
-                                                                                                            </option>
-                                                                                                        @else
-                                                                                                            <option
-                                                                                                                value="{{ $dep->id }}">
-                                                                                                                {{ $dep->name }}
-                                                                                                            </option>
-                                                                                                        @endif
-                                                                                                    @endforeach
-                                                                                                </select>
+                                                                                        <div class="mb-3">
+
+                                                                                            <select class="selectpicker"
+                                                                                                name="departement_id"
+                                                                                                title="Chọn phòng/ban"
+                                                                                                data-width="100%"
+                                                                                                data-live-search="true"
+                                                                                                data-live-search-placeholder="Tìm kiếm..."
+                                                                                                data-size="3">
+                                                                                                @foreach ($listDepartments->data as $dep)
+                                                                                                    @if ($dep->id == $target->departement_id)
+                                                                                                        <option
+                                                                                                            value="{{ $dep->id }}"
+                                                                                                            selected>
+                                                                                                            {{ $dep->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option
+                                                                                                            value="{{ $dep->id }}">
+                                                                                                            {{ $dep->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                @endforeach
+                                                                                            </select>
                                                                                         </div>
                                                                                     </div>
 
@@ -289,13 +286,15 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title text-danger"
-                                                                                id="exampleModalLabel">Xóa định mức lao động</h5>
+                                                                                id="exampleModalLabel">Xóa định mức lao
+                                                                                động</h5>
                                                                             <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            Bạn có thực sự muốn xoá đinh mức lao động này không?
+                                                                            Bạn có thực sự muốn xoá đinh mức lao động này
+                                                                            không?
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button"
@@ -430,14 +429,17 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <input type="text" required class="form-control comboTreeInputBox" autocomplete="off" id="thuocDonVi" placeholder="Đơn vị phụ trách *">
+                                    <input type="text" class="form-control comboTreeInputBox" name="description"
+                                        autocomplete="off" id="thuocDonVi" placeholder="Đơn vị phụ trách *">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <select class="selectpicker" required data-live-search="true" title="Vị trí phụ trách *" data-size="5" name="position_id">
+                                    <select class="selectpicker" title="Vị trí phụ trách" name="position_id"
+                                        data-width="100%" data-live-search="true"
+                                        data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listPositions->data as $pos)
-                                            <option value="{{ $pos->id }}">{{ $pos->name }}</option>
+                                            <option value="{{ $pos->name }}">{{ $pos->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -493,151 +495,151 @@
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
 
-<script type="text/javascript">
-    var data = [{
-        id: 0,
-        title: 'Công ty Cổ phần Mastertran',
-        subs: [{
-                id: 00,
-                title: 'Khối Kinh doanh',
-                subs: [{
-                    id: 000,
-                    title: 'Kênh OTC',
+    <script type="text/javascript">
+        var data = [{
+            id: 0,
+            title: 'Công ty Cổ phần Mastertran',
+            subs: [{
+                    id: 00,
+                    title: 'Khối Kinh doanh',
                     subs: [{
-                        id: 0000,
-                        title: 'Vùng 1: Hà Nội và Tây Bắc'
+                        id: 000,
+                        title: 'Kênh OTC',
+                        subs: [{
+                            id: 0000,
+                            title: 'Vùng 1: Hà Nội và Tây Bắc'
+                        }, {
+                            id: 0001,
+                            title: 'Vùng 2: Duyên Hải + Đông Bắc'
+                        }, {
+                            id: 0002,
+                            title: 'Vùng 3: Miền Trung'
+                        }, {
+                            id: 0003,
+                            title: 'Vùng 4: Tây Nguyên'
+                        }, {
+                            id: 0004,
+                            title: 'Vùng 5: HCM và Miền Đông'
+                        }, {
+                            id: 0005,
+                            title: 'Vùng 6: Miền Tây'
+                        }]
                     }, {
-                        id: 0001,
-                        title: 'Vùng 2: Duyên Hải + Đông Bắc'
+                        id: 001,
+                        title: 'Kênh ETC',
+                        subs: [{
+                            id: 0010,
+                            title: 'ETC miền Bắc'
+                        }, {
+                            id: 0011,
+                            title: 'ETC miền Trung'
+                        }, {
+                            id: 0012,
+                            title: 'ETC miền Nam'
+                        }]
                     }, {
-                        id: 0002,
-                        title: 'Vùng 3: Miền Trung'
+                        id: 002,
+                        title: 'Kênh MT',
+                        subs: [{
+                            id: 0020,
+                            title: 'MT miền Bắc'
+                        }, {
+                            id: 0021,
+                            title: 'MT miền Trung'
+                        }, {
+                            id: 0022,
+                            title: 'MT miền Nam'
+                        }]
                     }, {
-                        id: 0003,
-                        title: 'Vùng 4: Tây Nguyên'
+                        id: 003,
+                        title: 'Kênh online',
+                        subs: [{
+                            id: 0030,
+                            title: 'Đại lý online'
+                        }, {
+                            id: 0031,
+                            title: 'Bán lẻ online'
+                        }]
                     }, {
-                        id: 0004,
-                        title: 'Vùng 5: HCM và Miền Đông'
-                    }, {
-                        id: 0005,
-                        title: 'Vùng 6: Miền Tây'
+                        id: 004,
+                        title: 'Kênh TMĐT'
                     }]
-                }, {
-                    id: 001,
-                    title: 'Kênh ETC',
-                    subs: [{
-                        id: 0010,
-                        title: 'ETC miền Bắc'
-                    }, {
-                        id: 0011,
-                        title: 'ETC miền Trung'
-                    }, {
-                        id: 0012,
-                        title: 'ETC miền Nam'
-                    }]
-                }, {
-                    id: 002,
-                    title: 'Kênh MT',
-                    subs: [{
-                        id: 0020,
-                        title: 'MT miền Bắc'
-                    }, {
-                        id: 0021,
-                        title: 'MT miền Trung'
-                    }, {
-                        id: 0022,
-                        title: 'MT miền Nam'
-                    }]
-                }, {
-                    id: 003,
-                    title: 'Kênh online',
-                    subs: [{
-                        id: 0030,
-                        title: 'Đại lý online'
-                    }, {
-                        id: 0031,
-                        title: 'Bán lẻ online'
-                    }]
-                }, {
-                    id: 004,
-                    title: 'Kênh TMĐT'
-                }]
 
-            },
-            {
-                id: 01,
-                title: 'Khối Marketing',
-                subs: [{
-                    id: 010,
-                    title: 'Quản tri Nhãn & Đào tạo'
-                }, {
-                    id: 011,
-                    title: 'Digital Marketing'
-                }, {
-                    id: 012,
-                    title: 'Trade Marketing'
-                }, {
-                    id: 013,
-                    title: 'Truyền thông & Sáng tạo nội dung'
-                }]
-            },
-            {
-                id: 02,
-                title: 'Khối văn phòng',
-                subs: [{
-                    id: 020,
-                    title: 'Kế toán'
-                }, {
-                    id: 021,
-                    title: 'Tài chính'
-                }, {
-                    id: 022,
-                    title: 'Hành chính nhân sự',
+                },
+                {
+                    id: 01,
+                    title: 'Khối Marketing',
                     subs: [{
-                        id: 0220,
-                        title: 'Hành chính'
+                        id: 010,
+                        title: 'Quản tri Nhãn & Đào tạo'
                     }, {
-                        id: 0221,
-                        title: 'Nhân sự'
+                        id: 011,
+                        title: 'Digital Marketing'
                     }, {
-                        id: 0222,
-                        title: 'Công nghệ thông tin (IT)'
+                        id: 012,
+                        title: 'Trade Marketing'
+                    }, {
+                        id: 013,
+                        title: 'Truyền thông & Sáng tạo nội dung'
                     }]
-                }, {
-                    id: 023,
-                    title: 'Dịch vụ bán hàng'
-                }, {
-                    id: 024,
-                    title: 'Cung ứng/Mua hàng'
-                }, {
-                    id: 025,
-                    title: 'Kho & giao vận',
+                },
+                {
+                    id: 02,
+                    title: 'Khối văn phòng',
                     subs: [{
-                        id: 0250,
-                        title: 'Kho'
+                        id: 020,
+                        title: 'Kế toán'
                     }, {
-                        id: 0251,
-                        title: 'Giao vận'
+                        id: 021,
+                        title: 'Tài chính'
+                    }, {
+                        id: 022,
+                        title: 'Hành chính nhân sự',
+                        subs: [{
+                            id: 0220,
+                            title: 'Hành chính'
+                        }, {
+                            id: 0221,
+                            title: 'Nhân sự'
+                        }, {
+                            id: 0222,
+                            title: 'Công nghệ thông tin (IT)'
+                        }]
+                    }, {
+                        id: 023,
+                        title: 'Dịch vụ bán hàng'
+                    }, {
+                        id: 024,
+                        title: 'Cung ứng/Mua hàng'
+                    }, {
+                        id: 025,
+                        title: 'Kho & giao vận',
+                        subs: [{
+                            id: 0250,
+                            title: 'Kho'
+                        }, {
+                            id: 0251,
+                            title: 'Giao vận'
+                        }]
                     }]
-                }]
-            }
-        ]
+                }
+            ]
 
-    }];
-    var comboTree1,comboTree2
+        }];
+        var comboTree1, comboTree2
 
-    $(document).ready(function($) {
-        comboTree1 = $('#thuocDonVi').comboTree({
-            source: data,
-            isMultiple: false,
-            cascadeSelect: true
+        $(document).ready(function($) {
+            comboTree1 = $('#thuocDonVi').comboTree({
+                source: data,
+                isMultiple: false,
+                cascadeSelect: true
+            });
+            comboTree2 = $('#filter_thuocDonVi').comboTree({
+                source: data,
+                isMultiple: false,
+                cascadeSelect: true
+            });
+
         });
-        comboTree2 = $('#filter_thuocDonVi').comboTree({
-            source: data,
-            isMultiple: false,
-            cascadeSelect: true
-        });
-
-    });
-</script>
+    </script>
 @endsection

@@ -1890,7 +1890,7 @@
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập tên vị trí"
+                                <input class="form-control" required type="text" placeholder="Nhập tên vị trí"
                                     name="name">
                             </div>
                             <div class="col-sm-6 mb-3">
@@ -2448,12 +2448,14 @@
 @endsection
 @section('footer-script')
 
-    <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript"
         src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+
+<script src="https://www.jqueryscript.net/demo/Drop-Down-Combo-Tree/comboTreePlugin.js"  type="text/javascript"></script>
+{{-- <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script> --}}
 
     <script>
         $(document).ready(function() {
