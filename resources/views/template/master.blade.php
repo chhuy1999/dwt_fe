@@ -65,7 +65,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Kế
+                                        <a href="ke-hoach" class="header_submenu-link">Kế
                                             hoạch</a>
                                     </li>
                                     <li class="header_submenu-items">

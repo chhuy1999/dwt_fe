@@ -40,46 +40,10 @@
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="main_content d-flex">
-
-                                            <div class="action_wrapper d-flex me-3">
-                                                <div class="form-group has-search">
-                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <form action="/danh-muc-nhiem-vu" method="GET">
-                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ" name="q" value="{{request()->q}}">
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            
-                                            {{-- <div class="main_content d-flex align-items-center">
-                                                <select class="selectpicker" data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn phòng ban..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-live-search-placeholder="Tìm kiếm...">
-                                                    <option>Trade Marketing</option>
-                                                    <option>Digital Marketing</option>
-                                                    <option>Quản trị Nhãn &amp; Đào tạo</option>
-                                                    <option>Truyền thông</option>
-                                                    <option>Sáng tạo nội dung</option>
-                                                    <option>Dịch vụ bán hàng</option>
-                                                </select>
-                                            </div> --}}
-                                        </div>
-
-
-                                        <div class="main_action">
-                                            {{-- <button id="exporttable" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#themMoiDinhMuc">
-                                                <i class="bi bi-plus"></i>
-                                                Thêm mới
-                                            </button> --}}
-                                            <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
-                                                <i class="bi bi-download"></i>
-                                                Xuất Excel
-                                            </button>
-                                        </div>
-                                    </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="repeater-hopPhongBan position-relative">
-                                                <table class="table table-responsive table-hover table-bordered">
+                                            <div class="position-relative">
+                                                <table id="dsMauNhiemVu" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 2%" class="text-center">STT</th>
@@ -504,10 +468,43 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
-
+    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+
+    <script>
+        const targetTable = $('#dsMauNhiemVu').DataTable({
+            paging: true,
+            ordering: false,
+            order: [[0, 'desc']],
+            pageLength: 10,
+            language: {
+                info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+                infoEmpty: 'Hiện tại chưa có bản ghi nào',
+                search: 'Tìm kiếm biên bản',
+                paginate: {
+                    previous: '<i class="bi bi-caret-left-fill"></i>',
+                    next: '<i class="bi bi-caret-right-fill"></i>',
+                },
+                search: '',
+                searchPlaceholder: 'Tìm kiếm...',
+                zeroRecords: 'Không tìm thấy kết quả',
+            },
+            oLanguage: {
+                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+            },
+            dom: '<"d-flex mb-3 justify-content-end"f<"card-title-wrapper">>rt<"dataTables_bottom  justify-content-end"p>',
+        });
+        $('div.card-title-wrapper').html(`
+            <div class="main_search d-flex ms-3">
+                <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
+                    <i class="bi bi-download"></i>
+                    Xuất Excel
+                </button>
+            </div>
+        `);
+    </script>
 @endsection

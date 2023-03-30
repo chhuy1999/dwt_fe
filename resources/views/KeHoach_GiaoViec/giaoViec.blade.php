@@ -93,7 +93,7 @@
                                                         </div>
                                                         <div class="mb-3 row align-items-center">
                                                             <div class="col-md-7 mb-3">
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" readonly class="form-control"
                                                                     value="{{ $target->name }}" name="name"
                                                                     placeholder="Tên công việc" />
                                                             </div>
