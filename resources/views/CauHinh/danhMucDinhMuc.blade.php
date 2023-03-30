@@ -134,15 +134,16 @@
                                                                                             type="text"
                                                                                             value="{{ $target->name }}"
                                                                                             name="name"
+                                                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Tên định mức"
                                                                                             placeholder="Nhập tên định mức">
                                                                                     </div>
                                                                                     <div class="col-sm-12 mt-3">
                                                                                         <div class="mb-3">
-                                                                                            <textarea class="form-control" name="description" placeholder="Nhập mô tả thực hiện">{{ $target->description }}</textarea>
+                                                                                            <textarea class="form-control" name="description" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả thực hiện" placeholder="Nhập mô tả thực hiện">{{ $target->description }}</textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-6">
-                                                                                        <div class="mb-3">
+                                                                                        <div class="mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị phụ trách">
 
                                                                                             <select class="selectpicker"
                                                                                                 name="departement_id"
@@ -201,7 +202,7 @@
                                                                                         </div>
                                                                                     </div> --}}
                                                                                     <div class="col-sm-6">
-                                                                                        <div class="mb-3">
+                                                                                        <div class="mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
                                                                                             <select class="selectpicker"
                                                                                                 name="position_id"
                                                                                                 title="Chọn Vị trí"
@@ -224,7 +225,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-3">
-                                                                                        <div class="mb-3">
+                                                                                        <div class="mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday">
                                                                                             <input class="form-control"
                                                                                                 type="number"
                                                                                                 name="manday"

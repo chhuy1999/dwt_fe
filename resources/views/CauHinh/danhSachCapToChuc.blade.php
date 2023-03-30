@@ -103,27 +103,13 @@
                                                                         <div class="modal-body">
                                                                             <div class="row">
                                                                                 <div class="col-sm-6">
-                                                                                    <div class="d-flex align-items-center mb-3">
-                                                                                        <div class="d-flex col-sm-4">
-                                                                                            <div class="modal_body-title">Mã cấp nhân sự<span class="text-danger">*</span></div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-8">
-                                                                                            <input class="form-control" type="text" value="AMKT">
-                                                                                        </div>
-                                                                                    </div>
+                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cấp tổ chức" value="AMKT">
                                                                                 </div>
 
                                                                                 <div class="col-sm-6">
-                                                                                    <div class="d-flex align-items-center">
-                                                                                        <div class="d-flex col-sm-4">
-                                                                                            <div class="modal_body-title">Tên cấp tổ chức<span class="text-danger">*</span></div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-8">
-                                                                                            <input class="form-control" type="text" name="name" value="Phòng kinh doanh 1">
-                                                                                        </div>
-                                                                                    </div>
+                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên cấp tổ chức"  name="name" value="Phòng kinh doanh 1">
                                                                                 </div>
-                                                                                <div class="col-sm-6">
+                                                                                {{-- <div class="col-sm-6">
                                                                                     <div class="d-flex align-items-center">
                                                                                         <div class="d-flex col-sm-4">
                                                                                             <div class="modal_body-title"> Thuộc cấp tổ chức<span class="text-danger">*</span></div>
@@ -145,8 +131,7 @@
                                                                                         
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
-                                                                                
+                                                                                </div> --}}
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">

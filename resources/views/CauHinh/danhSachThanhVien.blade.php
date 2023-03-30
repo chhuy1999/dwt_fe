@@ -105,7 +105,7 @@
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
-
+                                                            
                                                                         <form method="POST"
                                                                             action="/danh-sach-thanh-vien/{{ $value->id }}">
                                                                             @csrf
@@ -136,24 +136,24 @@
                                                                                         <div class="col-sm-5">
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
-                                                                                                    type="text"
+                                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Họ và Tên"
                                                                                                     value="{{ $value->name }}"
                                                                                                     name="name">
                                                                                             </div>
-
+                                                            
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
-                                                                                                    type="password"
+                                                                                                    type="password" data-bs-toggle="tooltip" data-bs-placement="top" title="Mật khẩu"
                                                                                                     value="123456"
                                                                                                     name="password">
                                                                                             </div>
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
-                                                                                                    type="text"
+                                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="SĐT cá nhân"
                                                                                                     value="{{ $value->phone }}"
                                                                                                     name="phone">
                                                                                             </div>
-
+                                                            
                                                                                         </div>
                                                                                         <div class="col-sm-5">
                                                                                             <div class="row">
@@ -167,7 +167,7 @@
                                                                                                         </option>
                                                                                                     </select>
                                                                                                 </div>
-
+                                                            
                                                                                                 <div
                                                                                                     class="col-sm-7 mb-2 position-relative">
                                                                                                     <input
@@ -181,46 +181,46 @@
                                                                                             </div>
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
-                                                                                                    type="text"
+                                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Email liên hệ"
                                                                                                     value="vuha@gmail.com">
                                                                                             </div>
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
-                                                                                                    type="text"
+                                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Địa chỉ liên hệ"
                                                                                                     value="{{ $value->address }}"
                                                                                                     name="address">
                                                                                             </div>
-
+                                                            
                                                                                         </div>
-
+                                                            
                                                                                     </div>
                                                                                 </div>
-
+                                                            
                                                                                 <div class="create_user-wrapper">
                                                                                     <div class="create_user-title mb-2">
                                                                                         Thông tin công việc</div>
                                                                                     <div class="row">
                                                                                         <div class="col-sm-4 mb-2">
                                                                                             <input class="form-control"
-                                                                                                type="text"
+                                                                                                type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã nhân viên"
                                                                                                 value="{{ $value->code }}"
                                                                                                 name="code">
                                                                                         </div>
-
+                                                            
                                                                                         <div class="col-sm-4 mb-2">
                                                                                             <input class="form-control"
-                                                                                                type="text"
+                                                                                                type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="SĐT liên hệ"
                                                                                                 value="0123456789">
                                                                                         </div>
-
+                                                            
                                                                                         <div class="col-sm-4 mb-2">
                                                                                             <input class="form-control"
-                                                                                                type="text"
+                                                                                                type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Email công ty" 
                                                                                                 value="{{ $value->email }}"
                                                                                                 name="email">
                                                                                         </div>
-
-                                                                                        <div class="col-sm-6 mb-2">
+                                                            
+                                                                                        <div class="col-sm-6 mb-2"  data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị công tác">
                                                                                             <select class="selectpicker"
                                                                                                 name="departement">
                                                                                                 <option>Chủ tịch HĐQT
@@ -235,8 +235,8 @@
                                                                                                 </option>
                                                                                             </select>
                                                                                         </div>
-
-                                                                                        <div class="col-sm-6 mb-2">
+                                                            
+                                                                                        <div class="col-sm-6 mb-2"  data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp nhân sự">
                                                                                             <div
                                                                                                 class="d-flex align-items-center">
                                                                                                 <select
@@ -264,16 +264,16 @@
                                                                                                     <option>Nhân viên
                                                                                                     </option>
                                                                                                 </select>
-                                                                                                <div class="modal_list-more"
+                                                                                                {{-- <div class="modal_list-more"
                                                                                                     data-bs-toggle="modal"
                                                                                                     data-bs-target="#danhsachChucDanh">
                                                                                                     <i
                                                                                                         class="bi bi-three-dots-vertical"></i>
-                                                                                                </div>
+                                                                                                </div> --}}
                                                                                             </div>
                                                                                         </div>
-
-                                                                                        <div class="col-sm-6 mb-2">
+                                                            
+                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí/Chức danh">
                                                                                             <select
                                                                                                 id="onchangeViTriCongViec"
                                                                                                 class="selectpicker">
@@ -294,8 +294,8 @@
                                                                                                 </option>
                                                                                             </select>
                                                                                         </div>
-
-                                                                                        <div class="col-sm-6 mb-2">
+                                                            
+                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Quản lý trực tiếp">
                                                                                             <select class="selectpicker">
                                                                                                 <option selected>Bùi Thị
                                                                                                     Minh Hoa - GĐĐH</option>
@@ -310,10 +310,10 @@
                                                                                         <div class="col-sm-6 mb-2">
                                                                                             <input type="text" readonly
                                                                                                 class="form-control"
-                                                                                                readonly
+                                                                                                readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Quỹ lương năm"
                                                                                                 placeholder="Quỹ lương năm" />
                                                                                         </div>
-                                                                                        <div class="col-sm-6 mb-2">
+                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị">
                                                                                             <select class="selectpicker"
                                                                                                 title="Chọn gói trang bị">
                                                                                                 <option selected>Trang bị
@@ -330,8 +330,8 @@
                                                                                                 </option>
                                                                                             </select>
                                                                                         </div>
-
-                                                                                        <div class="col-sm-6 mb-2">
+                                                            
+                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Hình thức làm việc" >
                                                                                             <select class="selectpicker"
                                                                                                 title="Hình thức làm việc">
                                                                                                 <option selected>Chính thức
@@ -343,7 +343,7 @@
                                                                                                 </option>
                                                                                             </select>
                                                                                         </div>
-                                                                                        <div class="col-sm-6 mb-2">
+                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Trạng thái">
                                                                                             <select class="selectpicker"
                                                                                                 title="Chọn trạng thái">
                                                                                                 <option selected>Đang làm
@@ -352,7 +352,7 @@
                                                                                                 </option>
                                                                                             </select>
                                                                                         </div>
-
+                                                            
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -667,174 +667,6 @@
                                         value="Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng.">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Modal Sua thanh vien --}}
-    <div class="modal fade" id="suaThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa thành viên</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="create_user-wrapper">
-                        <div class="create_user-title mb-2">Thông tin cá nhân</div>
-                        <div class="row align-items-center">
-                            <div class="col-sm-2">
-                                <div class="image-upload">
-                                    <input type="file" name="" id="logo" onchange="editImg(this)">
-                                    <label for="logo" class="upload-field" id="file-label">
-                                        <div class="file-thumbnail">
-                                            <img id="edit_image-preview" src="{{ asset('assets/img/avatar.jpeg') }}"
-                                                alt="">
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="text" value="Vũ Thị Hà">
-                                </div>
-
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="password" value="hihihihi">
-                                </div>
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="text" value="0123456789">
-                                </div>
-
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="row">
-                                    <div class="col-sm-5 mb-2">
-                                        <select class="selectpicker">
-                                            <option>Nam</option>
-                                            <option selected>Nữ</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-sm-7 mb-2 position-relative">
-                                        <input id="suaCreateUser" value="26/03/2023" class="form-control"
-                                            type="text">
-                                        <i class="bi bi-calendar-plus style_pickdate"></i>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="text" value="vuha@gmail.com">
-                                </div>
-                                <div class="col-sm-12 mb-2">
-                                    <input class="form-control" type="text" value="219 trung kính">
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="create_user-wrapper">
-                        <div class="create_user-title mb-2">Thông tin công việc</div>
-                        <div class="row">
-                            <div class="col-sm-4 mb-2">
-                                <input class="form-control" type="text" value="MTT123">
-                            </div>
-
-                            <div class="col-sm-4 mb-2">
-                                <input class="form-control" type="text" value="0123456789">
-                            </div>
-
-                            <div class="col-sm-4 mb-2">
-                                <input class="form-control" type="text" value="digital@doppelherz.vn">
-                            </div>
-
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker">
-                                    <option>Doppelherz</option>
-                                    <option selected>CTCP Mastertran</option>
-                                    <option>CTCP Thái Bình Hưng Thịnh</option>
-                                </select>
-                            </div>
-
-                            <div class="col-sm-6 mb-2">
-                                <div class="d-flex align-items-center">
-                                    <select class="selectpicker">
-                                        <option>Chủ tịch HĐQT</option>
-                                        <option>Tổng Giám đốc</option>
-                                        <option>Phó Tổng Giám đốc</option>
-                                        <option>Giám đốc điều hành</option>
-                                        <option>Quản lý cấp cao</option>
-                                        <option>Quản lý cấp trung</option>
-                                        <option selected>Trưởng phòng</option>
-                                        <option>Phó phòng</option>
-                                        <option>Trưởng nhóm</option>
-                                        <option>Chuyên viên</option>
-                                        <option>Nhân viên</option>
-                                    </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachChucDanh">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 mb-2">
-                                <select id="onchangeViTriCongViec" class="selectpicker">
-                                    <option selected>Quản lý phòng</option>
-                                    <option>Quản lý sàn TMĐT</option>
-                                    <option>Content Website</option>
-                                    <option>Content SEO</option>
-                                    <option>Google Ads</option>
-                                    <option>Content Facebook</option>
-                                    <option value="themViTriCongViec" class="text-danger">+ Thêm vị trí mới
-                                    </option>
-                                </select>
-                            </div>
-
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker">
-                                    <option selected>Bùi Thị Minh Hoa - GĐĐH</option>
-                                    <option>Nguyễn Ngọc Bảo</option>
-                                    <option>Đặng Nguyễn Lam Mai</option>
-                                    <option>Hồ Thị Hồng Vân</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6 mb-2">
-                                <input type="text" readonly class="form-control" readonly
-                                    placeholder="Quỹ lương năm" />
-                            </div>
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker" title="Chọn gói trang bị">
-                                    <option selected>Trang bị hành chính</option>
-                                    <option>Trang bị cơ bản</option>
-                                    <option>Trang bị Nhân viên</option>
-                                    <option>Trang bị Chuyên viên</option>
-                                    <option>Trang bị Quản lý</option>
-                                    <option>Trang bị Giám đốc</option>
-                                </select>
-                            </div>
-
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker" title="Chọn trạng thái">
-                                    <option selected>Toàn thời gian</option>
-                                    <option>Bán thời gian</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6 mb-2">
-                                <select class="selectpicker" title="Chọn trạng thái">
-                                    <option selected>Đang làm việc</option>
-                                    <option>Đã nghỉ việc</option>
-                                </select>
-                            </div>
-
                         </div>
                     </div>
                 </div>
