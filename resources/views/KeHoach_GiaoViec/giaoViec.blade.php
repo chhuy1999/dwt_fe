@@ -198,12 +198,12 @@
                                                         <table id="listDanhSach" class="table table-responsive table-hover table-bordered  style_table-6">
                                                             <thead>
                                                                 <tr>
-                                                                    <th style="width: 2%" class="text-center">STT</th>
-                                                                    <th>Tên nhiệm vụ</th>
-                                                                    <th>Thuộc định mức</th>
-                                                                    <th>Người đảm nhiệm</th>
-                                                                    <th>Vị trí/Chức danh</th>
-                                                                    <th>Thời hạn</th>
+                                                                    <th class="text-nowrap" style="width: 2%" class="text-center">STT</th>
+                                                                    <th class="text-nowrap" style="width: 26%">Tên nhiệm vụ</th>
+                                                                    <th class="text-nowrap" style="width: 20%">Thuộc định mức</th>
+                                                                    <th class="text-nowrap" style="width:20%">Người đảm nhiệm</th>
+                                                                    <th class="text-nowrap" style="width:20%">Vị trí/Chức danh</th>
+                                                                    <th class="text-nowrap" style="width:8%">Thời hạn</th>
                                                                     {{-- <th>Tình trạng</th> --}}
                                                                     <th style="width: 2%"></th>
                                                                 </tr>
@@ -218,25 +218,31 @@
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:450px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->name }}">
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:245px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->name }}">
                                                                                 {{ $assignedTask->name }}
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Thuộc định mức">
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->target->name }}">
                                                                                 {{ $assignedTask->target->name ?? '' }}
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            @foreach ($assignedTask->users as $user)
-                                                                                {{ $user->name }},
-                                                                            @endforeach
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" title="@foreach ($assignedTask->users as $user) {{ $user->name }},@endforeach">
+                                                                                @foreach ($assignedTask->users as $user) 
+                                                                                    {{ $user->name }},
+                                                                                @endforeach
+                                                                            </div>
+                                                                            
                                                                         </td>
                                                                         <td>
-                                                                            {{ $assignedTask?->position->name ?? '' }}
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask?->position->name ?? '' }}">
+                                                                                {{ $assignedTask?->position->name ?? '' }}
+                                                                            </div>
+                                                                            
                                                                         </td>
                                                                         <td>
-                                                                            {{ date('d-m-Y', strtotime($assignedTask->deadline)) }}
+                                                                            {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}
                                                                         </td>
                                                                         {{-- <td>
                                                                         <div

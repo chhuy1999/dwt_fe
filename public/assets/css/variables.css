@@ -109,6 +109,9 @@ option:hover {
     box-shadow: none;
     border: 1px solid var(--primary-color);
 }
+.modal-dialog {
+    margin-top: 60px;
+}
 
 .dropdown-item.active,
 .dropdown-item:active {

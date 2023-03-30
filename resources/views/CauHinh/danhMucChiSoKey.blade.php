@@ -118,7 +118,7 @@
                                                                                                 @endif
                                                                                             @endforeach
                                                                                         </select> --}}
-                                                                                        <input type="text" name="unit_id" value="đơn vị">
+                                                                                        <input type="text" class="form-control" name="unit_id" value="đơn vị">
                                                                                     </div>
                                                                                     <div class="col-sm-12">
                                                                                         <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả chỉ số" name="description">{{ $key->description }}</textarea>

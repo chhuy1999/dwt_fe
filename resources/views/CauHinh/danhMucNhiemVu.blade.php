@@ -121,7 +121,7 @@
                                                                 <td>
                                                                     <div>
                                                                         @foreach ($targetDetail->kpiKeys as $kpiKey)
-                                                                            {{ $kpiKey->quantity }} {{ $kpiKey->name }} ({{ $kpiKey->unit->name }}) <br>
+                                                                            {{ $kpiKey->name }} ({{ $kpiKey->unit->name }}) <br>
                                                                         @endforeach
                                                                     </div>
                                                                 </td>
@@ -217,7 +217,7 @@
                                                                                     </div>
 
                                                                                     <div class="col-sm-2 mb-3">
-                                                                                        <input class="form-control" type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" placeholder="Nhập Manday" name="manday" value="{{ $targetDetail->manday }}">
+                                                                                        <input class="form-control" type="number" data-bs-toggle="tooltip" data-bs-placement="top" min="0" step="0.05" oninput="onInput(this)" title="Manday" placeholder="Nhập Manday" name="manday" value="{{ $targetDetail->manday }}">
                                                                                     </div>
                                                                                     <div class="col-sm-12" data-bs-toggle="tooltip" data-bs-placement="top" title="Phòng/Ban">
 
@@ -469,8 +469,8 @@
 @section('footer-script')
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
@@ -511,5 +511,15 @@
                 </button>
             </div>
         `);
+    </script>
+    <script>
+        function onInput(event) {
+            let value = parseFloat(event.value);
+            if (Number.isNaN(value)) {
+                document.getElementById('input-1').value = "0.00";
+            } else {
+                document.getElementById('input-1').value = value.toFixed(2);
+            }              
+        }
     </script>
 @endsection

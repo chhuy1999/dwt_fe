@@ -216,7 +216,7 @@
 
                                                                                     <div class="col-sm-4 mb-3">
                                                                                         <input class="form-control"
-                                                                                            type="number"
+                                                                                            type="number" min="0"
                                                                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Định biên"
                                                                                             name="max_employees"
                                                                                             value="{{ $value->max_employees }}">
@@ -1909,7 +1909,7 @@
                                 <textarea class="form-control" placeholder="Nhập mô tả công việc"></textarea>
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input class="form-control" type="number" name="max_employees"
+                                <input class="form-control" type="number" min="0" name="max_employees"
                                     placeholder="Định biên">
                             </div>
                             <div class="col-sm-4 mb-3">
