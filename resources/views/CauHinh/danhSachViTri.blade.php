@@ -74,7 +74,14 @@
                                                                     <div>{{ $value->name }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>Chuyên viên</div>
+                                                                    <div>
+                                                                        @foreach ($listPositionLevel->data as $level)
+                                                                        @if ($level->id == $value->position_level)
+                                                                                {{ $level->name }}
+                    
+                                                                        @endif
+                                                                        @endforeach
+                                                                    </div>
                                                                 </td>
                                                                 <td>
                                                                     <div>{{ $value->parent }}</div>
