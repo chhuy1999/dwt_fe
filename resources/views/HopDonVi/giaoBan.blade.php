@@ -57,6 +57,20 @@
             white-space: nowrap;
         }
 
+        .issuer {
+            width: 110px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .name-issuer {
+            width: 76px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
 
 
     </style>
@@ -242,7 +256,7 @@
                                                                     gửi thông tin</div>
                                                             </td>
                                                             <td>
-                                                                <div>Đặng Vũ Lam Mai - MTT123</div>
+                                                                <div class="issuer" title="Đặng Vũ Lam Mai - MTT123">Đặng Vũ Lam Mai - MTT123</div>
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
@@ -271,7 +285,7 @@
                                                                     gửi thông tin</div>
                                                             </td>
                                                             <td>
-                                                                <div>Đặng Vũ Lam Mai - MTT123</div>
+                                                                <div class="issuer" title="Đặng Vũ Lam Mai - MTT123">Đặng Vũ Lam Mai - MTT123</div>
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
@@ -300,7 +314,7 @@
                                                                     gửi thông tin</div>
                                                             </td>
                                                             <td>
-                                                                <div>Đặng Vũ Lam Mai - MTT123</div>
+                                                                <div class="issuer" title="Đặng Vũ Lam Mai - MTT123">Đặng Vũ Lam Mai - MTT123</div>
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
@@ -468,7 +482,7 @@
                                                                 <div class="description-problem-responded" title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                             </td>
                                                             <td>
-                                                                <div title="Đặng Vũ Lam Mai - MTT123">Đặng Vũ Lam Mai - MTT123</div>
+                                                                <div class="name-issuer" title="Đặng Vũ Lam Mai - MTT123">Đặng Vũ Lam Mai - MTT123</div>
                                                             </td>
                                                             <td>
                                                                 NN1
