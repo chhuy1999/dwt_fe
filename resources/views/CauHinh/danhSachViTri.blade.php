@@ -182,8 +182,9 @@
                                                                                             value="{{ $value->name }}">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
-                                                                                        <select class="selectpicker"
-                                                                                            title="Chọn cấp nhân sự">
+                                                                                        <select class="selectpicker" title="Chọn cấp nhân sự" data-width="100%"
+                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                        data-size="3">
                                                                                             <option selected>Chủ tịch HĐQT
                                                                                             </option>
                                                                                             <option>Tổng Giám đốc</option>
@@ -206,8 +207,9 @@
                                                                                     </div> --}}
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
-                                                                                        <select class="selectpicker"
-                                                                                            title="Chọn đơn vị công tác">
+                                                                                        <select class="selectpicker" title="Chọn đơn vị công tác" data-width="100%"
+                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                        data-size="3">
                                                                                             <option selected>Cung ứng
                                                                                             </option>
                                                                                             <option>Trade Marketing</option>

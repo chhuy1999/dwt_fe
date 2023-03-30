@@ -55,13 +55,13 @@
                                                                     <div>{{ $value->code }}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>{{ $value->departement }}</div>
+                                                                    <div>{{ $value->departement && $value->departement->name}}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>{{ $value->position }}</div>
+                                                                    <div>{{ $value->position && $value->position->name}}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>{{ $value->position_level }}</div>
+                                                                    <div>{{ $value->position_level && $value->position_level->name}}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
                                                                     <div>{{ $value->email }}</div>
