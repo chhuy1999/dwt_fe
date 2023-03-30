@@ -45,7 +45,7 @@
                                                                 <div>{{ $value->name}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tủ đồ cá nhân</div>
+                                                                <div>{{ $value->departement->name ?? "" }}</div>
                                                             </td>
                                                             <td>
                                                                 <div>{{ $value->unit_id}}</div>
@@ -116,25 +116,19 @@
                                                                                     <input class="form-control" type="text">
                                                                                 </div>
                                                                                 <div class="col-sm-6 mb-3">
-                                                                                    <select
-                                                                                            class="selectpicker"
-                                                                                            title="Chọn đơn vị"
-                                                                                            name="unit_id">
-                                                                                            @foreach ($listUnits->data as $unit)
-                                                                                                @if ($unit->id != $value->unit_id)
-                                                                                                    <option
-                                                                                                        value="{{ $unit->id }}">
-                                                                                                        {{ $unit->name }}
-                                                                                                    </option>
-                                                                                                @else
-                                                                                                    <option
-                                                                                                        value="{{ $unit->id }}"
-                                                                                                        selected>
-                                                                                                        {{ $unit->name }}
-                                                                                                    </option>
-                                                                                                @endif
-                                                                                            @endforeach
-                                                                                        </select>
+                                                                                    <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
+                                                                                        @foreach ($listUnits->data as $unit)
+                                                                                            @if ($unit->id != $value->unit_id)
+                                                                                                <option value="{{ $unit->id }}">
+                                                                                                    {{ $unit->name }}
+                                                                                                </option>
+                                                                                            @else
+                                                                                                <option value="{{ $unit->id }}" selected>
+                                                                                                    {{ $unit->name }}
+                                                                                                </option>
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                 </div>
                                                                                 
                                                                             </div>
@@ -191,10 +185,11 @@
                             </div>
 
                             <div class="col-sm-6 mb-3">
-
-                                <input class="form-control" type="text" placeholder="Nhập hạng mục trang bị">
-                                
-
+                                <select class="selectpicker" placeholder="Nhập hạng mục trang bị" required title="Nhập hạng mục trang bị" name="unit_id">
+                                    @foreach ($listUnits->data as $unit)
+                                        <option value="{{ $unit->name }}">{{ $unit->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">

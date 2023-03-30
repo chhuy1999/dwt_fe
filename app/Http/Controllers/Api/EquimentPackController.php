@@ -48,7 +48,8 @@ class EquimentPackController extends Controller
 
             $data = $request->validate([
                 'name' => 'required',
-                'unit_id' => 'required',
+                'unit_id' => 'required|numeric',
+                'parent_id' => 'required|numeric',
             ]);
             $this->dwtService->createEquimentPack($data);
             return back()->with('success', 'Thêm mới thành công');
@@ -64,12 +65,14 @@ class EquimentPackController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
-                'unit_id' => 'nullable',
+                'unit_id' => 'nullable|numeric',
+                'parent_id' => 'nullable|numeric',
 
             ]);
             $this->dwtService->updateEquimentPack($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }

@@ -50,7 +50,9 @@ class DepartmentController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'required',
+                'code' => 'required',
                 'description' => 'required',
+                'parent' => 'required|numeric',
                 'in_charge' => 'required',
             ]);
             $this->dwtService->createDepartment($data);
@@ -66,7 +68,9 @@ class DepartmentController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
+                'code' => 'nullable',
                 'description' => 'nullable',
+                'parent' => 'nullable|numeric',
                 'in_charge' => 'nullable',
             ]);
             $this->dwtService->updateDepartment($id, $data);
