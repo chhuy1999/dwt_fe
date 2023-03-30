@@ -1991,9 +1991,9 @@ ul.modal_upload-list li:last-child {
 }
 
 .footer {
-    /* position: absolute;
-    width: 100%; */
-    /* bottom: 0; */
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 

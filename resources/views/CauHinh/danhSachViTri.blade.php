@@ -232,7 +232,7 @@
                                                                                     </div>
 
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea class="form-control">Test Mo Ta</textarea>
+                                                                                        <input class="form-control" name="description" value="{{ $value->description }}">
                                                                                     </div>
 
                                                                                     <div class="col-sm-4 mb-3">
@@ -1923,7 +1923,7 @@
                                 </div> --}}
                             </div>
                             <div class="col-sm12 mb-3">
-                                <textarea class="form-control" placeholder="Nhập mô tả công việc"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Nhập mô tả công việc"></textarea>
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input class="form-control" type="number" name="max_employees"
