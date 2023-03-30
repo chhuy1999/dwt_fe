@@ -1857,9 +1857,9 @@
                                                 <th style="width: 20%">
                                                     <div class="d-flex justify-content-between">
                                                         Vấn đề tồn đọng
-                                                        <div>
+                                                        {{-- <div>
                                                             <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
-                                                        </div>
+                                                        </div> --}}
 
                                                     </div>
                                                 </th>
@@ -1888,12 +1888,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Giải quyết" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -1951,12 +1951,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -2014,12 +2014,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Than phiên">Than phiền</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -2077,12 +2077,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Than phiền">Than phiền</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                     </div>
                                                 </td>
                                                 <td>
