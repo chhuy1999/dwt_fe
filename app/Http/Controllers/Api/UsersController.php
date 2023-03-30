@@ -65,6 +65,7 @@ class UsersController extends Controller
                 'sex' => 'required',
                 'address' => 'required',
                 'dob' => 'required',
+                'departement' => 'required',
                 'departement_id' => 'required',
                 'position_id' => 'required',  
                 'position_level_id' => 'required',            
@@ -84,10 +85,10 @@ class UsersController extends Controller
             $data['doj'] = date('Y-m-d');
             //set role  defaut is user TODO: need to pick from fe
             $data['role'] = 'user';
-            $data['position_id'] = '2';
-            $data['departement_id'] = '1';
-            $data['position_level_id'] = '1';
-            $data['salary_fund'] = '10000';
+            // $data['position_id'] = '2';
+            // $data['departement_id'] = '1';
+            // $data['position_level_id'] = '1';
+            // $data['salary_fund'] = '10000';
             //department ? position ? positionLevel ? fe cura may cai nay dau >
          
             $this->dwtService->createUser($data);

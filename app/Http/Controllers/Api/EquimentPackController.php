@@ -48,7 +48,7 @@ class EquimentPackController extends Controller
 
             $data = $request->validate([
                 'name' => 'required',
-                'unit_id' => 'required|numeric',
+                'unit_id' => 'required',
                 'parent_id' => 'required|numeric',
             ]);
             $this->dwtService->createEquimentPack($data);
@@ -65,7 +65,7 @@ class EquimentPackController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
-                'unit_id' => 'nullable|numeric',
+                'unit_id' => 'nullable',
                 'parent_id' => 'nullable|numeric',
 
             ]);

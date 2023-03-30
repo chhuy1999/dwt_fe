@@ -180,16 +180,18 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" name="name" required type="text" placeholder="Nhập gói trang bị">
+                                <select name="parent_id" class="selectpicker" title="Nhập gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                    @foreach ($listEquimentPack->data as $value)
+                                        <option value="{{ $value->name}}">
+                                            {{ $value->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                 
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" placeholder="Nhập hạng mục trang bị" required title="Nhập hạng mục trang bị" name="unit_id">
-                                    @foreach ($listUnits->data as $unit)
-                                        <option value="{{ $unit->name }}">{{ $unit->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input class="form-control" required type="text" name="name" placeholder="Nhập hạng mục gói trang bị">
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">
@@ -197,7 +199,6 @@
                                         <option value="{{ $unit->name }}">{{ $unit->name }}</option>
                                     @endforeach
                                 </select>
-                            
                             </div>
 
                         </div>
