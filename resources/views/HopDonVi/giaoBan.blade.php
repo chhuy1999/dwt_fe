@@ -349,119 +349,111 @@
 
                             <div class="card mb-2">
                                 <div class="card-body">
-                                    <div class="mb-2">
-                                        <div class="row d-flex justify-content-center">
-                                            <div class="col-md-12 col-lg-10 col-xl-12">
-                                                <div class="row d-flex justify-content-between"
-                                                    style="margin-left: 0px; margin-right: 0px;  ">
-                                                    <div class="col-md-6"
-                                                        style="border: 1px solid #ced4da; border-radius: 0.375rem; width: 49.5%">
-                                                        <div class="content" style="margin: 10px">
-                                                            <div class="card-title mb-3">
-                                                                <i class="bi bi-journal-check"
-                                                                    style="padding-right: 4px"></i>
-                                                                Nội dung trao đổi
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="action_wrapper-cmt rounded border p-3">
+                                                <div class="card-title mb-3">
+                                                    <i class="bi bi-journal-check"
+                                                        style="padding-right: 4px"></i>
+                                                    Nội dung trao đổi
+                                                </div>
+                                                <div class=""
+                                                    style="max-height: 240px; overflow-y: scroll;">
+                                                    <div class=" mb-3"
+                                                        style="background: #f8f9fa">
+                                                        <div class="col-sm-12 d-flex flex-start justify-between">
+                                                            <i class="col bi bi-journal-check"
+                                                                style="padding-right: 4px; padding-left: 25px"></i>
+                                                            
+                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="information col-sm-10">
+                                                                It is a long established fact that a reader will bedistracted by the readable content of a page
+                                                            </p>
+                                                            <div class="col">
+                                                                <p class="fs-6">9:58</p>
                                                             </div>
-                                                            <div class=""
-                                                                style="max-height: 240px; overflow-y: scroll;">
-                                                                <div class=" mb-3"
-                                                                    style="background: #f8f9fa">
-                                                                    <div class="col-sm-12 d-flex flex-start justify-between">
-                                                                        <i class="col bi bi-journal-check"
-                                                                            style="padding-right: 4px; padding-left: 25px"></i>
-                                                                        
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="information col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page
-                                                                        </p>
-                                                                        <div class="col">
-                                                                            <p class="fs-6">9:58</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class=" mb-3"
-                                                                    style="background: #f8f9fa">
-                                                                    <div class="col-sm-12 d-flex flex-start justify-between">
-                                                                        <i class="col bi bi-journal-check"
-                                                                            style="padding-right: 4px; padding-left: 25px"></i>
-                                                                        
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
-                                                                        </p>
-                                                                        <div class="col">
-                                                                            <p class="fs-6">9:58</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class=" mb-3"
-                                                                    style="background: #f8f9fa">
-                                                                    <div class="col-sm-12 d-flex flex-start justify-between">
-                                                                        <i class="col bi bi-journal-check"
-                                                                            style="padding-right: 4px; padding-left: 25px"></i>
-                                                                        
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
-                                                                        </p>
-                                                                        <div class="col">
-                                                                            <p class="fs-6">9:58</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class=" mb-3"
-                                                                    style="background: #f8f9fa">
-                                                                    <div class="col-sm-12 d-flex flex-start justify-between">
-                                                                        <i class="col bi bi-journal-check"
-                                                                            style="padding-right: 4px; padding-left: 25px"></i>
-                                                                        
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
-                                                                        </p>
-                                                                        <div class="col">
-                                                                            <p class="fs-6">9:58</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col-12 mt-4">
-                                                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung" rows="3"></textarea>
-                                                            </div>
-
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6"
-                                                        style="border: 1px solid #ced4da; border-radius: 0.375rem; width: 49.5%">
-                                                        <div class="content" style="margin: 10px">
-                                                            <div class="card-title mb-3">
-                                                                <i class="bi bi-paperclip" style="padding-right: 4px"></i>
-                                                                File đính kèm
+                                                    <div class=" mb-3"
+                                                        style="background: #f8f9fa">
+                                                        <div class="col-sm-12 d-flex flex-start justify-between">
+                                                            <i class="col bi bi-journal-check"
+                                                                style="padding-right: 4px; padding-left: 25px"></i>
+                                                            
+                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
+                                                                It is a long established fact that a reader will bedistracted by the readable content of a page.
+                                                            </p>
+                                                            <div class="col">
+                                                                <p class="fs-6">9:58</p>
                                                             </div>
-                                                            <div class="modal_upload-wrapper">
-                                                                <label class="modal_upload-label" for="file">
-                                                                    Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                                <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích
-                                                                    thước tệp không quá 10MB</div>
-                                                                <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                                    <div class="modal_upload-addFile me-3">
-                                                                        <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                                            Tải file lên
-                                                                            <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
-                                                                        </button>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
-                                                                File bạn tải lên hiện tại không hỗ trợ !
-                                                            </div>
-                                                            <ul class="modal_upload-list"></ul>
                                                         </div>
                                                     </div>
 
+                                                    <div class=" mb-3"
+                                                        style="background: #f8f9fa">
+                                                        <div class="col-sm-12 d-flex flex-start justify-between">
+                                                            <i class="col bi bi-journal-check"
+                                                                style="padding-right: 4px; padding-left: 25px"></i>
+                                                            
+                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
+                                                                It is a long established fact that a reader will bedistracted by the readable content of a page.
+                                                            </p>
+                                                            <div class="col">
+                                                                <p class="fs-6">9:58</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class=" mb-3"
+                                                        style="background: #f8f9fa">
+                                                        <div class="col-sm-12 d-flex flex-start justify-between">
+                                                            <i class="col bi bi-journal-check"
+                                                                style="padding-right: 4px; padding-left: 25px"></i>
+                                                            
+                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
+                                                                It is a long established fact that a reader will bedistracted by the readable content of a page.
+                                                            </p>
+                                                            <div class="col">
+                                                                <p class="fs-6">9:58</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-12 mt-4">
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung" rows="3"></textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
+                                                <div class="card-title mb-3">
+                                                    <i class="bi bi-paperclip" style="padding-right: 4px"></i>
+                                                    File đính kèm
+                                                </div>
+                                                <div class="upload_wrapper-items">
+                                                    <ul class="modal_upload-list"></ul>
+                                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                                        File bạn tải lên hiện tại không hỗ trợ !
+                                                    </div>
+                                                    <div class="modal_upload-wrapper">
+                                                        <label class="modal_upload-label" for="file">
+                                                            Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                                        <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích
+                                                            thước tệp không quá 10MB</div>
+                                                        <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                            <div class="modal_upload-addFile me-3">
+                                                                <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                    Tải file lên
+                                                                    <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
+                                                                </button>
+                                                            </div>
+    
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

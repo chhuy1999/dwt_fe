@@ -10,7 +10,6 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">
-
                             Danh sách thành viên
                         </h5>
                     </div>
@@ -409,6 +408,21 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="signature_wrapper">
+                                        <div class="signature_con">
+                                            <div class="signature_items">
+                                                <div class="signature_title"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body position-relative body_content-wrapper" id="body_content-2">
+                                    <div class='row'>
+                                        <div class="col-md-12">
+                                            Chưa có dữ liệu
                                         </div>
                                     </div>
                                     <div class="signature_wrapper">
@@ -2897,7 +2911,7 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
-            dom: '<"d-flex mb-3"<"card-title-left justify-content-start">f<"card-title-right justify-content-end">>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex justify-content-between"<"card-title-left"><"d-flex "f<"card-title-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
         });
         $('div.card-title-left').html(`
         <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">

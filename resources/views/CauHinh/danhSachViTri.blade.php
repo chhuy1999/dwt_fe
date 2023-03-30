@@ -232,7 +232,7 @@
                                                                                     </div>
 
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <input class="form-control" name="description" value="{{ $value->description }}">
+                                                                                        <textarea class="form-control">Test Mo Ta</textarea>
                                                                                     </div>
 
                                                                                     <div class="col-sm-4 mb-3">
@@ -279,13 +279,14 @@
                                             <div class="card-title">Phòng kinh doanh</div>
                                         </div>
                                         <div class="main_search d-flex mt-2">
-                                            <div class="form-group has-search">
-                                                <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Tìm kiếm thành viên" wfd-id="id12">
-                                            </div>
-                                            <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh">Thêm vị trí</button>
+                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
+                                            <form action="/danh-sach-vi-tri" method="GET">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                    name="q" value="{{ request()->q }}">
+                                            </form>
+                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
+                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm vị
+                                                trí</button>
                                         </div>
                                     </div>
                                     <div class='row'>
@@ -566,13 +567,14 @@
                                             <div class="card-title">Phòng Marketing</div>
                                         </div>
                                         <div class="main_search d-flex mt-2">
-                                            <div class="form-group has-search">
-                                                <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Tìm kiếm thành viên" wfd-id="id12">
-                                            </div>
-                                            <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh">Thêm vị trí</button>
+                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
+                                            <form action="/danh-sach-vi-tri" method="GET">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                    name="q" value="{{ request()->q }}">
+                                            </form>
+                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
+                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm vị
+                                                trí</button>
                                         </div>
                                     </div>
                                     <div class='row'>
@@ -1923,7 +1925,7 @@
                                 </div> --}}
                             </div>
                             <div class="col-sm12 mb-3">
-                                <textarea class="form-control" name="description" placeholder="Nhập mô tả công việc"></textarea>
+                                <textarea class="form-control" placeholder="Nhập mô tả công việc"></textarea>
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input class="form-control" type="number" name="max_employees"
