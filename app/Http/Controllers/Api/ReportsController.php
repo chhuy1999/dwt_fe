@@ -32,11 +32,14 @@ class ReportsController extends Controller
             $limit = $request->get('limit');
             $data = $this->dwtService->searchReports($q, $page, $limit);
             $listDepartments = $this->dwtService->listReports();
+            $listUsers = $this->dwtService->listUsers();
 
             return view('HopDonVi.giaoBan')
                  ->with('data', $data)
-                ->with('listReports', $listReports);
+                // ->with('listReports', $listReports)
+                ->with('listUsers', $listUsers);
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return view('HopDonVi.giaoBan')->with('listReports', []);
         }

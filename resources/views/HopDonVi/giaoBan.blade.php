@@ -100,9 +100,9 @@
                                     <select class="selectpicker mainSection_width-select" data-actions-box="true"
                                         data-live-search="true" title="Chọn chủ trì..."
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                        <option>Nguyễn Ngọc Bảo</option>
-                                        <option>Đặng Nguyễn Lam Mai</option>
-                                        <option>Hồ Thị Hồng Vân</option>
+                                        @foreach ($listUsers->data as $value)
+                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -186,9 +186,9 @@
                                                                     data-selected-text-format="count > 1"
                                                                     data-count-selected-text="Có {0} Thư ký"
                                                                     data-live-search-placeholder="Tìm kiếm...">
-                                                                    <option>Nguyễn Ngọc Bảo</option>
-                                                                    <option>Đặng Nguyễn Lam Mai</option>
-                                                                    <option>Hồ Thị Hồng Vân</option>
+                                                                    @foreach ($listUsers->data as $value)
+                                                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -206,12 +206,9 @@
                                                                     data-selected-text-format="count > 1"
                                                                     data-count-selected-text="Có {0} thành viên"
                                                                     data-live-search-placeholder="Tìm kiếm...">
-                                                                    <option>Nguyễn Ngọc Bảo</option>
-                                                                    <option>Đặng Nguyễn Lam Mai</option>
-                                                                    <option>Hồ Thị Hồng Vân</option>
-                                                                    <option>Nguyễn Thị Ngọc Lan</option>
-                                                                    <option>Nguyễn Thị Hồng Oanh</option>
-                                                                    <option>Hà Nguyễn Minh Hiếu</option>
+                                                                    @foreach ($listUsers->data as $value)
+                                                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
