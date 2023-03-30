@@ -84,7 +84,14 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>{{ $value->parent }}</div>
+                                                                    <div>
+                                                                        @foreach ($listDepartments->data as $dep)
+                                                                        @if ($dep->id == $value->parent)
+                                                                                {{ $dep->name }}
+                    
+                                                                        @endif
+                                                                        @endforeach
+                                                                    </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class data-bs-toggle="tooltip"
