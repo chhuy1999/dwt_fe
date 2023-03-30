@@ -418,8 +418,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" type="text" placeholder="Tên định mức"
-                                        name="name">
+                                    <input class="form-control" type="text" required
+                                        placeholder="Tên định mức *" name="name">
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -455,7 +455,7 @@
                             </div> --}}
                             <div class="col-sm-3">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" type="number" placeholder="Manday" name="manday">
+                                    <input class="form-control" required type="number" placeholder="Manday *" name="manday">
                                 </div>
                             </div>
                             {{-- <div class="col-sm-6">

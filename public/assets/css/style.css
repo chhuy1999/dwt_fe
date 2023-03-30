@@ -125,7 +125,8 @@ label.col-form-label {
 .table-scroll {
     position:relative;
     margin:auto;
-    overflow:hidden;
+    overflow-x:hidden;
+    height: 202px;
 }
 .table-wrap {
     width:100%;

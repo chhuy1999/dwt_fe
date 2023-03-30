@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
 @endsection
 
+<style>
+    .description-department {
+        width: 480px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+    }
+</style>
+
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -95,9 +104,9 @@
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
                                                         <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
                                                     </div>
-                                                    <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thêm đơn vị" data-bs-original-title="Thêm đơn vị">
+                                                    <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                                                         <button class="btn btn-danger d-block" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCauToChuc">Thêm đơn vị</button>
+                                                        data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,12 +143,10 @@
                                                                     <div>Phòng ban</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>Nguyễn Vũ Nguyệt Minh</div>
+                                                                    <div>{{ $value->in_charge}}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div class="d-inline-block text-truncate" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc">Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                        theo yêu cầu của Ban Giám đốc</div>
+                                                                    <div class="d-inline-block text-truncate description-department" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
                                                                 </td>
                                                                 <td>
                                                                     <div
@@ -243,7 +250,8 @@
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
-                                                                                                    value="Vũ Thị Hà - MTT123">
+                                                                                                    value="{{ $value->in_charge }}"
+                                                                                                    name="in_charge">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
@@ -251,7 +259,8 @@
                                                                                                     value="219 Trung Kính, Yên Hoà, Cầu...">
                                                                                     </div>
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
+                                                                                        <input class="form-control" type="text" value="{{ $value->description }}"
+                                                                                        name="description">
                                                                                     </div>
 
                                                                                 </div>
@@ -286,85 +295,7 @@
     </div>
     @include('template.sidebar.sidebarCoCauToChuc.sidebarRight')
 
-    {{-- Modal Sửa Cơ cấu tổ chức --}}
-    <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Cơ cấu tổ chức</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6 mb-3">
-                            <input class="form-control" type="text" value="Digital Marketing">
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <input class="form-control" type="text" value="DMKT">
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <input class="form-control" type="text" value="CTCP Mastertran">
-                        </div>
 
-                        <div class="col-sm-6 mb-3">
-                            <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
-                        </div>
-                        <div class="col-sm-12">
-                            <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Xóa Cơ cấu tổ chức --}}
-    <div class="modal fade" id="xoaCoCauToChuc"
-        tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger"
-                        id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC
-                    </h5>
-                    <button type="button" class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có thực sự muốn xoá cơ cấu tổ chức đã chọn
-                    không?
-                </div>
-                <div class="modal-footer">
-                    <button type="button"
-                        class="btn btn-outline-danger"
-                        data-bs-dismiss="modal">Hủy</button>
-                    <form
-                        action="/ho-so-don-vi/{{ $value->id }}"
-                        method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                            class="btn btn-danger"
-                            id="deleteRowElement">Xóa</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {{-- Modal Sửa Cơ cấu tổ chức --}}
     <div class="modal fade" id="suaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -435,7 +366,7 @@
                             </div>
                             <div class="col-sm-6 mb-3 d-flex">
                                 <div class="col-sm-11">
-                                    <select  id="onchangeCapToChuc" class="selectpicker" title="Chọn cấp tổ chức" data-size="5">
+                                    <select class="selectpicker" title="Chọn cấp tổ chức">
                                         <option>Công ty con</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
@@ -446,31 +377,29 @@
                                         <option>Phân xưởng</option>
                                         <option>Nhà máy</option>
                                         <option>Công ty thành viên</option>
-                                        <option value="themCapToChuc" class="text-danger">+ Thêm mới</option>
                                     </select>
                                 </div>
-                                {{-- <div class="col-sm-1">
+                                <div class="col-sm-1">
                                     <div class="modal_list-more" data-bs-toggle="modal"
                                     data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" title="Chọn trưởng đơn vị" data-size="5">
-                                    <option>Nguyễn Ngọc Bảo - MTT123</option>
-                                    <option>Đặng Nguyễn Lam Mai - MTT124</option>
-                                    <option>Hồ Thị Hồng Vân - MTT125</option>
-                                    <option>Nguyễn Thị Ngọc Lan - MTT126</option>
-                                    <option>Nguyễn Thị Hồng Oanh - MTT127</option>
-                                    <option>Hà Nguyễn Minh Hiếu - MTT128</option>
+                                <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
+                                data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                data-size="3" name="in_charge">
+                                    @foreach ($listUsers->data as $value)
+                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính">
+                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính *">
                             </div>
                             <div class="col-sm-12 mb-3">
-                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị"></textarea>
+                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị" name="description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -1863,39 +1792,6 @@
         </div>
     </div>    --}}
 
-    <!-- Modal Them Cấp Tổ Chức -->
-    <div class="modal fade" id="themCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CẤP TỔ CHỨC</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <form action="/danh-sach-vi-tri" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <input class="form-control" type="text" placeholder="Nhập mã cấp tổ chức">
-                            </div>
-    
-                            <div class="col-sm-8">
-                                <input class="form-control" type="text" placeholder="Nhập tên cấp tổ chức" name="name">
-                            </div>
- 
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themCoCauToChuc" >Hủy</button>
-                        <button type="submit" class="btn btn-danger">Lưu</button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection
 @section('footer-script')
 
@@ -1937,18 +1833,18 @@
                 format: 'd/m/Y',
                 timepicker: false,
             });
+            // $('#onchangePhongBan').change(function() {
+            // var opval = $(this).val();
+            // if (opval == "themPhongBan") {
+            //     $('#themPhongBan').modal("show");
+            //     $('#themThanhVien').modal("hide");
+            // }
+            // });
             $('#onchangeViTriCongViec').change(function() {
                 var opval = $(this).val();
                 if (opval == "themViTriCongViec") {
                     $('#themViTriCongViec').modal("show");
                     $('#themThanhVien').modal("hide");
-                }
-            });
-            $('#onchangeCapToChuc').change(function() {
-                var opval = $(this).val();
-                if (opval == "themCapToChuc") {
-                    $('#themCapToChuc').modal("show");
-                    $('#themCoCauToChuc').modal("hide");
                 }
             });
         });
