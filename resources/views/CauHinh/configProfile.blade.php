@@ -137,7 +137,7 @@
                                                                     </div>
                                                                 </th>
                                                                 <td class="text-nowrap">
-                                                                    <div>QTN</div>
+                                                                    <div>{{ $value->code }}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
                                                                     <div>{{ $value->name }}</div>
@@ -238,14 +238,21 @@
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
-                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Mã đơn vị"
-                                                                                                    value="DMKT">
+                                                                                                    value="{{ $value->code }}"
+                                                                                                    name="code">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị mẹ"
-                                                                                                    value="CTCP Mastertran">
+                                                                                        <select class="selectpicker" title="Chọn đơn vị mẹ" data-width="100%"
+                                                                                            data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                            data-size="3">
+                                                                                            @foreach ($listDepartments->data as $dep)
+                                                                                                        <option
+                                                                                                            value="{{ $dep->id }}"
+                                                                                                            selected>
+                                                                                                            {{ $dep->name }}
+                                                                                                        </option>
+                                                                                                @endforeach
+                                                                                        </select> 
                                                                                     </div>
 
                                                                                     <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp tổ chức">
@@ -263,25 +270,26 @@
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Trưởng đơn vị"
-                                                                                                    value="{{ $value->in_charge }}"
-                                                                                                    name="in_charge">
-                                                                                    </div>
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Trụ sở chính"
-                                                                                                    value="219 Trung Kính, Yên Hoà, Cầu...">
-                                                                                    </div>
-                                                                                    <div class="col-sm-12 mb-3">
-                                                                                        <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Chức năng, nhiệm vụ đơn vị" value="{{ $value->description }}"
-                                                                                        name="description">
-                                                                                    </div>
-
+                                                                                        <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
+                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                        data-size="3" name="in_charge">
+                                                                                        @foreach ($listUsers->data as $user)
+                                                                                        <option value="{{ $value->in_charge}}">{{ $user->name }}</option>
+                                                                                        @endforeach
+                                                                                    </select> 
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control"
+                                                                                    type="text"
+                                                                                    value="219 Trung Kính, Yên Hoà, Cầu...">
+                                                                                </div>
+                                                                                <div class="col-sm-12 mb-3">
+                                                                                    <input class="form-control" type="text" value="{{ $value->description }}"
+                                                                                    name="description">
                                                                                 </div>
                                                                             </div>
+                                                                        </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
                                                                                     class="btn btn-outline-danger"
@@ -376,10 +384,16 @@
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" required type="text" placeholder="Nhập Mã đơn vị *">
+                                <input class="form-control" required type="text" placeholder="Nhập Mã đơn vị *" name="code">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input type="text" class="form-control" autocomplete="off" required id="thuocDonVi" placeholder="Chọn đơn vị mẹ *" />
+                                <select class="selectpicker" placeholder="Chọn đơn vị mẹ *" title="Chọn đơn vị mẹ " data-actions-box="true"
+                                    data-live-search="true"
+                                    data-live-search-placeholder="Tìm kiếm..." name="parent">
+                                        @foreach ($listDepartments->data as $value)
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                         @endforeach
+                                    </select>
                             </div>
                             <div class="col-sm-6 mb-3 d-flex">
                                 <div class="col-sm-12">
@@ -410,7 +424,7 @@
                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                 data-size="3" name="in_charge">
                                     @foreach ($listUsers->data as $value)
-                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
