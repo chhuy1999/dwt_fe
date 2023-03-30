@@ -42,10 +42,10 @@
                                                                 </div>
                                                             </th>
                                                             <td>
-                                                                <div>{{ $value->name}}</div>
+                                                                <div>{{ $value->parent_id}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>{{ $value->departement->name ?? "" }}</div>
+                                                                <div>{{ $value->name }}</div>
                                                             </td>
                                                             <td>
                                                                 <div>{{ $value->unit_id}}</div>
@@ -108,12 +108,18 @@
                                                                         @method('PUT')
                                                                         <div class="modal-body">
                                                                             <div class="row">
+                                                                                
                                                                                 <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control" type="text" name="name" value="{{ $value->name}}">
+                                                                                    <select name="parent_id" class="selectpicker" title="Nhập gói trang bị" data-size="3" data-live-search="true">
+                                                                                        @foreach ($listEquimentPack->data as $value)
+                                                                                            <option value="{{ $value->parent_id}}">
+                                                                                                {{ $value->name }}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                 </div>
-
                                                                                 <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control" type="text">
+                                                                                    <input class="form-control" type="text" name="p" value="{{ $value->name}}">
                                                                                 </div>
                                                                                 <div class="col-sm-6 mb-3">
                                                                                     <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
@@ -182,7 +188,7 @@
                             <div class="col-sm-6 mb-3">
                                 <select name="parent_id" class="selectpicker" title="Nhập gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
                                     @foreach ($listEquimentPack->data as $value)
-                                        <option value="{{ $value->name}}">
+                                        <option value="{{ $value->id}}">
                                             {{ $value->name }}
                                         </option>
                                     @endforeach
@@ -196,7 +202,7 @@
                             <div class="col-sm-6 mb-3">
                                 <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">
                                     @foreach ($listUnits->data as $unit)
-                                        <option value="{{ $unit->name }}">{{ $unit->name }}</option>
+                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
