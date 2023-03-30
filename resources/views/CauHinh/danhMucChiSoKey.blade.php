@@ -105,7 +105,7 @@
                                                                                     </div>
                                                                                     <div class="col-sm-4 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
 
-                                                                                        <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
+                                                                                        {{-- <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
                                                                                             @foreach ($listUnits->data as $unit)
                                                                                                 @if ($unit->id != $key->unit_id)
                                                                                                     <option value="{{ $unit->id }}">
@@ -117,8 +117,8 @@
                                                                                                     </option>
                                                                                                 @endif
                                                                                             @endforeach
-                                                                                        </select>
-                                                                                        
+                                                                                        </select> --}}
+                                                                                        <input type="text" name="unit_id" value="đơn vị">
                                                                                     </div>
                                                                                     <div class="col-sm-12">
                                                                                         <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả chỉ số" name="description">{{ $key->description }}</textarea>
@@ -190,11 +190,12 @@
                                 <input class="form-control" type="text" required placeholder="Nhập tên chỉ số key *" name="name">
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">
+                                {{-- <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">
                                     @foreach ($listUnits->data as $unit)
                                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach
-                                </select>
+                                </select> --}}
+                                <input type="text" class="form-control" name="unit_id" placeholder="Nhập đơn vị">
                             </div>
                             <div class="col-sm-12">
                                 <textarea class="form-control" placeholder="Nhập mô tả chỉ số" name="description"></textarea>
