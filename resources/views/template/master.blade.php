@@ -65,7 +65,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Kế
+                                        <a href="ke-hoach" class="header_submenu-link">Kế
                                             hoạch</a>
                                     </li>
                                     <li class="header_submenu-items">
@@ -75,7 +75,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </li>
 
                             <li class="header_menu-item">
-                                <a class="header_menu-link" href="">
+                                <a class="header_menu-link" href="#">
                                     <i class="bi bi-people"></i>
                                     <span>Họp đơn vị</span>
                                 </a>
@@ -502,6 +502,23 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
             }).showToast();
         @endif
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var elements = document.getElementsByTagName("INPUT");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].oninvalid = function(e) {
+                    e.target.setCustomValidity("");
+                    if (!e.target.validity.valid) {
+                        e.target.setCustomValidity("Trường này không được để trống");
+                    }
+                };
+                elements[i].oninput = function(e) {
+                    e.target.setCustomValidity("");
+                };
+            }
+        })
     </script>
 </body>
 

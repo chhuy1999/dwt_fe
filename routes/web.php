@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\TargetDetailController;
 use App\Http\Controllers\Api\TargetLogController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\PositionLevelController;
+use App\Http\Controllers\Api\ReportsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -69,8 +70,8 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
 
 // hồ sơ đơn vị
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
-    Route::get('ho-so-don-vi', [DepartmentController::class, 'index']);
-    Route::post('ho-so-don-vi', [DepartmentController::class, 'store']);
+    Route::get('/ho-so-don-vi', [DepartmentController::class, 'index']);
+    Route::post('/ho-so-don-vi', [DepartmentController::class, 'store']);
     Route::put('ho-so-don-vi/{id}', [DepartmentController::class, 'update']);
     Route::delete('ho-so-don-vi/{id}', [DepartmentController::class, 'delete']);
 });
@@ -146,10 +147,21 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 });
 
 
-// Họp đơn vị
+
 Route::get('giao-ban', function () {
     return view('HopDonVi.giaoBan');
 });
+
+
+
+// Họp đơn vị
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('giao-ban', [ReportsController::class, 'index']);
+    Route::post('giao-ban', [ReportsController::class, 'store']);
+    Route::put('giao-ban/{id}', [ReportsController::class, 'update']);
+    Route::delete('giao-ban/{id}', [ReportsController::class, 'delete']);
+});
+
 
 
 // Danh mục gói trang bị

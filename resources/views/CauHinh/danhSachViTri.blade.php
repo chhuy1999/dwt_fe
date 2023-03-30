@@ -182,8 +182,9 @@
                                                                                             value="{{ $value->name }}">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
-                                                                                        <select class="selectpicker"
-                                                                                            title="Chọn cấp nhân sự">
+                                                                                        <select class="selectpicker" title="Chọn cấp nhân sự" data-width="100%"
+                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                        data-size="3">
                                                                                             <option selected>Chủ tịch HĐQT
                                                                                             </option>
                                                                                             <option>Tổng Giám đốc</option>
@@ -206,8 +207,9 @@
                                                                                     </div> --}}
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
-                                                                                        <select class="selectpicker"
-                                                                                            title="Chọn đơn vị công tác">
+                                                                                        <select class="selectpicker" title="Chọn đơn vị công tác" data-width="100%"
+                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                        data-size="3">
                                                                                             <option selected>Cung ứng
                                                                                             </option>
                                                                                             <option>Trade Marketing</option>
@@ -279,13 +281,14 @@
                                             <div class="card-title">Phòng kinh doanh</div>
                                         </div>
                                         <div class="main_search d-flex mt-2">
-                                            <div class="form-group has-search">
-                                                <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Tìm kiếm thành viên" wfd-id="id12">
-                                            </div>
-                                            <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh">Thêm vị trí</button>
+                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
+                                            <form action="/danh-sach-vi-tri" method="GET">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                    name="q" value="{{ request()->q }}">
+                                            </form>
+                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
+                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm vị
+                                                trí</button>
                                         </div>
                                     </div>
                                     <div class='row'>
@@ -566,13 +569,14 @@
                                             <div class="card-title">Phòng Marketing</div>
                                         </div>
                                         <div class="main_search d-flex mt-2">
-                                            <div class="form-group has-search">
-                                                <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Tìm kiếm thành viên" wfd-id="id12">
-                                            </div>
-                                            <button class="btn btn-danger d-block ms-3" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh">Thêm vị trí</button>
+                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
+                                            <form action="/danh-sach-vi-tri" method="GET">
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                    name="q" value="{{ request()->q }}">
+                                            </form>
+                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
+                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm vị
+                                                trí</button>
                                         </div>
                                     </div>
                                     <div class='row'>
@@ -1890,7 +1894,7 @@
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập tên vị trí"
+                                <input class="form-control" required type="text" placeholder="Nhập tên vị trí"
                                     name="name">
                             </div>
                             <div class="col-sm-6 mb-3">
@@ -2448,12 +2452,14 @@
 @endsection
 @section('footer-script')
 
-    <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript"
         src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+
+<script src="https://www.jqueryscript.net/demo/Drop-Down-Combo-Tree/comboTreePlugin.js"  type="text/javascript"></script>
+{{-- <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script> --}}
 
     <script>
         $(document).ready(function() {

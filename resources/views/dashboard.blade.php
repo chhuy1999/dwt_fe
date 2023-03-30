@@ -1,6 +1,18 @@
 @extends('template.master')
 {{-- Trang chủ admin --}}
 @section('title', 'Bảng điều khiển')
+
+@section('header-style')
+
+<style>
+    .mainSection {
+        height: initial;
+    }
+</style>
+
+@endsection
+
+
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
 
@@ -431,10 +443,10 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="mb-3 row">
-                                                                                            <div class="d-flex  align-items-center">
+                                                                                            <div class="d-flex align-items-center">
                                                                                                 <div class="form-check">
-                                                                                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh">
-                                                                                                    <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh">
+                                                                                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}">
+                                                                                                    <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh{{ $task->id }}">
                                                                                                         Đạt giá trị kinh doanh
                                                                                                     </label>
                                                                                                 </div>
@@ -448,7 +460,7 @@
                                                                                                         <div class="row" data-repeater-item>
                                                                                                             <div class="col-md-6 mb-3">
                                                                                                                 <select
-                                                                                                                    class='selectpicker'
+                                                                                                                    class='form-select'
                                                                                                                     data-live-search="true"
                                                                                                                     title="Chọn tiêu chí" name="kpiKeyIds[]">
                                                                                                                     @foreach ($kpiKeys as $kpiKey)
@@ -1857,9 +1869,9 @@
                                                 <th style="width: 20%">
                                                     <div class="d-flex justify-content-between">
                                                         Vấn đề tồn đọng
-                                                        <div>
+                                                        {{-- <div>
                                                             <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
-                                                        </div>
+                                                        </div> --}}
 
                                                     </div>
                                                 </th>
@@ -1888,12 +1900,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Giải quyết" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -1951,12 +1963,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -2014,12 +2026,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Than phiên">Than phiền</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -2077,12 +2089,12 @@
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Than phiền">Than phiền</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                        <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                     </div>
                                                 </td>
                                                 <td>

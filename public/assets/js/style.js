@@ -94,4 +94,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // const year = today.getFullYear();
     // const currentDate = `${month}/${year}`;
     // document.getElementById('thismonth').textContent = currentDate;
+    
 });

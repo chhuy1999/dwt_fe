@@ -102,7 +102,11 @@
                                                 <div class="action_wrapper d-flex">
                                                     <div class="form-group has-search">
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+
+                                                        <form action="/ho-so-don-vi" method="GET">
+                                                            <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                                name="q" value="{{ request()->q }}">
+                                                        </form>
                                                     </div>
                                                     <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                                                         <button class="btn btn-danger d-block" data-bs-toggle="modal"
@@ -125,7 +129,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listDepartments->data as $value)
+                                                        @foreach ($$data->data as $value)
                                                             <tr>
                                                                 <th scope="row">
                                                                     <div
@@ -247,21 +251,34 @@
                                                                                                     type="text"
                                                                                                     value="Tổ/Đội/Nhóm">
                                                                                     </div>
-                                                                                    <div class="col-sm-6 mb-3">
+                                                                                    {{-- <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
                                                                                                     value="{{ $value->in_charge }}"
                                                                                                     name="in_charge">
+                                                                                    </div> --}}
+
+                                                                                    <div class="col-sm-12 mb-3">
+                                                                                        <input class="form-control" type="text" value="{{ $value->description }}"
+                                                                                        name="description">
                                                                                     </div>
+
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
+                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                        data-size="3" name="in_charge">
+                                                                                            @foreach ($listUsers->data as $value)
+                                                                                                <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                    </div>
+
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
                                                                                                     value="219 Trung Kính, Yên Hoà, Cầu...">
                                                                                     </div>
-                                                                                    <div class="col-sm-12 mb-3">
-                                                                                        <input class="form-control" type="text" value="{{ $value->description }}"
-                                                                                        name="description">
-                                                                                    </div>
+                                                                                    
 
                                                                                 </div>
                                                                             </div>
@@ -366,8 +383,10 @@
                             </div>
                             <div class="col-sm-6 mb-3 d-flex">
                                 <div class="col-sm-11">
-                                    <select class="selectpicker" title="Chọn cấp tổ chức">
-                                        <option>Công ty con</option>
+                                    <select class="selectpicker" title="Chọn cấp tổ chức" data-actions-box="true"
+                                    data-live-search="true" title="Chọn chủ trì..."
+                                    data-live-search-placeholder="Tìm kiếm...">
+                                        <option>Công ty</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
                                         <option>Văn phòng</option>
@@ -379,19 +398,19 @@
                                         <option>Công ty thành viên</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-1">
+                                {{-- <div class="col-sm-1">
                                     <div class="modal_list-more" data-bs-toggle="modal"
                                     data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                 data-size="3" name="in_charge">
                                     @foreach ($listUsers->data as $value)
-                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

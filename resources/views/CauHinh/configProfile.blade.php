@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
 @endsection
 
+<style>
+    .description-department {
+        width: 480px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+    }
+</style>
+
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -93,7 +102,10 @@
                                                 <div class="action_wrapper d-flex">
                                                     <div class="form-group has-search">
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                        <form action="/ho-so-don-vi" method="GET">
+                                                            <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                                name="q" value="{{ request()->q }}">
+                                                        </form>
                                                     </div>
                                                     <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                                                         <button class="btn btn-danger d-block" data-bs-toggle="modal"
@@ -116,7 +128,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listDepartments->data as $value)
+                                                        @foreach ($data->data as $value)
                                                             <tr>
                                                                 <th scope="row">
                                                                     <div
@@ -134,12 +146,10 @@
                                                                     <div>Phòng ban</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>Nguyễn Vũ Nguyệt Minh</div>
+                                                                    <div>{{ $value->in_charge}}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div class="d-inline-block text-truncate" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc">Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                        theo yêu cầu của Ban Giám đốc</div>
+                                                                    <div class="d-inline-block text-truncate description-department" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
                                                                 </td>
                                                                 <td>
                                                                     <div
@@ -243,7 +253,8 @@
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
-                                                                                                    value="Vũ Thị Hà - MTT123">
+                                                                                                    value="{{ $value->in_charge }}"
+                                                                                                    name="in_charge">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
@@ -251,7 +262,8 @@
                                                                                                     value="219 Trung Kính, Yên Hoà, Cầu...">
                                                                                     </div>
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
+                                                                                        <input class="form-control" type="text" value="{{ $value->description }}"
+                                                                                        name="description">
                                                                                     </div>
 
                                                                                 </div>
@@ -356,8 +368,10 @@
                                 <input type="text" class="form-control" autocomplete="off" required id="thuocDonVi" placeholder="Chọn đơn vị mẹ *" />
                             </div>
                             <div class="col-sm-6 mb-3 d-flex">
-                                <div class="col-sm-11">
-                                    <select class="selectpicker" title="Chọn cấp tổ chức">
+                                <div class="col-sm-12">
+                                    <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%"
+                                    data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                    data-size="3">
                                         <option>Công ty con</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
@@ -370,28 +384,27 @@
                                         <option>Công ty thành viên</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-1">
+                                {{-- <div class="col-sm-1">
                                     <div class="modal_list-more" data-bs-toggle="modal"
                                     data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" title="Chọn trưởng đơn vị">
-                                    <option>Nguyễn Ngọc Bảo</option>
-                                    <option>Đặng Nguyễn Lam Mai</option>
-                                    <option>Hồ Thị Hồng Vân</option>
-                                    <option>Nguyễn Thị Ngọc Lan</option>
-                                    <option>Nguyễn Thị Hồng Oanh</option>
-                                    <option>Hà Nguyễn Minh Hiếu</option>
+                                <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
+                                data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                data-size="3" name="in_charge">
+                                    @foreach ($listUsers->data as $value)
+                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" required type="text" placeholder="Nhập trụ sở chính *">
+                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính *">
                             </div>
                             <div class="col-sm-12 mb-3">
-                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị"></textarea>
+                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị" name="description"></textarea>
                             </div>
                         </div>
                     </div>

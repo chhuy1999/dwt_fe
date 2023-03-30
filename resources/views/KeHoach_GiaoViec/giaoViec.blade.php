@@ -93,7 +93,7 @@
                                                         </div>
                                                         <div class="mb-3 row align-items-center">
                                                             <div class="col-md-7 mb-3">
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" readonly class="form-control"
                                                                     value="{{ $target->name }}" name="name"
                                                                     placeholder="Tên công việc" />
                                                             </div>
@@ -124,9 +124,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Phụ trách" multiple
+                                                                <select class='selectpicker' title="Người đảm nhiệm" multiple
                                                                     data-live-search="true" name="user1">
-                                                                    <option value="">Người phụ trách</option>
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -134,9 +133,8 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Liên quan" multiple
+                                                                <select class='selectpicker' title="Người liên quan" multiple
                                                                     data-live-search="true" name="user2">
-                                                                    <option value="">Người liên quan</option>
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -151,6 +149,7 @@
                                                                                 style="font-size:var(--fz-12)"
                                                                                 title="Tiêu chí" data-live-search="true"
                                                                                 name="id">
+                                                                                <option hidden>Chọn chỉ số key</option>
                                                                                 @foreach ($kpiKeys as $kpiKey)
                                                                                     <option value="{{ $kpiKey->id }}">
                                                                                         {{ $kpiKey->name }}
@@ -360,7 +359,8 @@
 
                                                                                             <div class="col-md-6 mb-3">
                                                                                                 <select
-                                                                                                    class='form-control'
+                                                                                                    class='selectpicker' data-live-search="true"
+                                                                                                    data-size="5"
                                                                                                     name="position_id"
                                                                                                     id="">
                                                                                                     @foreach ($listPositions->data as $pos)

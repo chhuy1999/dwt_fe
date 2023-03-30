@@ -50,6 +50,7 @@ class PositionController extends Controller
 
             $data = $request->validate([
                 'name' => 'required',
+                'description' => 'required',
                 'salary_fund' => 'required|numeric',
                 'max_employees' => 'required|numeric',
             ]);
@@ -66,6 +67,7 @@ class PositionController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
+                'description' => 'nullable',
                 'salary_fund' => 'nullable|numeric',
                 'max_employees' => 'nullable|numeric',
             ]);

@@ -662,6 +662,7 @@ th {
     text-align: center;
     pointer-events: none;
     color: #aaa;
+    padding-top: 6px;
 }
 
 .btn-export {
@@ -1368,6 +1369,8 @@ th {
     border-right: 1px solid var(--grey-color);
     border-left: 1px solid var(--grey-color);
     border-top: 1px solid var(--grey-color);
+    position: relative;
+    height: 100%;
 }
 
 .mainSection_heading {
@@ -1994,3 +1997,4 @@ ul.modal_upload-list li:last-child {
     width: 100%; */
     /* bottom: 0; */
 }
+

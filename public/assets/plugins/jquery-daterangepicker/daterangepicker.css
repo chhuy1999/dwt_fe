@@ -192,9 +192,9 @@
 }
 
 .daterangepicker td.in-range {
-  background-color: #ca1f24;
+  background-color: var(--pink-color-blur);
   border-color: transparent;
-  color: #fff;
+  color: #000;
   border-radius: 0;
 }
 
@@ -211,9 +211,9 @@
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  background-color: var(--blue-color-blur);
+  background-color: var(--primary-color);
+  border-color: transparent;
+  color: #fff;
 }
 
 .daterangepicker th.month {

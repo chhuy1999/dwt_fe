@@ -65,9 +65,9 @@ class UsersController extends Controller
                 'sex' => 'required',
                 'address' => 'required',
                 'dob' => 'required',
-                'departement' => 'required',
-                'position' => 'required',  
-                'position_level' => 'required',            
+                'departement_id' => 'required',
+                'position_id' => 'required',  
+                'position_level_id' => 'required',            
                
             ]);
             //format fe date to api required date dd/mm/yyyy to yyyy-MM-DD
@@ -113,9 +113,9 @@ class UsersController extends Controller
                 'sex' => 'nullable',
                 'address' => 'nullable',
                 'dob' => 'nullable',
-                'departement' => 'nullable',
-                'position' => 'nullable',  
-                'position_level' => 'nullable',   
+                'departement_id' => 'nullable',
+                'position_id' => 'nullable',  
+                'position_level_id' => 'nullable',   
             ]);
             $this->dwtService->updateUser($id, $data);
             return back()->with('success', 'Cập nhật thành công');

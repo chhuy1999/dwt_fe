@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\DwtServices;
 use Exception;
 use Illuminate\Http\Request;
-use Termwind\Components\Dd;
 
 class DepartmentController extends Controller
 {
@@ -34,13 +33,13 @@ class DepartmentController extends Controller
             $listDepartments = $this->dwtService->listDepartments();
             $listUsers = $this->dwtService->listUsers();
 
-            return view('Cauhinh.profile')
+            return view('Cauhinh.configProfile')
                  ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('Cauhinh.profile')->with('listDepartments', []);
+            return view('CauHinh.configProfile')->with('listDepartments', []);
         }
     }
 
