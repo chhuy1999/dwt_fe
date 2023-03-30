@@ -118,6 +118,7 @@
                                                                                                 @endif
                                                                                             @endforeach
                                                                                         </select>
+                                                                                        
                                                                                     </div>
                                                                                     <div class="col-sm-12">
                                                                                         <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả chỉ số" name="description">{{ $key->description }}</textarea>
@@ -251,7 +252,7 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
-            dom: '<"d-flex mb-3 justify-content-end"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex mb-3 justify-content-end"f<"card-title-wrapper">>rt<"dataTables_bottom  justify-content-end"p>',
         });
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex me-3">
