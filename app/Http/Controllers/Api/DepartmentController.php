@@ -33,7 +33,7 @@ class DepartmentController extends Controller
             $listDepartments = $this->dwtService->listDepartments();
             $listUsers = $this->dwtService->listUsers();
 
-            return view('Cauhinh.configProfile')
+            return view('CauHinh.configProfile')
                  ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
                 ->with('listUsers', $listUsers);
