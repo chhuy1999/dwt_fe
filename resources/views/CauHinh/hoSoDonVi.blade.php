@@ -247,21 +247,34 @@
                                                                                                     type="text"
                                                                                                     value="Tổ/Đội/Nhóm">
                                                                                     </div>
-                                                                                    <div class="col-sm-6 mb-3">
+                                                                                    {{-- <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
                                                                                                     value="{{ $value->in_charge }}"
                                                                                                     name="in_charge">
+                                                                                    </div> --}}
+
+                                                                                    <div class="col-sm-12 mb-3">
+                                                                                        <input class="form-control" type="text" value="{{ $value->description }}"
+                                                                                        name="description">
                                                                                     </div>
+
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
+                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                        data-size="3" name="in_charge">
+                                                                                            @foreach ($listUsers->data as $value)
+                                                                                                <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                    </div>
+
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
                                                                                                     value="219 Trung Kính, Yên Hoà, Cầu...">
                                                                                     </div>
-                                                                                    <div class="col-sm-12 mb-3">
-                                                                                        <input class="form-control" type="text" value="{{ $value->description }}"
-                                                                                        name="description">
-                                                                                    </div>
+                                                                                    
 
                                                                                 </div>
                                                                             </div>
@@ -391,7 +404,7 @@
                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                 data-size="3" name="in_charge">
                                     @foreach ($listUsers->data as $value)
-                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

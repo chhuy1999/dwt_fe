@@ -92,15 +92,16 @@
                         <div class="d-flex align-items-center">
                             <div>
                                 <h5 class="mainSection_heading-title">
-                                    Biên bản họp Giao Ban
+                                    Biên bản họp
                                 </h5>
                             </div>
                             <div>
                                 <select class="form-select form-select-lg style_input ms-2 fw-bolder">
-                                    <option>Ngày</option>
+                                    <option>Giao ban Ngày</option>
                                     <option>Tuần</option>
                                     <option>Tháng</option>
                                     <option>Quý</option>
+                                    <option>Khác</option>
                                 </select>
                             </div>
                         </div>
@@ -241,7 +242,7 @@
                                                                     gửi thông tin</div>
                                                             </td>
                                                             <td>
-                                                                <div>Mai</div>
+                                                                <div>Đặng Vũ Lam Mai - MTT123</div>
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
@@ -270,7 +271,7 @@
                                                                     gửi thông tin</div>
                                                             </td>
                                                             <td>
-                                                                <div>Mai</div>
+                                                                <div>Đặng Vũ Lam Mai - MTT123</div>
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
@@ -299,7 +300,7 @@
                                                                     gửi thông tin</div>
                                                             </td>
                                                             <td>
-                                                                <div>Mai</div>
+                                                                <div>Đặng Vũ Lam Mai - MTT123</div>
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
@@ -467,7 +468,7 @@
                                                                 <div class="description-problem-responded" title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                             </td>
                                                             <td>
-                                                                <div>Mai</div>
+                                                                <div title="Đặng Vũ Lam Mai - MTT123">Đặng Vũ Lam Mai - MTT123</div>
                                                             </td>
                                                             <td>
                                                                 NN1

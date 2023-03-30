@@ -75,7 +75,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </li>
 
                             <li class="header_menu-item">
-                                <a class="header_menu-link" href="">
+                                <a class="header_menu-link" href="#">
                                     <i class="bi bi-people"></i>
                                     <span>Họp đơn vị</span>
                                 </a>
