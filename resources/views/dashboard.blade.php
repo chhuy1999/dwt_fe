@@ -431,10 +431,10 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="mb-3 row">
-                                                                                            <div class="d-flex  align-items-center">
+                                                                                            <div class="d-flex align-items-center">
                                                                                                 <div class="form-check">
-                                                                                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh">
-                                                                                                    <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh">
+                                                                                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}">
+                                                                                                    <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh{{ $task->id }}">
                                                                                                         Đạt giá trị kinh doanh
                                                                                                     </label>
                                                                                                 </div>
@@ -448,7 +448,7 @@
                                                                                                         <div class="row" data-repeater-item>
                                                                                                             <div class="col-md-6 mb-3">
                                                                                                                 <select
-                                                                                                                    class='selectpicker'
+                                                                                                                    class='form-select'
                                                                                                                     data-live-search="true"
                                                                                                                     title="Chọn tiêu chí" name="kpiKeyIds[]">
                                                                                                                     @foreach ($kpiKeys as $kpiKey)
