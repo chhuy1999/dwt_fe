@@ -253,7 +253,7 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
-            dom: '<"d-flex mb-3 justify-content-end"f<"card-title-wrapper">>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex mb-3 justify-content-between"f<"card-title-wrapper">>rt<"dataTables_bottom  justify-content-end"p>',
         });
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex me-3">
