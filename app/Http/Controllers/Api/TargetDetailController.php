@@ -67,7 +67,7 @@ class TargetDetailController extends Controller
     public function update($id, Request $request)
     {
         try {
-
+        
             $data = $request->validate([
                 'target_id' => 'nullable|numeric',
                 'position_id' => 'nullable|numeric',
@@ -77,8 +77,10 @@ class TargetDetailController extends Controller
                 'description' => 'nullable',
                 'manday' => 'nullable|numeric',
                 "daterange" => "nullable",
+                "users" => "nullable|array",
+                "relatedUsers" => "nullable|array",
             ]);
-           
+
             if (isset($request['daterange'])) {
                 $dateRange = $data['daterange'];
                 $startDate = explode(" - ", $dateRange)[0];

@@ -271,130 +271,10 @@
                                                                                     </a>
                                                                                 </li>
                                                                             </ul>
+
                                                                         </td>
                                                                     </tr>
-                                                                    <!-- Modal Sửa nvu -->
-                                                                    <div class="modal fade" id="suaVanDeTonDong{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header text-center">
-                                                                                    <h5 class="modal-title w-100" id="exampleModalLabel">Chỉnh sửa
-                                                                                        nhiệm vụ đã giao</h5>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                </div>
-                                                                                <form action="/danh-muc-nhiem-vu/{{ $assignedTask->id }}" method="POST">
-                                                                                    @csrf
-                                                                                    @method('PUT')
-                                                                                    <div class="modal-body">
-                                                                                        <div class="mb-3 row">
-                                                                                            <div class="col-md-12 mb-3">
-                                                                                                <input type="text" class="form-control" name="name" value="{{ $assignedTask->name }}" />
-                                                                                            </div>
-                                                                                            <div class="col-md-12 mb-3">
-                                                                                                <input type="text" class="form-control" readonly value="{{ $assignedTask->target->name ?? '' }}" />
-                                                                                            </div>
 
-                                                                                            <div class="col-md-12 mb-3">
-                                                                                                <textarea class="form-control" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
-                                                                                            </div>
-                                                                                            <div class="col-md-12 mb-3">
-                                                                                                <textarea class="form-control" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
-                                                                                            </div>
-
-                                                                                            <div class="col-md-6 mb-3">
-                                                                                                <select class='selectpicker' data-live-search="true" data-size="5" name="position_id" id="">
-                                                                                                    @foreach ($listPositions->data as $pos)
-                                                                                                        @if ($pos->id == ($assignedTask->position->id ?? '-1'))
-                                                                                                            <option value="{{ $pos->id }}" selected>
-                                                                                                                {{ $pos->name }}
-                                                                                                            </option>
-                                                                                                        @else
-                                                                                                            <option value="{{ $pos->id }}">
-                                                                                                                {{ $pos->name }}
-                                                                                                            </option>
-                                                                                                        @endif
-                                                                                                    @endforeach
-
-                                                                                                </select>
-                                                                                            </div>
-                                                                                            <div class="col-md-6 mb-3">
-                                                                                                <select class='selectpicker' multiple data-live-search="true" name="users" id="">
-                                                                                                    @foreach ($listUsers as $user)
-                                                                                                        @if (isAssigned($assignedTask, $user->id))
-                                                                                                            <option value="{{ $user->id }}" selected>
-                                                                                                                {{ $user->name }}
-                                                                                                            </option>
-                                                                                                        @else
-                                                                                                            <option value="{{ $user->id }}">
-                                                                                                                {{ $user->name }}
-                                                                                                            </option>
-                                                                                                        @endif
-                                                                                                    @endforeach
-
-                                                                                                </select>
-                                                                                            </div>
-
-                                                                                            <div class="col-md-6 mb-3">
-                                                                                                <select class='selectpicker' multiple data-live-search="true" name="relatedUsers" id="">
-                                                                                                    @foreach ($listUsers as $user)
-                                                                                                        <option value="{{ $user->id }}">
-                                                                                                            {{ $user->name }}
-                                                                                                        </option>
-                                                                                                    @endforeach
-                                                                                                </select>
-                                                                                            </div>
-
-                                                                                            <div class="col-md-2 mb-3">
-                                                                                                <input type="text" name="manday" value="{{ $assignedTask->manday }}" class="form-control" />
-                                                                                            </div>
-
-                                                                                            <div class="col-md-4 mb-3">
-                                                                                                <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
-                                                                                            </div>
-
-                                                                                            <div class="repeater-edit">
-                                                                                                <div data-repeater-list="kpiKeys">
-                                                                                                    @foreach ($assignedTask->kpiKeys as $kpiKey)
-                                                                                                        <div class="row" data-repeater-item>
-                                                                                                            <div class="col-md-6 mb-3">
-                                                                                                                <select class='selectpicker' data-live-search="true" title="Thêm tiêu chí key">
-                                                                                                                    <option>Số lượt
-                                                                                                                        khách hàng được
-                                                                                                                        chăm sóc
-                                                                                                                    </option>
-                                                                                                                    <option>Số buổi
-                                                                                                                        Activation
-                                                                                                                    </option>
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-5 mb-3">
-                                                                                                                <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
-                                                                                                            </div>
-                                                                                                            <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                                                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    @endforeach
-
-                                                                                                </div>
-
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="d-flex justify-content-start">
-                                                                                                        <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                                        <button type="submit" class="btn btn-danger">Lưu</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
 
                                                                     {{-- Xóa thuộc tính --}}
                                                                     <div class="modal fade" id="xoaThuocTinh{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -442,7 +322,132 @@
     </div>
     @include('template.sidebar.sidebarGiaoViec.sidebarRight')
 
+    @foreach ($listAssignTasks->data as $assignedTask)
+        <!-- Modal Sửa nvu -->
+        <div class="modal fade" id="suaVanDeTonDong{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title w-100" id="exampleModalLabel">Chỉnh sửa
+                            nhiệm vụ đã giao</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/danh-muc-nhiem-vu/{{ $assignedTask->id }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="mb-3 row">
+                                <div class="col-md-12 mb-3">
+                                    <input type="text" class="form-control" name="name" value="{{ $assignedTask->name }}" />
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <input type="text" class="form-control" readonly value="{{ $assignedTask->target->name ?? '' }}" />
+                                </div>
 
+                                <div class="col-md-12 mb-3">
+                                    <textarea class="form-control" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <textarea class="form-control" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <select class='selectpicker' data-live-search="true" data-size="5" name="position_id" id="">
+                                        @foreach ($listPositions->data as $pos)
+                                            @if ($pos->id == ($assignedTask->position->id ?? '-1'))
+                                                <option value="{{ $pos->id }}" selected>
+                                                    {{ $pos->name }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $pos->id }}">
+                                                    {{ $pos->name }}
+                                                </option>
+                                            @endif
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <select class='selectpicker' multiple data-live-search="true" name="users[]">
+                                        @foreach ($listUsers as $user)
+                                            @if (isAssigned($assignedTask, $user->id))
+                                                <option value="{{ $user->id }}" selected>
+                                                    {{ $user->name }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $user->id }}">
+                                                    {{ $user->name }}
+                                                </option>
+                                            @endif
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <select class='selectpicker' multiple data-live-search="true" name="relatedUsers[]" id="">
+                                        @foreach ($listUsers as $user)
+                                            <option value="{{ $user->id }}">
+                                                {{ $user->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-2 mb-3">
+                                    <input type="text" name="manday" value="{{ $assignedTask->manday }}" class="form-control" />
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
+                                </div>
+
+                                <div class="repeater">
+                                    <div data-repeater-list="kpiKeys">
+                                        @foreach ($assignedTask->kpiKeys as $kpiKey)
+                                            <div class="row" data-repeater-item>
+                                                <div class="col-md-6 mb-3">
+                                                    <select class='form-select' data-live-search="true" title="Thêm tiêu chí key" name="id">
+                                                        @foreach ($kpiKeys as $kpi)
+                                                            @if ($kpi->id == $kpiKey->id)
+                                                                <option value="{{ $kpi->id }}" selected>{{ $kpi->name }}</option>
+                                                            @else
+                                                                <option value="{{ $kpi->id }}">{{ $kpi->name }}</option>
+                                                            @endif
+                                                        @endforeach
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5 mb-3">
+                                                    <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $kpiKey->quantity }}" />
+                                                </div>
+                                                <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="d-flex justify-content-start">
+                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-danger">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
 
 @endsection
