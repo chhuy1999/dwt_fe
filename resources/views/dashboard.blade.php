@@ -4,11 +4,11 @@
 
 @section('header-style')
 
-<style>
-    .mainSection {
-        height: initial;
-    }
-</style>
+    <style>
+        .mainSection {
+            height: initial;
+        }
+    </style>
 
 @endsection
 
@@ -302,17 +302,17 @@
                                                                                                 <div class="modal-title">Nhận xét nhiệm vụ</div>
                                                                                             </div>
                                                                                             <div class="modal_list row">
-                                                                                                
-                                                                                                        <div class="col-sm-10 d-flex  align-items-center">
-                                                                                                            <input class="form-control" placeholder="Nhập nhận xét">
-                                                                                                            
-                                                                                                        </div>
-                                                                                                        <div class="col-sm-2 d-flex  align-items-center">
-                                                                                                            <input placeholder="Điểm KPI" class="form-control">
-                                                                                                            
-                                                                                                        </div>
-                                                                                                    
-                                                                                                
+
+                                                                                                <div class="col-sm-10 d-flex  align-items-center">
+                                                                                                    <input class="form-control" placeholder="Nhập nhận xét">
+
+                                                                                                </div>
+                                                                                                <div class="col-sm-2 d-flex  align-items-center">
+                                                                                                    <input placeholder="Điểm KPI" class="form-control">
+
+                                                                                                </div>
+
+
                                                                                             </div>
                                                                                         </div>
 
@@ -445,7 +445,7 @@
                                                                                         <div class="mb-3 row">
                                                                                             <div class="d-flex align-items-center">
                                                                                                 <div class="form-check">
-                                                                                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}">
+                                                                                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}" onchange="toggleKpiKey(event)">
                                                                                                     <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh{{ $task->id }}">
                                                                                                         Đạt giá trị kinh doanh
                                                                                                     </label>
@@ -459,33 +459,24 @@
                                                                                                     <div data-repeater-list="kpiKeys-edit">
                                                                                                         <div class="row" data-repeater-item>
                                                                                                             <div class="col-md-6 mb-3">
-                                                                                                                <select
-                                                                                                                    class='form-select'
-                                                                                                                    data-live-search="true"
-                                                                                                                    title="Chọn tiêu chí" name="kpiKeyIds[]">
+                                                                                                                <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="kpiKeyIds[]">
                                                                                                                     @foreach ($kpiKeys as $kpiKey)
                                                                                                                         <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
                                                                                                                     @endforeach
                                                                                                                 </select>
                                                                                                             </div>
                                                                                                             <div class="col-md-5 mb-3">
-                                                                                                                <input type="number" class="form-control"
-                                                                                                                    placeholder="Giá trị" name="kpiKeyQuantity[]" />
+                                                                                                                <input type="number" class="form-control" placeholder="Giá trị" name="kpiKeyQuantity[]" />
                                                                                                             </div>
-                                                                                                            <div
-                                                                                                                class="col-md-1 mb-3 d-flex align-items-center">
-                                                                                                                <img data-repeater-delete role="button"
-                                                                                                                    src="{{ asset('/assets/img/trash.svg') }}"
-                                                                                                                    width="20px" height="20px" />
+                                                                                                            <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                                                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                    
+
                                                                                                     <div class="col-md-12">
                                                                                                         <div class="d-flex justify-content-start">
-                                                                                                            <div role="button" class="fs-4 text-danger"
-                                                                                                                data-repeater-create><i
-                                                                                                                    class="bi bi-plus-circle"></i></div>
+                                                                                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -2555,6 +2546,10 @@
             $('.form-check_wrapper').toggle(this.checked);
         });
     });
+    const toggleKpiKey = (e) => {
+        
+        $('.form-check_wrapper').toggle();
+    }
 </script>
 
 <script type="text/javascript">
