@@ -421,7 +421,7 @@
 
                                                 </div>
                                                 <div class="col-12 mt-4">
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung" rows="3"></textarea>
+                                                    <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung" rows="3"></textarea>
                                                 </div>
 
                                             </div>
@@ -1359,6 +1359,15 @@
             });
             $('input[name="daterange"]').val('');
             $('input[name="daterange"]').attr("placeholder","Chọn thời hạn");
+        });
+    </script>
+
+    <script>
+        document.getElementById("commenttextarea").addEventListener("keydown", function(e) {
+            if (e.keyCode === 13 && !e.shiftKey) {
+                e.preventDefault();
+                // Code for submitting the comment
+            }
         });
     </script>
 

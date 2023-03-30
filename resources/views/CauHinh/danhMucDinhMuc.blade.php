@@ -228,7 +228,8 @@
                                                                                         <div class="mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday">
                                                                                             <input class="form-control"
                                                                                                 type="number"
-                                                                                                name="manday"
+                                                                                                name="manday" min="0"
+                                                                                                step="0.05" oninput="onInput(this)"
                                                                                                 value="{{ $target->manday }}"
                                                                                                 placeholder="Nhập Manday">
                                                                                         </div>
@@ -439,7 +440,7 @@
                             </div> --}}
                             <div class="col-sm-3">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" required type="number" placeholder="Manday *" name="manday">
+                                    <input class="form-control" required type="number" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday *" name="manday">
                                 </div>
                             </div>
                             {{-- <div class="col-sm-6">
@@ -678,5 +679,15 @@
             </div>
         </div>
     `);
+</script>
+<script>
+    function onInput(event) {
+  let value = parseFloat(event.value);
+  if (Number.isNaN(value)) {
+    document.getElementById('input-1').value = "0.00";
+  } else {
+    document.getElementById('input-1').value = value.toFixed(2);
+  }              
+}
 </script>
 @endsection

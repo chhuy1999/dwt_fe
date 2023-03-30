@@ -19,13 +19,14 @@ class TargetLogController extends Controller
 
     public function store($id, Request $request)
     {
+
         try {
+
             $targetDetailId = $id;
             $data = $request->validate([
                 'note' => 'required',
-                'kpiKeyIds' => 'nullable|array',
+                'kpiKeys' => 'nullable|array',
                 'files' => 'nullable|array',
-                'kpiKeyQuantity' => 'nullable|array',
                 'reportedDate' => 'required|date'
             ]);
 
@@ -38,22 +39,9 @@ class TargetLogController extends Controller
                 }
                 //comma separated file names
                 $data['files'] = implode(',', $fileNames);
+
             }
-            //merged kpiKeyIds and kpiKeyQuantity
-            if (isset($data['kpiKeyIds']) && isset($data['kpiKeyQuantity'])) {
-                $kpiKeys = [];
-                for ($i = 0; $i < count($data['kpiKeyIds']); $i++) {
-                    $id = $data['kpiKeyIds'][$i];
-                    $quantity = $data['kpiKeyQuantity'][$i];
-                    if ($id && $quantity) {
-                        $kpiKeys[] = [
-                            'id' => $id,
-                            'quantity' => $quantity
-                        ];
-                    }
-                }
-                $data['kpiKeys'] = $kpiKeys;
-            }
+
 
             //create target log
             $newTargetLog = [
@@ -88,11 +76,13 @@ class TargetLogController extends Controller
                     }
                 }
                 if ($existTargetLogDetail) {
+
                     $update = [
                         "note" => $data['note'] ?? null,
                         "files" => $data['files'] ?? null,
                         "kpiKeys" => $data['kpiKeys'] ?? null
                     ];
+                  
                     //update target log detail
                     $this->dwtService->updateTargetLogDetail($existTargetLogDetail->id, $update);
 
@@ -102,10 +92,12 @@ class TargetLogController extends Controller
 
 
             //create target log detail
+
+
             $newTargetLogDetail = [
                 "target_log_id" => $targetLogId,
                 "note" => $data['note'],
-                "files" => $data['files'] ?? "test",
+                "files" => $data['files'] ?? null,
                 "kpiKeys" => $data['kpiKeys'] ?? null
             ];
 
@@ -113,6 +105,8 @@ class TargetLogController extends Controller
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();
+
+            dd($error);
             error_log($error);
             return back()->with('error', $error);
         }
