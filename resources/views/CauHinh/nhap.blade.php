@@ -35,6 +35,7 @@
                                                     <tbody>
                                                         @foreach ($listEquimentPack->data as $value)
                                                         <tr>
+                                                        <tr>
                                                             <th scope="row">
                                                                 <div
                                                                     class="d-flex justify-content-center align-items-center">
@@ -93,7 +94,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- Modal Sua Vi Tri chức danh -->
+                                                        <!-- Modal Sửa gói trang bị -->
                                                         <div class="modal fade" id="{{ 'suatrangbi' . $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
@@ -104,8 +105,8 @@
                                                                     </div>
 
                                                                     <form method="POST" action="/danh-muc-goi-trang-bi/{{ $value->id }}">
-                                                                        @csrf
-                                                                        @method('PUT')
+                                                                    @csrf
+                                                                    @method('PUT')
                                                                         <div class="modal-body">
                                                                             <div class="row">
                                                                                 <div class="col-sm-6 mb-3">
@@ -147,8 +148,12 @@
                                                                     </form>
                                                                 </div>
                                                             </div>
+
                                                         
+                                                    
+                                                           
                                                             @endforeach
+                                                    
                                                         </tbody>
 
                                                 </table>
@@ -177,7 +182,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM TRANG BỊ</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CẤP NHÂN SỰ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 

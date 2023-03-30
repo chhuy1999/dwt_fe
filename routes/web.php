@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\TargetLogController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\PositionLevelController;
 use App\Http\Controllers\Api\ReportsController;
+use App\Http\Controllers\Api\EquimentPackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -165,8 +166,15 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 
 // Danh mục gói trang bị
-Route::get('danh-muc-goi-trang-bi', function () {
-    return view('CauHinh.danhMucGoiTrangBi');
+// Route::get('danh-muc-goi-trang-bi', function () {
+//     return view('CauHinh.danhMucGoiTrangBi');
+// });
+
+Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+    Route::get('danh-muc-goi-trang-bi', [EquimentPackController::class, 'index']);
+    Route::post('danh-muc-goi-trang-bi', [EquimentPackController::class, 'store']);
+    Route::put('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'update']);
+    Route::delete('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'delete']);
 });
 
 
