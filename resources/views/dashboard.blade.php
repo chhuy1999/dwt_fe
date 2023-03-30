@@ -44,6 +44,24 @@
             return '';
         }
 
+        function findTargetLogDetailKpiKeys($targetDetail, $date, $userId)
+        {
+            $kpiKeys = [];
+            $targetLogs = $targetDetail->targetLogs;
+            foreach ($targetLogs as $targetLog) {
+                if (strtotime($targetLog->reportedDate) == strtotime($date)) {
+                    if (count($targetLog->targetLogDetails) > 0) {
+                        foreach ($targetLog->targetLogDetails as $targetLogDetail) {
+                            if ($targetLogDetail->user->id == $userId) {
+                                $kpiKeys = $targetLogDetail->kpiKeys;
+                            }
+                        }
+                    }
+                }
+            }
+            return $kpiKeys;
+        }
+
         function getAllTargetDetailKpiKeys($targetDetail)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -172,219 +190,7 @@
                                                                         {{ $task->name }}
                                                                     </div>
 
-                                                                    <!-- Modal Thông tin nhiệm vụ -->
-                                                                    <div class="modal fade" id="thongTinNhiemVu{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 38%">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header text-center">
-                                                                                    <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-sm-12 ">
-                                                                                            <div class="">
-                                                                                                <table class="table table-bordered table-hover">
-                                                                                                    <tbody>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Tên nhiệm vụ</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->name ?? '' }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Thuộc định mức lao động</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->target->name ?? '' }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Mô tả</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->description ?? '' }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Người đảm nhiệm</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ getUsers($task) }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Vị trí đảm nhiệm</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->position->name ?? '' }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Ngày bắt đầu</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->startDate }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Hạn hoàn thành</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->deadline }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Man day</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->manday }} ngày</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <div>
-                                                                                                                <td>Kế hoạch thực hiện</td>
-                                                                                                                <td>{{ $task->executionPlan }}</td>
-                                                                                                            </div>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <div>
-                                                                                                                <td>Ý kiến TPB</td>
-                                                                                                                <td>{{ $task->managerComment }}</td>
-                                                                                                            </div>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <div>
-                                                                                                                <td>Chấm điểm</td>
-                                                                                                                <td>{{ $task->managerManDay }}</td>
-                                                                                                            </div>
-                                                                                                        </tr>
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
 
-                                                                                        </div>
-
-                                                                                        <div class="col-sm-12 mt-3">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="modal-title">Tổng hợp báo cáo</div>
-                                                                                                <span class="modal-title_mini ms-2">
-                                                                                                    Kết quả tạm tính
-                                                                                                </span>
-                                                                                            </div>
-                                                                                            <div class="modal_list row">
-                                                                                                <div class="modal_items col-sm-6">
-                                                                                                    Số báo cáo đã lập trong tháng: <span class="text-danger">0 file</span>
-                                                                                                </div>
-                                                                                                <div class="modal_items col-sm-6">
-                                                                                                    Số tiêu chí đạt được trong tháng: <span class="text-danger">0 tiêu chí</span>
-                                                                                                </div>
-                                                                                                <div class="modal_items col-sm-6">
-                                                                                                    Số nhân sự thực hiện: <span class="text-danger">1 nhân sự</span>
-                                                                                                </div>
-                                                                                                <div class="modal_items col-sm-6">
-                                                                                                    Giá trị doanh thu: <span class="text-danger">0 ₫</span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <div class="col-sm-12 mt-3">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="modal-title">Nhận xét nhiệm vụ</div>
-                                                                                            </div>
-                                                                                            <div class="modal_list row">
-
-                                                                                                <div class="col-sm-10 d-flex  align-items-center">
-                                                                                                    <input class="form-control" placeholder="Nhập nhận xét">
-
-                                                                                                </div>
-                                                                                                <div class="col-sm-2 d-flex  align-items-center">
-                                                                                                    <input placeholder="Điểm KPI" class="form-control">
-
-                                                                                                </div>
-
-
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <div class="col-sm-12 mt-3">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="modal-title">Danh sách tiêu chí công việc</div>
-                                                                                            </div>
-                                                                                            <div class="">
-                                                                                                <table class="table table-bordered table-hover">
-                                                                                                    <thead>
-                                                                                                        <tr>
-                                                                                                            <th scope="col">Ngày báo cáo</th>
-                                                                                                            <th scope="col">Tiêu chí</th>
-                                                                                                            <th scope="col">Giá trị</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        @foreach (getAllTargetDetailKpiKeys($task) as $key)
-                                                                                                            <tr>
-                                                                                                                <th class="fw-normal">{{date('d/m/Y', strtotime($task->created_at))}}</th>
-                                                                                                                <td>{{ $key->name }}</td>
-                                                                                                                <td>{{ $key->quantity }}</td>
-
-                                                                                                            </tr>
-                                                                                                        @endforeach
-
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-12 mt-3">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="modal-title">Danh sách báo cáo công việc</div>
-                                                                                            </div>
-                                                                                            <div class="">
-                                                                                                <table class="table table-bordered table-hover">
-                                                                                                    <thead>
-                                                                                                        <tr>
-                                                                                                            <th scope="col" style="width: 15%">Ngày báo cáo</th>
-                                                                                                            <th scope="col" style="width: 45%">Nội dung báo cáo</th>
-                                                                                                            <th scope="col" style="width: 40%">File báo cáo</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        @foreach (getAllTargetLogDetail($task) as $log)
-                                                                                                            <tr>
-                                                                                                                <th class="fw-normal"> {{ $log->reportedDate }}</th>
-                                                                                                                <td>{{ $log->note }}</td>
-                                                                                                                <td>
-                                                                                                                    <div class="text-break">
-                                                                                                                        <span class="d-flex align-items-center">
-                                                                                                                            <i class="bi bi-link-45deg"></i>
-                                                                                                                            {{ $log->files }}
-                                                                                                                        </span>
-                                                                                                                    </div>
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                        @endforeach
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
-                                                                                    <button type="button" class="btn btn-danger">Lưu</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </td>
                                                                 <td class="fixed-side bg-blue-blur">
                                                                     <div class="content_table">
@@ -2434,7 +2240,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
                                         <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}" onchange="toggleKpiKey(event)">
-                                        <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh{{ $task->id }}">
+                                        <label role="button" class="form-check-label user-select-none">
                                             Đạt giá trị kinh doanh
                                         </label>
                                     </div>
@@ -2445,21 +2251,29 @@
                                 <div class="form-check_wrapper">
                                     <div class="repeater-datGiaTriKinhDoanh">
                                         <div data-repeater-list="kpiKeys">
-                                            <div class="row" data-repeater-item>
-                                                <div class="col-md-6 mb-3">
-                                                    <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
-                                                        @foreach ($kpiKeys as $kpiKey)
-                                                            <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
-                                                        @endforeach
-                                                    </select>
+                                            @foreach (findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $key)
+                                                <div class="row" data-repeater-item>
+                                                    <div class="col-md-6 mb-3">
+                                                        <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
+
+                                                            @foreach ($kpiKeys as $kpiKey)
+                                                                @if ($key->id == $kpiKey->id)
+                                                                    <option value="{{ $kpiKey->id }}" selected>{{ $kpiKey->name }}</option>
+                                                                @else
+                                                                    <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-5 mb-3">
+                                                        <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
+                                                    </div>
+                                                    <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                        <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-5 mb-3">
-                                                    <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
-                                                </div>
-                                                <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
-                                                </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
 
                                         <div class="col-md-12">
@@ -2517,6 +2331,226 @@
             </div>
         </div>
     @endfor
+
+
+    <!-- Modal Thông tin nhiệm vụ -->
+    <div class="modal fade" id="thongTinNhiemVu{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/danh-muc-nhiem-vu/{{ $task->id }}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <div class="">
+                                    <table class="table table-bordered table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div>Tên nhiệm vụ</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->name ?? '' }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Thuộc định mức lao động</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->target->name ?? '' }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Mô tả</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->description ?? '' }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Người đảm nhiệm</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ getUsers($task) }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Vị trí đảm nhiệm</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->position->name ?? '' }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Ngày bắt đầu</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->startDate }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Hạn hoàn thành</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->deadline }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Man day</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->manday }} ngày</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <div>
+                                                    <td>Kế hoạch thực hiện</td>
+                                                    <td>{{ $task->executionPlan }}</td>
+                                                </div>
+                                            </tr>
+                                            <tr>
+                                                <div>
+                                                    <td>Ý kiến TPB</td>
+                                                    <td>{{ $task->managerComment }}</td>
+                                                </div>
+                                            </tr>
+                                            <tr>
+                                                <div>
+                                                    <td>Chấm điểm</td>
+                                                    <td>{{ $task->managerManDay }}</td>
+                                                </div>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-12 mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="modal-title">Tổng hợp báo cáo</div>
+                                    <span class="modal-title_mini ms-2">
+                                        Kết quả tạm tính
+                                    </span>
+                                </div>
+                                <div class="modal_list row">
+                                    <div class="modal_items col-sm-6">
+                                        Số báo cáo đã lập trong tháng: <span class="text-danger">0 file</span>
+                                    </div>
+                                    <div class="modal_items col-sm-6">
+                                        Số tiêu chí đạt được trong tháng: <span class="text-danger">0 tiêu chí</span>
+                                    </div>
+                                    <div class="modal_items col-sm-6">
+                                        Số nhân sự thực hiện: <span class="text-danger">1 nhân sự</span>
+                                    </div>
+                                    <div class="modal_items col-sm-6">
+                                        Giá trị doanh thu: <span class="text-danger">0 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="modal-title">Nhận xét nhiệm vụ</div>
+                                </div>
+                                <div class="modal_list row">
+
+                                    <div class="col-sm-10 d-flex  align-items-center">
+                                        <input class="form-control" placeholder="Nhập nhận xét" name="c" value="{{ $task->managerComment }}">
+
+                                    </div>
+                                    <div class="col-sm-2 d-flex  align-items-center">
+                                        <input placeholder="Điểm KPI" class="form-control" name="c" value="{{ $task->managerManDay }}">
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="modal-title">Danh sách tiêu chí công việc</div>
+                                </div>
+                                <div class="">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Ngày báo cáo</th>
+                                                <th scope="col">Tiêu chí</th>
+                                                <th scope="col">Giá trị</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (getAllTargetDetailKpiKeys($task) as $key)
+                                                <tr>
+                                                    <th class="fw-normal">{{ date('d/m/Y', strtotime($task->created_at)) }}</th>
+                                                    <td>{{ $key->name }}</td>
+                                                    <td>{{ $key->quantity }}</td>
+
+                                                </tr>
+                                            @endforeach
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="modal-title">Danh sách báo cáo công việc</div>
+                                </div>
+                                <div class="">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width: 15%">Ngày báo cáo</th>
+                                                <th scope="col" style="width: 45%">Nội dung báo cáo</th>
+                                                <th scope="col" style="width: 40%">File báo cáo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (getAllTargetLogDetail($task) as $log)
+                                                <tr>
+                                                    <th class="fw-normal"> {{ $log->reportedDate }}</th>
+                                                    <td>{{ $log->note }}</td>
+                                                    <td>
+                                                        <div class="text-break">
+                                                            <span class="d-flex align-items-center">
+                                                                <i class="bi bi-link-45deg"></i>
+                                                                {{ $log->files }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endforeach
 @endsection
 @section('footer-script')

@@ -119,7 +119,6 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 
 
 
-
 // Route::get('danh-muc-dinh-muc', function () {
 //     return view('CauHinh.danhMucDinhMuc');
 // });
