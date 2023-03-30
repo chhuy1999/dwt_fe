@@ -6,59 +6,55 @@ use App\Http\Controllers\Controller;
 use App\Services\DwtServices;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
-class DepartmentController extends Controller
+class EquimentPackController extends Controller
 {
+    //
     private $dwtService;
-    //contructor
+    //constructor
     public function __construct()
     {
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
 
-
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
 
     {
+        
+
         try {
 
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchDepartment($q, $page, $limit);
-            $listDepartments = $this->dwtService->listDepartments();
-            $listUsers = $this->dwtService->listUsers();
-
-            return view('CauHinh.configProfile')
+            $data = $this->dwtService->searchEquimentPack($q, $page, $limit);
+            $listEquimentPack = $this->dwtService->listEquimentPack();
+            $listUnits = $this->dwtService->listUnits();
+            return view('CauHinh.danhMucGoiTrangBi')
                  ->with('data', $data)
-                ->with('listDepartments', $listDepartments)
-                ->with('listUsers', $listUsers);
+                ->with('listUnits', $listUnits)
+                ->with('listEquimentPack', $listEquimentPack);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('CauHinh.configProfile')->with('listDepartments', []);
+            return view('CauHinh.danhMucGoiTrangBi')->with('listEquimentPack', []);
         }
     }
-
-
 
     public function store(Request $request)
     {
         try {
-            // dd($request);
+
             $data = $request->validate([
                 'name' => 'required',
-                'code' => 'required',
-                'description' => 'required',
-                'parent' => 'required|numeric',
-                'in_charge' => 'required',
+                'unit_id' => 'required',
+                'parent_id' => 'required|numeric',
             ]);
-            $this->dwtService->createDepartment($data);
+            $this->dwtService->createEquimentPack($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
@@ -69,16 +65,14 @@ class DepartmentController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
-                'code' => 'nullable',
-                'description' => 'nullable',
-                'parent' => 'nullable|numeric',
-                'in_charge' => 'nullable',
-            ]);
+                'unit_id' => 'nullable',
+                'parent_id' => 'nullable|numeric',
 
-            // dd($data);
-            $this->dwtService->updateDepartment($id, $data);
+            ]);
+            $this->dwtService->updateEquimentPack($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
@@ -87,7 +81,7 @@ class DepartmentController extends Controller
     public function delete($id)
     {
         try {
-            $this->dwtService->deleteDepartment($id);
+            $this->dwtService->deleteEquimentPack($id);
             return back()->with('success', 'Xóa thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();

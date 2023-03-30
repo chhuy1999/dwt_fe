@@ -74,10 +74,24 @@
                                                                     <div>{{ $value->name }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>Chuyên viên</div>
+                                                                    <div>
+                                                                        @foreach ($listPositionLevel->data as $level)
+                                                                        @if ($level->id == $value->position_level)
+                                                                                {{ $level->name }}
+                    
+                                                                        @endif
+                                                                        @endforeach
+                                                                    </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>{{ $value->parent }}</div>
+                                                                    <div>
+                                                                        @foreach ($listDepartments->data as $dep)
+                                                                        @if ($dep->id == $value->parent)
+                                                                                {{ $dep->name }}
+                    
+                                                                        @endif
+                                                                        @endforeach
+                                                                    </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class data-bs-toggle="tooltip"
@@ -211,7 +225,7 @@
                                                                                     </div>
 
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả công việc" class="form-control">Test Mo Ta</textarea>
+                                                                                        <textarea data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả công việc" class="form-control">{{ $value->description }}</textarea>
                                                                                     </div>
 
                                                                                     <div class="col-sm-4 mb-3">
@@ -1877,36 +1891,59 @@
                                     name="name">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input type="text" class="form-control" autocomplete="off" required
-                                    id="thuocDonVi" placeholder="Chọn đơn vị công tác *" />
-                                {{-- <div class="modal_list-more" data-bs-toggle="modal"
-                                    data-bs-target="#danhsachPhongBan">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </div> --}}
+                                    <select class="selectpicker"
+                                    placeholder="Chọn đơn vị công tác *"
+                                    name="parent"
+                                    title="Đơn vị phụ trách"
+                                    data-width="100%"
+                                    data-live-search="true"
+                                    data-live-search-placeholder="Tìm kiếm..."
+                                    data-size="3">
+                                    @foreach ($listDepartments->data as $dep)
+                                        @if ($dep->id == $value->parent)
+                                            <option
+                                                value="{{ $value->parent }}"
+                                                selected>
+                                                {{ $dep->name }}
+                                            </option>
+                                        @else
+                                            <option
+                                                value="{{ $value->parent }}">
+                                                {{ $dep->name }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>    
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select id="onchangeCapNhanSu" class="selectpicker" title="Chọn cấp nhân sự"
-                                    data-size="5">
-                                    <option>Chủ tịch HĐQT</option>
-                                    <option>Tổng Giám đốc</option>
-                                    <option>Phó Tổng Giám đốc</option>
-                                    <option>Giám đốc điều hành</option>
-                                    <option>Quản lý cấp cao</option>
-                                    <option>Quản lý cấp trung</option>
-                                    <option>Trưởng phòng</option>
-                                    <option>Phó phòng</option>
-                                    <option>Trưởng nhóm</option>
-                                    <option>Chuyên viên</option>
-                                    <option>Nhân viên</option>
+                                
+                                <select id="onchangeCapNhanSu" class="selectpicker"
+                                    placeholder="Chọn cấp nhân sự *"
+                                    name="position_level"
+                                    title="Chọn cấp nhân sự "
+                                    data-width="100%"
+                                    data-live-search="true"
+                                    data-live-search-placeholder="Tìm kiếm..."
+                                    data-size="3">
+                                    @foreach ($listPositionLevel->data as $level)
+                                        @if ($level->id == $value->position_level)
+                                            <option
+                                                value="{{ $value->position_level }}"
+                                                selected>
+                                                {{ $level->name }}
+                                            </option>
+                                        @else
+                                            <option
+                                                value="{{$value->position_level }}">
+                                                {{ $level->name }}
+                                            </option>
+                                        @endif
+                                    @endforeach
                                     <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
-                                </select>
-                                {{-- <div class="modal_list-more" data-bs-toggle="modal"
-                                    data-bs-target="#danhsachChucDanh">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </div> --}}
+                                </select>    
                             </div>
                             <div class="col-sm12 mb-3">
-                                <textarea class="form-control" placeholder="Nhập mô tả công việc"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Nhập mô tả công việc"></textarea>
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input class="form-control" type="number" min="0" name="max_employees"
@@ -1930,133 +1967,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal Sua Vi Tri chức danh -->
-    {{-- <div class="modal fade" id="suaViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Vị trí/Chức danh</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Mã vị trí<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="AMKT">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="Trợ lý Marketing">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8 d-flex align-items-center">
-                                    <select class="selectpicker" title="Chọn cấp nhân sự">
-                                        <option selected>Chủ tịch HĐQT</option>
-                                        <option>Tổng Giám đốc</option>
-                                        <option>Phó Tổng Giám đốc</option>
-                                        <option>Giám đốc điều hành</option>
-                                        <option>Quản lý cấp cao</option>
-                                        <option>Quản lý cấp trung</option>
-                                        <option>Trưởng phòng</option>
-                                        <option>Phó phòng</option>
-                                        <option>Trưởng nhóm</option>
-                                        <option>Chuyên viên</option>
-                                        <option>Nhân viên</option>
-                                    </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachChucDanh">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Đơn vị công tác<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn đơn vị công tác">
-                                        <option selected>Cung ứng</option>
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Truyền thông</option>
-                                        <option>Quản trị Nhãn/Đào tạo</option>
-                                        <option>Kho & Giao vận</option>
-                                        <option>Hành chính nhân sự</option>
-                                        <option>Kế toán</option>
-                                        <option>Tài chính</option>
-                                        <option>Dịch vụ bán hàng</option>
-                                        <option>Kinh doanh OTC</option>
-                                        <option>Kinh doanh ETC</option>
-                                        <option>Kinh doanh MT</option>
-                                        <option>Kinh doanh online</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Định biên<span class="text-danger">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="number" value="1">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Quỹ lương năm<span class="text-danger">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" readonly  value="182.000.000" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Gói trang bị<span class="text-danger">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" readonly value="2 gói"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <!-- Modal TRANG BỊ HÀNH CHÍNH -->
     <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"

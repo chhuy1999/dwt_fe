@@ -33,10 +33,13 @@ class PositionController extends Controller
             $data = $this->dwtService->searchPosition($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
             $listPositions = $this->dwtService->listPositions();
-
+            $listEquimentPack = $this->dwtService->listEquimentPack();
+            $listPositionLevel = $this->dwtService->listPositionLevel();
             return view('CauHinh.danhSachViTri')
                 ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
+                ->with('listEquimentPack', $listEquimentPack)
+                ->with('listPositionLevel', $listPositionLevel)
                 ->with('listPositions', $listPositions);
         } catch (Exception $e) {
             $error = $e->getMessage();
@@ -51,6 +54,8 @@ class PositionController extends Controller
             $data = $request->validate([
                 'name' => 'required',
                 'description' => 'required',
+                'parent' => 'required|numeric',
+                'position_level' => 'required|numeric',
                 'salary_fund' => 'required|numeric',
                 'max_employees' => 'required|numeric',
             ]);

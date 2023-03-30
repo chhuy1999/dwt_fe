@@ -214,10 +214,10 @@
 
     <script>
         const targetTable = $('#dsCapNhanSu').DataTable({
-            paging: true,
+            paging: false,
             ordering: false,
             order: [[0, 'desc']],
-            pageLength: 5,
+            pageLength: 10,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',

@@ -33,32 +33,32 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                        @foreach ($listEquimentPack->data as $value)
                                                         <tr>
                                                             <th scope="row">
                                                                 <div
                                                                     class="d-flex justify-content-center align-items-center">
-                                                                    1
+                                                                    {{ $loop->iteration }}
                                                                 </div>
                                                             </th>
                                                             <td>
-                                                                <div>Trang bị hành chính</div>
+                                                                <div>{{ $value->parent_id}}</div>
                                                             </td>
                                                             <td>
-                                                                <div>Tủ đồ cá nhân</div>
+                                                                <div>{{ $value->name }}</div>
                                                             </td>
                                                             <td>
-                                                                <div>Cái</div>
+                                                                <div>{{ $value->unit_id}}</div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suatrangbi">
+                                                                        data-bs-target="#suatrangbi{{ $value->id }}">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoatrangbi">
+                                                                        data-bs-target="#xoatrangbi{{ $value->id }}">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
@@ -68,7 +68,7 @@
 
 
                                                         {{-- Xóa trang bị--}}
-                                                        <div class="modal fade" id="xoatrangbi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="{{ 'xoatrangbi' . $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header text-center">
@@ -81,7 +81,7 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                                                                         <form
-                                                                            action="/danh-muc-goi-trang-bi/"
+                                                                            action="/danh-muc-goi-trang-bi/{{ $value->id }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
@@ -93,8 +93,8 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- Modal Sửa Trang bị -->
-                                                        <div class="modal fade" id="suatrangbi" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        <!-- Modal Sua Vi Tri chức danh -->
+                                                        <div class="modal fade" id="{{ 'suatrangbi' . $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
@@ -103,33 +103,40 @@
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
 
-                                                                    <form method="POST" action="/danh-muc-goi-trang-bi/">
-                                                                    @csrf
-                                                                    @method('PUT')
+                                                                    <form method="POST" action="/danh-muc-goi-trang-bi/{{ $value->id }}">
+                                                                        @csrf
+                                                                        @method('PUT')
                                                                         <div class="modal-body">
                                                                             <div class="row">
+                                                                                
                                                                                 <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị"  value="AMKT">
-                                                                                </div>
-
-                                                                                <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Hạng mục trang bị" name="name" value="Phòng kinh doanh 1">
-                                                                                </div>
-                                                                                {{-- <div class="col-sm-6 mb-3">
-                                                                                    <select class="selectpicker" title="Thuộc cấp nhân sự" data-size="5">
-                                                                                        <option>Công ty con</option>
-                                                                                        <option>Chi nhánh</option>
-                                                                                        <option>Văn phòng đại diện</option>
-                                                                                        <option>Văn phòng</option>
-                                                                                        <option>Trung tâm</option>
-                                                                                        <option>Phòng ban</option>
-                                                                                        <option>Nhóm/tổ/đội</option>
-                                                                                        <option>Phân xưởng</option>
-                                                                                        <option>Nhà máy</option>
-                                                                                        <option>Công ty thành viên</option>
-                                                                                        
+                                                                                    <select name="parent_id" class="selectpicker" title="Nhập gói trang bị" data-size="3" data-live-search="true">
+                                                                                        @foreach ($listEquimentPack->data as $value)
+                                                                                            <option value="{{ $value->parent_id}}">
+                                                                                                {{ $value->name }}
+                                                                                            </option>
+                                                                                        @endforeach
                                                                                     </select>
-                                                                                </div> --}}
+                                                                                </div>
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control" type="text" name="p" value="{{ $value->name}}">
+                                                                                </div>
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
+                                                                                        @foreach ($listUnits->data as $unit)
+                                                                                            @if ($unit->id != $value->unit_id)
+                                                                                                <option value="{{ $unit->id }}">
+                                                                                                    {{ $unit->name }}
+                                                                                                </option>
+                                                                                            @else
+                                                                                                <option value="{{ $unit->id }}" selected>
+                                                                                                    {{ $unit->name }}
+                                                                                                </option>
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
@@ -140,12 +147,8 @@
                                                                     </form>
                                                                 </div>
                                                             </div>
-
                                                         
-                                                    
-                                                           
-                                                        
-                                                    
+                                                            @endforeach
                                                         </tbody>
 
                                                 </table>
@@ -174,7 +177,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CẤP NHÂN SỰ</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM TRANG BỊ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -183,20 +186,25 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập gói trang bị">
+                                <select name="parent_id" class="selectpicker" title="Nhập gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                    @foreach ($listEquimentPack->data as $value)
+                                        <option value="{{ $value->id}}">
+                                            {{ $value->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                 
                             </div>
 
                             <div class="col-sm-6 mb-3">
-
-                                <input class="form-control" type="text" placeholder="Nhập hạng mục trang bị">
-                                
-
+                                <input class="form-control" required type="text" name="name" placeholder="Nhập hạng mục gói trang bị">
                             </div>
                             <div class="col-sm-6 mb-3">
-
-                                <input class="form-control" type="text" placeholder="Nhập đơn vị">
-                                
+                                <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">
+                                    @foreach ($listUnits->data as $unit)
+                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                         </div>
