@@ -69,12 +69,12 @@
                                                                     </p>
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->departement && $target->departement->name }}
+                                                                    {{  $target->departement->name ?? "" }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $target->position && $target->position->name }}
+                                                                    {{  $target->position->name ?? "" }}
                                                                 </td>
-                                                                
+
                                                                 <td>
                                                                     <div class="text-center">{{ $target->manday }}</div>
                                                                 </td>
@@ -171,7 +171,7 @@
                                                                                     {{-- <div class="col-sm-4">
                                                                                         <div class="mb-3">
                                                                                             <select name="unit_id"
-                                                                                                class="selectpicker">
+                                                                                                class="s$target->position &&electpicker">
 
                                                                                                 @foreach ($listUnits->data as $unit)
                                                                                                     @if ($unit->id == $target->unit_id)
@@ -190,7 +190,7 @@
                                                                                             </select>
                                                                                         </div>
                                                                                     </div> --}}
-                                                                                    
+
                                                                                     {{-- <div class="col-sm-4">
                                                                                         <div class="mb-3">
                                                                                             <input class="form-control"
@@ -232,7 +232,7 @@
                                                                                                 placeholder="Nhập Manday">
                                                                                         </div>
                                                                                     </div>
-                                                                                    
+
 
                                                                                 </div>
 
@@ -410,8 +410,8 @@
                                     <select class="selectpicker" title="Đơn vị phụ trách" name="departement_id"
                                         data-width="100%" data-live-search="true"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                        @foreach ($listDepartments->data as $pos)
-                                            <option value="{{ $pos->name }}">{{ $pos->name }}</option>
+                                        @foreach ($listDepartments->data as $dep)
+                                            <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -422,7 +422,7 @@
                                         data-width="100%" data-live-search="true"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listPositions->data as $pos)
-                                            <option value="{{ $pos->name }}">{{ $pos->name }}</option>
+                                            <option value="{{ $pos->id }}">{{ $pos->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -609,6 +609,7 @@
             ]
 
         }];
+
         var comboTree1, comboTree2
 
         $(document).ready(function($) {
@@ -617,11 +618,14 @@
                 isMultiple: false,
                 cascadeSelect: true
             });
+
             comboTree2 = $('#filter_thuocDonVi').comboTree({
                 source: data,
                 isMultiple: false,
                 cascadeSelect: true
             });
+            console.log(comboTree1);
+
 
         });
     </script>
@@ -659,7 +663,7 @@
     `);
     $('div.card-title-wrapper').html(`
         <div class="d-flex justify-content-between align-items-center">
-            
+
             <div class="main_action">
                 <button id="exporttable" class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themMoiDinhMuc">

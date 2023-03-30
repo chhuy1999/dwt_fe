@@ -107,6 +107,7 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('giao-viec', [AssignTaskController::class, 'index']);
     Route::post('giao-viec', [AssignTaskController::class, 'assignTask']);
+    Route::put('/huy-giao-viec/{id}', [AssignTaskController::class, 'unAssignTask']);
 });
 //bao cao cv
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {

@@ -48,8 +48,7 @@
                                                         @foreach ($data->data as $key)
                                                             <tr>
                                                                 <td>
-                                                                    <div
-                                                                        class="d-flex align-items-center justify-content-center">
+                                                                    <div class="d-flex align-items-center justify-content-center">
                                                                         {{ $key->id }}
                                                                     </div>
                                                                 </td>
@@ -65,33 +64,23 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        {{ $key->unit && $key->unit->name }}
+                                                                        {{ $key->unit->name ?? '' }}
                                                                     </div>
 
                                                                 </td>
                                                                 <td>
-                                                                    <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                        data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                            class="bi bi-three-dots-vertical"></i>
+                                                                    <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                     </div>
-                                                                    <ul class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton1">
+                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target={{ '#suaMoiDinhMuc' . $key->id }}>
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/edit.svg') }}" />
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={{ '#suaMoiDinhMuc' . $key->id }}>
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                                 Sửa
                                                                             </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#xoaThuocTinh{{ $key->id }}"
-                                                                                data-repeater-delete>
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $key->id }}" data-repeater-delete>
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                                 Xóa
                                                                             </a>
                                                                         </li>
@@ -99,46 +88,31 @@
                                                                 </td>
                                                             </tr>
                                                             <!-- Modal Sửa chỉ số key -->
-                                                            <div class="modal fade" id="{{ 'suaMoiDinhMuc' . $key->id }}"
-                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                aria-hidden="true">
+                                                            <div class="modal fade" id="{{ 'suaMoiDinhMuc' . $key->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
-                                                                            <h5 class="modal-title w-100"
-                                                                                id="exampleModalLabel">Sửa chỉ số key</h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
+                                                                            <h5 class="modal-title w-100" id="exampleModalLabel">Sửa chỉ số key</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
-                                                                        <form method="POST"
-                                                                            action="/danh-muc-chi-so-key/{{ $key->id }}">
+                                                                        <form method="POST" action="/danh-muc-chi-so-key/{{ $key->id }}">
                                                                             @csrf
                                                                             @method('PUT')
                                                                             <div class="modal-body">
                                                                                 <div class="row">
                                                                                     <div class="col-sm-8 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    name="name"
-                                                                                                    value="{{ $key->name }}">
+                                                                                        <input class="form-control" type="text" name="name" value="{{ $key->name }}">
                                                                                     </div>
                                                                                     <div class="col-sm-4 mb-3">
-                                                                                        
-                                                                                        <select
-                                                                                            class="selectpicker"
-                                                                                            title="Chọn đơn vị"
-                                                                                            name="unit_id">
+
+                                                                                        <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
                                                                                             @foreach ($listUnits->data as $unit)
                                                                                                 @if ($unit->id != $key->unit_id)
-                                                                                                    <option
-                                                                                                        value="{{ $unit->id }}">
+                                                                                                    <option value="{{ $unit->id }}">
                                                                                                         {{ $unit->name }}
                                                                                                     </option>
                                                                                                 @else
-                                                                                                    <option
-                                                                                                        value="{{ $unit->id }}"
-                                                                                                        selected>
+                                                                                                    <option value="{{ $unit->id }}" selected>
                                                                                                         {{ $unit->name }}
                                                                                                     </option>
                                                                                                 @endif
@@ -152,11 +126,8 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-outline-danger"
-                                                                                    data-bs-dismiss="modal">Hủy</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger">Lưu</button>
+                                                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit" class="btn btn-danger">Lưu</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -164,33 +135,22 @@
                                                             </div>
 
                                                             {{-- Xóa đinh mức --}}
-                                                            <div class="modal fade" id="xoaThuocTinh{{ $key->id }}"
-                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                aria-hidden="true">
+                                                            <div class="modal fade" id="xoaThuocTinh{{ $key->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
-                                                                            <h5 class="modal-title text-danger"
-                                                                                id="exampleModalLabel">Xóa chỉ số key</h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
+                                                                            <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa chỉ số key</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             Bạn có thực sự muốn xoá chỉ số key này không?
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-outline-danger"
-                                                                                data-bs-dismiss="modal">Hủy</button>
-                                                                            <form
-                                                                                action="/danh-muc-chi-so-key/{{ $key->id }}"
-                                                                                method="POST">
+                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                            <form action="/danh-muc-chi-so-key/{{ $key->id }}" method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger"
-                                                                                    id="deleteRowElement">Có, tôi muốn
+                                                                                <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn
                                                                                     xóa</button>
                                                                             </form>
                                                                         </div>
@@ -226,8 +186,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-8 mb-3">
-                                <input class="form-control" type="text" required placeholder="Nhập tên chỉ số key *"
-                                            name="name">
+                                <input class="form-control" type="text" required placeholder="Nhập tên chỉ số key *" name="name">
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">
@@ -273,7 +232,9 @@
         const targetTable = $('#dsChiSoKey').DataTable({
             paging: true,
             ordering: false,
-            order: [[0, 'desc']],
+            order: [
+                [0, 'desc']
+            ],
             pageLength: 10,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',

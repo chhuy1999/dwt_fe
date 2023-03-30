@@ -48,7 +48,6 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         try {
-
             $data = $request->validate([
                 'name' => 'required',
                 'description' => 'required',
