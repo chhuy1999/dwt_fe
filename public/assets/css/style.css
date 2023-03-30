@@ -1989,8 +1989,10 @@ ul.modal_upload-list li:last-child {
 .form-check_wrapper {
     display: none;
 }
-.mainSection {
-    position: relative;
-    height: 100%;
+
+.footer {
+    /* position: absolute;
+    width: 100%; */
+    /* bottom: 0; */
 }
 
