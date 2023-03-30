@@ -37,6 +37,7 @@ class TargetController extends Controller
                 ->with('listPositions', $listPositions)
                 ->with('listDepartments', $listDepartments);
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return view('CauHinh.danhMucDinhMuc')->with('listTargets', []);
         }
@@ -52,12 +53,13 @@ class TargetController extends Controller
                 'description' => 'required',
                 'departement_id' => 'required|numeric',
                 'position_id' => 'required|numeric',
-                'unit_id' => 'required|numeric',
-                'quantity' => 'required|numeric',
+                // 'unit_id' => 'required|numeric',
+                // 'quantity' => 'required|numeric',
             ]);
             $this->dwtService->createKpiTarget($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
@@ -72,8 +74,8 @@ class TargetController extends Controller
                 'description' => 'nullable',
                 'departement_id' => 'nullable|numeric',
                 'position_id' => 'nullable|numeric',
-                'unit_id' => 'nullable|numeric',
-                'quantity' => 'nullable|numeric',
+                // 'unit_id' => 'nullable|numeric',
+                // 'quantity' => 'nullable|numeric',
             ]);
             $this->dwtService->updateKpiTarget($id, $data);
             return back()->with('success', 'Cập nhật thành công');
