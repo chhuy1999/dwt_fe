@@ -93,7 +93,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- Modal Sua Vi Tri chức danh -->
+                                                        <!-- Modal Sửa Trang bị -->
                                                         <div class="modal fade" id="suatrangbi" tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
@@ -109,13 +109,13 @@
                                                                         <div class="modal-body">
                                                                             <div class="row">
                                                                                 <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control" type="text" value="AMKT">
+                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị"  value="AMKT">
                                                                                 </div>
 
                                                                                 <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control" type="text" name="name" value="Phòng kinh doanh 1">
+                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Hạng mục trang bị" name="name" value="Phòng kinh doanh 1">
                                                                                 </div>
-                                                                                <div class="col-sm-6 mb-3">
+                                                                                {{-- <div class="col-sm-6 mb-3">
                                                                                     <select class="selectpicker" title="Thuộc cấp nhân sự" data-size="5">
                                                                                         <option>Công ty con</option>
                                                                                         <option>Chi nhánh</option>
@@ -129,7 +129,7 @@
                                                                                         <option>Công ty thành viên</option>
                                                                                         
                                                                                     </select>
-                                                                                </div>
+                                                                                </div> --}}
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">

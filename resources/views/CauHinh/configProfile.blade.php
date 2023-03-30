@@ -231,38 +231,52 @@
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
+                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Tên đơn vị"
                                                                                                     value="{{ $value->name }}"
                                                                                                     name="name">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
+                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Mã đơn vị"
                                                                                                     value="DMKT">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
+                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị mẹ"
                                                                                                     value="CTCP Mastertran">
                                                                                     </div>
 
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    value="Tổ/Đội/Nhóm">
+                                                                                    <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp tổ chức">
+                                                                                        <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="3" >
+                                                                                            <option value="1" selected>Công ty con</option>
+                                                                                            <option value="1">Chi nhánh</option>
+                                                                                            <option value="1">Văn phòng đại diện</option>
+                                                                                            <option value="1">Văn phòng</option>
+                                                                                            <option value="1">Trung tâm</option>
+                                                                                            <option value="1">Phòng ban</option>
+                                                                                            <option value="1">Nhóm/tổ/đội</option>
+                                                                                            <option value="1">Phân xưởng</option>
+                                                                                            <option value="1">Nhà máy</option>
+                                                                                            <option value="1">Công ty thành viên</option>
+                                                                                        </select>
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
+                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Trưởng đơn vị"
                                                                                                     value="{{ $value->in_charge }}"
                                                                                                     name="in_charge">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
+                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Trụ sở chính"
                                                                                                     value="219 Trung Kính, Yên Hoà, Cầu...">
                                                                                     </div>
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <input class="form-control" type="text" value="{{ $value->description }}"
+                                                                                        <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Chức năng, nhiệm vụ đơn vị" value="{{ $value->description }}"
                                                                                         name="description">
                                                                                     </div>
 

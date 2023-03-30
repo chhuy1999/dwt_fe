@@ -173,18 +173,21 @@
                                                                                 <div class="row">
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
-                                                                                            type="text" value="AMKT">
+                                                                                            type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã vị trí" value="AMKT">
                                                                                     </div>
 
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
-                                                                                            type="text" name="name"
+                                                                                            type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên vị trí" name="name"
                                                                                             value="{{ $value->name }}">
                                                                                     </div>
-                                                                                    <div class="col-sm-6 mb-3">
+                                                                                    <div class="col-sm-6 mb-3" >
+                                                                                        <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị công tác" class="form-control" autocomplete="off" required id="thuocDonVi" placeholder="Chọn đơn vị công tác *" />
+                                                                                    </div>
+                                                                                    <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp nhân sự">
                                                                                         <select class="selectpicker" title="Chọn cấp nhân sự" data-width="100%"
                                                                                         data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                                                                        data-size="3">
+                                                                                        data-size="5">
                                                                                             <option selected>Chủ tịch HĐQT
                                                                                             </option>
                                                                                             <option>Tổng Giám đốc</option>
@@ -206,52 +209,28 @@
                                                                                         <i class="bi bi-three-dots-vertical"></i>
                                                                                     </div> --}}
                                                                                     </div>
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <select class="selectpicker" title="Chọn đơn vị công tác" data-width="100%"
-                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                                                                        data-size="3">
-                                                                                            <option selected>Cung ứng
-                                                                                            </option>
-                                                                                            <option>Trade Marketing</option>
-                                                                                            <option>Digital Marketing
-                                                                                            </option>
-                                                                                            <option>Truyền thông</option>
-                                                                                            <option>Quản trị Nhãn/Đào tạo
-                                                                                            </option>
-                                                                                            <option>Kho & Giao vận</option>
-                                                                                            <option>Hành chính nhân sự
-                                                                                            </option>
-                                                                                            <option>Kế toán</option>
-                                                                                            <option>Tài chính</option>
-                                                                                            <option>Dịch vụ bán hàng
-                                                                                            </option>
-                                                                                            <option>Kinh doanh OTC</option>
-                                                                                            <option>Kinh doanh ETC</option>
-                                                                                            <option>Kinh doanh MT</option>
-                                                                                            <option>Kinh doanh online
-                                                                                            </option>
-                                                                                        </select>
-                                                                                    </div>
 
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea class="form-control">Test Mo Ta</textarea>
+                                                                                        <textarea data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả công việc" class="form-control">Test Mo Ta</textarea>
                                                                                     </div>
 
                                                                                     <div class="col-sm-4 mb-3">
                                                                                         <input class="form-control"
                                                                                             type="number"
+                                                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Định biên"
                                                                                             name="max_employees"
                                                                                             value="{{ $value->max_employees }}">
                                                                                     </div>
                                                                                     <div class="col-sm-4 mb-3">
                                                                                         <input class="form-control"
                                                                                             type="text"
+                                                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Quỹ lương năm"
                                                                                             name="salary_fund"
                                                                                             value="{{ $value->salary_fund }}" />
                                                                                     </div>
                                                                                     <div class="col-sm-4 mb-3">
                                                                                         <input class="form-control"
-                                                                                            type="text" readonly
+                                                                                            type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị" readonly
                                                                                             value="2 gói" />
                                                                                     </div>
                                                                                 </div>
