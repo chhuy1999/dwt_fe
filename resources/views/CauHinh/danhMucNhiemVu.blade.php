@@ -164,10 +164,10 @@
                                                                             <div class="modal-body">
                                                                                 <div class="row">
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <input class="form-control" type="text" name="name" placeholder="Nhập tên nhiệm vụ" value="{{ $targetDetail->name }}">
+                                                                                        <input class="form-control" type="text" name="name" placeholder="Nhập tên nhiệm vụ" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" value="{{ $targetDetail->name }}">
                                                                                     </div>
 
-                                                                                    <div class="col-sm-12 mb-3">
+                                                                                    <div class="col-sm-12 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Thuộc định mức">
                                                                                         <select name="target_id" class="selectpicker" title="Chọn định mức">
                                                                                             @foreach ($listTargets->data as $target)
                                                                                                 @if ($targetDetail->target && $targetDetail->target->id == $target->id)
@@ -182,15 +182,14 @@
                                                                                             @endforeach
                                                                                         </select>
                                                                                     </div>
-                                                                                    <div class="col-sm-12 mb-3">
-                                                                                        <textarea class="form-control" name="description" placeholder="Nhập mô tả ">{{ $targetDetail->description }}</textarea>
-                                                                                      
+                                                                                    <div class="col-sm-12 mb-3" >
+                                                                                        <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả" name="description" placeholder="Nhập mô tả ">{{ $targetDetail->description }}</textarea>
                                                                                     </div>
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea class="form-control" name="executionPlan" placeholder="Nhập kế hoạch thực hiện">{{ $targetDetail->executionPlan }}</textarea>
+                                                                                        <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Kế hoạch thực hiện" name="executionPlan" placeholder="Nhập kế hoạch thực hiện">{{ $targetDetail->executionPlan }}</textarea>
 
                                                                                     </div>
-                                                                                    <div class="col-sm-4 mb-3">
+                                                                                    <div class="col-sm-3 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
                                                                                         <select class="selectpicker" name="unit_id">
                                                                                             @foreach ($listUnits->data as $unit)
                                                                                                 <option value="{{ $unit->id }}">
@@ -200,8 +199,8 @@
                                                                                         </select>
                                                                                     </div>
 
-                                                                                    <div class="col-sm-5 mb-3">
-                                                                                        <select name="position_id" class="selectpicker" title="Chọn Vị trí">
+                                                                                    <div class="col-sm-7 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí đảm nhiệm">
+                                                                                        <select name="position_id" class="selectpicker" title="Chọn Vị trí" data-size="5" data-live-search="true">
 
                                                                                             @foreach ($listPositions->data as $position)
                                                                                                 @if ($targetDetail->position && $targetDetail->position->id == $position->id)
@@ -217,10 +216,10 @@
                                                                                         </select>
                                                                                     </div>
 
-                                                                                    <div class="col-sm-3 mb-3">
-                                                                                        <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday" name="manday" value="{{ $targetDetail->manday }}">
+                                                                                    <div class="col-sm-2 mb-3">
+                                                                                        <input class="form-control" type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" placeholder="Nhập Manday" name="manday" value="{{ $targetDetail->manday }}">
                                                                                     </div>
-                                                                                    <div class="col-sm-12">
+                                                                                    <div class="col-sm-12" data-bs-toggle="tooltip" data-bs-placement="top" title="Phòng/Ban">
 
                                                                                         <select name="departement_id" class="selectpicker" title="Chọn phòng/ban">
                                                                                             @foreach ($listDepartments->data as $departement)

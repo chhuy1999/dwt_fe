@@ -101,9 +101,9 @@
                                                                             <div class="modal-body">
                                                                                 <div class="row">
                                                                                     <div class="col-sm-8 mb-3">
-                                                                                        <input class="form-control" type="text" name="name" value="{{ $key->name }}">
+                                                                                        <input class="form-control" required type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên chỉ số key" name="name" value="{{ $key->name }}">
                                                                                     </div>
-                                                                                    <div class="col-sm-4 mb-3">
+                                                                                    <div class="col-sm-4 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
 
                                                                                         <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
                                                                                             @foreach ($listUnits->data as $unit)
@@ -120,7 +120,7 @@
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="col-sm-12">
-                                                                                        <textarea class="form-control" name="description">{{ $key->description }}</textarea>
+                                                                                        <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả chỉ số" name="description">{{ $key->description }}</textarea>
                                                                                     </div>
 
                                                                                 </div>
@@ -257,7 +257,6 @@
             <div class="main_search d-flex me-3">
                 <button class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themMoiDinhMuc">
-                    <i class="bi bi-plus"></i>
                     Thêm chỉ số key
                 </button>
                 <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
