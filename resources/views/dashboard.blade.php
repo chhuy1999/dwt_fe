@@ -332,8 +332,8 @@
                                                                                                     <tbody>
                                                                                                         @foreach (getAllTargetDetailKpiKeys($task) as $key)
                                                                                                             <tr>
-                                                                                                                <th class="fw-normal">22/03/2023</th>
-                                                                                                                <td>{{ $key->name }} {{ $key->unit->name }}</td>
+                                                                                                                <th class="fw-normal">{{date('d/m/Y', strtotime($task->created_at))}}</th>
+                                                                                                                <td>{{ $key->name }}</td>
                                                                                                                 <td>{{ $key->quantity }}</td>
 
                                                                                                             </tr>
@@ -397,137 +397,17 @@
                                                                     </div>
                                                                 </td>
                                                                 @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                    <td @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif>
-                                                                        <div class="content_table" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
+                                                                    <td @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
+                                                                        <div class="content_table">
                                                                             @foreach ($task->targetLogs as $targetLog)
                                                                                 @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
-                                                                                    x
+                                                                                    {{ count($targetLog->targetLogDetails) }}
                                                                                 @break
                                                                             @endif
                                                                         @endforeach
                                                                         &nbsp;
                                                                     </div>
-                                                                    <!-- Modal Báo cáo công việc -->
-                                                                    <div class="modal fade text-black" id="baoCaoCongViec-{{ $task->id }}-{{ $i }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered">
 
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header text-center">
-                                                                                    <div class="d-flex w-100 flex-md-column">
-                                                                                        <h5 class="modal-title">Báo cáo công việc</h5>
-                                                                                        <h6 class="text-capitalize fw-normal fs-5">Ngày {{ $i + 1 }} - {{ $searchMonth }} - {{ $searchYear }}</h6>
-                                                                                    </div>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                </div>
-                                                                                <form action="/bao-cao-cong-viec/{{ $task->id }}" method="POST" enctype="multipart/form-data">
-                                                                                    <input type="hidden" name="reportedDate" value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
-                                                                                    @csrf
-                                                                                    <div class="modal-body">
-                                                                                        <div class="mb-3 row">
-                                                                                            <div class="col-sm-12 d-flex  align-items-center">
-                                                                                                <label for="inputPassword" class="col-sm-2 col-form-label">Tên nhiệm vụ</label>
-                                                                                                <div class="col-sm-10">
-                                                                                                    <input class="form-control" type="text" readonly value="{{ $task->name }}"></input>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="mb-3 row">
-                                                                                            <div class="col-sm-12 d-flex  align-items-center">
-                                                                                                <label for="inputPassword" class="col-sm-2 col-form-label">
-                                                                                                    Ghi chú
-                                                                                                    <span class="text-danger">*</span>
-                                                                                                </label>
-                                                                                                <div class="col-sm-10">
-                                                                                                    <textarea class="form-control" name="note" placeholder="Vui lòng nhập nội dung báo cáo vào đây">{{ findTargetLogDetailNote($task, $searchYear . '-' . $searchMonth . '-' . $i + 1) }}</textarea>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="mb-3 row">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="form-check">
-                                                                                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}" onchange="toggleKpiKey(event)">
-                                                                                                    <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh{{ $task->id }}">
-                                                                                                        Đạt giá trị kinh doanh
-                                                                                                    </label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <div class="row mb-3">
-                                                                                            <div class="form-check_wrapper">
-                                                                                                <div class="repeater-datGiaTriKinhDoanh">
-                                                                                                    <div data-repeater-list="kpiKeys-edit">
-                                                                                                        <div class="row" data-repeater-item>
-                                                                                                            <div class="col-md-6 mb-3">
-                                                                                                                <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="kpiKeyIds[]">
-                                                                                                                    @foreach ($kpiKeys as $kpiKey)
-                                                                                                                        <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
-                                                                                                                    @endforeach
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-5 mb-3">
-                                                                                                                <input type="number" class="form-control" placeholder="Giá trị" name="kpiKeyQuantity[]" />
-                                                                                                            </div>
-                                                                                                            <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                                                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-
-                                                                                                    <div class="col-md-12">
-                                                                                                        <div class="d-flex justify-content-start">
-                                                                                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="mb-3 row">
-                                                                                            <div class="col-md-12">
-                                                                                                <div class="modal_upload-wrapper">
-                                                                                                    <label class="modal_upload-label" for="file">
-                                                                                                        Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                                                                    <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích
-                                                                                                        thước tệp không quá 10MB</div>
-                                                                                                    <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                                                                        <div class="modal_upload-addFile me-3">
-                                                                                                            <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                                                                                Tải file lên
-                                                                                                                <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
-                                                                                                            </button>
-                                                                                                        </div>
-
-                                                                                                        <div class="modal_upload-addLink">
-                                                                                                            <button role="button" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#themLinkOnline">
-                                                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
-                                                                                                                Thêm liên kết
-                                                                                                            </button>
-                                                                                                        </div>
-
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
-                                                                                                    File bạn tải lên hiện tại không hỗ trợ !
-                                                                                                </div>
-                                                                                                <ul class="modal_upload-list">
-
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Xóa báo
-                                                                                            cáo</button>
-                                                                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                                        <button type="submit" class="btn btn-danger">Lưu</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
                                                                 </td>
                                                             @endfor
 
@@ -2513,7 +2393,131 @@
         </div>
     </div>
 </div> --}}
+@foreach ($listAssignedTasks->data as $task)
+    @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+        <!-- Modal Báo cáo công việc -->
+        <div class="modal fade text-black" id="baoCaoCongViec-{{ $task->id }}-{{ $i }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
 
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <div class="d-flex w-100 flex-md-column">
+                            <h5 class="modal-title">Báo cáo công việc</h5>
+                            <h6 class="text-capitalize fw-normal fs-5">Ngày {{ $i + 1 }} - {{ $searchMonth }} - {{ $searchYear }}</h6>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/bao-cao-cong-viec/{{ $task->id }}" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="reportedDate" value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-3 row">
+                                <div class="col-sm-12 d-flex  align-items-center">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Tên nhiệm vụ</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" readonly value="{{ $task->name }}"></input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="col-sm-12 d-flex  align-items-center">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">
+                                        Ghi chú
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" name="note" placeholder="Vui lòng nhập nội dung báo cáo vào đây">{{ findTargetLogDetailNote($task, $searchYear . '-' . $searchMonth . '-' . $i + 1) }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="d-flex align-items-center">
+                                    <div class="form-check">
+                                        <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}" onchange="toggleKpiKey(event)">
+                                        <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh{{ $task->id }}">
+                                            Đạt giá trị kinh doanh
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="form-check_wrapper">
+                                    <div class="repeater-datGiaTriKinhDoanh">
+                                        <div data-repeater-list="kpiKeys">
+                                            <div class="row" data-repeater-item>
+                                                <div class="col-md-6 mb-3">
+                                                    <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
+                                                        @foreach ($kpiKeys as $kpiKey)
+                                                            <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5 mb-3">
+                                                    <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                </div>
+                                                <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="d-flex justify-content-start">
+                                                <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="col-md-12">
+                                    <div class="modal_upload-wrapper">
+                                        <label class="modal_upload-label" for="file">
+                                            Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                        <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích
+                                            thước tệp không quá 10MB</div>
+                                        <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                            <div class="modal_upload-addFile me-3">
+                                                <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                    Tải file lên
+                                                    <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
+                                                </button>
+                                            </div>
+
+                                            <div class="modal_upload-addLink">
+                                                <button role="button" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#themLinkOnline">
+                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
+                                                    Thêm liên kết
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                        File bạn tải lên hiện tại không hỗ trợ !
+                                    </div>
+                                    <ul class="modal_upload-list">
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Xóa báo
+                                cáo</button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-danger">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    @endfor
+@endforeach
 @endsection
 @section('footer-script')
 <!-- ChartJS -->
@@ -2547,7 +2551,7 @@
         });
     });
     const toggleKpiKey = (e) => {
-        
+
         $('.form-check_wrapper').toggle();
     }
 </script>
