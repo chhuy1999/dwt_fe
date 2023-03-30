@@ -17,27 +17,11 @@
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="card mb-3">
-                                <div class="card-body position-relative body_content-wrapper" style="display:block"
-                                    id="body_content-1">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        {{-- <div class="pb-2 d-flex align-items-center">
-                                            <div class="card-title">Toàn Công Ty</div>
-                                            
-                                        </div> --}}
-                                        <div class="main_search d-flex mt-2">
-                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
-                                            <form action="/danh-sach-cap-nhan-su" method="GET">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
-                                                    name="q" value="{{ request()->q }}">
-                                            </form>
-                                        </div>
-                                        <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                            data-bs-target="#themTrangBi" style="margin-left: 10px">Thêm trang bị</button>
-                                    </div>
+                                <div class="card-body position-relative">
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
+                                                <table id="dsTrangBi"
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
@@ -112,7 +96,7 @@
                                                         <!-- Modal Sua Vi Tri chức danh -->
                                                         <div class="modal fade" id="suatrangbi" tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+                                                            <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header text-center">
                                                                         <h5 class="modal-title w-100" id="exampleModalLabel">SỬA TRANG BỊ</h5>
@@ -124,51 +108,28 @@
                                                                     @method('PUT')
                                                                         <div class="modal-body">
                                                                             <div class="row">
-                                                                                <div class="col-sm-6">
-                                                                                    <div class="d-flex align-items-center mb-3">
-                                                                                        <div class="d-flex col-sm-4">
-                                                                                            <div class="modal_body-title">Mã cấp tổ chức<span class="text-danger">*</span></div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-8">
-                                                                                            <input class="form-control" type="text" value="AMKT">
-                                                                                        </div>
-                                                                                    </div>
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control" type="text" value="AMKT">
                                                                                 </div>
 
-                                                                                <div class="col-sm-6">
-                                                                                    <div class="d-flex align-items-center">
-                                                                                        <div class="d-flex col-sm-4">
-                                                                                            <div class="modal_body-title">Tên cấp nhân sự<span class="text-danger">*</span></div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-8">
-                                                                                            <input class="form-control" type="text" name="name" value="Phòng kinh doanh 1">
-                                                                                        </div>
-                                                                                    </div>
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <input class="form-control" type="text" name="name" value="Phòng kinh doanh 1">
                                                                                 </div>
-                                                                                <div class="col-sm-6">
-                                                                                    <div class="d-flex align-items-center">
-                                                                                        <div class="d-flex col-sm-4">
-                                                                                            <div class="modal_body-title"> Thuộc cấp nhân sự<span class="text-danger">*</span></div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-8 d-flex align-items-center">
-                                                                                            <select class="selectpicker" title="Thuộc cấp nhân sự">
-                                                                                                <option>Công ty con</option>
-                                                                                                <option>Chi nhánh</option>
-                                                                                                <option>Văn phòng đại diện</option>
-                                                                                                <option>Văn phòng</option>
-                                                                                                <option>Trung tâm</option>
-                                                                                                <option>Phòng ban</option>
-                                                                                                <option>Nhóm/tổ/đội</option>
-                                                                                                <option>Phân xưởng</option>
-                                                                                                <option>Nhà máy</option>
-                                                                                                <option>Công ty thành viên</option>
-                                                                                                
-                                                                                            </select>
+                                                                                <div class="col-sm-6 mb-3">
+                                                                                    <select class="selectpicker" title="Thuộc cấp nhân sự" data-size="5">
+                                                                                        <option>Công ty con</option>
+                                                                                        <option>Chi nhánh</option>
+                                                                                        <option>Văn phòng đại diện</option>
+                                                                                        <option>Văn phòng</option>
+                                                                                        <option>Trung tâm</option>
+                                                                                        <option>Phòng ban</option>
+                                                                                        <option>Nhóm/tổ/đội</option>
+                                                                                        <option>Phân xưởng</option>
+                                                                                        <option>Nhà máy</option>
+                                                                                        <option>Công ty thành viên</option>
                                                                                         
-                                                                                        </div>
-                                                                                    </div>
+                                                                                    </select>
                                                                                 </div>
-                                                                                
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
@@ -210,7 +171,7 @@
 
     <!-- Modal Them trang bị-->
     <div class="modal fade" id="themTrangBi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CẤP NHÂN SỰ</h5>
@@ -221,18 +182,18 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 mb-3">
                                 <input class="form-control" type="text" placeholder="Nhập gói trang bị">
                                 
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 mb-3">
 
                                 <input class="form-control" type="text" placeholder="Nhập hạng mục trang bị">
                                 
 
                             </div>
-                            <div class="col-sm-6 mt-3">
+                            <div class="col-sm-6 mb-3">
 
                                 <input class="form-control" type="text" placeholder="Nhập đơn vị">
                                 
@@ -258,5 +219,33 @@
     <script type="text/javascript"
         src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
-
+        <script>
+            const targetTable = $('#dsTrangBi').DataTable({
+                paging: true,
+                ordering: false,
+                order: [[0, 'desc']],
+                pageLength: 5,
+                language: {
+                    info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+                    infoEmpty: 'Hiện tại chưa có bản ghi nào',
+                    search: 'Tìm kiếm biên bản',
+                    paginate: {
+                        previous: '<i class="bi bi-caret-left-fill"></i>',
+                        next: '<i class="bi bi-caret-right-fill"></i>',
+                    },
+                    search: '',
+                    searchPlaceholder: 'Tìm kiếm...',
+                    zeroRecords: 'Không tìm thấy kết quả',
+                },
+                oLanguage: {
+                    sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                },
+                dom: '<"d-flex mb-3 justify-content-end"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
+            });
+            $('div.card-title-wrapper').html(`
+                <div class="main_search d-flex me-3">
+                    <button class="btn btn-danger d-block w-60" data-bs-toggle="modal" data-bs-target="#themTrangBi" style="margin-left: 10px">Thêm trang bị</button>
+                </div>
+            `);
+        </script>
 @endsection

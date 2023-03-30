@@ -503,6 +503,23 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             }).showToast();
         @endif
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var elements = document.getElementsByTagName("INPUT");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].oninvalid = function(e) {
+                    e.target.setCustomValidity("");
+                    if (!e.target.validity.valid) {
+                        e.target.setCustomValidity("Trường này không được để trống");
+                    }
+                };
+                elements[i].oninput = function(e) {
+                    e.target.setCustomValidity("");
+                };
+            }
+        })
+    </script>
 </body>
 
 </html>

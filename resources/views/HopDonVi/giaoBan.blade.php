@@ -439,78 +439,26 @@
                                                                 <i class="bi bi-paperclip" style="padding-right: 4px"></i>
                                                                 File đính kèm
                                                             </div>
-                                                            <div class=""
-                                                                style="max-height: 240px; overflow-y: scroll;">
-                                                                <div class=" mb-3"
-                                                                    style="background: #f8f9fa">
-                                                                    <div class="col-sm-12 d-flex flex-start justify-between">
-                                                                        <i class="col bi bi-paperclip"
-                                                                            style="padding-right: 4px; padding-left: 25px"></i>
-                                                                        
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
-                                                                        </p>
-                                                                        <div class="col">
-                                                                            <p class="fs-6">9:58</p>
-                                                                        </div>
+                                                            <div class="modal_upload-wrapper">
+                                                                <label class="modal_upload-label" for="file">
+                                                                    Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                                                <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích
+                                                                    thước tệp không quá 10MB</div>
+                                                                <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                                    <div class="modal_upload-addFile me-3">
+                                                                        <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                            Tải file lên
+                                                                            <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
+                                                                        </button>
                                                                     </div>
+
                                                                 </div>
-
-                                                                <div class=" mb-3"
-                                                                    style="background: #f8f9fa">
-                                                                    <div class="col-sm-12 d-flex flex-start justify-between">
-                                                                        <i class="col bi bi-paperclip"
-                                                                            style="padding-right: 4px; padding-left: 25px"></i>
-                                                                        
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
-                                                                        </p>
-                                                                        <div class="col">
-                                                                            <p class="fs-6">9:58</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class=" mb-3"
-                                                                    style="background: #f8f9fa">
-                                                                    <div class="col-sm-12 d-flex flex-start justify-between">
-                                                                        <i class="col bi bi-paperclip"
-                                                                            style="padding-right: 4px; padding-left: 25px"></i>
-                                                                        
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
-                                                                        </p>
-                                                                        <div class="col">
-                                                                            <p class="fs-6">9:58</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class=" mb-3"
-                                                                    style="background: #f8f9fa">
-                                                                    <div class="col-sm-12 d-flex flex-start justify-between">
-                                                                        <i class="col bi bi-paperclip"
-                                                                            style="padding-right: 4px; padding-left: 25px"></i>
-                                                                        
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
-                                                                        </p>
-                                                                        <div class="col">
-                                                                            <p class="fs-6">9:58</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-
                                                             </div>
-                                                            <div class="col-12 mt-4">
-                                                                <input class="form-control form-control-lg"
-                                                                    id="formFileLg" type="file">
+                                                            <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                                                File bạn tải lên hiện tại không hỗ trợ !
                                                             </div>
-
-
+                                                            <ul class="modal_upload-list"></ul>
                                                         </div>
                                                     </div>
 
@@ -1383,10 +1331,92 @@
                 locale: {
                     format: 'DD/MM/YYYY'
                 },
-                language: 'ru'
+                language: 'ru',
+                timePicker: true,
+                locale: {
+                    "separator": " - ",
+                    "applyLabel": "Áp dụng",
+                    "cancelLabel": "Hủy bỏ",
+                    "fromLabel": "Từ",
+                    "toLabel": "Đến",
+                    "customRangeLabel": "Custom",
+                    "daysOfWeek": [
+                        "Th2",
+                        "Th3",
+                        "Th4",
+                        "Th5",
+                        "Th6",
+                        "Th7",
+                        "CN"
+                    ],
+                    "monthNames": [
+                        "Tháng 1",
+                        "Tháng 2",
+                        "Tháng 3",
+                        "Tháng 4",
+                        "Tháng 5",
+                        "Tháng 6",
+                        "Tháng 7",
+                        "Tháng 8",
+                        "Tháng 9",
+                        "Tháng 10",
+                        "Tháng 11",
+                        "Tháng 12",
+                    ],
+                }
             });
             $('input[name="daterange"]').val('');
-            $('input[name="daterange"]').attr("placeholder", "Chọn thời hạn");
+            $('input[name="daterange"]').attr("placeholder","Chọn thời hạn");
         });
+    </script>
+
+    <script>
+        updateList = function(e) {
+        const input = e.target;
+        const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal_upload-list');
+        const notSupport = outPut.parentNode.querySelector('.alertNotSupport');
+
+        let children = outPut.innerHTML;
+        console.log(children);
+        const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+        const maxFileSize = 10485760; //10MB in bytes
+
+        for (let i = 0; i < input.files.length; ++i) {
+            const file = input.files.item(i);
+            if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
+                children += `<li>
+                <span class="fs-5">
+                    <i class="bi bi-link-45deg"></i> ${file.name}
+                </span>
+                <span class="modal_upload-remote" onclick="return this.parentNode.remove()">
+                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                </span>
+            </li>`;
+            } else {
+
+                notSupport.style.display = 'block';
+                setTimeout(() => {
+                    notSupport.style.display = 'none';
+                }, 3500);
+            }
+        }
+        outPut.innerHTML = children;
+    }
+    //delete file from input
+    function removeFileFromFileList(input, index) {
+        const dt = new DataTransfer()
+
+        const {
+            files
+        } = input
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i]
+            if (index !== i)
+                dt.items.add(file) // here you exclude the file. thus removing it.
+        }
+
+        input.files = dt.files // Assign the updates list
+    }
     </script>
 @endsection

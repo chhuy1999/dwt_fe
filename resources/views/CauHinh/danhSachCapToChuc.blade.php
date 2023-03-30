@@ -17,25 +17,11 @@
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="card mb-3">
-                                <div class="card-body position-relative body_content-wrapper" style="display:block" id="body_content-1">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        {{-- <div class="pb-2 d-flex align-items-center">
-                                            <div class="card-title">Toàn Công Ty</div>
-                                            
-                                        </div> --}}
-                                        <div class="main_search d-flex mt-2">
-                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
-                                            <form action="/danh-sach-vi-tri" method="GET">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="q" value="{{request()->q}}">
-                                            </form>
-                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm cấp tổ chức</button>
-                                        </div>
-                                    </div>
+                                <div class="card-body position-relative">
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
+                                                <table id="dsCapToChuc"
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
@@ -314,57 +300,7 @@
     
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $.datetimepicker.setLocale('vi');
-            $('#ngayThuViec').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-            
-            $('#ngayChinhThuc').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-            
-            $('#suaNgayThuViec').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-            
-            $('#suaNgayChinhThuc').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-            
-            $('#createUser').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-            
-            $('#suaCreateUser').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-            $('#onchangePhongBan').change(function() {
-            var opval = $(this).val();
-            if (opval == "themPhongBan") {
-                $('#themPhongBan').modal("show");
-                $('#themThanhVien').modal("hide");
-            }
-            });
-            $('#onchangeViTriCongViec').change(function() {
-                var opval = $(this).val();
-                if (opval == "themViTriCongViec") {
-                    $('#themViTriCongViec').modal("show");
-                    $('#themThanhVien').modal("hide");
-                }
-            });
-        });
-        
-    </script>
+    
     <script>
         function fileValue(value) {
             var path = value.value;
@@ -378,46 +314,35 @@
         }
     </script>
 
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", () => {
-        // Click Tree
-        const clickTrees = document.querySelectorAll(".clicktree");
-        clickTrees.forEach((clickTree) => {
-            clickTree.addEventListener("click", () => {
-            const id = clickTree.getAttribute("data-href");
-            const element = document.querySelector(id);
-            if (element) {
-                const items = document.querySelectorAll(".body_content-wrapper");
-                items.forEach((item) => {
-                    item.style.display = "none";
-                });
-                element.style.display = "block";
-                const noContent = document.querySelector(".body_noContent-wrapper");
-                noContent.style.display = "none";
-            } else {
-                const items = document.querySelectorAll(".body_content-wrapper");
-                items.forEach((item) => {
-                item.style.display = "none";
-                });
-            }
-            });
+    <script>
+        const targetTable = $('#dsCapToChuc').DataTable({
+            paging: true,
+            ordering: false,
+            order: [[0, 'desc']],
+            pageLength: 5,
+            language: {
+                info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+                infoEmpty: 'Hiện tại chưa có bản ghi nào',
+                search: 'Tìm kiếm biên bản',
+                paginate: {
+                    previous: '<i class="bi bi-caret-left-fill"></i>',
+                    next: '<i class="bi bi-caret-right-fill"></i>',
+                },
+                search: '',
+                searchPlaceholder: 'Tìm kiếm...',
+                zeroRecords: 'Không tìm thấy kết quả',
+            },
+            oLanguage: {
+                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+            },
+            dom: '<"d-flex mb-3 justify-content-end"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
         });
-
-        // Search Tree
-        document.querySelector("#search_tree").addEventListener("keyup", function() {
-            var value = this.value.toLowerCase();
-            var lis = document.querySelectorAll(".tree li");
-            for (var i = 0; i < lis.length; i++) {
-            var li = lis[i];
-            var text = li.textContent.toLowerCase();
-            if (text.indexOf(value) > -1) {
-                li.style.display = "";
-            } else {
-                li.style.display = "none";
-            }
-            }
-        });
-    });
-</script>
+        $('div.card-title-wrapper').html(`
+            <div class="main_search d-flex me-3">
+                <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
+                    data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm cấp tổ chức</button>
+            </div>
+        `);
+    </script>
 
 @endsection

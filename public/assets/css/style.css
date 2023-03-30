@@ -1369,6 +1369,8 @@ th {
     border-right: 1px solid var(--grey-color);
     border-left: 1px solid var(--grey-color);
     border-top: 1px solid var(--grey-color);
+    position: relative;
+    height: 100%;
 }
 
 .mainSection_heading {
@@ -1991,9 +1993,8 @@ ul.modal_upload-list li:last-child {
 }
 
 .footer {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+    /* position: absolute;
+    width: 100%; */
+    /* bottom: 0; */
 }
-
 
