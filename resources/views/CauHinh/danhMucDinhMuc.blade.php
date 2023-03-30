@@ -682,12 +682,12 @@
 </script>
 <script>
     function onInput(event) {
-  let value = parseFloat(event.value);
-  if (Number.isNaN(value)) {
-    document.getElementById('input-1').value = "0.00";
-  } else {
-    document.getElementById('input-1').value = value.toFixed(2);
-  }              
-}
+        let value = parseFloat(event.value);
+        if (Number.isNaN(value)) {
+            document.getElementById('input-1').value = "0.00";
+        } else {
+            document.getElementById('input-1').value = value.toFixed(2);
+        }              
+    }
 </script>
 @endsection

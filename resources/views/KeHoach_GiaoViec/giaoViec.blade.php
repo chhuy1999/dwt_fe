@@ -66,12 +66,12 @@
                                                                     </div>
                                                                 </th>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:185px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->name }}">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->name }}">
                                                                         {{ $target->name }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:185px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->description }}">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:280px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->description }}">
                                                                         {{ $target->description }}
                                                                     </div>
                                                                 </td>
@@ -139,7 +139,7 @@
                                                                     <div class="row" data-repeater-item>
                                                                         <div class="col-md-8 mb-3">
                                                                             <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
-                                                                                <option hidden>Chọn chỉ số key</option>
+                                                                                <option value="" hidden>Chọn chỉ số key</option>
                                                                                 @foreach ($kpiKeys as $kpiKey)
                                                                                     <option value="{{ $kpiKey->id }}">
                                                                                         {{ $kpiKey->name }}
@@ -338,20 +338,20 @@
                         <div class="modal-body">
                             <div class="mb-3 row">
                                 <div class="col-md-12 mb-3">
-                                    <input type="text" class="form-control" name="name" value="{{ $assignedTask->name }}" />
+                                    <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" value="{{ $assignedTask->name }}" />
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <input type="text" class="form-control" readonly value="{{ $assignedTask->target->name ?? '' }}" />
+                                    <input type="text" class="form-control" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Thuộc định mức" value="{{ $assignedTask->target->name ?? '' }}" />
                                 </div>
 
                                 <div class="col-md-12 mb-3">
-                                    <textarea class="form-control" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
+                                    <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả nhiệm vụ" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <textarea class="form-control" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
+                                    <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Kế hoạch thực hiện" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
                                 </div>
 
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
                                     <select class='selectpicker' data-live-search="true" data-size="5" name="position_id" id="">
                                         @foreach ($listPositions->data as $pos)
                                             @if ($pos->id == ($assignedTask->position->id ?? '-1'))
@@ -367,8 +367,8 @@
 
                                     </select>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <select class='selectpicker' multiple data-live-search="true" name="users[]">
+                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người đảm nhiệm">
+                                    <select class='selectpicker' multiple data-size="5" data-live-search="true" name="users[]">
                                         @foreach ($listUsers as $user)
                                             @if (isAssigned($assignedTask, $user->id))
                                                 <option value="{{ $user->id }}" selected>
@@ -384,10 +384,10 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-6 mb-3">
-                                    <select class='selectpicker' multiple data-live-search="true" name="relatedUsers[]" id="">
+                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người liên quan">
+                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]" id="">
                                         @foreach ($listUsers as $user)
-                                            <option value="{{ $user->id }}">
+                                            <option value="{{ $user->id }}" selected>
                                                 {{ $user->name }}
                                             </option>
                                         @endforeach
@@ -395,7 +395,7 @@
                                 </div>
 
                                 <div class="col-md-2 mb-3">
-                                    <input type="text" name="manday" value="{{ $assignedTask->manday }}" class="form-control" />
+                                    <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" name="manday" min="0" step="0.05" oninput="onInput(this)" value="{{ $assignedTask->manday }}" class="form-control" />
                                 </div>
 
                                 <div class="col-md-4 mb-3">
@@ -407,7 +407,8 @@
                                         @foreach ($assignedTask->kpiKeys as $kpiKey)
                                             <div class="row" data-repeater-item>
                                                 <div class="col-md-6 mb-3">
-                                                    <select class='form-select' data-live-search="true" title="Thêm tiêu chí key" name="id">
+                                                    <select class='form-select' name="id">
+                                                        <option class="text-secondary" value="" hidden>Chọn tiêu chí</option>
                                                         @foreach ($kpiKeys as $kpi)
                                                             @if ($kpi->id == $kpiKey->id)
                                                                 <option value="{{ $kpi->id }}" selected>{{ $kpi->name }}</option>
@@ -419,7 +420,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-5 mb-3">
-                                                    <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $kpiKey->quantity }}" />
+                                                    <input type="number" class="form-control" min="0" placeholder="Giá trị" name="quantity" value="{{ $kpiKey->quantity }}" />
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
                                                     <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
@@ -463,8 +464,8 @@
 
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
     <!-- Chart Types -->
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
@@ -695,5 +696,16 @@
         $('div.card-titles-wrapper').html(`
             <div class="card-title">Lịch sử giao việc</div>
         `);
+    </script>
+
+    <script>
+        function onInput(event) {
+            let value = parseFloat(event.value);
+            if (Number.isNaN(value)) {
+                document.getElementById('input-1').value = "0.00";
+            } else {
+                document.getElementById('input-1').value = value.toFixed(2);
+            }              
+        }
     </script>
 @endsection
