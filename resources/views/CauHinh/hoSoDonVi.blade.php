@@ -102,7 +102,11 @@
                                                 <div class="action_wrapper d-flex">
                                                     <div class="form-group has-search">
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+
+                                                        <form action="/ho-so-don-vi" method="GET">
+                                                            <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                                name="q" value="{{ request()->q }}">
+                                                        </form>
                                                     </div>
                                                     <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                                                         <button class="btn btn-danger d-block" data-bs-toggle="modal"
@@ -125,7 +129,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listDepartments->data as $value)
+                                                        @foreach ($$data->data as $value)
                                                             <tr>
                                                                 <th scope="row">
                                                                     <div
@@ -379,8 +383,10 @@
                             </div>
                             <div class="col-sm-6 mb-3 d-flex">
                                 <div class="col-sm-11">
-                                    <select class="selectpicker" title="Chọn cấp tổ chức">
-                                        <option>Công ty con</option>
+                                    <select class="selectpicker" title="Chọn cấp tổ chức" data-actions-box="true"
+                                    data-live-search="true" title="Chọn chủ trì..."
+                                    data-live-search-placeholder="Tìm kiếm...">
+                                        <option>Công ty</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
                                         <option>Văn phòng</option>
@@ -392,12 +398,12 @@
                                         <option>Công ty thành viên</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-1">
+                                {{-- <div class="col-sm-1">
                                     <div class="modal_list-more" data-bs-toggle="modal"
                                     data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"

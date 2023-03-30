@@ -102,7 +102,10 @@
                                                 <div class="action_wrapper d-flex">
                                                     <div class="form-group has-search">
                                                         <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                        <form action="/ho-so-don-vi" method="GET">
+                                                            <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                                name="q" value="{{ request()->q }}">
+                                                        </form>
                                                     </div>
                                                     <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                                                         <button class="btn btn-danger d-block" data-bs-toggle="modal"
@@ -125,7 +128,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listDepartments->data as $value)
+                                                        @foreach ($data->data as $value)
                                                             <tr>
                                                                 <th scope="row">
                                                                     <div

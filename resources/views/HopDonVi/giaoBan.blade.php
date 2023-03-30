@@ -72,7 +72,7 @@
         }
 
         .information {
-            width: 400px;
+            /* width: 400px; */
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
@@ -99,7 +99,7 @@
                                 <div class="col-sm-8">
                                     <select class="selectpicker mainSection_width-select" data-actions-box="true"
                                         data-live-search="true" title="Chọn chủ trì..."
-                                        data-live-search-placeholder="Tìm kiếm...">
+                                        data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         <option>Nguyễn Ngọc Bảo</option>
                                         <option>Đặng Nguyễn Lam Mai</option>
                                         <option>Hồ Thị Hồng Vân</option>
@@ -373,8 +373,8 @@
                                                                         <i class="col bi bi-journal-check"
                                                                             style="padding-right: 4px; padding-left: 25px"></i>
                                                                         
-                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page.
+                                                                        <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="information col-sm-10">
+                                                                            It is a long established fact that a reader will bedistracted by the readable content of a page
                                                                         </p>
                                                                         <div class="col">
                                                                             <p class="fs-6">9:58</p>
@@ -914,7 +914,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal-title fw-bolder">I. NỘI DUNG CUỘC HỌP</div>
+                                <div class="modal-title fw-bolder">I. NỘI DUNG TRAO ĐỔI</div>
                             </div>
                         </div>
                         <div class="col-sm-12">
