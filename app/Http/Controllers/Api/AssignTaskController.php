@@ -63,14 +63,13 @@ class AssignTaskController extends Controller
                 'daterange' => 'required',
                 'manday' => 'required|numeric',
                 'executionPlan' => 'nullable',
-                'user1' => 'required',
-                'user2' => 'nullable',
+                'users' => 'required|array',
+                'relatedUsers' => 'nullable|array',
                 'kpiKeys' => 'nullable|array',
                 "target_id" => "required|numeric",
 
             ]);
 
-            $data['users'] = [$data['user1'], $data['user2']];
             $dateRange = $data['daterange'];
             $startDate = explode(" - ", $dateRange)[0];
             //remove space
@@ -95,5 +94,17 @@ class AssignTaskController extends Controller
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
+    }
+
+    public function unAssignTask($id, Request $request) {
+        try {
+            $this->dwtService->unAssignTask($id);
+            return back()->with('success', 'Hủy giao việc thành công');
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
+
     }
 }

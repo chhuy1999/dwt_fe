@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\DwtServices;
 use Exception;
 use Illuminate\Http\Request;
-use Termwind\Components\Dd;
 
 class DepartmentController extends Controller
 {
@@ -33,7 +32,7 @@ class DepartmentController extends Controller
             $data = $this->dwtService->searchDepartment($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
             $listUsers = $this->dwtService->listUsers();
-            
+
             return view('Cauhinh.configProfile')
                  ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
@@ -49,7 +48,6 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         try {
-
             $data = $request->validate([
                 'name' => 'required',
                 'description' => 'required',

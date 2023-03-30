@@ -78,13 +78,7 @@ class TargetDetailController extends Controller
                 'manday' => 'nullable|numeric',
                 "daterange" => "nullable",
             ]);
-            $data['users'] = [];
-            if (isset($request['user1'])) {
-                array_push($data['users'], $request['user1']);
-            }
-            if (isset($request['user2'])) {
-                array_push($data['users'], $request['user2']);
-            }
+           
             if (isset($request['daterange'])) {
                 $dateRange = $data['daterange'];
                 $startDate = explode(" - ", $dateRange)[0];

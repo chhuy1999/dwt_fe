@@ -115,12 +115,14 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        {{ $targetDetail->position && $targetDetail->position->name ?? '' }}
+                                                                        {{ $targetDetail->position->name ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        {{ '' }}
+                                                                        @foreach ($targetDetail->kpiKeys as $kpiKey)
+                                                                            {{ $kpiKey->quantity }} {{ $kpiKey->name }} ({{ $kpiKey->unit->name }}) <br>
+                                                                        @endforeach
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -164,9 +166,7 @@
                                                                                     <div class="col-sm-12 mb-3">
                                                                                         <input class="form-control" type="text" name="name" placeholder="Nhập tên nhiệm vụ" value="{{ $targetDetail->name }}">
                                                                                     </div>
-                                                                                    <div class="col-sm-12 mb-3">
-                                                                                        <input class="form-control" readonly type="text" name="name" placeholder="Nhập tên nhiệm vụ" value="{{ $targetDetail->name }}">
-                                                                                    </div>
+
                                                                                     <div class="col-sm-12 mb-3">
                                                                                         <select name="target_id" class="selectpicker" title="Chọn định mức">
                                                                                             @foreach ($listTargets->data as $target)
@@ -183,8 +183,12 @@
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea class="form-control" name="description" placeholder="Nhập mô tả thực hiện">{{ $targetDetail->description }}</textarea>
-                                                                                        {{-- $targetDetail->departement --}}
+                                                                                        <textarea class="form-control" name="description" placeholder="Nhập mô tả ">{{ $targetDetail->description }}</textarea>
+                                                                                      
+                                                                                    </div>
+                                                                                    <div class="col-sm-12 mb-3">
+                                                                                        <textarea class="form-control" name="executionPlan" placeholder="Nhập kế hoạch thực hiện">{{ $targetDetail->executionPlan }}</textarea>
+
                                                                                     </div>
                                                                                     <div class="col-sm-4 mb-3">
                                                                                         <select class="selectpicker" name="unit_id">
@@ -195,7 +199,7 @@
                                                                                             @endforeach
                                                                                         </select>
                                                                                     </div>
-                                                                                    
+
                                                                                     <div class="col-sm-5 mb-3">
                                                                                         <select name="position_id" class="selectpicker" title="Chọn Vị trí">
 
@@ -217,7 +221,7 @@
                                                                                         <input class="form-control" style="width:76%" type="text" placeholder="Nhập Manday" name="manday" value="{{ $targetDetail->manday }}">
                                                                                     </div>
                                                                                     <div class="col-sm-12">
-                                                                                        
+
                                                                                         <select name="departement_id" class="selectpicker" title="Chọn phòng/ban">
                                                                                             @foreach ($listDepartments->data as $departement)
                                                                                                 @if ($targetDetail->departement && $targetDetail->departement->id == $departement->id)
@@ -479,7 +483,9 @@
         const targetTable = $('#dsMauNhiemVu').DataTable({
             paging: true,
             ordering: false,
-            order: [[0, 'desc']],
+            order: [
+                [0, 'desc']
+            ],
             pageLength: 10,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
