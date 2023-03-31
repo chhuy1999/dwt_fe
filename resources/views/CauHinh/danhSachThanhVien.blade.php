@@ -48,32 +48,32 @@
                                                                         {{ $loop->iteration }}
                                                                     </div>
                                                                 </th>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->name }}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:128px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->name }}">{{ $value->name }}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->code }}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:80px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->code }}">{{ $value->code }}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->departement->name ?? ''}}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:90px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->departement->name }}">{{ $value->departement->name ?? ''}}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->position->name ?? ''}}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:120px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->position->name }}">{{ $value->position->name ?? ''}}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->position_level->name ?? ''}}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->position_level->name }}">{{ $value->position_level->name ?? ''}}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->email }}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->email }}">{{ $value->email }}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->phone }}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:80px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->phone }}">{{ $value->phone }}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>Chính thức</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="1">Chính thức</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>Đang làm việc</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="1">Đang làm việc</div>
                                                                 </td>
                                                                 <td>
                                                                     <div

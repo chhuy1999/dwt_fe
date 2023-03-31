@@ -109,19 +109,19 @@
                                                                         <div class="modal-body">
                                                                             <div class="row">
                                                                                 
-                                                                                <div class="col-sm-6 mb-3">
+                                                                                <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị">
                                                                                     <select name="parent_id" class="selectpicker" title="Nhập gói trang bị" data-size="3" data-live-search="true">
                                                                                         @foreach ($listEquimentPack->data as $value)
-                                                                                            <option value="{{ $value->parent_id}}">
+                                                                                            <option value="{{ $value->parent_id}}" selected>
                                                                                                 {{ $value->name }}
                                                                                             </option>
                                                                                         @endforeach
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control" type="text" name="p" value="{{ $value->name}}">
+                                                                                    <input class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Hạng muc gói trang bị" type="text" name="p" value="{{ $value->name}}">
                                                                                 </div>
-                                                                                <div class="col-sm-6 mb-3">
+                                                                                <div class="col-sm-6 mb-3"  data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
                                                                                     <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
                                                                                         @foreach ($listUnits->data as $unit)
                                                                                             @if ($unit->id != $value->unit_id)

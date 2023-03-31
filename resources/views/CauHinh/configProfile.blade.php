@@ -6,15 +6,6 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
 @endsection
 
-<style>
-    .description-department {
-        width: 480px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-    }
-</style>
-
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -136,20 +127,20 @@
                                                                         {{ $loop->iteration }}
                                                                     </div>
                                                                 </th>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->code }}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:60px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->code }}">{{ $value->code }}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->name }}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:90px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->name }}">{{ $value->name }}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>Phòng ban</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:70px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="1">Phòng ban</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div>{{ $value->in_charge}}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:128px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->in_charge}}">{{ $value->in_charge}}</div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="d-inline-block text-truncate description-department" style="max-width: 615px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
+                                                                <td>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:600px" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
                                                                 </td>
                                                                 <td>
                                                                     <div
@@ -238,10 +229,11 @@
                                                                                     <div class="col-sm-6 mb-3">
                                                                                         <input class="form-control"
                                                                                                     type="text"
+                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Mã đơn vị"
                                                                                                     value="{{ $value->code }}"
                                                                                                     name="code">
                                                                                     </div>
-                                                                                    <div class="col-sm-6 mb-3">
+                                                                                    <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị mẹ">
                                                                                         <select class="selectpicker" title="Chọn đơn vị mẹ" data-width="100%"
                                                                                             data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                                                             data-size="3">
@@ -269,7 +261,7 @@
                                                                                             <option value="1">Công ty thành viên</option>
                                                                                         </select>
                                                                                     </div>
-                                                                                    <div class="col-sm-6 mb-3">
+                                                                                    <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Trưởng đơn vị">
                                                                                         <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
                                                                                         data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                                                         data-size="3" name="in_charge">
@@ -282,10 +274,11 @@
                                                                                 <div class="col-sm-6 mb-3">
                                                                                     <input class="form-control"
                                                                                     type="text"
+                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Trụ sở chính"
                                                                                     value="219 Trung Kính, Yên Hoà, Cầu...">
                                                                                 </div>
                                                                                 <div class="col-sm-12 mb-3">
-                                                                                    <input class="form-control" type="text" value="{{ $value->description }}"
+                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Chức năng, nhiệm vụ đơn vị" value="{{ $value->description }}"
                                                                                     name="description">
                                                                                 </div>
                                                                             </div>

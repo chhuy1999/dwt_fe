@@ -469,8 +469,8 @@
 @section('footer-script')
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript"
@@ -658,8 +658,17 @@
     $('div.action_wrapper').html(`
         <div class="action_wrapper d-flex">
             <div class="action_export">
-                <input type="text" class="form-control" autocomplete="off"
-                    id="filter_thuocDonVi" placeholder="Đơn vị phụ trách *" />
+                
+                <select class="selectpicker" title="Đơn vị phụ trách " data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
+                        <option value="1">Ban Giám Đốc</option>
+                        <option value="2">Ban Kiểm soát</option>
+                        <option value="3">Phòng Dịch vụ bán hàng</option>
+                        <option value="4">Bộ phận Kho Vận</option>
+                        <option value="5">Phòng Kế toán</option>
+                        <option value="6">Cung ứng MTT</option>
+                        <option value="7">Phòng marketing</option>
+                        <option value="8">Phòng quản trị nhãn và đào tạo</option>
+                </select>
             </div>
         </div>
     `);

@@ -101,7 +101,7 @@
                                         data-live-search="true" title="Chọn chủ trì..."
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listUsers->data as $value)
-                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                            <option value="{{ $value->name }}">{{ $value->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -150,7 +150,7 @@
                                                             </div>
                                                             {{-- <div id="date_time-hopgiaoban"
                                                                 class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?>"
+                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?>"
                                                                     class="form-control" type="text">
                                                                 <div class="datetimepicker_separate">-</div>
                                                                 <input id="datetimepicker2" value="<?php //echo date('d/m/Y h:m');
@@ -187,7 +187,8 @@
                                                                     data-count-selected-text="Có {0} Thư ký"
                                                                     data-live-search-placeholder="Tìm kiếm...">
                                                                     @foreach ($listUsers->data as $value)
-                                                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                        <option value="{{ $value->name }}">
+                                                                            {{ $value->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -207,7 +208,8 @@
                                                                     data-count-selected-text="Có {0} thành viên"
                                                                     data-live-search-placeholder="Tìm kiếm...">
                                                                     @foreach ($listUsers->data as $value)
-                                                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                                        <option value="{{ $value->name }}">
+                                                                            {{ $value->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -222,7 +224,8 @@
                                         <div class="col-md-6">
                                             <div class="mb-2 d-flex justify-content-between align-items-center">
                                                 <div class="card-title">Vấn đề tiếp nhận</div>
-                                                <div class="alert alert-warning border-warning m-0" style="padding: 0 6px">
+                                                <div class="alert alert-warning border-warning m-0"
+                                                    style="padding: 0 6px">
                                                     <i class="bi bi-exclamation-triangle pe-2"></i><strong>03</strong>
                                                     vấn đề
                                                     tồn đọng
@@ -251,7 +254,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -283,7 +287,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -315,7 +320,8 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -353,20 +359,19 @@
                                         <div class="col-md-6">
                                             <div class="action_wrapper-cmt rounded border p-3">
                                                 <div class="card-title mb-3">
-                                                    <i class="bi bi-journal-check"
-                                                        style="padding-right: 4px"></i>
+                                                    <i class="bi bi-journal-check" style="padding-right: 4px"></i>
                                                     Nội dung trao đổi
                                                 </div>
-                                                <div class=""
-                                                    style="max-height: 240px; overflow-y: scroll;">
-                                                    <div class=" mb-3"
-                                                        style="background: #f8f9fa">
+                                                <div class="" style="max-height: 240px; overflow-y: scroll;">
+                                                    <div class=" mb-3" style="background: #f8f9fa">
                                                         <div class="col-sm-12 d-flex flex-start justify-between">
                                                             <i class="col bi bi-journal-check"
                                                                 style="padding-right: 4px; padding-left: 25px"></i>
-                                                            
-                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="information col-sm-10">
-                                                                It is a long established fact that a reader will bedistracted by the readable content of a page
+
+                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page."
+                                                                class="information col-sm-10">
+                                                                It is a long established fact that a reader will
+                                                                bedistracted by the readable content of a page
                                                             </p>
                                                             <div class="col">
                                                                 <p class="fs-6">9:58</p>
@@ -374,14 +379,15 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class=" mb-3"
-                                                        style="background: #f8f9fa">
+                                                    <div class=" mb-3" style="background: #f8f9fa">
                                                         <div class="col-sm-12 d-flex flex-start justify-between">
                                                             <i class="col bi bi-journal-check"
                                                                 style="padding-right: 4px; padding-left: 25px"></i>
-                                                            
-                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                It is a long established fact that a reader will bedistracted by the readable content of a page.
+
+                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page."
+                                                                class="col-sm-10">
+                                                                It is a long established fact that a reader will
+                                                                bedistracted by the readable content of a page.
                                                             </p>
                                                             <div class="col">
                                                                 <p class="fs-6">9:58</p>
@@ -389,14 +395,15 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class=" mb-3"
-                                                        style="background: #f8f9fa">
+                                                    <div class=" mb-3" style="background: #f8f9fa">
                                                         <div class="col-sm-12 d-flex flex-start justify-between">
                                                             <i class="col bi bi-journal-check"
                                                                 style="padding-right: 4px; padding-left: 25px"></i>
-                                                            
-                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                It is a long established fact that a reader will bedistracted by the readable content of a page.
+
+                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page."
+                                                                class="col-sm-10">
+                                                                It is a long established fact that a reader will
+                                                                bedistracted by the readable content of a page.
                                                             </p>
                                                             <div class="col">
                                                                 <p class="fs-6">9:58</p>
@@ -404,14 +411,15 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class=" mb-3"
-                                                        style="background: #f8f9fa">
+                                                    <div class=" mb-3" style="background: #f8f9fa">
                                                         <div class="col-sm-12 d-flex flex-start justify-between">
                                                             <i class="col bi bi-journal-check"
                                                                 style="padding-right: 4px; padding-left: 25px"></i>
-                                                            
-                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page." class="col-sm-10">
-                                                                It is a long established fact that a reader will bedistracted by the readable content of a page.
+
+                                                            <p title="It is a long established fact that a reader will be distracted by the readable content of a page."
+                                                                class="col-sm-10">
+                                                                It is a long established fact that a reader will
+                                                                bedistracted by the readable content of a page.
                                                             </p>
                                                             <div class="col">
                                                                 <p class="fs-6">9:58</p>
@@ -421,37 +429,47 @@
 
                                                 </div>
                                                 <div class="col-12 mt-4">
-                                                    <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung" rows="3"></textarea>
+                                                    <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung"
+                                                        rows="3"></textarea>
                                                 </div>
 
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
+                                            <div
+                                                class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
                                                 <div class="card-title mb-3">
                                                     <i class="bi bi-paperclip" style="padding-right: 4px"></i>
                                                     File đính kèm
                                                 </div>
                                                 <div class="upload_wrapper-items">
                                                     <ul class="modal_upload-list"></ul>
-                                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                                    <div class="alert alert-danger alertNotSupport" role="alert"
+                                                        style="display:none">
                                                         File bạn tải lên hiện tại không hỗ trợ !
                                                     </div>
                                                     <div class="modal_upload-wrapper">
                                                         <label class="modal_upload-label" for="file">
                                                             Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                        <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc PDF, kích
+                                                        <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG,
+                                                            PNG hoặc PDF, kích
                                                             thước tệp không quá 10MB</div>
-                                                        <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                        <div
+                                                            class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                                             <div class="modal_upload-addFile me-3">
-                                                                <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                <button role="button" type="button"
+                                                                    class="btn position-relative pe-4 ps-4">
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/upload-file.svg') }}" />
                                                                     Tải file lên
-                                                                    <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
+                                                                    <input role="button" type="file"
+                                                                        class="modal_upload-input" name="files[]"
+                                                                        class="modal_upload-file" multiple
+                                                                        onchange="updateList(event)">
                                                                 </button>
                                                             </div>
-    
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -479,7 +497,7 @@
                                                                 {{-- <div>
                                                                     <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
                                                                 </div> --}}
-        
+
                                                             </div>
                                                         </th>
                                                         <th style="width: 10%">
@@ -502,25 +520,38 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                                <div type="text-nowrap d-inline-block text-truncate"
+                                                                    class="form-control border-0 bg-transparent"
+                                                                    value="Giải quyết">Giải quyết</div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                                <div type="text-nowrap d-inline-block text-truncate"
+                                                                    class="form-control border-0 bg-transparent"
+                                                                    value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:230px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:220px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
@@ -541,18 +572,29 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                    class="bi bi-three-dots-vertical"></i>
                                                             </div>
-                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThuocTinh"
+                                                                        data-repeater-delete>
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        Xóa
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -565,25 +607,38 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                                <div type="text"
+                                                                    class="form-control border-0 bg-transparent"
+                                                                    value="Giải quyết">Giải quyết</div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                                <div type="text"
+                                                                    class="form-control border-0 bg-transparent"
+                                                                    value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:230px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:220px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
@@ -604,18 +659,29 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                    class="bi bi-three-dots-vertical"></i>
                                                             </div>
-                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThuocTinh"
+                                                                        data-repeater-delete>
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        Xóa
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -628,25 +694,38 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text" class="form-control border-0 bg-transparent" value="Than phiên">Than phiền</div>
+                                                                <div type="text"
+                                                                    class="form-control border-0 bg-transparent"
+                                                                    value="Than phiên">Than phiền</div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                                <div type="text"
+                                                                    class="form-control border-0 bg-transparent"
+                                                                    value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:230px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:220px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
@@ -667,18 +746,29 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                    class="bi bi-three-dots-vertical"></i>
                                                             </div>
-                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThuocTinh"
+                                                                        data-repeater-delete>
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        Xóa
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -691,25 +781,38 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text" class="form-control border-0 bg-transparent" value="Than phiền">Than phiền</div>
+                                                                <div type="text"
+                                                                    class="form-control border-0 bg-transparent"
+                                                                    value="Than phiền">Than phiền</div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <div type="text" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
+                                                                <div type="text"
+                                                                    class="form-control border-0 bg-transparent"
+                                                                    value="Nguyễn Ngọc Bảo">Nguyễn Ngọc Bảo</div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:230px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:220px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
@@ -730,18 +833,29 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                    class="bi bi-three-dots-vertical"></i>
                                                             </div>
-                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThuocTinh"
+                                                                        data-repeater-delete>
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        Xóa
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -754,25 +868,38 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <input type="text" class="form-control border-0 bg-transparent" readonly value="Than phiền" />
+                                                                <input type="text"
+                                                                    class="form-control border-0 bg-transparent" readonly
+                                                                    value="Than phiền" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div>
-                                                                <input type="text" class="form-control border-0 bg-transparent" readonly value="Nguyễn Ngọc Bảo" />
+                                                                <input type="text"
+                                                                    class="form-control border-0 bg-transparent" readonly
+                                                                    value="Nguyễn Ngọc Bảo" />
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:230px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-inline-block text-truncate"
+                                                                style="max-width:220px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                 Chưa hoàn thành báo cáo do abc chưa gửi thông tin</div>
                                                         </td>
                                                         <td>
@@ -793,25 +920,36 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                    class="bi bi-three-dots-vertical"></i>
                                                             </div>
-                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#suaVanDeTonDong">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
                                                                         Sửa
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" /> Xóa
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaThuocTinh"
+                                                                        data-repeater-delete>
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        Xóa
                                                                     </a>
                                                                 </li>
                                                             </ul>
                                                         </td>
                                                     </tr>
-        
-        
+
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -860,6 +998,7 @@
     </div>
     </div>
     @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
+
     <!-- Modal Phản Hồi Vấn Đề -->
     <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
@@ -940,84 +1079,44 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-3">
-                                    <div class="modal_body-title">Vấn đề tồn đọng <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input class="form-control" type="text"
-                                        value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                </div>
-                            </div>
+                        <div class="col-sm-12 mb-3">
+                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Vấn đề tồn đọng" value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                         </div>
-                        <div class="col-sm-7">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-5" style="margin-right: 6px;">
-                                    <div class="modal_body-title">Người nêu <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <input class="form-control" type="text" value="Nguyễn Ngọc Bảo">
-                                </div>
-                            </div>
+                        <div class="col-sm-7 mb-3">
+                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Người nêu" value="Nguyễn Ngọc Bảo">
                         </div>
-                        <div class="col-sm-5">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">PIC <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="Nguyễn Ngọc Bảo">
-                                </div>
-                            </div>
+                        <div class="col-sm-5 mb-3">
+                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="PCI" value="Nguyễn Ngọc Bảo">
                         </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-3">
-                                    <div class="modal_body-title">Nguyên nhân</div>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input class="form-control" type="text"
-                                        value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                </div>
-                            </div>
+                        <div class="col-sm-12 mb-3">
+                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Nguyên nhân" value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                         </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-3">
-                                    <div class="modal_body-title">Hướng giải quyết</div>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input class="form-control" type="text" value="Sẽ gửi trong tuần">
-                                </div>
+                        <div class="col-sm-12 mb-3">
+                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Hướng giải quyết" value="Sẽ gửi trong tuần">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Thời hạn">
+                                <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control"
+                                    type="text">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-6" style="margin-right: 4px;">
-                                    <div class="modal_body-title">Thời hạn <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-6 position-relative">
-                                    <input id="timeSuaVanDe" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                        type="text">
-                                    <i class="bi bi-calendar-plus style_pickdate"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Tình trạng <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected hidden>Chọn trạng thái</option>
-                                        <option>Đã có hướng giải quyết</option>
-                                        <option>Đã giải quyết</option>
-                                        <option>Không thể giải quyết</option>
-                                        <option>Không xác định được nguyên nhân</option>
-                                    </select>
-                                </div>
+
+                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Tình trạng">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected hidden>Chọn trạng thái</option>
+                                    <option>Đã có hướng giải quyết</option>
+                                    <option>Đã giải quyết</option>
+                                    <option>Không thể giải quyết</option>
+                                    <option>Không xác định được nguyên nhân</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -1358,7 +1457,7 @@
                 }
             });
             $('input[name="daterange"]').val('');
-            $('input[name="daterange"]').attr("placeholder","Chọn thời hạn");
+            $('input[name="daterange"]').attr("placeholder", "Chọn thời hạn");
         });
     </script>
 
@@ -1366,26 +1465,26 @@
         document.getElementById("commenttextarea").addEventListener("keydown", function(e) {
             if (e.keyCode === 13 && !e.shiftKey) {
                 e.preventDefault();
-                // Code for submitting the comment
             }
         });
     </script>
 
     <script>
         updateList = function(e) {
-        const input = e.target;
-        const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal_upload-list');
-        const notSupport = outPut.parentNode.querySelector('.alertNotSupport');
+            const input = e.target;
+            const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(
+                '.modal_upload-list');
+            const notSupport = outPut.parentNode.querySelector('.alertNotSupport');
 
-        let children = outPut.innerHTML;
-        console.log(children);
-        const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-        const maxFileSize = 10485760; //10MB in bytes
+            let children = outPut.innerHTML;
+            console.log(children);
+            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            const maxFileSize = 10485760; //10MB in bytes
 
-        for (let i = 0; i < input.files.length; ++i) {
-            const file = input.files.item(i);
-            if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
-                children += `<li>
+            for (let i = 0; i < input.files.length; ++i) {
+                const file = input.files.item(i);
+                if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
+                    children += `<li>
                 <span class="fs-5">
                     <i class="bi bi-link-45deg"></i> ${file.name}
                 </span>
@@ -1393,31 +1492,49 @@
                     <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                 </span>
             </li>`;
-            } else {
+                } else {
 
-                notSupport.style.display = 'block';
-                setTimeout(() => {
-                    notSupport.style.display = 'none';
-                }, 3500);
+                    notSupport.style.display = 'block';
+                    setTimeout(() => {
+                        notSupport.style.display = 'none';
+                    }, 3500);
+                }
             }
+            outPut.innerHTML = children;
         }
-        outPut.innerHTML = children;
-    }
-    //delete file from input
-    function removeFileFromFileList(input, index) {
-        const dt = new DataTransfer()
+        //delete file from input
+        function removeFileFromFileList(input, index) {
+            const dt = new DataTransfer()
 
-        const {
-            files
-        } = input
+            const {
+                files
+            } = input
 
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i]
-            if (index !== i)
-                dt.items.add(file) // here you exclude the file. thus removing it.
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i]
+                if (index !== i)
+                    dt.items.add(file) // here you exclude the file. thus removing it.
+            }
+
+            input.files = dt.files // Assign the updates list
         }
+    </script>
 
-        input.files = dt.files // Assign the updates list
-    }
+    <script>
+        $(document).ready(function () {
+            $.datetimepicker.setLocale('vi');
+                $('#hopGiaoBanNgayVanDeTonDong').datetimepicker({
+                    format: 'd/m/Y',
+                    timepicker: false,
+                });
+                $('#gioTaoVanDeTonDong').datetimepicker({
+                    datepicker:false,
+                    format:'H:i'
+                });
+                $('#thoiHanVanDeTonDong').datetimepicker({
+                    format: 'd/m/Y',
+                    timepicker: false,
+                });
+            });
     </script>
 @endsection
