@@ -2697,7 +2697,7 @@
 
     <script>
         const targetTable = $('#dsToanCongTy').DataTable({
-            paging: true,
+            paging: false,
             ordering: false,
             order: [[0, 'desc']],
             pageLength: 10,

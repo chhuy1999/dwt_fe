@@ -382,36 +382,39 @@
                                                     <i class="bi bi-paperclip"></i>
                                                     File đính kèm
                                                 </div>
-                                                <div class="upload_wrapper-items">
-                                                    <ul class="modal_upload-list"></ul>
-                                                    <div class="alert alert-danger alertNotSupport" role="alert"
-                                                        style="display:none" >
-                                                        File bạn tải lên hiện tại không hỗ trợ !
-                                                    </div>
-                                                    <div class="modal_upload-wrapper">
-                                                        <label class="modal_upload-label" for="file">
-                                                            Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                        <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG,
-                                                            PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                            thước tệp không quá 10MB</div>
-                                                        <div
-                                                            class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                            <div class="modal_upload-addFile me-3">
-                                                                <button role="button" type="button"
-                                                                    class="btn position-relative pe-4 ps-4">
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                                    Tải file lên
-                                                                    <input role="button" type="file"
-                                                                        class="modal_upload-input" name="files[]"
-                                                                        class="modal_upload-file" multiple
-                                                                        onchange="updateList(event)">
-                                                                </button>
-                                                            </div>
+                                                <form action="" method="">
+                                                    @csrf
+                                                    <div class="upload_wrapper-items">
+                                                        <ul class="modal_upload-list"></ul>
+                                                        <div class="alert alert-danger alertNotSupport" role="alert"
+                                                            style="display:none" >
+                                                            File bạn tải lên hiện tại không hỗ trợ !
+                                                        </div>
+                                                        <div class="modal_upload-wrapper">
+                                                            <label class="modal_upload-label" for="file">
+                                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG,
+                                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
+                                                                thước tệp không quá 10MB</div>
+                                                            <div
+                                                                class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                                <div class="modal_upload-addFile me-3">
+                                                                    <button role="button" type="button"
+                                                                        class="btn position-relative pe-4 ps-4">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                        Tải file lên
+                                                                        <input role="button" type="file"
+                                                                            class="modal_upload-input modal_upload-file" name="files[]" multiple
+                                                                            onchange="updateList(event)">
+                                                                    </button>
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="d-flex align-items-center justify-content-end"><button type="submit" class="btn btn-outline-danger">Tải file</button></div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
