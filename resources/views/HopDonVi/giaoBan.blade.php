@@ -245,7 +245,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
+                                                        <tr data-bs-toggle="modal"
+                                                        data-bs-target="#suaVanDeTonDong">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -254,8 +255,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong"
+                                                                    
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -269,16 +269,13 @@
                                                             <td>31/03</td>
                                                             <td>
                                                                 <select class="form-select style_input">
-                                                                    <option>Đã tiếp nhận</option>
-                                                                    <option>Đã có hướng giải quyết</option>
-                                                                    <option>Đã giải quyết</option>
-                                                                    <option>Không thể giải quyết</option>
-                                                                    <option>Không xác định được nguyên nhân</option>
+                                                                    <option selected>Đã giải quyết</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
 
-                                                        <tr>
+                                                        <tr data-bs-toggle="modal"
+                                                        data-bs-target="#suaVanDeTonDong">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -287,8 +284,6 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -302,16 +297,13 @@
                                                             <td>31/03</td>
                                                             <td>
                                                                 <select class="form-select style_input">
-                                                                    <option>Đã tiếp nhận</option>
-                                                                    <option>Đã có hướng giải quyết</option>
-                                                                    <option>Đã giải quyết</option>
-                                                                    <option>Không thể giải quyết</option>
-                                                                    <option>Không xác định được nguyên nhân</option>
+                                                                    <option selected>Đã tiếp nhận</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
 
-                                                        <tr>
+                                                        <tr data-bs-toggle="modal"
+                                                        data-bs-target="#suaVanDeTonDong">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -320,8 +312,6 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -335,11 +325,7 @@
                                                             <td>31/03</td>
                                                             <td>
                                                                 <select class="form-select style_input">
-                                                                    <option>Đã tiếp nhận</option>
-                                                                    <option>Đã có hướng giải quyết</option>
-                                                                    <option>Đã giải quyết</option>
-                                                                    <option>Không thể giải quyết</option>
-                                                                    <option>Không xác định được nguyên nhân</option>
+                                                                    <option selected>Đã giải quyết</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -1076,7 +1062,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Chỉnh sửa vấn đề tồn đọng</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Cập nhật vấn đề tồn đọng</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
