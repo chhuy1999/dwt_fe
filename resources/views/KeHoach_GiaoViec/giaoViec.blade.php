@@ -93,11 +93,11 @@
                                                         @csrf
                                                         <input type="hidden" name="target_id" value="{{ $target->id }}">
                                                         <div class="card-title mb-2">
-                                                            Giao việc cho định mức: "{{ $target->name }}"
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:100%;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name }}">Giao việc cho định mức: "{{ $target->name }}"</div>
                                                         </div>
                                                         <div class="mb-3 row align-items-center">
                                                             <div class="col-md-7 mb-3">
-                                                                <input type="text" class="form-control" name="name" placeholder="Tên công việc" value="{{ $target->name }}" />
+                                                                <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" placeholder="Tên nhiệm vụ" value="{{ $target->name }}" />
                                                             </div>
                                                             <div class="col-md-5 mb-3">
                                                                 <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Thời hạn" />
@@ -119,7 +119,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" name="users[]">
+                                                                <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="users[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -127,7 +127,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" name="relatedUsers[]">
+                                                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -456,6 +456,106 @@
         </div>
     @endforeach
 
+    <!-- Modal Giao việc phát sinh -->
+    <div class="modal fade" id="giaoViecPhatSinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Giao việc phát sinh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3"> 
+                            <input type="text" class="form-control" placeholder="Thuộc định mức">
+                        </div>
+                        <div class="col-md-12 mb-3"> 
+                            <input type="text" class="form-control" placeholder="Tên định mức">
+                        </div>
+                        <div class="col-md-6 mb-3"> 
+                            <select class="selectpicker" data-live-search="true" data-size="5" name="position_id" id="" title="Vị trí đảm nhiệm">
+                                <option value="1">Giám đốc điều hành</option>
+                                <option value="2">Cố vấn</option>
+                                <option value="3">Chủ tịch hội đồng quản trị</option>
+                                <option value="4">Kiểm soát</option>
+                                <option value="5">Giám đốc tài chính</option>
+                                <option value="6">Giám đốc kinh doanh</option>
+                                <option value="7">Giám đốc marketing</option>
+                                <option value="8">Giám đốc cung ứng</option>
+                                <option value="9">Giám đốc kênh MT</option>
+                                <option value="10">Giám đốc kênh ETC</option>
+                                <option value="11">Giám đốc kênh OTC</option>
+                                <option value="12">Trưởng bộ phân Quản trị nhãn và đào tạo</option>
+                                <option value="13">Trưởng nhóm quản trị nhãn</option>
+                                <option value="14">Trưởng nhóm quản trị đào tạo</option>
+                                <option value="15">Nhân viên quản trị nhãn Nhi</option>
+                                <option value="16">Nhân viên quản trị nhãn Sản</option>
+                                <option value="17">Nhân viên đào tạo miền Bắc</option>
+                                <option value="18">Nhân viên đào tạo miền Nam</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="users[]">
+                                @foreach ($listUsers as $user)
+                                    <option value="{{ $user->id }}">
+                                        {{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
+                                <input id="dateGiaoViecPhatSinh" placeholder="Thời hạn" class="form-control" type="text">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday">
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <div class="repeater">
+                                <div data-repeater-list="kpiKeys">
+                                    <div class="row" data-repeater-item>
+                                        <div class="col-md-7 mb-3">
+                                            <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
+                                                <option value="" hidden>Chọn tiêu chí</option>
+                                                @foreach ($kpiKeys as $kpiKey)
+                                                    <option value="{{ $kpiKey->id }}">
+                                                        {{ $kpiKey->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <input type="number" min="0" class="form-control" placeholder="Đơn vị" name="quantity" />
+                                        </div>
+                                        <div class="col-md-1 mb-3 d-flex align-items-center">
+                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-start">
+                                        <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 @endsection
 @section('footer-script')
@@ -710,5 +810,15 @@
                 document.getElementById('input-1').value = value.toFixed(2);
             }              
         }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $.datetimepicker.setLocale('vi');
+            $('#dateGiaoViecPhatSinh').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+        });
     </script>
 @endsection

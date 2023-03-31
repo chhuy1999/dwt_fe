@@ -73,7 +73,7 @@
                                                                     </div>
                                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={{ '#suaMoiDinhMuc' . $key->id }}>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={{ '#suaChiSoKey' . $key->id }}>
                                                                                 <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                                 Sửa
                                                                             </a>
@@ -88,7 +88,7 @@
                                                                 </td>
                                                             </tr>
                                                             <!-- Modal Sửa chỉ số key -->
-                                                            <div class="modal fade" id="{{ 'suaMoiDinhMuc' . $key->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="{{ 'suaChiSoKey' . $key->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
@@ -175,7 +175,7 @@
     </div>
     {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarRight') --}}
     <!-- Modal Thêm chỉ số key -->
-    <div class="modal fade" id="themMoiDinhMuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="themChiSoKey" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -258,7 +258,7 @@
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex me-3">
                 <button class="btn btn-danger me-3" data-bs-toggle="modal"
-                    data-bs-target="#themMoiDinhMuc">
+                    data-bs-target="#themChiSoKey">
                     Thêm chỉ số key
                 </button>
                 <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">

@@ -158,7 +158,7 @@
                                                                     class="form-control" type="text">
                                                             </div> --}}
                                                             <input type="text" name="daterange" autocomplete="off"
-                                                                class="form-control" placeholder="Thời hạn" />
+                                                                class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                         </div>
                                                         <div class="d-flex align-items-start">
                                                             <div class="d-flex">
@@ -245,7 +245,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
+                                                        <tr data-bs-toggle="modal"
+                                                        data-bs-target="#suaVanDeTonDong" role="button">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -254,8 +255,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong"
+                                                                    
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -268,17 +268,12 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="form-select style_input">
-                                                                    <option>Đã tiếp nhận</option>
-                                                                    <option>Đã có hướng giải quyết</option>
-                                                                    <option>Đã giải quyết</option>
-                                                                    <option>Không thể giải quyết</option>
-                                                                    <option>Không xác định được nguyên nhân</option>
-                                                                </select>
+                                                                <div>Đã giải quyết</div>
                                                             </td>
                                                         </tr>
 
-                                                        <tr>
+                                                        <tr data-bs-toggle="modal"
+                                                        data-bs-target="#suaVanDeTonDong" role="button">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -287,8 +282,6 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -301,17 +294,12 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="form-select style_input">
-                                                                    <option>Đã tiếp nhận</option>
-                                                                    <option>Đã có hướng giải quyết</option>
-                                                                    <option>Đã giải quyết</option>
-                                                                    <option>Không thể giải quyết</option>
-                                                                    <option>Không xác định được nguyên nhân</option>
-                                                                </select>
+                                                                <div>Đã tiếp nhận</div>
                                                             </td>
                                                         </tr>
 
-                                                        <tr>
+                                                        <tr data-bs-toggle="modal"
+                                                        data-bs-target="#suaVanDeTonDong" role="button">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -320,8 +308,6 @@
                                                             </td>
                                                             <td>
                                                                 <div class="description-problem" style="cursor: pointer;"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#suaVanDeTonDong"
                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                     Chưa hoàn thành
                                                                     báo cáo do
@@ -334,13 +320,7 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="form-select style_input">
-                                                                    <option>Đã tiếp nhận</option>
-                                                                    <option>Đã có hướng giải quyết</option>
-                                                                    <option>Đã giải quyết</option>
-                                                                    <option>Không thể giải quyết</option>
-                                                                    <option>Không xác định được nguyên nhân</option>
-                                                                </select>
+                                                                <div>Đã giải quyết</div>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -429,8 +409,10 @@
 
                                                 </div>
                                                 <div class="col-12 mt-4">
-                                                    <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung"
+                                                    <form action="/giao-ban" method="" id="commentForm">
+                                                        <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung"
                                                         rows="3"></textarea>
+                                                    </form>
                                                 </div>
 
                                             </div>
@@ -446,14 +428,14 @@
                                                 <div class="upload_wrapper-items">
                                                     <ul class="modal_upload-list"></ul>
                                                     <div class="alert alert-danger alertNotSupport" role="alert"
-                                                        style="display:none">
+                                                        style="display:none" >
                                                         File bạn tải lên hiện tại không hỗ trợ !
                                                     </div>
                                                     <div class="modal_upload-wrapper">
                                                         <label class="modal_upload-label" for="file">
                                                             Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
                                                         <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG,
-                                                            PNG hoặc PDF, kích
+                                                            PNG, PDF, XLSX, DOCX, hoặc PPTX kích
                                                             thước tệp không quá 10MB</div>
                                                         <div
                                                             class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
@@ -1074,30 +1056,39 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Chỉnh sửa vấn đề tồn đọng</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Cập nhật vấn đề tồn đọng</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                            <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Vấn đề tồn đọng" value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                         </div>
                         <div class="col-sm-7 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                            <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Người nêu" value="Nguyễn Ngọc Bảo">
                         </div>
                         <div class="col-sm-5 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="PCI" value="Nguyễn Ngọc Bảo">
+                            <select class="selectpicker" multiple
+                                data-actions-box="true" data-width="100%"
+                                data-live-search="true" title="Người liên quan"
+                                data-select-all-text="Chọn tất cả"
+                                data-deselect-all-text="Bỏ chọn" data-size="3"
+                                data-selected-text-format="count > 1"
+                                data-count-selected-text="Có {0} người liên quan"
+                                data-live-search-placeholder="Tìm kiếm...">
+                                @foreach ($listUsers->data as $value)
+                                    <option value="{{ $value->name }}">
+                                        {{ $value->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-sm-12 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="Nguyên nhân" value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                            <textarea rows="1" class="form-control" placeholder="Nguyên nhân"></textarea>
                         </div>
                         <div class="col-sm-12 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="Hướng giải quyết" value="Sẽ gửi trong tuần">
+                            <textarea rows="1" class="form-control" placeholder="Hướng giải quyết"></textarea>
                         </div>
                         <div class="col-sm-6">
                             <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -1111,11 +1102,10 @@
 
                             <div data-bs-toggle="tooltip" data-bs-placement="top" title="Tình trạng">
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected hidden>Chọn trạng thái</option>
+                                    <option selected>Đã tiếp nhận</option>
                                     <option>Đã có hướng giải quyết</option>
                                     <option>Đã giải quyết</option>
                                     <option>Không thể giải quyết</option>
-                                    <option>Không xác định được nguyên nhân</option>
                                 </select>
                             </div>
                         </div>
@@ -1457,7 +1447,7 @@
                 }
             });
             $('input[name="daterange"]').val('');
-            $('input[name="daterange"]').attr("placeholder", "Chọn thời hạn");
+            $('input[name="daterange"]').attr("placeholder", "Chọn thời gian, thêm giờ");
         });
     </script>
 
@@ -1465,6 +1455,7 @@
         document.getElementById("commenttextarea").addEventListener("keydown", function(e) {
             if (e.keyCode === 13 && !e.shiftKey) {
                 e.preventDefault();
+                document.querySelector('#commentForm').submit();
             }
         });
     </script>
@@ -1478,7 +1469,7 @@
 
             let children = outPut.innerHTML;
             console.log(children);
-            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
             const maxFileSize = 10485760; //10MB in bytes
 
             for (let i = 0; i < input.files.length; ++i) {

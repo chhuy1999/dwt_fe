@@ -2785,10 +2785,4 @@
             </div>
         `);
     </script>
-
-<script>
-    $('#themThanhVien').on('hidden.bs.modal', function () {
-        $(this).find('form').trigger('reset');
-    })
-</script>
 @endsection

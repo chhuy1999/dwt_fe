@@ -23,16 +23,25 @@ class DashboardController extends Controller
         try {
             $currentMonth = date('m');
             $currentYear = date('Y');
+            $startDate = $currentYear . '-' . $currentMonth . '-01';
+            $endDate = $currentYear . '-' . $currentMonth . '-31';
             //get list assigned task
-            $listAssignedTasks = $this->dwtServices->searchKpiTargetDetails("", 1, 100, "assigned");
+            $listAssignedTasks = $this->dwtServices
+                ->searchKpiTargetDetails("", 1, 100, "assigned", null, $startDate, $endDate);
+            $user = session('user');
+            $myAssignedTasks = $this->dwtServices
+                ->searchKpiTargetDetails("", 1, 100, "assigned", $user['id'], $startDate, $endDate);
+
             $kpiKeys = $this->dwtServices->searchKpiKeys("", 1, 100);
             $kpiKeys = $kpiKeys->data;
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
                 ->with('searchYear', $currentYear)
                 ->with('listAssignedTasks', $listAssignedTasks)
+                ->with('myAssignedTasks', $myAssignedTasks)
                 ->with('kpiKeys', $kpiKeys);
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return view('dashboard')->with('error', $error);
         }

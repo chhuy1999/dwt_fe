@@ -48,7 +48,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSCapToChuc">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -88,7 +88,7 @@
                                                         </div>
 
                                                         <!-- Modal Sua Vi Tri chức danh -->
-                                                        <div class="modal fade" id="suaViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        <div class="modal fade" id="suaDSCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
@@ -247,7 +247,7 @@
 
 
     <!-- Modal Them Vi Tri chức danh -->
-    <div class="modal fade" id="themViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="themDSCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -325,7 +325,7 @@
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex me-3">
                 <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                    data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm cấp tổ chức</button>
+                    data-bs-target="#themDSCapToChuc" style="margin-left: 10px">Thêm cấp tổ chức</button>
             </div>
         `);
     </script>
