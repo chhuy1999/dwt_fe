@@ -33,7 +33,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listEquimentPack->data as $value)
+                                                        @foreach ($data->data as $value)
                                                         <tr>
                                                             <th scope="row">
                                                                 <div
@@ -42,13 +42,27 @@
                                                                 </div>
                                                             </th>
                                                             <td>
-                                                                <div>{{ $value->parent_id}}</div>
+                                                                <div >
+                                                                    @foreach ($listEquimentPack->data as $eq)
+                                                                    @if ($eq->id == $value->parent_id)
+                                                                            {{ $eq->name }}
+                                                                    @endif
+                                                                    @endforeach
+
+                                                                </div>
                                                             </td>
+                                                        
                                                             <td>
                                                                 <div>{{ $value->name }}</div>
                                                             </td>
                                                             <td>
-                                                                <div>{{ $value->unit_id}}</div>
+                                                                <div>
+                                                                    @foreach ($listUnits->data as $un)
+                                                                    @if ($un->id == $value->unit_id)
+                                                                            {{ $un->name }}
+                                                                    @endif
+                                                                    @endforeach
+                                                                </div>
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">

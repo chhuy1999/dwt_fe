@@ -70,10 +70,10 @@
                                                                     <div class="text-nowrap d-inline-block text-truncate" style="max-width:80px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->phone }}">{{ $value->phone }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="1">Chính thức</div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->working_form}}">{{ $value->working_form}}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="1">Đang làm việc</div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->status}}">{{ $value->status}}</div>
                                                                 </td>
                                                                 <td>
                                                                     <div
@@ -93,42 +93,29 @@
                                                             </tr>
 
                                                             {{-- Modal Sua thanh vien --}}
-                                                            <div class="modal fade" id="suaThanhVien{{ $value->id }}"
-                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                aria-hidden="true">
+                                                            <div class="modal fade" id="suaThanhVien{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
-                                                                            <h5 class="modal-title w-100"
-                                                                                id="exampleModalLabel">Sửa thành viên</h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
+                                                                            <h5 class="modal-title w-100" id="exampleModalLabel">Sửa thành viên</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
-                                                            
-                                                                        <form method="POST"
-                                                                            action="/danh-sach-thanh-vien/{{ $value->id }}">
+                                                        
+                                                                        <form action="/danh-sach-thanh-vien/{{ $value->id }}" method="POST">
+                                                                            {{-- <form action="{{route('users.update',$value->id)}} method="POST"> --}}
                                                                             @csrf
                                                                             @method('PUT')
                                                                             <div class="modal-body">
                                                                                 <div class="create_user-wrapper">
-                                                                                    <div class="create_user-title mb-2">
-                                                                                        Thông tin cá nhân</div>
+                                                                                    <div class="create_user-title mb-2">Thông tin cá nhân</div>
                                                                                     <div class="row align-items-center">
                                                                                         <div class="col-sm-2">
                                                                                             <div class="image-upload">
-                                                                                                <input type="file"
-                                                                                                    name=""
-                                                                                                    id="logo"
-                                                                                                    onchange="editImg(this)">
-                                                                                                <label for="logo"
-                                                                                                    class="upload-field"
-                                                                                                    id="file-label">
-                                                                                                    <div
-                                                                                                        class="file-thumbnail">
-                                                                                                        <img id="edit_image-preview"
-                                                                                                            src="{{ asset('assets/img/avatar.jpeg') }}"
-                                                                                                            alt="">
+                                                                                                <input type="file" name="" id="logo" onchange="createImg(this)">
+                                                                                                <label for="logo" class="upload-field" id="file-label">
+                                                                                                    <div class="file-thumbnail">
+                                                                                                        <img id="create_image-preview"
+                                                                                                            src="{{ asset('assets/img/preview-image.svg') }}" alt="">
                                                                                                     </div>
                                                                                                 </label>
                                                                                             </div>
@@ -140,12 +127,11 @@
                                                                                                     value="{{ $value->name }}"
                                                                                                     name="name">
                                                                                             </div>
-                                                            
+                                                        
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
                                                                                                     type="password" data-bs-toggle="tooltip" data-bs-placement="top" title="Mật khẩu"
-                                                                                                    value="123456"
-                                                                                                    name="password">
+                                                                                                    name="password" value="123456">
                                                                                             </div>
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
@@ -153,26 +139,29 @@
                                                                                                     value="{{ $value->phone }}"
                                                                                                     name="phone">
                                                                                             </div>
-                                                            
+                                                        
                                                                                         </div>
                                                                                         <div class="col-sm-5">
                                                                                             <div class="row">
                                                                                                 <div class="col-sm-5 mb-2">
-                                                                                                    <select
-                                                                                                        class="selectpicker">
-                                                                                                        <option>Nam</option>
-                                                                                                        <option selected>Nữ
-                                                                                                        </option>
-                                                                                                        <option>Khác
-                                                                                                        </option>
-                                                                                                    </select>
+                                                                                                    <select class="selectpicker" placeholder="Giới tính" title="Giới tính"
+                                                                                                            name="sex" value="{{$value->sex }}">
+                                                                                                            <option >Male</option>
+                                                                                                            <option >Female</option>
+                                                                                                        </select>
                                                                                                 </div>
-                                                            
+                                                        
+                                                                                                {{-- <div class="col-sm-7 mb-2 position-relative">
+                                                                                                    <input autocomplete="off" id="suaCreteateUser"  placeholder="Ngày sinh" class="form-control"
+                                                                                                        type="text" name="dob" value="{{$value->dob}}" autocomplete="off">
+                                                                                                    <i class="bi bi-calendar-plus style_pickdate"></i>
+                                                                                                </div> --}}
+
                                                                                                 <div
                                                                                                     class="col-sm-7 mb-2 position-relative">
                                                                                                     <input
                                                                                                         id="suaCreateUser"
-                                                                                                        value="26/03/2023"
+                                                                                                        name="dob" value="{{$value->dob}}"
                                                                                                         class="form-control"
                                                                                                         type="text">
                                                                                                     <i
@@ -182,7 +171,7 @@
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
                                                                                                     type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Email liên hệ"
-                                                                                                    value="vuha@gmail.com">
+                                                                                                    value="{{ $value->email }}" name="email">
                                                                                             </div>
                                                                                             <div class="col-sm-12 mb-2">
                                                                                                 <input class="form-control"
@@ -190,178 +179,179 @@
                                                                                                     value="{{ $value->address }}"
                                                                                                     name="address">
                                                                                             </div>
-                                                            
+                                                        
                                                                                         </div>
-                                                            
+                                                        
                                                                                     </div>
                                                                                 </div>
-                                                            
+                                                        
                                                                                 <div class="create_user-wrapper">
-                                                                                    <div class="create_user-title mb-2">
-                                                                                        Thông tin công việc</div>
+                                                                                    <div class="create_user-title mb-2">Thông tin công việc</div>
                                                                                     <div class="row">
                                                                                         <div class="col-sm-4 mb-2">
-                                                                                            <input class="form-control"
-                                                                                                type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã nhân viên"
-                                                                                                value="{{ $value->code }}"
-                                                                                                name="code">
+                                                                                            <input class="form-control" autocomplete="off" required  type="text" placeholder="Mã nhân viên *"
+                                                                                                name="code" value="{{ $value->code}}">
                                                                                         </div>
-                                                            
+                                                        
                                                                                         <div class="col-sm-4 mb-2">
                                                                                             <input class="form-control"
                                                                                                 type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="SĐT liên hệ"
-                                                                                                value="0123456789">
+                                                                                                value="{{ $value->company_phone }}" name="company_phone">
                                                                                         </div>
-                                                            
+                                                        
                                                                                         <div class="col-sm-4 mb-2">
                                                                                             <input class="form-control"
                                                                                                 type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Email công ty" 
-                                                                                                value="{{ $value->email }}"
-                                                                                                name="email">
+                                                                                                value="{{ $value->company_email }}"
+                                                                                                name="company_email">
                                                                                         </div>
-                                                            
-                                                                                        <div class="col-sm-6 mb-2"  data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị công tác">
-                                                                                            <select class="selectpicker"
-                                                                                                name="departement">
-                                                                                                <option>Chủ tịch HĐQT
-                                                                                                </option>
-                                                                                                <option>Tổng Giám đốc
-                                                                                                </option>
-                                                                                                <option>Phó Tổng Giám đốc
-                                                                                                </option>
-                                                                                                <option>Giám đốc điều hành
-                                                                                                </option>
-                                                                                                <option>Quản lý cấp cao
-                                                                                                </option>
+                                                        
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            {{-- <select id="onchangeDonViCongTac" class="selectpicker" required data-live-search="true" name="departement_id"
+                                                                                                data-width="100%" title="Đơn vị công tác *"
+                                                                                                data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                                                                                @foreach ($listDepartments->data as $dep)
+                                                                                                    <option value="{{ $value->departement_id }}">{{ $dep->name }}</option>
+                                                                                                @endforeach
+                                                                                                
+                                                                                                <option value="themDonViCongTac" class="text-danger">+ Thêm mới</option>
+                                                                                            </select> --}}
+
+
+                                                                                            <select class="selectpicker" required data-live-search="true" name="departement_id"
+                                                                                            data-width="100%" title="Đơn vị công tác *"
+                                                                                            data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                                                                                @foreach ($listDepartments->data as $dep)
+                                                                                                    @if ($dep->id != $value->departement_id)
+                                                                                                        <option value="{{ $value->departement_id }}">
+                                                                                                            {{ $dep->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option value="{{ $value->departement_id}}" selected>
+                                                                                                            {{ $dep->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                @endforeach
                                                                                             </select>
                                                                                         </div>
-                                                            
-                                                                                        <div class="col-sm-6 mb-2"  data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp nhân sự">
-                                                                                            <div
-                                                                                                class="d-flex align-items-center">
-                                                                                                <select
-                                                                                                    class="selectpicker">
-                                                                                                    <option>Chủ tịch HĐQT
-                                                                                                    </option>
-                                                                                                    <option>Tổng Giám đốc
-                                                                                                    </option>
-                                                                                                    <option>Phó Tổng Giám
-                                                                                                        đốc</option>
-                                                                                                    <option>Giám đốc điều
-                                                                                                        hành</option>
-                                                                                                    <option>Quản lý cấp cao
-                                                                                                    </option>
-                                                                                                    <option>Quản lý cấp
-                                                                                                        trung</option>
-                                                                                                    <option selected>Trưởng
-                                                                                                        phòng</option>
-                                                                                                    <option>Phó phòng
-                                                                                                    </option>
-                                                                                                    <option>Trưởng nhóm
-                                                                                                    </option>
-                                                                                                    <option>Chuyên viên
-                                                                                                    </option>
-                                                                                                    <option>Nhân viên
-                                                                                                    </option>
+                                                        
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level_id"
+                                                                                                    data-width="100%" data-live-search="true"
+                                                                                                    data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                                                                                    @foreach ($listPositionLevel->data as $pl)
+                                                                                                    @if ($pl->id != $value->position_level_id)
+                                                                                                        <option value="{{ $value->position_level_id }}">
+                                                                                                            {{ $pl->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option value="{{ $value->position_level_id}}" selected>
+                                                                                                            {{ $pl->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                    @endforeach
+
+                                                                                                    <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
                                                                                                 </select>
-                                                                                                {{-- <div class="modal_list-more"
-                                                                                                    data-bs-toggle="modal"
-                                                                                                    data-bs-target="#danhsachChucDanh">
-                                                                                                    <i
-                                                                                                        class="bi bi-three-dots-vertical"></i>
-                                                                                                </div> --}}
+                                                                                                
+
                                                                                             </div>
                                                                                         </div>
-                                                            
-                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí/Chức danh">
-                                                                                            <select
-                                                                                                id="onchangeViTriCongViec"
-                                                                                                class="selectpicker">
-                                                                                                <option selected>Quản lý
-                                                                                                    phòng</option>
-                                                                                                <option>Quản lý sàn TMĐT
-                                                                                                </option>
-                                                                                                <option>Content Website
-                                                                                                </option>
-                                                                                                <option>Content SEO</option>
-                                                                                                <option>Google Ads</option>
-                                                                                                <option>Content Facebook
-                                                                                                </option>
-                                                                                                <option
-                                                                                                    value="themViTriCongViec"
-                                                                                                    class="text-danger">+
-                                                                                                    Thêm vị trí mới
-                                                                                                </option>
-                                                                                            </select>
+                                                        
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <div class="">
+                                                                                                <div class="d-flex align-items-center">
+                                                        
+                                                                                                    <select required class="selectpicker"
+                                                                                                        title="Vị trí/Chức danh *" name="position_id" data-width="100%"
+                                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                                        data-size="3">
+                                                                                                    
+
+                                                                                                        @foreach ($listPositions->data as $p)
+                                                                                                    @if ($p->id != $value->position_id)
+                                                                                                        <option value="{{ $value->position_id }}">
+                                                                                                            {{ $p->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option value="{{ $value->position_id}}" selected>
+                                                                                                            {{ $p->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                    @endforeach
+                                                                                                    </select>
+                                                                                                    
+                                                        
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
-                                                            
-                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Quản lý trực tiếp">
-                                                                                            <select class="selectpicker">
-                                                                                                <option selected>Bùi Thị
-                                                                                                    Minh Hoa - GĐĐH</option>
-                                                                                                <option>Nguyễn Ngọc Bảo
-                                                                                                </option>
-                                                                                                <option>Đặng Nguyễn Lam Mai
-                                                                                                </option>
-                                                                                                <option>Hồ Thị Hồng Vân
-                                                                                                </option>
+                                                        
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select class="selectpicker" value="{{ $value->manager_id }}" title="Quản lý trực tiếp" data-live-search="true" name="manager_id">
+                                                                                            
+                                                                                                
+                                                                                                    @foreach ($listUsers->data as $user)
+                                                                                                    @if ($user->id != $value->manager_id)
+                                                                                                        <option >
+                                                                                                            {{ $user->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option selected>
+                                                                                                            {{ $user->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                @endforeach
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="col-sm-6 mb-2">
-                                                                                            <input type="text" readonly
-                                                                                                class="form-control"
-                                                                                                readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Quỹ lương năm"
-                                                                                                placeholder="Quỹ lương năm" />
+                                                                                            <input type="text" readonly class="form-control" placeholder="Quỹ lương năm" />
                                                                                         </div>
-                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị">
-                                                                                            <select class="selectpicker"
-                                                                                                title="Chọn gói trang bị">
-                                                                                                <option selected>Trang bị
-                                                                                                    hành chính</option>
-                                                                                                <option>Trang bị cơ bản
-                                                                                                </option>
-                                                                                                <option>Trang bị Nhân viên
-                                                                                                </option>
-                                                                                                <option>Trang bị Chuyên viên
-                                                                                                </option>
-                                                                                                <option>Trang bị Quản lý
-                                                                                                </option>
-                                                                                                <option>Trang bị Giám đốc
-                                                                                                </option>
-                                                                                            </select>
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <div class="d-flex align-items-center">
+                                                                                                <select name="equipment_pack_id" value="{{ $value->equipment_pack_id }}" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                                                                                    
+                                                                                                    @foreach ($listEquimentPack->data as $eq)
+                                                                                                    @if ($eq->id != $value->equipment_pack_id)
+                                                                                                        <option >
+                                                                                                            {{ $eq->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option>
+                                                                                                            {{ $eq->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </div>
                                                                                         </div>
-                                                            
-                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Hình thức làm việc" >
-                                                                                            <select class="selectpicker"
-                                                                                                title="Hình thức làm việc">
-                                                                                                <option selected>Chính thức
-                                                                                                </option>
+                                                        
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select class="selectpicker" title="Hình thức làm việc" data-width="100%"
+                                                                                                data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                                                                                data-size="3" name="working_form" value="{{ $value->working_form }}" placeholder="Hình thức làm việc">
+                                                                                                <option>Chính thức</option>
                                                                                                 <option>Thử việc</option>
-                                                                                                <option>Cộng tác viên
-                                                                                                </option>
-                                                                                                <option>Thực tập sinh
-                                                                                                </option>
+                                                                                                <option>Cộng tác viên</option>
+                                                                                                <option>Thực tập sinh</option>
+
+                                                                                                
                                                                                             </select>
                                                                                         </div>
-                                                                                        <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Trạng thái">
-                                                                                            <select class="selectpicker"
-                                                                                                title="Chọn trạng thái">
-                                                                                                <option selected>Đang làm
-                                                                                                    việc</option>
-                                                                                                <option>Đã nghỉ việc
-                                                                                                </option>
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <select class="selectpicker" title="Trạng thái" value="{{ $value->status}}" placeholder="Trạng thái" name="status">
+                                                                                                <option>Đang làm việc</option>
+                                                                                                <option>Đã nghỉ việc</option>
                                                                                             </select>
                                                                                         </div>
-                                                            
+                                                        
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+                                                        
                                                                             <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-outline-danger"
-                                                                                    data-bs-dismiss="modal">Hủy</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger">Lưu</button>
+                                                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit" class="btn btn-danger">Lưu</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -721,20 +711,11 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="row">
-                                        {{-- <div class="col-sm-5 mb-2">
-                                            <select class="selectpicker" title="Giới tính" name="sex">
-                                                <option value="male">Nam</option>
-                                                <option value="female">Nữ</option>
-                                                <option value="other">Khác</option>
-                                            </select>
-                                        </div> --}}
-
                                         <div class="col-sm-5 mb-2">
                                             <select class="selectpicker"placeholder="Giới tính" title="Giới tính"
                                                 name="sex">
-                                                <option value="male">Nam</option>
-                                                <option value="female">Nữ</option>
-                                                <option value="other">Khác</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
                                             </select>
                                         </div>
 
@@ -745,7 +726,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" autocomplete="off"  type="text" placeholder="Email liên hệ">
+                                        <input class="form-control" autocomplete="off"  type="text" placeholder="Email liên hệ" name="email">
                                     </div>
                                     <div class="col-sm-12 mb-2">
                                         <input class="form-control" autocomplete="off"  type="text" placeholder="Địa chỉ liên hệ"
@@ -767,20 +748,20 @@
 
                                 <div class="col-sm-4 mb-2">
                                     <input class="form-control" autocomplete="off"  type="tel"
-                                        required placeholder="SĐT liên hệ *">
+                                        required placeholder="SĐT liên hệ *" name="company_phone">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
                                     <input class="form-control" autocomplete="off" required  type="email" placeholder="Email công ty *"
-                                        name="email">
+                                        name="company_email">
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select id="onchangeDonViCongTac" class="selectpicker" required data-live-search="true" name="departement"
+                                    <select id="onchangeDonViCongTac" class="selectpicker" required data-live-search="true" name="departement_id"
                                         data-width="100%" title="Đơn vị công tác *"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                        @foreach ($listDepartments->data as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @foreach ($listDepartments->data as $dep)
+                                            <option value="{{ $value->departement_id }}">{{ $dep->name }}</option>
                                         @endforeach
                                         <option value="themDonViCongTac" class="text-danger">+ Thêm mới</option>
                                     </select>
@@ -788,11 +769,11 @@
 
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-                                        <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level"
+                                        <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level_id"
                                             data-width="100%" data-live-search="true"
                                             data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                            @foreach ($listPositionLevel->data as $value)
-                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                            @foreach ($listPositionLevel->data as $pl)
+                                                <option value="{{ $value->position_level_id }}">{{ $pl->name }}</option>
                                             @endforeach
                                             <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
                                         </select>
@@ -808,11 +789,11 @@
                                         <div class="d-flex align-items-center">
 
                                             <select required class="selectpicker"
-                                                title="Vị trí/Chức danh *" name="position" data-width="100%"
+                                                title="Vị trí/Chức danh *" name="position_id" data-width="100%"
                                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                 data-size="3">
-                                                @foreach ($listPositions->data as $value)
-                                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                                @foreach ($listPositions->data as $p)
+                                                    <option value="{{ $value->position_id }}">{{ $p->name }}</option>
                                                 @endforeach
                                             </select>
                                             {{-- <div class="modal_list-more" data-bs-toggle="modal"
@@ -825,9 +806,9 @@
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Quản lý trực tiếp" data-live-search="true">
-                                        @foreach ($listUsers->data as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                    <select class="selectpicker" title="Quản lý trực tiếp" data-live-search="true" name="manager_id">
+                                        @foreach ($listUsers->data as $user)
+                                            <option value="{{ $value->manager_id}}">{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -836,38 +817,30 @@
                                 </div>
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-
-                                        <select class="selectpicker" title="Gói trang bị" data-width="100%"
-                                            data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                            data-size="3">
-                                            <option>Trang bị hành chính</option>
-                                            <option>Trang bị cơ bản</option>
-                                            <option>Trang bị Nhân viên</option>
-                                            <option>Trang bị Chuyên viên</option>
-                                            <option>Trang bị Quản lý</option>
-                                            <option>Trang bị Giám đốc</option>
+                                        <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                            @foreach ($listEquimentPack->data as $eq)
+                                                <option value="{{ $value->equipment_pack_id}}">
+                                                    {{ $eq->name }}
+                                                </option>
+                                            @endforeach
                                         </select>
-                                        {{-- <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachtrangbi">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </div> --}}
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
                                     <select class="selectpicker" title="Hình thức làm việc" data-width="100%"
                                         data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                        data-size="3">
-                                        <option>Chính thức</option>
-                                        <option>Thử việc</option>
-                                        <option>Cộng tác viên</option>
-                                        <option>Thực tập sinh</option>
+                                        data-size="3" name="working_form">
+                                        <option value="Chính thức">Chính thức</option>
+                                        <option value="Thử việc">Thử việc</option>
+                                        <option value="Công tác viên">Cộng tác viên</option>
+                                        <option value="Thực tập sinh">Thực tập sinh</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Trạng thái">
-                                        <option>Đang làm việc</option>
-                                        <option>Đã nghỉ việc</option>
+                                    <select class="selectpicker" title="Trạng thái" name="status">
+                                        <option value="Đang làm việc">Đang làm việc</option>
+                                        <option value="Đã nghỉ việc">Đã nghỉ việc</option>
                                     </select>
                                 </div>
 
