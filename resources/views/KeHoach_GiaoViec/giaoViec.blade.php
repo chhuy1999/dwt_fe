@@ -119,7 +119,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" name="users[]">
+                                                                <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="users[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -127,7 +127,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" name="relatedUsers[]">
+                                                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -494,30 +494,57 @@
                                 <option value="18">Nhân viên đào tạo miền Nam</option>
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3"> 
-                            <select class="selectpicker" multiple="" data-size="5" data-live-search="true" name="users[]" title="Người đảm nhiệm">
-                                <option value="1">Bùi Thị Minh Hoa</option>
-                                <option value="2">Trần Minh Thao</option>
-                                <option value="3">Cao Thị Thúy Hằng</option>
-                                <option value="4">Nguyễn Vũ Nguyệt Minh</option>
-                                <option value="5">Tên tên trưởng nhóm quản trị nhãn</option>
-                                <option value="6">Tên nhân viên quản trị nhãn Nhi</option>
-                                <option value="7">Tên nhân viên quản trị nhãn Sản</option>
-                                <option value="8">Tên tên trưởng nhóm đào tạo</option>
-                                <option value="9">Tên nhân viên đào tạo miền Bắc</option>
-                                <option value="10">Tên nhân viên đào tạo miền Nam</option>
+                        <div class="col-md-6 mb-3">
+                            <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="users[]">
+                                @foreach ($listUsers as $user)
+                                    <option value="{{ $user->id }}">
+                                        {{ $user->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
-                        <div class="col-md-6 md-3">
-                            
+                        <div class="col-md-6 mb-3">
+                            <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
+                                <input id="dateGiaoViecPhatSinh" placeholder="Thời hạn" class="form-control" type="text">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                            </div>
                         </div>
-                        <div class="col-md-6 md-3">
+                        <div class="col-md-6 mb-3">
                             <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday">
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            123
+                            <div class="repeater">
+                                <div data-repeater-list="kpiKeys">
+                                    <div class="row" data-repeater-item>
+                                        <div class="col-md-7 mb-3">
+                                            <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
+                                                <option value="" hidden>Chọn tiêu chí</option>
+                                                @foreach ($kpiKeys as $kpiKey)
+                                                    <option value="{{ $kpiKey->id }}">
+                                                        {{ $kpiKey->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <input type="number" min="0" class="form-control" placeholder="Đơn vị" name="quantity" />
+                                        </div>
+                                        <div class="col-md-1 mb-3 d-flex align-items-center">
+                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-start">
+                                        <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -783,5 +810,15 @@
                 document.getElementById('input-1').value = value.toFixed(2);
             }              
         }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $.datetimepicker.setLocale('vi');
+            $('#dateGiaoViecPhatSinh').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+        });
     </script>
 @endsection

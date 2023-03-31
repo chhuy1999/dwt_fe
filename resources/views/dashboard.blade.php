@@ -1007,7 +1007,7 @@
                             </div>
                         </div>
                     </div>
-                @endif
+                    @endif
             </div>
 
             <div class="col-lg-12">
@@ -1377,84 +1377,87 @@
                 </div>
             </div>
 
-            <div class="col-lg-3">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="card-title">PieChart</div>
-                        </div>
-                        <div class="mainSection_chart-container mt-3">
-                            <canvas id="pieChart"></canvas>
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="card-title">PieChart</div>
+                            </div>
+                            <div class="mainSection_chart-container mt-3">
+                                <canvas id="pieChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-3">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="card-title">DoughnutChart</div>
-                        </div>
-                        <div class="mainSection_chart-container mt-3">
-                            <canvas id="doughnutChart"></canvas>
+                <div class="col-lg-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="card-title">DoughnutChart</div>
+                            </div>
+                            <div class="mainSection_chart-container mt-3">
+                                <canvas id="doughnutChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-3">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="card-title">BarChart 2</div>
-                        </div>
-                        <div class="mainSection_chart-container mt-3">
-                            <canvas id="BarChartTwo"></canvas>
+                <div class="col-lg-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="card-title">BarChart 2</div>
+                            </div>
+                            <div class="mainSection_chart-container mt-3">
+                                <canvas id="BarChartTwo"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-3">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="card-title">BarChart 3</div>
-                        </div>
-                        <div class="mainSection_chart-container mt-3">
-                            <canvas id="BarChartThree"></canvas>
+                <div class="col-lg-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="card-title">BarChart 3</div>
+                            </div>
+                            <div class="mainSection_chart-container mt-3">
+                                <canvas id="BarChartThree"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                            <div class="card-title">LineChart</div>
-                        </div>
-                        <div class="mainSection_chart-container mt-3">
-                            <canvas id="lineChart"></canvas>
+                <div class="col-lg-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                <div class="card-title">LineChart</div>
+                            </div>
+                            <div class="mainSection_chart-container mt-3">
+                                <canvas id="lineChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                            <div class="card-title">LineChart 2</div>
-                        </div>
-                        <div class="mainSection_chart-container mt-3">
-                            <canvas id="LineChartTwo"></canvas>
+                <div class="col-lg-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                <div class="card-title">LineChart 2</div>
+                            </div>
+                            <div class="mainSection_chart-container mt-3">
+                                <canvas id="LineChartTwo"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
