@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\DwtServices;
 use Exception;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class TargetLogController extends Controller
 {
@@ -20,6 +21,7 @@ class TargetLogController extends Controller
     public function store($id, Request $request)
     {
 
+
         try {
 
             $targetDetailId = $id;
@@ -27,8 +29,30 @@ class TargetLogController extends Controller
                 'note' => 'required',
                 'kpiKeys' => 'nullable|array',
                 'files' => 'nullable|array',
-                'reportedDate' => 'required|date'
+                'reportedDate' => 'required|date',
+                'uploadedFiles' => 'nullable|array',
             ]);
+            //validate kpikeys
+            $validKpis = [];
+            if (isset($data['kpiKeys'])) {
+                $kpiKeys = $data['kpiKeys'];
+
+                foreach ($kpiKeys as $kpiKey) {
+                    // dd($kpiKey);
+                    if (!$id || !is_numeric($id)) {
+                        continue;
+                    }
+
+                    $quantity = $kpiKey['quantity'];
+                    if (!$quantity || !is_numeric($quantity)) {
+                        continue;
+                    }
+
+                    $validKpis[] = $kpiKey;
+                }
+            }
+            $data['kpiKeys'] = $validKpis;
+
 
             if (isset($data['files'])) {
                 $files = $request->file('files');
@@ -39,8 +63,13 @@ class TargetLogController extends Controller
                 }
                 //comma separated file names
                 $data['files'] = implode(',', $fileNames);
-
             }
+            if (isset($data['uploadedFiles'])) {
+                $data['files'] = $data['files'] ?? '';
+                $uploadedFilesStr = implode(',', $data['uploadedFiles']);
+                $data['files'] = $data['files'] . ',' . $uploadedFilesStr;
+            }
+
 
 
             //create target log
@@ -82,7 +111,7 @@ class TargetLogController extends Controller
                         "files" => $data['files'] ?? null,
                         "kpiKeys" => $data['kpiKeys'] ?? null
                     ];
-                  
+
                     //update target log detail
                     $this->dwtService->updateTargetLogDetail($existTargetLogDetail->id, $update);
 
@@ -105,8 +134,6 @@ class TargetLogController extends Controller
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();
-
-            dd($error);
             error_log($error);
             return back()->with('error', $error);
         }

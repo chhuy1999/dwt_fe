@@ -121,7 +121,9 @@
                                                                 <td>
                                                                     <div>
                                                                         @foreach ($targetDetail->kpiKeys as $kpiKey)
-                                                                            {{ $kpiKey->name }} ({{ $kpiKey->unit->name }}) <br>
+                                                                            {{-- {{ $kpiKey->quantity }} {{ $kpiKey->name }} ({{ $kpiKey->unit->name }}) <br> --}}
+                                                                           - {{ $kpiKey->name }} <br>
+
                                                                         @endforeach
                                                                     </div>
                                                                 </td>
