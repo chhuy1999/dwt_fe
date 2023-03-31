@@ -381,21 +381,20 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-7 mb-3">
-                        <input type="text" class="form-control form-control-plaintext" id="staticEmail" style="text-indent: 8px" placeholder="Họ và tên">
+                        <input type="text" class="form-control form-control-plaintext" readonly id="staticEmail" style="text-indent: 8px" placeholder="Họ và tên">
                     </div>
                     <div class="col-sm-5 mb-3 position-relative">
-                        <input id="gioTaoVanDeTonDong" placeholder="Giờ tạo" class="form-control" type="text" />
+                        <input id="gioTaoVanDeTonDong" placeholder="Giờ tạo" readonly class="form-control" type="text" />
                         <i class="bi bi-alarm style_pickdate-two"></i>
                     </div>
                     <div class="col-sm-7 mb-3">
-                        <select class="selectpicker" title="Vị trí">
-                            <option value="2">Phòng ban 1</option>
-                            <option value="2">Phòng ban 2</option>
-                            <option value="2">Phòng ban 3</option>
+                        <select class="selectpicker"  title="Vị trí">
+                            <option value="2" selected readonly>Phòng ban 1</option>
+                            
                         </select>
                     </div>
                     <div class="col-sm-5 mb-3 position-relative">
-                        <input id="hopGiaoBanNgayVanDeTonDong" placeholder="Thời gian" class="form-control"
+                        <input id="hopGiaoBanNgayVanDeTonDong" readonly placeholder="Thời gian" class="form-control"
                             type="text" />
                         <i class="bi bi-calendar-plus style_pickdate-two"></i>
                     </div>
@@ -403,7 +402,7 @@
                         <textarea name="" class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
                     </div>
                     <div class="col-sm-7 mb-3">
-                        <select class="selectpicker" title="Cấp giải quyết">
+                        <select class="selectpicker" title="Phân loại">
                             <option value="1">Giải quyết</option>
                             <option value="2">Than phiền</option>
                         </select>

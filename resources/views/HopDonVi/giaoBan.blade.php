@@ -339,7 +339,7 @@
                                         <div class="col-md-6">
                                             <div class="action_wrapper-cmt rounded border p-3">
                                                 <div class="card-title mb-3">
-                                                    <i class="bi bi-journal-check" style="padding-right: 4px"></i>
+                                                    <i class="bi bi-journal-check"></i>
                                                     Nội dung trao đổi
                                                 </div>
                                                 <div class="" style="max-height: 240px; overflow-y: scroll;">
@@ -410,8 +410,11 @@
                                                 </div>
                                                 <div class="col-12 mt-4">
                                                     <form action="/giao-ban" method="" id="commentForm">
-                                                        <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung"
-                                                        rows="3"></textarea>
+                                                        <div class="d-flex align-items-center">
+                                                            <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung"
+                                                            rows="1" maxlength="130"></textarea>
+                                                            <button type="submit" class="btn btn-outline-danger ms-3">Gửi</button>
+                                                        </div>
                                                     </form>
                                                 </div>
 
@@ -422,7 +425,7 @@
                                             <div
                                                 class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
                                                 <div class="card-title mb-3">
-                                                    <i class="bi bi-paperclip" style="padding-right: 4px"></i>
+                                                    <i class="bi bi-paperclip"></i>
                                                     File đính kèm
                                                 </div>
                                                 <div class="upload_wrapper-items">
@@ -1072,11 +1075,11 @@
                         <div class="col-sm-5 mb-3">
                             <select class="selectpicker" multiple
                                 data-actions-box="true" data-width="100%"
-                                data-live-search="true" title="Người liên quan"
+                                data-live-search="true" title="Người đảm nhiệm"
                                 data-select-all-text="Chọn tất cả"
                                 data-deselect-all-text="Bỏ chọn" data-size="3"
                                 data-selected-text-format="count > 1"
-                                data-count-selected-text="Có {0} người liên quan"
+                                data-count-selected-text="Có {0} người đảm nhiệm"
                                 data-live-search-placeholder="Tìm kiếm...">
                                 @foreach ($listUsers->data as $value)
                                     <option value="{{ $value->name }}">
@@ -1452,15 +1455,6 @@
     </script>
 
     <script>
-        document.getElementById("commenttextarea").addEventListener("keydown", function(e) {
-            if (e.keyCode === 13 && !e.shiftKey) {
-                e.preventDefault();
-                document.querySelector('#commentForm').submit();
-            }
-        });
-    </script>
-
-    <script>
         updateList = function(e) {
             const input = e.target;
             const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(
@@ -1528,4 +1522,13 @@
                 });
             });
     </script>
+
+{{-- <script>
+    document.getElementById("commenttextarea").addEventListener("keydown", function(e) {
+        if (e.keyCode === 13 && !e.shiftKey) {
+            e.preventDefault();
+            document.querySelector('#commentForm').submit();
+        }
+    });
+</script> --}}
 @endsection
