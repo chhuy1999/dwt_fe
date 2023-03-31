@@ -86,7 +86,6 @@ class UsersController extends Controller
 
             $data['dob'] = date('Y-m-d', strtotime($data['dob']));
     
-            
 
             //update the dob to send to api
 
@@ -116,6 +115,7 @@ class UsersController extends Controller
 
     public function update($id, Request $request)
     {
+        // dd($request);
         try {
             // dd($request);
             $data = $request->validate([
@@ -156,9 +156,9 @@ class UsersController extends Controller
             ]);
 
             // dd($data);
-            $data['dob'] = date('Y-m-d', strtotime($data['dob']));
+            $request['dob'] = date('Y-m-d', strtotime($request['dob']));
     
-            
+            // dd($data['dob']);
 
             //update the dob to send to api
 
@@ -166,15 +166,17 @@ class UsersController extends Controller
 
             //set date of join is current day
          
-            $data['doj'] = date('Y-m-d');
+            $request['doj'] = date('Y-m-d');
+            
+
 
             // dd($data['doj']);
             
             //set role  defaut is user TODO: need to pick from fe
-            $data['role'] = 'user';
-            $data['salary_fund'] = '10000';
+            $request['role'] = 'user';
+            $request['salary_fund'] = '10000';
 
-            $this->dwtService->updateUser($id, $data);
+            $this->dwtService->updateUser($id, $request);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
             dd($e);
