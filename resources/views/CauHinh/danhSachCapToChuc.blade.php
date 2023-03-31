@@ -90,7 +90,7 @@
                                                         <!-- Modal Sua Vi Tri chức danh -->
                                                         <div class="modal fade" id="suaViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+                                                            <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header text-center">
                                                                         <h5 class="modal-title w-100" id="exampleModalLabel">SỬA CẤP NHÂN SỰ</h5>

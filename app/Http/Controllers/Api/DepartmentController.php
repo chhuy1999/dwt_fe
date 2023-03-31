@@ -75,7 +75,7 @@ class DepartmentController extends Controller
                 'in_charge' => 'nullable',
             ]);
 
-            dd($data);
+            // dd($data);
             $this->dwtService->updateDepartment($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {

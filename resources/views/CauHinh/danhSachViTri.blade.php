@@ -26,7 +26,6 @@
                                     <div class="d-flex align-items-center justify-content-between mb-3">
                                         <div class="pb-2 d-flex align-items-center">
                                             <div class="card-title">Toàn Công Ty</div>
-
                                         </div>
                                         <div class="main_search d-flex mt-2">
                                             <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
@@ -46,16 +45,16 @@
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
-                                                            <th style="width: 2%">STT</th>
-                                                            <th style="width: 10%">Mã vị trí</th>
-                                                            <th style="width: 12%">Tên vị trí/chức danh</th>
-                                                            <th style="width: 10%">Cấp nhân sự</th>
-                                                            <th style="width: 10%">Đơn vị công tác</th>
-                                                            <th style="width: 27%">Mô tả Công việc (Tóm tắt)</th>
-                                                            <th style="width: 6%">Định biên</th>
-                                                            <th style="width: 10%">Quỹ lương năm</th>
-                                                            <th style="width: 8%">Gói trang bị</th>
-                                                            <th style="width: 5%">Hành động</th>
+                                                            <th class="text-nowrap" style="width: 2%">STT</th>
+                                                            <th class="text-nowrap" style="width: 5%">Mã vị trí</th>
+                                                            <th class="text-nowrap" style="width: 12%">Tên vị trí/chức danh</th>
+                                                            <th class="text-nowrap" style="width: 10%">Cấp nhân sự</th>
+                                                            <th class="text-nowrap" style="width: 10%">Đơn vị công tác</th>
+                                                            <th class="text-nowrap" style="width: 32%">Mô tả Công việc (Tóm tắt)</th>
+                                                            <th class="text-nowrap" style="width: 6%">Định biên</th>
+                                                            <th class="text-nowrap" style="width: 10%">Quỹ lương năm</th>
+                                                            <th class="text-nowrap" style="width: 8%">Gói trang bị</th>
+                                                            <th class="text-nowrap" style="width: 5%">Hành động</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -68,13 +67,13 @@
                                                                     </div>
                                                                 </th>
                                                                 <td>
-                                                                    <div>AMKT</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:47px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="AMKT">AMKT</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>{{ $value->name }}</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:125px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->name }}">{{ $value->name }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
                                                                         @foreach ($listPositionLevel->data as $level)
                                                                         @if ($level->id == $value->position_level)
                                                                                 {{ $level->name }}
@@ -84,7 +83,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
                                                                         @foreach ($listDepartments->data as $dep)
                                                                         @if ($dep->id == $value->parent)
                                                                                 {{ $dep->name }}
@@ -94,18 +93,23 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class data-bs-toggle="tooltip"
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:330px;"  data-bs-toggle="tooltip"
                                                                         data-bs-placement="top"
                                                                         title="{{ $value->description }}">
                                                                         {{ $value->description }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div
-                                                                        class="d-flex justify-content-center align-items-center">
+                                                                    <div class="text-nowrap d-block text-truncate text-center" style="max-width:50px;"  data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="{{ $value->max_employees }}">
                                                                         {{ $value->max_employees }}</div>
+                                                                    
                                                                 </td>
                                                                 <td>
-                                                                    <div>{{ $value->salary_fund }}</div>
+                                                                    <div class="text-nowrap d-block text-truncate text-center" style="max-width:100px;"  data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="{{ $value->salary_fund }}">
+                                                                        {{ $value->salary_fund }}</div>
                                                                 </td>
                                                                 <td>
                                                                     <div data-bs-toggle="modal"
@@ -225,7 +229,7 @@
                                                                                     </div>
 
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả công việc" class="form-control">Test Mo Ta</textarea>
+                                                                                        <textarea data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả công việc" class="form-control">{{ $value->description }}</textarea>
                                                                                     </div>
 
                                                                                     <div class="col-sm-4 mb-3">
@@ -1883,15 +1887,16 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập mã vị trí">
+                                <input class="form-control" type="text" required placeholder="Nhập mã vị trí *">
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" required type="text" placeholder="Nhập tên vị trí"
+                                <input class="form-control" required type="text" placeholder="Nhập tên vị trí *"
                                     name="name">
                             </div>
                             <div class="col-sm-6 mb-3">
                                     <select class="selectpicker"
+                                    required
                                     placeholder="Chọn đơn vị công tác *"
                                     name="parent"
                                     title="Đơn vị phụ trách"
@@ -1918,6 +1923,7 @@
                             <div class="col-sm-6 mb-3">
                                 
                                 <select id="onchangeCapNhanSu" class="selectpicker"
+                                    required
                                     placeholder="Chọn cấp nhân sự *"
                                     name="position_level"
                                     title="Chọn cấp nhân sự "
@@ -1928,8 +1934,7 @@
                                     @foreach ($listPositionLevel->data as $level)
                                         @if ($level->id == $value->position_level)
                                             <option
-                                                value="{{ $value->position_level }}"
-                                                selected>
+                                                value="{{ $value->position_level }}">
                                                 {{ $level->name }}
                                             </option>
                                         @else
@@ -1967,133 +1972,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal Sua Vi Tri chức danh -->
-    {{-- <div class="modal fade" id="suaViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Vị trí/Chức danh</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Mã vị trí<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="AMKT">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="Trợ lý Marketing">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8 d-flex align-items-center">
-                                    <select class="selectpicker" title="Chọn cấp nhân sự">
-                                        <option selected>Chủ tịch HĐQT</option>
-                                        <option>Tổng Giám đốc</option>
-                                        <option>Phó Tổng Giám đốc</option>
-                                        <option>Giám đốc điều hành</option>
-                                        <option>Quản lý cấp cao</option>
-                                        <option>Quản lý cấp trung</option>
-                                        <option>Trưởng phòng</option>
-                                        <option>Phó phòng</option>
-                                        <option>Trưởng nhóm</option>
-                                        <option>Chuyên viên</option>
-                                        <option>Nhân viên</option>
-                                    </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachChucDanh">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Đơn vị công tác<span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn đơn vị công tác">
-                                        <option selected>Cung ứng</option>
-                                        <option>Trade Marketing</option>
-                                        <option>Digital Marketing</option>
-                                        <option>Truyền thông</option>
-                                        <option>Quản trị Nhãn/Đào tạo</option>
-                                        <option>Kho & Giao vận</option>
-                                        <option>Hành chính nhân sự</option>
-                                        <option>Kế toán</option>
-                                        <option>Tài chính</option>
-                                        <option>Dịch vụ bán hàng</option>
-                                        <option>Kinh doanh OTC</option>
-                                        <option>Kinh doanh ETC</option>
-                                        <option>Kinh doanh MT</option>
-                                        <option>Kinh doanh online</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Định biên<span class="text-danger">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="number" value="1">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Quỹ lương năm<span class="text-danger">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" readonly  value="182.000.000" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Gói trang bị<span class="text-danger">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" readonly value="2 gói"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <!-- Modal TRANG BỊ HÀNH CHÍNH -->
     <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"

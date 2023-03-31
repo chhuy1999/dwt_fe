@@ -44,6 +44,44 @@
             return '';
         }
 
+        function findTargetLogDetailKpiKeys($targetDetail, $date, $userId)
+        {
+            $kpiKeys = [];
+            $targetLogs = $targetDetail->targetLogs;
+            foreach ($targetLogs as $targetLog) {
+                if (strtotime($targetLog->reportedDate) == strtotime($date)) {
+                    if (count($targetLog->targetLogDetails) > 0) {
+                        foreach ($targetLog->targetLogDetails as $targetLogDetail) {
+                            if ($targetLogDetail->user->id == $userId) {
+                                $kpiKeys = $targetLogDetail->kpiKeys;
+                            }
+                        }
+                    }
+                }
+            }
+            return $kpiKeys;
+        }
+
+        function findTargetLogDetailFiles($targetDetail, $date, $userId)
+        {
+            $files = [];
+            $targetLogs = $targetDetail->targetLogs;
+            foreach ($targetLogs as $targetLog) {
+                if (strtotime($targetLog->reportedDate) == strtotime($date)) {
+                    if (count($targetLog->targetLogDetails) > 0) {
+                        foreach ($targetLog->targetLogDetails as $targetLogDetail) {
+                            if ($targetLogDetail->user->id == $userId) {
+                                if ($targetLogDetail->files != null) {
+                                    $files = explode(',', $targetLogDetail->files);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return $files;
+        }
+
         function getAllTargetDetailKpiKeys($targetDetail)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -58,6 +96,18 @@
                 }
             }
             return $kpiKeys;
+        }
+        function countKpiKeys($targetDetail)
+        {
+            $kpiKeys = getAllTargetDetailKpiKeys($targetDetail);
+            //remove duplicate
+            $uniqueKpiKeys = [];
+            foreach ($kpiKeys as $kpi) {
+                if (!in_array($kpi, $uniqueKpiKeys)) {
+                    array_push($uniqueKpiKeys, $kpi);
+                }
+            }
+            return count($uniqueKpiKeys);
         }
         function getAllTargetLogDetail($targetDetail)
         {
@@ -85,6 +135,22 @@
                 array_push($userNames, $user->name);
             }
             return implode(', ', $userNames);
+        }
+
+        function countFiles($task)
+        {
+            $targetLogs = $task->targetLogs;
+            $count = 0;
+            foreach ($targetLogs as $targetLog) {
+                $targetLogDetails = $targetLog->targetLogDetails;
+                foreach ($targetLogDetails as $targetLogDetail) {
+                    if ($targetLogDetail->files != null) {
+                        $listFiles = explode(',', $targetLogDetail->files);
+                        $count += count($listFiles);
+                    }
+                }
+            }
+            return $count;
         }
     @endphp
 
@@ -172,219 +238,7 @@
                                                                         {{ $task->name }}
                                                                     </div>
 
-                                                                    <!-- Modal Thông tin nhiệm vụ -->
-                                                                    <div class="modal fade" id="thongTinNhiemVu{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 38%">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header text-center">
-                                                                                    <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-sm-12 ">
-                                                                                            <div class="">
-                                                                                                <table class="table table-bordered table-hover">
-                                                                                                    <tbody>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Tên nhiệm vụ</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->name ?? '' }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Thuộc định mức lao động</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->target->name ?? '' }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Mô tả</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->description ?? '' }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Người đảm nhiệm</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ getUsers($task) }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Vị trí đảm nhiệm</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->position->name ?? '' }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Ngày bắt đầu</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->startDate }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Hạn hoàn thành</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->deadline }}</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>
-                                                                                                                <div>Man day</div>
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                <div>{{ $task->manday }} ngày</div>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <div>
-                                                                                                                <td>Kế hoạch thực hiện</td>
-                                                                                                                <td>{{ $task->executionPlan }}</td>
-                                                                                                            </div>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <div>
-                                                                                                                <td>Ý kiến TPB</td>
-                                                                                                                <td>{{ $task->managerComment }}</td>
-                                                                                                            </div>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <div>
-                                                                                                                <td>Chấm điểm</td>
-                                                                                                                <td>{{ $task->managerManDay }}</td>
-                                                                                                            </div>
-                                                                                                        </tr>
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
 
-                                                                                        </div>
-
-                                                                                        <div class="col-sm-12 mt-3">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="modal-title">Tổng hợp báo cáo</div>
-                                                                                                <span class="modal-title_mini ms-2">
-                                                                                                    Kết quả tạm tính
-                                                                                                </span>
-                                                                                            </div>
-                                                                                            <div class="modal_list row">
-                                                                                                <div class="modal_items col-sm-6">
-                                                                                                    Số báo cáo đã lập trong tháng: <span class="text-danger">0 file</span>
-                                                                                                </div>
-                                                                                                <div class="modal_items col-sm-6">
-                                                                                                    Số tiêu chí đạt được trong tháng: <span class="text-danger">0 tiêu chí</span>
-                                                                                                </div>
-                                                                                                <div class="modal_items col-sm-6">
-                                                                                                    Số nhân sự thực hiện: <span class="text-danger">1 nhân sự</span>
-                                                                                                </div>
-                                                                                                <div class="modal_items col-sm-6">
-                                                                                                    Giá trị doanh thu: <span class="text-danger">0 ₫</span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <div class="col-sm-12 mt-3">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="modal-title">Nhận xét nhiệm vụ</div>
-                                                                                            </div>
-                                                                                            <div class="modal_list row">
-
-                                                                                                <div class="col-sm-10 d-flex  align-items-center">
-                                                                                                    <input class="form-control" placeholder="Nhập nhận xét">
-
-                                                                                                </div>
-                                                                                                <div class="col-sm-2 d-flex  align-items-center">
-                                                                                                    <input placeholder="Điểm KPI" class="form-control">
-
-                                                                                                </div>
-
-
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <div class="col-sm-12 mt-3">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="modal-title">Danh sách tiêu chí công việc</div>
-                                                                                            </div>
-                                                                                            <div class="">
-                                                                                                <table class="table table-bordered table-hover">
-                                                                                                    <thead>
-                                                                                                        <tr>
-                                                                                                            <th scope="col">Ngày báo cáo</th>
-                                                                                                            <th scope="col">Tiêu chí</th>
-                                                                                                            <th scope="col">Giá trị</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        @foreach (getAllTargetDetailKpiKeys($task) as $key)
-                                                                                                            <tr>
-                                                                                                                <th class="fw-normal">{{date('d/m/Y', strtotime($task->created_at))}}</th>
-                                                                                                                <td>{{ $key->name }}</td>
-                                                                                                                <td>{{ $key->quantity }}</td>
-
-                                                                                                            </tr>
-                                                                                                        @endforeach
-
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-12 mt-3">
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <div class="modal-title">Danh sách báo cáo công việc</div>
-                                                                                            </div>
-                                                                                            <div class="">
-                                                                                                <table class="table table-bordered table-hover">
-                                                                                                    <thead>
-                                                                                                        <tr>
-                                                                                                            <th scope="col" style="width: 15%">Ngày báo cáo</th>
-                                                                                                            <th scope="col" style="width: 45%">Nội dung báo cáo</th>
-                                                                                                            <th scope="col" style="width: 40%">File báo cáo</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        @foreach (getAllTargetLogDetail($task) as $log)
-                                                                                                            <tr>
-                                                                                                                <th class="fw-normal"> {{ $log->reportedDate }}</th>
-                                                                                                                <td>{{ $log->note }}</td>
-                                                                                                                <td>
-                                                                                                                    <div class="text-break">
-                                                                                                                        <span class="d-flex align-items-center">
-                                                                                                                            <i class="bi bi-link-45deg"></i>
-                                                                                                                            {{ $log->files }}
-                                                                                                                        </span>
-                                                                                                                    </div>
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                        @endforeach
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
-                                                                                    <button type="button" class="btn btn-danger">Lưu</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </td>
                                                                 <td class="fixed-side bg-blue-blur">
                                                                     <div class="content_table">
@@ -1084,631 +938,73 @@
                                         <div class="table-wrap table-responsive">
                                             <table class="three-table">
                                                 <thead>
+                                                    <th colspan="4" class="fixed-side bg-white">Mục tiêu nhiệm vụ tháng
+                                                    </th>
+                                                    <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}" class="bg-white">Nhật kí công việc</th>
                                                     <tr>
-                                                        <th class="fixed-side bg-white">STT</th>
-                                                        <th class="fixed-side bg-white">Mục tiêu nhiệm vụ</th>
-                                                        <th class="fixed-side bg-white">Thời hạn</th>
-                                                        <th class="fixed-side bg-white">Σ Lũy kế</th>
-                                                        <th scope="col">1</th>
-                                                        <th scope="col">2</th>
-                                                        <th scope="col">3</th>
-                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                            4
-                                                        </th>
-                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                            5
-                                                        </th>
-                                                        <th scope="col">6</th>
-                                                        <th scope="col">7</th>
-                                                        <th scope="col">8</th>
-                                                        <th scope="col">9</th>
-                                                        <th scope="col">10</th>
-                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                            11
-                                                        </th>
-                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                            12
-                                                        </th>
-                                                        <th scope="col">13</th>
-                                                        <th scope="col">14</th>
-                                                        <th scope="col">15</th>
-                                                        <th scope="col">16</th>
-                                                        <th scope="col">17</th>
-                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                            18
-                                                        </th>
-                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                            19
-                                                        </th>
-                                                        <th scope="col">20</th>
-                                                        <th scope="col">21</th>
-                                                        <th scope="col">22</th>
-                                                        <th scope="col">23</th>
-                                                        <th scope="col">24</th>
-                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                            25
-                                                        </th>
-                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                            26
-                                                        </th>
-                                                        <th scope="col">27</th>
-                                                        <th scope="col">28</th>
-                                                        <th scope="col">29</th>
-                                                        <th scope="col">30</th>
+                                                        <th class="fixed-side bg-blue-blur">STT</th>
+                                                        <th class="fixed-side bg-blue-blur">Mục tiêu nhiệm vụ</th>
+                                                        <th class="fixed-side bg-blue-blur">Thời hạn</th>
+                                                        <th class="fixed-side bg-blue-blur">Σ Lũy kế</th>
+                                                        @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
+                                                                <th scope="col" class="bg-warning bg-opacity-10 text-warning">
+                                                                    {{ $i + 1 }}
+                                                                </th>
+                                                            @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
+                                                                <th scope="col" class="bg-danger bg-opacity-10 text-danger">
+                                                                    {{ $i + 1 }}
+                                                                </th>
+                                                            @else
+                                                                <th scope="col">{{ $i + 1 }}</th>
+                                                            @endif
+                                                        @endfor
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table">1</div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu" role="button">
-                                                                Tìm kiếm nhà cung cấp
-                                                            </div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table">31/01</div>
-                                                        </td>
-                                                        <td class="fixed-side fw-bold bg-white">
-                                                            <div class="progress-half">
-                                                                <div class="text-dark content_table">5</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">
-                                                                &nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1
-                                                            </div>
-                                                        </td>
+                                                    @foreach ($listAssignedTasks->data as $task)
+                                                        <tr>
+                                                            <td class="fixed-side bg-blue-blur">
+                                                                <div class="content_table">
+                                                                    {{ $loop->iteration }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="fixed-side bg-blue-blur">
+                                                                <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
+                                                                    {{ $task->name }}
+                                                                </div>
+
+
+                                                            </td>
+                                                            <td class="fixed-side bg-blue-blur">
+                                                                <div class="content_table">
+                                                                    {{ date('m/d', strtotime($task->deadline)) }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="fixed-side fw-bold bg-blue-blur">
+                                                                <div class="progress-half">
+                                                                    <div class="text-dark content_table">5</div>
+                                                                </div>
+                                                            </td>
+                                                            @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                                <td @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
+                                                                    <div class="content_table">
+                                                                        @foreach ($task->targetLogs as $targetLog)
+                                                                            @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
+                                                                                {{ count($targetLog->targetLogDetails) }}
+                                                                            @break
+                                                                        @endif
+                                                                    @endforeach
+                                                                    &nbsp;
+                                                                </div>
+
+                                                            </td>
+                                                        @endfor
+
+
                                                     </tr>
-                                                    <tr>
-                                                        <td class="fixed-side bg-white" scope="row">
-                                                            <div class="content_table">2</div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu" role="button">
-                                                                Mua hàng nội địa
-                                                            </div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table">31/01</div>
-                                                        </td>
-                                                        <td class="fw-bold fixed-side bg-white">
-                                                            <div class="progress-half">
-                                                                <div class="text-dark content_table">5</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fixed-side bg-white" scope="row">
-                                                            <div class="content_table">3</div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu" role="button">
-                                                                Viết bài
-                                                            </div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table">21/01</div>
-                                                        </td>
-                                                        <td class="fw-bold fixed-side bg-white">
-                                                            <div class="progress-half">
-                                                                <div class="text-dark content_table">5</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fixed-side bg-white" scope="row">
-                                                            <div class="content_table">4</div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu" role="button">
-                                                                Thiết kế giao diện
-                                                            </div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table">13/01</div>
-                                                        </td>
-                                                        <td class="fw-bold fixed-side bg-white">
-                                                            <div class="progress-half">
-                                                                <div class="text-dark content_table">5</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fixed-side bg-white" scope="row">
-                                                            <div class="content_table">5</div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu" role="button">
-                                                                Viết bài
-                                                            </div>
-                                                        </td>
-                                                        <td class="fixed-side bg-white">
-                                                            <div class="content_table">23/01</div>
-                                                        </td>
-                                                        <td class="fw-bold fixed-side bg-white">
-                                                            <div class="progress-half">
-                                                                <div class="text-dark content_table">5</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-warning bg-opacity-10 text-warning">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">&nbsp;</div>
-                                                        </td>
-                                                        <td class="bg-danger bg-opacity-10 text-danger">
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">2</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="content_table" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec" role="button">1</div>
-                                                        </td>
-                                                    </tr>
-                                            </table>
+                                                @endforeach
+                                        </table>
                                         </div>
                                     </div>
                                 </div>
@@ -2169,55 +1465,6 @@
 </div>
 @include('template.sidebar.sidebarMaster.sidebarRight')
 
-
-{{-- Modal Thêm Link Online --}}
-<div class="modal fade" id="themLinkOnline" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger" id="exampleModalLabel">Tải file từ link online</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3 row">
-                    <div class="col-sm-12 d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('assets/img/upload-file-from-link-img.jpg') }}" />
-                    </div>
-                </div>
-                <form action="" method="">
-                    @csrf
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center">
-                            <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Dán
-                                link
-                                tại đây
-                            </label>
-                            <div class="col-sm-9" style="">
-                                <input type="text" class="form-control" placeholder="Nhập link báo cáo tại đây" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center">
-                            <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Tên
-                                hiển
-                                thị
-                            </label>
-                            <div class="col-sm-9" style="">
-                                <input type="text" class="form-control" placeholder="Nhập tên hiển thị" />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec">Hủy</button>
-                <button type="button" class="btn btn-danger" id="deleteRowElement">Lưu</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Modal Phản Hồi Vấn Đề -->
 <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
@@ -2433,8 +1680,8 @@
                             <div class="mb-3 row">
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
-                                        <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}" onchange="toggleKpiKey(event)">
-                                        <label role="button" class="form-check-label user-select-none" for="datGiaTriKinhDoanh{{ $task->id }}">
+                                        <input role="button" type="checkbox" class="form-check-input fs-5" id="form-check_wrapper{{ $task->id }}{{ $i }}" onchange="toggleKpiKey(event, {{ $task->id }}, {{ $i }})">
+                                        <label role="button" class="form-check-label user-select-none" for="form-check_wrapper{{ $task->id }}{{ $i }}">
                                             Đạt giá trị kinh doanh
                                         </label>
                                     </div>
@@ -2442,12 +1689,38 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="form-check_wrapper">
+                                <div class="kpi-wrapper" id="kpi-wrapper{{ $task->id }}{{ $i }}">
                                     <div class="repeater-datGiaTriKinhDoanh">
                                         <div data-repeater-list="kpiKeys">
+                                            @if (count(findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id'])))
+                                                @foreach (findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $key)
+                                                    <div class="row" data-repeater-item>
+                                                        <div class="col-md-6 mb-3">
+                                                            <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
+
+                                                                @foreach ($kpiKeys as $kpiKey)
+                                                                    @if ($key->id == $kpiKey->id)
+                                                                        <option value="{{ $kpiKey->id }}" selected>{{ $kpiKey->name }}</option>
+                                                                    @else
+                                                                        <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-5 mb-3">
+                                                            <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
+                                                        </div>
+                                                        <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+
                                             <div class="row" data-repeater-item>
                                                 <div class="col-md-6 mb-3">
                                                     <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
+
                                                         @foreach ($kpiKeys as $kpiKey)
                                                             <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
                                                         @endforeach
@@ -2487,17 +1760,39 @@
                                             </div>
 
                                             <div class="modal_upload-addLink">
-                                                <button role="button" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#themLinkOnline">
+                                                <button role="button" type="button" class="btn" id="addLinkOnline">
                                                     <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                     Thêm liên kết
                                                 </button>
                                             </div>
-
+                                        </div>
+                                        <div class="modal_upload-inputAddLink mt-3">
+                                            <input class="form-control" type="text" placeholder="Nhập link tại đây" />
                                         </div>
                                     </div>
                                     <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                         File bạn tải lên hiện tại không hỗ trợ !
                                     </div>
+
+                                    @if (count(findTargetLogDetailFiles($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id'])))
+                                        <ul>
+                                            @foreach (findTargetLogDetailFiles($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $file)
+                                                <li>
+                                                    <span class="fs-5">
+                                                        <a href="{{ $file }}" target="_black">
+                                                            <i class="bi bi-link-45deg"></i> {{ $file }}
+                                                        </a>
+                                                    </span>
+                                                    <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
+                                                    <span class="modal_upload-remote" onclick="removeUploaded(event)">
+                                                        <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                    </span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+
+
                                     <ul class="modal_upload-list">
 
                                     </ul>
@@ -2517,6 +1812,229 @@
             </div>
         </div>
     @endfor
+
+
+    <!-- Modal Thông tin nhiệm vụ -->
+    <div class="modal fade" id="thongTinNhiemVu{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 38%">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/danh-muc-nhiem-vu/{{ $task->id }}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <div class="">
+                                    <table class="table table-bordered table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div>Tên nhiệm vụ</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->name ?? '' }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Thuộc định mức lao động</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->target->name ?? '' }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Mô tả</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->description ?? '' }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Người đảm nhiệm</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ getUsers($task) }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Vị trí đảm nhiệm</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->position->name ?? '' }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Ngày bắt đầu</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->startDate }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Hạn hoàn thành</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->deadline }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Man day</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $task->manday }} ngày</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <div>
+                                                    <td>Kế hoạch thực hiện</td>
+                                                    <td>{{ $task->executionPlan }}</td>
+                                                </div>
+                                            </tr>
+                                            <tr>
+                                                <div>
+                                                    <td>Ý kiến TPB</td>
+                                                    <td>{{ $task->managerComment }}</td>
+                                                </div>
+                                            </tr>
+                                            <tr>
+                                                <div>
+                                                    <td>Chấm điểm</td>
+                                                    <td>{{ $task->managerManDay }}</td>
+                                                </div>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-12 mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="modal-title">Tổng hợp báo cáo</div>
+                                    <span class="modal-title_mini ms-2">
+                                        Kết quả tạm tính
+                                    </span>
+                                </div>
+                                <div class="modal_list row">
+                                    <div class="modal_items col-sm-6">
+                                        Số báo cáo đã lập trong tháng: <span class="text-danger">{{ countFiles($task) }} file</span>
+                                    </div>
+                                    <div class="modal_items col-sm-6">
+                                        Số tiêu chí đạt được trong tháng: <span class="text-danger">{{ countKpiKeys($task) }} tiêu chí</span>
+                                    </div>
+                                    <div class="modal_items col-sm-6">
+                                        Số nhân sự thực hiện: <span class="text-danger">{{ count($task->users) }} nhân sự</span>
+                                    </div>
+                                    <div class="modal_items col-sm-6">
+                                        Giá trị doanh thu: <span class="text-danger">0 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="modal-title">Nhận xét nhiệm vụ</div>
+                                </div>
+                                <div class="modal_list row">
+
+                                    <div class="col-sm-10 d-flex  align-items-center">
+                                        <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="{{ $task->managerComment }}">
+
+                                    </div>
+                                    <div class="col-sm-2 d-flex  align-items-center">
+                                        <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="{{ $task->managerManDay }}">
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="modal-title">Danh sách tiêu chí công việc</div>
+                                </div>
+                                <div class="">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Ngày báo cáo</th>
+                                                <th scope="col">Tiêu chí</th>
+                                                <th scope="col">Giá trị</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (getAllTargetDetailKpiKeys($task) as $key)
+                                                <tr>
+                                                    <th class="fw-normal">{{ date('d/m/Y', strtotime($task->created_at)) }}</th>
+                                                    <td>{{ $key->name }}</td>
+                                                    <td>{{ $key->quantity }}</td>
+                                                </tr>
+                                            @endforeach
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mt-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="modal-title">Danh sách báo cáo công việc</div>
+                                </div>
+                                <div class="">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width: 15%">Ngày báo cáo</th>
+                                                <th scope="col" style="width: 45%">Nội dung báo cáo</th>
+                                                <th scope="col" style="width: 40%">File báo cáo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (getAllTargetLogDetail($task) as $log)
+                                                <tr>
+                                                    <th class="fw-normal"> {{ $log->reportedDate }}</th>
+                                                    <td>{{ $log->note }}</td>
+                                                    <td>
+                                                        <div class="text-break">
+                                                            <span>
+                                                                @foreach (explode(',', $log->files) as $file)
+                                                                    <a href="{{ $file }}" target="_black">
+                                                                        <i class="bi bi-link-45deg"></i>
+                                                                        {{ $file }}}
+                                                                    </a> <br />
+                                                                @endforeach
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endforeach
 @endsection
 @section('footer-script')
@@ -2545,14 +2063,23 @@
 <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
 
 <script>
+    //on domload
     $(function() {
-        $('#datGiaTriKinhDoanh').on('change', function() {
-            $('.form-check_wrapper').toggle(this.checked);
+        //display none for kpi key repeater
+        const kpiKeyRepeater = document.querySelectorAll('.kpi-wrapper');
+        console.log("Found " + kpiKeyRepeater.length + " kpi key repeater(s)");
+        kpiKeyRepeater.forEach((item) => {
+            item.style.display = 'none';
         });
     });
-    const toggleKpiKey = (e) => {
-
-        $('.form-check_wrapper').toggle();
+    const toggleKpiKey = (e, taskId, dayIndex) => {
+        const isChecked = e.target.checked;
+        const kpiKeyRepeater = document.getElementById('kpi-wrapper' + taskId + dayIndex);
+        if (isChecked) {
+            kpiKeyRepeater.style.display = 'block';
+        } else {
+            kpiKeyRepeater.style.display = 'none';
+        }
     }
 </script>
 
@@ -2562,19 +2089,20 @@
         const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal_upload-list');
         const notSupport = outPut.parentNode.querySelector('.alertNotSupport');
 
-        let children = outPut.innerHTML;
+        let children = '';
         console.log(children);
         const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
         const maxFileSize = 10485760; //10MB in bytes
 
         for (let i = 0; i < input.files.length; ++i) {
             const file = input.files.item(i);
-            if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
+            //allowedTypes.includes(file.type) &&
+            if ( file.size <= maxFileSize) {
                 children += `<li>
                 <span class="fs-5">
                     <i class="bi bi-link-45deg"></i> ${file.name}
                 </span>
-                <span class="modal_upload-remote" onclick="return this.parentNode.remove()">
+                <span class="modal_upload-remote" onclick="removeFileFromFileList(event, ${i})">
                     <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                 </span>
             </li>`;
@@ -2589,12 +2117,24 @@
         outPut.innerHTML = children;
     }
     //delete file from input
-    function removeFileFromFileList(input, index) {
+    function removeFileFromFileList(event, index) {
+        const deleteButton = event.target;
+        //get tag name
+        const tagName = deleteButton.tagName.toLowerCase();
+        let liEl;
+        if (tagName == "img") {
+            liEl = deleteButton.parentNode.parentNode;
+        }
+        if (tagName == "span") {
+            liEl = deleteButton.parentNode;
+        }
+
+        const inputEl = liEl.parentNode.parentNode.querySelector('.modal_upload-input');
         const dt = new DataTransfer()
 
         const {
             files
-        } = input
+        } = inputEl
 
         for (let i = 0; i < files.length; i++) {
             const file = files[i]
@@ -2602,7 +2142,22 @@
                 dt.items.add(file) // here you exclude the file. thus removing it.
         }
 
-        input.files = dt.files // Assign the updates list
+        inputEl.files = dt.files // Assign the updates list
+        liEl.remove();
+    }
+
+    function removeUploaded(event) {
+        const deleteButton = event.target;
+        //get tag name
+        const tagName = deleteButton.tagName.toLowerCase();
+        let liEl;
+        if (tagName == "img") {
+            liEl = deleteButton.parentNode.parentNode;
+        }
+        if (tagName == "span") {
+            liEl = deleteButton.parentNode;
+        }
+        liEl.remove();
     }
     // SELECT MULTIPLE LEFT SIDEBAR
     const select = document.getElementById('select');
@@ -2695,4 +2250,9 @@
         $(".three-table").clone(true).appendTo('#table-scroll-three').addClass('clone-three');
     });
 </script>
+
+<script>
+    $('#addLinkOnline')
+</script>
+
 @endsection
