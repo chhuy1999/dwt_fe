@@ -70,10 +70,10 @@
                                                                     <div class="text-nowrap d-inline-block text-truncate" style="max-width:80px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->phone }}">{{ $value->phone }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->working_form}}">{{ $value->working_form}}</div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->working_form}}">Chính Thức</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->status}}">{{ $value->status}}</div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->status}}">Đang làm việc</div>
                                                                 </td>
                                                                 <td>
                                                                     <div

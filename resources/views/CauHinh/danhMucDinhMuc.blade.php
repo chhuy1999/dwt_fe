@@ -402,7 +402,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="mb-3">
-                                    <textarea class="form-control" placeholder="Mô tả/Diễn giải" name="description"></textarea>
+                                    <textarea class="form-control" placeholder="Mô tả/Diễn giải *" name="description"></textarea>
                                 </div>
                             </div>
                             {{-- <div class="col-sm-6">
@@ -414,7 +414,7 @@
 
                             <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <select class="selectpicker" required title="Đơn vị phụ trách" name="departement_id"
+                                    <select class="selectpicker" required title="Đơn vị phụ trách *" name="departement_id"
                                         data-width="100%" data-live-search="true"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listDepartments->data as $dep)
@@ -425,7 +425,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <select class="selectpicker" required title="Vị trí phụ trách" name="position_id"
+                                    <select class="selectpicker" required title="Vị trí phụ trách *" name="position_id"
                                         data-width="100%" data-live-search="true"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listPositions->data as $pos)
