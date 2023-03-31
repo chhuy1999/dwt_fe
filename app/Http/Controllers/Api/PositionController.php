@@ -73,12 +73,15 @@ class PositionController extends Controller
             $data = $request->validate([
                 'name' => 'nullable',
                 'description' => 'nullable',
+                'parent' => 'nullable|numeric',
+                'position_level' => 'nullable|numeric',
                 'salary_fund' => 'nullable|numeric',
                 'max_employees' => 'nullable|numeric',
             ]);
             $this->dwtService->updatePosition($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
