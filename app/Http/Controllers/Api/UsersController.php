@@ -60,12 +60,12 @@ class UsersController extends Controller
             // dd($request->all());
             $data = $request->validate([
                 'name' => 'required',
-                'email' => 'required',
-                'company_email' => 'nullable',
+                'email' => 'nullable',
+                'company_email' => 'required',
                 'password' => 'required|numeric',
                 'code' => 'required',
-                'phone' => 'required|numeric',
-                'company_phone' => 'nullable|numeric',
+                'phone' => 'nullable|numeric',
+                'company_phone' => 'required|numeric',
                 'sex' => 'required',
                 'address' => 'required',
                 'dob' => 'required',
@@ -156,7 +156,7 @@ class UsersController extends Controller
             ]);
             
             // dd($data);
-            
+
             $request['dob'] = Carbon::parse($request['dob']);
 
          

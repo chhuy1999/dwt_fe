@@ -767,4 +767,28 @@ class DwtServices
         return $dataObj->data;
     }
 
+    public function searchMeetingByCode($code) {
+        $url = $this->url . '/meetings';
+        $response = $this->client->get($url, [
+            'code' => $code
+        ]);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function createMeeting($data) {
+        $url = $this->url . '/meetings';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
 }

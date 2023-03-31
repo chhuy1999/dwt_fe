@@ -113,11 +113,12 @@
                             </div>
                             <div>
                                 <select class="form-select form-select-lg style_input ms-2 fw-bolder">
-                                    <option>Giao ban Ngày</option>
+                                    {{-- <option >Giao ban Ngày</option>
                                     <option>Tuần</option>
                                     <option>Tháng</option>
                                     <option>Quý</option>
-                                    <option>Khác</option>
+                                    <option>Khác</option> --}}
+                                    <option value="1">{{ $meeting->type }}</option>
                                 </select>
                             </div>
                         </div>
@@ -146,7 +147,7 @@
                                                             </div>
                                                             {{-- <div id="date_time-hopgiaoban"
                                                                 class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                                                     class="form-control" type="text">
                                                                 <div class="datetimepicker_separate">-</div>
                                                                 <input id="datetimepicker2" value="<?php //echo date('d/m/Y h:m');
@@ -160,7 +161,7 @@
                                                                 <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
                                                             </div>
                                                             <div style="flex:1">
-                                                                <textarea name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp"></textarea>
+                                                                <textarea name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -172,7 +173,7 @@
                                                             <div style="flex:1">
                                                                 <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} Thư ký" data-live-search-placeholder="Tìm kiếm...">
                                                                     @foreach ($listUsers->data as $value)
-                                                                        <option value="{{ $value->name }}">
+                                                                        <option value="{{ $value->id }}">
                                                                             {{ $value->name }}</option>
                                                                     @endforeach
                                                                 </select>
@@ -262,29 +263,15 @@
                                                     <i class="bi bi-journal-check"></i>
                                                     Nội dung trao đổi
                                                 </div>
-                                                <div class="" style="max-height: 240px; overflow-y: scroll; overflow-x:hidden">
-                                                    <div class=" mb-3" style="background: #f8f9fa">
-                                                        <div class="row d-flex flex-start justify-between">
-                                                            <div class="col-md-10 d-flex">
-                                                                <i class="bi bi-journal-check mx-3 "></i>
-                                                                <div class="d-block text-nowrap text-truncate" style="max-width:435px">
-                                                                    <p data-bs-toggle="tooltip" data-bs-placement="top" title="It is a long established fact that a reader will be distracted by the readable content of a page." class="">
-                                                                        It is a long established fact that a reader will
-                                                                        bedistracted by the readable content of a page
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-2 d-flex justify-content-end">
-                                                                <p class="fs-6">9:58</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="" style="max-height: 240px; overflow-y: scroll; overflow-x:hidden" id="notes">
+
 
                                                 </div>
                                                 <div class="col-12 mt-4">
-                                                    <form action="/giao-ban" method="" id="commentForm">
+                                                    <form id="commentForm">
                                                         <div class="d-flex align-items-center">
-                                                            <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung" rows="1" maxlength="130"></textarea>
+                                                            <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
+                                                            <textarea name="note" class="form-control" id="meeting-note" placeholder="Nhập nội dung" rows="1" maxlength="130"></textarea>
                                                             <button type="submit" class="btn btn-outline-danger ms-3">Gửi</button>
                                                         </div>
                                                     </form>
@@ -299,29 +286,33 @@
                                                     <i class="bi bi-paperclip"></i>
                                                     File đính kèm
                                                 </div>
-                                                <div class="upload_wrapper-items">
-                                                    <ul class="modal_upload-list"></ul>
-                                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
-                                                        File bạn tải lên hiện tại không hỗ trợ !
-                                                    </div>
-                                                    <div class="modal_upload-wrapper">
-                                                        <label class="modal_upload-label" for="file">
-                                                            Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                        <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG,
-                                                            PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                            thước tệp không quá 10MB</div>
-                                                        <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                            <div class="modal_upload-addFile me-3">
-                                                                <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                                    Tải file lên
-                                                                    <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
-                                                                </button>
-                                                            </div>
+                                                <form action="" method="">
+                                                    @csrf
+                                                    <div class="upload_wrapper-items">
+                                                        <ul class="modal_upload-list"></ul>
+                                                        <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                                            File bạn tải lên hiện tại không hỗ trợ !
+                                                        </div>
+                                                        <div class="modal_upload-wrapper">
+                                                            <label class="modal_upload-label" for="file">
+                                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG,
+                                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
+                                                                thước tệp không quá 10MB</div>
+                                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                                <div class="modal_upload-addFile me-3">
+                                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                        Tải file lên
+                                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                                    </button>
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="d-flex align-items-center justify-content-end"><button type="submit" class="btn btn-outline-danger">Tải file</button></div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -401,7 +392,7 @@
                                                             </td>
                                                             <td>
                                                                 <div>
-                                                                    @foreach ($item -> pics as $u)
+                                                                    @foreach ($item->pics as $u)
                                                                         {{ $u->name }},
                                                                     @endforeach
                                                                 </div>
@@ -598,14 +589,14 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-12 mb-3">
-                                    <textarea rows="1" class="form-control" placeholder="Nguyên nhân" name="reason">{{$item->reason}}</textarea>
+                                    <textarea rows="1" class="form-control" placeholder="Nguyên nhân" name="reason">{{ $item->reason }}</textarea>
                                 </div>
                                 <div class="col-sm-12 mb-3">
-                                    <textarea rows="1" class="form-control" placeholder="Hướng giải quyết" name="solution">{{$item->solution}}</textarea>
+                                    <textarea rows="1" class="form-control" placeholder="Hướng giải quyết" name="solution">{{ $item->solution }}</textarea>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Thời hạn">
-                                        <input id="timeSuaVanDe" value="{{date('d/m/Y', strtotime($item->deadline))}}" class="form-control" type="text" name="deadline">
+                                        <input id="timeSuaVanDe" value="{{ date('d/m/Y', strtotime($item->deadline)) }}" class="form-control" type="text" name="deadline">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -1131,6 +1122,84 @@
                 timepicker: false,
             });
         });
+    </script>
+    <script>
+        let jwtToken = "{!! session()->get('token') !!}";
+
+        let user = {!! json_encode(session()->get('user')) !!};
+        const meetingId = {!! $meeting->id !!};
+        const meetCode = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
+        const form = document.getElementById('commentForm');
+        const notes = document.getElementById('notes');
+
+        const renderListNotes = async () => {
+            try {
+                notes.innerHTML = '';
+                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meetings?code=' + meetCode, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + jwtToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                })
+                if (!resp.ok) {
+                    throw new Error('Error');
+                }
+                const data = await resp.json();
+                const meeting = data.data.data[0];
+                console.log(meeting);
+                meeting.meeting_logs.forEach(item => {
+                    console.log(item);
+                    notes.innerHTML += `
+                <div class=" mb-3" style="background: #f8f9fa">
+                                                        <div class="row d-flex flex-start justify-between">
+                                                            <div class="col-md-10 d-flex">
+                                                                <i class="bi bi-journal-check mx-3 "></i>
+                                                                <div class="d-block text-nowrap text-truncate" style="max-width:435px">
+                                                                    <p data-bs-toggle="tooltip" data-bs-placement="top" title="It is a long established fact that a reader will be distracted by the readable content of a page." class="">
+                                                                        ${item.note}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                `
+
+                });
+            } catch (errr) {
+                console.log(errr);
+            }
+        };
+        renderListNotes();
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            const data = Object.fromEntries(formData);
+            //add meeting logs
+            try {
+                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meeting-logs', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + jwtToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                if (!resp.ok) {
+                    throw new Error('Error');
+                }
+                await resp.json();
+                await renderListNotes();
+                //clear form
+                form.reset();
+            } catch (err) {
+                console.log(err);
+            }
+        })
     </script>
 
     {{-- <script>

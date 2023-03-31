@@ -501,7 +501,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </select>
                             </div>
                             <div class="col-sm-5 mb-3 position-relative">
-                                <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" name="deadline"/>
+                                <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" name="deadline" />
                                 <i class="bi bi-calendar-plus style_pickdate-two"></i>
                             </div>
                         </div>
@@ -523,48 +523,46 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <h5 class="modal-title w-100" id="exampleModalLabel">Tạo cuộc họp</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="PUT"></form>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-9 mb-3">
-                            <input type="text" class="form-control" placeholder="Tên cuộc họp">
-                        </div>
-                        <div class="col-sm-3 mb-3">
-                            <select class="selectpicker" data-size="5" title="Loại cuộc họp">
-                                <option value="1">Ngày</option>
-                                <option value="1">Tuần</option>
-                                <option value="2">Tháng</option>
-                                <option value="3">Quý</option>
-                                <option value="3">Khác</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <select class="selectpicker" data-size="5" title="Đơn vị">
-                                <option value="1">Đơn vị 1</option>
-                                <option value="2">Đơn vị 2</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <select class="selectpicker" data-size="5" title="Chủ trì">
-                                <option value="Bùi Thị Minh Hoa">Bùi Thị Minh Hoa</option>
-                                <option value="Trần Minh Thao">Trần Minh Thao</option>
-                                <option value="Cao Thị Thúy Hằng">Cao Thị Thúy Hằng</option>
-                                <option value="Chu Văn Linh">Chu Văn Linh</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian">
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" readonly value="{{ time() }}">
-                        </div>
+                <form action="/giao-ban" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-9 mb-3">
+                                <input type="text" class="form-control" placeholder="Tên cuộc họp" name="title">
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <select class="selectpicker" data-size="5" title="Loại cuộc họp" name="type">
+                                    <option value="Ngày">Ngày</option>
+                                    <option value="Tuần">Tuần</option>
+                                    <option value="Tháng">Tháng</option>
+                                    <option value="Quý">Quý</option>
+                                    <option value="Khác">Khác</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <select class="form-select" data-size="5" title="Đơn vị" id="meet-dp-list" name="departement_id">
 
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <select class="form-select" data-size="5" title="Chủ trì" name="leader_id" id="user-select">
+
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_date">
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" readonly value="{{ time() }}" name="code">
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Tạo cuộc họp</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Tạo cuộc họp</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -619,7 +617,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     }
                 });
                 const data = await resp.json();
-                const listDp =  data.data.data;
+                const listDp = data.data.data;
                 const selectDp = document.getElementById('report-dp');
                 listDp.forEach(dp => {
                     const option = document.createElement('option');
@@ -627,12 +625,50 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     option.text = dp.name;
                     selectDp.appendChild(option);
                 });
+
+                const selectDp2 = document.getElementById('meet-dp-list');
+
+                listDp.forEach(dp => {
+                    const option = document.createElement('option');
+                    option.value = dp.id;
+                    option.text = dp.name;
+                    selectDp2.appendChild(option);
+                });
             } catch (err) {
                 console.log(err);
                 return []
             }
         }
-        fetchListDeparments()
+
+        const userSelect = document.getElementById('user-select');
+        const fetchUsers = async () => {
+            try {
+                const resp = await fetch("https://sdwtbe.sweetsica.com/api/v1/users", {
+                    method: "GET",
+                    headers: {
+                        'Authorization': 'Bearer ' + jwtToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+                const data = await resp.json();
+                const listUsers = data.data.data;
+                console.log(listUsers)
+                listUsers.forEach(user => {
+                    const option = document.createElement('option');
+                    option.value = user.id;
+                    option.text = user.name;
+                    userSelect.appendChild(option);
+                });
+            } catch (err) {
+                console.log(err);
+                return []
+            }
+        }
+        $(document).ready(function() {
+            fetchListDeparments();
+            fetchUsers();
+        });
     </script>
     <script>
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -705,11 +741,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
         joinMeetBtn.addEventListener('click', () => {
             const meetCode = meetCodeEl.value;
-            if(meetCode) {
+            if (meetCode) {
                 window.location = '/giao-ban/' + meetCode;
             }
         })
-
     </script>
 
     <script>
