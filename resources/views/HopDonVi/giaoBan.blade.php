@@ -268,9 +268,7 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="form-select style_input">
-                                                                    <option selected>Đã giải quyết</option>
-                                                                </select>
+                                                                <div>Đã giải quyết</div>
                                                             </td>
                                                         </tr>
 
@@ -296,9 +294,7 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="form-select style_input">
-                                                                    <option selected>Đã tiếp nhận</option>
-                                                                </select>
+                                                                <div>Đã tiếp nhận</div>
                                                             </td>
                                                         </tr>
 
@@ -324,9 +320,7 @@
                                                             </td>
                                                             <td>31/03</td>
                                                             <td>
-                                                                <select class="form-select style_input">
-                                                                    <option selected>Đã giải quyết</option>
-                                                                </select>
+                                                                <div>Đã giải quyết</div>
                                                             </td>
                                                         </tr>
                                                     </tbody>
