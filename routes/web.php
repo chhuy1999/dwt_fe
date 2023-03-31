@@ -11,8 +11,9 @@ use App\Http\Controllers\Api\TargetDetailController;
 use App\Http\Controllers\Api\TargetLogController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\PositionLevelController;
-use App\Http\Controllers\Api\ReportsController;
 use App\Http\Controllers\Api\EquimentPackController;
+use App\Http\Controllers\Api\MeetingController;
+use App\Http\Controllers\Api\ReportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -153,19 +154,21 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 
 
-Route::get('giao-ban', function () {
-    return view('HopDonVi.giaoBan');
+
+//hop giao ban
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
+    Route::get('giao-ban/{code}', [MeetingController::class, 'index']);
 });
 
 
 
-// Họp đơn vị
+
+//bao cao van de
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
-    Route::get('giao-ban', [ReportsController::class, 'index']);
-    Route::post('giao-ban', [ReportsController::class, 'store']);
-    Route::put('giao-ban/{id}', [ReportsController::class, 'update']);
-    Route::delete('giao-ban/{id}', [ReportsController::class, 'delete']);
+    Route::post('bao-cao-van-de', [ReportController::class, 'store']);
+    Route::put('bao-cao-van-de/{id}', [ReportController::class, 'update']);
 });
+
 
 
 

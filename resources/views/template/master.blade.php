@@ -468,46 +468,49 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="PUT"></form>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-9 mb-3">
-                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Họ và tên" class="form-control form-control-plaintext" readonly id="staticEmail" style="text-indent: 8px" value="Nguyễn Ngọc Bảo">
-                        </div>
-                        <div class="col-sm-3 mb-3 position-relative">
-                            <input data-bs-toggle="tooltip" data-bs-placement="top" title="Giờ tạo" value="<?php echo date('H:i'); ?>" readonly class="form-control" type="text" />
-                            <i class="bi bi-alarm style_pickdate-two"></i>
-                        </div>
-                        <div class="col-sm-9 mb-3">
-                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
-                                <select class="form-select" readonly title="Vị trí">
-                                    <option value="2" selected>Phòng ban 1</option>
+                <form action="/bao-cao-van-de" method="POST">
+                    @csrf
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-9 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Họ và tên" class="form-control form-control-plaintext" readonly id="staticEmail" style="text-indent: 8px" value="{{ session('user')['name'] }}">
+                            </div>
+                            <div class="col-sm-3 mb-3 position-relative">
+                                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Giờ tạo" value="<?php echo date('H:i'); ?>" readonly class="form-control" type="text" />
+                                <i class="bi bi-alarm style_pickdate-two"></i>
+                            </div>
+                            <div class="col-sm-9 mb-3">
+                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
+                                    <select class="form-select" readonly title="Vị trí" id="report-dp" name="departement_id">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mb-3 position-relative">
+                                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Thời gian" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text" />
+                                <i class="bi bi-calendar-plus style_pickdate-two"></i>
+                            </div>
+                            <div class="col-sm-12 mb-3">
+                                <textarea name="problem" class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
+                            </div>
+                            <div class="col-sm-7 mb-3">
+                                <select class="selectpicker" title="Phân loại">
+                                    <option value="1">Giải quyết</option>
+                                    <option value="2">Than phiền</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-sm-3 mb-3 position-relative">
-                            <input data-bs-toggle="tooltip" data-bs-placement="top" title="Thời gian" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text" />
-                            <i class="bi bi-calendar-plus style_pickdate-two"></i>
-                        </div>
-                        <div class="col-sm-12 mb-3">
-                            <textarea name="" class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
-                        </div>
-                        <div class="col-sm-7 mb-3">
-                            <select class="selectpicker" title="Phân loại">
-                                <option value="1">Giải quyết</option>
-                                <option value="2">Than phiền</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-5 mb-3 position-relative">
-                            <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" />
-                            <i class="bi bi-calendar-plus style_pickdate-two"></i>
+                            <div class="col-sm-5 mb-3 position-relative">
+                                <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" name="deadline"/>
+                                <i class="bi bi-calendar-plus style_pickdate-two"></i>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Gửi</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -550,12 +553,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </select>
                         </div>
                         <div class="col-sm-6 mb-3">
-                            <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control"  placeholder="Thời gian">
+                            <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian">
                         </div>
                         <div class="col-sm-6 mb-3">
-                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" readonly  value="{{time()}}">
+                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" readonly value="{{ time() }}">
                         </div>
-                       
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -578,13 +581,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12 mb-3">
-                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control"  placeholder="Nhập mã cuộc họp">
+                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Nhập mã cuộc họp" id="meetCode">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Tham gia cuộc họp</button>
+                    <button type="button" class="btn btn-danger" id="joinMeet">Tham gia cuộc họp</button>
                 </div>
             </div>
         </div>
@@ -600,6 +603,37 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 
     @yield('footer-script')
+    <script>
+        let jwtToken = "{!! session()->get('token') !!}";
+        console.log(jwtToken);
+        let user = {!! json_encode(session()->get('user')) !!};
+        // get list departments
+        const fetchListDeparments = async () => {
+            try {
+                const resp = await fetch("https://sdwtbe.sweetsica.com/api/v1/departments", {
+                    method: "GET",
+                    headers: {
+                        'Authorization': 'Bearer ' + jwtToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+                const data = await resp.json();
+                const listDp =  data.data.data;
+                const selectDp = document.getElementById('report-dp');
+                listDp.forEach(dp => {
+                    const option = document.createElement('option');
+                    option.value = dp.id;
+                    option.text = dp.name;
+                    selectDp.appendChild(option);
+                });
+            } catch (err) {
+                console.log(err);
+                return []
+            }
+        }
+        fetchListDeparments()
+    </script>
     <script>
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -665,7 +699,21 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     </script>
 
     <script>
-        $(document).ready(function () {
+        ///join meet
+        const joinMeetBtn = document.getElementById('joinMeet');
+        const meetCodeEl = document.getElementById('meetCode');
+
+        joinMeetBtn.addEventListener('click', () => {
+            const meetCode = meetCodeEl.value;
+            if(meetCode) {
+                window.location = '/giao-ban/' + meetCode;
+            }
+        })
+
+    </script>
+
+    <script>
+        $(document).ready(function() {
             $.datetimepicker.setLocale('vi');
             $('#thoiGianCuoCHop').datetimepicker({
                 format: 'd/m/Y H:i',
@@ -676,4 +724,5 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 
 </body>
+
 </html>
