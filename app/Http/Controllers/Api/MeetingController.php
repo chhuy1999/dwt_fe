@@ -68,4 +68,40 @@ class MeetingController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+    public function update($id, Request $request) {
+        try {
+            $data = $request->validate([
+
+                'files' => "nullable|array",
+                "uploadedFiles" => "nullable|array",
+            ]);
+
+            if (isset($data['files'])) {
+
+                $files = $request->file('files');
+
+                $fileNames = [];
+                foreach ($files as $file) {
+                    //call uploadFileToRemoteHost function from DwtServices
+                    $fileNames[] = $this->dwtService->uploadFileToRemoteHost($file);
+                }
+                //comma separated file names
+                $data['files'] = implode(',', $fileNames);
+            }
+            if (isset($data['uploadedFiles'])) {
+                $data['files'] = $data['files'] ?? '';
+                $uploadedFilesStr = implode(',', $data['uploadedFiles']);
+                $data['files'] = $data['files'] . ',' . $uploadedFilesStr;
+            }
+
+            $this->dwtService->updateMeeting($id, $data);
+
+            return back()->with('success', 'Cập nhật thành công');
+
+        }catch(Exception $e) {
+
+
+            return back()->with('error', $e->getMessage());
+        }
+    }
 }

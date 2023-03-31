@@ -791,4 +791,15 @@ class DwtServices
         return $dataObj->data;
     }
 
+    public function updateMeeting($id, $data) {
+        $url = $this->url . '/meetings/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
 }

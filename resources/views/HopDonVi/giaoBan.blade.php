@@ -147,7 +147,7 @@
                                                             </div>
                                                             {{-- <div id="date_time-hopgiaoban"
                                                                 class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                                                     class="form-control" type="text">
                                                                 <div class="datetimepicker_separate">-</div>
                                                                 <input id="datetimepicker2" value="<?php //echo date('d/m/Y h:m');
@@ -286,9 +286,27 @@
                                                     <i class="bi bi-paperclip"></i>
                                                     File đính kèm
                                                 </div>
-                                                <form action="" method="">
+                                                <form action="/giao-ban/{{ $meeting->id }}" method="POST" enctype="multipart/form-data">
+                                                    @method('PUT')
                                                     @csrf
                                                     <div class="upload_wrapper-items">
+                                                        @if ($meeting -> files && count(explode(',', $meeting -> files)))
+                                                            <ul>
+                                                                @foreach (explode(',', $meeting ->files) as $file)
+                                                                    <li>
+                                                                        <span class="fs-5">
+                                                                            <a href="{{ $file }}" target="_black">
+                                                                                <i class="bi bi-link-45deg"></i> {{ $file }}
+                                                                            </a>
+                                                                        </span>
+                                                                        <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
+                                                                        <span class="modal_upload-remote" onclick="removeUploaded(event)">
+                                                                            <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        </span>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
                                                         <ul class="modal_upload-list"></ul>
                                                         <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                                             File bạn tải lên hiện tại không hỗ trợ !
@@ -1048,23 +1066,23 @@
     <script>
         updateList = function(e) {
             const input = e.target;
-            const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(
-                '.modal_upload-list');
+            const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal_upload-list');
             const notSupport = outPut.parentNode.querySelector('.alertNotSupport');
 
-            let children = outPut.innerHTML;
+            let children = '';
             console.log(children);
-            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
             const maxFileSize = 10485760; //10MB in bytes
 
             for (let i = 0; i < input.files.length; ++i) {
                 const file = input.files.item(i);
-                if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
+                //allowedTypes.includes(file.type) &&
+                if (file.size <= maxFileSize) {
                     children += `<li>
                 <span class="fs-5">
                     <i class="bi bi-link-45deg"></i> ${file.name}
                 </span>
-                <span class="modal_upload-remote" onclick="return this.parentNode.remove()">
+                <span class="modal_upload-remote" onclick="removeFileFromFileList(event, ${i})">
                     <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                 </span>
             </li>`;
@@ -1079,12 +1097,24 @@
             outPut.innerHTML = children;
         }
         //delete file from input
-        function removeFileFromFileList(input, index) {
+        function removeFileFromFileList(event, index) {
+            const deleteButton = event.target;
+            //get tag name
+            const tagName = deleteButton.tagName.toLowerCase();
+            let liEl;
+            if (tagName == "img") {
+                liEl = deleteButton.parentNode.parentNode;
+            }
+            if (tagName == "span") {
+                liEl = deleteButton.parentNode;
+            }
+
+            const inputEl = liEl.parentNode.parentNode.querySelector('.modal_upload-input');
             const dt = new DataTransfer()
 
             const {
                 files
-            } = input
+            } = inputEl
 
             for (let i = 0; i < files.length; i++) {
                 const file = files[i]
@@ -1092,7 +1122,22 @@
                     dt.items.add(file) // here you exclude the file. thus removing it.
             }
 
-            input.files = dt.files // Assign the updates list
+            inputEl.files = dt.files // Assign the updates list
+            liEl.remove();
+        }
+
+        function removeUploaded(event) {
+            const deleteButton = event.target;
+            //get tag name
+            const tagName = deleteButton.tagName.toLowerCase();
+            let liEl;
+            if (tagName == "img") {
+                liEl = deleteButton.parentNode.parentNode;
+            }
+            if (tagName == "span") {
+                liEl = deleteButton.parentNode;
+            }
+            liEl.remove();
         }
     </script>
 
@@ -1162,7 +1207,7 @@
                                                                     </p>
                                                                 </div>
                                                             </div>
-                                                           
+
                                                         </div>
                                                     </div>
                 `
