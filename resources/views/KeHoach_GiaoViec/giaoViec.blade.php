@@ -456,6 +456,79 @@
         </div>
     @endforeach
 
+    <!-- Modal Giao việc phát sinh -->
+    <div class="modal fade" id="giaoViecPhatSinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Giao việc phát sinh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3"> 
+                            <input type="text" class="form-control" placeholder="Thuộc định mức">
+                        </div>
+                        <div class="col-md-12 mb-3"> 
+                            <input type="text" class="form-control" placeholder="Tên định mức">
+                        </div>
+                        <div class="col-md-6 mb-3"> 
+                            <select class="selectpicker" data-live-search="true" data-size="5" name="position_id" id="" title="Vị trí đảm nhiệm">
+                                <option value="1">Giám đốc điều hành</option>
+                                <option value="2">Cố vấn</option>
+                                <option value="3">Chủ tịch hội đồng quản trị</option>
+                                <option value="4">Kiểm soát</option>
+                                <option value="5">Giám đốc tài chính</option>
+                                <option value="6">Giám đốc kinh doanh</option>
+                                <option value="7">Giám đốc marketing</option>
+                                <option value="8">Giám đốc cung ứng</option>
+                                <option value="9">Giám đốc kênh MT</option>
+                                <option value="10">Giám đốc kênh ETC</option>
+                                <option value="11">Giám đốc kênh OTC</option>
+                                <option value="12">Trưởng bộ phân Quản trị nhãn và đào tạo</option>
+                                <option value="13">Trưởng nhóm quản trị nhãn</option>
+                                <option value="14">Trưởng nhóm quản trị đào tạo</option>
+                                <option value="15">Nhân viên quản trị nhãn Nhi</option>
+                                <option value="16">Nhân viên quản trị nhãn Sản</option>
+                                <option value="17">Nhân viên đào tạo miền Bắc</option>
+                                <option value="18">Nhân viên đào tạo miền Nam</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3"> 
+                            <select class="selectpicker" multiple="" data-size="5" data-live-search="true" name="users[]" title="Người đảm nhiệm">
+                                <option value="1">Bùi Thị Minh Hoa</option>
+                                <option value="2">Trần Minh Thao</option>
+                                <option value="3">Cao Thị Thúy Hằng</option>
+                                <option value="4">Nguyễn Vũ Nguyệt Minh</option>
+                                <option value="5">Tên tên trưởng nhóm quản trị nhãn</option>
+                                <option value="6">Tên nhân viên quản trị nhãn Nhi</option>
+                                <option value="7">Tên nhân viên quản trị nhãn Sản</option>
+                                <option value="8">Tên tên trưởng nhóm đào tạo</option>
+                                <option value="9">Tên nhân viên đào tạo miền Bắc</option>
+                                <option value="10">Tên nhân viên đào tạo miền Nam</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 md-3">
+                            
+                        </div>
+                        <div class="col-md-6 md-3">
+                            <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday">
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            123
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 @endsection
 @section('footer-script')
