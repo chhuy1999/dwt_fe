@@ -450,6 +450,57 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     </div><!-- End Wrapper -->
 
+    <!-- Modal Vấn đề tồn đọng -->
+    <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="PUT"></form>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-7 mb-3">
+                            <input type="text" class="form-control form-control-plaintext" readonly id="staticEmail" style="text-indent: 8px" placeholder="Họ và tên">
+                        </div>
+                        <div class="col-sm-5 mb-3 position-relative">
+                            <input id="gioTaoVanDeTonDong" placeholder="Giờ tạo" readonly class="form-control" type="text" />
+                            <i class="bi bi-alarm style_pickdate-two"></i>
+                        </div>
+                        <div class="col-sm-7 mb-3">
+                            <select class="selectpicker" title="Vị trí">
+                                <option value="2" selected readonly>Phòng ban 1</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-5 mb-3 position-relative">
+                            <input id="hopGiaoBanNgayVanDeTonDong" readonly placeholder="Thời gian" class="form-control" type="text" />
+                            <i class="bi bi-calendar-plus style_pickdate-two"></i>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                            <textarea name="" class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
+                        </div>
+                        <div class="col-sm-7 mb-3">
+                            <select class="selectpicker" title="Phân loại">
+                                <option value="1">Giải quyết</option>
+                                <option value="2">Than phiền</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-5 mb-3 position-relative">
+                            <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" />
+                            <i class="bi bi-calendar-plus style_pickdate-two"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Vendor JS Files -->
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -472,7 +523,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             $('#thismonth').datetimepicker({
                 format: 'H:i - d/m/Y',
                 timepicker: true,
-                useCurrent:false,
+                useCurrent: false,
                 startDate: new Date,
                 autoclose: true,
             });
