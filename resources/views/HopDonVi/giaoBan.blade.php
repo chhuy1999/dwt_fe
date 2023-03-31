@@ -246,7 +246,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr data-bs-toggle="modal"
-                                                        data-bs-target="#suaVanDeTonDong">
+                                                        data-bs-target="#suaVanDeTonDong" role="button">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -273,7 +273,7 @@
                                                         </tr>
 
                                                         <tr data-bs-toggle="modal"
-                                                        data-bs-target="#suaVanDeTonDong">
+                                                        data-bs-target="#suaVanDeTonDong" role="button">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -299,7 +299,7 @@
                                                         </tr>
 
                                                         <tr data-bs-toggle="modal"
-                                                        data-bs-target="#suaVanDeTonDong">
+                                                        data-bs-target="#suaVanDeTonDong" role="button">
                                                             <td>
                                                                 <div
                                                                     class="d-flex align-items-center justify-content-center">
@@ -1062,16 +1062,27 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                            <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Vấn đề tồn đọng" value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                         </div>
                         <div class="col-sm-7 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                            <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Người nêu" value="Nguyễn Ngọc Bảo">
                         </div>
                         <div class="col-sm-5 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="PCI" value="Nguyễn Ngọc Bảo">
+                            <select class="selectpicker" multiple
+                                data-actions-box="true" data-width="100%"
+                                data-live-search="true" title="Người liên quan"
+                                data-select-all-text="Chọn tất cả"
+                                data-deselect-all-text="Bỏ chọn" data-size="3"
+                                data-selected-text-format="count > 1"
+                                data-count-selected-text="Có {0} người liên quan"
+                                data-live-search-placeholder="Tìm kiếm...">
+                                @foreach ($listUsers->data as $value)
+                                    <option value="{{ $value->name }}">
+                                        {{ $value->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-sm-12 mb-3">
                             <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -1093,11 +1104,10 @@
 
                             <div data-bs-toggle="tooltip" data-bs-placement="top" title="Tình trạng">
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected hidden>Chọn trạng thái</option>
+                                    <option selected>Đã tiếp nhận</option>
                                     <option>Đã có hướng giải quyết</option>
                                     <option>Đã giải quyết</option>
                                     <option>Không thể giải quyết</option>
-                                    <option>Không xác định được nguyên nhân</option>
                                 </select>
                             </div>
                         </div>
