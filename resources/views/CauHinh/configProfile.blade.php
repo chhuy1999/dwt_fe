@@ -264,9 +264,9 @@
                                                                                     <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Trưởng đơn vị">
                                                                                         <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
                                                                                         data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                                                                        data-size="3" name="in_charge">
+                                                                                        data-size="3" name="in_charge" value="{{ $value->in_charge}}">
                                                                                         @foreach ($listUsers->data as $user)
-                                                                                        <option value="{{ $value->in_charge}}" selected>{{ $user->name }}</option>
+                                                                                        <option  selected>{{ $user->name }}</option>
                                                                                         @endforeach
                                                                                     </select> 
                                                                                     

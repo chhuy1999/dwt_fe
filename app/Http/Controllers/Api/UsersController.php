@@ -7,7 +7,7 @@ use App\Services\DwtServices;
 use Exception;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
-use Illuminate\Support\Carbon; 
+use Illuminate\Support\Carbon;
 
 class UsersController extends Controller
 {
@@ -86,7 +86,6 @@ class UsersController extends Controller
 
             $data['dob'] = date('Y-m-d', strtotime($data['dob']));
     
-            
 
             //update the dob to send to api
 
@@ -116,6 +115,7 @@ class UsersController extends Controller
 
     public function update($id, Request $request)
     {
+        // dd($request);
         try {
             // dd($request);
             $data = $request->validate([
@@ -154,27 +154,18 @@ class UsersController extends Controller
                 // 'working_form' => 'nullable',
                 // 'status' => 'nullable'
             ]);
-
+            
             // dd($data);
-            $data['dob'] = date('Y-m-d', strtotime($data['dob']));
-    
             
+            $request['dob'] = Carbon::parse($request['dob']);
 
-            //update the dob to send to api
-
-            // $data['dob'] = '30/03/2023 00:00:00';
-
-            //set date of join is current day
          
-            $data['doj'] = date('Y-m-d');
-
-            // dd($data['doj']);
+            $request['doj'] =  Carbon::parse($request['doj']);;
             
-            //set role  defaut is user TODO: need to pick from fe
-            $data['role'] = 'user';
-            $data['salary_fund'] = '10000';
-
-            $this->dwtService->updateUser($id, $data);
+            $request['role'] = 'user';
+            $request['salary_fund'] = '10000';
+            dd($request);
+            $this->dwtService->updateUser($id, $request);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
             dd($e);

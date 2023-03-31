@@ -200,36 +200,51 @@
                                                                                             value="{{ $value->name }}">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3" >
-                                                                                        <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị công tác" class="form-control" autocomplete="off" required id="thuocDonVi" placeholder="Chọn đơn vị công tác *" />
+                                                                                        <select class="selectpicker" required data-live-search="true" name="parent"
+                                                                                            data-width="100%" title="Đơn vị công tác *"
+                                                                                            data-live-search-placeholder="Tìm kiếm..." data-size="3" >
+                                                                                                @foreach ($listDepartments->data as $dep)
+                                                                                                    @if ($dep->id != $value->parent)
+                                                                                                        <option value="{{ $value->parent }}">
+                                                                                                            {{ $dep->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option value="{{ $value->parent}}" selected>
+                                                                                                            {{ $dep->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                    
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp nhân sự">
-                                                                                        <select class="selectpicker" title="Chọn cấp nhân sự" data-width="100%"
-                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                                                                        data-size="5">
-                                                                                            <option selected>Chủ tịch HĐQT
-                                                                                            </option>
-                                                                                            <option>Tổng Giám đốc</option>
-                                                                                            <option>Phó Tổng Giám đốc
-                                                                                            </option>
-                                                                                            <option>Giám đốc điều hành
-                                                                                            </option>
-                                                                                            <option>Quản lý cấp cao</option>
-                                                                                            <option>Quản lý cấp trung
-                                                                                            </option>
-                                                                                            <option>Trưởng phòng</option>
-                                                                                            <option>Phó phòng</option>
-                                                                                            <option>Trưởng nhóm</option>
-                                                                                            <option>Chuyên viên</option>
-                                                                                            <option>Nhân viên</option>
-                                                                                        </select>
+                                                                                        <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level"
+                                                                                                    data-width="100%" data-live-search="true"
+                                                                                                    data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                                                                                    @foreach ($listPositionLevel->data as $pl)
+                                                                                                    @if ($pl->id != $value->position_level)
+                                                                                                        <option value="{{ $value->position_level }}">
+                                                                                                            {{ $pl->name }}
+                                                                                                        </option>
+                                                                                                    @else
+                                                                                                        <option value="{{ $value->position_level}}" selected>
+                                                                                                            {{ $pl->name }}
+                                                                                                        </option>
+                                                                                                    @endif
+                                                                                                    @endforeach
+
+                                                                                                    <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
+                                                                                                </select>
+                                                                                                
                                                                                         {{-- <div class="modal_list-more" data-bs-toggle="modal"
                                                                                         data-bs-target="#danhsachChucDanh">
                                                                                         <i class="bi bi-three-dots-vertical"></i>
                                                                                     </div> --}}
+                                                                                    
                                                                                     </div>
 
                                                                                     <div class="col-sm-12 mb-3">
-                                                                                        <textarea data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả công việc" class="form-control">{{ $value->description }}</textarea>
+                                                                                        <textarea data-bs-toggle="tooltip" name="description" data-bs-placement="top" title="Mô tả công việc" class="form-control">{{ $value->description }}</textarea>
                                                                                     </div>
 
                                                                                     <div class="col-sm-4 mb-3">
@@ -1920,6 +1935,22 @@
                                     @endforeach
                                 </select>    
                             </div>
+
+                            <select class="selectpicker" required data-live-search="true" name="parent"
+                            data-width="100%" title="Đơn vị công tác *"
+                            data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                @foreach ($listDepartments->data as $dep)
+                                    @if ($dep->id != $value->parent)
+                                        <option value="{{ $value->parent }}">
+                                            {{ $dep->name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $value->parent}}" selected>
+                                            {{ $dep->name }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
                             <div class="col-sm-6 mb-3">
                                 
                                 <select id="onchangeCapNhanSu" class="selectpicker"
@@ -1932,14 +1963,14 @@
                                     data-live-search-placeholder="Tìm kiếm..."
                                     data-size="3">
                                     @foreach ($listPositionLevel->data as $level)
-                                        @if ($level->id == $value->position_level)
+                                        @if ($level->id != $value->position_level)
                                             <option
                                                 value="{{ $value->position_level }}">
                                                 {{ $level->name }}
                                             </option>
                                         @else
                                             <option
-                                                value="{{$value->position_level }}">
+                                                value="{{$value->position_level }}" selected>
                                                 {{ $level->name }}
                                             </option>
                                         @endif
@@ -1955,7 +1986,7 @@
                                     placeholder="Định biên">
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input class="form-control" type="number" name="salary_fund"
+                                <input class="form-control" type="number" min="0" name="salary_fund"
                                     placeholder="Quỹ lương năm" />
                             </div>
                             <div class="col-sm-4 mb-3">

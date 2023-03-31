@@ -109,7 +109,7 @@
                                                                                 </div>
 
                                                                                 <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên cấp nhân sự" name="name" value="Phòng kinh doanh 1">
+                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên cấp nhân sự" name="name" value="{{ $value->name}}">
                                                                                 </div>
                                                                                 {{-- <div class="col-sm-6">
                                                                                     <div class="d-flex align-items-center">

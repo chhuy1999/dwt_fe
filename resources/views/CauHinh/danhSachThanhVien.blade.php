@@ -146,8 +146,8 @@
                                                                                                 <div class="col-sm-5 mb-2">
                                                                                                     <select class="selectpicker" placeholder="Giới tính" title="Giới tính"
                                                                                                             name="sex" value="{{$value->sex }}">
-                                                                                                            <option >Male</option>
-                                                                                                            <option >Female</option>
+                                                                                                            <option >Nam</option>
+                                                                                                            <option >Nữ</option>
                                                                                                         </select>
                                                                                                 </div>
                                                         
@@ -160,8 +160,9 @@
                                                                                                 <div
                                                                                                     class="col-sm-7 mb-2 position-relative">
                                                                                                     <input
-                                                                                                        id="suaCreateUser{{ $value->id }}"
-                                                                                                        name="dob" value="{{$value->dob}}"
+                                                                                                        id="suaCreateUser"
+                                                                                                        name="dob"
+                                                                                                        value="{{$value->dob}}"
                                                                                                         class="form-control"
                                                                                                         type="text">
                                                                                                     <i
@@ -714,8 +715,8 @@
                                         <div class="col-sm-5 mb-2">
                                             <select class="selectpicker"placeholder="Giới tính" title="Giới tính"
                                                 name="sex">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
+                                                <option value="male">Nam</option>
+                                                <option value="female">Nữ</option>
                                             </select>
                                         </div>
 
