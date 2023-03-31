@@ -86,6 +86,10 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 });
 
+Route::get('danh-muc-don-vi-tinh', function () {
+    return view('CauHinh.danhMucDonViTinh');
+});
+
 //target => danh muc dinh muc
 
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {

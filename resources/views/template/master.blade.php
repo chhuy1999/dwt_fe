@@ -230,6 +230,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                             <li class="header_more-item">
                                                 <a href="danh-muc-chi-so-key" class="header_more-link">Danh mục chỉ số key</a>
                                             </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-muc-don-vi-tinh" class="header_more-link">Danh mục đơn vị tính</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="header_submenu-items">
