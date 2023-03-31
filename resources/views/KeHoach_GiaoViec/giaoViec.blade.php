@@ -106,7 +106,7 @@
                                                                 <textarea class="form-control" name="description" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
-                                                                <input type="number" class="form-control" placeholder="Manday" id="title" name="manday" />
+                                                                <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday" />
                                                             </div>
                                                             <div class="col-md-9 mb-3">
                                                                 <textarea class="form-control" rows="1" placeholder="Kế hoạch thực hiện" name="executionPlan"></textarea>
@@ -148,7 +148,7 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-md-3 mb-3">
-                                                                            <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                                            <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                                                         </div>
                                                                         <div class="col-md-1 mb-3 d-flex align-items-center">
                                                                             <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
@@ -202,7 +202,7 @@
                                                                     <th class="text-nowrap" style="width: 26%">Tên nhiệm vụ</th>
                                                                     <th class="text-nowrap" style="width: 20%">Thuộc định mức</th>
                                                                     <th class="text-nowrap" style="width:20%">Người đảm nhiệm</th>
-                                                                    <th class="text-nowrap" style="width:20%">Vị trí/Chức danh</th>
+                                                                    <th class="text-nowrap" style="width:20%">Người liên quan</th>
                                                                     <th class="text-nowrap" style="width:8%">Thời hạn</th>
                                                                     {{-- <th>Tình trạng</th> --}}
                                                                     <th style="width: 2%"></th>
@@ -218,12 +218,12 @@
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:245px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->name }}">
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:295px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->name }}">
                                                                                 {{ $assignedTask->name }}
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->target->name }}">
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:225px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->target->name }}">
                                                                                 {{ $assignedTask->target->name ?? '' }}
                                                                             </div>
                                                                         </td>
@@ -659,21 +659,15 @@
             <div class="d-flex align-items-center">
                 <div class="card-title me-2">Danh sách định mức</div>
                 <div class="select">
-                    <select class="selectpicker" title="Chọn phòng ban" data-live-search="true" data-size="5">
-                        <option>Cung ứng</option>
-                        <option>Trade Marketing</option>
-                        <option>Digital Marketing</option>
-                        <option>Truyền thông</option>
-                        <option>Quản trị Nhãn/Đào tạo</option>
-                        <option>Kho & Giao vận</option>
-                        <option>Hành chính nhân sự</option>
-                        <option>Kế toán</option>
-                        <option>Tài chính</option>
-                        <option>Dịch vụ bán hàng</option>
-                        <option>Kinh doanh OTC</option>
-                        <option>Kinh doanh ETC</option>
-                        <option>Kinh doanh MT</option>
-                        <option>Kinh doanh online</option>
+                    <select class="selectpicker" placeholder="Chọn đơn vị" title="Chọn đơn vị" data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
+                            <option value="1">Ban Giám Đốc</option>
+                            <option value="2">Ban Kiểm soát</option>
+                            <option value="3">Phòng Dịch vụ bán hàng</option>
+                            <option value="4">Bộ phận Kho Vận</option>
+                            <option value="5">Phòng Kế toán</option>
+                            <option value="6">Cung ứng MTT</option>
+                            <option value="7">Phòng marketing</option>
+                            <option value="8">Phòng quản trị nhãn và đào tạo</option>
                     </select>
                 </div>
             </div>
@@ -682,6 +676,9 @@
         $('#listDanhSach').DataTable({
             paging: true,
             ordering: true,
+            order: [
+                [0, 'desc']
+            ],
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',

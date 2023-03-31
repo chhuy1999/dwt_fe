@@ -160,7 +160,7 @@
                                                                                                 <div
                                                                                                     class="col-sm-7 mb-2 position-relative">
                                                                                                     <input
-                                                                                                        id="suaCreateUser"
+                                                                                                        id="suaCreateUser{{ $value->id }}"
                                                                                                         name="dob" value="{{$value->dob}}"
                                                                                                         class="form-control"
                                                                                                         type="text">
@@ -2785,4 +2785,9 @@
         `);
     </script>
 
+<script>
+    $('#themThanhVien').on('hidden.bs.modal', function () {
+        $(this).find('form').trigger('reset');
+    })
+</script>
 @endsection

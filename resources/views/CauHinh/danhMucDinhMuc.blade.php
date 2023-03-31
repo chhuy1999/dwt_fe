@@ -61,18 +61,23 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>{{ $target->name }}</div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:140px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name }}">{{ $target->name }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <p>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:600px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description }}">
                                                                         {{ $target->description }}
-                                                                    </p>
+                                                                    </div>
                                                                 </td>
                                                                 <td>
-                                                                    {{  $target->departement->name ?? "" }}
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->departement->name }}">
+                                                                        {{  $target->departement->name ?? "" }}
+                                                                    </div>
+                                                                    
                                                                 </td>
                                                                 <td>
-                                                                    {{  $target->position->name ?? "" }}
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->position->name }}">
+                                                                        {{  $target->position->name ?? "" }}
+                                                                    </div>
                                                                 </td>
 
                                                                 <td>
@@ -151,7 +156,7 @@
                                                                                                 data-width="100%"
                                                                                                 data-live-search="true"
                                                                                                 data-live-search-placeholder="Tìm kiếm..."
-                                                                                                data-size="3">
+                                                                                                data-size="5">
                                                                                                 @foreach ($listDepartments->data as $dep)
                                                                                                     @if ($dep->id == $target->departement_id)
                                                                                                         <option
@@ -409,7 +414,7 @@
 
                             <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <select class="selectpicker" title="Đơn vị phụ trách" name="departement_id"
+                                    <select class="selectpicker" required title="Đơn vị phụ trách" name="departement_id"
                                         data-width="100%" data-live-search="true"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listDepartments->data as $dep)
@@ -420,7 +425,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <select class="selectpicker" title="Vị trí phụ trách" name="position_id"
+                                    <select class="selectpicker" required title="Vị trí phụ trách" name="position_id"
                                         data-width="100%" data-live-search="true"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listPositions->data as $pos)
@@ -653,7 +658,7 @@
         oLanguage: {
             sLengthMenu: 'Hiển thị _MENU_ bản ghi',
         },
-        dom: '<"d-flex justify-content-between mb-3"<"action_wrapper"><"d-flex align-items-center"<"card-title-wrapper">f>>rt<"dataTables_bottom  justify-content-end"p>',
+        dom: '<"d-flex justify-content-between mb-3"<"action_wrapper"><"d-flex align-items-center"f<"card-title-wrapper">>>rt<"dataTables_bottom  justify-content-end"p>',
     });
     $('div.action_wrapper').html(`
         <div class="action_wrapper d-flex">
@@ -675,12 +680,12 @@
     $('div.card-title-wrapper').html(`
         <div class="d-flex justify-content-between align-items-center">
 
-            <div class="main_action">
+            <div class="main_action ms-3">
                 <button id="exporttable" class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themMoiDinhMuc">
                     Thêm định mức
                 </button>
-                <button id="exporttable" class="btn btn-outline-danger me-3" data-bs-toggle="tooltip"
+                <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip"
                     data-bs-placement="top" title="Xuất file Excel">
                     <i class="bi bi-download"></i>
                     Xuất Excel
