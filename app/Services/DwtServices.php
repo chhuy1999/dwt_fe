@@ -198,7 +198,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status = "")
+    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status = "", $userId = null, $startDate = null, $endDate = null)
     {
         $url = $this->url . '/target-details';
 
@@ -206,7 +206,8 @@ class DwtServices
             'q' => $q,
             'page' => $page,
             'limit' => $limit,
-            'status' => $status
+            'status' => $status,
+            'user_id' => $userId
         ]);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
@@ -690,69 +691,68 @@ class DwtServices
             throw new Exception($e->getMessage());
         }
     }
-     // màn danh mục gói trang bị
-     public function listEquimentPack()
-     {
-         $url = $this->url . '/equipment-packs';
-         $response = $this->client->get($url);
-         //throw exception if response is not successful
-         $response->throw()->json()['message'];
-         //get data from response
-         $data = $response->json();
-         $dataObj = $this->_toObject($data);
-         return $dataObj->data;
-     }
+    // màn danh mục gói trang bị
+    public function listEquimentPack()
+    {
+        $url = $this->url . '/equipment-packs';
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
-     public function searchEquimentPack($q = "", $page = 1, $limit = 10)
-     {
-         $url = $this->url . '/equipment-packs';
-         $response = $this->client->get($url, [
-             'q' => $q,
-             'page' => $page,
-             'limit' => $limit
-         ]);
-         //throw exception if response is not successful
-         $response->throw()->json()['message'];
-         //get data from response
-         $data = $response->json();
-         $dataObj = $this->_toObject($data);
-         return $dataObj->data;
-     }
+    public function searchEquimentPack($q = "", $page = 1, $limit = 10)
+    {
+        $url = $this->url . '/equipment-packs';
+        $response = $this->client->get($url, [
+            'q' => $q,
+            'page' => $page,
+            'limit' => $limit
+        ]);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
-     public function createEquimentPack($data)
-     {
-         $url = $this->url . '/equipment-packs';
-         $response = $this->client->post($url, $data);
-         //throw exception if response is not successful
-         $response->throw()->json()['message'];
-         //get data from response
-         $data = $response->json();
-         $dataObj = $this->_toObject($data);
-         return $dataObj->data;
-     }
+    public function createEquimentPack($data)
+    {
+        $url = $this->url . '/equipment-packs';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
- public function updateEquimentPack($id, $data)
- {
-     $url = $this->url . '/equipment-packs/' . $id;
-     $response = $this->client->put($url, $data);
-     //throw exception if response is not successful
-     $response->throw()->json()['message'];
-     //get data from response
-     $data = $response->json();
-     $dataObj = $this->_toObject($data);
-     return $dataObj->data;
- }
+    public function updateEquimentPack($id, $data)
+    {
+        $url = $this->url . '/equipment-packs/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
- public function deleteEquimentPack($id)
- {
-     $url = $this->url . '/equipment-packs/' . $id;
-     $response = $this->client->delete($url);
-     //throw exception if response is not successful
-     $response->throw()->json()['message'];
-     //get data from response
-     $data = $response->json();
-     $dataObj = $this->_toObject($data);
-     return $dataObj->data;
- }
-
+    public function deleteEquimentPack($id)
+    {
+        $url = $this->url . '/equipment-packs/' . $id;
+        $response = $this->client->delete($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 }
