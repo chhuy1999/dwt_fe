@@ -7,7 +7,7 @@
                         <h6 class="sidebarBody_heading-big m-0">
                             Tổng quan đơn vị
                         </h6>
-                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#giaoViecPhatSinh">Giao việc phát sinh</button>
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinh">Giao việc phát sinh</button>
                     </div>
                     
                     <div class="sidebarBody_card" style="line-height: 26px;">

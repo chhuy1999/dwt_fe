@@ -99,6 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Reset form when click outside modal
-$('#themThanhVien, #themTrangBi, #themCapNhanSu, #themDSCapToChuc, #themDSThemViTri, #themCoCauToChuc, #themMoiDinhMuc, #themChiSoKey, #giaoViecPhatSinh').on('hidden.bs.modal', function () {
+$('#themThanhVien, #themTrangBi, #themCapNhanSu, #themDSCapToChuc, #themDSThemViTri, #themCoCauToChuc, #themMoiDinhMuc, #themChiSoKey, #giaoViecPhatSinh, #neuvande').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset');
+    // $('.modal-body').find('input').val('');
+    $('.modal-body').find('textarea').val('');
 })
