@@ -2010,11 +2010,12 @@
                                                             @foreach (explode(',', $log->files) as $file)
                                                                 <a href="{{ $file }}" target="_black">
                                                                     <i class="bi bi-link-45deg"></i>
-                                                                    {{ $file }}}
+                                                                    {{ $file }}
                                                                 </a> <br />
                                                             @endforeach
                                                         </span>
                                                     </div>
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach
