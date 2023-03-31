@@ -715,8 +715,7 @@
                                             placeholder="Mật khẩu *">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" autocomplete="off"  type="tel"
-                                            required placeholder="SĐT cá nhân" name="phone">
+                                        <input class="form-control" autocomplete="off"  type="tel" placeholder="SĐT cá nhân" name="phone">
                                     </div>
 
                                 </div>

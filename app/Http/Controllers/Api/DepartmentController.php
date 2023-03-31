@@ -48,6 +48,7 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         try {
+            // dd($request);
             $data = $request->validate([
                 'name' => 'required',
                 'code' => 'required',
@@ -73,6 +74,8 @@ class DepartmentController extends Controller
                 'parent' => 'nullable|numeric',
                 'in_charge' => 'nullable',
             ]);
+
+            dd($data);
             $this->dwtService->updateDepartment($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
