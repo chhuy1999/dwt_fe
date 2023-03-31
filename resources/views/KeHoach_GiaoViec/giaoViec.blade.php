@@ -93,11 +93,11 @@
                                                         @csrf
                                                         <input type="hidden" name="target_id" value="{{ $target->id }}">
                                                         <div class="card-title mb-2">
-                                                            Giao việc cho định mức: "{{ $target->name }}"
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:100%;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name }}">Giao việc cho định mức: "{{ $target->name }}"</div>
                                                         </div>
                                                         <div class="mb-3 row align-items-center">
                                                             <div class="col-md-7 mb-3">
-                                                                <input type="text" class="form-control" name="name" placeholder="Tên công việc" value="{{ $target->name }}" />
+                                                                <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" placeholder="Tên nhiệm vụ" value="{{ $target->name }}" />
                                                             </div>
                                                             <div class="col-md-5 mb-3">
                                                                 <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Thời hạn" />
