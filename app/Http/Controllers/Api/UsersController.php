@@ -39,13 +39,14 @@ class UsersController extends Controller
             $listPositions = $this->dwtService->listPositions();
             $listPositionLevel = $this->dwtService->listPositionLevel();
             $listUsers = $this->dwtService->listUsers();
-
+            $listEquimentPack = $this->dwtService->listEquimentPack();
             return view('CauHinh.danhSachThanhVien')
                 ->with('data', $data)
                 ->with('listDepartments', $listDepartments)
                 ->with('listPositions', $listPositions)
                 ->with('listPositionLevel', $listPositionLevel)
-                ->with('listUsers', $listUsers);
+                ->with('listUsers', $listUsers)
+                ->with('listEquimentPack', $listEquimentPack);
         } catch (Exception $e) {
             $error = $e->getMessage();
             return view('CauHinh.danhSachThanhVien')->with('listUsers', []);
@@ -55,20 +56,26 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         try {
-            // dd($request->dob);
+            // dd($request);
             $data = $request->validate([
                 'name' => 'required',
                 'email' => 'required',
+                'company_email' => 'nullable',
                 'password' => 'required|numeric',
                 'code' => 'required',
                 'phone' => 'required|numeric',
+                'company_phone' => 'nullable|numeric',
                 'sex' => 'required',
                 'address' => 'required',
                 'dob' => 'required',
-                'departement' => 'required',
                 'departement_id' => 'required',
                 'position_id' => 'required',  
                 'position_level_id' => 'required',            
+                'position_level_id' => 'required',            
+                'manager_id' => 'nullable',            
+                'equipment_pack_id' => 'nullable',            
+                'working_form' => 'nullable',            
+                'status' => 'nullable',            
                
             ]);
             //format fe date to api required date dd/mm/yyyy to yyyy-MM-DD
@@ -85,11 +92,8 @@ class UsersController extends Controller
             $data['doj'] = date('Y-m-d');
             //set role  defaut is user TODO: need to pick from fe
             $data['role'] = 'user';
-            // $data['position_id'] = '2';
-            // $data['departement_id'] = '1';
-            // $data['position_level_id'] = '1';
-            // $data['salary_fund'] = '10000';
-            //department ? position ? positionLevel ? fe cura may cai nay dau >
+            $data['salary_fund'] = '10000';
+
          
             $this->dwtService->createUser($data);
             return back()->with('success', 'Thêm mới thành công');
@@ -108,15 +112,21 @@ class UsersController extends Controller
             $data = $request->validate([
                 'name' => 'nullable',
                 'email' => 'nullable',
+                'company_email' => 'nullable',
                 'password' => 'nullable|numeric',
                 'code' => 'nullable',
                 'phone' => 'nullable|numeric',
+                'company_phone' => 'nullable|numeric',
                 'sex' => 'nullable',
                 'address' => 'nullable',
                 'dob' => 'nullable',
                 'departement_id' => 'nullable',
                 'position_id' => 'nullable',  
-                'position_level_id' => 'nullable',   
+                'position_level_id' => 'nullable',            
+                'manager_id' => 'nullable',            
+                'equipment_pack_id' => 'nullable',            
+                'working_form' => 'nullable',            
+                'status' => 'nullable',    
             ]);
             $this->dwtService->updateUser($id, $data);
             return back()->with('success', 'Cập nhật thành công');

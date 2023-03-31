@@ -49,7 +49,7 @@ class EquimentPackController extends Controller
             $data = $request->validate([
                 'name' => 'required',
                 'unit_id' => 'required',
-                'parent_id' => 'required|numeric',
+                'parent_id' => 'nullable|numeric',
             ]);
             $this->dwtService->createEquimentPack($data);
             return back()->with('success', 'Thêm mới thành công');

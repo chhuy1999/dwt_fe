@@ -70,10 +70,10 @@
                                                                     <div>{{ $value->phone }}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>Chính thức</div>
+                                                                    <div>{{ $value->working_form}}</div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div>Đang làm việc</div>
+                                                                    <div>{{ $value->status}}</div>
                                                                 </td>
                                                                 <td>
                                                                     <div
@@ -721,14 +721,6 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="row">
-                                        {{-- <div class="col-sm-5 mb-2">
-                                            <select class="selectpicker" title="Giới tính" name="sex">
-                                                <option value="male">Nam</option>
-                                                <option value="female">Nữ</option>
-                                                <option value="other">Khác</option>
-                                            </select>
-                                        </div> --}}
-
                                         <div class="col-sm-5 mb-2">
                                             <select class="selectpicker"placeholder="Giới tính" title="Giới tính"
                                                 name="sex">
@@ -745,7 +737,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" autocomplete="off"  type="text" placeholder="Email liên hệ">
+                                        <input class="form-control" autocomplete="off"  type="text" placeholder="Email liên hệ" name="email">
                                     </div>
                                     <div class="col-sm-12 mb-2">
                                         <input class="form-control" autocomplete="off"  type="text" placeholder="Địa chỉ liên hệ"
@@ -767,20 +759,20 @@
 
                                 <div class="col-sm-4 mb-2">
                                     <input class="form-control" autocomplete="off"  type="tel"
-                                        required placeholder="SĐT liên hệ *">
+                                        required placeholder="SĐT liên hệ *" name="company_phone">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
                                     <input class="form-control" autocomplete="off" required  type="email" placeholder="Email công ty *"
-                                        name="email">
+                                        name="company_email">
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select id="onchangeDonViCongTac" class="selectpicker" required data-live-search="true" name="departement"
+                                    <select id="onchangeDonViCongTac" class="selectpicker" required data-live-search="true" name="departement_id"
                                         data-width="100%" title="Đơn vị công tác *"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                        @foreach ($listDepartments->data as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @foreach ($listDepartments->data as $dep)
+                                            <option value="{{ $value->departement_id }}">{{ $dep->name }}</option>
                                         @endforeach
                                         <option value="themDonViCongTac" class="text-danger">+ Thêm mới</option>
                                     </select>
@@ -788,11 +780,11 @@
 
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-                                        <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level"
+                                        <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level_id"
                                             data-width="100%" data-live-search="true"
                                             data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                            @foreach ($listPositionLevel->data as $value)
-                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                            @foreach ($listPositionLevel->data as $pl)
+                                                <option value="{{ $value->position_level_id }}">{{ $pl->name }}</option>
                                             @endforeach
                                             <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
                                         </select>
@@ -808,11 +800,11 @@
                                         <div class="d-flex align-items-center">
 
                                             <select required class="selectpicker"
-                                                title="Vị trí/Chức danh *" name="position" data-width="100%"
+                                                title="Vị trí/Chức danh *" name="position_id" data-width="100%"
                                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                 data-size="3">
-                                                @foreach ($listPositions->data as $value)
-                                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                                @foreach ($listPositions->data as $p)
+                                                    <option value="{{ $value->position_id }}">{{ $p->name }}</option>
                                                 @endforeach
                                             </select>
                                             {{-- <div class="modal_list-more" data-bs-toggle="modal"
@@ -825,9 +817,9 @@
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Quản lý trực tiếp" data-live-search="true">
-                                        @foreach ($listUsers->data as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                    <select class="selectpicker" title="Quản lý trực tiếp" data-live-search="true" name="manager_id">
+                                        @foreach ($listUsers->data as $user)
+                                            <option value="{{ $value->manager_id}}">{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -836,38 +828,30 @@
                                 </div>
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-
-                                        <select class="selectpicker" title="Gói trang bị" data-width="100%"
-                                            data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                            data-size="3">
-                                            <option>Trang bị hành chính</option>
-                                            <option>Trang bị cơ bản</option>
-                                            <option>Trang bị Nhân viên</option>
-                                            <option>Trang bị Chuyên viên</option>
-                                            <option>Trang bị Quản lý</option>
-                                            <option>Trang bị Giám đốc</option>
+                                        <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                            @foreach ($listEquimentPack->data as $eq)
+                                                <option value="{{ $value->equipment_pack_id}}">
+                                                    {{ $eq->name }}
+                                                </option>
+                                            @endforeach
                                         </select>
-                                        {{-- <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachtrangbi">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </div> --}}
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
                                     <select class="selectpicker" title="Hình thức làm việc" data-width="100%"
                                         data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                        data-size="3">
-                                        <option>Chính thức</option>
-                                        <option>Thử việc</option>
-                                        <option>Cộng tác viên</option>
-                                        <option>Thực tập sinh</option>
+                                        data-size="3" name="working_form">
+                                        <option value="Chính thức">Chính thức</option>
+                                        <option value="Thử việc">Thử việc</option>
+                                        <option value="Công tác viên">Cộng tác viên</option>
+                                        <option value="Thực tập sinh">Thực tập sinh</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 mb-2">
-                                    <select class="selectpicker" title="Trạng thái">
-                                        <option>Đang làm việc</option>
-                                        <option>Đã nghỉ việc</option>
+                                    <select class="selectpicker" title="Trạng thái" name="status'">
+                                        <option value="Đang làm việc">Đang làm việc</option>
+                                        <option value="Đã nghỉ việc">Đã nghỉ việc</option>
                                     </select>
                                 </div>
 
