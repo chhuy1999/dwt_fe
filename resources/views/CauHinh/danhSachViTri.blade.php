@@ -34,7 +34,7 @@
                                                     name="q" value="{{ request()->q }}">
                                             </form>
                                             <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm vị
+                                                data-bs-target="#themDSThemViTri" style="margin-left: 10px">Thêm vị
                                                 trí</button>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                                                     <div
                                                                         class="table_actions d-flex justify-content-center">
                                                                         <div class="btn" data-bs-toggle="modal"
-                                                                            data-bs-target="#suaViTriChucDanh{{ $value->id }}">
+                                                                            data-bs-target="#suaDSThemViTri{{ $value->id }}">
                                                                             <img style="width:16px;height:16px"
                                                                                 src="{{ asset('assets/img/edit.svg') }}" />
                                                                         </div>
@@ -170,7 +170,7 @@
 
                                                             <!-- Modal Sua Vi Tri chức danh -->
                                                             <div class="modal fade"
-                                                                id="suaViTriChucDanh{{ $value->id }}" tabindex="-1"
+                                                                id="suaDSThemViTri{{ $value->id }}" tabindex="-1"
                                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
@@ -284,7 +284,7 @@
                                                     name="q" value="{{ request()->q }}">
                                             </form>
                                             <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm vị
+                                                data-bs-target="#themDSThemViTri" style="margin-left: 10px">Thêm vị
                                                 trí</button>
                                         </div>
                                     </div>
@@ -345,7 +345,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -394,7 +394,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -443,7 +443,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -492,7 +492,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -541,7 +541,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -572,7 +572,7 @@
                                                     name="q" value="{{ request()->q }}">
                                             </form>
                                             <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                                data-bs-target="#themViTriChucDanh" style="margin-left: 10px">Thêm vị
+                                                data-bs-target="#themDSThemViTri" style="margin-left: 10px">Thêm vị
                                                 trí</button>
                                         </div>
                                     </div>
@@ -633,7 +633,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -682,7 +682,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -731,7 +731,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -780,7 +780,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -829,7 +829,7 @@
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
                                                                     <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaViTriChucDanh">
+                                                                        data-bs-target="#suaDSThemViTri">
                                                                         <img style="width:16px;height:16px"
                                                                             src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
@@ -1296,7 +1296,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themViTriChucDanh">Hủy</button>
+                        data-bs-target="#themDSThemViTri">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1748,7 +1748,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriChucDanh">Hủy</button>
+                        data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1873,7 +1873,7 @@
     </div>
 
     <!-- Modal Them Vi Tri chức danh -->
-    <div class="modal fade" id="themViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="themDSThemViTri" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -2335,7 +2335,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                            data-bs-toggle="modal" data-bs-target="#themViTriChucDanh">Hủy</button>
+                            data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Hủy</button>
                         <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
 
@@ -2405,7 +2405,7 @@
                 var opval = $(this).val();
                 if (opval == "themCapNhanSu") {
                     $('#themCapNhanSu').modal("show");
-                    $('#themViTriChucDanh').modal("hide");
+                    $('#themDSThemViTri').modal("hide");
                 }
             });
         });

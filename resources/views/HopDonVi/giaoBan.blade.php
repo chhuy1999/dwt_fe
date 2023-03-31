@@ -158,7 +158,7 @@
                                                                     class="form-control" type="text">
                                                             </div> --}}
                                                             <input type="text" name="daterange" autocomplete="off"
-                                                                class="form-control" placeholder="Thời hạn" />
+                                                                class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                         </div>
                                                         <div class="d-flex align-items-start">
                                                             <div class="d-flex">
@@ -1085,12 +1085,10 @@
                             </select>
                         </div>
                         <div class="col-sm-12 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="Nguyên nhân" value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                            <textarea rows="1" class="form-control" placeholder="Nguyên nhân"></textarea>
                         </div>
                         <div class="col-sm-12 mb-3">
-                            <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="Hướng giải quyết" value="Sẽ gửi trong tuần">
+                            <textarea rows="1" class="form-control" placeholder="Hướng giải quyết"></textarea>
                         </div>
                         <div class="col-sm-6">
                             <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -1449,7 +1447,7 @@
                 }
             });
             $('input[name="daterange"]').val('');
-            $('input[name="daterange"]').attr("placeholder", "Chọn thời hạn");
+            $('input[name="daterange"]').attr("placeholder", "Chọn thời gian, thêm giờ");
         });
     </script>
 

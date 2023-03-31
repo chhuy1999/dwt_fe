@@ -372,7 +372,7 @@
 </div>
 <!-- Modal Vấn đề tồn đọng -->
 <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
