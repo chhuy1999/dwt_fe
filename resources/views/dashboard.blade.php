@@ -1766,7 +1766,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="modal_upload-inputAddLink mt-3">
+                                        <div class="modal_upload-inputAddLink mt-3" id="inputAddLink" style="display:none">
                                             <input class="form-control" type="text" placeholder="Nhập link tại đây" />
                                         </div>
                                     </div>
@@ -2083,6 +2083,12 @@
     }
 </script>
 
+<script>
+    $("#addLinkOnline").click(function(){
+        $("#inputAddLink").toggle();
+    });
+</script>
+
 <script type="text/javascript">
     updateList = function(e) {
         const input = e.target;
@@ -2249,10 +2255,6 @@
         $(".second-table").clone(true).appendTo('#table-scroll-second').addClass('clone-second');
         $(".three-table").clone(true).appendTo('#table-scroll-three').addClass('clone-three');
     });
-</script>
-
-<script>
-    $('#addLinkOnline')
 </script>
 
 @endsection

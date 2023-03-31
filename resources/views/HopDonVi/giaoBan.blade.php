@@ -429,8 +429,10 @@
 
                                                 </div>
                                                 <div class="col-12 mt-4">
-                                                    <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung"
+                                                    <form action="/giao-ban" method="" id="commentForm">
+                                                        <textarea id="commenttextarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập nội dung"
                                                         rows="3"></textarea>
+                                                    </form>
                                                 </div>
 
                                             </div>
@@ -446,14 +448,14 @@
                                                 <div class="upload_wrapper-items">
                                                     <ul class="modal_upload-list"></ul>
                                                     <div class="alert alert-danger alertNotSupport" role="alert"
-                                                        style="display:none">
+                                                        style="display:none" >
                                                         File bạn tải lên hiện tại không hỗ trợ !
                                                     </div>
                                                     <div class="modal_upload-wrapper">
                                                         <label class="modal_upload-label" for="file">
                                                             Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
                                                         <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG,
-                                                            PNG hoặc PDF, kích
+                                                            PNG, PDF, XLSX, DOCX, hoặc PPTX kích
                                                             thước tệp không quá 10MB</div>
                                                         <div
                                                             class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
@@ -1465,6 +1467,7 @@
         document.getElementById("commenttextarea").addEventListener("keydown", function(e) {
             if (e.keyCode === 13 && !e.shiftKey) {
                 e.preventDefault();
+                document.querySelector('#commentForm').submit();
             }
         });
     </script>
@@ -1478,7 +1481,7 @@
 
             let children = outPut.innerHTML;
             console.log(children);
-            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
             const maxFileSize = 10485760; //10MB in bytes
 
             for (let i = 0; i < input.files.length; ++i) {
