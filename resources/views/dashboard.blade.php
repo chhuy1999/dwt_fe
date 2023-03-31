@@ -1465,55 +1465,6 @@
 </div>
 @include('template.sidebar.sidebarMaster.sidebarRight')
 
-
-{{-- Modal Thêm Link Online --}}
-<div class="modal fade" id="themLinkOnline" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger" id="exampleModalLabel">Tải file từ link online</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3 row">
-                    <div class="col-sm-12 d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('assets/img/upload-file-from-link-img.jpg') }}" />
-                    </div>
-                </div>
-                <form action="" method="">
-                    @csrf
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center">
-                            <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Dán
-                                link
-                                tại đây
-                            </label>
-                            <div class="col-sm-9" style="">
-                                <input type="text" class="form-control" placeholder="Nhập link báo cáo tại đây" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-sm-12 d-flex align-items-center">
-                            <label for="staticEmail" class="col-sm-3 col-form-label" style="padding-right:6px;">Tên
-                                hiển
-                                thị
-                            </label>
-                            <div class="col-sm-9" style="">
-                                <input type="text" class="form-control" placeholder="Nhập tên hiển thị" />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#baoCaoCongViec">Hủy</button>
-                <button type="button" class="btn btn-danger" id="deleteRowElement">Lưu</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Modal Phản Hồi Vấn Đề -->
 <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
@@ -1809,12 +1760,14 @@
                                             </div>
 
                                             <div class="modal_upload-addLink">
-                                                <button role="button" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#themLinkOnline">
+                                                <button role="button" type="button" class="btn" id="addLinkOnline">
                                                     <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                     Thêm liên kết
                                                 </button>
                                             </div>
-
+                                        </div>
+                                        <div class="modal_upload-inputAddLink mt-3">
+                                            <input class="form-control" type="text" placeholder="Nhập link tại đây" />
                                         </div>
                                     </div>
                                     <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
@@ -2297,4 +2250,9 @@
         $(".three-table").clone(true).appendTo('#table-scroll-three').addClass('clone-three');
     });
 </script>
+
+<script>
+    $('#addLinkOnline')
+</script>
+
 @endsection
