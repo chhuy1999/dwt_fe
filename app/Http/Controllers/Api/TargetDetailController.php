@@ -83,6 +83,8 @@ class TargetDetailController extends Controller
                 'managerManDay' => 'nullable|numeric',
             ]);
 
+            
+
             if (isset($request['daterange'])) {
                 $dateRange = $data['daterange'];
                 $startDate = explode(" - ", $dateRange)[0];

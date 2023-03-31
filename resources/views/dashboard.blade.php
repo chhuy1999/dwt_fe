@@ -62,6 +62,26 @@
             return $kpiKeys;
         }
 
+        function findTargetLogDetailFiles($targetDetail, $date, $userId)
+        {
+            $files = [];
+            $targetLogs = $targetDetail->targetLogs;
+            foreach ($targetLogs as $targetLog) {
+                if (strtotime($targetLog->reportedDate) == strtotime($date)) {
+                    if (count($targetLog->targetLogDetails) > 0) {
+                        foreach ($targetLog->targetLogDetails as $targetLogDetail) {
+                            if ($targetLogDetail->user->id == $userId) {
+                                if ($targetLogDetail->files != null) {
+                                    $files = explode(',', $targetLogDetail->files);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return $files;
+        }
+
         function getAllTargetDetailKpiKeys($targetDetail)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -76,6 +96,18 @@
                 }
             }
             return $kpiKeys;
+        }
+        function countKpiKeys($targetDetail)
+        {
+            $kpiKeys = getAllTargetDetailKpiKeys($targetDetail);
+            //remove duplicate
+            $uniqueKpiKeys = [];
+            foreach ($kpiKeys as $kpi) {
+                if (!in_array($kpi, $uniqueKpiKeys)) {
+                    array_push($uniqueKpiKeys, $kpi);
+                }
+            }
+            return count($uniqueKpiKeys);
         }
         function getAllTargetLogDetail($targetDetail)
         {
@@ -103,6 +135,22 @@
                 array_push($userNames, $user->name);
             }
             return implode(', ', $userNames);
+        }
+
+        function countFiles($task)
+        {
+            $targetLogs = $task->targetLogs;
+            $count = 0;
+            foreach ($targetLogs as $targetLog) {
+                $targetLogDetails = $targetLog->targetLogDetails;
+                foreach ($targetLogDetails as $targetLogDetail) {
+                    if ($targetLogDetail->files != null) {
+                        $listFiles = explode(',', $targetLogDetail->files);
+                        $count += count($listFiles);
+                    }
+                }
+            }
+            return $count;
         }
     @endphp
 
@@ -2239,8 +2287,8 @@
                             <div class="mb-3 row">
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
-                                        <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $task->id }}" onchange="toggleKpiKey(event)">
-                                        <label role="button" class="form-check-label user-select-none">
+                                        <input role="button" type="checkbox" class="form-check-input fs-5" id="form-check_wrapper{{ $task->id }}{{ $i }}" onchange="toggleKpiKey(event, {{ $task->id }}, {{ $i }})">
+                                        <label role="button" class="form-check-label user-select-none" for="form-check_wrapper{{ $task->id }}{{ $i }}">
                                             Đạt giá trị kinh doanh
                                         </label>
                                     </div>
@@ -2248,32 +2296,50 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="form-check_wrapper">
+                                <div class="kpi-wrapper" id="kpi-wrapper{{ $task->id }}{{ $i }}">
                                     <div class="repeater-datGiaTriKinhDoanh">
                                         <div data-repeater-list="kpiKeys">
-                                            @foreach (findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $key)
-                                                <div class="row" data-repeater-item>
-                                                    <div class="col-md-6 mb-3">
-                                                        <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
+                                            @if (count(findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id'])))
+                                                @foreach (findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $key)
+                                                    <div class="row" data-repeater-item>
+                                                        <div class="col-md-6 mb-3">
+                                                            <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
 
-                                                            @foreach ($kpiKeys as $kpiKey)
-                                                                @if ($key->id == $kpiKey->id)
-                                                                    <option value="{{ $kpiKey->id }}" selected>{{ $kpiKey->name }}</option>
-                                                                @else
-                                                                    <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
-                                                                @endif
-                                                            @endforeach
-                                                        </select>
+                                                                @foreach ($kpiKeys as $kpiKey)
+                                                                    @if ($key->id == $kpiKey->id)
+                                                                        <option value="{{ $kpiKey->id }}" selected>{{ $kpiKey->name }}</option>
+                                                                    @else
+                                                                        <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-5 mb-3">
+                                                            <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
+                                                        </div>
+                                                        <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-5 mb-3">
-                                                        <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
-                                                    </div>
-                                                    <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                        <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
-                                                    </div>
+                                                @endforeach
+                                            @endif
+
+                                            <div class="row" data-repeater-item>
+                                                <div class="col-md-6 mb-3">
+                                                    <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
+
+                                                        @foreach ($kpiKeys as $kpiKey)
+                                                            <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
-                                            @endforeach
-
+                                                <div class="col-md-5 mb-3">
+                                                    <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                </div>
+                                                <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-12">
@@ -2312,6 +2378,26 @@
                                     <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                         File bạn tải lên hiện tại không hỗ trợ !
                                     </div>
+
+                                    @if (count(findTargetLogDetailFiles($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id'])))
+                                        <ul>
+                                            @foreach (findTargetLogDetailFiles($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $file)
+                                                <li>
+                                                    <span class="fs-5">
+                                                        <a href="{{ $file }}" target="_black">
+                                                            <i class="bi bi-link-45deg"></i> {{ $file }}
+                                                        </a>
+                                                    </span>
+                                                    <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
+                                                    <span class="modal_upload-remote" onclick="removeUploaded(event)">
+                                                        <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                    </span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+
+
                                     <ul class="modal_upload-list">
 
                                     </ul>
@@ -2447,13 +2533,13 @@
                                 </div>
                                 <div class="modal_list row">
                                     <div class="modal_items col-sm-6">
-                                        Số báo cáo đã lập trong tháng: <span class="text-danger">0 file</span>
+                                        Số báo cáo đã lập trong tháng: <span class="text-danger">{{ countFiles($task) }} file</span>
                                     </div>
                                     <div class="modal_items col-sm-6">
-                                        Số tiêu chí đạt được trong tháng: <span class="text-danger">0 tiêu chí</span>
+                                        Số tiêu chí đạt được trong tháng: <span class="text-danger">{{ countKpiKeys($task) }} tiêu chí</span>
                                     </div>
                                     <div class="modal_items col-sm-6">
-                                        Số nhân sự thực hiện: <span class="text-danger">1 nhân sự</span>
+                                        Số nhân sự thực hiện: <span class="text-danger">{{ count($task->users) }} nhân sự</span>
                                     </div>
                                     <div class="modal_items col-sm-6">
                                         Giá trị doanh thu: <span class="text-danger">0 ₫</span>
@@ -2468,11 +2554,11 @@
                                 <div class="modal_list row">
 
                                     <div class="col-sm-10 d-flex  align-items-center">
-                                        <input class="form-control" placeholder="Nhập nhận xét" name="c" value="{{ $task->managerComment }}">
+                                        <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="{{ $task->managerComment }}">
 
                                     </div>
                                     <div class="col-sm-2 d-flex  align-items-center">
-                                        <input placeholder="Điểm KPI" class="form-control" name="c" value="{{ $task->managerManDay }}">
+                                        <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="{{ $task->managerManDay }}">
 
                                     </div>
 
@@ -2499,7 +2585,6 @@
                                                     <th class="fw-normal">{{ date('d/m/Y', strtotime($task->created_at)) }}</th>
                                                     <td>{{ $key->name }}</td>
                                                     <td>{{ $key->quantity }}</td>
-
                                                 </tr>
                                             @endforeach
 
@@ -2528,9 +2613,13 @@
                                                     <td>{{ $log->note }}</td>
                                                     <td>
                                                         <div class="text-break">
-                                                            <span class="d-flex align-items-center">
-                                                                <i class="bi bi-link-45deg"></i>
-                                                                {{ $log->files }}
+                                                            <span>
+                                                                @foreach (explode(',', $log->files) as $file)
+                                                                    <a href="{{ $file }}" target="_black">
+                                                                        <i class="bi bi-link-45deg"></i>
+                                                                        {{ $file }}}
+                                                                    </a> <br />
+                                                                @endforeach
                                                             </span>
                                                         </div>
                                                     </td>
@@ -2579,14 +2668,23 @@
 <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
 
 <script>
+    //on domload
     $(function() {
-        $('#datGiaTriKinhDoanh').on('change', function() {
-            $('.form-check_wrapper').toggle(this.checked);
+        //display none for kpi key repeater
+        const kpiKeyRepeater = document.querySelectorAll('.kpi-wrapper');
+        console.log("Found " + kpiKeyRepeater.length + " kpi key repeater(s)");
+        kpiKeyRepeater.forEach((item) => {
+            item.style.display = 'none';
         });
     });
-    const toggleKpiKey = (e) => {
-
-        $('.form-check_wrapper').toggle();
+    const toggleKpiKey = (e, taskId, dayIndex) => {
+        const isChecked = e.target.checked;
+        const kpiKeyRepeater = document.getElementById('kpi-wrapper' + taskId + dayIndex);
+        if (isChecked) {
+            kpiKeyRepeater.style.display = 'block';
+        } else {
+            kpiKeyRepeater.style.display = 'none';
+        }
     }
 </script>
 
@@ -2596,7 +2694,7 @@
         const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.modal_upload-list');
         const notSupport = outPut.parentNode.querySelector('.alertNotSupport');
 
-        let children = outPut.innerHTML;
+        let children = '';
         console.log(children);
         const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
         const maxFileSize = 10485760; //10MB in bytes
@@ -2608,7 +2706,7 @@
                 <span class="fs-5">
                     <i class="bi bi-link-45deg"></i> ${file.name}
                 </span>
-                <span class="modal_upload-remote" onclick="return this.parentNode.remove()">
+                <span class="modal_upload-remote" onclick="removeFileFromFileList(event, ${i})">
                     <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                 </span>
             </li>`;
@@ -2623,12 +2721,24 @@
         outPut.innerHTML = children;
     }
     //delete file from input
-    function removeFileFromFileList(input, index) {
+    function removeFileFromFileList(event, index) {
+        const deleteButton = event.target;
+        //get tag name
+        const tagName = deleteButton.tagName.toLowerCase();
+        let liEl;
+        if (tagName == "img") {
+            liEl = deleteButton.parentNode.parentNode;
+        }
+        if (tagName == "span") {
+            liEl = deleteButton.parentNode;
+        }
+
+        const inputEl = liEl.parentNode.parentNode.querySelector('.modal_upload-input');
         const dt = new DataTransfer()
 
         const {
             files
-        } = input
+        } = inputEl
 
         for (let i = 0; i < files.length; i++) {
             const file = files[i]
@@ -2636,7 +2746,22 @@
                 dt.items.add(file) // here you exclude the file. thus removing it.
         }
 
-        input.files = dt.files // Assign the updates list
+        inputEl.files = dt.files // Assign the updates list
+        liEl.remove();
+    }
+
+    function removeUploaded(event) {
+        const deleteButton = event.target;
+        //get tag name
+        const tagName = deleteButton.tagName.toLowerCase();
+        let liEl;
+        if (tagName == "img") {
+            liEl = deleteButton.parentNode.parentNode;
+        }
+        if (tagName == "span") {
+            liEl = deleteButton.parentNode;
+        }
+        liEl.remove();
     }
     // SELECT MULTIPLE LEFT SIDEBAR
     const select = document.getElementById('select');
