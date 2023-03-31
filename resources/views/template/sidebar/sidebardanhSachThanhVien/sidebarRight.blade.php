@@ -245,7 +245,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div> --}}
                 <div class="sidebarBody_wrapper mt-4">
@@ -376,7 +376,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -385,48 +385,5 @@
         <span id="btn-right"
             ><i class="bi bi-arrow-bar-right"></i
         ></span>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3 row">
-                    <div class="col-sm-12 d-flex align-items-center">
-                        <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng </label>
-                        <div class="w-100" style="flex:1">
-                            <input type="text" class="form-control-plaintext" id="staticEmail" style="text-indent: 8px" placeholder="Vui lòng nêu vấn đề tồn đọng tại đây">
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <div class="col-sm-6 d-flex  align-items-center">
-                        <label for="inputPassword" class="col-form-label" style="flex:1">Cấp giải quyết</label>
-                        <div class="">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected hidden>Chọn cấp giải quyết</option>
-                                <option value="1">Công ty</option>
-                                <option value="2">Phòng ban</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 d-flex  align-items-center">
-                        <label for="inputPassword" class="col-form-label" style="flex:1">Thời gian</label>
-                        <div class="">
-                            <input id="datetimepicker3" value="<?php echo date('d/m/Y h:m'); ?>" class="form-control"  type="text">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-danger">Gửi</button>
-            </div>
-        </div>
     </div>
 </div>
