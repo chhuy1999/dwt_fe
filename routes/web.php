@@ -56,7 +56,7 @@ Route::get('/', [DashboardController::class, 'index'])->middleware('auth.role:us
 Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::get('danh-sach-thanh-vien', [UsersController::class, 'index']);
     Route::post('danh-sach-thanh-vien', [UsersController::class, 'store']);
-    Route::put('danh-sach-thanh-vien/{id}', [UsersController::class, 'update']);
+    Route::put('danh-sach-thanh-vien/{id}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('danh-sach-thanh-vien/{id}', [UsersController::class, 'delete']);
 });
 

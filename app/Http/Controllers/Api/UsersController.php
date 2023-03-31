@@ -56,7 +56,8 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         try {
-            // dd($request);
+         
+            // dd($request->all());
             $data = $request->validate([
                 'name' => 'required',
                 'email' => 'required',
@@ -80,16 +81,23 @@ class UsersController extends Controller
             ]);
             //format fe date to api required date dd/mm/yyyy to yyyy-MM-DD
             //replace / to -
-            $dob = Carbon::parse($request['dob'])->format('d/m/Y H:i:s');
-            // $dob = str_replace("/", "-", $data['dob']);
-            // $dob = date('d-m-Y', strtotime($data['dob']));
-            // dd($dob);
+            
+            // $dob = Carbon::parse($request['dob'])->format('d/m/Y H:i:s');
+
+            $data['dob'] = date('Y-m-d', strtotime($data['dob']));
+    
             
 
             //update the dob to send to api
-            $data['dob'] = $dob;
+
+            // $data['dob'] = '30/03/2023 00:00:00';
+
             //set date of join is current day
+         
             $data['doj'] = date('Y-m-d');
+
+            // dd($data['doj']);
+            
             //set role  defaut is user TODO: need to pick from fe
             $data['role'] = 'user';
             $data['salary_fund'] = '10000';
@@ -98,7 +106,7 @@ class UsersController extends Controller
             $this->dwtService->createUser($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
-            dd($e);
+            // dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
@@ -109,28 +117,67 @@ class UsersController extends Controller
     public function update($id, Request $request)
     {
         try {
+            // dd($request);
             $data = $request->validate([
-                'name' => 'nullable',
-                'email' => 'nullable',
-                'company_email' => 'nullable',
-                'password' => 'nullable|numeric',
-                'code' => 'nullable',
-                'phone' => 'nullable|numeric',
-                'company_phone' => 'nullable|numeric',
-                'sex' => 'nullable',
-                'address' => 'nullable',
-                'dob' => 'nullable',
-                'departement_id' => 'nullable',
-                'position_id' => 'nullable',  
-                'position_level_id' => 'nullable',            
-                'manager_id' => 'nullable',            
-                'equipment_pack_id' => 'nullable',            
-                'working_form' => 'nullable',            
-                'status' => 'nullable',    
+                // 'name' => 'nullable',
+                // 'email' => 'nullable',
+                // 'company_email' => 'nullable',
+                // 'password' => 'nullable|numeric',
+                // 'code' => 'nullable',
+                // 'phone' => 'nullable|numeric',
+                // 'company_phone' => 'nullable|numeric',
+                // 'sex' => 'nullable',
+                // 'address' => 'nullable',
+                // 'dob' => 'nullable',
+                // 'departement_id' => 'nullable',
+                // 'position_id' => 'nullable',  
+                // 'position_level_id' => 'nullable',            
+                // 'manager_id' => 'nullable',            
+                // 'equipment_pack_id' => 'nullable',            
+                // 'working_form' => 'nullable',            
+                // 'status' => 'nullable',   
+                
+                
+                // 'name' => 'nullable',
+                // 'code' => 'nullable|unique:users',
+                // 'phone' => 'nullable',
+                // 'sex' => 'nullable',
+                // 'address' => 'nullable',
+                // 'dob' => 'nullable|date',
+                // 'departement_id' => 'nullable',
+                // 'position_id' => 'nullable',
+                // 'position_level_id' => 'nullable',
+                // 'manager_id' => 'nullable',
+                // 'company_phone' => 'nullable',
+                // 'company_email' => 'nullable',
+                // 'equipment_pack_id' => 'nullable',
+                // 'working_form' => 'nullable',
+                // 'status' => 'nullable'
             ]);
+
+            // dd($data);
+            $data['dob'] = date('Y-m-d', strtotime($data['dob']));
+    
+            
+
+            //update the dob to send to api
+
+            // $data['dob'] = '30/03/2023 00:00:00';
+
+            //set date of join is current day
+         
+            $data['doj'] = date('Y-m-d');
+
+            // dd($data['doj']);
+            
+            //set role  defaut is user TODO: need to pick from fe
+            $data['role'] = 'user';
+            $data['salary_fund'] = '10000';
+
             $this->dwtService->updateUser($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
