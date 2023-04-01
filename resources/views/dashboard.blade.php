@@ -161,13 +161,13 @@
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">Nhật trình công việc</h5>
                         <div class="mainSection_card">
-                            <div class="mainSection_content">
-                                <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong> </strong></div>
+                            <div class="mainSection_content row">
+                                <div class="col-md-7"><div class="text-nowrap">Đơn vị: </div></div>
+                                <div class="col-md-5"><strong  class="text-nowrap">{{ session('user') ['departement']['name'] ?? '' }}</strong></div>
                             </div>
-                            <div class="mainSection_content">
-                                <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
+                            <div class="mainSection_content row">
+                                <div class="col-md-7"><div class="text-nowrap">Trưởng đơn vị: </div></div>
+                                <div class="col-md-5"><strong class="text-nowrap">{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -280,7 +280,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="fixed-side bg-yellow-blur">STT</th>
-                                                        <th class="fixed-side bg-yellow-blur">Mục tiêu nhiệm vụ</th>
+                                                        <th class="fixed-side bg-yellow-blur">Mục tiêu nhiệm vụ phát sinh</th>
                                                         <th class="fixed-side bg-yellow-blur">Thời hạn</th>
                                                         <th class="fixed-side bg-yellow-blur">Σ Lũy kế</th>
                                                         <th scope="col">1</th>
@@ -1888,7 +1888,7 @@
                                     Số nhân sự thực hiện: <span class="text-danger">{{ count($task->users) }} nhân sự</span>
                                 </div>
                                 <div class="modal_items col-sm-6">
-                                    Giá trị doanh thu: <span class="text-danger">0 ₫</span>
+                                    Điểm KPI tạm tính: <span class="text-danger">0 ₫</span>
                                 </div>
                             </div>
                         </div>

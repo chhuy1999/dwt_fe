@@ -52,7 +52,7 @@ class DepartmentController extends Controller
             $data = $request->validate([
                 'name' => 'required',
                 'code' => 'required',
-                'description' => 'required',
+                'description' => 'nullable',
                 'parent' => 'required|numeric',
                 'in_charge' => 'required',
             ]);

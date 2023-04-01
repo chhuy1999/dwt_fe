@@ -71,8 +71,18 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         <a href="ke-hoach" class="header_submenu-link">Kế
                                             hoạch</a>
                                     </li>
-                                    <li class="header_submenu-items">
-                                        <a href="giao-viec" class="header_submenu-link">Giao Việc</a>
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="" class="header_submenu-link more_btn">
+                                            Giao Việc <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="giao-viec" class="header_more-link">Giao việc theo định mức</a>
+                                            </li>
+                                            <li class="header_more-item">
+                                                <a href="" class="header_more-link">Giao việc phát sinh</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -254,7 +264,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                     key</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-don-vi-tinh" class="header_more-link">Danh mục đơn
+                                                <a href="" class="header_more-link">Danh mục đơn
                                                     vị tính</a>
                                             </li>
                                         </ul>
@@ -788,7 +798,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     </script>
     <script>
         $(document).ready(function() {
-            
             $('#thismonth').daterangepicker({
                 singleDatePicker: true,
                 timePicker: true,

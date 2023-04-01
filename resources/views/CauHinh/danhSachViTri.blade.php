@@ -1912,9 +1912,8 @@
                             <div class="col-sm-6 mb-3">
                                     <select class="selectpicker"
                                     required
-                                    placeholder="Chọn đơn vị công tác *"
                                     name="parent"
-                                    title="Đơn vị phụ trách"
+                                    title="Chọn đơn vị công tác *"
                                     data-width="100%"
                                     data-live-search="true"
                                     data-live-search-placeholder="Tìm kiếm..."
@@ -1922,8 +1921,7 @@
                                     @foreach ($listDepartments->data as $dep)
                                         @if ($dep->id == $value->parent)
                                             <option
-                                                value="{{ $value->parent }}"
-                                                selected>
+                                                value="{{ $value->parent }}" >
                                                 {{ $dep->name }}
                                             </option>
                                         @else
@@ -1935,25 +1933,6 @@
                                     @endforeach
                                 </select>    
                             </div>
-
-                            <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" required data-live-search="true" name="parent"
-                                data-width="100%" title="Đơn vị công tác *"
-                                data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                    @foreach ($listDepartments->data as $dep)
-                                        @if ($dep->id != $value->parent)
-                                            <option value="{{ $value->parent }}">
-                                                {{ $dep->name }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $value->parent}}" selected>
-                                                {{ $dep->name }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-
                             
                             <div class="col-sm-6 mb-3">
                                 <select id="onchangeCapNhanSu" class="selectpicker"
@@ -1973,7 +1952,7 @@
                                             </option>
                                         @else
                                             <option
-                                                value="{{$value->position_level }}" selected>
+                                                value="{{$value->position_level }}">
                                                 {{ $level->name }}
                                             </option>
                                         @endif

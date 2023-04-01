@@ -380,7 +380,7 @@
                                 <input class="form-control" required type="text" placeholder="Nhập Mã đơn vị *" name="code">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" placeholder="Chọn đơn vị mẹ *" title="Chọn đơn vị mẹ " data-actions-box="true"
+                                <select class="selectpicker" placeholder="Chọn đơn vị mẹ *" data-size="5" title="Chọn đơn vị mẹ " data-actions-box="true"
                                     data-live-search="true"
                                     data-live-search-placeholder="Tìm kiếm..." name="parent">
                                         @foreach ($listDepartments->data as $value)
@@ -392,7 +392,7 @@
                                 <div class="col-sm-12">
                                     <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%"
                                     data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                    data-size="3">
+                                    data-size="5">
                                         <option>Công ty con</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
