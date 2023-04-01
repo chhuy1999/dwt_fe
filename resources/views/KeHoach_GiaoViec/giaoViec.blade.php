@@ -302,8 +302,8 @@
                                                                                 style="max-width:180px;"
                                                                                 data-bs-toggle="tooltip"
                                                                                 data-bs-placement="top"
-                                                                                title="{{ $assignedTask?->position->name ?? '' }}">
-                                                                                {{ $assignedTask?->position->name ?? '' }}
+                                                                                title="Nguoi lien quan">
+
                                                                             </div>
 
                                                                         </td>

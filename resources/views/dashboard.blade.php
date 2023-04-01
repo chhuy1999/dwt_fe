@@ -44,6 +44,20 @@
             return '';
         }
 
+        // function findAllTargetLogDetails($targetDetail)
+        // {
+        //     $targetLogs = $targetDetail->targetLogs;
+        //     $targetLogDetails = [];
+        //     foreach ($targetLogs as $targetLog) {
+        //         if (count($targetLog->targetLogDetails) > 0) {
+        //             foreach ($targetLog->targetLogDetails as $targetLogDetail) {
+        //                 array_push($targetLogDetails, $targetLogDetail);
+        //             }
+        //         }
+        //     }
+        //     return $targetLogDetails;
+        // }
+
         function findTargetLogDetailKpiKeys($targetDetail, $date, $userId)
         {
             $kpiKeys = [];
@@ -167,7 +181,7 @@
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{ Session::get('user')['name'] }}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -242,7 +256,7 @@
                                                                 </td>
                                                                 <td class="fixed-side bg-blue-blur">
                                                                     <div class="content_table">
-                                                                        {{ date('m/d', strtotime($task->deadline)) }}
+                                                                        {{ date('d/m', strtotime($task->deadline)) }}
                                                                     </div>
                                                                 </td>
                                                                 <td class="fixed-side fw-bold bg-blue-blur">
@@ -1007,7 +1021,7 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                @endif
             </div>
 
             <div class="col-lg-12">
@@ -1631,7 +1645,7 @@
                         <div class="mb-3 row">
                             <div class="d-flex align-items-center">
                                 <div class="form-check">
-                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="form-check_wrapper{{ $task->id }}{{ $i }}" onchange="toggleKpiKey(event, {{ $task->id }}, {{ $i }})">
+                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="form-check_wrapper{{ $task->id }}{{ $i }}" onchange="toggleKpiKey(event, {{ $task->id }}, {{ $i }})" @if (count(findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']))) checked @endif>
                                     <label role="button" class="form-check-label user-select-none" for="form-check_wrapper{{ $task->id }}{{ $i }}">
                                         Đạt giá trị kinh doanh
                                     </label>
@@ -1666,24 +1680,24 @@
                                                     </div>
                                                 </div>
                                             @endforeach
+                                        @else
+                                            <div class="row" data-repeater-item>
+                                                <div class="col-md-6 mb-3">
+                                                    <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
+
+                                                        @foreach ($task->kpiKeys as $kpiKey)
+                                                            <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5 mb-3">
+                                                    <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                </div>
+                                                <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                </div>
+                                            </div>
                                         @endif
-
-                                        <div class="row" data-repeater-item>
-                                            <div class="col-md-6 mb-3">
-                                                <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
-
-                                                    @foreach ($kpiKeys as $kpiKey)
-                                                        <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-5 mb-3">
-                                                <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
-                                            </div>
-                                            <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <div class="col-md-12">
@@ -1710,20 +1724,20 @@
                                             </button>
                                         </div>
 
-                                            <div class="modal_upload-addLink">
-                                                <button role="button" type="button" class="btn" id="addLinkOnline">
-                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
-                                                    Thêm liên kết
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="modal_upload-inputAddLink mt-3" id="inputAddLink" style="display:none">
-                                            <input class="form-control" type="text" placeholder="Nhập link tại đây" />
+                                        <div class="modal_upload-addLink">
+                                            <button role="button" type="button" class="btn" id="addLinkOnline">
+                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
+                                                Thêm liên kết
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
-                                        File bạn tải lên hiện tại không hỗ trợ !
+                                    <div class="modal_upload-inputAddLink mt-3" id="inputAddLink" style="display:none">
+                                        <input class="form-control" type="text" placeholder="Nhập link tại đây" />
                                     </div>
+                                </div>
+                                <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                    File bạn tải lên hiện tại không hỗ trợ !
+                                </div>
 
                                 @if (count(findTargetLogDetailFiles($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id'])))
                                     <ul>
@@ -1827,7 +1841,7 @@
                                                 <div>Ngày bắt đầu</div>
                                             </td>
                                             <td>
-                                                <div>{{ $task->startDate }}</div>
+                                                <div>{{ date('d/m/Y', strtotime($task->startDate)) }}</div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1835,7 +1849,7 @@
                                                 <div>Hạn hoàn thành</div>
                                             </td>
                                             <td>
-                                                <div>{{ $task->deadline }}</div>
+                                                <div>{{ date('d/m/Y', strtotime($task->deadline)) }}</div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1926,14 +1940,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (getAllTargetDetailKpiKeys($task) as $key)
-                                            <tr>
-                                                <th class="fw-normal">{{ date('d/m/Y', strtotime($task->created_at)) }}</th>
-                                                <td>{{ $key->name }}</td>
-                                                <td>{{ $key->quantity }}</td>
-                                            </tr>
+                                        @foreach ($task->targetLogs as $taskLog)
+                                            @foreach ($taskLog->targetLogDetails as $logDetail)
+                                                @foreach ($logDetail->kpiKeys as $key)
+                                                    <tr>
+                                                        <th class="fw-normal">{{ date('d/m/Y', strtotime($taskLog->reportedDate)) }}</th>
+                                                        <td>{{ $key->name }}</td>
+                                                        <td>{{ $key->quantity }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @endforeach
                                         @endforeach
-
 
                                     </tbody>
                                 </table>
@@ -1955,18 +1972,21 @@
                                     <tbody>
                                         @foreach (getAllTargetLogDetail($task) as $log)
                                             <tr>
-                                                <th class="fw-normal"> {{ $log->reportedDate }}</th>
+                                                <th class="fw-normal"> {{ date('m/d/Y', strtotime($log->reportedDate)) }}</th>
                                                 <td>{{ $log->note }}</td>
                                                 <td>
                                                     <div class="text-break">
-                                                        <span>
-                                                            @foreach (explode(',', $log->files) as $file)
-                                                                <a href="{{ $file }}" target="_black">
-                                                                    <i class="bi bi-link-45deg"></i>
-                                                                    {{ $file }}
-                                                                </a> <br />
-                                                            @endforeach
-                                                        </span>
+                                                        @if ($log->files && count(explode(',', $log->files)))
+                                                            <span>
+                                                                @foreach (explode(',', $log->files) as $file)
+                                                                    <a href="{{ $file }}" target="_black">
+                                                                        <i class="bi bi-link-45deg"></i>
+                                                                        {{ $file }}
+                                                                    </a> <br />
+                                                                @endforeach
+                                                            </span>
+                                                        @endif
+
                                                     </div>
 
                                                 </td>
@@ -2021,7 +2041,13 @@
         const kpiKeyRepeater = document.querySelectorAll('.kpi-wrapper');
         console.log("Found " + kpiKeyRepeater.length + " kpi key repeater(s)");
         kpiKeyRepeater.forEach((item) => {
-            item.style.display = 'none';
+            //find checkbox
+            const checkbox = item.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.form-check-input');
+            if (checkbox.checked) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
         });
     });
     const toggleKpiKey = (e, taskId, dayIndex) => {
@@ -2036,7 +2062,7 @@
 </script>
 
 <script>
-    $("#addLinkOnline").click(function(){
+    $("#addLinkOnline").click(function() {
         $("#inputAddLink").toggle();
     });
 </script>

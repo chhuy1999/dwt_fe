@@ -52,6 +52,20 @@ class TargetLogController extends Controller
                 }
             }
             $data['kpiKeys'] = $validKpis;
+            $uniqueKpiKeys = [];
+            //merge kpi keys
+            foreach ($data['kpiKeys'] as $kpiKey) {
+                $id = $kpiKey['id'];
+                $quantity = $kpiKey['quantity'];
+                //if kpi key exist in uniqueKpiKeys
+                if (isset($uniqueKpiKeys[$id])) {
+                    $uniqueKpiKeys[$id]['quantity'] += $quantity;
+                } else {
+                    $uniqueKpiKeys[$id] = $kpiKey;
+                }
+            }
+            $data['kpiKeys'] = array_values($uniqueKpiKeys);
+        
 
 
             if (isset($data['files'])) {
