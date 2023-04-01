@@ -57,7 +57,7 @@ class UsersController extends Controller
     {
         try {
          
-            // dd($request->all());
+            // dd($request);
             $data = $request->validate([
                 'name' => 'required',
                 'email' => 'nullable',
@@ -101,11 +101,11 @@ class UsersController extends Controller
             $data['role'] = 'user';
             $data['salary_fund'] = '10000';
 
-         
+            // dd($data);
             $this->dwtService->createUser($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
-            // dd($e);
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }

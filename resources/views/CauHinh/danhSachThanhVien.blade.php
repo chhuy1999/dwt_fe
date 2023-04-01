@@ -147,8 +147,8 @@
                                                                                                 <div class="col-sm-5 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Giới tính">
                                                                                                     <select class="selectpicker" title="Giới tính"
                                                                                                             name="sex">
-                                                                                                        <option value="{{$value->sex}}">Nam</option>
-                                                                                                        <option value="{{$value->sex}}">Nữ</option>
+                                                                                                        <option value="male">Nam</option>
+                                                                                                        <option value="female">Nữ</option>
                                                                                                     </select>
                                                                                                 </div>
                                                         
@@ -219,11 +219,11 @@
                                                                                             data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                                                                                 @foreach ($listDepartments->data as $dep)
                                                                                                     @if ($dep->id != $value->departement_id)
-                                                                                                        <option value="{{ $value->departement_id }}">
+                                                                                                        <option value="{{$dep->id }}">
                                                                                                             {{ $dep->name }}
                                                                                                         </option>
                                                                                                     @else
-                                                                                                        <option value="{{ $value->departement_id}}" selected>
+                                                                                                        <option value="{{$dep->id}}" selected>
                                                                                                             {{ $dep->name }}
                                                                                                         </option>
                                                                                                     @endif
@@ -238,11 +238,11 @@
                                                                                                     data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                                                                                     @foreach ($listPositionLevel->data as $pl)
                                                                                                     @if ($pl->id != $value->position_level_id)
-                                                                                                        <option value="{{ $value->position_level_id }}">
+                                                                                                        <option value="{{ $pl->id }}">
                                                                                                             {{ $pl->name }}
                                                                                                         </option>
                                                                                                     @else
-                                                                                                        <option value="{{ $value->position_level_id}}" selected>
+                                                                                                        <option value="{{ $pl->id}}" selected>
                                                                                                             {{ $pl->name }}
                                                                                                         </option>
                                                                                                     @endif
@@ -266,11 +266,11 @@
 
                                                                                                     @foreach ($listPositions->data as $p)
                                                                                                 @if ($p->id != $value->position_id)
-                                                                                                    <option value="{{ $value->position_id }}">
+                                                                                                    <option value="{{ $p->id }}">
                                                                                                         {{ $p->name }}
                                                                                                     </option>
                                                                                                 @else
-                                                                                                    <option value="{{ $value->position_id}}" selected>
+                                                                                                    <option value="{{ $p->id}}" selected>
                                                                                                         {{ $p->name }}
                                                                                                     </option>
                                                                                                 @endif
@@ -287,11 +287,11 @@
                                                                                                 
                                                                                                     @foreach ($listUsers->data as $user)
                                                                                                     @if ($user->id != $value->manager_id)
-                                                                                                        <option value="{{ $value->manager_id}}" >
+                                                                                                        <option value="{{$user->id}}" >
                                                                                                             {{ $user->name }}
                                                                                                         </option>
                                                                                                     @else
-                                                                                                        <option value="{{ $value->manager_id}}" selected>
+                                                                                                        <option value="{{$user->id}}" selected>
                                                                                                             {{ $user->name }}
                                                                                                         </option>
                                                                                                     @endif
@@ -325,18 +325,18 @@
                                                                                             <select class="selectpicker" title="Hình thức làm việc" data-width="100%"
                                                                                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                                                                 data-size="3" name="working_form">
-                                                                                                <option value="{{ $value->working_form }}" >Chính thức</option>
-                                                                                                <option value="{{ $value->working_form }}" >Thử việc</option>
-                                                                                                <option value="{{ $value->working_form }}" >Cộng tác viên</option>
-                                                                                                <option value="{{ $value->working_form }}" >Thực tập sinh</option>
+                                                                                                <option value="Chính thức" >Chính thức</option>
+                                                                                                <option value="Thử việc" >Thử việc</option>
+                                                                                                <option value="Cộng tác viên" >Cộng tác viên</option>
+                                                                                                <option value="Thực tập sinh" >Thực tập sinh</option>
 
                                                                                                 
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="col-sm-6 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Trạng thái">
                                                                                             <select class="selectpicker" title="Trạng thái" name="status">
-                                                                                                <option value="{{ $value->status}}">Đang làm việc</option>
-                                                                                                <option value="{{ $value->status}}">Đã nghỉ việc</option>
+                                                                                                <option value="Đang làm việc">Đang làm việc</option>
+                                                                                                <option value="Đã nghỉ việc">Đã nghỉ việc</option>
                                                                                             </select>
                                                                                         </div>
                                                         
@@ -756,14 +756,14 @@
                                     <input type="text" readonly class="form-control" placeholder="Quỹ lương năm" />
                                 </div>
                                 <div class="col-sm-6 mb-2">
-                                    {{-- <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                    <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
                                         @foreach ($listEquimentPack->data as $eq)
                                             <option value="{{ $eq->id}}">
                                                 {{ $eq->name }}
                                             </option>
                                         @endforeach
-                                    </select> --}}
-                                    <input type="text" readonly placeholder="Gói trang bị" name="equipment_pack_id" class="form-control">
+                                    </select>
+                                    {{-- <input type="text" readonly placeholder="Gói trang bị" name="equipment_pack_id" class="form-control"> --}}
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
