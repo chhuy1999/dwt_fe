@@ -59,7 +59,7 @@
                                                             <td class="text-center">
                                                                 <a href="#" class="text-success"><u>Xem chi
                                                                         tiết</u></a>
-                                                            </td>
+                                                            </td CUỘC HỌPd>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">2</th>

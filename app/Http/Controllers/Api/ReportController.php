@@ -26,7 +26,7 @@ class ReportController extends Controller
             $data = $request->validate([
                 'problem' => 'required',
                 'deadline' => 'required',
-                'departement_id' => 'required',
+                'departement_id' => 'nullable',
             ]);
             $data['user_id'] = session('user')['id'];
             $data['status'] = 0;

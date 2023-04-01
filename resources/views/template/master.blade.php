@@ -553,7 +553,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_date">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" readonly value="{{ time() }}" name="code">
+                                <input hidden type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" readonly value="{{ time() }}" name="code">
+                                <p>Mã cuộc họp: {{ time() }}</p>
                             </div>
 
                         </div>
@@ -567,7 +568,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         </div>
     </div>
 
-    {{-- Tạo cuộc họp --}}
+    {{-- Tham gia cuộc họp --}}
     <div class="modal fade" id="thamGiaCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
