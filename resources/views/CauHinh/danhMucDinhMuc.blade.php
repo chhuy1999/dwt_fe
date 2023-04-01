@@ -61,10 +61,10 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:140px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name }}">{{ $target->name }}</div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name }}">{{ $target->name }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:600px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description }}">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:400px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description }}">
                                                                         {{ $target->description }}
                                                                     </div>
                                                                 </td>

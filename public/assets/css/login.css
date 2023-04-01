@@ -71,7 +71,8 @@ body {
 .login_logo {
     border-radius: var(--border-radius-main);
     object-fit: cover;
-    width: 300px;
+    /* width: 300px; */
+    height: 200px;
 }
 
 .login_title {
