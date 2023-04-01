@@ -147,8 +147,8 @@
                                                                                                 <div class="col-sm-5 mb-2">
                                                                                                     <select class="selectpicker" placeholder="Giới tính" title="Giới tính"
                                                                                                             name="sex">
-                                                                                                            <option value="{{$value->sex }}">Nam</option>
-                                                                                                            <option value="{{$value->sex }}">Nữ</option>
+                                                                                                            <option value="{{$value->sex}}">Nam</option>
+                                                                                                            <option value="{{$value->sex}}">Nữ</option>
                                                                                                         </select>
                                                                                                 </div>
                                                         
