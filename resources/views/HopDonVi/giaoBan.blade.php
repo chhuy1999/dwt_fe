@@ -645,10 +645,13 @@
     <div class="modal fade" id="duyetbienbanhop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 21cm">
             <div class="modal-content">
-                <form>
+                
+                <form action="/giao-ban/{{ $meeting->id }}" method="POST" enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf>
                     <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
                         <div class="d-block text-center mb-3">
-                            <h5 class="modal-title w-100 fs-3">BIÊN BẢN HỌP GIAO BAN</h5>
+                            <h5 class="modal-title w-100 fs-3">BIÊN BẢN HOP GIAO BAN {{ $meeting->type }}</option></h5>
                             <p class="m-0 fs-5 fst-italic">Phòng Marketing</p>
                         </div>
                         <div class="row">
@@ -658,10 +661,10 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</div>
+                                                    <p class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</p>
                                                 </td>
                                                 <td>
-                                                    <div class="fs-5">23/03/2023 09:03 - 23/03/2023 10:03</div>
+                                                    <div name="daterange" class="fs-5">
                                                 </td>
                                             </tr>
                                             <tr>

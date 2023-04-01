@@ -164,7 +164,7 @@ class UsersController extends Controller
             
             $request['role'] = 'user';
             $request['salary_fund'] = '10000';
-            dd($request);
+            // dd($request->manager_id);
             $this->dwtService->updateUser($id, $request);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
