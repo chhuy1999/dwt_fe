@@ -2,7 +2,6 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Biên bản họp Giao Ban')
 @section('header-style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
     <style>
         .mainSection_width-select {
             width: 140px !important;
@@ -1008,7 +1007,6 @@
 @endsection
 @section('footer-script')
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>

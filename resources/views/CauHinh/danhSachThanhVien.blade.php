@@ -303,7 +303,7 @@
                                                                                         </div>
                                                                                         <div class="col-sm-6 mb-2">
                                                                                             <div class="d-flex align-items-center" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị">
-                                                                                                <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                                                                                {{-- <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
                                                                                                     
                                                                                                     @foreach ($listEquimentPack->data as $eq)
                                                                                                     @if ($eq->id != $value->equipment_pack_id)
@@ -316,7 +316,8 @@
                                                                                                         </option>
                                                                                                     @endif
                                                                                                     @endforeach
-                                                                                                </select>
+                                                                                                </select> --}}
+                                                                                                <input type="text" name="equipment_pack_id" value="Gói trang bị" readonly class="form-control">
                                                                                             </div>
                                                                                         </div>
                                                         
@@ -541,118 +542,63 @@
         </div>
     </div>
 
-    <!-- Modal Them Co Cau -->
-    <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
+    <!-- Modal Thêm cơ cấu tổ chức -->
+    <div class="modal fade" id="themCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa cơ cấu tốt chức</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm cơ cấu tổ chức</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Tên đơn vị <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="Digital Marketing">
-                                </div>
+                    <form action="" method="">
+                        @csrf
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" type="text" placeholder="Nhập tên cơ cấu tổ chức">
                             </div>
-                        </div>
 
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Mã đơn vị <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text" value="DMKT">
-                                </div>
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" type="text" placeholder="Nhập mã tổ chức">
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <select class="selectpicker" title="Chọn đơn vị mẹ">
+                                    <option>CTCP Mastertran</option>
+                                    <option>CTCP Thái Bình Hưng Thịnh</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <select class="selectpicker" title="Chọn cấp tổ chức">
+                                    <option>Công ty con</option>
+                                    <option>Chi nhánh</option>
+                                    <option>Văn phòng đại diện</option>
+                                    <option>Văn phòng</option>
+                                    <option>Trung tâm</option>
+                                    <option>Phòng ban</option>
+                                    <option>Nhóm/tổ/đội</option>
+                                    <option>Phân xưởng</option>
+                                    <option>Nhà máy</option>
+                                    <option>Công ty thành viên</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <select class="selectpicker" title="Chọn trưởng đơn vị">
+                                    <option>Nguyễn Ngọc Bảo</option>
+                                    <option>Đặng Nguyễn Lam Mai</option>
+                                    <option>Hồ Thị Hồng Vân</option>
+                                    <option>Nguyễn Thị Ngọc Lan</option>
+                                    <option>Nguyễn Thị Hồng Oanh</option>
+                                    <option>Hà Nguyễn Minh Hiếu</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính">
+                            </div>
+                            <div class="col-sm-12 mb-3">
+                                <textarea name="" id="" class="form-control" placeholder="Nhập chức năng nhiệm vụ"></textarea>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Thuộc đơn vị <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn đơn vị mẹ">
-                                        <option selected>CTCP Mastertran</option>
-                                        <option>CTCP Thái Bình Hưng Thịnh</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Cấp tổ chức <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8 d-flex align-items-center">
-                                    <select class="selectpicker" title="Chọn cấp tổ chức">
-                                        <option selected>Công ty con</option>
-                                        <option>Chi nhánh</option>
-                                        <option>Văn phòng đại diện</option>
-                                        <option>Văn phòng</option>
-                                        <option>Trung tâm</option>
-                                        <option>Phòng ban</option>
-                                        <option>Nhóm/tổ/đội</option>
-                                        <option>Phân xưởng</option>
-                                        <option>Nhà máy</option>
-                                        <option>Công ty thành viên</option>
-                                    </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachCapToChuc">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker" title="Chọn trưởng đơn vị">
-                                        <option selected>Nguyễn Ngọc Bảo</option>
-                                        <option>Đặng Nguyễn Lam Mai</option>
-                                        <option>Hồ Thị Hồng Vân</option>
-                                        <option>Nguyễn Thị Ngọc Lan</option>
-                                        <option>Nguyễn Thị Hồng Oanh</option>
-                                        <option>Hà Nguyễn Minh Hiếu</option>
-                                    </select>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-4">
-                                    <div class="modal_body-title">Trụ sở chính <span class="text-danger">*</span></div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="text"
-                                        value="219 Trung Kính, Yên Hòa, Cầu Giấy, Hà Nội">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng<br> nhiệm vụ<span class="text-danger">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text"
-                                        value="Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng.">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
@@ -753,11 +699,11 @@
                                 <div class="col-sm-6 mb-2">
                                     <select id="onchangeDonViCongTac" class="selectpicker" required data-live-search="true" name="departement_id"
                                         data-width="100%" title="Đơn vị công tác *"
-                                        data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                        data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                         @foreach ($listDepartments->data as $dep)
                                             <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                         @endforeach
-                                        <option value="themDonViCongTac" class="text-danger">+ Thêm mới</option>
+                                        <option value="themCoCauToChuc" class="text-danger bg-white">+ Thêm mới</option>
                                     </select>
                                 </div>
 
@@ -810,15 +756,14 @@
                                     <input type="text" readonly class="form-control" placeholder="Quỹ lương năm" />
                                 </div>
                                 <div class="col-sm-6 mb-2">
-                                    <div class="d-flex align-items-center">
-                                        <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
-                                            @foreach ($listEquimentPack->data as $eq)
-                                                <option value="{{ $eq->id}}">
-                                                    {{ $eq->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    {{-- <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                        @foreach ($listEquimentPack->data as $eq)
+                                            <option value="{{ $eq->id}}">
+                                                {{ $eq->name }}
+                                            </option>
+                                        @endforeach
+                                    </select> --}}
+                                    <input type="text" readonly placeholder="Gói trang bị" name="equipment_pack_id" class="form-control">
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
@@ -2575,10 +2520,10 @@
     <script>
         $(document).ready(function() {
             $.datetimepicker.setLocale('vi');
-            $('#createUser').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
+            // $('#createUser').datetimepicker({
+            //     format: 'd/m/Y',
+            //     timepicker: false,
+            // });
             $('#suaCreateUser').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
@@ -2586,8 +2531,8 @@
 
             $('#onchangeDonViCongTac').change(function() {
                 var opval = $(this).val();
-                if (opval == "themDonViCongTac") {
-                    $('#themDonViCongTac').modal("show");
+                if (opval == "themCoCauToChuc") {
+                    $('#themCoCauToChuc').modal("show");
                     $('#themThanhVien').modal("hide");
                 }
             });
@@ -2607,6 +2552,22 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#createUser').daterangepicker({
+                singleDatePicker: true,
+                timePicker: false,
+                startDate: new Date(),
+                locale: {
+                    format: 'DD/MM/YYYY '
+                }
+            });
+            $('input[name="dob"]').val('');
+            $('input[name="dob"]').attr("placeholder", "Ngày sinh");
+        });
+    </script>
+
     <script>
         function editImg(value) {
             var path = value.value;

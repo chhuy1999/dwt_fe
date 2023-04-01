@@ -2,7 +2,6 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Giao việc')
 @section('header-style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
 @endsection
 @section('content')
     @include('template.sidebar.sidebarGiaoViec.sidebarLeft')
@@ -27,19 +26,7 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">Giao Việc</h5>
-                        <div class="mainSection_card">
-                            <div class="mainSection_content">
-                                <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong></div>
-                            </div>
-                            <div class="mainSection_content">
-                                <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
-                            </div>
-                        </div>
-                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
-                        </div>
+                        @include('template.components.sectionCard')
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -302,8 +289,8 @@
                                                                                 style="max-width:180px;"
                                                                                 data-bs-toggle="tooltip"
                                                                                 data-bs-placement="top"
-                                                                                title="{{ $assignedTask?->position->name ?? '' }}">
-                                                                                {{ $assignedTask?->position->name ?? '' }}
+                                                                                title="Nguoi lien quan">
+
                                                                             </div>
 
                                                                         </td>
@@ -670,7 +657,6 @@
 @section('footer-script')
 
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}">
     </script>
     <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
