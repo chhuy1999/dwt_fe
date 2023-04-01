@@ -553,8 +553,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_date">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input hidden type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" readonly value="{{ time() }}" name="code">
-                                <p>Mã cuộc họp: {{ time() }}</p>
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}" name="code">
+                                {{-- <p>Mã cuộc họp: {{ time() }}</p> --}}
                             </div>
 
                         </div>
