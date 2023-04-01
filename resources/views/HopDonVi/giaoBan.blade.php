@@ -147,7 +147,7 @@
                                                             </div>
                                                             {{-- <div id="date_time-hopgiaoban"
                                                                 class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                                                     class="form-control" type="text">
                                                                 <div class="datetimepicker_separate">-</div>
                                                                 <input id="datetimepicker2" value="<?php //echo date('d/m/Y h:m');
@@ -203,8 +203,8 @@
                                             <div class="mb-2 d-flex justify-content-between align-items-center">
                                                 <div class="card-title">Vấn đề tiếp nhận</div>
                                                 <div class="alert alert-warning border-warning m-0" style="padding: 0 6px">
-                                                    <i class="bi bi-exclamation-triangle pe-2"></i><strong>Mã cuộc họp: {{$meeting->code}} </strong>
-                                                    
+                                                    <i class="bi bi-exclamation-triangle pe-2"></i><strong>Mã cuộc họp: {{ $meeting->code }} </strong>
+
                                                 </div>
                                             </div>
 
@@ -289,20 +289,22 @@
                                                     @method('PUT')
                                                     @csrf
                                                     <div class="upload_wrapper-items">
-                                                        @if ($meeting -> files && count(explode(',', $meeting -> files)))
+                                                        @if ($meeting->files && count(explode(',', $meeting->files)))
                                                             <ul>
-                                                                @foreach (explode(',', $meeting ->files) as $file)
-                                                                    <li>
-                                                                        <span class="fs-5">
-                                                                            <a href="{{ $file }}" target="_black">
-                                                                                <i class="bi bi-link-45deg"></i> {{ $file }}
-                                                                            </a>
-                                                                        </span>
-                                                                        <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
-                                                                        <span class="modal_upload-remote" onclick="removeUploaded(event)">
-                                                                            <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                                        </span>
-                                                                    </li>
+                                                                @foreach (explode(',', $meeting->files) as $file)
+                                                                    @if (strlen($file))
+                                                                        <li>
+                                                                            <span class="fs-5">
+                                                                                <a href="{{ $file }}" target="_black">
+                                                                                    <i class="bi bi-link-45deg"></i> {{ $file }}
+                                                                                </a>
+                                                                            </span>
+                                                                            <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
+                                                                            <span class="modal_upload-remote" onclick="removeUploaded(event)">
+                                                                                <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            </span>
+                                                                        </li>
+                                                                    @endif
                                                                 @endforeach
                                                             </ul>
                                                         @endif
@@ -356,111 +358,111 @@
                                                                         <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
                                                                     </div> --}}
 
-                                                            </div>
-                                                        </th>
-                                                        <th class="text-nowrap" style="width: 8%">
-                                                            Phân loại
-                                                        </th>
-                                                        <th class="text-nowrap" style="width: 10%">Người nêu</th>
-                                                        <th class="text-nowrap" style="width: 20%">Nguyên nhân</th>
-                                                        <th class="text-nowrap" style="width: 21%">
-                                                            Hướng giải quyết
-                                                        </th>
-                                                        <th class="text-nowrap" style="width: 4%">
-                                                            Người đảm nhiệm
-                                                        </th>
-                                                        <th class="text-nowrap" style="width: 6%">Thời hạn</th>
-                                                        <th colspan="2"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($handledReports as $item)
-                                                        <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center justify-content-center">
-                                                                    {{ $loop->iteration }}
                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                                    {{ $item->problem }}
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
-                                                                        {{ $item->user->name ?? '' }}
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                                    {{ $item->reason }}
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                                    {{ $item->solution }}
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    @foreach ($item->pics as $u)
-                                                                        {{ $u->name }},
-                                                                    @endforeach
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    {{ date('d/m', strtotime($item->deadline)) }}
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="d-flex align-items-center justify-content-center">
-                                                                    <div class="circle_tracking-wrapper">
-                                                                        <div class="circle_tracking opacity-75 bg-danger">
-                                                                        </div>
-                                                                        <div class="circle_tracking opacity-75 bg-success">
-                                                                        </div>
-                                                                        <div class="circle_tracking opacity-75 bg-success">
-                                                                        </div>
-                                                                        <div class="circle_tracking opacity-75 bg-success">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
-                                                                </div>
-                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                    <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh" data-repeater-delete>
-                                                                            <i class="bi bi-arrow-right-square-fill"></i>
-                                                                            Chuyển thành nhiệm vụ phát sinh
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                                                            Sửa
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                                            Xóa
-                                                                        </a>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </td>
+                                                            </th>
+                                                            <th class="text-nowrap" style="width: 8%">
+                                                                Phân loại
+                                                            </th>
+                                                            <th class="text-nowrap" style="width: 10%">Người nêu</th>
+                                                            <th class="text-nowrap" style="width: 20%">Nguyên nhân</th>
+                                                            <th class="text-nowrap" style="width: 21%">
+                                                                Hướng giải quyết
+                                                            </th>
+                                                            <th class="text-nowrap" style="width: 4%">
+                                                                Người đảm nhiệm
+                                                            </th>
+                                                            <th class="text-nowrap" style="width: 6%">Thời hạn</th>
+                                                            <th colspan="2"></th>
                                                         </tr>
-                                                    @endforeach
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($handledReports as $item)
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center justify-content-center">
+                                                                        {{ $loop->iteration }}
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                        {{ $item->problem }}
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
+                                                                            {{ $item->user->name ?? '' }}
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                        {{ $item->reason }}
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                        {{ $item->solution }}
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        @foreach ($item->pics as $u)
+                                                                            {{ $u->name }},
+                                                                        @endforeach
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        {{ date('d/m', strtotime($item->deadline)) }}
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center justify-content-center">
+                                                                        <div class="circle_tracking-wrapper">
+                                                                            <div class="circle_tracking opacity-75 bg-danger">
+                                                                            </div>
+                                                                            <div class="circle_tracking opacity-75 bg-success">
+                                                                            </div>
+                                                                            <div class="circle_tracking opacity-75 bg-success">
+                                                                            </div>
+                                                                            <div class="circle_tracking opacity-75 bg-success">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                                    </div>
+                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                        <li>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh" data-repeater-delete>
+                                                                                <i class="bi bi-arrow-right-square-fill"></i>
+                                                                                Chuyển thành nhiệm vụ phát sinh
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                Sửa
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                Xóa
+                                                                            </a>
+                                                                        </li>
+
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
 
 
 
@@ -647,13 +649,14 @@
     <div class="modal fade" id="duyetbienbanhop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 21cm">
             <div class="modal-content">
-                
+
                 <form action="/giao-ban/{{ $meeting->id }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf>
                     <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
                         <div class="d-block text-center mb-3">
-                            <h5 class="modal-title w-100 fs-3">BIÊN BẢN HOP GIAO BAN {{ $meeting->type }}</option></h5>
+                            <h5 class="modal-title w-100 fs-3">BIÊN BẢN HOP GIAO BAN {{ $meeting->type }}</option>
+                            </h5>
                             <p class="m-0 fs-5 fst-italic">Phòng Marketing</p>
                         </div>
                         <div class="row">
@@ -717,7 +720,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-    
+
                             </div>
                         </div>
                         <div class="row">
@@ -830,7 +833,7 @@
                                 <div class="d-flex align-items-center  justify-content-center">
                                     <p class="modal_body-title m-0">Chúng tôi xác nhận nội dung cuộc hop</p>
                                 </div>
-    
+
                             </div>
                             <div class="col-md-4 d-flex flex-column justify-content-between">
                                 <div class="d-flex align-items-center justify-content-center">
@@ -1213,6 +1216,10 @@
                                                                         ${item.note}
                                                                     </p>
                                                                 </div>
+
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <p class="fs-6">${moment(item.created_at).format('DD/MM/YYYY HH:mm')}</p>
                                                             </div>
 
                                                         </div>
