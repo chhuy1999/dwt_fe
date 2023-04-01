@@ -57,7 +57,7 @@ class UsersController extends Controller
     {
         try {
          
-            dd($request->all());
+            // dd($request->all());
             $data = $request->validate([
                 'name' => 'required',
                 'email' => 'nullable',

@@ -763,7 +763,7 @@
                                         data-width="100%" title="Đơn vị công tác *"
                                         data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                         @foreach ($listDepartments->data as $dep)
-                                            <option value="{{ $value->departement_id }}">{{ $dep->name }}</option>
+                                            <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                         @endforeach
                                         <option value="themDonViCongTac" class="text-danger">+ Thêm mới</option>
                                     </select>
@@ -775,7 +775,7 @@
                                             data-width="100%" data-live-search="true"
                                             data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                             @foreach ($listPositionLevel->data as $pl)
-                                                <option value="{{ $value->position_level_id }}">{{ $pl->name }}</option>
+                                                <option value="{{ $pl->id }}">{{ $pl->name }}</option>
                                             @endforeach
                                             <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
                                         </select>
@@ -795,7 +795,7 @@
                                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                 data-size="3">
                                                 @foreach ($listPositions->data as $p)
-                                                    <option value="{{ $value->position_id }}">{{ $p->name }}</option>
+                                                    <option value="{{ $p->id}}">{{ $p->name }}</option>
                                                 @endforeach
                                             </select>
                                             {{-- <div class="modal_list-more" data-bs-toggle="modal"
@@ -810,7 +810,7 @@
                                 <div class="col-sm-6 mb-2">
                                     <select class="selectpicker" title="Quản lý trực tiếp" data-live-search="true" name="manager_id">
                                         @foreach ($listUsers->data as $user)
-                                            <option value="{{ $value->manager_id}}">{{ $user->name }}</option>
+                                            <option value="{{ $user->id}}">{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -821,7 +821,7 @@
                                     <div class="d-flex align-items-center">
                                         <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
                                             @foreach ($listEquimentPack->data as $eq)
-                                                <option value="{{ $value->equipment_pack_id}}">
+                                                <option value="{{ $eq->id}}">
                                                     {{ $eq->name }}
                                                 </option>
                                             @endforeach
