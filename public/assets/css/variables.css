@@ -198,9 +198,18 @@ option:hover {
     animation: heartbeat 3.5s linear infinite alternate;
 }
 
+.style_scroll::-webkit-scrollbar-track {
+    background-color: transparent;
+}
 
-.form-control::-webkit-credentials-auto-fill-button {
-    visibility: hidden;
+.style_scroll::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.style_scroll::-webkit-scrollbar {
+    width: 4px;
+}
+.style_scroll:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 @keyframes spotlight {

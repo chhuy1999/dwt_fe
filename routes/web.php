@@ -38,7 +38,9 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 // Trang chủ
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth.role:user,admin,manager');
-
+Route::get('/test', function () {
+    return view('dashboard_backup');
+});
 // Cấu hình
 // Route::get('ho-so-don-vi', function () {
 //     return view('CauHinh.hoSoDonVi');

@@ -86,17 +86,17 @@
             <div class="main">
                 <div class="container-fluid">
                     <div class="mainSection_heading d-flex align-items-center justify-content-between">
-                        <div class="mainSection_card position-relative">
+                        <div class="mainSection_card position-relative" style="flex:1">
                             <div class="mainSection_content row">
-                                <div class="col-sm-4">Đơn vị: </div>
-                                <div class="col-sm-8">
-                                    <strong>Kế toán</strong>
+                                <div class="col-sm-2">
+                                    <div class="text-nowrap">Đơn vị: </div>
                                 </div>
-                            </div>
-                            <div class="mainSection_content row">
-                                <div class="col-sm-4">Chủ trì: </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                <div class="col-sm-10">
+                                    <strong class="text-nowrap">{{ session('user')['departement']['name'] ?? 'Chưa có đơn vị' }}</strong>
+                                </div>
+                                <div class="col-sm-2">Chủ trì: </div>
+                                <div class="col-sm-10">
+                                    <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                         @foreach ($listUsers->data as $value)
                                             <option value="{{ $value->name }}">{{ $value->name }}</option>
                                         @endforeach
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center" style="flex:1">
                             <div>
                                 <h5 class="mainSection_heading-title">
                                     Biên bản họp
@@ -138,63 +138,59 @@
                                                 <div class="card-title">Tổng quan</div>
                                             </div>
                                             <div class="form-control" style="padding: 0.5rem 0.75rem;">
-                                                <div class="row">
-                                                    <div class="col-md-7">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
+                                                <form action="" method="">
+                                                    @csrf
+                                                    <div class="row">
+                                                   
+                                                        <div class="col-md-7">
+                                                            <div class="d-flex align-items-center mb-3">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
+                                                                </div>
+                                                                <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                             </div>
-                                                            {{-- <div id="date_time-hopgiaoban"
-                                                                class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
-                                                                    class="form-control" type="text">
-                                                                <div class="datetimepicker_separate">-</div>
-                                                                <input id="datetimepicker2" value="<?php //echo date('d/m/Y h:m');
-                                                                ?>"
-                                                                    class="form-control" type="text">
-                                                            </div> --}}
-                                                            <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
-                                                        </div>
-                                                        <div class="d-flex align-items-start">
-                                                            <div class="d-flex">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
-                                                            </div>
-                                                            <div style="flex:1">
-                                                                <textarea name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
+                                                            <div class="d-flex align-items-start">
+                                                                <div class="d-flex">
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
+                                                                </div>
+                                                                <div style="flex:1">
+                                                                    <textarea name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="mb-3 d-flex align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
+                                                        <div class="col-md-5">
+                                                            <div class="mb-3 d-flex align-items-center justify-content-between">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
+                                                                </div>
+                                                                <div style="flex:1">
+                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} Thư ký" data-live-search-placeholder="Tìm kiếm...">
+                                                                        @foreach ($listUsers->data as $value)
+                                                                            <option value="{{ $value->id }}">
+                                                                                {{ $value->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                            <div style="flex:1">
-                                                                <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} Thư ký" data-live-search-placeholder="Tìm kiếm...">
-                                                                    @foreach ($listUsers->data as $value)
-                                                                        <option value="{{ $value->id }}">
-                                                                            {{ $value->name }}</option>
-                                                                    @endforeach
-                                                                </select>
+                                                            <div class="mt-3 d-flex align-items-center justify-content-between">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
+                                                                </div>
+                                                                <div style="flex:1">
+                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm...">
+                                                                        @foreach ($listUsers->data as $value)
+                                                                            <option value="{{ $value->name }}">
+                                                                                {{ $value->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="mt-3 d-flex align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
-                                                            </div>
-                                                            <div style="flex:1">
-                                                                <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm...">
-                                                                    @foreach ($listUsers->data as $value)
-                                                                        <option value="{{ $value->name }}">
-                                                                            {{ $value->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
 
+                                                        </div>
+                                                        
                                                     </div>
-
-                                                </div>
+                                                    <div class="d-flex align-items-center justify-content-end mt-3"><button type="submit" class="btn btn-outline-danger">Xác nhận</button></div>
+                                                </form>
 
                                             </div>
                                         </div>

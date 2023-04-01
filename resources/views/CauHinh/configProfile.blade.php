@@ -1996,9 +1996,12 @@
         oLanguage: {
             sLengthMenu: 'Hiển thị _MENU_ bản ghi',
         },
-        dom: '<"d-flex mb-3 justify-content-end"f<"card-title-wrapper">>rt<"dataTables_bottom  justify-content-end"p>',
+        dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
     });
-    $('div.card-title-wrapper').html(`
+    $('div.card-title-wrapper-left').html(`
+        <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
+    `);
+    $('div.card-title-wrapper-right').html(`
         <div class="main_search d-flex ms-3">
             <button class="btn btn-danger d-block" data-bs-toggle="modal"
             data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
