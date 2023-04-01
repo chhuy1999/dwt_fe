@@ -98,12 +98,12 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->departement->name }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->departement->name ?? '' }}">
                                                                         {{ $targetDetail->departement->name ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->position->name }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->position->name ?? '' }}">
                                                                         {{ $targetDetail->position->name ?? '' }}
                                                                     </div>
                                                                 </td>
@@ -160,7 +160,7 @@
                                                                                     </div>
 
                                                                                     <div class="col-sm-12 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Thuộc định mức">
-                                                                                        <select name="target_id" class="selectpicker" title="Chọn định mức">
+                                                                                        <select name="target_id" class="selectpicker" title="Chọn định mức" data-size="5" data-live-search="true">
                                                                                             @foreach ($listTargets->data as $target)
                                                                                                 @if ($targetDetail->target && $targetDetail->target->id == $target->id)
                                                                                                     <option value="{{ $target->id }}" selected>
@@ -213,7 +213,7 @@
                                                                                     </div>
                                                                                     <div class="col-sm-12" data-bs-toggle="tooltip" data-bs-placement="top" title="Phòng/Ban">
 
-                                                                                        <select name="departement_id" class="selectpicker" title="Chọn phòng/ban">
+                                                                                        <select name="departement_id" class="selectpicker" title="Chọn phòng/ban" data-size="5" data-live-search="true">
                                                                                             @foreach ($listDepartments->data as $departement)
                                                                                                 @if ($targetDetail->departement && $targetDetail->departement->id == $departement->id)
                                                                                                     <option value="{{ $departement->id }}" selected>
