@@ -24,7 +24,7 @@
                 <div class="login_content">
                     <div class="login_header">
                         <a href="/">
-                            <img src="{{ asset('/assets/img/logo-thaihung-1.jpg') }}" alt="DWT"
+                            <img src="{{ asset('/assets/img/logo.jpg') }}" alt="logo"
                                 class="login_logo" />
                         </a>
                         <!-- <h1 class="login_title">Đăng nhập hệ thống DWT</h1> -->

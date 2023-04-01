@@ -50,7 +50,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             <div class="container-fluid d-flex align-items-center justify-content-between">
                 <div class="header_logo">
                     <a href="/" class="navbar-brand d-flex align-items-center scrollto me-auto me-lg-0">
-                        <img class="header_logo" src="{{ asset('assets/img/logo-thaihung-1.jpg') }}" />
+                        <img class="header_logo" src="{{ asset('assets/img/logo-notext.jpg') }}" />
                     </a>
                 </div>
 
