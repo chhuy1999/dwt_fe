@@ -1454,7 +1454,7 @@
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/bao-cao-cong-viec/{{ $task->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/bao-cao-cong-viec/{{ $reportTask->id }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="reportedDate" value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
                 @csrf
                 <div class="modal-body">
