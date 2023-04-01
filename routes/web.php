@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\PositionLevelController;
 use App\Http\Controllers\Api\EquimentPackController;
 use App\Http\Controllers\Api\MeetingController;
 use App\Http\Controllers\Api\ReportController;
+use App\Http\Controllers\Api\ReportTaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -119,7 +120,11 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::post('bao-cao-cong-viec/{id}', [TargetLogController::class, 'store']);
 });
-
+//report-tasks
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
+    Route::post('nhiem-vu-phat-sinh', [ReportTaskController::class, 'store']);
+    Route::post('nhiem-vu-phat-sinh/bao-cao/{id}', [ReportTaskController::class, 'reportTask']);
+});
 
 
 

@@ -802,4 +802,27 @@ class DwtServices
         return $dataObj->data;
     }
 
+    public function createReportTask($data) {
+        $url = $this->url . '/report-tasks';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function searchReportTasks($userId = null) {
+        $url = $this->url . '/report-tasks';
+        $response = $this->client->get($url, [
+            'user_id' => $userId
+        ]);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 }
