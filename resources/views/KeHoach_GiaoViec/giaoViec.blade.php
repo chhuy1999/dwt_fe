@@ -88,7 +88,7 @@
                                         <div class="col-md-5 overflow-auto" style="height: 276px">
                                             @foreach ($listTargets->data as $target)
                                                 <div class="body_content-wrapper" id="body_content-{{ $target->id }}">
-                                                    <form action="/giao-viec" method="POST">
+                                                    <form action="/giao-viec" method="POST" id="formTarget">
                                                         @csrf
                                                         <input type="hidden" name="target_id" value="{{ $target->id }}">
                                                         <div class="card-title mb-2">
@@ -168,8 +168,9 @@
 
                                                         <div class="justify-content-end d-flex">
                                                             <div class="action_btn">
-                                                                <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                                <button type="submit" class="btn btn-danger px-4">Giao</button>
+                                                                <input class="btn btn-outline-danger px-4 me-3" type="reset" value="Hủy" />
+                                                                <button type="submit"
+                                                                    class="btn btn-danger px-4">Giao</button>
                                                             </div>
                                                         </div>
                                                     </form>

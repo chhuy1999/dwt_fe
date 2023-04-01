@@ -59,7 +59,8 @@ a {
 }
 
 input[readonly],
-input[readonly]:focus {
+input[readonly]:focus,
+select[disabled] {
     background-color: #f8f9fa;
     cursor: not-allowed;
 }
@@ -110,7 +111,7 @@ option:hover {
     border: 1px solid var(--primary-color);
 }
 .modal-dialog {
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 .dropdown-item.active,
