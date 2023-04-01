@@ -34,11 +34,15 @@ class DashboardController extends Controller
 
             $kpiKeys = $this->dwtServices->searchKpiKeys("", 1, 100);
             $kpiKeys = $kpiKeys->data;
+
+            $reportTasks = $this->dwtServices->searchReportTasks($user['id']);
+
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
                 ->with('searchYear', $currentYear)
                 ->with('listAssignedTasks', $listAssignedTasks)
                 ->with('myAssignedTasks', $myAssignedTasks)
+                ->with('reportTasks', $reportTasks)
                 ->with('kpiKeys', $kpiKeys);
         } catch (Exception $e) {
             dd($e);
