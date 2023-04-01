@@ -19,7 +19,7 @@ class ReportTaskController extends Controller
 
     public function store(Request $request)
     {
-        
+
         try {
             $data = $request->validate([
                 'name' => 'required',
@@ -34,6 +34,16 @@ class ReportTaskController extends Controller
             $result = $this->dwtService->createReportTask($data);
             return back()->with('success', 'Tạo nhiệm vụ thành công');
         } catch (Exception $e) {
+            dump($e->getMessage());
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function reportTask(Request $request) {
+        try {
+            dd($request->all());
+
+        }catch(Exception $e) {
             dump($e->getMessage());
             return back()->with('error', $e->getMessage());
         }

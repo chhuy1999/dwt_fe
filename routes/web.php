@@ -123,6 +123,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 //report-tasks
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::post('nhiem-vu-phat-sinh', [ReportTaskController::class, 'store']);
+    Route::post('nhiem-vu-phat-sinh/bao-cao/{id}', [ReportTaskController::class, 'reportTask']);
 });
 
 
