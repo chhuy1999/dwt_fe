@@ -171,7 +171,7 @@
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
+                            <input id="thismonth" class="form-control" type="text" />
                         </div>
                     </div>
 

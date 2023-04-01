@@ -19,7 +19,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -28,6 +29,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     <!-- Plugins -->
     <link href="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
 
     {{-- toastify --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -87,10 +89,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         </a>
                                         <ul class="header_more">
                                             <li class="header_more-item">
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#taoCuocHop" class="header_more-link">Tạo cuộc họp</a>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#taoCuocHop"
+                                                    class="header_more-link">Tạo cuộc họp</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia cuộc họp</a>
+                                                <a href="" data-bs-toggle="modal"
+                                                    data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia
+                                                    cuộc họp</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -200,16 +205,20 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <a href="ho-so-don-vi" class="header_more-link">Cơ cấu đơn vị</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-sach-vi-tri" class="header_more-link">Danh sách vị trí</a>
+                                                <a href="danh-sach-vi-tri" class="header_more-link">Danh sách vị
+                                                    trí</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-sach-cap-to-chuc" class="header_more-link">Danh sách cấp tổ chức</a>
+                                                <a href="danh-sach-cap-to-chuc" class="header_more-link">Danh sách cấp
+                                                    tổ chức</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-sach-cap-nhan-su" class="header_more-link">Danh sách cấp nhân sự</a>
+                                                <a href="danh-sach-cap-nhan-su" class="header_more-link">Danh sách cấp
+                                                    nhân sự</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-goi-trang-bi" class="header_more-link">Danh mục gói trang bị</a>
+                                                <a href="danh-muc-goi-trang-bi" class="header_more-link">Danh mục gói
+                                                    trang bị</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -219,7 +228,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         </a>
                                         <ul class="header_more">
                                             <li class="header_more-item">
-                                                <a href="danh-sach-thanh-vien" class="header_more-link">Danh sách thành viên</a>
+                                                <a href="danh-sach-thanh-vien" class="header_more-link">Danh sách
+                                                    thành viên</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -232,16 +242,20 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         </a>
                                         <ul class="header_more">
                                             <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh mục định mức</a>
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh mục định
+                                                    mức</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-nhiem-vu" class="header_more-link">Danh mục nhiệm vụ</a>
+                                                <a href="danh-muc-nhiem-vu" class="header_more-link">Danh mục nhiệm
+                                                    vụ</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-chi-so-key" class="header_more-link">Danh mục chỉ số key</a>
+                                                <a href="danh-muc-chi-so-key" class="header_more-link">Danh mục chỉ số
+                                                    key</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-don-vi-tinh" class="header_more-link">Danh mục đơn vị tính</a>
+                                                <a href="danh-muc-don-vi-tinh" class="header_more-link">Danh mục đơn
+                                                    vị tính</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -263,10 +277,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         </a>
                                         <ul class="header_more">
                                             <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách key chart</a>
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách key
+                                                    chart</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách chart</a>
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách
+                                                    chart</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -346,10 +362,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
                 <div class="header_actions-wrapper d-flex align-items-center dropdown">
                     <div class="header_actions-chat">
-                        <span class="header_icons" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer" id="dropdownActions">
+                        <span class="header_icons" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="cursor: pointer" id="dropdownActions">
                             <i class="bi bi-question-circle"></i>
                         </span>
-                        <ul class="dropdown-menu header_actions-notification-list p-0" aria-labelledby="dropdownActions">
+                        <ul class="dropdown-menu header_actions-notification-list p-0"
+                            aria-labelledby="dropdownActions">
                             <div class="header_actions-notification-heading bg-light">Hỗ trợ</div>
                             <li class="header_actions-notification-item">
                                 <a class="dropdown-item" href="thong-tin-ca-nhan">
@@ -384,10 +402,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         </ul>
                     </div>
                     <div class="header_actions-notification">
-                        <span class="header_icons" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer" id="dropdownNotification">
+                        <span class="header_icons" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="cursor: pointer" id="dropdownNotification">
                             <i class="bi bi-bell"></i>
                         </span>
-                        <ul class="dropdown-menu header_actions-notification-list" aria-labelledby="dropdownNotification">
+                        <ul class="dropdown-menu header_actions-notification-list"
+                            aria-labelledby="dropdownNotification">
                             <div class="header_actions-notification-heading bg-light">Thông báo</div>
                             <li class="header_actions-notification-item">
                                 <a class="dropdown-item" href="thong-tin-ca-nhan">
@@ -422,7 +442,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         </ul>
                     </div>
                     <div class="header_user dropdown">
-                        <button class="dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <img class="header_user-img" src="{{ asset('assets/img/avatar.jpeg') }}" />
                         </button>
                         <ul class="dropdown-menu header_user-list" aria-labelledby="dropdownUser">
@@ -474,21 +495,26 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-9 mb-3">
-                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Họ và tên" class="form-control form-control-plaintext" readonly id="staticEmail" style="text-indent: 8px" value="{{ session('user')['name'] }}">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Họ và tên" class="form-control form-control-plaintext" readonly
+                                    id="staticEmail" style="text-indent: 8px" value="{{ session('user')['name'] }}">
                             </div>
                             <div class="col-sm-3 mb-3 position-relative">
-                                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Giờ tạo" value="<?php echo date('H:i'); ?>" readonly class="form-control" type="text" />
+                                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Giờ tạo"
+                                    value="<?php echo date('H:i'); ?>" readonly class="form-control" type="text" />
                                 <i class="bi bi-alarm style_pickdate-two"></i>
                             </div>
                             <div class="col-sm-9 mb-3">
                                 <div data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
-                                    <select class="form-select" readonly title="Vị trí" id="report-dp" name="departement_id">
+                                    <select class="form-select" readonly title="Vị trí" id="report-dp"
+                                        name="departement_id">
 
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-3 mb-3 position-relative">
-                                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Thời gian" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text" />
+                                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Thời gian" readonly
+                                    value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text" />
                                 <i class="bi bi-calendar-plus style_pickdate-two"></i>
                             </div>
                             <div class="col-sm-12 mb-3">
@@ -501,7 +527,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </select>
                             </div>
                             <div class="col-sm-5 mb-3 position-relative">
-                                <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" name="deadline" />
+                                <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control"
+                                    type="text" name="deadline" />
                                 <i class="bi bi-calendar-plus style_pickdate-two"></i>
                             </div>
                         </div>
@@ -528,7 +555,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-9 mb-3">
-                                <input type="text" class="form-control" placeholder="Tên cuộc họp" name="title">
+                                <input type="text" class="form-control" placeholder="Tên cuộc họp"
+                                    name="title">
                             </div>
                             <div class="col-sm-3 mb-3">
                                 <select class="selectpicker" data-size="5" title="Loại cuộc họp" name="type">
@@ -540,20 +568,26 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="form-select" data-size="5" title="Đơn vị" id="meet-dp-list" name="departement_id">
+                                <select class="form-select" data-size="5" title="Đơn vị" id="meet-dp-list"
+                                    name="departement_id">
 
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="form-select" data-size="5" title="Chủ trì" name="leader_id" id="user-select">
+                                <select class="form-select" data-size="5" title="Chủ trì" name="leader_id"
+                                    id="user-select">
 
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_date">
+                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Mã cuộc họp" class="form-control"
+                                    placeholder="Thời gian" name="start_date">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}" name="code">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}"
+                                    name="code">
                                 {{-- <p>Mã cuộc họp: {{ time() }}</p> --}}
                             </div>
 
@@ -569,7 +603,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     </div>
 
     {{-- Tham gia cuộc họp --}}
-    <div class="modal fade" id="thamGiaCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="thamGiaCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -580,7 +615,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12 mb-3">
-                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Nhập mã cuộc họp" id="meetCode">
+                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Mã cuộc họp" class="form-control" placeholder="Nhập mã cuộc họp"
+                                id="meetCode">
                         </div>
                     </div>
                 </div>
@@ -598,8 +635,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <script type="text/javascript" src="{{ asset('/assets/js/style.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript"
+        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
+        <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
 
     @yield('footer-script')
     <script>
@@ -677,18 +717,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     </script>
-    <script>
-        $(document).ready(function() {
-            // $.datetimepicker.setLocale('vi');
-            $('#thismonth').datetimepicker({
-                format: 'H:i - d/m/Y',
-                timepicker: true,
-                useCurrent: false,
-                startDate: new Date,
-                autoclose: true,
-            });
-        });
-    </script>
+    
     {{-- show toastify --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
@@ -757,7 +786,19 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             });
         });
     </script>
-
+    <script>
+        $(document).ready(function() {
+            
+            $('#thismonth').daterangepicker({
+                singleDatePicker: true,
+                timePicker: true,
+                startDate: new Date(),
+                locale: {
+                    format: 'H:mm - DD/MM/YYYY '
+                }
+            });
+        });
+    </script>
 
 </body>
 
