@@ -2,7 +2,7 @@
 <?php require_once($template_path.'header/header-master.php'); ?>
 <!--index page start-->
 
-<?php 
+<?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 ?>
 
@@ -23,13 +23,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
                             <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
-                        
+
                     </div>
 
                     <div class="row">
@@ -38,7 +38,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="card-title">Tổng quan</div>
-                                        
+
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-6">
@@ -74,7 +74,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                     <div class="col-md-6 d-flex">
                                                         <div style="padding-right: 18px" for="staticEmail" class="col-form-label"><i class="bi bi-person-workspace"></i> Chủ trì</div>
                                                         <select class="selectpicker" multiple data-actions-box="true"
-                                                        data-width="73%" data-live-search="true" 
+                                                        data-width="73%" data-live-search="true"
                                                         title="Chọn người chủ trì..."
                                                         data-select-all-text="Chọn tất cả"
                                                         data-deselect-all-text="Bỏ chọn"
@@ -91,7 +91,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                     <div class="col-md-6 d-flex justify-content-start">
                                                         <label style="padding-right: 5px" for="staticEmail" class="col-form-label"><i class="bi bi-vector-pen"></i> Thư ký</label>
                                                         <select class="selectpicker" multiple data-actions-box="true"
-                                                        data-width="75%" data-live-search="true" 
+                                                        data-width="75%" data-live-search="true"
                                                         title="Chọn thư ký..."
                                                         data-select-all-text="Chọn tất cả"
                                                         data-deselect-all-text="Bỏ chọn"
@@ -110,12 +110,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="row mb-3 mt-3">
                                                     <div class="col-md-6 d-flex">
                                                         <label style="padding-right: 5px" for="staticEmail" class="col-form-label"><i class="bi bi-person-add"></i> Tham gia</label>
                                                         <select class="selectpicker" multiple data-actions-box="true"
-                                                        data-width="73%" data-live-search="true" 
+                                                        data-width="73%" data-live-search="true"
                                                         title="Chọn thành viên..."
                                                         data-select-all-text="Chọn tất cả"
                                                         data-deselect-all-text="Bỏ chọn"
@@ -136,7 +136,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                     <div class="col-md-6 d-flex  justify-content-start">
                                                         <label style="padding-right: 12px" for="staticEmail" class="col-form-label"><i class="bi bi-person-dash"></i> Vắng </label>
                                                         <select class="selectpicker" multiple data-actions-box="true"
-                                                        data-width="75%" data-live-search="true" 
+                                                        data-width="75%" data-live-search="true"
                                                         title="Chọn thành viên..."
                                                         data-select-all-text="Chọn tất cả"
                                                         data-deselect-all-text="Bỏ chọn"
@@ -155,11 +155,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
 
@@ -395,13 +395,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        
+
                                                     </tbody>
                                                 </table>
                                                 <div data-repeater-create class="add-row-btn">
                                                     <i class="bi bi-plus-circle"></i>
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="action_table-wrapper text-end mt-3 mb-3">
                                                 <a href="kho-luu-tru-bien-ban-hop" class="btn btn-outline-danger action_table-btn" style="margin-right:10px;">

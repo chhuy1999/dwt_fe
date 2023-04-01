@@ -19,7 +19,7 @@
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -83,7 +83,7 @@
                                                                     Báo chí truyền thông<br>
                                                                     Retouch thành sản phẩm hoàn thiện
                                                                 </p>
-                                                                    
+
                                                             </td>
                                                             <td>
                                                                 Báo cáo
@@ -136,7 +136,7 @@
                                                                     Báo chí truyền thông<br>
                                                                     Retouch thành sản phẩm hoàn thiện
                                                                 </p>
-                                                                    
+
                                                             </td>
                                                             <td>
                                                                 Báo cáo
@@ -188,7 +188,7 @@
                                                                     Báo chí truyền thông<br>
                                                                     Retouch thành sản phẩm hoàn thiện
                                                                 </p>
-                                                                    
+
                                                             </td>
                                                             <td>
                                                                 Báo cáo
@@ -240,7 +240,7 @@
                                                                     Báo chí truyền thông<br>
                                                                     Retouch thành sản phẩm hoàn thiện
                                                                 </p>
-                                                                    
+
                                                             </td>
                                                             <td>
                                                                 Báo cáo
@@ -292,7 +292,7 @@
                                                                     Báo chí truyền thông<br>
                                                                     Retouch thành sản phẩm hoàn thiện
                                                                 </p>
-                                                                    
+
                                                             </td>
                                                             <td>
                                                                 Báo cáo
@@ -344,7 +344,7 @@
                                                                     Báo chí truyền thông<br>
                                                                     Retouch thành sản phẩm hoàn thiện
                                                                 </p>
-                                                                    
+
                                                             </td>
                                                             <td>
                                                                 Báo cáo
@@ -542,7 +542,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -629,7 +629,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="modal-footer">

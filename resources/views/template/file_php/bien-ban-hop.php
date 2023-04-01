@@ -18,7 +18,7 @@
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -42,7 +42,7 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    
+
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive dataTables_wrapper style_table-4">
@@ -237,14 +237,14 @@
                                                                 <a href="#" class="text-success"><u>Xem chi tiết</u></a>
                                                             </td>
                                                         </tr>
-                                                        
+
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -252,11 +252,11 @@
 
                 </div>
             </div>
-            
+
         </div>
     </div>
     <?php require_once($template_path.'sidebar/sidebarMaster/sidebarRight.php'); ?>
-    
+
 </div>
 <!--end index page-->
 <?php require_once($template_path.'footer/footer-hopGiaoBan.php'); ?>
