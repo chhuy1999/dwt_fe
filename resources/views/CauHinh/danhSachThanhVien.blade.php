@@ -617,7 +617,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-thanh-vien" method="POST">
+                <form action="/danh-sach-thanh-vien" method="POST" autocomplete="off">
                     @csrf
                     <div class="modal-body">
                         <div class="create_user-wrapper">
@@ -636,16 +636,16 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" required autocomplete="off" type="text" name="name"
+                                        <input class="form-control" required  type="text" name="name"
                                             placeholder="Họ và tên *">
                                     </div>
 
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" required autocomplete="off"  type="password" name="password"
+                                        <input class="form-control" required   type="password" name="password"
                                             placeholder="Mật khẩu *">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" autocomplete="off"  type="tel" placeholder="SĐT cá nhân" name="phone">
+                                        <input class="form-control"   type="tel" placeholder="SĐT cá nhân" name="phone">
                                     </div>
 
                                 </div>
@@ -660,16 +660,16 @@
                                         </div>
 
                                         <div class="col-sm-7 mb-2 position-relative">
-                                            <input id="createUser" autocomplete="off"  placeholder="Ngày sinh" class="form-control"
-                                                type="text" name="dob" autocomplete="off">
+                                            <input id="createUser"   placeholder="Ngày sinh" class="form-control"
+                                                type="text" name="dob" autocomplete="nope">
                                             <i class="bi bi-calendar-plus style_pickdate"></i>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" autocomplete="off"  type="text" placeholder="Email liên hệ" name="email">
+                                        <input class="form-control"   type="text" placeholder="Email liên hệ" name="email">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" autocomplete="off"  type="text" placeholder="Địa chỉ liên hệ"
+                                        <input class="form-control"   type="text" placeholder="Địa chỉ liên hệ"
                                             name="address">
                                     </div>
 
@@ -682,17 +682,17 @@
                             <div class="create_user-title mb-2">Thông tin công việc</div>
                             <div class="row">
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" autocomplete="off" required  type="text" placeholder="Mã nhân viên *"
+                                    <input class="form-control" required  type="text" placeholder="Mã nhân viên *"
                                         name="code">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" autocomplete="off"  type="tel"
+                                    <input class="form-control"  type="tel"
                                         required placeholder="SĐT liên hệ *" name="company_phone">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" autocomplete="off" required  type="email" placeholder="Email công ty *"
+                                    <input class="form-control" required  type="email" placeholder="Email công ty *"
                                         name="company_email">
                                 </div>
 
