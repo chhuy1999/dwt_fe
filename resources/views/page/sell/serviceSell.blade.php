@@ -16,7 +16,7 @@
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -1605,7 +1605,7 @@
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
-    
+
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>

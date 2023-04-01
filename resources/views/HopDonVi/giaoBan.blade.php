@@ -203,9 +203,8 @@
                                             <div class="mb-2 d-flex justify-content-between align-items-center">
                                                 <div class="card-title">Vấn đề tiếp nhận</div>
                                                 <div class="alert alert-warning border-warning m-0" style="padding: 0 6px">
-                                                    <i class="bi bi-exclamation-triangle pe-2"></i><strong>03</strong>
-                                                    vấn đề
-                                                    tồn đọng
+                                                    <i class="bi bi-exclamation-triangle pe-2"></i><strong>Mã cuộc họp: {{$meeting->code}} </strong>
+                                                    
                                                 </div>
                                             </div>
 
@@ -648,209 +647,215 @@
     <div class="modal fade" id="duyetbienbanhop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 21cm">
             <div class="modal-content">
-
-                <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
-                    <div class="d-block text-center mb-3">
-                        <h5 class="modal-title w-100 fs-3">BIÊN BẢN HỌP GIAO BAN</h5>
-                        <p class="m-0 fs-5 fst-italic">Phòng Marketing</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">23/03/2023 09:03 - 23/03/2023 10:03</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ đề:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">Họp báo cáo kết quả tuần 3 tháng 3/2023 phòng Marketing
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ trì:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">Nguyễn Vũ Nguyệt Minh - MTT123</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thư kí:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">Đặng Vũ Lam Mai - MTT239</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
-                                                    gia:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">Nguyễn Vũ Nguyệt Minh - MTT123, Đặng Vũ Lam Mai -
-                                                    MTT239, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng
-                                                    Vân - MTT125</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">Chu Văn Linh - MTT123, Nguyễn Ngọc Bảo - MTT124</div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
+                
+                <form action="/giao-ban/{{ $meeting->id }}" method="POST" enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf>
+                    <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
+                        <div class="d-block text-center mb-3">
+                            <h5 class="modal-title w-100 fs-3">BIÊN BẢN HOP GIAO BAN {{ $meeting->type }}</option></h5>
+                            <p class="m-0 fs-5 fst-italic">Phòng Marketing</p>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal-title fw-bolder">I. NỘI DUNG TRAO ĐỔI</div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-responsive">
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</p>
+                                                </td>
+                                                <td>
+                                                    <div name="daterange" class="fs-5">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ đề:</div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-5">Họp báo cáo kết quả tuần 3 tháng 3/2023 phòng Marketing
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ trì:</div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-5">Nguyễn Vũ Nguyệt Minh - MTT123</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thư kí:</div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-5">Đặng Vũ Lam Mai - MTT239</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
+                                                        gia:</div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-5">Nguyễn Vũ Nguyệt Minh - MTT123, Đặng Vũ Lam Mai -
+                                                        MTT239, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng
+                                                        Vân - MTT125</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-5">Chu Văn Linh - MTT123, Nguyễn Ngọc Bảo - MTT124</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+    
                             </div>
                         </div>
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="mt-3 modal_body-title">
-                                    <p class="" type="text">
-                                        1. Chỉnh sửa giao diện Họp giao ban <br>
-                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                        2. Chỉnh sửa giao diện Họp giao ban <br>
-                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                        - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="d-flex align-items-center  justify-content-between">
+                                    <div class="modal-title fw-bolder">I. NỘI DUNG TRAO ĐỔI</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="d-flex align-items-center  justify-content-between">
+                                    <div class="mt-3 modal_body-title">
+                                        <p class="" type="text">
+                                            1. Chỉnh sửa giao diện Họp giao ban <br>
+                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                            2. Chỉnh sửa giao diện Họp giao ban <br>
+                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="d-flex align-items-center  justify-content-between">
+                                    <div class="modal-title fw-bolder">II. VẤN ĐỀ TỒN ĐỌNG</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="mt-4 modal_body-title">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">STT</th>
+                                                <th scope="col">Vấn đề</th>
+                                                <th scope="col">Người nêu</th>
+                                                <th scope="col">Nguyên nhân</th>
+                                                <th scope="col">Hướng giải quyết</th>
+                                                <th scope="col">PIC</th>
+                                                <th scope="col">Thời hạn</th>
+                                                <th scope="col">Tình trạng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
+                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
+                                                <td>Sẽ gửi trong tuần</td>
+                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                                <td>05/04/2023</td>
+                                                <td>Có hướng giải quyết</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
+                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
+                                                <td>Sẽ gửi trong tuần</td>
+                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                                <td>05/04/2023</td>
+                                                <td>Có hướng giải quyết</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
+                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
+                                                <td>Sẽ gửi trong tuần</td>
+                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
+                                                <td>05/04/2023</td>
+                                                <td>Có hướng giải quyết</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 d-flex flex-column justify-content-between">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="mt-3 modal_body-title fw-bolder">Trưởng bộ phận</div>
+                                </div>
+                                <div class="d-flex align-items-center  justify-content-center">
+                                    <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="modal_body-title"></p>
+                                    <img src="" height="60" alt="" />
+                                </div>
+                                <div class="d-flex align-items-center  justify-content-center">
+                                    <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex flex-column justify-content-between">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="mt-3 modal_body-title fw-bolder">Thành viên tham gia</div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="modal_body-title m-0">
+                                        Nguyễn Ngọc Bảo, Hồ Thị Hồng Van, Đặng Lam Mai
                                     </p>
+                                </div>
+                                <div class="d-flex align-items-center  justify-content-center">
+                                    <p class="modal_body-title m-0">Chúng tôi xác nhận nội dung cuộc hop</p>
+                                </div>
+    
+                            </div>
+                            <div class="col-md-4 d-flex flex-column justify-content-between">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
+                                </div>
+                                <div class="d-flex align-items-center  justify-content-center">
+                                    <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="modal_body-title"></p>
+                                    <img src="" height="60" alt="" />
+                                </div>
+                                <div class="d-flex align-items-center  justify-content-center">
+                                    <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal-title fw-bolder">II. VẤN ĐỀ TỒN ĐỌNG</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="mt-4 modal_body-title">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">STT</th>
-                                            <th scope="col">Vấn đề</th>
-                                            <th scope="col">Người nêu</th>
-                                            <th scope="col">Nguyên nhân</th>
-                                            <th scope="col">Hướng giải quyết</th>
-                                            <th scope="col">PIC</th>
-                                            <th scope="col">Thời hạn</th>
-                                            <th scope="col">Tình trạng</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
-                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
-                                            <td>Sẽ gửi trong tuần</td>
-                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                            <td>05/04/2023</td>
-                                            <td>Có hướng giải quyết</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
-                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
-                                            <td>Sẽ gửi trong tuần</td>
-                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                            <td>05/04/2023</td>
-                                            <td>Có hướng giải quyết</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
-                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                            <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
-                                            <td>Sẽ gửi trong tuần</td>
-                                            <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                            <td>05/04/2023</td>
-                                            <td>Có hướng giải quyết</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger ps-5 pe-5" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger">Xác nhận</button>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4 d-flex flex-column justify-content-between">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <div class="mt-3 modal_body-title fw-bolder">Trưởng bộ phận</div>
-                            </div>
-                            <div class="d-flex align-items-center  justify-content-center">
-                                <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <p class="modal_body-title"></p>
-                                <img src="" height="60" alt="" />
-                            </div>
-                            <div class="d-flex align-items-center  justify-content-center">
-                                <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex flex-column justify-content-between">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <div class="mt-3 modal_body-title fw-bolder">Thành viên tham gia</div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <p class="modal_body-title m-0">
-                                    Nguyễn Ngọc Bảo, Hồ Thị Hồng Van, Đặng Lam Mai
-                                </p>
-                            </div>
-                            <div class="d-flex align-items-center  justify-content-center">
-                                <p class="modal_body-title m-0">Chúng tôi xác nhận nội dung cuộc hop</p>
-                            </div>
 
-                        </div>
-                        <div class="col-md-4 d-flex flex-column justify-content-between">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
-                            </div>
-                            <div class="d-flex align-items-center  justify-content-center">
-                                <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <p class="modal_body-title"></p>
-                                <img src="" height="60" alt="" />
-                            </div>
-                            <div class="d-flex align-items-center  justify-content-center">
-                                <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger ps-5 pe-5" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Xác nhận</button>
-                </div>
+
+                </form>
             </div>
         </div>
     </div>

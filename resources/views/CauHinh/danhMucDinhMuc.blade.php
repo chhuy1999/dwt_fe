@@ -24,7 +24,7 @@
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -72,7 +72,7 @@
                                                                     <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->departement->name }}">
                                                                         {{  $target->departement->name ?? "" }}
                                                                     </div>
-                                                                    
+
                                                                 </td>
                                                                 <td>
                                                                     <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->position->name }}">
@@ -663,7 +663,7 @@
     $('div.action_wrapper').html(`
         <div class="action_wrapper d-flex">
             <div class="action_export">
-                
+
                 <select class="selectpicker" title="Đơn vị phụ trách " data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
                         <option value="1">Ban Giám Đốc</option>
                         <option value="2">Ban Kiểm soát</option>
@@ -701,7 +701,7 @@
             document.getElementById('input-1').value = "0.00";
         } else {
             document.getElementById('input-1').value = value.toFixed(2);
-        }              
+        }
     }
 </script>
 @endsection

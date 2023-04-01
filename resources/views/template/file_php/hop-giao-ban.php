@@ -19,7 +19,7 @@
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -31,7 +31,7 @@
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    
+
                                     <div class='row'>
                                         <div class="col-md-6">
                                             <div class="mb-2 d-flex justify-content-between align-items-center">
@@ -62,7 +62,7 @@
                                                             <div class="d-flex align-items-center" style="flex:1"><img src="<?php echo $template_path?>assets/img/person-check.svg" /> Chủ trì</div>
                                                             <div style="flex:2">
                                                                 <select class="selectpicker" multiple data-actions-box="true"
-                                                                data-width="100%" data-live-search="true" 
+                                                                data-width="100%" data-live-search="true"
                                                                 title="Chọn chủ trì..."
                                                                 data-select-all-text="Chọn tất cả"
                                                                 data-deselect-all-text="Bỏ chọn"
@@ -80,7 +80,7 @@
                                                             <div class="d-flex align-items-center" style="flex:1"><img src="<?php echo $template_path?>assets/img/pencil.svg" /> Thư ký</div>
                                                             <div style="flex:2">
                                                                 <select class="selectpicker" multiple data-actions-box="true"
-                                                                data-width="100%" data-live-search="true" 
+                                                                data-width="100%" data-live-search="true"
                                                                 title="Chọn thư ký..."
                                                                 data-select-all-text="Chọn tất cả"
                                                                 data-deselect-all-text="Bỏ chọn"
@@ -98,7 +98,7 @@
                                                             <div class="d-flex align-items-center" style="flex:1"><img src="<?php echo $template_path?>assets/img/person-check.svg" /> Thành viên</div>
                                                             <div style="flex:2">
                                                                 <select class="selectpicker" multiple data-actions-box="true"
-                                                                data-width="100%" data-live-search="true" 
+                                                                data-width="100%" data-live-search="true"
                                                                 title="Chọn thành viên..."
                                                                 data-select-all-text="Chọn tất cả"
                                                                 data-deselect-all-text="Bỏ chọn"
@@ -112,11 +112,11 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        
+
                                                     </div>
-                                                    
+
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -126,7 +126,7 @@
                                                     <i class="bi bi-exclamation-triangle pe-2"></i><strong>03</strong> vấn đề tồn đọng
                                                 </div>
                                             </div>
-                                                
+
                                             <div class="table-responsive rounded">
                                                 <table class="table table-bordered border m-0 style_disableAll">
                                                     <thead>
@@ -187,10 +187,10 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                                
+
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
 
@@ -497,13 +497,13 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        
+
                                                     </tbody>
                                                 </table>
                                                 <div data-repeater-create class="add-row-btn">
                                                     <i class="bi bi-plus-circle"></i>
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="action_table-wrapper text-end mt-3 mb-3">
                                                 <a href="kho-luu-tru-bien-ban-hop" class="btn btn-outline-danger action_table-btn" style="margin-right:10px;">
@@ -583,7 +583,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="mb-3 row">
                     <div class="col-sm-12 d-flex  align-items-center">
@@ -592,7 +592,7 @@
                             <div contenteditable="true" class="contenteditable" placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="modal-footer">

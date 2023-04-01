@@ -155,6 +155,11 @@ class UsersController extends Controller
                 // 'status' => 'nullable'
             ]);
             
+            if($request['sex']==null)
+            {
+                $request['sex']='male';
+            }
+
             // dd($data);
 
             $request['dob'] = Carbon::parse($request['dob']);

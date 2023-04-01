@@ -16,21 +16,21 @@
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
                             <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
-    
+
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table overflow-scroll">
-                                            
+
                                             <thead>
                                                 <th class="text-center" colspan="6">Mục tiêu nhiệm vụ tháng</th>
                                                 <th class="text-center" colspan="30">Nhật kí công việc</th>
@@ -128,15 +128,15 @@
                                                 <td>@mdo</td>
                                                 <td>@mdo</td>
                                               </tr>
-                                              
+
                                             </tbody>
                                           </table>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
-    
+
                         {{-- <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -1145,14 +1145,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="table">
-                                        
+
                                         <div class="d-flex bg-yellow-blur">
                                             <div class="table-responsive table-bordered border-warning mainSection_table w-50">
                                                 <table class="table m-0">
                                                     <thead>
-                                                        
+
                                                                                                 <tr>
                                                                                                     <th scope=" col"
                                                             class="fw-bold">STT</th>
@@ -1984,7 +1984,7 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="card-title">Báo cáo ngày của đơn vị</div>
-    
+
                                         <div class="mainSection_total-kpi">
                                             Tổng KPI bộ phận tạm tính:
                                             <strong>140</strong>
@@ -2836,13 +2836,13 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="card-title">Danh sách vấn đề</div>
-    
+
                                         <div class="action_wrapper d-flex">
                                             <div class="form-group has-search me-3">
                                                 <span class="bi bi-search form-control-feedback fs-5"></span>
@@ -2865,7 +2865,7 @@
                                                                 <i class="bi bi-chat-right-text"
                                                                     style="font-size:1.4rem"></i>
                                                             </div>
-    
+
                                                         </div>
                                                     </th>
                                                     <th style="width: 10%">
@@ -3281,15 +3281,15 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
-    
-    
+
+
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div> --}}
-    
+
                         <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3302,7 +3302,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3315,7 +3315,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3328,7 +3328,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-lg-3">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3341,7 +3341,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-lg-6">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3354,7 +3354,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-lg-6">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -3367,7 +3367,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                     </div>
                 </div>
             </div>
@@ -3429,7 +3429,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="row mb-3">
                             <div class="form-check_wrapper">
                                 <div class="form-check_content">
@@ -3458,9 +3458,9 @@
                                                 <div class="col-sm-8" id="addTrash">
                                                     <input type="number" class="form-control">
                                                 </div>
-    
+
                                             </div>
-    
+
                                         </div>
                                     </div>
                                 </div>
@@ -3468,7 +3468,7 @@
                                     <button class="form-check_btn btn btn-outline-danger px-3">Thêm tiêu chí</button>
                                 </div>
                             </div>
-    
+
                         </div>
                         <div class="mb-3 row">
                             <div class="col-md-12">
@@ -3487,7 +3487,7 @@
                                                     id="modal_upload-file" multiple onchange="javascript:updateList()">
                                             </button>
                                         </div>
-    
+
                                         <div class="modal_upload-addLink">
                                             <button role="button" type="button" class="btn" data-bs-toggle="modal"
                                                 data-bs-target="#themLinkOnline">
@@ -3496,7 +3496,7 @@
                                                 Thêm liên kết
                                             </button>
                                         </div>
-    
+
                                     </div>
                                 </div>
                                 <div class="alert alert-danger" id="alertNotSupport" role="alert" style="display:none">
@@ -3516,7 +3516,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- Modal Thêm Link Online --}}
     <div class="modal fade" id="themLinkOnline" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -3563,7 +3563,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal Phản Hồi Vấn Đề -->
     <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
@@ -3614,7 +3614,7 @@
                                 </select>
                             </div>
                         </div>
-    
+
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-12 d-flex  align-items-center">
@@ -3625,7 +3625,7 @@
                                     placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
                             </div>
                         </div>
-    
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -3635,7 +3635,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- Xóa vấn đề --}}
     <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -3654,7 +3654,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal Vấn đề tồn đọng -->
     <div class="modal fade" id="neuvande" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -3814,9 +3814,9 @@
                                     </tbody>
                                 </table>
                             </div>
-    
+
                         </div>
-    
+
                         <div class="col-sm-12 mb-3">
                             <div class="d-flex align-items-center">
                                 <div class="modal-title">Tổng hợp báo cáo</div>

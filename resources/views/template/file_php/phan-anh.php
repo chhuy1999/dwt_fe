@@ -18,7 +18,7 @@
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>Nguyễn Thị Yến Hoa</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -62,7 +62,7 @@
                                                     <div class="col-md-6 d-flex">
                                                         <div style="padding-right: 18px" for="staticEmail" class="col-form-label"><i class="bi bi-person-workspace"></i> Chủ trì</div>
                                                         <select class="selectpicker" multiple data-actions-box="true"
-                                                        data-width="73%" data-live-search="true" 
+                                                        data-width="73%" data-live-search="true"
                                                         title="Chọn người chủ trì..."
                                                         data-select-all-text="Chọn tất cả"
                                                         data-deselect-all-text="Bỏ chọn"
@@ -79,7 +79,7 @@
                                                     <div class="col-md-6 d-flex justify-content-start">
                                                         <label style="padding-right: 5px" for="staticEmail" class="col-form-label"><i class="bi bi-vector-pen"></i> Thư ký</label>
                                                         <select class="selectpicker" multiple data-actions-box="true"
-                                                        data-width="75%" data-live-search="true" 
+                                                        data-width="75%" data-live-search="true"
                                                         title="Chọn thư ký..."
                                                         data-select-all-text="Chọn tất cả"
                                                         data-deselect-all-text="Bỏ chọn"
@@ -98,12 +98,12 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="row mb-3 mt-3">
                                                     <div class="col-md-6 d-flex">
                                                         <label style="padding-right: 5px" for="staticEmail" class="col-form-label"><i class="bi bi-person-add"></i> Tham gia</label>
                                                         <select class="selectpicker" multiple data-actions-box="true"
-                                                        data-width="73%" data-live-search="true" 
+                                                        data-width="73%" data-live-search="true"
                                                         title="Chọn thành viên..."
                                                         data-select-all-text="Chọn tất cả"
                                                         data-deselect-all-text="Bỏ chọn"
@@ -124,7 +124,7 @@
                                                     <div class="col-md-6 d-flex  justify-content-start">
                                                         <label style="padding-right: 12px" for="staticEmail" class="col-form-label"><i class="bi bi-person-dash"></i> Vắng </label>
                                                         <select class="selectpicker" multiple data-actions-box="true"
-                                                        data-width="75%" data-live-search="true" 
+                                                        data-width="75%" data-live-search="true"
                                                         title="Chọn thành viên..."
                                                         data-select-all-text="Chọn tất cả"
                                                         data-deselect-all-text="Bỏ chọn"
@@ -143,11 +143,11 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>

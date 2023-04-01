@@ -60,7 +60,7 @@ class DwtServices
         return $data['data'];
     }
 
-    public function searchKpiKeys($q = "", $page = 1, $limit = 10)
+    public function searchKpiKeys($q = "", $page = 1, $limit = 30)
     {
         $url = $this->url . '/kpi-keys';
         $response = $this->client->get($url, [
@@ -122,7 +122,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargets($q = "", $page = 1, $limit = 10)
+    public function searchKpiTargets($q = "", $page = 1, $limit = 30)
     {
         $url = $this->url . '/targets';
         $response = $this->client->get($url, [
@@ -198,7 +198,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 10, $status = "", $userId = null, $startDate = null, $endDate = null)
+    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 30, $status = "", $userId = null, $startDate = null, $endDate = null)
     {
         $url = $this->url . '/target-details';
 
@@ -255,7 +255,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchDepartment($q = "", $page = 1, $limit = 10)
+    public function searchDepartment($q = "", $page = 1, $limit = 30)
     {
         $url = $this->url . '/departments';
         $response = $this->client->get($url, [
@@ -321,7 +321,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchPosition($q = "", $page = 1, $limit = 10)
+    public function searchPosition($q = "", $page = 1, $limit = 30)
     {
         $url = $this->url . '/positions';
         $response = $this->client->get($url, [
@@ -401,7 +401,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchUser($q = "", $page = 1, $limit = 10)
+    public function searchUser($q = "", $page = 1, $limit = 30)
     {
         $url = $this->url . '/users';
         $response = $this->client->get($url, [
@@ -480,7 +480,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchReports($q = "", $page = 1, $limit = 10)
+    public function searchReports($q = "", $page = 1, $limit = 30)
     {
         $url = $this->url . '/reports';
         $response = $this->client->get($url, [
@@ -634,7 +634,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchPositionLevel($q = "", $page = 1, $limit = 10)
+    public function searchPositionLevel($q = "", $page = 1, $limit = 30)
     {
         $url = $this->url . '/position-levels';
         $response = $this->client->get($url, [
@@ -704,7 +704,7 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchEquimentPack($q = "", $page = 1, $limit = 10)
+    public function searchEquimentPack($q = "", $page = 1, $limit = 30)
     {
         $url = $this->url . '/equipment-packs';
         $response = $this->client->get($url, [
