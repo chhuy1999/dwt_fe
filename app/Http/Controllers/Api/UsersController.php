@@ -161,15 +161,15 @@ class UsersController extends Controller
             }
 
             // dd($data);
-
-            $request['dob'] = Carbon::parse($request['dob']);
-
-         
-            $request['doj'] =  Carbon::parse($request['doj']);;
-            
+            if($request['dob']){
+                $request['dob'] = Carbon::createFromFormat('m/d/Y', $request['dob'])->format('Y-m-d');
+            }
+            if($request['doj']){
+                $request['doj'] = Carbon::createFromFormat('m/d/Y', $request['doj'])->format('Y-m-d');
+            }
             $request['role'] = 'user';
             $request['salary_fund'] = '10000';
-            dd($request);
+            // dd($request);
             $this->dwtService->updateUser($id, $request);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {

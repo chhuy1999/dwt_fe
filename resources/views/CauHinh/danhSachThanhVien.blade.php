@@ -303,21 +303,21 @@
                                                                                         </div>
                                                                                         <div class="col-sm-6 mb-2">
                                                                                             <div class="d-flex align-items-center" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị">
-                                                                                                {{-- <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
+                                                                                                <select name="equipment_pack_id" class="selectpicker" title="Gói trang bị" data-size="3" data-live-search="true" placeholder="Nhập gói trang bị">
                                                                                                     
                                                                                                     @foreach ($listEquimentPack->data as $eq)
                                                                                                     @if ($eq->id != $value->equipment_pack_id)
-                                                                                                        <option value="{{ $value->equipment_pack_id}}"  >
+                                                                                                        <option value="{{ $eq->id }}"  >
                                                                                                             {{ $eq->name }}
                                                                                                         </option>
                                                                                                     @else
-                                                                                                        <option value="{{ $value->equipment_pack_id}}" >
+                                                                                                        <option value="{{ $eq->id }}" >
                                                                                                             {{ $eq->name }}
                                                                                                         </option>
                                                                                                     @endif
                                                                                                     @endforeach
-                                                                                                </select> --}}
-                                                                                                <input type="text" name="equipment_pack_id" value="Gói trang bị" readonly class="form-control">
+                                                                                                </select>
+                                                                                                {{-- <input type="text" name="equipment_pack_id" value="Gói trang bị" readonly class="form-control"> --}}
                                                                                             </div>
                                                                                         </div>
                                                         
