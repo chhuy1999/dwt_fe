@@ -2673,9 +2673,9 @@ aria-hidden="true">
 
 <script>
     $(document).ready(function() {
-        // $(".main-table").clone(true).appendTo('#table-scroll').addClass('clone');
-        // $(".second-table").clone(true).appendTo('#table-scroll-second').addClass('clone-second');
-        // $(".three-table").clone(true).appendTo('#table-scroll-three').addClass('clone-three');
+        $(".main-table").clone(true).appendTo('#table-scroll').addClass('clone');
+        $(".second-table").clone(true).appendTo('#table-scroll-second').addClass('clone-second');
+        $(".three-table").clone(true).appendTo('#table-scroll-three').addClass('clone-three');
     });
 </script>
 
