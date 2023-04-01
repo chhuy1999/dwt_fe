@@ -57,7 +57,7 @@ class UsersController extends Controller
     {
         try {
          
-            // dd($request->all());
+            dd($request->all());
             $data = $request->validate([
                 'name' => 'required',
                 'email' => 'nullable',
@@ -117,7 +117,7 @@ class UsersController extends Controller
     {
         // dd($request);
         try {
-            // dd($request);
+            dd($request);
             $data = $request->validate([
                 // 'name' => 'nullable',
                 // 'email' => 'nullable',
@@ -155,6 +155,11 @@ class UsersController extends Controller
                 // 'status' => 'nullable'
             ]);
             
+            if($request['sex']==null)
+            {
+                $request['sex']='male';
+            }
+
             // dd($data);
 
             $request['dob'] = Carbon::parse($request['dob']);
