@@ -79,7 +79,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <a href="giao-viec" class="header_more-link">Giao việc theo định mức</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="" class="header_more-link">Giao việc phát sinh</a>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinh" class="header_more-link">Giao việc phát sinh</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -505,7 +505,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </div>
                             <div class="col-sm-9 mb-3">
                                 <div data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
-                                    <select class="form-select" readonly title="Vị trí" id="report-dp" name="departement_id">
+                                    <select class="form-select" disabled title="Vị trí" id="report-dp" name="departement_id">
 
                                     </select>
                                 </div>
@@ -614,6 +614,110 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             </div>
         </div>
     </div>
+
+    <!-- Modal Giao việc phát sinh -->
+    <div class="modal fade" id="giaoNhiemVuPhatSinh" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Giao nhiệm vụ phát sinh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <input type="text" class="form-control" placeholder="Tên nhiệm vụ">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
+                                aria-label="Thời hạn" data-bs-original-title="Thời hạn">
+                                <input id="giaoNhiemVuPhatSinhGiaoViec" placeholder="Thời hạn" class="form-control"
+                                    type="text">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <textarea class="form-control" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <input type="number" class="form-control" min="0" step="0.05"
+                                oninput="onInput(this)" placeholder="Manday" id="title" name="manday">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select class="selectpicker" data-live-search="true" data-size="5" name="position_id"
+                                id="" title="Người đảm nhiệm">
+                                <option value="1">Bùi Thị Minh Hoa</option>
+                                <option value="2">Trần Minh Thao</option>
+                                <option value="3">Cao Thị Thúy Hằng</option>
+                                <option value="4">Chu Văn Linh</option>
+                                <option value="5">Mai Văn Sơn</option>
+                                <option value="6">Đỗ Thị Nhàn</option>
+                                <option value="7">Bùi Kim Anh</option>
+                                <option value="8">Nguyễn Thị Yến Hoa</option>
+                                <option value="9">Phạm Thị Huyền</option>
+                                <option value="10">Nguyễn Vũ Nguyệt Minh</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select class='selectpicker' title="Người liên quan" multiple data-live-search="true"
+                                data-size="5" name="users[]">
+                                <option value="1">Bùi Thị Minh Hoa</option>
+                                <option value="2">Trần Minh Thao</option>
+                                <option value="3">Cao Thị Thúy Hằng</option>
+                                <option value="4">Chu Văn Linh</option>
+                                <option value="5">Mai Văn Sơn</option>
+                                <option value="6">Đỗ Thị Nhàn</option>
+                                <option value="7">Bùi Kim Anh</option>
+                                <option value="8">Nguyễn Thị Yến Hoa</option>
+                                <option value="9">Phạm Thị Huyền</option>
+                                <option value="10">Nguyễn Vũ Nguyệt Minh</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <div class="repeater">
+                                <div data-repeater-list="kpiKeys">
+                                    <div class="row" data-repeater-item>
+                                        <div class="col-md-7 mb-3">
+                                            <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí"
+                                                data-live-search="true" name="id">
+                                                <option value="" hidden>Chọn chỉ số key</option>
+                                                <option value="1">Số hợp đồng nguyên tắc được kí</option>
+                                                <option value="2">Số lượt viếng thăm</option>
+                                                <option value="3">Số bộ hồ sơ được đăng ký thành công</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <input type="number" min="0" class="form-control"
+                                                placeholder="Giá trị" name="quantity" />
+                                        </div>
+                                        <div class="col-md-1 mb-3 d-flex align-items-center">
+                                            <img data-repeater-delete role="button"
+                                                src="{{ asset('/assets/img/trash.svg') }}" width="20px"
+                                                height="20px" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-start">
+                                        <div role="button" class="fs-4 text-danger" data-repeater-create><i
+                                                class="bi bi-plus-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Giao</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- momemtjs --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Vendor JS Files -->

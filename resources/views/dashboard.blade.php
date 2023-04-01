@@ -271,7 +271,6 @@
                                                                                 @break
                                                                             @endif
                                                                         @endforeach
-                                                                        &nbsp;
                                                                     </div>
 
                                                                 </td>
@@ -1301,7 +1300,6 @@
                                                                                 @break
                                                                             @endif
                                                                         @endforeach
-                                                                        &nbsp;
                                                                     </div>
                                                                 </td>
                                                             @endfor
@@ -1861,11 +1859,9 @@
             </div>
         </div>
     </div>
-</div>
-@include('template.footer.footer')
-</div>
-</div>
-@include('template.sidebar.sidebarMaster.sidebarRight')
+    @include('template.footer.footer')
+    @include('template.sidebar.sidebarMaster.sidebarRight')
+
 
 <!-- Modal Phản Hồi Vấn Đề -->
 <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -2215,7 +2211,7 @@ aria-hidden="true">
 <!-- Modal Thông tin nhiệm vụ -->
 <div class="modal fade" id="thongTinNhiemVu{{ $task->id }}" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 38%">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
@@ -2677,9 +2673,9 @@ aria-hidden="true">
 
 <script>
     $(document).ready(function() {
-        $(".main-table").clone(true).appendTo('#table-scroll').addClass('clone');
-        $(".second-table").clone(true).appendTo('#table-scroll-second').addClass('clone-second');
-        $(".three-table").clone(true).appendTo('#table-scroll-three').addClass('clone-three');
+        // $(".main-table").clone(true).appendTo('#table-scroll').addClass('clone');
+        // $(".second-table").clone(true).appendTo('#table-scroll-second').addClass('clone-second');
+        // $(".three-table").clone(true).appendTo('#table-scroll-three').addClass('clone-three');
     });
 </script>
 
