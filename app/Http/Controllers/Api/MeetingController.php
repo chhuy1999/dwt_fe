@@ -62,8 +62,10 @@ class MeetingController extends Controller
                 'code' => 'required',
             ]);
             $data['start_date'] = date('Y-m-d H:i:s', strtotime($data['start_date']));
-            $this->dwtService->createMeeting($data);
-            return back()->with('success', 'Tạo cuộc họp thành công voi mã: ' . $data['code']);
+            $res = $this->dwtService->createMeeting($data);
+
+            $meetCode = $res->code;
+            return redirect('/giao-ban/' . $meetCode)->with('success', 'Tạo cuộc họp thành công voi mã: ' . $meetCode);
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
