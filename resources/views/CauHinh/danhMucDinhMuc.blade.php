@@ -69,14 +69,14 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->departement->name }}">
-                                                                        {{  $target->departement->name ?? "" }}
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->unit && $target->unit->name }}">
+                                                                        {{ $target->unit && $target->unit->name }}
                                                                     </div>
 
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->position->name }}">
-                                                                        {{  $target->position->name ?? "" }}
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->position && $target->position->name }}">
+                                                                        {{ $target->position && $target->position->name }}
                                                                     </div>
                                                                 </td>
 
@@ -166,7 +166,7 @@
                                                                                                         </option>
                                                                                                     @else
                                                                                                         <option
-                                                                                                            value="{{ $dep->id }}">
+                                                                                                            value="{{ $dep->id }}" selected>
                                                                                                             {{ $dep->name }}
                                                                                                         </option>
                                                                                                     @endif
@@ -211,6 +211,8 @@
                                                                                             <select class="selectpicker"
                                                                                                 name="position_id"
                                                                                                 title="Chọn Vị trí"
+                                                                                                data-live-search="true"
+                                                                                                data-live-search-placeholder="Tìm kiếm..."
                                                                                                 data-size="5">
                                                                                                 @foreach ($listPositions->data as $pos)
                                                                                                     @if ($pos->id == $target->position_id)
@@ -221,7 +223,7 @@
                                                                                                         </option>
                                                                                                     @else
                                                                                                         <option
-                                                                                                            value="{{ $pos->id }}">
+                                                                                                            value="{{ $pos->id }}" selected>
                                                                                                             {{ $pos->name }}
                                                                                                         </option>
                                                                                                     @endif
