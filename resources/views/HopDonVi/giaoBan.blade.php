@@ -146,7 +146,7 @@
                                                             </div>
                                                             {{-- <div id="date_time-hopgiaoban"
                                                                 class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                                                     class="form-control" type="text">
                                                                 <div class="datetimepicker_separate">-</div>
                                                                 <input id="datetimepicker2" value="<?php //echo date('d/m/Y h:m');
@@ -238,7 +238,7 @@
                                                                 </td>
                                                                 <td>{{ date('d/m', strtotime($item->deadline)) }}</td>
                                                                 <td>
-                                                                    <div>{{ $item->status }}</div>
+                                                                    <div>Đã tiếp nhận</div>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
@@ -440,7 +440,7 @@
                                                                     </div>
                                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh" data-repeater-delete>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{$item->id}}" data-repeater-delete>
                                                                                 <i class="bi bi-arrow-right-square-fill"></i>
                                                                                 Chuyển thành nhiệm vụ phát sinh
                                                                             </a>
@@ -913,99 +913,89 @@
             </div>
         </div>
     </div>
+    @foreach ($handledReports as $item)
+        <!-- Modal Giao nhiệm vụ phát sinh -->
+        <div class="modal fade" id="nhiemVuPhatSinh{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <form action="/nhiem-vu-phat-sinh", method="POST">
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title w-100" id="exampleModalLabel">Giao nhiệm vụ phát sinh</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-8 mb-3">
+                                    <input type="text" class="form-control" value="{{ $item->reason }}" name="name">
+                                </div>
 
-    <!-- Modal Giao nhiệm vụ phát sinh -->
-    <div class="modal fade" id="nhiemVuPhatSinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Giao nhiệm vụ phát sinh</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-8 mb-3">
-                            <input type="text" class="form-control" readonly value="Chưa hoàn thành báo cáo do abc ch">
-                        </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
+                                        <input id="giaoNhiemVuPhatSinh" name="deadline" value="19/03/2023" class="form-control" type="text">
+                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 mb-3">
+                                    <textarea class="form-control" rows="1" placeholder="Mô tả/Diễn giải" name="description"></textarea>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manDay">
+                                </div>
 
-                        <div class="col-md-4 mb-3">
-                            <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                <input id="giaoNhiemVuPhatSinh" value="19/03/2023" class="form-control" type="text">
-                                <i class="bi bi-calendar-plus style_pickdate"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-8 mb-3">
-                            <textarea class="form-control" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday">
-                        </div>
+                                <div class="col-md-6 mb-3">
+                                    <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="user_id">
+                                        @foreach ($listUsers->data as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
+                                        @foreach ($listUsers->data as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                        <div class="col-md-6 mb-3">
-                            <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="users[]">
-                                <option value="1" selected>Bùi Thị Minh Hoa</option>
-                                <option value="2">Trần Minh Thao</option>
-                                <option value="3">Cao Thị Thúy Hằng</option>
-                                <option value="4">Chu Văn Linh</option>
-                                <option value="5">Mai Văn Sơn</option>
-                                <option value="6">Đỗ Thị Nhàn</option>
-                                <option value="7">Bùi Kim Anh</option>
-                                <option value="8">Nguyễn Thị Yến Hoa</option>
-                                <option value="9">Phạm Thị Huyền</option>
-                                <option value="10">Nguyễn Vũ Nguyệt Minh</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
-                                <option value="1">Bùi Thị Minh Hoa</option>
-                                <option value="2">Trần Minh Thao</option>
-                                <option value="3">Cao Thị Thúy Hằng</option>
-                                <option value="4">Chu Văn Linh</option>
-                                <option value="5">Mai Văn Sơn</option>
-                                <option value="6">Đỗ Thị Nhàn</option>
-                                <option value="7">Bùi Kim Anh</option>
-                                <option value="8">Nguyễn Thị Yến Hoa</option>
-                                <option value="9">Phạm Thị Huyền</option>
-                                <option value="10">Nguyễn Vũ Nguyệt Minh</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-12 mb-3">
-                            <div class="repeater">
-                                <div data-repeater-list="kpiKeys">
-                                    <div class="row" data-repeater-item>
-                                        <div class="col-md-9 mb-3">
-                                            <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
-                                                <option value="" hidden>Chọn chỉ số key</option>
-                                                <option value="1">Số hợp đồng nguyên tắc được kí</option>
-                                                <option value="2">Số lượt viếng thăm</option>
-                                            </select>
+                                <div class="col-md-12 mb-3">
+                                    <div class="repeater">
+                                        <div data-repeater-list="kpiKeys">
+                                            <div class="row" data-repeater-item>
+                                                <div class="col-md-9 mb-3">
+                                                    <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
+                                                        @foreach ($kpiKeys->data as $key)
+                                                            <option value="{{ $key->id }}">{{ $key->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2 mb-3">
+                                                    <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                </div>
+                                                <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-2 mb-3">
-                                            <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
-                                        </div>
-                                        <div class="col-md-1 mb-3 d-flex align-items-center">
-                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+
+                                        <div class="col-md-12">
+                                            <div class="d-flex justify-content-start">
+                                                <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-md-12">
-                                    <div class="d-flex justify-content-start">
-                                        <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
-                                    </div>
-                                </div>
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-danger">Giao</button>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Giao</button>
-                </div>
+                </form>
             </div>
         </div>
-    </div>
+    @endforeach
 
 @endsection
 @section('footer-script')
