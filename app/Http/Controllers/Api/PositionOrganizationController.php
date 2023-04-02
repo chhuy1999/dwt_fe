@@ -8,59 +8,58 @@ use Exception;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
 
-class MeetingListController extends Controller
+class PositionOrganizationController extends Controller
 {
     private $dwtService;
-    //constructor
+    //contructor
     public function __construct()
     {
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
-    //
+    
+
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
+
     {
         try {
+
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchMeetingByCode($q, $page, $limit);
-            $listMeeting = $this->dwtService->listMeeting();
-            // $listMeeting = $listMeeting->data;
+            $data = $this->dwtService->searchPosition($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
-            $listUnits = $this->dwtService->listUnits();
-            $listUsers = $this->dwtService->listUsers();
-
-            return view('HopDonVi.danhSachCuocHop')
+            $listPositions = $this->dwtService->listPositions();
+            $listEquimentPack = $this->dwtService->listEquimentPack();
+            $listPositionLevel = $this->dwtService->listPositionLevel();
+            return view('CauHinh.danhSachCapToChuc')
                 ->with('data', $data)
-                ->with('listMeeting', $listMeeting)
                 ->with('listDepartments', $listDepartments)
-                ->with('listUsers', $listUsers);
+                ->with('listEquimentPack', $listEquimentPack)
+                ->with('listPositionLevel', $listPositionLevel)
+                ->with('listPositions', $listPositions);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('HopDonVi.danhSachCuocHop');
+            return view('CauHinh.danhSachCapToChuc')->with('listPositions', []);
         }
     }
-
 
     public function store(Request $request)
     {
         try {
+
             $data = $request->validate([
                 'name' => 'required',
                 'description' => 'required',
-                'unit_id' => 'required|numeric',
-                "title"=> 'required',
-                "start_time"=> 'numeric',
-                "end_time"=> 'numeric',
-                "secretary_id"=> 'numeric',
-                "leader_id"=> 'numeric',
-                "type"=> 'required',
-                "code"=> "numeric",
-                // "participants"=> [1,2,3,4],
-                // "departement_id"=> 1
+                'parent' => 'required|numeric',
+                'position_level' => 'required|numeric',
+                'salary_fund' => 'required|numeric',
+                'max_employees' => 'required|numeric',
             ]);
-            $this->dwtService->createKpiKey($data);
+            $this->dwtService->createPosition($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();
@@ -68,18 +67,21 @@ class MeetingListController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         try {
             $data = $request->validate([
                 'name' => 'nullable',
                 'description' => 'nullable',
-                'unit_id' => 'nullable|numeric',
+                'parent' => 'nullable|numeric',
+                'position_level' => 'nullable|numeric',
+                'salary_fund' => 'nullable|numeric',
+                'max_employees' => 'nullable|numeric',
             ]);
-
-            $this->dwtService->updateKpiKey($id, $data);
+            $this->dwtService->updatePosition($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
@@ -88,7 +90,7 @@ class MeetingListController extends Controller
     public function delete($id)
     {
         try {
-            $this->dwtService->deleteKpiKey($id);
+            $this->dwtService->deletePosition($id);
             return back()->with('success', 'Xóa thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();

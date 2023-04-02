@@ -27,6 +27,7 @@
                                                         <tr>
                                                             <th class="text-nowrap" style="width:5%">STT</th>
                                                             <th class="text-nowrap" style="width:20%">Tên cuộc họp</th>
+                                                            <th class="text-nowrap" style="width:10%">Mã cuộc họp</th>
                                                             <th class="text-nowrap" style="width:10%">Thời gian tạo</th>
                                                             <th class="text-nowrap" style="width:10%">Phòng ban</th>
                                                             <th class="text-nowrap" style="width:10%">Người chủ trì</th>
@@ -41,6 +42,9 @@
                                                                 <th scope="row">{{ $value->id }}</th>
                                                                 <td>
                                                                     {{ $value->title }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $value->code }}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     {{ \Carbon\Carbon::parse($value->created_at)->format('d-m-Y || H:i:s'); }}

@@ -87,23 +87,6 @@
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            {{-- <div
-                                                class="title_wrapper d-flex align-items-center justify-content-between mb-3">
-                                                <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
-                                                <div class="action_wrapper d-flex">
-                                                    <div class="form-group has-search">
-                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                        <form action="/ho-so-don-vi" method="GET">
-                                                            <input type="text" class="form-control" placeholder="Tìm kiếm..."
-                                                                name="q" value="{{ request()->q }}">
-                                                        </form>
-                                                    </div>
-                                                    <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
-                                                        <button class="btn btn-danger d-block" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="coCauToChuc"
                                                     class="table table-responsive table-hover table-bordered">
@@ -187,7 +170,7 @@
                                                                                 class="btn btn-outline-danger"
                                                                                 data-bs-dismiss="modal">Hủy</button>
                                                                             <form
-                                                                                action="/ho-so-don-vi/{{ $value->id }}"
+                                                                                action="{{ route('department.delete',$value->id) }}"
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
@@ -216,7 +199,7 @@
                                                                         </div>
 
                                                                         <form method="POST"
-                                                                            action="/ho-so-don-vi/{{ $value->id }}">
+                                                                            action="{{ route('department.update',$value->id) }}">
                                                                             @csrf
                                                                             @method('PUT')
 
@@ -317,52 +300,6 @@
     </div>
     @include('template.sidebar.sidebarCoCauToChuc.sidebarRight')
 
-
-
-    {{-- Modal Sửa Cơ cấu tổ chức --}}
-    <div class="modal fade" id="suaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Cơ cấu tổ chức</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="Digital Marketing">
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="DMKT">
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="CTCP Mastertran">
-                        </div>
-
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
-                        </div>
-                        <div class="col-sm-12">
-                            <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Them Co Cau -->
     <div class="modal fade" id="themCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -372,7 +309,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/ho-so-don-vi" method="POST">
+                <form action="{{ route('department.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

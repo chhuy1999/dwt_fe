@@ -132,7 +132,7 @@
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <form
-                                                                            action="/danh-muc-dinh-muc/{{ $target->id }}"
+                                                                            action="{{ route('target.update',$target->id) }}"
                                                                             method="POST">
                                                                             @method('PUT')
                                                                             @csrf
@@ -286,7 +286,7 @@
                                                                                 class="btn btn-outline-danger"
                                                                                 data-bs-dismiss="modal">Hủy</button>
                                                                             <form
-                                                                                action="/danh-muc-dinh-muc/{{ $target->id }}"
+                                                                                action="{{ route('target.delete',$target->id) }}"
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
@@ -397,7 +397,7 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Thêm định mức lao động</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/danh-muc-dinh-muc" method="POST">
+                <form action="{{ route('target.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -472,6 +472,7 @@
                         <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>
