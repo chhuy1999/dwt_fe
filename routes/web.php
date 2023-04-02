@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\EquimentPackController;
 use App\Http\Controllers\Api\MeetingController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\ReportTaskController;
+use App\Http\Controllers\Api\MeetingListController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -169,7 +170,12 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::post('giao-ban', [MeetingController::class, 'store']);
 });
 
+// Kho lưu trữ biên bản họp
+// Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
+//     Route::get('kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index']);
+// });
 
+Route::get('/kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index']);
 
 
 //bao cao van de
@@ -194,9 +200,9 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 });
 
 
-Route::get('kho-luu-tru-bien-ban-hop', function () {
-    return view('HopDonVi.khoLuuTruBienBanHop');
-});
+// Route::get('kho-luu-tru-bien-ban-hop', function () {
+//     return view('HopDonVi.khoLuuTruBienBanHop');
+// });
 Route::get('bien-ban-hop', function () {
     return view('HopDonVi.bienBanHop');
 });

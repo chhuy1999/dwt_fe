@@ -93,7 +93,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items more position-relative">
-                                        <a href="giao-ban" class="header_submenu-link more_btn">
+                                        <a href="kho-luu-tru-bien-ban-hop" class="header_submenu-link more_btn">
                                             Giao ban <i class="bi bi-chevron-right"></i>
                                         </a>
                                         <ul class="header_more">
@@ -104,11 +104,14 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia
                                                     cuộc họp</a>
                                             </li>
+                                            <li class="header_more-item">
+                                                <a href="" data-bs-toggle="modal" data-bs-target="" class="header_more-link">Danh sách cuộc họp đang diễn ra</a>
+                                            </li>
                                         </ul>
                                     </li>
-                                    <li class="header_submenu-items">
+                                    {{-- <li class="header_submenu-items">
                                         <a href="kho-luu-tru-bien-ban-hop" class="header_submenu-link">Kho biên bản</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
 
@@ -562,12 +565,15 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
                                 </select>
                             </div>
-                            <div class="col-sm-6 mb-3">
+                            <div class="col-sm-4 mb-3">
                                 <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_date">
                             </div>
-                            <div class="col-sm-6 mb-3">
+                            <div class="col-sm-4 mb-3">
                                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}" name="code">
                                 {{-- <p>Mã cuộc họp: {{ time() }}</p> --}}
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Đặt mật khẩu" placeholder="Đặt mật khẩu (nếu có)" class="form-control" name="password">
                             </div>
 
                         </div>
@@ -592,8 +598,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <form action="" method="PUT"></form>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-12 mb-3">
+                        <div class="col-sm-8 mb-3">
                             <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Nhập mã cuộc họp" id="meetCode">
+                        </div>
+                        <div class="col-sm-4 mb-3">
+                            <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Nhập mật khẩu" placeholder="Nhập mật khẩu (nếu có)" class="form-control" name="password">
                         </div>
                     </div>
                 </div>

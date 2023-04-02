@@ -87,7 +87,7 @@
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div
+                                            {{-- <div
                                                 class="title_wrapper d-flex align-items-center justify-content-between mb-3">
                                                 <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
                                                 <div class="action_wrapper d-flex">
@@ -103,7 +103,7 @@
                                                         data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="coCauToChuc"
                                                     class="table table-responsive table-hover table-bordered">

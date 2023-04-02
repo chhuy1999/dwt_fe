@@ -3,6 +3,7 @@
 @section('title', 'Kho lưu trữ Biên bản họp')
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
+    
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -13,334 +14,65 @@
                         </h5>
                         @include('template.components.sectionCard')
                     </div>
+                   
 
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="card-title">Bảng lưu trữ biên bản họp</div>
-                                    </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="table-responsive dataTables_wrapper style_table-4">
-                                                <table id="khoLuuTruBienBanHop" class="table table-striped">
+                                            <div class="table-responsive dataTables_wrapper">
+                                                <table id="khoLuuTruBienBanHop" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th>STT</th>
-                                                            <th>Phân loại</th>
-                                                            <th>Ngày cập nhật</th>
-                                                            <th>Nội dung</th>
-                                                            <th>Xem biên bản họp</th>
+                                                            <th class="text-nowrap" style="width:5%">STT</th>
+                                                            <th class="text-nowrap" style="width:20%">Tên cuộc họp</th>
+                                                            <th class="text-nowrap" style="width:10%">Thời gian tạo</th>
+                                                            <th class="text-nowrap" style="width:10%">Phòng ban</th>
+                                                            <th class="text-nowrap" style="width:10%">Người chủ trì</th>
+                                                            <th class="text-nowrap" style="width:10%">Trạng thái</th>
+                                                            <th class="text-nowrap" style="width:10%">Tham gia</th>
+                                                            {{-- <th class="text-nowrap" style="width:5%">Xem biên bản họp</th> --}}
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($data->data as $value)
                                                         <tr>
-                                                            <th scope="row">1</th>
+                                                            <th scope="row">{{ $value->id }}</th>
                                                             <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
+                                                                {{ $value->title }}
                                                             </td>
                                                             <td class="text-center">
-                                                                05-03-2023
+                                                                {{ date('d/m/Y', strtotime($value->start_time)) }}
                                                             </td>
                                                             <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
+                                                                @foreach ($listDepartments->data as $dep)
+                                                                    @if ($dep->id == $value->departement->id)
+                                                                            {{ $dep->name }}
+                                                                    @endif
+                                                                @endforeach
                                                             </td>
-                                                            <td class="text-center">
+                                                            <td>
+                                                                @foreach ($listUsers->data as $pos)
+                                                                    @if ($pos->id == $value->leader->id)
+                                                                            {{ $pos->name }}
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                            <td>
+                                                                Đang diễn ra
+                                                            </td>
+                                                            <td>
+                                                                <div><a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia
+                                                                    cuộc họp</a></div>
+                                                            </td>
+                                                            {{-- <td class="text-center">
                                                                 <a href="#" class="text-success"><u>Xem chi
                                                                         tiết</u></a>
-                                                            </td>
+                                                            </td> --}}
                                                         </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">4</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">5</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">6</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">7</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">8</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">9</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">10</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">11</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">12</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">13</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">14</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">15</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">16</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">17</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">18</th>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur.
-                                                            </td>
-                                                            <td class="text-center">
-                                                                05-03-2023
-                                                            </td>
-                                                            <td>
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Officiis autem placeat delectus
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td>
-                                                        </tr>
+                                                        @endforeach
 
                                                     </tbody>
                                                 </table>
@@ -357,6 +89,37 @@
         </div>
     </div>
     @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
+
+    
+    {{-- Tham gia cuộc họp --}}
+    @foreach($data->data as $value)
+    <div class="modal fade" id="thamGiaCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Tham gia cuộc họp</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="PUT">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-8 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" value="{{ $value->code }}" id="meetCode">
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Nhập mật khẩu" placeholder="Nhập mật khẩu (nếu có)" class="form-control" name="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger" id="joinMeet">Tham gia cuộc họp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endforeach
 @endsection
 @section('footer-script')
     <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
@@ -369,8 +132,8 @@
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
     <script>
         $('#khoLuuTruBienBanHop').DataTable({
-            paging: true,
-            ordering: true,
+            paging: false,
+            ordering: false,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ biên bản họp',
                 infoEmpty: 'Hiện tại chưa có biên bản họp nào',
@@ -386,7 +149,10 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ biên bản họp',
             },
-            dom: '<"dataTables_top justify-content-end"f>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex justify-content-between align-items-center mb-3"<"card-title-wrapper-left"><"d-flex "f>>rt<"dataTables_bottom  justify-content-end"p>',
         });
+        $('div.card-title-wrapper-left').html(`
+                <div class="card-title">Bảng lưu trữ biên bản họp</div>
+            `);
     </script>
 @endsection
