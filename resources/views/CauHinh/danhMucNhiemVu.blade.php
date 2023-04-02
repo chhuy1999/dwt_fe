@@ -116,7 +116,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->position->name }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->position->name ?? "" }}">
                                                                         {{ $targetDetail->position->name ?? '' }}
                                                                     </div>
                                                                 </td>
