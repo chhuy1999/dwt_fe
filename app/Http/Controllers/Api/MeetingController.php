@@ -54,10 +54,10 @@ class MeetingController extends Controller
                 ->with('listUsers', $listUsers)
                 ->with('pendingReports', $pendingReports)
                 ->with('handledReports', $handledReports)
+                ->with('listReports', $listReports)
                 ->with('kpiKeys', $kpiKeys)
                 ->with('meeting', $meeting);
         } catch (Exception $e) {
-            dd($e);
             return back()->with('error', $e->getMessage());
         }
     }
@@ -89,6 +89,7 @@ class MeetingController extends Controller
                 'start_date' => 'required',
                 'code' => 'required',
                 'password' => 'nullable',
+
             ]);
             $data['start_date'] = date('Y-m-d', strtotime(str_replace("/", "-", $data['start_date'])));
             $res = $this->dwtService->createMeeting($data);
@@ -107,12 +108,18 @@ class MeetingController extends Controller
     }
     public function update($id, Request $request)
     {
-        try {
-            $data = $request->validate([
 
+        try {
+
+            $data = $request->validate([
+                'participants' => 'nullable|array',
+                'secretary_id' => 'nullable',
                 'files' => "nullable|array",
                 "uploadedFiles" => "nullable|array",
+                'leader_id' => 'nullable',
+                'status' => 'nullable',
             ]);
+
 
             if (isset($data['files'])) {
 
@@ -137,7 +144,7 @@ class MeetingController extends Controller
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
 
-
+            dd($e);
             return back()->with('error', $e->getMessage());
         }
     }

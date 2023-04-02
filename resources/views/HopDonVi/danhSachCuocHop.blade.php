@@ -20,8 +20,7 @@
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="khoLuuTruBienBanHop"
-                                                    class="table table-responsive table-hover table-bordered">
+                                                <table id="khoLuuTruBienBanHop" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap" style="width:5%">STT</th>
@@ -46,7 +45,7 @@
                                                                     {{ $value->code }}
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    {{ \Carbon\Carbon::parse($value->created_at)->format('d-m-Y || H:i:s'); }}
+                                                                    {{ \Carbon\Carbon::parse($value->created_at)->format('d-m-Y || H:i:s') }}
                                                                     {{-- {{ date('d/m/Y', strtotime($value->created_at->format('d-m-Y')) ) }} --}}
                                                                 </td>
                                                                 <td>
@@ -64,13 +63,30 @@
                                                                     @endforeach
                                                                 </td>
                                                                 <td>
-                                                                    Đang diễn ra
+                                                                    @switch($value->status)
+                                                                        @case(0)
+                                                                            <span>Đang diễn ra</span>
+                                                                        @break
+
+                                                                        @case(1)
+                                                                            <span>Đã kết thúc</span>
+                                                                        @break
+
+                                                                        @default
+                                                                            <span></span>
+                                                                    @endswitch
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $value->id }}" class="header_more-link">
-                                                                            Tham gia cuộc họp
-                                                                        </a>
+                                                                        @if ($value->status == 0)
+                                                                            <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $value->id }}" class="header_more-link">
+                                                                                Tham gia cuộc họp
+                                                                            </a>
+                                                                        @elseif($value->status == 1)
+                                                                            <span></span>
+                                                                        @else
+                                                                            <span></span>
+                                                                        @endif
                                                                     </div>
                                                                 </td>
                                                                 {{-- <td class="text-center">
@@ -79,48 +95,28 @@
                                                             </td> --}}
                                                             </tr>
                                                             {{-- Tham gia cuộc họp --}}
-                                                            <div class="modal fade" id="thamGiaCuocHop{{ $value->id }}"
-                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                aria-hidden="true">
+                                                            <div class="modal fade" id="thamGiaCuocHop{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
-                                                                            <h5 class="modal-title w-100"
-                                                                                id="exampleModalLabel">Tham gia cuộc họp
+                                                                            <h5 class="modal-title w-100" id="exampleModalLabel">Tham gia cuộc họp
                                                                             </h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <form action="/giao-ban/tham-gia" method="POST">
                                                                             @csrf
                                                                             <div class="modal-body">
                                                                                 <div class="row">
                                                                                     <div class="col-sm-8 mb-3">
-                                                                                        <input type="text"
-                                                                                            data-bs-toggle="tooltip"
-                                                                                            data-bs-placement="top"
-                                                                                            title="Mã cuộc họp"
-                                                                                            class="form-control"
-                                                                                            value="{{ $value->code }}"
-                                                                                            name="code"
-                                                                                            id="listMeetCode">
+                                                                                        <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" value="{{ $value->code }}" name="code" id="listMeetCode">
                                                                                     </div>
                                                                                     <div class="col-sm-4 mb-3">
-                                                                                        <input type="text"
-                                                                                            data-bs-toggle="tooltip"
-                                                                                            data-bs-placement="top"
-                                                                                            title="Nhập mật khẩu"
-                                                                                            placeholder="Nhập mật khẩu (nếu có)"
-                                                                                            class="form-control"
-                                                                                            name="password">
+                                                                                        <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Nhập mật khẩu" placeholder="Nhập mật khẩu (nếu có)" class="form-control" name="password">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-outline-danger"
-                                                                                    data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                                                                                 <button type="submit" class="btn btn-danger" id="listJoinMeet">Tham gia cuộc họp</button>
                                                                             </div>
                                                                         </form>

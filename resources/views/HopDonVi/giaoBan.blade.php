@@ -81,6 +81,19 @@
 
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
+    @php
+        function getListParticipantIds($meeting)
+        {
+            $listParticipantIds = [];
+            if (!$meeting) {
+                return [];
+            }
+            foreach ($meeting->participants as $participant) {
+                array_push($listParticipantIds, $participant->id);
+            }
+            return $listParticipantIds;
+        }
+    @endphp
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -92,13 +105,17 @@
                                     <div class="text-nowrap">Đơn vị: </div>
                                 </div>
                                 <div class="col-sm-10">
-                                    <strong class="text-nowrap">{{ session('user')['departement']['name'] ?? 'Chưa có đơn vị' }}</strong>
+                                    <strong class="text-nowrap">{{ $meeting->departement->name ?? 'Chưa có đơn vị' }}</strong>
                                 </div>
                                 <div class="col-sm-2">Chủ trì: </div>
                                 <div class="col-sm-10">
-                                    <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5">
+                                    <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5" id="leaderSelect">
                                         @foreach ($listUsers->data as $value)
-                                            <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                            @if ($meeting->leader_id == $value->id)
+                                                <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
+                                            @else
+                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -137,10 +154,11 @@
                                                 <div class="card-title">Tổng quan</div>
                                             </div>
                                             <div class="form-control" style="padding: 0.5rem 0.75rem;">
-                                                <form action="" method="">
+                                                <form action="/giao-ban/{{ $meeting->id }}" method="POST">
                                                     @csrf
+                                                    @method('PUT')
                                                     <div class="row">
-                                                   
+                                                        <input type="hidden" name="leader_id" value="0" id="leaderIdInput">
                                                         <div class="col-md-7">
                                                             <div class="d-flex align-items-center mb-3">
                                                                 <div class="d-flex align-items-center">
@@ -153,7 +171,7 @@
                                                                     <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <textarea name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
+                                                                    <textarea readonly name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -163,11 +181,16 @@
                                                                     <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} Thư ký" data-live-search-placeholder="Tìm kiếm...">
-                                                                        
+                                                                    <select class="selectpicker" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" name="secretary_id" data-live-search-placeholder="Tìm kiếm...">
+
                                                                         @foreach ($listUsers->data as $value)
-                                                                            <option value="{{ $value->id }}">
-                                                                                {{ $value->name }}</option>
+                                                                            @if ($meeting->secretary_id == $value->id)
+                                                                                <option value="{{ $value->id }}" selected>
+                                                                                    {{ $value->name }}</option>
+                                                                            @else
+                                                                                <option value="{{ $value->id }}">
+                                                                                    {{ $value->name }}</option>
+                                                                            @endif
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
@@ -177,17 +200,22 @@
                                                                     <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm...">
+                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="participants[]">
                                                                         @foreach ($listUsers->data as $value)
-                                                                            <option value="{{ $value->name }}">
-                                                                                {{ $value->name }}</option>
+                                                                            @if (in_array($value->id, getListParticipantIds($meeting)))
+                                                                                <option value="{{ $value->id }}" selected>
+                                                                                    {{ $value->name }}</option>
+                                                                            @else
+                                                                                <option value="{{ $value->id }}">
+                                                                                    {{ $value->name }}</option>
+                                                                            @endif
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
                                                             </div>
 
                                                         </div>
-                                                        
+
                                                     </div>
                                                     <div class="d-flex align-items-center justify-content-end mt-3"><button type="submit" class="btn btn-outline-danger">Xác nhận</button></div>
                                                 </form>
@@ -436,7 +464,7 @@
                                                                     </div>
                                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{$item->id}}" data-repeater-delete>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
                                                                                 <i class="bi bi-arrow-right-square-fill"></i>
                                                                                 Chuyển thành nhiệm vụ phát sinh
                                                                             </a>
@@ -645,215 +673,243 @@
         <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 21cm">
             <div class="modal-content">
 
-                <form action="/giao-ban/{{ $meeting->id }}" method="POST" enctype="multipart/form-data">
-                    @method('PUT')
-                    @csrf>
-                    <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
-                        <div class="d-block text-center mb-3">
-                            <h5 class="modal-title w-100 fs-3">BIÊN BẢN HOP GIAO BAN {{ $meeting->type }}</option>
-                            </h5>
-                            <p class="m-0 fs-5 fst-italic">Phòng Marketing</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="table-responsive">
-                                    <table class="table table-borderless">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <p class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</p>
-                                                </td>
-                                                <td>
-                                                    <div name="daterange" class="fs-5">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ đề:</div>
-                                                </td>
-                                                <td>
-                                                    <div class="fs-5">Họp báo cáo kết quả tuần 3 tháng 3/2023 phòng Marketing
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ trì:</div>
-                                                </td>
-                                                <td>
-                                                    <div class="fs-5">Nguyễn Vũ Nguyệt Minh - MTT123</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thư kí:</div>
-                                                </td>
-                                                <td>
-                                                    <div class="fs-5">Đặng Vũ Lam Mai - MTT239</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
-                                                        gia:</div>
-                                                </td>
-                                                <td>
-                                                    <div class="fs-5">Nguyễn Vũ Nguyệt Minh - MTT123, Đặng Vũ Lam Mai -
-                                                        MTT239, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng Vân - MTT125, Hồ Thị Hồng
-                                                        Vân - MTT125</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="fs-5">Chu Văn Linh - MTT123, Nguyễn Ngọc Bảo - MTT124</div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
 
+                <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
+                    <div class="d-block text-center mb-3">
+                        <h5 class="modal-title w-100 fs-3">BIÊN BẢN HOP GIAO BAN {{ $meeting->type }}</option>
+                        </h5>
+                        {{-- <p class="m-0 fs-5 fst-italic">Phòng {{$meeting}}</p> --}}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</p>
+                                            </td>
+                                            <td>
+                                                <div name="daterange" class="fs-5">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ đề:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">{{ $meeting->title }}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ trì:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">{{ $meeting->leader->name ?? '' }} - {{ $meeting->leader->code ?? '' }}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thư kí:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">{{ $meeting->secretary->name ?? '' }} - {{ $meeting->secretary->code ?? '' }}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
+                                                    gia:</div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">
+                                                    @if ($meeting->participants)
+                                                        @foreach ($meeting->participants as $participant)
+                                                            {{ $participant->name }} - {{ $participant->code }}
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="fs-5">
+                                                    @foreach ($listUsers->data as $user)
+                                                        @if ($user->id != $meeting->leader->id && $user->id != $meeting->secretary->id)
+                                                            @if ($meeting->participants)
+                                                                @foreach ($meeting->participants as $participant)
+                                                                    @if ($user->id != $participant->id)
+                                                                        {{ $user->name }} - {{ $user->code }}, &nbsp;
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="d-flex align-items-center  justify-content-between">
-                                    <div class="modal-title fw-bolder">I. NỘI DUNG TRAO ĐỔI</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="d-flex align-items-center  justify-content-between">
-                                    <div class="mt-3 modal_body-title">
-                                        <p class="" type="text">
-                                            1. Chỉnh sửa giao diện Họp giao ban <br>
-                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                            2. Chỉnh sửa giao diện Họp giao ban <br>
-                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                            - Chuyển lại chữ tiêu đề màu đỏ như các mục khác <br>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="d-flex align-items-center  justify-content-between">
-                                    <div class="modal-title fw-bolder">II. VẤN ĐỀ TỒN ĐỌNG</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="mt-4 modal_body-title">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">STT</th>
-                                                <th scope="col">Vấn đề</th>
-                                                <th scope="col">Người nêu</th>
-                                                <th scope="col">Nguyên nhân</th>
-                                                <th scope="col">Hướng giải quyết</th>
-                                                <th scope="col">PIC</th>
-                                                <th scope="col">Thời hạn</th>
-                                                <th scope="col">Tình trạng</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
-                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
-                                                <td>Sẽ gửi trong tuần</td>
-                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                                <td>05/04/2023</td>
-                                                <td>Có hướng giải quyết</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
-                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
-                                                <td>Sẽ gửi trong tuần</td>
-                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                                <td>05/04/2023</td>
-                                                <td>Có hướng giải quyết</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tin</td>
-                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                                <td>Chưa hoàn thành báo cáo do abc chưa gửi thông tino</td>
-                                                <td>Sẽ gửi trong tuần</td>
-                                                <td>Nguyễn Ngọc Bảo - MTT123</td>
-                                                <td>05/04/2023</td>
-                                                <td>Có hướng giải quyết</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 d-flex flex-column justify-content-between">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="mt-3 modal_body-title fw-bolder">Trưởng bộ phận</div>
-                                </div>
-                                <div class="d-flex align-items-center  justify-content-center">
-                                    <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <p class="modal_body-title"></p>
-                                    <img src="" height="60" alt="" />
-                                </div>
-                                <div class="d-flex align-items-center  justify-content-center">
-                                    <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 d-flex flex-column justify-content-between">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="mt-3 modal_body-title fw-bolder">Thành viên tham gia</div>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <p class="modal_body-title m-0">
-                                        Nguyễn Ngọc Bảo, Hồ Thị Hồng Van, Đặng Lam Mai
-                                    </p>
-                                </div>
-                                <div class="d-flex align-items-center  justify-content-center">
-                                    <p class="modal_body-title m-0">Chúng tôi xác nhận nội dung cuộc hop</p>
-                                </div>
 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal-title fw-bolder">I. NỘI DUNG TRAO ĐỔI</div>
                             </div>
-                            <div class="col-md-4 d-flex flex-column justify-content-between">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
-                                </div>
-                                <div class="d-flex align-items-center  justify-content-center">
-                                    <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <p class="modal_body-title"></p>
-                                    <img src="" height="60" alt="" />
-                                </div>
-                                <div class="d-flex align-items-center  justify-content-center">
-                                    <p class="modal_body-title mb-0">Đặng Vũ Lam Mai</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="mt-3 modal_body-title">
+                                    @foreach ($meeting->meeting_logs as $log)
+                                        <p> - {{ $log->note }}</p>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger ps-5 pe-5" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-danger">Xác nhận</button>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal-title fw-bolder">II. VẤN ĐỀ TỒN ĐỌNG</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mt-4 modal_body-title">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Vấn đề</th>
+                                            <th scope="col">Người nêu</th>
+                                            <th scope="col">Nguyên nhân</th>
+                                            <th scope="col">Hướng giải quyết</th>
+                                            <th scope="col">PIC</th>
+                                            <th scope="col">Thời hạn</th>
+                                            <th scope="col">Tình trạng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($listReports as $report)
+                                            <tr>
+                                                <th scope="row">
+                                                    {{ $loop->index + 1 }}
+                                                </th>
+                                                <td>
+                                                    {{ $report->problem }}}
+                                                </td>
+                                                <td>
+                                                    {{ $report->user->name ?? '' }} - {{ $report->user->code ?? '' }}
+                                                </td>
+                                                <td>
+                                                    {{ $report->reason }}
+                                                </td>
+                                                <td>
+                                                    {{ $report->solution }}
+                                                </td>
+                                                <td>
+                                                    @foreach ($report->pics as $pic)
+                                                        {{ $pic->name ?? '' }} - {{ $pic->code ?? '' }}
+                                                    @endforeach
+                                                </td>
+                                                <td>{{ $report->deadline ? date('d/m/y', strtotime($report->deadline)) : '' }}</td>
+                                                <td>
+                                                    @switch($report->status)
+                                                        @case('Sent')
+                                                            Đã tiếp nhận
+                                                        @break
+
+                                                        @case('FoundSolution')
+                                                            Đã có hướng giải quyết
+                                                        @break
+
+                                                        @case('Solved')
+                                                            Đã giải quyết
+                                                        @break
+
+                                                        @case('CantSolve')
+                                                            không thể giải quyết
+                                                        @break
+
+                                                        @default
+                                                        @break
+                                                    @endswitch
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-3 modal_body-title fw-bolder">Trưởng bộ phận</div>
+                            </div>
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <p class="modal_body-title"></p>
+                                <img src="" height="60" alt="" />
+                            </div>
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title mb-0">{{ $meeting->leader->name ?? '' }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-3 modal_body-title fw-bolder">Thành viên tham gia</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <p class="modal_body-title m-0">
+                                    @foreach ($meeting->participants as $participant)
+                                        {{ $participant->name }} - {{ $participant->code }}, &nbsp;
+                                    @endforeach
+                                </p>
+                            </div>
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title m-0">Chúng tôi xác nhận nội dung cuộc hop</p>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
+                            </div>
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <p class="modal_body-title"></p>
+                                <img src="" height="60" alt="" />
+                            </div>
+                            <div class="d-flex align-items-center  justify-content-center">
+                                <p class="modal_body-title mb-0">{{ $meeting->secretary->name ?? '' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger ps-5 pe-5" data-bs-dismiss="modal">Hủy</button>
+                    <form action="/giao-ban/{{ $meeting->id }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="status" value="1">
+                        <button type="submit" class="btn btn-danger">Xác nhận</button>
+                    </form>
+                </div>
 
 
-                </form>
             </div>
         </div>
     </div>
@@ -912,7 +968,7 @@
     {{-- {{ dd($handledReports) }} --}}
     @foreach ($handledReports as $item)
         <!-- Modal Giao nhiệm vụ phát sinh -->
-        <div class="modal fade" id="nhiemVuPhatSinh{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="nhiemVuPhatSinh{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <form action="{{ route('reportTask.store') }}", method="POST">
                     @csrf
@@ -1161,6 +1217,14 @@
                 format: 'd/m/Y',
                 timepicker: false,
             });
+        });
+    </script>
+    <script>
+        //sync leader
+        const leaderSelect = document.getElementById('leaderSelect');
+        const leaderInput = document.getElementById('leaderIdInput');
+        leaderSelect.addEventListener('change', (e) => {
+            leaderInput.value = e.target.value;
         });
     </script>
     <script>

@@ -99,7 +99,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items more position-relative">
-                                        <a href="{{ route('meeting.list') }}" class="header_submenu-link more_btn">
+                                        <a href="" class="header_submenu-link more_btn">
                                             Giao ban <i class="bi bi-chevron-right"></i>
                                         </a>
                                         <ul class="header_more">
@@ -114,7 +114,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                     cuộc họp</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="{{ route('meeting.open') }}" data-bs-toggle="modal" data-bs-target="" class="header_more-link">Danh sách cuộc họp đang diễn ra</a>
+                                                <a href="{{ route('meeting.list') }}" class="header_more-link">Danh sách cuộc họp đang diễn ra</a>
                                             </li>
                                         </ul>
                                     </li>
