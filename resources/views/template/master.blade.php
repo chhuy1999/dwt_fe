@@ -97,7 +97,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items more position-relative">
-                                        <a href="" class="header_submenu-link more_btn">
+                                        <a href="#" class="header_submenu-link more_btn">
                                             Giao ban <i class="bi bi-chevron-right"></i>
                                         </a>
                                         <ul class="header_more">
