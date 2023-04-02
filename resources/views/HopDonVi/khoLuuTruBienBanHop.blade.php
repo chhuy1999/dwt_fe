@@ -64,7 +64,7 @@
                                                                 Đang diễn ra
                                                             </td>
                                                             <td>
-                                                                <div><a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia
+                                                                <div><a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $value->id }}" class="header_more-link">Tham gia
                                                                     cuộc họp</a></div>
                                                             </td>
                                                             {{-- <td class="text-center">
@@ -92,8 +92,9 @@
 
     
     {{-- Tham gia cuộc họp --}}
+    {{-- {{ dd($data) }} --}}
     @foreach($data->data as $value)
-    <div class="modal fade" id="thamGiaCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="thamGiaCuocHop{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
