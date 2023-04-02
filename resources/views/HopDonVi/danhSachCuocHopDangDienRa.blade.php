@@ -92,7 +92,7 @@
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
-                                                                        <form action="{{route('checkJoinMeeting') }}" method="post">
+                                                                        <form action="/giao-ban/tham-gia" method="POST">
                                                                             @csrf
                                                                             <div class="modal-body">
                                                                                 <div class="row">

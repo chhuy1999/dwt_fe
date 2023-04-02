@@ -92,7 +92,7 @@
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
-                                                                        <form action="{{route('joinMeeting',$value->code) }}" method="get">
+                                                                        <form action="/giao-ban/tham-gia" method="POST">
                                                                             @csrf
                                                                             <div class="modal-body">
                                                                                 <div class="row">
@@ -181,18 +181,5 @@
         $('div.card-title-wrapper-left').html(`
                 <div class="card-title">Bảng lưu trữ biên bản họp</div>
             `);
-    </script>
-
-    <script>
-        ///join meet
-        const listJoinMeetBtn = document.getElementById('listJoinMeet');
-        const listMeetCodeEL = document.getElementById('listMeetCode');
-
-        listJoinMeetBtn.addEventListener('click', () => {
-            const meetCode = listMeetCodeEL.value;
-            if (meetCode) {
-                window.location = '/giao-ban/' + meetCode;
-            }
-        })
     </script>
 @endsection

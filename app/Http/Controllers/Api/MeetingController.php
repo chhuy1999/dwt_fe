@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\DwtServices;
 use Exception;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class MeetingController extends Controller
 {
@@ -21,10 +22,21 @@ class MeetingController extends Controller
     {
         try {
             $meeting = $this->dwtService->searchMeetingByCode($code);
+
             if (!$meeting || count($meeting->data) == 0) {
-                return redirect('/')->with('error', 'Không tìm thấy cuộc họp');
+                return back()->with('error', 'Không tìm thấy cuộc họp');
             }
             $meeting = $meeting->data[0];
+            $pwd = $request->get('pwd');
+            if($meeting->password && !$pwd){
+                return back()->with('error', 'Bạn cần nhập mật khẩu để tham gia cuộc họp');
+            }
+            if($meeting->password && $pwd){
+                $decodedPwd = base64_decode($pwd);
+                if($decodedPwd != $meeting->password){
+                    return back()->with('error', 'Mật khẩu không đúng');
+                }
+            }
             $listUsers = $this->dwtService->searchUser("", 1, 200);
             $listReports = $this->dwtService->searchReports();
             $kpiKeys = $this->dwtService->searchKpiKeys();
@@ -50,8 +62,24 @@ class MeetingController extends Controller
         }
     }
 
+    public function join(Request $request)
+    {
+        $data = $request->validate([
+            'code' => 'required',
+            'password' => 'nullable',
+        ]);
+
+        $encodedPwd = "";
+        if ($data['password']) {
+            //encode
+            $encodedPwd =  base64_encode($data['password']);
+        }
+        return redirect('/giao-ban/' . $data["code"] . '?pwd=' . $encodedPwd);
+    }
+
     public function store(Request $request)
     {
+
         try {
             $data = $request->validate([
                 'title' => 'required',
@@ -60,16 +88,25 @@ class MeetingController extends Controller
                 'leader_id' => 'required',
                 'start_date' => 'required',
                 'code' => 'required',
+                'password' => 'nullable',
             ]);
             $data['start_date'] = date('Y-m-d', strtotime(str_replace("/", "-", $data['start_date'])));
             $res = $this->dwtService->createMeeting($data);
             $meetCode = $res->code;
-            return route('/giao-ban/' . $meetCode)->with('success', 'Tạo cuộc họp thành công voi mã: ' . $meetCode);
+            //encode
+            $encodedPwd = "";
+            if ($data['password']) {
+                //encode
+                $encodedPwd =  base64_encode($data['password']);
+            }
+
+            return redirect('/giao-ban/' . $meetCode . '?pwd=' . $encodedPwd)->with('success', 'Tạo cuộc họp thành công voi mã: ' . $meetCode);
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
     }
-    public function update($id, Request $request) {
+    public function update($id, Request $request)
+    {
         try {
             $data = $request->validate([
 
@@ -98,8 +135,7 @@ class MeetingController extends Controller
             $this->dwtService->updateMeeting($id, $data);
 
             return back()->with('success', 'Cập nhật thành công');
-
-        }catch(Exception $e) {
+        } catch (Exception $e) {
 
 
             return back()->with('error', $e->getMessage());

@@ -89,7 +89,7 @@
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
-                                                                        <form action="{{route('joinMeeting',$value->code) }}" method="post">
+                                                                        <form action="/giao-ban/tham-gia" method="POST">
                                                                             @csrf
                                                                             <div class="modal-body">
                                                                                 <div class="row">
@@ -114,7 +114,12 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <button type="submit" class="btn btn-danger">Tham gia cuộc họp</button>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-outline-danger"
+                                                                                    data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit" class="btn btn-danger" id="listJoinMeet">Tham gia cuộc họp</button>
+                                                                            </div>
                                                                         </form>
                                                                         {{-- <form action="" method="PUT">
                                                                             @csrf

@@ -136,8 +136,8 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('giao-ban/{code}', [MeetingController::class, 'index'])->name('joinMeeting');
 //    Route::put('giao-ban/tham-gia', [MeetingController::class, 'update'])->name('checkJoinMeeting');
 //    Route::post('giao-ban/tham-gia',[MeetingController::class, 'join'])->name('checkJoinMeeting');
-    Route::post('giao-ban/tao-moi', [MeetingController::class, 'store'])->name('createMeeting');
-
+    Route::post('giao-ban', [MeetingController::class, 'store'])->name('createMeeting');
+    Route::post('giao-ban/tham-gia', [MeetingController::class, 'join']);
 
     Route::get('/danh-sach-cuoc-hop/danh-sach', [MeetingListController::class, 'index'])->name('meeting.list');
     Route::get('/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra', [MeetingListController::class, 'meetingOpen'])->name('meeting.open');
