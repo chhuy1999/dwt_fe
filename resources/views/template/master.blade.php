@@ -67,8 +67,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items">
-                                        <a href="ke-hoach" class="header_submenu-link">Kế
-                                            hoạch</a>
+                                        <a href="#" class="header_submenu-link">Kế hoạch</a>
+{{--                                        <a href="ke-hoach" class="header_submenu-link">Kế hoạch</a>--}}
                                     </li>
                                     <li class="header_submenu-items more position-relative">
                                         <a href="" class="header_submenu-link more_btn">
@@ -212,20 +212,16 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <a href="ho-so-don-vi" class="header_more-link">Cơ cấu đơn vị</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-sach-vi-tri" class="header_more-link">Danh sách vị
-                                                    trí</a>
+                                                <a href="danh-sach-vi-tri" class="header_more-link">Danh sách vị trí</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-sach-cap-to-chuc" class="header_more-link">Danh sách cấp
-                                                    tổ chức</a>
+                                                <a href="danh-sach-cap-to-chuc" class="header_more-link">Danh sách cấp tổ chức</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-sach-cap-nhan-su" class="header_more-link">Danh sách cấp
-                                                    nhân sự</a>
+                                                <a href="danh-sach-cap-nhan-su" class="header_more-link">Danh sách cấp nhân sự</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-goi-trang-bi" class="header_more-link">Danh mục gói
-                                                    trang bị</a>
+                                                <a href="danh-muc-goi-trang-bi" class="header_more-link">Danh mục gói trang bị</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -235,8 +231,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         </a>
                                         <ul class="header_more">
                                             <li class="header_more-item">
-                                                <a href="danh-sach-thanh-vien" class="header_more-link">Danh sách
-                                                    thành viên</a>
+                                                <a href="danh-sach-thanh-vien" class="header_more-link">Danh sách thành viên</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -249,16 +244,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         </a>
                                         <ul class="header_more">
                                             <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh mục định
-                                                    mức</a>
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Định mức</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-nhiem-vu" class="header_more-link">Danh mục nhiệm
-                                                    vụ</a>
+                                                <a href="danh-muc-nhiem-vu" class="header_more-link">Mẫu nhiệm vụ</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-chi-so-key" class="header_more-link">Danh mục chỉ số
-                                                    key</a>
+                                                <a href="danh-muc-chi-so-key" class="header_more-link">Chỉ số kinh doanh</a>
                                             </li>
                                             {{-- <li class="header_more-item">
                                                 <a href="" class="header_more-link">Danh mục đơn
@@ -284,12 +276,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         </a>
                                         <ul class="header_more">
                                             <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách key
-                                                    chart</a>
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách key chart</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách
-                                                    chart</a>
+                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách chart</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -735,7 +725,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <script>
         let jwtToken2 = "{!! session()->get('token') !!}";
 
-       
+
         // get list departments
         const fetchListDeparments = async () => {
             try {
