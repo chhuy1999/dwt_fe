@@ -110,4 +110,36 @@ class MeetingController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function join(Request $request){
+        
+        $meeting = $this->dwtService->searchMeetingByCode($request->code);
+            if (!$meeting || count($meeting->data) == 0) {
+                return redirect('/')->with('error', 'Không tìm thấy cuộc họp');
+            }else{
+                $meeting = $meeting->data[0];
+                $listUsers = $this->dwtService->searchUser("", 1, 200);
+                $listReports = $this->dwtService->searchReports();
+                $kpiKeys = $this->dwtService->searchKpiKeys();
+                $listReports = $listReports->data;
+                //get all reports with status == 'Sent'
+                $pendingReports = array_filter($listReports, function ($item) {
+                    return $item->status == 'Sent';
+                });
+
+                $handledReports = array_filter($listReports, function ($item) {
+                    return $item->status != 'Sent';
+                });
+
+
+
+                return view('HopDonVi.giaoBan',['code',$request->code])
+                    ->with('listUsers', $listUsers)
+                    ->with('pendingReports', $pendingReports)
+                    ->with('handledReports', $handledReports)
+                    ->with('kpiKeys', $kpiKeys)
+                    ->with('meeting', $meeting);
+            }
+            
+    }
 }

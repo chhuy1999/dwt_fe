@@ -165,7 +165,8 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 //hop giao ban
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
-    Route::get('giao-ban/{code}', [MeetingController::class, 'index']);
+    Route::post('giao-ban/tham-gia',[MeetingController::class, 'join'])->name('checkJoinMeeting');
+    Route::get('giao-ban/{code}', [MeetingController::class, 'index'])->name('joinMeeting');
     Route::put('giao-ban/{id}', [MeetingController::class, 'update']);
     Route::post('giao-ban', [MeetingController::class, 'store']);
 });

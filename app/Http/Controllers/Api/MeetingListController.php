@@ -42,6 +42,7 @@ class MeetingListController extends Controller
         }
     }
 
+
     public function store(Request $request)
     {
         try {
