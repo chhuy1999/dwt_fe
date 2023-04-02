@@ -100,7 +100,7 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                                                                         <form
-                                                                            action="/danh-muc-goi-trang-bi/{{ $value->id }}"
+                                                                            action="{{ route('equimentPack.delete', $value->id) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
@@ -122,7 +122,7 @@
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
 
-                                                                    <form method="POST" action="/danh-muc-goi-trang-bi/{{ $value->id }}">
+                                                                    <form method="POST" action="{{ route('equimentPack.update', $value->id) }}">
                                                                         @csrf
                                                                         @method('PUT')
                                                                         <div class="modal-body">
@@ -200,7 +200,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-muc-goi-trang-bi" method="POST">
+                <form action="{{ route('equimentPack.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

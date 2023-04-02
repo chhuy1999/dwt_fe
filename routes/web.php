@@ -101,12 +101,12 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 });
 //bao cao cv
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
-    Route::post('bao-cao-cong-viec/{id}', [TargetLogController::class, 'store']);
+    Route::post('bao-cao-cong-viec/{id}', [TargetLogController::class, 'store'])->name('targetLog.store');
 });
 //report-tasks
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
-    Route::post('nhiem-vu-phat-sinh', [ReportTaskController::class, 'store']);
-    Route::post('nhiem-vu-phat-sinh/bao-cao/{id}', [ReportTaskController::class, 'reportTask']);
+    Route::post('nhiem-vu-phat-sinh', [ReportTaskController::class, 'store'])->name('reportTask.store');
+    Route::post('nhiem-vu-phat-sinh/bao-cao/{id}', [ReportTaskController::class, 'reportTask'])->name('reportTask.reportTask');
 });
 
 // Danh sách cấp tổ chức
@@ -120,9 +120,9 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 // Danh sách cấp nhân sự
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('danh-sach-cap-nhan-su/danh-sach', [PositionLevelController::class, 'index'])->name('positionLevel.list');
-    Route::post('danh-sach-cap-nhan-su', [PositionLevelController::class, 'store'])->name('positionLevel.store');
-    Route::put('danh-sach-cap-nhan-su/{id}', [PositionLevelController::class, 'update'])->name('positionLevel.update');
-    Route::delete('danh-sach-cap-nhan-su/{id}', [PositionLevelController::class, 'delete'])->name('positionLevel.delete');
+    Route::post('danh-sach-cap-nhan-su/create', [PositionLevelController::class, 'store'])->name('positionLevel.store');
+    Route::put('danh-sach-cap-nhan-su/update/{id}', [PositionLevelController::class, 'update'])->name('positionLevel.update');
+    Route::delete('danh-sach-cap-nhan-su/delete/{id}', [PositionLevelController::class, 'delete'])->name('positionLevel.delete');
 });
 
 // Route::get('danh-muc-don-vi-tinh', function () {
@@ -142,22 +142,22 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 // Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 //     Route::get('kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index']);
 // });
-Route::get('/danh-sach-cuoc-hop', [MeetingListController::class, 'index']);
-Route::get('/kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index']);
+Route::get('/danh-sach-cuoc-hop/danh-sach', [MeetingListController::class, 'index'])->name('meeting.list');
+Route::get('/kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index'])->name('');
 
 
 //bao cao van de
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
-    Route::post('bao-cao-van-de', [ReportController::class, 'store']);
-    Route::put('bao-cao-van-de/{id}', [ReportController::class, 'update']);
+    Route::post('bao-cao-van-de/create', [ReportController::class, 'store'])->name('report.store');
+    Route::put('bao-cao-van-de/update/{id}', [ReportController::class, 'update'])->name('report.update');
 });
 
 // Danh mục gói trang bị
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {
     Route::get('danh-muc-goi-trang-bi/danh-sach', [EquimentPackController::class, 'index'])->name('equimentPack.list');
-    Route::post('danh-muc-goi-trang-bi', [EquimentPackController::class, 'store'])->name('equimentPack.store');
-    Route::put('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'update'])->name('equimentPack.update');
-    Route::delete('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'delete'])->name('equimentPack.delete');
+    Route::post('danh-muc-goi-trang-bi/create', [EquimentPackController::class, 'store'])->name('equimentPack.store');
+    Route::put('danh-muc-goi-trang-bi/update/{id}', [EquimentPackController::class, 'update'])->name('equimentPack.update');
+    Route::delete('danh-muc-goi-trang-bi/delete/{id}', [EquimentPackController::class, 'delete'])->name('equimentPack.delete');
 });
 
 

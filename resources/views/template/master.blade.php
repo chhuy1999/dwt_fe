@@ -80,7 +80,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
                                         <ul class="header_more">
 
-                                            @if (session('user')['role'] == 'admin')
+                                            @if (session('user')['role'] == 'manager')
                                                 <li class="header_more-item">
                                                     <a href="{{ route('assignTask.list') }}" class="header_more-link">Giao việc theo định
                                                         mức</a>
@@ -106,7 +106,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items more position-relative">
-                                        <a href="danh-sach-cuoc-hop" class="header_submenu-link more_btn">
+                                        <a href="{{ route('meeting.list') }}" class="header_submenu-link more_btn">
                                             Giao ban <i class="bi bi-chevron-right"></i>
                                         </a>
                                         <ul class="header_more">
@@ -515,7 +515,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/bao-cao-van-de" method="POST">
+                <form action="{{ route('report.store') }}" method="POST">
                     @csrf
 
                     <div class="modal-body">
