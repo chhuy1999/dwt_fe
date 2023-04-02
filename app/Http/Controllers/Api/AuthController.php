@@ -32,7 +32,15 @@ class AuthController extends Controller
             $request->session()->put('token', $token);
             $user = $response['user'];
             $request->session()->put('user', $user);
-            // //regenerate session id
+            // //regenerate session id $response['user']['departement_id']
+            if($user['departement_id']){
+                $idDept = ($response['user']['departement_id'])-1;
+                $listDepartments = $this->dwtServices->listDepartments()->data;
+                $nameDepartment =$listDepartments[$idDept]->name;
+                $request->session()->put('department_name',$nameDepartment);
+            }else{
+                $request->session()->put('department_name','Trống');
+            }
             $request->session()->regenerate();
             return redirect('/');
         } catch (Exception $e) {

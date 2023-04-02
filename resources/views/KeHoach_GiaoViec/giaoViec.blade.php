@@ -26,7 +26,19 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">Giao Việc</h5>
-                        @include('template.components.sectionCard')
+                        <div class="mainSection_card">
+                            <div class="mainSection_content">
+                                <div class="me-5" style="flex:1">Đơn vị: </div>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong></div>
+                            </div>
+                            <div class="mainSection_content">
+                                <div class="me-3">Trưởng đơn vị: </div>
+                                <div class="d-flex justify-content-start"><strong>{{ Session::get('user')['name'] }}</strong></div>
+                            </div>
+                        </div>
+                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -542,8 +554,7 @@
 @section('footer-script')
 
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}">
-    </script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
     <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>

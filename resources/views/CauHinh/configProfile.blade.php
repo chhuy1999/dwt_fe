@@ -87,6 +87,23 @@
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-12">
+                                            <div
+                                                class="title_wrapper d-flex align-items-center justify-content-between mb-3">
+                                                <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
+                                                <div class="action_wrapper d-flex">
+                                                    <div class="form-group has-search">
+                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                        <form action="/ho-so-don-vi" method="GET">
+                                                            <input type="text" class="form-control" placeholder="Tìm kiếm..."
+                                                                name="q" value="{{ request()->q }}">
+                                                        </form>
+                                                    </div>
+                                                    <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
+                                                        <button class="btn btn-danger d-block" data-bs-toggle="modal"
+                                                        data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="coCauToChuc"
                                                     class="table table-responsive table-hover table-bordered">

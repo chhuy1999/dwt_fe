@@ -19,7 +19,7 @@
                         <div class="mainSection_card">
                             <div class="mainSection_content">
                                 <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong>
                                 </div>
                             </div>
                             <div class="mainSection_content">
@@ -62,22 +62,22 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name }}">{{ $target->name }}</div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name  ?? "" }}">{{ $target->name  ?? "" }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:400px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description }}">
-                                                                        {{ $target->description }}
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:400px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description  ?? "" }}">
+                                                                        {{ $target->description  ?? "" }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->unit && $target->unit->name }}">
-                                                                        {{ $target->unit && $target->unit->name }}
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->departement->name  ?? "" }}">
+                                                                        {{  $target->departement->name ?? "" }}
                                                                     </div>
 
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->position && $target->position->name }}">
-                                                                        {{ $target->position && $target->position->name }}
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->position->name  ?? "" }}">
+                                                                        {{  $target->position->name ?? "" }}
                                                                     </div>
                                                                 </td>
 
@@ -645,6 +645,7 @@
         paging: true,
         ordering: false,
         order: [[0, 'desc']],
+        pageLength: 30,
         pageLength: 30,
         language: {
             info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
