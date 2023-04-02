@@ -48,7 +48,9 @@
                                                             <th class="text-nowrap">Đơn vị phụ trách</th>
                                                             <th class="text-nowrap">Vị trí phụ trách</th>
                                                             <th class="text-nowrap text-center">Manday</th>
+                                                            @if (session('user')['role'] == 'admin')
                                                             <th></th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody data-repeater-list="group-a">
@@ -84,6 +86,7 @@
                                                                 <td>
                                                                     <div class="text-center">{{ $target->manday }}</div>
                                                                 </td>
+                                                                @if (session('user')['role'] == 'admin')
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1"
                                                                         data-bs-toggle="dropdown" aria-expanded="false"><i
@@ -112,6 +115,7 @@
                                                                         </li>
                                                                     </ul>
                                                                 </td>
+                                                                @endif
                                                             </tr>
                                                             <!-- Modal Sửa Định Mức -->
                                                             <div class="modal fade" id="suaMoiDinhMuc{{ $target->id }}"
@@ -684,10 +688,12 @@
         <div class="d-flex justify-content-between align-items-center">
 
             <div class="main_action ms-3">
+                @if (session('user')['role'] == 'admin')
                 <button id="exporttable" class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themMoiDinhMuc">
                     Thêm định mức
                 </button>
+                @endif
                 <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip"
                     data-bs-placement="top" title="Xuất file Excel">
                     <i class="bi bi-download"></i>

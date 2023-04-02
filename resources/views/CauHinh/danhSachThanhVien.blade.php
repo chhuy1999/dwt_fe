@@ -36,7 +36,9 @@
                                                             <th class="text-nowrap">SĐT liên hệ</th>
                                                             <th class="text-nowrap">Hình thức</th>
                                                             <th class="text-nowrap">Trạng thái</th>
+                                                            @if (session('user')['role'] == 'admin')
                                                             <th class="text-nowrap">Hành động</th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -76,6 +78,7 @@
                                                                 <td>
                                                                     <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->status}}">Đang làm việc</div>
                                                                 </td>
+                                                                @if (session('user')['role'] == 'admin')
                                                                 <td>
                                                                     <div
                                                                         class="table_actions d-flex justify-content-center">
@@ -91,6 +94,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
+                                                                @endif
                                                             </tr>
 
                                                             {{-- Modal Sua thanh vien --}}
@@ -2714,12 +2718,14 @@
         `);
         $('div.card-title-right').html(`
             <div class="action_wrapper d-flex">
+                @if (session('user')['role'] == 'admin')
                 <div class="action_export ms-3" data-bs-toggle="tooltip"
                     data-bs-placement="top" aria-label="Thêm thành viên"
                     data-bs-original-title="Thêm thành viên">
                     <button class="btn btn-danger d-block" data-bs-toggle="modal"
                         data-bs-target="#themThanhVien">Thêm thành viên</button>
                 </div>
+                @endif
             </div>
         `);
     </script>

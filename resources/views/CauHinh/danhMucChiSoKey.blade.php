@@ -245,10 +245,12 @@
         });
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex me-3">
+                @if (session('user')['role'] == 'admin')
                 <button class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themChiSoKey">
                     Thêm chỉ số key
                 </button>
+                @endif
                 <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
                     <i class="bi bi-download"></i>
                     Xuất Excel
