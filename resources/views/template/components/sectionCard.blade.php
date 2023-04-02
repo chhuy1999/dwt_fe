@@ -3,7 +3,7 @@
         <div class="col-md-4">
             <div class="text-nowrap">Đơn vị: </div>
         </div>
-        <div class="col-md-8"><strong class="text-nowrap">{{Session::get('department_name')}}</strong>
+        <div class="col-md-8"><strong class="text-nowrap">{{Session::get('department_name') ?? ''}}</strong>
         </div>
         <div class="col-md-4">
             <div class="text-nowrap">Trưởng đơn vị: </div>

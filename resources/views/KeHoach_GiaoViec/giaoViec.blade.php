@@ -349,38 +349,39 @@
                         @method('PUT')
                         <div class="modal-body">
                             <div class="mb-3 row">
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-7 mb-3">
                                     <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" value="{{ $assignedTask->name }}" />
                                 </div>
+                                
+                                <div class="col-md-5 mb-3">
+                                    <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
+                                </div>
+
                                 <div class="col-md-12 mb-3">
                                     <input type="text" class="form-control" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Thuộc định mức" value="{{ $assignedTask->target->name ?? '' }}" />
                                 </div>
 
-                                <div class="col-md-12 mb-3">
-                                    <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả nhiệm vụ" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
+                                <div class="col-md-9 mb-3">
+                                    <textarea class="form-control" rows="1" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả nhiệm vụ" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Kế hoạch thực hiện" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
+                                
+                                <div class="col-md-3 mb-3">
+                                    <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" name="manday" min="0" step="0.05" oninput="onInput(this)" value="{{ $assignedTask->manday }}" class="form-control" />
+                                </div>
+                                <div class="col-md-9 mb-3">
+                                    <textarea class="form-control" rows="1" data-bs-toggle="tooltip" data-bs-placement="top" title="Kế hoạch thực hiện" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
                                 </div>
 
-                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
-                                    <select class='selectpicker' data-live-search="true" data-size="5" name="position_id" id="">
-                                        @foreach ($listPositions->data as $pos)
-                                            @if ($pos->id == ($assignedTask->position->id ?? '-1'))
-                                                <option value="{{ $pos->id }}" selected>
-                                                    {{ $pos->name }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $pos->id }}">
-                                                    {{ $pos->name }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-
-                                    </select>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-check">
+                                        <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $assignedTask->id }}" name="saveAsForm">
+                                        <label role="button" class="form-check-label user-select-none fs-5" for="datGiaTriKinhDoanh{{ $assignedTask->id }}">Lưu
+                                            thành mẫu</label>
+                                    </div>
                                 </div>
+
                                 <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người đảm nhiệm">
-                                    <select class='selectpicker' multiple data-size="5" data-live-search="true" name="users[]">
+                                    <select class='selectpicker' multiple data-size="5" data-live-search="true" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" name="users[]">
                                         @foreach ($listUsers as $user)
                                             @if (isAssigned($assignedTask, $user->id))
                                                 <option value="{{ $user->id }}" selected>
@@ -397,21 +398,13 @@
                                 </div>
 
                                 <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người liên quan">
-                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]" id="">
+                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người liên quan" name="relatedUsers[]" id="">
                                         @foreach ($listUsers as $user)
                                             <option value="{{ $user->id }}" selected>
                                                 {{ $user->name }}
                                             </option>
                                         @endforeach
                                     </select>
-                                </div>
-
-                                <div class="col-md-2 mb-3">
-                                    <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" name="manday" min="0" step="0.05" oninput="onInput(this)" value="{{ $assignedTask->manday }}" class="form-control" />
-                                </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
                                 </div>
 
                                 <div class="repeater">
@@ -442,7 +435,6 @@
                                                 </div>
                                             </div>
                                         @endforeach
-
 
                                     </div>
 

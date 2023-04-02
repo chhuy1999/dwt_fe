@@ -3,7 +3,6 @@
 @section('title', 'Danh mục chỉ số key')
 @section('content')
     {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft') --}}
-    {{-- {{ dd($listUnits) }} --}}
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
