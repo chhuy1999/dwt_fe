@@ -236,9 +236,12 @@
             dom: '<"d-flex mb-3 justify-content-end"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
         });
         $('div.card-title-wrapper').html(`
+        @if (session('user')['role'] == 'admin')
             <div class="main_search d-flex me-3">
                 <button class="btn btn-danger d-block w-60" data-bs-toggle="modal" data-bs-target="#themCapNhanSu" style="margin-left: 10px">Thêm cấp nhân sự</button>
             </div>
+        
+        @endif
         `);
     </script>
 

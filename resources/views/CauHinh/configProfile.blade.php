@@ -115,7 +115,9 @@
                                                             <th class="text-nowrap">Cấp tổ chức</th>
                                                             <th class="text-nowrap">Trưởng đơn vị</th>
                                                             <th class="text-nowrap">Chức năng nhiệm vụ</th>
+                                                            @if (session('user')['role'] == 'admin')
                                                             <th class="text-nowrap">Hành động</th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -142,6 +144,7 @@
                                                                 <td>
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:600px" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
                                                                 </td>
+                                                                @if (session('user')['role'] == 'admin')
                                                                 <td>
                                                                     <div
                                                                         class="table_actions d-flex justify-content-center">
@@ -159,6 +162,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
+                                                                @endif
                                                             </tr>
                                                             {{-- Xóa Cơ cấu tổ chức --}}
                                                             <div class="modal fade" id="xoaCoCauToChuc{{ $value->id }}"
@@ -2019,10 +2023,12 @@
         <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
     `);
     $('div.card-title-wrapper-right').html(`
+        @if (session('user')['role'] == 'admin')
         <div class="main_search d-flex ms-3">
             <button class="btn btn-danger d-block" data-bs-toggle="modal"
             data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
         </div>
+        @endif
     `);
 </script>
 

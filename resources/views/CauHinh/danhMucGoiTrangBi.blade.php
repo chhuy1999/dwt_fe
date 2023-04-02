@@ -29,7 +29,9 @@
                                                             <th style="width: 40%">Gói trang bị</th>
                                                             <th style="width: 40%">Hạng mục trang bị</th>
                                                             <th style="width: 10%">Đơn vị</th>
+                                                            @if (session('user')['role'] == 'admin')
                                                             <th style="width: 8%">Hành động</th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -64,20 +66,23 @@
                                                                     @endforeach
                                                                 </div>
                                                             </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suatrangbi{{ $value->id }}">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                            @if (session('user')['role'] == 'admin')
+
+                                                                <td>
+                                                                    <div class="table_actions d-flex justify-content-center">
+                                                                        <div class="btn" data-bs-toggle="modal"
+                                                                            data-bs-target="#suatrangbi{{ $value->id }}">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        </div>
+                                                                        <div class="btn" data-bs-toggle="modal"
+                                                                            data-bs-target="#xoatrangbi{{ $value->id }}">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoatrangbi{{ $value->id }}">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
+                                                                </td>
+                                                            @endif
                                                         </tr>
 
 
@@ -265,9 +270,11 @@
                 dom: '<"d-flex mb-3 justify-content-end"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
             });
             $('div.card-title-wrapper').html(`
+                @if (session('user')['role'] == 'admin')
                 <div class="main_search d-flex me-3">
                     <button class="btn btn-danger d-block w-60" data-bs-toggle="modal" data-bs-target="#themTrangBi" style="margin-left: 10px">Thêm trang bị</button>
                 </div>
+                @endif
             `);
         </script>
 @endsection

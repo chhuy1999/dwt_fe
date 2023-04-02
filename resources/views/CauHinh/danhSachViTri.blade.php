@@ -35,7 +35,9 @@
                                                     <th class="text-nowrap" style="width: 6%">Định biên</th>
                                                     <th class="text-nowrap" style="width: 10%">Quỹ lương năm</th>
                                                     <th class="text-nowrap" style="width: 8%">Gói trang bị</th>
+                                                    @if (session('user')['role'] == 'admin')
                                                     <th class="text-nowrap" style="width: 5%">Hành động</th>
+                                                    @endif
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -98,6 +100,7 @@
                                                                 Pack Quản lý
                                                             </div>
                                                         </td>
+                                                        @if (session('user')['role'] == 'admin')
                                                         <td>
                                                             <div
                                                                 class="table_actions d-flex justify-content-center">
@@ -113,6 +116,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        @endif
                                                     </tr>
 
                                                     {{-- Xóa Vi tri --}}
@@ -1908,9 +1912,11 @@ src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.m
                 <div class="card-title">Toàn Công Ty</div>
             `);
             $('div.card-title-wrapper-right').html(`
+                @if (session('user')['role'] == 'admin')
                 <div class="main_search d-flex ms-3">
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Thêm vị trí</button>
                 </div>
+                @endif
             `);
         });
         
