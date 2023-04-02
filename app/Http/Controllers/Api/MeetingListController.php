@@ -41,6 +41,29 @@ class MeetingListController extends Controller
             return view('HopDonVi.danhSachCuocHop');
         }
     }
+    public function meetingOpen(Request $request)
+    {
+        try {
+            $q = $request->get('q');
+            $page = $request->get('page');
+            $limit = $request->get('limit');
+            $data = $this->dwtService->searchMeetingByCode($q, $page, $limit);
+            $listMeeting = $this->dwtService->listMeeting();
+            // $listMeeting = $listMeeting->data;
+            $listDepartments = $this->dwtService->listDepartments();
+            $listUnits = $this->dwtService->listUnits();
+            $listUsers = $this->dwtService->listUsers();
+
+            return view('HopDonVi.danhSachCuocHopDangDienRa')
+                ->with('data', $data)
+                ->with('listMeeting', $listMeeting)
+                ->with('listDepartments', $listDepartments)
+                ->with('listUsers', $listUsers);
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return view('HopDonVi.danhSachCuocHopDangDienRa');
+        }
+    }
 
 
     public function store(Request $request)

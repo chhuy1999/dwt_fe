@@ -73,13 +73,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         {{--                                        <a href="ke-hoach" class="header_submenu-link">Kế hoạch</a> --}}
                                     </li>
                                     <li class="header_submenu-items more position-relative">
-                                        <a href="" class="header_submenu-link more_btn">
+                                        <a href="#" class="header_submenu-link more_btn">
                                             Giao Việc <i class="bi bi-chevron-right"></i>
                                         </a>
 
                                         <ul class="header_more">
 
-                                            @if (session('user')['role'] == 'manager')
+                                            @if (session('user')['role'] == 'admin')
                                                 <li class="header_more-item">
                                                     <a href="{{ route('assignTask.list') }}" class="header_more-link">Giao việc theo định
                                                         mức</a>
@@ -120,7 +120,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                     cuộc họp</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="" data-bs-toggle="modal" data-bs-target="" class="header_more-link">Danh sách cuộc họp đang diễn ra</a>
+                                                <a href="{{ route('meeting.open') }}" data-bs-toggle="modal" data-bs-target="" class="header_more-link">Danh sách cuộc họp đang diễn ra</a>
                                             </li>
                                         </ul>
                                     </li>

@@ -1,6 +1,6 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Danh sách cuộc họp')
+@section('title', 'Danh sách cuộc họp đang diễn ra')
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -9,7 +9,7 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">
-                            Danh sách cuộc họp
+                            Danh sách cuộc họp đang diễn ra
                         </h5>
                         @include('template.components.sectionCard')
                     </div>
