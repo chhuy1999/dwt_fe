@@ -1008,7 +1008,8 @@ aria-hidden="true">
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <form action="/danh-muc-nhiem-vu/{{ $task->id }}" method="POST">
+            {{-- <form action="/danh-muc-nhiem-vu/{{ $task->id }}" method="POST"> --}}
+            <form action="{{ route('targetDetail.store', $task->id) }}" method="POST">
                 @method('PUT')
                 @csrf
                 <div class="modal-body">

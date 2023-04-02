@@ -169,7 +169,7 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Thêm chỉ số key</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="/danh-muc-chi-so-key">
+                <form method="POST" action="{{ route('key.store') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

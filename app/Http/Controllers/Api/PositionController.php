@@ -31,6 +31,7 @@ class PositionController extends Controller
             $page = $request->get('page');
             $limit = $request->get('limit');
             $data = $this->dwtService->searchPosition($q, $page, $limit);
+            // dd($data);
             $listDepartments = $this->dwtService->listDepartments();
             $listPositions = $this->dwtService->listPositions();
             $listEquimentPack = $this->dwtService->listEquimentPack();
