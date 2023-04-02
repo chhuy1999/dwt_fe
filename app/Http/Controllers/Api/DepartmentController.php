@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    private $dwtService;
+    private $dwtServices;
     //contructor
     public function __construct()
     {
         // $this->middleware('auth');
-        $this->dwtService = new DwtServices();
+        $this->dwtServices = new DwtServices();
     }
 
 
@@ -29,9 +29,9 @@ class DepartmentController extends Controller
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchDepartment($q, $page, $limit);
-            $listDepartments = $this->dwtService->listDepartments();
-            $listUsers = $this->dwtService->listUsers();
+            $data = $this->dwtServices->searchDepartment($q, $page, $limit);
+            $listDepartments = $this->dwtServices->listDepartments();
+            $listUsers = $this->dwtServices->listUsers();
 
             return view('CauHinh.configProfile')
                  ->with('data', $data)

@@ -23,7 +23,7 @@
                         <div class="mainSection_card">
                             <div class="mainSection_content">
                                 <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong>
                                 </div>
                             </div>
                             <div class="mainSection_content">
@@ -490,7 +490,7 @@
             order: [
                 [0, 'desc']
             ],
-            pageLength: 10,
+            pageLength: 50,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',

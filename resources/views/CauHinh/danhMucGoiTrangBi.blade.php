@@ -51,7 +51,7 @@
 
                                                                 </div>
                                                             </td>
-                                                        
+
                                                             <td>
                                                                 <div>{{ $value->name }}</div>
                                                             </td>
@@ -100,7 +100,7 @@
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit" class="btn btn-danger">Xóa</button>
-                                                                        
+
                                                                         </form>
                                                                     </div>
                                                                 </div>
@@ -122,7 +122,7 @@
                                                                         @method('PUT')
                                                                         <div class="modal-body">
                                                                             <div class="row">
-                                                                                
+
                                                                                 <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị">
                                                                                     <select name="parent_id" class="selectpicker" title="Nhập gói trang bị" data-size="3" data-live-search="true">
                                                                                         @foreach ($listEquimentPack->data as $value)
@@ -150,7 +150,7 @@
                                                                                         @endforeach
                                                                                     </select>
                                                                                 </div>
-                                                                                
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
@@ -161,7 +161,7 @@
                                                                     </form>
                                                                 </div>
                                                             </div>
-                                                        
+
                                                             @endforeach
                                                         </tbody>
 
@@ -207,7 +207,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
 
                             <div class="col-sm-6 mb-3">
@@ -246,7 +246,7 @@
                 paging: true,
                 ordering: false,
                 order: [[0, 'desc']],
-                pageLength: 5,
+                pageLength: 20,
                 language: {
                     info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                     infoEmpty: 'Hiện tại chưa có bản ghi nào',

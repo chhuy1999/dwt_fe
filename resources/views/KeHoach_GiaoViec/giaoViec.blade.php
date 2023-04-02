@@ -29,7 +29,7 @@
                         <div class="mainSection_card">
                             <div class="mainSection_content">
                                 <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong></div>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong></div>
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
