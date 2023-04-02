@@ -71,7 +71,9 @@
                                                             </th>
                                                             <th style="width: 8%">Chỉ số key</th>
                                                             <th style="width: 5%">Manday</th>
+                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                             <th style="width: 2%"></th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody data-repeater-list="group-a">
@@ -122,6 +124,7 @@
                                                                         {{ $targetDetail->manday }}
                                                                     </div>
                                                                 </td>
+                                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                     </div>
@@ -140,6 +143,7 @@
                                                                         </li>
                                                                     </ul>
                                                                 </td>
+                                                                @endif
                                                             </tr>
 
                                                             <!-- Modal Sửa nhiệm vụ -->

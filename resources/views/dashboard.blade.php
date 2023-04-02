@@ -340,7 +340,7 @@
                         </div>
                     
 
-                        @if (session('user')['role'] == 'admin')
+                        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                             <div class="col-lg-12">
                                 <div class="card mb-3">
                                     <div class="card-body">
@@ -439,6 +439,20 @@
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center pb-2">
+                                        <div class="card-title">Danh sách vấn đề</div>
+            
+                                        <div class="action_wrapper d-flex">
+                                            <div class="form-group has-search me-3">
+                                                <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm vấn đề">
+                                            </div>
+                                            <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Xuất file Excel">
+                                                <button class="btn-export"><i class="bi bi-download"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="table-responsive ">
                                         <table id="dsVanDe" class="table table-hover table-bordered">
                                             <thead>
@@ -465,7 +479,9 @@
                                                                 Người đảm nhiệm
                                                             </th>
                                                             <th class="text-nowrap" style="width: 6%">Thời hạn</th>
+                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                             <th colspan="2"></th>
+                                                            @endif
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -529,6 +545,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                         <td>
                                                             <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                             </div>
@@ -554,6 +571,7 @@
 
                                                             </ul>
                                                         </td>
+                                                        @endif
                                                     </tr>
                                                 @endforeach
 
@@ -1763,6 +1781,7 @@ aria-hidden="true">
             }
         });
         $('div.three-title-wrapper-left').html(`
+        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
             <div class="d-flex justify-content-between align-items-center pb-2">
                 <div class="card-title">Báo cáo ngày của đơn vị</div>
                 <div class="mainSection_total-kpi">
@@ -1771,6 +1790,7 @@ aria-hidden="true">
                     KPI
                 </div>
             </div>
+            @endif
             `);
         $('div.three-title-wrapper-right').html(`
             <div class="action_wrapper d-flex ms-3">
