@@ -31,6 +31,7 @@ class PositionLevelController extends Controller
             $limit = $request->get('limit');
             $data = $this->dwtService->searchPositionLevel($q, $page, $limit);
             $listPositionLevel = $this->dwtService->listPositionLevel();
+            // dd($listPositionLevel);
             return view('CauHinh.danhSachCapNhanSu')
                  ->with('data', $data)
                 ->with('listPositionLevel', $listPositionLevel);

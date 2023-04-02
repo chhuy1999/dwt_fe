@@ -43,6 +43,8 @@ class MeetingListController extends Controller
     }
     public function meetingOpen(Request $request)
     {
+
+        
         try {
             $q = $request->get('q');
             $page = $request->get('page');

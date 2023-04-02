@@ -20,6 +20,7 @@
             return $isAssigned;
         }
     @endphp
+
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -86,6 +87,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-5 overflow-auto" style="height: 276px">
+                                            
                                             @foreach ($listTargets->data as $target)
                                                 <div class="body_content-wrapper" id="body_content-{{ $target->id }}">
                                                     <form action="/giao-viec" method="POST" id="formTarget">
@@ -333,7 +335,7 @@
         </div>
     </div>
     @include('template.sidebar.sidebarGiaoViec.sidebarRight')
-
+   
     @foreach ($listAssignTasks->data as $assignedTask)
         <!-- Modal Sửa nvu -->
         <div class="modal fade" id="suaVanDeTonDong{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -344,7 +346,7 @@
                             nhiệm vụ đã giao</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="/danh-muc-nhiem-vu/{{ $assignedTask->id }}" method="POST">
+                    <form action="{{ route('targetDetail.update', $assignedTask->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
