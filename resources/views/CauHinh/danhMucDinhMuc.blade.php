@@ -646,7 +646,7 @@
         ordering: false,
         order: [[0, 'desc']],
         pageLength: 30,
-        pageLength: 30,
+            pageLength: 30,
         language: {
             info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
             infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -667,7 +667,6 @@
     $('div.action_wrapper').html(`
         <div class="action_wrapper d-flex">
             <div class="action_export">
-
                 <select class="selectpicker" title="Đơn vị phụ trách " data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
                         <option value="1">Ban Giám Đốc</option>
                         <option value="2">Ban Kiểm soát</option>
