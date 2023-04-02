@@ -89,7 +89,7 @@
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
-                                                                        <form action="{{route('checkJoinMeeting') }}" method="post">
+                                                                        <form action="{{route('joinMeeting',$value->code) }}" method="post">
                                                                             @csrf
                                                                             <div class="modal-body">
                                                                                 <div class="row">
