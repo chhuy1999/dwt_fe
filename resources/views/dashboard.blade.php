@@ -802,7 +802,8 @@ aria-hidden="true">
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form action="/bao-cao-cong-viec/{{ $task->id }}" method="POST"
+                {{-- <form action="/bao-cao-cong-viec/{{ $task->id }}" method="POST" --}}
+                <form action="{{ route('targetLog.store',$task->id)}}" method="POST"
                     enctype="multipart/form-data">
                     <input type="hidden" name="reportedDate"
                         value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
@@ -1254,7 +1255,8 @@ aria-hidden="true">
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/nhiem-vu-phat-sinh/bao-cao/{{ $reportTask->id }}" method="POST" enctype="multipart/form-data">
+                {{-- <form action="/nhiem-vu-phat-sinh/bao-cao/{{ $reportTask->id }}" method="POST" enctype="multipart/form-data"> --}}
+                <form action="{{ route('reportTask.reportTask', $reportTask->id) }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="report_date" value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
                     @csrf
                     <div class="modal-body">

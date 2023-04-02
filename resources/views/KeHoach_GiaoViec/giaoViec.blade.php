@@ -465,7 +465,7 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Giao nhiệm vụ phát sinh</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="/nhiem-vu-phat-sinh">
+                <form method="POST" action="{{ route('reportTask.store') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

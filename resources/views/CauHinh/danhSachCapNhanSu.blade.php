@@ -77,7 +77,7 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                                                                         <form
-                                                                            action="/danh-sach-cap-nhan-su/{{ $value->id }}"
+                                                                            action="{{ route('positionLevel.delete', $value->id) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
@@ -99,7 +99,7 @@
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
 
-                                                                    <form method="POST" action="/danh-sach-cap-nhan-su/{{ $value->id }}">
+                                                                    <form method="POST" action="{{ route('positionLevel.update', $value->id) }}">
                                                                     @csrf
                                                                     @method('PUT')
                                                                         <div class="modal-body">
@@ -182,7 +182,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-cap-nhan-su" method="POST">
+                <form action="{{ route('positionLevel') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
