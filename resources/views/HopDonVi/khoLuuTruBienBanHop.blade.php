@@ -3,7 +3,7 @@
 @section('title', 'Kho lưu trữ Biên bản họp')
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
-    
+
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -14,8 +14,6 @@
                         </h5>
                         @include('template.components.sectionCard')
                     </div>
-                   
-
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-3">
@@ -23,7 +21,8 @@
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="khoLuuTruBienBanHop" class="table table-responsive table-hover table-bordered">
+                                                <table id="khoLuuTruBienBanHop"
+                                                    class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap" style="width:5%">STT</th>
@@ -38,40 +37,120 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($data->data as $value)
-                                                        <tr>
-                                                            <th scope="row">{{ $value->id }}</th>
-                                                            <td>
-                                                                {{ $value->title }}
-                                                            </td>
-                                                            <td class="text-center">
-                                                                {{ date('d/m/Y', strtotime($value->start_time)) }}
-                                                            </td>
-                                                            <td>
-                                                                @foreach ($listDepartments->data as $dep)
-                                                                    @if ($dep->id == $value->departement->id)
+                                                            <tr>
+                                                                <th scope="row">{{ $value->id }}</th>
+                                                                <td>
+                                                                    {{ $value->title }}
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    {{ \Carbon\Carbon::parse($value->created_at)->format('d-m-Y || H:i:s'); }}
+                                                                    {{-- {{ date('d/m/Y', strtotime($value->created_at->format('d-m-Y')) ) }} --}}
+                                                                </td>
+                                                                <td>
+                                                                    @foreach ($listDepartments->data as $dep)
+                                                                        @if ($dep->id == $value->departement->id)
                                                                             {{ $dep->name }}
-                                                                    @endif
-                                                                @endforeach
-                                                            </td>
-                                                            <td>
-                                                                @foreach ($listUsers->data as $pos)
-                                                                    @if ($pos->id == $value->leader->id)
+                                                                        @endif
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    @foreach ($listUsers->data as $pos)
+                                                                        @if ($pos->id == $value->leader->id)
                                                                             {{ $pos->name }}
-                                                                    @endif
-                                                                @endforeach
-                                                            </td>
-                                                            <td>
-                                                                Đang diễn ra
-                                                            </td>
-                                                            <td>
-                                                                <div><a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $value->id }}" class="header_more-link">Tham gia
-                                                                    cuộc họp</a></div>
-                                                            </td>
-                                                            {{-- <td class="text-center">
+                                                                        @endif
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    Đang diễn ra
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <a href="" data-bs-toggle="modal"data-bs-target="#thamGiaCuocHop{{ $value->id }}" class="header_more-link">
+                                                                            Tham gia cuộc họp
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                                {{-- <td class="text-center">
                                                                 <a href="#" class="text-success"><u>Xem chi
                                                                         tiết</u></a>
                                                             </td> --}}
-                                                        </tr>
+                                                            </tr>
+                                                            {{-- Tham gia cuộc họp --}}
+                                                            <div class="modal fade" id="thamGiaCuocHop{{ $value->id }}"
+                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header text-center">
+                                                                            <h5 class="modal-title w-100"
+                                                                                id="exampleModalLabel">Tham gia cuộc họp
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <form action="{{route('checkJoinMeeting') }}" method="post">
+                                                                            @csrf
+                                                                            <div class="modal-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-8 mb-3">
+                                                                                        <input type="text"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-placement="top"
+                                                                                            title="Mã cuộc họp"
+                                                                                            class="form-control"
+                                                                                            value="{{ $value->code }}"
+                                                                                            name="code"
+                                                                                            id="listMeetCode">
+                                                                                    </div>
+                                                                                    <div class="col-sm-4 mb-3">
+                                                                                        <input type="text"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-placement="top"
+                                                                                            title="Nhập mật khẩu"
+                                                                                            placeholder="Nhập mật khẩu (nếu có)"
+                                                                                            class="form-control"
+                                                                                            name="password">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <button type="submit" class="btn btn-danger">Tham gia cuộc họp</button>
+                                                                        </form>
+                                                                        {{-- <form action="" method="PUT">
+                                                                            @csrf
+                                                                            <div class="modal-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-8 mb-3">
+                                                                                        <input type="text"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-placement="top"
+                                                                                            title="Mã cuộc họp"
+                                                                                            class="form-control"
+                                                                                            value="{{ $value->code }}"
+                                                                                            id="listMeetCode">
+                                                                                    </div>
+                                                                                    <div class="col-sm-4 mb-3">
+                                                                                        <input type="text"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-placement="top"
+                                                                                            title="Nhập mật khẩu"
+                                                                                            placeholder="Nhập mật khẩu (nếu có)"
+                                                                                            class="form-control"
+                                                                                            name="password">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form> --}}
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-danger"
+                                                                                data-bs-dismiss="modal">Hủy</button>
+                                                                            <button type="button" class="btn btn-danger" id="listJoinMeet">Tham gia cuộc họp</button>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         @endforeach
 
                                                     </tbody>
@@ -90,37 +169,8 @@
     </div>
     @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
 
-    
-    {{-- Tham gia cuộc họp --}}
-    {{-- {{ dd($data) }} --}}
-    @foreach($data->data as $value)
-    <div class="modal fade" id="thamGiaCuocHop{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Tham gia cuộc họp</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="" method="PUT">
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-8 mb-3">
-                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" value="{{ $value->code }}" id="meetCode">
-                            </div>
-                            <div class="col-sm-4 mb-3">
-                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Nhập mật khẩu" placeholder="Nhập mật khẩu (nếu có)" class="form-control" name="password">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-danger" id="joinMeet">Tham gia cuộc họp</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @endforeach
+
+
 @endsection
 @section('footer-script')
     <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
@@ -155,5 +205,18 @@
         $('div.card-title-wrapper-left').html(`
                 <div class="card-title">Bảng lưu trữ biên bản họp</div>
             `);
+    </script>
+
+    <script>
+        ///join meet
+        const listJoinMeetBtn = document.getElementById('listJoinMeet');
+        const listMeetCodeEL = document.getElementById('listMeetCode');
+
+        listJoinMeetBtn.addEventListener('click', () => {
+            const meetCode = listMeetCodeEL.value;
+            if (meetCode) {
+                window.location = '/giao-ban/' + meetCode;
+            }
+        })
     </script>
 @endsection
