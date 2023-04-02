@@ -650,6 +650,22 @@ class DwtServices
         return $dataObj->data;
     }
 
+    public function searchUnits($q = "", $page = 1, $limit = 30)
+    {
+        $url = $this->url . '/units';
+        $response = $this->client->get($url, [
+            'q' => $q,
+            'page' => $page,
+            'limit' => $limit
+        ]);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
     public function updatePositionLevel($id, $data)
     {
         $url = $this->url . '/position-levels/' . $id;

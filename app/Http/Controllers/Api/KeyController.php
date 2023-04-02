@@ -26,6 +26,7 @@ class KeyController extends Controller
             $limit = $request->get('limit');
             $data = $this->dwtService->searchKpiKeys($q, $page, $limit);
             $listUnits = $this->dwtService->listUnits();
+            $listUnits = $this->dwtService->searchUnits("", 1, 100);
 
             return view('CauHinh.danhMucChiSoKey')
                 ->with('data', $data)

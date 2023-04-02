@@ -52,6 +52,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody data-repeater-list="group-a">
+                                                        {{-- {{ dd($listTargets) }} --}}
                                                         @foreach ($listTargets->data as $target)
                                                             <tr data-repeater-item>
                                                                 <td>

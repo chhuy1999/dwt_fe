@@ -126,7 +126,6 @@
                             <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-3">
@@ -165,6 +164,7 @@
                                                                 </div>
                                                                 <div style="flex:1">
                                                                     <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} Thư ký" data-live-search-placeholder="Tìm kiếm...">
+                                                                        
                                                                         @foreach ($listUsers->data as $value)
                                                                             <option value="{{ $value->id }}">
                                                                                 {{ $value->name }}</option>
@@ -348,7 +348,7 @@
                                                             <th class="text-nowrap" style="width: 2%">STT</th>
                                                             <th class="text-nowrap" style="width: 20%">
                                                                 <div class="d-flex justify-content-between">
-                                                                    Vấn đề tồn đọng
+                                                                    Giao việc phát sinh
                                                                     {{-- <div>
                                                                         <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
                                                                     </div> --}}
@@ -484,7 +484,7 @@
                             <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
                         </div>
                     </div>
-                    <div class="col-lg-12 d-flex justify-content-end mb-3">
+                    {{-- <div class="col-lg-12 d-flex justify-content-end mb-3">
                         <div id='warning_notification' class="alert alert-warning alert-dismissible fade show border-left border-warning" role="alert">
                             <div class='d-flex align-items-center'>
                                 <div class='warning_notification-icon'><i class="bi bi-exclamation-triangle pe-2"></i>
@@ -498,7 +498,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -909,6 +909,7 @@
             </div>
         </div>
     </div>
+    {{-- {{ dd($handledReports) }} --}}
     @foreach ($handledReports as $item)
         <!-- Modal Giao nhiệm vụ phát sinh -->
         <div class="modal fade" id="nhiemVuPhatSinh{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -923,7 +924,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-8 mb-3">
-                                    <input type="text" class="form-control" value="{{ $item->reason }}" name="name">
+                                    <input type="text" readonly class="form-control" value="{{ $item->problem }}" name="name">
                                 </div>
 
                                 <div class="col-md-4 mb-3">

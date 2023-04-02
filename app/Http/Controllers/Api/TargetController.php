@@ -26,7 +26,7 @@ class TargetController extends Controller
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchKpiTargets($q, $page, $limit);
+            $data = $this->dwtService->searchKpiTargets("", 1, 200);
             $listUnits = $this->dwtService->listUnits();
             $listPositions = $this->dwtService->listPositions();
             $listDepartments = $this->dwtService->listDepartments();
