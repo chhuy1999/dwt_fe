@@ -176,7 +176,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 //     Route::get('kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index']);
 // });
 
-Route::get('/kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index']);
+Route::get('/danh-sach-cuoc-hop', [MeetingListController::class, 'index']);
 
 
 //bao cao van de

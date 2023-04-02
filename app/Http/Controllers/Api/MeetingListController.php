@@ -31,14 +31,14 @@ class MeetingListController extends Controller
             $listUnits = $this->dwtService->listUnits();
             $listUsers = $this->dwtService->listUsers();
 
-            return view('HopDonVi.khoLuuTruBienBanHop')
+            return view('HopDonVi.danhSachCuocHop')
                 ->with('data', $data)
                 ->with('listMeeting', $listMeeting)
                 ->with('listDepartments', $listDepartments)
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('HopDonVi.khoLuuTruBienBanHop');
+            return view('HopDonVi.danhSachCuocHop');
         }
     }
 
