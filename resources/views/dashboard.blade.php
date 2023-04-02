@@ -439,7 +439,7 @@
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center pb-2">
+                                    {{-- <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="card-title">Danh sách vấn đề</div>
             
                                         <div class="action_wrapper d-flex">
@@ -452,7 +452,7 @@
                                                 <button class="btn-export"><i class="bi bi-download"></i></button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="table-responsive ">
                                         <table id="dsVanDe" class="table table-hover table-bordered">
                                             <thead>

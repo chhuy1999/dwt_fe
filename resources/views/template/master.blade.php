@@ -118,9 +118,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                             </li>
                                         </ul>
                                     </li>
-                                    {{-- <li class="header_submenu-items">
+                                    <li class="header_submenu-items">
                                         <a href="kho-luu-tru-bien-ban-hop" class="header_submenu-link">Kho biên bản</a>
-                                    </li> --}}
+                                    </li>
                                 </ul>
                             </li>
 
