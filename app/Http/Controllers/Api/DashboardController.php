@@ -29,9 +29,9 @@ class DashboardController extends Controller
             $startDate = $currentYear . '-' . $currentMonth . '-01';
             $endDate = $currentYear . '-' . $currentMonth . '-31';
             //get list assigned task
+            $user = session('user');
             $listAssignedTasks = $this->dwtServices
                 ->searchKpiTargetDetails("", 1, 100, "assigned", null, $startDate, $endDate);
-            $user = session('user');
             $myAssignedTasks = $this->dwtServices
                 ->searchKpiTargetDetails("", 1, 100, "assigned", $user['id'], $startDate, $endDate);
 
