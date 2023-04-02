@@ -90,14 +90,12 @@
                         <div class="sidebarBody_card-items">
                             <div class="sidebarBody_card-posts">
                                 <span
-                                    >Công bố nhân viên xuất sắc quý 1/2023 Công bố nhân viên xuất sắc
-                                    quý 1/2023</span
+                                    >Công bố nhân viên xuất sắc quý 1/2023 31/03/2023</span
                                 >
                             </div>
                             <div class="sidebarBody_card-description">
                                 <div class="sidebarBody_card-text">
-                                    Nhân viên xuất sắc nhất quý 1 là bạn gì đấy Nhân viên xuất sắc nhất
-                                    quý 1 là bạn gì đấy Nhân viên xuất sắc nhất quý 1 là bạn gì đấy
+                                    Công bố nhân viên xuất sắc quý 1/2023 31/03/2023
                                 </div>
                             </div>
                         </div>
@@ -105,14 +103,12 @@
                         <div class="sidebarBody_card-items">
                             <div class="sidebarBody_card-posts">
                                 <span
-                                    >Công bố nhân viên xuất sắc quý 1/2023 Công bố nhân viên xuất sắc
-                                    quý 1/2023</span
+                                    >Công bố nhân viên xuất sắc quý 1/2023 31/03/2023</span
                                 >
                             </div>
                             <div class="sidebarBody_card-description">
                                 <div class="sidebarBody_card-text">
-                                    Nhân viên xuất sắc nhất quý 1 là bạn gì đấy Nhân viên xuất sắc nhất
-                                    quý 1 là bạn gì đấy Nhân viên xuất sắc nhất quý 1 là bạn gì đấy
+                                    Công bố nhân viên xuất sắc quý 1/2023 31/03/2023
                                 </div>
                             </div>
                         </div>
@@ -120,14 +116,12 @@
                         <div class="sidebarBody_card-items">
                             <div class="sidebarBody_card-posts">
                                 <span
-                                    >Công bố nhân viên xuất sắc quý 1/2023 Công bố nhân viên xuất sắc
-                                    quý 1/2023</span
+                                    >Công bố nhân viên xuất sắc quý 1/2023 31/03/2023</span
                                 >
                             </div>
                             <div class="sidebarBody_card-description">
                                 <div class="sidebarBody_card-text">
-                                    Nhân viên xuất sắc nhất quý 1 là bạn gì đấy Nhân viên xuất sắc nhất
-                                    quý 1 là bạn gì đấy Nhân viên xuất sắc nhất quý 1 là bạn gì đấy
+                                    Công bố nhân viên xuất sắc quý 1/2023 31/03/2023
                                 </div>
                             </div>
                         </div>
@@ -135,14 +129,12 @@
                         <div class="sidebarBody_card-items">
                             <div class="sidebarBody_card-posts">
                                 <span
-                                    >Công bố nhân viên xuất sắc quý 1/2023 Công bố nhân viên xuất sắc
-                                    quý 1/2023</span
+                                    >Công bố nhân viên xuất sắc quý 1/2023 31/03/2023</span
                                 >
                             </div>
                             <div class="sidebarBody_card-description">
                                 <div class="sidebarBody_card-text">
-                                    Nhân viên xuất sắc nhất quý 1 là bạn gì đấy Nhân viên xuất sắc nhất
-                                    quý 1 là bạn gì đấy Nhân viên xuất sắc nhất quý 1 là bạn gì đấy
+                                    Công bố nhân viên xuất sắc quý 1/2023 31/03/2023
                                 </div>
                             </div>
                         </div>

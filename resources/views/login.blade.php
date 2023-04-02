@@ -3,7 +3,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Đăng nhập - THAI HUNG CORP</title>
+<title>Đăng nhập - Mastertran</title>
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ asset('assets/img/favicon.jpg') }}">
 <!-- Google Fonts -->
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="login_about">
-                Copyright © 2023 - STEAM
+                Mastertran - Powered by STeam
             </div>
         </div>
     </div>

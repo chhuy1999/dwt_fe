@@ -1,16 +1,15 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Danh sách cuộc họp')
+@section('title', 'Danh sách cuộc họp đang diễn ra')
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
-
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">
-                            Danh sách cuộc họp
+                            Danh sách cuộc họp đang diễn ra
                         </h5>
                         @include('template.components.sectionCard')
                     </div>
@@ -27,6 +26,7 @@
                                                         <tr>
                                                             <th class="text-nowrap" style="width:5%">STT</th>
                                                             <th class="text-nowrap" style="width:20%">Tên cuộc họp</th>
+                                                            <th class="text-nowrap" style="width:10%">Mã cuộc họp</th>
                                                             <th class="text-nowrap" style="width:10%">Thời gian tạo</th>
                                                             <th class="text-nowrap" style="width:10%">Phòng ban</th>
                                                             <th class="text-nowrap" style="width:10%">Người chủ trì</th>
@@ -41,6 +41,9 @@
                                                                 <th scope="row">{{ $value->id }}</th>
                                                                 <td>
                                                                     {{ $value->title }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $value->code }}
                                                                 </td>
                                                                 <td class="text-center">
                                                                     {{ \Carbon\Carbon::parse($value->created_at)->format('d-m-Y || H:i:s'); }}
@@ -65,7 +68,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <a href="" data-bs-toggle="modal"data-bs-target="#thamGiaCuocHop{{ $value->id }}" class="header_more-link">
+                                                                        <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $value->id }}" class="header_more-link">
                                                                             Tham gia cuộc họp
                                                                         </a>
                                                                     </div>
@@ -114,40 +117,13 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <button type="submit" class="btn btn-danger">Tham gia cuộc họp</button>
-                                                                        </form>
-                                                                        {{-- <form action="" method="PUT">
-                                                                            @csrf
-                                                                            <div class="modal-body">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-8 mb-3">
-                                                                                        <input type="text"
-                                                                                            data-bs-toggle="tooltip"
-                                                                                            data-bs-placement="top"
-                                                                                            title="Mã cuộc họp"
-                                                                                            class="form-control"
-                                                                                            value="{{ $value->code }}"
-                                                                                            id="listMeetCode">
-                                                                                    </div>
-                                                                                    <div class="col-sm-4 mb-3">
-                                                                                        <input type="text"
-                                                                                            data-bs-toggle="tooltip"
-                                                                                            data-bs-placement="top"
-                                                                                            title="Nhập mật khẩu"
-                                                                                            placeholder="Nhập mật khẩu (nếu có)"
-                                                                                            class="form-control"
-                                                                                            name="password">
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-outline-danger"
+                                                                                    data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit" class="btn btn-danger" id="listJoinMeet">Tham gia cuộc họp</button>
                                                                             </div>
-                                                                        </form> --}}
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-outline-danger"
-                                                                                data-bs-dismiss="modal">Hủy</button>
-                                                                            <button type="button" class="btn btn-danger" id="listJoinMeet">Tham gia cuộc họp</button>
-                                                                        </div>
-
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>

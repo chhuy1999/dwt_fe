@@ -11,12 +11,15 @@ class DashboardController extends Controller
 {
     //
 
+    //
     private $dwtServices;
-    //constructor
+    //contructor
     public function __construct()
     {
+        // $this->middleware('auth');
         $this->dwtServices = new DwtServices();
     }
+
 
     public function index(Request $request)
     {
@@ -37,12 +40,19 @@ class DashboardController extends Controller
 
             $reportTasks = $this->dwtServices->searchReportTasks($user['id']);
 
+            $listReports = $this->dwtServices->searchReports();
+            $listReports = $listReports->data;
+            $handledReports = array_filter($listReports, function ($item) {
+                return $item->status != 'Sent';
+            });
+
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
                 ->with('searchYear', $currentYear)
                 ->with('listAssignedTasks', $listAssignedTasks)
                 ->with('myAssignedTasks', $myAssignedTasks)
                 ->with('reportTasks', $reportTasks)
+                ->with('handledReports', $handledReports)
                 ->with('kpiKeys', $kpiKeys);
         } catch (Exception $e) {
             dd($e);

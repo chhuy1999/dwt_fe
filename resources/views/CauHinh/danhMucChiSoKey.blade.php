@@ -11,20 +11,7 @@
                         <h5 class="mainSection_heading-title">
                             Danh mục chỉ số key
                         </h5>
-                        <div class="mainSection_card">
-                            <div class="mainSection_content">
-                                <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong>
-                                </div>
-                            </div>
-                            <div class="mainSection_content">
-                                <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
-                            </div>
-                        </div>
-                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
-                        </div>
+                        @include('template.components.sectionCard')
                     </div>
 
                     <div class="row">
@@ -95,7 +82,7 @@
                                                                             <h5 class="modal-title w-100" id="exampleModalLabel">Sửa chỉ số key</h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
-                                                                        <form method="POST" action="/danh-muc-chi-so-key/{{ $key->id }}">
+                                                                        <form method="POST" action="{{ route('key.update', $key->id) }}">
                                                                             @csrf
                                                                             @method('PUT')
                                                                             <div class="modal-body">
@@ -148,7 +135,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                            <form action="/danh-muc-chi-so-key/{{ $key->id }}" method="POST">
+                                                                            <form action="{{ route('key.delete', $key->id) }}" method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
                                                                                 <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn
@@ -190,7 +177,8 @@
                                 <input class="form-control" type="text" required placeholder="Nhập tên chỉ số key *" name="name">
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <select class="selectpicker" required title="Chọn đơn vị" name="unit_id">
+                                <select class="selectpicker" required title="Chọn đơn vị" name="unit_id" data-size="5" data-live-search="true">
+                                    
                                     @foreach ($listUnits->data as $unit)
                                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach
@@ -237,7 +225,7 @@
             order: [
                 [0, 'desc']
             ],
-            pageLength: 10,
+            pageLength: 30,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -257,10 +245,12 @@
         });
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex me-3">
+                @if (session('user')['role'] == 'admin')
                 <button class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themChiSoKey">
                     Thêm chỉ số key
                 </button>
+                @endif
                 <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
                     <i class="bi bi-download"></i>
                     Xuất Excel

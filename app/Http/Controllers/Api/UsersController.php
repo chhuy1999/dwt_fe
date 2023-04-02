@@ -18,7 +18,7 @@ class UsersController extends Controller
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
-    
+
 
     /**
      * Display a listing of the resource.
@@ -30,7 +30,7 @@ class UsersController extends Controller
         try {
 
             $q = $request->get('q');
-        
+
             $page = $request->get('page');
             $limit = $request->get('limit');
             $data = $this->dwtService->searchUser($q, $page, $limit);
@@ -56,8 +56,8 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         try {
-         
-            // dd($request->all());
+
+            // dd($request);
             $data = $request->validate([
                 'name' => 'required',
                 'email' => 'nullable',
@@ -70,48 +70,47 @@ class UsersController extends Controller
                 'address' => 'required',
                 'dob' => 'required',
                 'departement_id' => 'required',
-                'position_id' => 'required',  
-                'position_level_id' => 'required',            
-                'position_level_id' => 'required',            
-                'manager_id' => 'nullable',            
-                'equipment_pack_id' => 'nullable',            
-                'working_form' => 'nullable',            
-                'status' => 'nullable',            
-               
+                'position_id' => 'required',
+                'position_level_id' => 'required',
+                'manager_id' => 'nullable',
+                'equipment_pack_id' => 'nullable',
+                'working_form' => 'nullable',
+                'status' => 'nullable',
+
             ]);
             //format fe date to api required date dd/mm/yyyy to yyyy-MM-DD
             //replace / to -
-            
+
             // $dob = Carbon::parse($request['dob'])->format('d/m/Y H:i:s');
 
             $data['dob'] = date('Y-m-d', strtotime($data['dob']));
-    
+
 
             //update the dob to send to api
 
             // $data['dob'] = '30/03/2023 00:00:00';
 
             //set date of join is current day
-         
+
             $data['doj'] = date('Y-m-d');
 
             // dd($data['doj']);
-            
+
             //set role  defaut is user TODO: need to pick from fe
             $data['role'] = 'user';
             $data['salary_fund'] = '10000';
 
-         
+            // dd($data);
             $this->dwtService->createUser($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
-            // dd($e);
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
     }
 
-    
+
 
     public function update($id, Request $request)
     {
@@ -130,14 +129,14 @@ class UsersController extends Controller
                 // 'address' => 'nullable',
                 // 'dob' => 'nullable',
                 // 'departement_id' => 'nullable',
-                // 'position_id' => 'nullable',  
-                // 'position_level_id' => 'nullable',            
-                // 'manager_id' => 'nullable',            
-                // 'equipment_pack_id' => 'nullable',            
-                // 'working_form' => 'nullable',            
-                // 'status' => 'nullable',   
-                
-                
+                // 'position_id' => 'nullable',
+                // 'position_level_id' => 'nullable',
+                // 'manager_id' => 'nullable',
+                // 'equipment_pack_id' => 'nullable',
+                // 'working_form' => 'nullable',
+                // 'status' => 'nullable',
+
+
                 // 'name' => 'nullable',
                 // 'code' => 'nullable|unique:users',
                 // 'phone' => 'nullable',
@@ -154,22 +153,22 @@ class UsersController extends Controller
                 // 'working_form' => 'nullable',
                 // 'status' => 'nullable'
             ]);
-            
+
             if($request['sex']==null)
             {
                 $request['sex']='male';
             }
 
             // dd($data);
-
-            $request['dob'] = Carbon::parse($request['dob']);
-
-         
-            $request['doj'] =  Carbon::parse($request['doj']);;
-            
+            if($request['dob']){
+                $request['dob'] = Carbon::createFromFormat('m/d/Y', $request['dob'])->format('Y-m-d');
+            }
+            if($request['doj']){
+                $request['doj'] = Carbon::createFromFormat('m/d/Y', $request['doj'])->format('Y-m-d');
+            }
             $request['role'] = 'user';
             $request['salary_fund'] = '10000';
-            dd($request);
+            // dd($request);
             $this->dwtService->updateUser($id, $request);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {

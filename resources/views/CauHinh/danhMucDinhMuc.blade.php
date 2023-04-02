@@ -19,7 +19,7 @@
                         <div class="mainSection_card">
                             <div class="mainSection_content">
                                 <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong>
                                 </div>
                             </div>
                             <div class="mainSection_content">
@@ -48,10 +48,13 @@
                                                             <th class="text-nowrap">Đơn vị phụ trách</th>
                                                             <th class="text-nowrap">Vị trí phụ trách</th>
                                                             <th class="text-nowrap text-center">Manday</th>
+                                                            @if (session('user')['role'] == 'admin')
                                                             <th></th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody data-repeater-list="group-a">
+                                                        {{-- {{ dd($listTargets) }} --}}
                                                         @foreach ($listTargets->data as $target)
                                                             <tr data-repeater-item>
                                                                 <td>
@@ -61,21 +64,21 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name }}">{{ $target->name }}</div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name  ?? "" }}">{{ $target->name  ?? "" }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:400px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description }}">
-                                                                        {{ $target->description }}
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:400px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description  ?? "" }}">
+                                                                        {{ $target->description  ?? "" }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->departement->name }}">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->departement->name  ?? "" }}">
                                                                         {{  $target->departement->name ?? "" }}
                                                                     </div>
 
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->position->name }}">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->position->name  ?? "" }}">
                                                                         {{  $target->position->name ?? "" }}
                                                                     </div>
                                                                 </td>
@@ -83,6 +86,7 @@
                                                                 <td>
                                                                     <div class="text-center">{{ $target->manday }}</div>
                                                                 </td>
+                                                                @if (session('user')['role'] == 'admin')
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1"
                                                                         data-bs-toggle="dropdown" aria-expanded="false"><i
@@ -111,6 +115,7 @@
                                                                         </li>
                                                                     </ul>
                                                                 </td>
+                                                                @endif
                                                             </tr>
                                                             <!-- Modal Sửa Định Mức -->
                                                             <div class="modal fade" id="suaMoiDinhMuc{{ $target->id }}"
@@ -127,7 +132,7 @@
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <form
-                                                                            action="/danh-muc-dinh-muc/{{ $target->id }}"
+                                                                            action="{{ route('target.update',$target->id) }}"
                                                                             method="POST">
                                                                             @method('PUT')
                                                                             @csrf
@@ -166,7 +171,7 @@
                                                                                                         </option>
                                                                                                     @else
                                                                                                         <option
-                                                                                                            value="{{ $dep->id }}">
+                                                                                                            value="{{ $dep->id }}" selected>
                                                                                                             {{ $dep->name }}
                                                                                                         </option>
                                                                                                     @endif
@@ -211,6 +216,8 @@
                                                                                             <select class="selectpicker"
                                                                                                 name="position_id"
                                                                                                 title="Chọn Vị trí"
+                                                                                                data-live-search="true"
+                                                                                                data-live-search-placeholder="Tìm kiếm..."
                                                                                                 data-size="5">
                                                                                                 @foreach ($listPositions->data as $pos)
                                                                                                     @if ($pos->id == $target->position_id)
@@ -221,7 +228,7 @@
                                                                                                         </option>
                                                                                                     @else
                                                                                                         <option
-                                                                                                            value="{{ $pos->id }}">
+                                                                                                            value="{{ $pos->id }}" selected>
                                                                                                             {{ $pos->name }}
                                                                                                         </option>
                                                                                                     @endif
@@ -279,7 +286,7 @@
                                                                                 class="btn btn-outline-danger"
                                                                                 data-bs-dismiss="modal">Hủy</button>
                                                                             <form
-                                                                                action="/danh-muc-dinh-muc/{{ $target->id }}"
+                                                                                action="{{ route('target.delete',$target->id) }}"
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
@@ -390,7 +397,7 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Thêm định mức lao động</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/danh-muc-dinh-muc" method="POST">
+                <form action="{{ route('target.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -465,6 +472,7 @@
                         <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>
@@ -642,7 +650,8 @@
         paging: true,
         ordering: false,
         order: [[0, 'desc']],
-        pageLength: 5,
+        pageLength: 30,
+            pageLength: 30,
         language: {
             info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
             infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -663,7 +672,6 @@
     $('div.action_wrapper').html(`
         <div class="action_wrapper d-flex">
             <div class="action_export">
-
                 <select class="selectpicker" title="Đơn vị phụ trách " data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
                         <option value="1">Ban Giám Đốc</option>
                         <option value="2">Ban Kiểm soát</option>
@@ -681,10 +689,12 @@
         <div class="d-flex justify-content-between align-items-center">
 
             <div class="main_action ms-3">
+                @if (session('user')['role'] == 'admin')
                 <button id="exporttable" class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themMoiDinhMuc">
                     Thêm định mức
                 </button>
+                @endif
                 <button id="exporttable" class="btn btn-outline-danger" data-bs-toggle="tooltip"
                     data-bs-placement="top" title="Xuất file Excel">
                     <i class="bi bi-download"></i>

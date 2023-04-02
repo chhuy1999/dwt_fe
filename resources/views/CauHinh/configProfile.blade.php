@@ -87,23 +87,6 @@
                                     </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div
-                                                class="title_wrapper d-flex align-items-center justify-content-between mb-3">
-                                                <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
-                                                <div class="action_wrapper d-flex">
-                                                    <div class="form-group has-search">
-                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                        <form action="/ho-so-don-vi" method="GET">
-                                                            <input type="text" class="form-control" placeholder="Tìm kiếm..."
-                                                                name="q" value="{{ request()->q }}">
-                                                        </form>
-                                                    </div>
-                                                    <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
-                                                        <button class="btn btn-danger d-block" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="coCauToChuc"
                                                     class="table table-responsive table-hover table-bordered">
@@ -115,7 +98,9 @@
                                                             <th class="text-nowrap">Cấp tổ chức</th>
                                                             <th class="text-nowrap">Trưởng đơn vị</th>
                                                             <th class="text-nowrap">Chức năng nhiệm vụ</th>
+                                                            @if (session('user')['role'] == 'admin')
                                                             <th class="text-nowrap">Hành động</th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -142,6 +127,7 @@
                                                                 <td>
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:600px" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
                                                                 </td>
+                                                                @if (session('user')['role'] == 'admin')
                                                                 <td>
                                                                     <div
                                                                         class="table_actions d-flex justify-content-center">
@@ -159,6 +145,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
+                                                                @endif
                                                             </tr>
                                                             {{-- Xóa Cơ cấu tổ chức --}}
                                                             <div class="modal fade" id="xoaCoCauToChuc{{ $value->id }}"
@@ -183,7 +170,7 @@
                                                                                 class="btn btn-outline-danger"
                                                                                 data-bs-dismiss="modal">Hủy</button>
                                                                             <form
-                                                                                action="/ho-so-don-vi/{{ $value->id }}"
+                                                                                action="{{ route('department.delete',$value->id) }}"
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
@@ -212,7 +199,7 @@
                                                                         </div>
 
                                                                         <form method="POST"
-                                                                            action="/ho-so-don-vi/{{ $value->id }}">
+                                                                            action="{{ route('department.update',$value->id) }}">
                                                                             @csrf
                                                                             @method('PUT')
 
@@ -313,52 +300,6 @@
     </div>
     @include('template.sidebar.sidebarCoCauToChuc.sidebarRight')
 
-
-
-    {{-- Modal Sửa Cơ cấu tổ chức --}}
-    <div class="modal fade" id="suaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Cơ cấu tổ chức</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="Digital Marketing">
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="DMKT">
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="CTCP Mastertran">
-                        </div>
-
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="Tổ/Đội/Nhóm">
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="Vũ Thị Hà - MTT123">
-                        </div>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" value="219 Trung Kính, Yên Hoà, Cầu...">
-                        </div>
-                        <div class="col-sm-12">
-                            <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Them Co Cau -->
     <div class="modal fade" id="themCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -368,7 +309,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/ho-so-don-vi" method="POST">
+                <form action="{{ route('department.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -380,7 +321,7 @@
                                 <input class="form-control" required type="text" placeholder="Nhập Mã đơn vị *" name="code">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" placeholder="Chọn đơn vị mẹ *" title="Chọn đơn vị mẹ " data-actions-box="true"
+                                <select class="selectpicker" placeholder="Chọn đơn vị mẹ *" data-size="5" title="Chọn đơn vị mẹ " data-actions-box="true"
                                     data-live-search="true"
                                     data-live-search-placeholder="Tìm kiếm..." name="parent">
                                         @foreach ($listDepartments->data as $value)
@@ -392,7 +333,7 @@
                                 <div class="col-sm-12">
                                     <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%"
                                     data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                    data-size="3">
+                                    data-size="5">
                                         <option>Công ty con</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
@@ -1991,5 +1932,42 @@
 
         });
     </script>
+
+<script>
+    const targetTable = $('#coCauToChuc').DataTable({
+        paging: false,
+        ordering: false,
+        order: [[0, 'desc']],
+        pageLength: 10,
+        language: {
+            info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+            infoEmpty: 'Hiện tại chưa có bản ghi nào',
+            search: 'Tìm kiếm biên bản',
+            paginate: {
+                previous: '<i class="bi bi-caret-left-fill"></i>',
+                next: '<i class="bi bi-caret-right-fill"></i>',
+            },
+            search: '',
+            searchPlaceholder: 'Tìm kiếm...',
+            zeroRecords: 'Không tìm thấy kết quả',
+        },
+        oLanguage: {
+            sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+        },
+        dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+    });
+    $('div.card-title-wrapper-left').html(`
+        <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
+    `);
+    $('div.card-title-wrapper-right').html(`
+        @if (session('user')['role'] == 'admin')
+        <div class="main_search d-flex ms-3">
+            <button class="btn btn-danger d-block" data-bs-toggle="modal"
+            data-bs-target="#themCoCauToChuc">Thêm cơ cấu</button>
+        </div>
+        @endif
+    `);
+</script>
+
 
 @endsection

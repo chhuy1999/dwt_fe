@@ -20,20 +20,7 @@
                         <h5 class="mainSection_heading-title">
                             Danh mục mẫu nhiệm vụ
                         </h5>
-                        <div class="mainSection_card">
-                            <div class="mainSection_content">
-                                <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong>
-                                </div>
-                            </div>
-                            <div class="mainSection_content">
-                                <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
-                            </div>
-                        </div>
-                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
-                        </div>
+                        @include('template.components.sectionCard')
                     </div>
 
                     <div class="row">
@@ -96,27 +83,27 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $targetDetail->name }}">
-                                                                        {{ $targetDetail->name }}
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $targetDetail->name ?? "" }}">
+                                                                        {{ $targetDetail->name ?? ""  }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
-                                                                        {{ $targetDetail->target->name }}
+                                                                        {{ $targetDetail->target->name ?? ""  }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:300px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->description }}">
-                                                                        {{ $targetDetail->description }}
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:300px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->description ?? ""  }}">
+                                                                        {{ $targetDetail->description ?? ""  }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->departement->name }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->departement->name ?? ""  }}">
                                                                         {{ $targetDetail->departement->name ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->position->name }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->position->name ?? "" }}">
                                                                         {{ $targetDetail->position->name ?? '' }}
                                                                     </div>
                                                                 </td>
@@ -163,7 +150,7 @@
                                                                             <h5 class="modal-title w-100" id="exampleModalLabel">Sửa mẫu nhiệm vụ</h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
-                                                                        <form action="/danh-muc-nhiem-vu/{{ $targetDetail->id }}" method="POST">
+                                                                        <form action="{{ route('targetDetail.update', $targetDetail->id) }}" method="POST">
                                                                             @csrf
                                                                             @method('PUT')
                                                                             <div class="modal-body">
@@ -173,7 +160,7 @@
                                                                                     </div>
 
                                                                                     <div class="col-sm-12 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Thuộc định mức">
-                                                                                        <select name="target_id" class="selectpicker" title="Chọn định mức">
+                                                                                        <select name="target_id" class="selectpicker" title="Chọn định mức" data-size="5" data-live-search="true">
                                                                                             @foreach ($listTargets->data as $target)
                                                                                                 @if ($targetDetail->target && $targetDetail->target->id == $target->id)
                                                                                                     <option value="{{ $target->id }}" selected>
@@ -226,7 +213,7 @@
                                                                                     </div>
                                                                                     <div class="col-sm-12" data-bs-toggle="tooltip" data-bs-placement="top" title="Phòng/Ban">
 
-                                                                                        <select name="departement_id" class="selectpicker" title="Chọn phòng/ban">
+                                                                                        <select name="departement_id" class="selectpicker" title="Chọn phòng/ban" data-size="5" data-live-search="true">
                                                                                             @foreach ($listDepartments->data as $departement)
                                                                                                 @if ($targetDetail->departement && $targetDetail->departement->id == $departement->id)
                                                                                                     <option value="{{ $departement->id }}" selected>
@@ -265,7 +252,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                            <form action="/danh-muc-nhiem-vu/{{ $targetDetail->id }}" method="POST">
+                                                                            <form action="{{ route('targetDetail.delete', $targetDetail->id) }}" method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
                                                                                 <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn
@@ -490,7 +477,7 @@
             order: [
                 [0, 'desc']
             ],
-            pageLength: 10,
+            pageLength: 50,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',

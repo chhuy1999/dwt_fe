@@ -74,21 +74,21 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                        <form
+                                                                        {{-- <form
                                                                             action="/danh-sach-vi-tri/"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit" class="btn btn-danger">Xóa</button>
                                                                         
-                                                                        </form>
+                                                                        </form> --}}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
                                                         <!-- Modal Sua Vi Tri chức danh -->
-                                                        <div class="modal fade" id="suaDSCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        {{-- <div class="modal fade" id="suaDSCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
@@ -109,29 +109,6 @@
                                                                                 <div class="col-sm-6">
                                                                                     <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên cấp tổ chức"  name="name" value="Phòng kinh doanh 1">
                                                                                 </div>
-                                                                                {{-- <div class="col-sm-6">
-                                                                                    <div class="d-flex align-items-center">
-                                                                                        <div class="d-flex col-sm-4">
-                                                                                            <div class="modal_body-title"> Thuộc cấp tổ chức<span class="text-danger">*</span></div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-8 d-flex align-items-center">
-                                                                                            <select class="selectpicker" title="Thuộc cấp tổ chức">
-                                                                                                <option>Công ty con</option>
-                                                                                                <option>Chi nhánh</option>
-                                                                                                <option>Văn phòng đại diện</option>
-                                                                                                <option>Văn phòng</option>
-                                                                                                <option>Trung tâm</option>
-                                                                                                <option>Phòng ban</option>
-                                                                                                <option>Nhóm/tổ/đội</option>
-                                                                                                <option>Phân xưởng</option>
-                                                                                                <option>Nhà máy</option>
-                                                                                                <option>Công ty thành viên</option>
-                                                                                                
-                                                                                            </select>
-                                                                                        
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div> --}}
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
@@ -141,7 +118,7 @@
 
                                                                     </form>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
 
                                                         
                                                     </tbody>
@@ -166,7 +143,7 @@
     
     <!-- Modal Them Cấp tổ chức -->
     <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Sửa cơ cấu tốt chức</h5>
@@ -246,7 +223,7 @@
     </div>
 
 
-    <!-- Modal Them Vi Tri chức danh -->
+    <!-- Modal Them Cấp tổ chức -->
     <div class="modal fade" id="themDSCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -256,7 +233,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-vi-tri" method="POST">
+                <form action="{{ route('positionOri.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

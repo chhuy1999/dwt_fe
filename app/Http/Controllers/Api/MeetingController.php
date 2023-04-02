@@ -19,14 +19,13 @@ class MeetingController extends Controller
     }
     public function index($code, Request $request)
     {
-
         try {
             $meeting = $this->dwtService->searchMeetingByCode($code);
             if (!$meeting || count($meeting->data) == 0) {
                 return redirect('/')->with('error', 'Không tìm thấy cuộc họp');
             }
             $meeting = $meeting->data[0];
-            $listUsers = $this->dwtService->listUsers();
+            $listUsers = $this->dwtService->searchUser("", 1, 200);
             $listReports = $this->dwtService->searchReports();
             $kpiKeys = $this->dwtService->searchKpiKeys();
             $listReports = $listReports->data;
@@ -38,8 +37,6 @@ class MeetingController extends Controller
             $handledReports = array_filter($listReports, function ($item) {
                 return $item->status != 'Sent';
             });
-
-
 
             return view('HopDonVi.giaoBan')
                 ->with('listUsers', $listUsers)

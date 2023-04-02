@@ -3,7 +3,7 @@
 @section('title', 'Danh sách vị trí')
 
 @section('header-style')
-    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}"> --}}
 @endsection
 
 @section('content')
@@ -21,846 +21,253 @@
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="card mb-3">
-                                <div class="card-body position-relative body_content-wrapper" style="display:block"
-                                    id="body_content-1">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <div class="pb-2 d-flex align-items-center">
-                                            <div class="card-title">Toàn Công Ty</div>
-                                        </div>
-                                        <div class="main_search d-flex mt-2">
-                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
-                                            <form action="/danh-sach-vi-tri" method="GET">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
-                                                    name="q" value="{{ request()->q }}">
-                                            </form>
-                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                                data-bs-target="#themDSThemViTri" style="margin-left: 10px">Thêm vị
-                                                trí</button>
-                                        </div>
-                                    </div>
-                                    <div class='row'>
-                                        <div class="col-md-12">
-                                            <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
-                                                    <thead>
-                                                        <tr class="bg-light">
-                                                            <th class="text-nowrap" style="width: 2%">STT</th>
-                                                            <th class="text-nowrap" style="width: 5%">Mã vị trí</th>
-                                                            <th class="text-nowrap" style="width: 12%">Tên vị trí/chức danh</th>
-                                                            <th class="text-nowrap" style="width: 10%">Cấp nhân sự</th>
-                                                            <th class="text-nowrap" style="width: 10%">Đơn vị công tác</th>
-                                                            <th class="text-nowrap" style="width: 32%">Mô tả Công việc (Tóm tắt)</th>
-                                                            <th class="text-nowrap" style="width: 6%">Định biên</th>
-                                                            <th class="text-nowrap" style="width: 10%">Quỹ lương năm</th>
-                                                            <th class="text-nowrap" style="width: 8%">Gói trang bị</th>
-                                                            <th class="text-nowrap" style="width: 5%">Hành động</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($data->data as $value)
-                                                            <tr>
-                                                                <th scope="row">
-                                                                    <div
-                                                                        class="d-flex justify-content-center align-items-center">
-                                                                        {{ $loop->iteration }}
-                                                                    </div>
-                                                                </th>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:47px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="AMKT">AMKT</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:140px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->name }}">{{ $value->name }}</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
-                                                                        @foreach ($listPositionLevel->data as $level)
-                                                                        @if ($level->id == $value->position_level)
-                                                                                {{ $level->name }}
-                    
-                                                                        @endif
-                                                                        @endforeach
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
-                                                                        @foreach ($listDepartments->data as $dep)
-                                                                        @if ($dep->id == $value->parent)
-                                                                                {{ $dep->name }}
-                    
-                                                                        @endif
-                                                                        @endforeach
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:330px;"  data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top"
-                                                                        title="{{ $value->description }}">
-                                                                        {{ $value->description }}</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate text-center" style="max-width:50px;"  data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top"
-                                                                        title="{{ $value->max_employees }}">
-                                                                        {{ $value->max_employees }}</div>
-                                                                    
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate text-center" style="max-width:100px;"  data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top"
-                                                                        title="{{ $value->salary_fund }}">
-                                                                        {{ $value->salary_fund }}</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div data-bs-toggle="modal"
-                                                                        data-bs-target="#trangBiHanhChinh">
-                                                                        Pack Quản lý
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div
-                                                                        class="table_actions d-flex justify-content-center">
-                                                                        <div class="btn" data-bs-toggle="modal"
-                                                                            data-bs-target="#suaDSThemViTri{{ $value->id }}">
-                                                                            <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/edit.svg') }}" />
-                                                                        </div>
-                                                                        <div class="btn" data-bs-toggle="modal"
-                                                                            data-bs-target="#xoaViTri{{ $value->id }}">
-                                                                            <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/trash.svg') }}" />
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-
-                                                            {{-- Xóa Vi tri --}}
-                                                            <div class="modal fade" id="xoaViTri{{ $value->id }}"
-                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title text-danger"
-                                                                                id="exampleModalLabel">Xóa vị trí</h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            Bạn có thực sự muốn xoá vị trí này không?
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-outline-danger"
-                                                                                data-bs-dismiss="modal">Hủy</button>
-                                                                            <form
-                                                                                action="/danh-sach-vi-tri/{{ $value->id }}"
-                                                                                method="POST">
-                                                                                @csrf
-                                                                                @method('DELETE')
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger">Xóa</button>
-
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
+                                <div class="card-body position-relative body_content-wrapper" style="display:block" id="body_content-1">
+                                    <div class="table-responsive dataTables_wrapper">
+                                        <table id="danhSachViTri" class="table table-responsive table-hover table-bordered">
+                                            <thead>
+                                                <tr class="bg-light">
+                                                    <th class="text-nowrap" style="width: 2%">STT</th>
+                                                    <th class="text-nowrap" style="width: 5%">Mã vị trí</th>
+                                                    <th class="text-nowrap" style="width: 12%">Tên vị trí/chức danh</th>
+                                                    <th class="text-nowrap" style="width: 10%">Cấp nhân sự</th>
+                                                    <th class="text-nowrap" style="width: 10%">Đơn vị công tác</th>
+                                                    <th class="text-nowrap" style="width: 32%">Mô tả Công việc (Tóm tắt)</th>
+                                                    <th class="text-nowrap" style="width: 6%">Định biên</th>
+                                                    <th class="text-nowrap" style="width: 10%">Quỹ lương năm</th>
+                                                    <th class="text-nowrap" style="width: 8%">Gói trang bị</th>
+                                                    @if (session('user')['role'] == 'admin')
+                                                    <th class="text-nowrap" style="width: 5%">Hành động</th>
+                                                    @endif
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($data->data as $value)
+                                                    <tr>
+                                                        <th scope="row">
+                                                            <div
+                                                                class="d-flex justify-content-center align-items-center">
+                                                                {{ $loop->iteration }}
+                                                            </div>
+                                                        </th>
+                                                        <td>
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:47px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="AMKT">AMKT</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:140px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->name }}">{{ $value->name }}</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
+                                                                @foreach ($listPositionLevel->data as $level)
+                                                                @if ($level->id == $value->position_level)
+                                                                        {{ $level->name }}
+            
+                                                                @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
+                                                                @foreach ($listDepartments->data as $dep)
+                                                                @if ($dep->id == $value->parent)
+                                                                        {{ $dep->name }}
+            
+                                                                @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:330px;"  data-bs-toggle="tooltip"
+                                                                data-bs-placement="top"
+                                                                title="{{ $value->description }}">
+                                                                {{ $value->description }}</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-block text-truncate text-center" style="max-width:50px;"  data-bs-toggle="tooltip"
+                                                                data-bs-placement="top"
+                                                                title="{{ $value->max_employees }}">
+                                                                {{ $value->max_employees }}</div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-block text-truncate text-center" style="max-width:100px;"  data-bs-toggle="tooltip"
+                                                                data-bs-placement="top"
+                                                                title="{{ $value->salary_fund }}">
+                                                                {{ $value->salary_fund }}</div>
+                                                        </td>
+                                                        <td>
+                                                            <div data-bs-toggle="modal"
+                                                                data-bs-target="#trangBiHanhChinh">
+                                                                Pack Quản lý
+                                                            </div>
+                                                        </td>
+                                                        @if (session('user')['role'] == 'admin')
+                                                        <td>
+                                                            <div
+                                                                class="table_actions d-flex justify-content-center">
+                                                                <div class="btn" data-bs-toggle="modal"
+                                                                    data-bs-target="#suaDSThemViTri{{ $value->id }}">
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                </div>
+                                                                <div class="btn" data-bs-toggle="modal"
+                                                                    data-bs-target="#xoaViTri{{ $value->id }}">
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/trash.svg') }}" />
                                                                 </div>
                                                             </div>
+                                                        </td>
+                                                        @endif
+                                                    </tr>
 
-                                                            <!-- Modal Sua Vi Tri chức danh -->
-                                                            <div class="modal fade"
-                                                                id="suaDSThemViTri{{ $value->id }}" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header text-center">
-                                                                            <h5 class="modal-title w-100"
-                                                                                id="exampleModalLabel">Sửa Vị trí/Chức danh
-                                                                            </h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
+                                                    {{-- Xóa Vi tri --}}
+                                                    <div class="modal fade" id="xoaViTri{{ $value->id }}"
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title text-danger"
+                                                                        id="exampleModalLabel">Xóa vị trí</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Bạn có thực sự muốn xoá vị trí này không?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-danger"
+                                                                        data-bs-dismiss="modal">Hủy</button>
+                                                                    <form
+                                                                        action="{{ route('position.delete', $value->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Xóa</button>
 
-                                                                        <form method="POST"
-                                                                            action="/danh-sach-vi-tri/{{ $value->id }}">
-                                                                            @csrf
-                                                                            @method('PUT')
-                                                                            <div class="modal-body">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                            type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã vị trí" value="AMKT">
-                                                                                    </div>
-
-                                                                                    <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                            type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên vị trí" name="name"
-                                                                                            value="{{ $value->name }}">
-                                                                                    </div>
-                                                                                    <div class="col-sm-6 mb-3" >
-                                                                                        <select class="selectpicker" required data-live-search="true" name="parent"
-                                                                                            data-width="100%" title="Đơn vị công tác *"
-                                                                                            data-live-search-placeholder="Tìm kiếm..." data-size="3" >
-                                                                                                @foreach ($listDepartments->data as $dep)
-                                                                                                    @if ($dep->id != $value->parent)
-                                                                                                        <option value="{{ $value->parent }}">
-                                                                                                            {{ $dep->name }}
-                                                                                                        </option>
-                                                                                                    @else
-                                                                                                        <option value="{{ $value->parent}}" selected>
-                                                                                                            {{ $dep->name }}
-                                                                                                        </option>
-                                                                                                    @endif
-                                                                                                @endforeach
-                                                                                            </select>
-                                                                                    
-                                                                                    </div>
-                                                                                    <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp nhân sự">
-                                                                                        <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level"
-                                                                                                    data-width="100%" data-live-search="true"
-                                                                                                    data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                                                                                    @foreach ($listPositionLevel->data as $pl)
-                                                                                                    @if ($pl->id != $value->position_level)
-                                                                                                        <option value="{{ $value->position_level }}">
-                                                                                                            {{ $pl->name }}
-                                                                                                        </option>
-                                                                                                    @else
-                                                                                                        <option value="{{ $value->position_level}}" selected>
-                                                                                                            {{ $pl->name }}
-                                                                                                        </option>
-                                                                                                    @endif
-                                                                                                    @endforeach
-
-                                                                                                    <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
-                                                                                                </select>
-                                                                                                
-                                                                                        {{-- <div class="modal_list-more" data-bs-toggle="modal"
-                                                                                        data-bs-target="#danhsachChucDanh">
-                                                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                                                    </div> --}}
-                                                                                    
-                                                                                    </div>
-
-                                                                                    <div class="col-sm-12 mb-3">
-                                                                                        <textarea data-bs-toggle="tooltip" name="description" data-bs-placement="top" title="Mô tả công việc" class="form-control">{{ $value->description }}</textarea>
-                                                                                    </div>
-
-                                                                                    <div class="col-sm-4 mb-3">
-                                                                                        <input class="form-control"
-                                                                                            type="number" min="0"
-                                                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Định biên"
-                                                                                            name="max_employees"
-                                                                                            value="{{ $value->max_employees }}">
-                                                                                    </div>
-                                                                                    <div class="col-sm-4 mb-3">
-                                                                                        <input class="form-control"
-                                                                                            type="text"
-                                                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Quỹ lương năm"
-                                                                                            name="salary_fund"
-                                                                                            value="{{ $value->salary_fund }}" />
-                                                                                    </div>
-                                                                                    <div class="col-sm-4 mb-3">
-                                                                                        <input class="form-control"
-                                                                                            type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị" readonly
-                                                                                            value="2 gói" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-outline-danger"
-                                                                                    data-bs-dismiss="modal">Hủy</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger">Lưu</button>
-                                                                            </div>
-
-                                                                        </form>
-                                                                    </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body position-relative body_content-wrapper" id="body_content-2">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <div class="pb-2 d-flex align-items-center">
-                                            <div class="card-title">Phòng kinh doanh</div>
-                                        </div>
-                                        <div class="main_search d-flex mt-2">
-                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
-                                            <form action="/danh-sach-vi-tri" method="GET">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
-                                                    name="q" value="{{ request()->q }}">
-                                            </form>
-                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                                data-bs-target="#themDSThemViTri" style="margin-left: 10px">Thêm vị
-                                                trí</button>
-                                        </div>
-                                    </div>
-                                    <div class='row'>
-                                        <div class="col-md-12">
-                                            <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
-                                                    <thead>
-                                                        <tr class="bg-light">
-                                                            <th style="width: 2%">STT</th>
-                                                            <th style="width: 10%">Mã vị trí</th>
-                                                            <th style="width: 12%">Tên vị trí/chức danh</th>
-                                                            <th style="width: 10%">Cấp nhân sự</th>
-                                                            <th style="width: 10%">Đơn vị công tác</th>
-                                                            <th style="width: 27%">Mô tả Công việc (Tóm tắt)</th>
-                                                            <th style="width: 6%">Định biên</th>
-                                                            <th style="width: 10%">Quỹ lương năm</th>
-                                                            <th style="width: 8%">Gói trang bị</th>
-                                                            <th style="width: 5%">Hành động</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    1</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>AMKT</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trợ lý Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Chuyên viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản trị Nhãn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>1</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>182.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    2</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>ACT</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản lý Activation</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nhân viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trade Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>4</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>624.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    3</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>ACT</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản lý Activation</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Chuyên viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trade Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>2</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>364.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    4</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>SEO</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Content SEO</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nhân viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Digital Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>2</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>312.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    5</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>STND</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Sáng tạo nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trưởng đơn vị</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Sáng tạo Nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>1</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>260.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                        </div>
+                                                    </div>
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body position-relative body_content-wrapper" id="body_content-3">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <div class="pb-2 d-flex align-items-center">
-                                            <div class="card-title">Phòng Marketing</div>
-                                        </div>
-                                        <div class="main_search d-flex mt-2">
-                                            <i class="bi bi-search" style="top: 4px;left: 8px;"></i>
-                                            <form action="/danh-sach-vi-tri" method="GET">
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
-                                                    name="q" value="{{ request()->q }}">
-                                            </form>
-                                            <button class="btn btn-danger d-block w-60" data-bs-toggle="modal"
-                                                data-bs-target="#themDSThemViTri" style="margin-left: 10px">Thêm vị
-                                                trí</button>
-                                        </div>
-                                    </div>
-                                    <div class='row'>
-                                        <div class="col-md-12">
-                                            <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
-                                                    <thead>
-                                                        <tr class="bg-light">
-                                                            <th style="width: 2%">STT</th>
-                                                            <th style="width: 10%">Mã vị trí</th>
-                                                            <th style="width: 12%">Tên vị trí/chức danh</th>
-                                                            <th style="width: 10%">Cấp nhân sự</th>
-                                                            <th style="width: 10%">Đơn vị công tác</th>
-                                                            <th style="width: 27%">Mô tả Công việc (Tóm tắt)</th>
-                                                            <th style="width: 6%">Định biên</th>
-                                                            <th style="width: 10%">Quỹ lương năm</th>
-                                                            <th style="width: 8%">Gói trang bị</th>
-                                                            <th style="width: 5%">Hành động</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    1</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>AMKT</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trợ lý Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Chuyên viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản trị Nhãn</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>1</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>182.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
+                                                    <!-- Modal Sua Vi Tri chức danh -->
+                                                    <div class="modal fade"
+                                                        id="suaDSThemViTri{{ $value->id }}" tabindex="-1"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header text-center">
+                                                                    <h5 class="modal-title w-100"
+                                                                        id="exampleModalLabel">Sửa Vị trí/Chức danh
+                                                                    </h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    2</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>ACT</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản lý Activation</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nhân viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trade Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>4</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>624.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    3</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>ACT</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Quản lý Activation</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Chuyên viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trade Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>2</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>364.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    4</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>SEO</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Content SEO</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nhân viên</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Digital Marketing</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>2</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>312.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
-                                                                    5</div>
-                                                            </th>
-                                                            <td>
-                                                                <div>STND</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Sáng tạo nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Trưởng đơn vị</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Sáng tạo Nội dung</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>Tham gia xây dựng và/hoặc điều phối dự án Marketing
-                                                                    theo yêu cầu của Ban Giám đốc</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>1</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>260.000.000</div>
-                                                            </td>
-                                                            <td>
-                                                                <div data-bs-toggle="modal"
-                                                                    data-bs-target="#trangBiHanhChinh">
-                                                                    Pack Quản lý
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSThemViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                                                <form method="POST"
+                                                                    action="{{ route('position.update', $value->id) }}">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6 mb-3">
+                                                                                <input class="form-control"
+                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã vị trí" value="AMKT">
+                                                                            </div>
+
+                                                                            <div class="col-sm-6 mb-3">
+                                                                                <input class="form-control"
+                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên vị trí" name="name"
+                                                                                    value="{{ $value->name }}">
+                                                                            </div>
+                                                                            <div class="col-sm-6 mb-3" >
+                                                                                <select class="selectpicker" required data-live-search="true" name="parent"
+                                                                                    data-width="100%" title="Đơn vị công tác *"
+                                                                                    data-live-search-placeholder="Tìm kiếm..." data-size="3" >
+                                                                                        @foreach ($listDepartments->data as $dep)
+                                                                                            @if ($dep->id != $value->parent)
+                                                                                                <option value="{{ $value->parent }}">
+                                                                                                    {{ $dep->name }}
+                                                                                                </option>
+                                                                                            @else
+                                                                                                <option value="{{ $value->parent}}" selected>
+                                                                                                    {{ $dep->name }}
+                                                                                                </option>
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                            
+                                                                            </div>
+                                                                            <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp nhân sự">
+                                                                                <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level"
+                                                                                            data-width="100%" data-live-search="true"
+                                                                                            data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                                                                            @foreach ($listPositionLevel->data as $pl)
+                                                                                            @if ($pl->id != $value->position_level)
+                                                                                                <option value="{{ $value->position_level }}">
+                                                                                                    {{ $pl->name }}
+                                                                                                </option>
+                                                                                            @else
+                                                                                                <option value="{{ $value->position_level}}" selected>
+                                                                                                    {{ $pl->name }}
+                                                                                                </option>
+                                                                                            @endif
+                                                                                            @endforeach
+
+                                                                                            <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
+                                                                                        </select>
+                                                                                        
+                                                                                {{-- <div class="modal_list-more" data-bs-toggle="modal"
+                                                                                data-bs-target="#danhsachChucDanh">
+                                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                                            </div> --}}
+                                                                            
+                                                                            </div>
+
+                                                                            <div class="col-sm-12 mb-3">
+                                                                                <textarea data-bs-toggle="tooltip" name="description" data-bs-placement="top" title="Mô tả công việc" class="form-control">{{ $value->description }}</textarea>
+                                                                            </div>
+
+                                                                            <div class="col-sm-4 mb-3">
+                                                                                <input class="form-control"
+                                                                                    type="number" min="0"
+                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Định biên"
+                                                                                    name="max_employees"
+                                                                                    value="{{ $value->max_employees }}">
+                                                                            </div>
+                                                                            <div class="col-sm-4 mb-3">
+                                                                                <input class="form-control"
+                                                                                    type="text"
+                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Quỹ lương năm"
+                                                                                    name="salary_fund"
+                                                                                    value="{{ $value->salary_fund }}" />
+                                                                            </div>
+                                                                            <div class="col-sm-4 mb-3">
+                                                                                <input class="form-control"
+                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị" readonly
+                                                                                    value="2 gói" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-danger"
+                                                                            data-bs-dismiss="modal">Hủy</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Lưu</button>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -868,7 +275,6 @@
                     </div>
                 </div>
             </div>
-
             @include('template.footer.footer')
         </div>
     </div>
@@ -1773,7 +1179,7 @@
     <!-- Modal Them phong ban -->
     <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">THÊM ĐƠN VỊ/PHÒNG BAN</h5>
@@ -1897,7 +1303,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-vi-tri" method="POST">
+                <form action="{{ route('position.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -1912,9 +1318,8 @@
                             <div class="col-sm-6 mb-3">
                                     <select class="selectpicker"
                                     required
-                                    placeholder="Chọn đơn vị công tác *"
                                     name="parent"
-                                    title="Đơn vị phụ trách"
+                                    title="Chọn đơn vị công tác *"
                                     data-width="100%"
                                     data-live-search="true"
                                     data-live-search-placeholder="Tìm kiếm..."
@@ -1922,8 +1327,7 @@
                                     @foreach ($listDepartments->data as $dep)
                                         @if ($dep->id == $value->parent)
                                             <option
-                                                value="{{ $value->parent }}"
-                                                selected>
+                                                value="{{ $value->parent }}" >
                                                 {{ $dep->name }}
                                             </option>
                                         @else
@@ -1935,25 +1339,6 @@
                                     @endforeach
                                 </select>    
                             </div>
-
-                            <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" required data-live-search="true" name="parent"
-                                data-width="100%" title="Đơn vị công tác *"
-                                data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                    @foreach ($listDepartments->data as $dep)
-                                        @if ($dep->id != $value->parent)
-                                            <option value="{{ $value->parent }}">
-                                                {{ $dep->name }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $value->parent}}" selected>
-                                                {{ $dep->name }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-
                             
                             <div class="col-sm-6 mb-3">
                                 <select id="onchangeCapNhanSu" class="selectpicker"
@@ -1973,7 +1358,7 @@
                                             </option>
                                         @else
                                             <option
-                                                value="{{$value->position_level }}" selected>
+                                                value="{{$value->position_level }}">
                                                 {{ $level->name }}
                                             </option>
                                         @endif
@@ -2381,12 +1766,12 @@
 @section('footer-script')
 
 
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
+<script type="text/javascript"
+src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
-<script src="https://www.jqueryscript.net/demo/Drop-Down-Combo-Tree/comboTreePlugin.js"  type="text/javascript"></script>
+{{-- <script src="https://www.jqueryscript.net/demo/Drop-Down-Combo-Tree/comboTreePlugin.js"  type="text/javascript"></script> --}}
 {{-- <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script> --}}
 
     <script>
@@ -2497,6 +1882,44 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#danhSachViTri').DataTable({
+                paging: true,
+                ordering: false,
+                order: [[0, 'desc']],
+                pageLength: 30,
+                language: {
+                    info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+                    infoEmpty: 'Hiện tại chưa có bản ghi nào',
+                    search: 'Tìm kiếm biên bản',
+                    paginate: {
+                        previous: '<i class="bi bi-caret-left-fill"></i>',
+                        next: '<i class="bi bi-caret-right-fill"></i>',
+                    },
+                    search: '',
+                    searchPlaceholder: 'Tìm kiếm...',
+                    zeroRecords: 'Không tìm thấy kết quả',
+                },
+                oLanguage: {
+                    sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                },
+                dom: '<"d-flex justify-content-between align-items-center mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+            });
+            $('div.card-title-wrapper-left').html(`
+                <div class="card-title">Toàn Công Ty</div>
+            `);
+            $('div.card-title-wrapper-right').html(`
+                @if (session('user')['role'] == 'admin')
+                <div class="main_search d-flex ms-3">
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Thêm vị trí</button>
+                </div>
+                @endif
+            `);
+        });
+        
     </script>
 
     <script type="text/javascript">
@@ -2642,4 +2065,5 @@
         });
     </script>
 
+    
 @endsection

@@ -2,7 +2,6 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Biên bản họp Giao Ban')
 @section('header-style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
     <style>
         .mainSection_width-select {
             width: 140px !important;
@@ -87,17 +86,17 @@
             <div class="main">
                 <div class="container-fluid">
                     <div class="mainSection_heading d-flex align-items-center justify-content-between">
-                        <div class="mainSection_card position-relative">
+                        <div class="mainSection_card position-relative" style="flex:1">
                             <div class="mainSection_content row">
-                                <div class="col-sm-4">Đơn vị: </div>
-                                <div class="col-sm-8">
-                                    <strong>Kế toán</strong>
+                                <div class="col-sm-2">
+                                    <div class="text-nowrap">Đơn vị: </div>
                                 </div>
-                            </div>
-                            <div class="mainSection_content row">
-                                <div class="col-sm-4">Chủ trì: </div>
-                                <div class="col-sm-8">
-                                    <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                <div class="col-sm-10">
+                                    <strong class="text-nowrap">{{ session('user')['departement']['name'] ?? 'Chưa có đơn vị' }}</strong>
+                                </div>
+                                <div class="col-sm-2">Chủ trì: </div>
+                                <div class="col-sm-10">
+                                    <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                         @foreach ($listUsers->data as $value)
                                             <option value="{{ $value->name }}">{{ $value->name }}</option>
                                         @endforeach
@@ -105,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center" style="flex:1">
                             <div>
                                 <h5 class="mainSection_heading-title">
                                     Biên bản họp
@@ -127,7 +126,6 @@
                             <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-3">
@@ -139,63 +137,60 @@
                                                 <div class="card-title">Tổng quan</div>
                                             </div>
                                             <div class="form-control" style="padding: 0.5rem 0.75rem;">
-                                                <div class="row">
-                                                    <div class="col-md-7">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
+                                                <form action="" method="">
+                                                    @csrf
+                                                    <div class="row">
+                                                   
+                                                        <div class="col-md-7">
+                                                            <div class="d-flex align-items-center mb-3">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
+                                                                </div>
+                                                                <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                             </div>
-                                                            {{-- <div id="date_time-hopgiaoban"
-                                                                class="d-flex align-items-center justify-content-between datetimepicker_wrapper">
-                                                                <input id="datetimepicker" value="<?php// echo date('d/m/Y h:m'); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
-                                                                    class="form-control" type="text">
-                                                                <div class="datetimepicker_separate">-</div>
-                                                                <input id="datetimepicker2" value="<?php //echo date('d/m/Y h:m');
-                                                                ?>"
-                                                                    class="form-control" type="text">
-                                                            </div> --}}
-                                                            <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
-                                                        </div>
-                                                        <div class="d-flex align-items-start">
-                                                            <div class="d-flex">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
-                                                            </div>
-                                                            <div style="flex:1">
-                                                                <textarea name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
+                                                            <div class="d-flex align-items-start">
+                                                                <div class="d-flex">
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
+                                                                </div>
+                                                                <div style="flex:1">
+                                                                    <textarea name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="mb-3 d-flex align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
+                                                        <div class="col-md-5">
+                                                            <div class="mb-3 d-flex align-items-center justify-content-between">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
+                                                                </div>
+                                                                <div style="flex:1">
+                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} Thư ký" data-live-search-placeholder="Tìm kiếm...">
+                                                                        
+                                                                        @foreach ($listUsers->data as $value)
+                                                                            <option value="{{ $value->id }}">
+                                                                                {{ $value->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                            <div style="flex:1">
-                                                                <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} Thư ký" data-live-search-placeholder="Tìm kiếm...">
-                                                                    @foreach ($listUsers->data as $value)
-                                                                        <option value="{{ $value->id }}">
-                                                                            {{ $value->name }}</option>
-                                                                    @endforeach
-                                                                </select>
+                                                            <div class="mt-3 d-flex align-items-center justify-content-between">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
+                                                                </div>
+                                                                <div style="flex:1">
+                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm...">
+                                                                        @foreach ($listUsers->data as $value)
+                                                                            <option value="{{ $value->name }}">
+                                                                                {{ $value->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="mt-3 d-flex align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center">
-                                                                <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
-                                                            </div>
-                                                            <div style="flex:1">
-                                                                <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm...">
-                                                                    @foreach ($listUsers->data as $value)
-                                                                        <option value="{{ $value->name }}">
-                                                                            {{ $value->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
 
+                                                        </div>
+                                                        
                                                     </div>
-
-                                                </div>
+                                                    <div class="d-flex align-items-center justify-content-end mt-3"><button type="submit" class="btn btn-outline-danger">Xác nhận</button></div>
+                                                </form>
 
                                             </div>
                                         </div>
@@ -353,7 +348,7 @@
                                                             <th class="text-nowrap" style="width: 2%">STT</th>
                                                             <th class="text-nowrap" style="width: 20%">
                                                                 <div class="d-flex justify-content-between">
-                                                                    Vấn đề tồn đọng
+                                                                    Giao việc phát sinh
                                                                     {{-- <div>
                                                                         <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
                                                                     </div> --}}
@@ -489,7 +484,7 @@
                             <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
                         </div>
                     </div>
-                    <div class="col-lg-12 d-flex justify-content-end mb-3">
+                    {{-- <div class="col-lg-12 d-flex justify-content-end mb-3">
                         <div id='warning_notification' class="alert alert-warning alert-dismissible fade show border-left border-warning" role="alert">
                             <div class='d-flex align-items-center'>
                                 <div class='warning_notification-icon'><i class="bi bi-exclamation-triangle pe-2"></i>
@@ -503,7 +498,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -587,7 +582,7 @@
                         <h5 class="modal-title w-100" id="exampleModalLabel">Cập nhật vấn đề tồn đọng</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="/bao-cao-van-de/{{ $item->id }}" method="POST">
+                    <form action="{{ route('report.update', $item->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
@@ -914,11 +909,12 @@
             </div>
         </div>
     </div>
+    {{-- {{ dd($handledReports) }} --}}
     @foreach ($handledReports as $item)
         <!-- Modal Giao nhiệm vụ phát sinh -->
         <div class="modal fade" id="nhiemVuPhatSinh{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <form action="/nhiem-vu-phat-sinh", method="POST">
+                <form action="{{ route('reportTask.store') }}", method="POST">
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header text-center">
@@ -928,7 +924,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-8 mb-3">
-                                    <input type="text" class="form-control" value="{{ $item->reason }}" name="name">
+                                    <input type="text" readonly class="form-control" value="{{ $item->problem }}" name="name">
                                 </div>
 
                                 <div class="col-md-4 mb-3">
@@ -1001,7 +997,6 @@
 @endsection
 @section('footer-script')
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>

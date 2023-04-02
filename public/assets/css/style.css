@@ -122,69 +122,6 @@ label.col-form-label {
 
 /*** Start Style Table ***/
 
-.table-scroll {
-    position:relative;
-    margin:auto;
-    overflow-x:hidden;
-    height: 202px;
-}
-.table-wrap {
-    width:100%;
-    overflow:auto;
-    padding-bottom: 2px;
-    outline: .1px solid #ededed;
-}
-.table-scroll table {
-    width:100%;
-    margin:auto;
-    border-collapse:separate;
-    border-spacing:0;
-}
-.table-scroll th, .table-scroll td {
-    padding: 4px 10px;
-    white-space:nowrap;
-    vertical-align:top;
-    outline: .1px solid #ededed;
-}
-.clone,
-.clone-second,
-.clone-three {
-    position:absolute;
-    top:0;
-    left:0;
-    pointer-events:none;
-}
-.clone th, .clone td,
-.clone-second th, .clone-second td,
-.clone-three th, .clone-three td {
-    visibility:hidden;
-    border-color:transparent
-}
-
-.clone tbody th,
-.clone-second tbody th,
-.clone-three tbody th {
-    visibility:visible;
-}
-.clone .fixed-side,
-.clone-second .fixed-side,
-.clone-three .fixed-side {
-    visibility:visible;
-}
-.table-wrap::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-.table-wrap::-webkit-scrollbar-thumb {
-    background-color: transparent;
-}
-.table-wrap::-webkit-scrollbar {
-    width: 4px;
-}
-.table-wrap:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
 .style_disableAll td {
     padding: 0 4px !important;
 }
@@ -1089,12 +1026,12 @@ th {
 }
 
 .sidebarBody_card.bg-pink-blur {
-    background-color: var(--pink-color-blur);
+    background-color: var(--pink-color-blur)!important;
 }
 
 .sidebarBody_card.bg-yellow-blur,
 .bg-yellow-blur {
-    background-color: var(--yellow-color-blur);
+    background-color: var(--yellow-color-blur)!important;
 }
 .sidebarBody_card.bg-blue-blur,
 .bg-blue-blur {
@@ -1358,7 +1295,7 @@ th {
 }
 .mainWrap {
     /* width: calc(100% - var(--width-sidebar) * 2); */
-    /* height: 100vh; */
+    height: 100vw;
     line-height: var(--fz-20);
     background-color: var(--white-color-blur);
     position: relative;
@@ -1370,7 +1307,7 @@ th {
     border-left: 1px solid var(--grey-color);
     border-top: 1px solid var(--grey-color);
     position: relative;
-    height: 100vh;
+    height: 100%;
 }
 
 .mainSection_heading {
@@ -1758,8 +1695,8 @@ th {
     line-height: 32px;
     text-align: center;
     background-color: #e5e5e5;
-    position: absolute;
-    width: 100%;
+    /* position: absolute; */
+    /* width: 100%; */
 }
 
 .showhide {
@@ -1909,8 +1846,8 @@ th {
 }
 
 .upload-field .file-thumbnail img {
-    width: 68px;
-    height: 68px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
 }
 

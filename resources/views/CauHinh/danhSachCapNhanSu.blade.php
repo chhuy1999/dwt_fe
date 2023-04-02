@@ -77,7 +77,7 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                                                                         <form
-                                                                            action="/danh-sach-cap-nhan-su/{{ $value->id }}"
+                                                                            action="{{ route('positionLevel.delete', $value->id) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
@@ -99,7 +99,7 @@
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
 
-                                                                    <form method="POST" action="/danh-sach-cap-nhan-su/{{ $value->id }}">
+                                                                    <form method="POST" action="{{ route('positionLevel.update', $value->id) }}">
                                                                     @csrf
                                                                     @method('PUT')
                                                                         <div class="modal-body">
@@ -182,7 +182,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-cap-nhan-su" method="POST">
+                <form action="{{ route('positionLevel') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -236,9 +236,12 @@
             dom: '<"d-flex mb-3 justify-content-end"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
         });
         $('div.card-title-wrapper').html(`
+        @if (session('user')['role'] == 'admin')
             <div class="main_search d-flex me-3">
                 <button class="btn btn-danger d-block w-60" data-bs-toggle="modal" data-bs-target="#themCapNhanSu" style="margin-left: 10px">Thêm cấp nhân sự</button>
             </div>
+        
+        @endif
         `);
     </script>
 

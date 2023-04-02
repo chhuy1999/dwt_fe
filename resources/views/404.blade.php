@@ -1,6 +1,6 @@
 @extends('template.master')
 {{-- 404 not found --}}
-@section('title', 'Bảng điều khiển')
+@section('title', 'Trang không tồn tại')
 @section('header-style')
 <style>
     .mainSection {
@@ -25,8 +25,8 @@
         background-position: center center;
         bottom: -5px;
         content: '';
-        -webkit-filter: blur(1px);
-        filter: blur(1px);
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
         left: -5px;
         position: absolute;
         right: -5px;
@@ -39,12 +39,12 @@
         flex-direction: column;
         position: relative;
         text-align: center;
-        z-index: 2;
+        /* z-index: 2; */
     }
 
     .notFound_content {
         --width: 500px;
-        background-color: rgb(255 255 255 / 26%);
+        background-color: rgb(80 80 80 / 26%);
         border-radius: var(--border-radius-main);
         max-width: calc(100vw - 32px);
         min-height: 400px;

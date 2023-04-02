@@ -6,40 +6,44 @@ use App\Http\Controllers\Controller;
 use App\Services\DwtServices;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
+use Termwind\Components\Dd;
 
-class TargetController extends Controller
+class PositionOrganizationController extends Controller
 {
-    //
     private $dwtService;
-    //constructor
+    //contructor
     public function __construct()
     {
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
+    
 
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
+
     {
         try {
 
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchKpiTargets("", 1, 200);
-            $listUnits = $this->dwtService->listUnits();
-            $listPositions = $this->dwtService->listPositions();
+            $data = $this->dwtService->searchPosition($q, $page, $limit);
             $listDepartments = $this->dwtService->listDepartments();
-
-            return view('CauHinh.danhMucDinhMuc')
-                ->with('listTargets', $data)
-                ->with('listUnits', $listUnits)
-                ->with('listPositions', $listPositions)
-                ->with('listDepartments', $listDepartments);
+            $listPositions = $this->dwtService->listPositions();
+            $listEquimentPack = $this->dwtService->listEquimentPack();
+            $listPositionLevel = $this->dwtService->listPositionLevel();
+            return view('CauHinh.danhSachCapToChuc')
+                ->with('data', $data)
+                ->with('listDepartments', $listDepartments)
+                ->with('listEquimentPack', $listEquimentPack)
+                ->with('listPositionLevel', $listPositionLevel)
+                ->with('listPositions', $listPositions);
         } catch (Exception $e) {
-            dd($e);
             $error = $e->getMessage();
-            return view('CauHinh.danhMucDinhMuc')->with('listTargets', []);
+            return view('CauHinh.danhSachCapToChuc')->with('listPositions', []);
         }
     }
 
@@ -49,17 +53,15 @@ class TargetController extends Controller
 
             $data = $request->validate([
                 'name' => 'required',
-                'manday' => 'required|numeric',
                 'description' => 'required',
-                'departement_id' => 'required|numeric',
-                'position_id' => 'required|numeric',
-                // 'unit_id' => 'required|numeric',
-                // 'quantity' => 'required|numeric',
+                'parent' => 'required|numeric',
+                'position_level' => 'required|numeric',
+                'salary_fund' => 'required|numeric',
+                'max_employees' => 'required|numeric',
             ]);
-            $this->dwtService->createKpiTarget($data);
+            $this->dwtService->createPosition($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
-            error_log($e->getMessage());
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
@@ -70,16 +72,16 @@ class TargetController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'nullable',
-                'manday' => 'nullable|numeric',
                 'description' => 'nullable',
-                'departement_id' => 'nullable|numeric',
-                'position_id' => 'nullable|numeric',
-                // 'unit_id' => 'nullable|numeric',
-                // 'quantity' => 'nullable|numeric',
+                'parent' => 'nullable|numeric',
+                'position_level' => 'nullable|numeric',
+                'salary_fund' => 'nullable|numeric',
+                'max_employees' => 'nullable|numeric',
             ]);
-            $this->dwtService->updateKpiTarget($id, $data);
+            $this->dwtService->updatePosition($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
@@ -88,7 +90,7 @@ class TargetController extends Controller
     public function delete($id)
     {
         try {
-            $this->dwtService->deleteKpiTarget($id);
+            $this->dwtService->deletePosition($id);
             return back()->with('success', 'Xóa thành công');
         } catch (Exception $e) {
             $error = $e->getMessage();

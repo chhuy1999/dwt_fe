@@ -2,7 +2,6 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Giao việc')
 @section('header-style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
 @endsection
 @section('content')
     @include('template.sidebar.sidebarGiaoViec.sidebarLeft')
@@ -30,7 +29,7 @@
                         <div class="mainSection_card">
                             <div class="mainSection_content">
                                 <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>Kế toán</strong></div>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong></div>
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
@@ -89,7 +88,7 @@
                                         <div class="col-md-5 overflow-auto" style="height: 276px">
                                             @foreach ($listTargets->data as $target)
                                                 <div class="body_content-wrapper" id="body_content-{{ $target->id }}">
-                                                    <form action="/giao-viec" method="POST">
+                                                    <form action="/giao-viec" method="POST" id="formTarget">
                                                         @csrf
                                                         <input type="hidden" name="target_id" value="{{ $target->id }}">
                                                         <div class="card-title mb-2">
@@ -169,8 +168,9 @@
 
                                                         <div class="justify-content-end d-flex">
                                                             <div class="action_btn">
-                                                                <div class="btn btn-outline-danger px-4 me-3">Hủy</div>
-                                                                <button type="submit" class="btn btn-danger px-4">Giao</button>
+                                                                <input class="btn btn-outline-danger px-4 me-3" type="reset" value="Hủy" />
+                                                                <button type="submit"
+                                                                    class="btn btn-danger px-4">Giao</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -289,7 +289,7 @@
 
 
                                                                     {{-- Xóa thuộc tính --}}
-                                                                    <div class="modal fade" id="xoaThuocTinh1{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal fade" id="xoaThuocTinh{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog modal-dialog-centered">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
@@ -336,7 +336,7 @@
 
     @foreach ($listAssignTasks->data as $assignedTask)
         <!-- Modal Sửa nvu -->
-        <div class="modal fade" id="suaVanDeTonDong1{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="suaVanDeTonDong{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -349,38 +349,39 @@
                         @method('PUT')
                         <div class="modal-body">
                             <div class="mb-3 row">
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-7 mb-3">
                                     <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" value="{{ $assignedTask->name }}" />
                                 </div>
+                                
+                                <div class="col-md-5 mb-3">
+                                    <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
+                                </div>
+
                                 <div class="col-md-12 mb-3">
                                     <input type="text" class="form-control" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Thuộc định mức" value="{{ $assignedTask->target->name ?? '' }}" />
                                 </div>
 
-                                <div class="col-md-12 mb-3">
-                                    <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả nhiệm vụ" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
+                                <div class="col-md-9 mb-3">
+                                    <textarea class="form-control" rows="1" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả nhiệm vụ" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Kế hoạch thực hiện" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
+                                
+                                <div class="col-md-3 mb-3">
+                                    <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" name="manday" min="0" step="0.05" oninput="onInput(this)" value="{{ $assignedTask->manday }}" class="form-control" />
+                                </div>
+                                <div class="col-md-9 mb-3">
+                                    <textarea class="form-control" rows="1" data-bs-toggle="tooltip" data-bs-placement="top" title="Kế hoạch thực hiện" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
                                 </div>
 
-                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
-                                    <select class='selectpicker' data-live-search="true" data-size="5" name="position_id" id="">
-                                        @foreach ($listPositions->data as $pos)
-                                            @if ($pos->id == ($assignedTask->position->id ?? '-1'))
-                                                <option value="{{ $pos->id }}" selected>
-                                                    {{ $pos->name }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $pos->id }}">
-                                                    {{ $pos->name }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-
-                                    </select>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-check">
+                                        <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $assignedTask->id }}" name="saveAsForm">
+                                        <label role="button" class="form-check-label user-select-none fs-5" for="datGiaTriKinhDoanh{{ $assignedTask->id }}">Lưu
+                                            thành mẫu</label>
+                                    </div>
                                 </div>
+
                                 <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người đảm nhiệm">
-                                    <select class='selectpicker' multiple data-size="5" data-live-search="true" name="users[]">
+                                    <select class='selectpicker' multiple data-size="5" data-live-search="true" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" name="users[]">
                                         @foreach ($listUsers as $user)
                                             @if (isAssigned($assignedTask, $user->id))
                                                 <option value="{{ $user->id }}" selected>
@@ -397,21 +398,13 @@
                                 </div>
 
                                 <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người liên quan">
-                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]" id="">
+                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người liên quan" name="relatedUsers[]" id="">
                                         @foreach ($listUsers as $user)
                                             <option value="{{ $user->id }}" selected>
                                                 {{ $user->name }}
                                             </option>
                                         @endforeach
                                     </select>
-                                </div>
-
-                                <div class="col-md-2 mb-3">
-                                    <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" name="manday" min="0" step="0.05" oninput="onInput(this)" value="{{ $assignedTask->manday }}" class="form-control" />
-                                </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
                                 </div>
 
                                 <div class="repeater">
@@ -443,7 +436,6 @@
                                             </div>
                                         @endforeach
 
-
                                     </div>
 
                                     <div class="col-md-12">
@@ -473,7 +465,7 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Giao nhiệm vụ phát sinh</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="/nhiem-vu-phat-sinh">
+                <form method="POST" action="{{ route('reportTask.store') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

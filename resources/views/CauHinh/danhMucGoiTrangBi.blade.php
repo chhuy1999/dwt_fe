@@ -29,7 +29,9 @@
                                                             <th style="width: 40%">Gói trang bị</th>
                                                             <th style="width: 40%">Hạng mục trang bị</th>
                                                             <th style="width: 10%">Đơn vị</th>
+                                                            @if (session('user')['role'] == 'admin')
                                                             <th style="width: 8%">Hành động</th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -51,7 +53,7 @@
 
                                                                 </div>
                                                             </td>
-                                                        
+
                                                             <td>
                                                                 <div>{{ $value->name }}</div>
                                                             </td>
@@ -64,20 +66,23 @@
                                                                     @endforeach
                                                                 </div>
                                                             </td>
-                                                            <td>
-                                                                <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suatrangbi{{ $value->id }}">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                            @if (session('user')['role'] == 'admin')
+
+                                                                <td>
+                                                                    <div class="table_actions d-flex justify-content-center">
+                                                                        <div class="btn" data-bs-toggle="modal"
+                                                                            data-bs-target="#suatrangbi{{ $value->id }}">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        </div>
+                                                                        <div class="btn" data-bs-toggle="modal"
+                                                                            data-bs-target="#xoatrangbi{{ $value->id }}">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoatrangbi{{ $value->id }}">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
-                                                                </div>
-                                                            </td>
+                                                                </td>
+                                                            @endif
                                                         </tr>
 
 
@@ -95,12 +100,12 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                                                                         <form
-                                                                            action="/danh-muc-goi-trang-bi/{{ $value->id }}"
+                                                                            action="{{ route('equimentPack.delete', $value->id) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit" class="btn btn-danger">Xóa</button>
-                                                                        
+
                                                                         </form>
                                                                     </div>
                                                                 </div>
@@ -117,12 +122,12 @@
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
 
-                                                                    <form method="POST" action="/danh-muc-goi-trang-bi/{{ $value->id }}">
+                                                                    <form method="POST" action="{{ route('equimentPack.update', $value->id) }}">
                                                                         @csrf
                                                                         @method('PUT')
                                                                         <div class="modal-body">
                                                                             <div class="row">
-                                                                                
+
                                                                                 <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị">
                                                                                     <select name="parent_id" class="selectpicker" title="Nhập gói trang bị" data-size="3" data-live-search="true">
                                                                                         @foreach ($listEquimentPack->data as $value)
@@ -150,7 +155,7 @@
                                                                                         @endforeach
                                                                                     </select>
                                                                                 </div>
-                                                                                
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
@@ -161,7 +166,7 @@
                                                                     </form>
                                                                 </div>
                                                             </div>
-                                                        
+
                                                             @endforeach
                                                         </tbody>
 
@@ -195,7 +200,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-muc-goi-trang-bi" method="POST">
+                <form action="{{ route('equimentPack.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -207,7 +212,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
 
                             <div class="col-sm-6 mb-3">
@@ -246,7 +251,7 @@
                 paging: true,
                 ordering: false,
                 order: [[0, 'desc']],
-                pageLength: 5,
+                pageLength: 20,
                 language: {
                     info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                     infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -265,9 +270,11 @@
                 dom: '<"d-flex mb-3 justify-content-end"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
             });
             $('div.card-title-wrapper').html(`
+                @if (session('user')['role'] == 'admin')
                 <div class="main_search d-flex me-3">
                     <button class="btn btn-danger d-block w-60" data-bs-toggle="modal" data-bs-target="#themTrangBi" style="margin-left: 10px">Thêm trang bị</button>
                 </div>
+                @endif
             `);
         </script>
 @endsection
