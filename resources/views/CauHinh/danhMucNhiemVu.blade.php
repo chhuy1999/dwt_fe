@@ -96,22 +96,22 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $targetDetail->name }}">
-                                                                        {{ $targetDetail->name }}
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $targetDetail->name ?? "" }}">
+                                                                        {{ $targetDetail->name ?? ""  }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
-                                                                        {{ $targetDetail->target->name }}
+                                                                        {{ $targetDetail->target->name ?? ""  }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:300px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->description }}">
-                                                                        {{ $targetDetail->description }}
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:300px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->description ?? ""  }}">
+                                                                        {{ $targetDetail->description ?? ""  }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->departement->name }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->departement->name ?? ""  }}">
                                                                         {{ $targetDetail->departement->name ?? '' }}
                                                                     </div>
                                                                 </td>
