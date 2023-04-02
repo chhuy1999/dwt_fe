@@ -140,7 +140,7 @@
                                                                         class="btn btn-outline-danger"
                                                                         data-bs-dismiss="modal">Hủy</button>
                                                                     <form
-                                                                        action="/danh-sach-vi-tri/{{ $value->id }}"
+                                                                        action="{{ route('position.delete', $value->id) }}"
                                                                         method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
@@ -169,7 +169,7 @@
                                                                 </div>
 
                                                                 <form method="POST"
-                                                                    action="/danh-sach-vi-tri/{{ $value->id }}">
+                                                                    action="{{ route('position.update', $value->id) }}">
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <div class="modal-body">
@@ -1179,7 +1179,7 @@
     <!-- Modal Them phong ban -->
     <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">THÊM ĐƠN VỊ/PHÒNG BAN</h5>
@@ -1303,7 +1303,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-vi-tri" method="POST">
+                <form action="{{ route('position.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

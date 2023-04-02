@@ -82,7 +82,7 @@
                                                                             <h5 class="modal-title w-100" id="exampleModalLabel">Sửa chỉ số key</h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
-                                                                        <form method="POST" action="/danh-muc-chi-so-key/{{ $key->id }}">
+                                                                        <form method="POST" action="{{ route('key.update', $key->id) }}">
                                                                             @csrf
                                                                             @method('PUT')
                                                                             <div class="modal-body">
@@ -135,7 +135,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                            <form action="/danh-muc-chi-so-key/{{ $key->id }}" method="POST">
+                                                                            <form action="{{ route('key.delete', $key->id) }}" method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
                                                                                 <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn

@@ -106,7 +106,7 @@
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
 
-                                                                        <form action="/danh-sach-thanh-vien/{{ $value->id }}" method="POST">
+                                                                        <form action="{{ route('users.update', $value->id) }}" method="POST">
                                                                             {{-- <form action="{{route('users.update',$value->id)}} method="POST"> --}}
                                                                             @csrf
                                                                             @method('PUT')
@@ -378,7 +378,7 @@
                                                                                 class="btn btn-outline-danger"
                                                                                 data-bs-dismiss="modal">Hủy</button>
                                                                             <form
-                                                                                action="/danh-sach-thanh-vien/{{ $value->id }}"
+                                                                                action="{{ route('users.delete', $value->id) }}"
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
@@ -621,7 +621,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-thanh-vien" method="POST" autocomplete="off">
+                <form action="{{ route('user.store') }}" method="POST" autocomplete="off">
                     @csrf
                     <div class="modal-body">
                         <div class="create_user-wrapper">

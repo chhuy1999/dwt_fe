@@ -150,7 +150,7 @@
                                                                             <h5 class="modal-title w-100" id="exampleModalLabel">Sửa mẫu nhiệm vụ</h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
-                                                                        <form action="/danh-muc-nhiem-vu/{{ $targetDetail->id }}" method="POST">
+                                                                        <form action="{{ route('targetDetail.update', $targetDetail->id) }}" method="POST">
                                                                             @csrf
                                                                             @method('PUT')
                                                                             <div class="modal-body">
@@ -252,7 +252,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                            <form action="/danh-muc-nhiem-vu/{{ $targetDetail->id }}" method="POST">
+                                                                            <form action="{{ route('targetDetail.delete', $targetDetail->id) }}" method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
                                                                                 <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn
