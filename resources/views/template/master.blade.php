@@ -77,8 +77,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         <ul class="header_more">
                                             @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                 <li class="header_more-item">
-                                                    <a href="{{ route('assignTask.list') }}" class="header_more-link">Giao việc theo định
-                                                        mức</a>
+                                                    <a href="{{ route('assignTask.list') }}" class="header_more-link">Giao việc định mức</a>
                                                 </li>
                                                 <li class="header_more-item">
                                                     <a href="" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinh" class="header_more-link">Giao việc phát sinh</a>
@@ -103,16 +102,14 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         <ul class="header_more">
                                             @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                 <li class="header_more-item">
-                                                    <a href="" data-bs-toggle="modal" data-bs-target="#taoCuocHop" class="header_more-link">Tạo cuộc
-                                                        họp</a>
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#taoCuocHop" class="header_more-link">Tạo cuộc họp</a>
                                                 </li>
                                             @endif
                                             <li class="header_more-item">
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia
-                                                    cuộc họp</a>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia họp</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="{{ route('meeting.list') }}" class="header_more-link">Danh sách cuộc họp đang diễn ra</a>
+                                                <a href="{{ route('meeting.list') }}" class="header_more-link">Cuộc họp đang diễn ra</a>
                                             </li>
                                         </ul>
                                     </li>
