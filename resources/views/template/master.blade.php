@@ -110,7 +110,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia họp</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="/danh-sach-cuoc-hop/danh-sach" class="header_more-link">Cuộc họp đang diễn ra</a>
+                                                <a href="/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra" class="header_more-link">Cuộc họp đang diễn ra</a>
                                             </li>
                                         </ul>
                                     </li>

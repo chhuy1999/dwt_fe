@@ -64,6 +64,39 @@
             return $files;
         }
 
+        function countReportTaskLogFiles($task)
+        {
+            $count = 0;
+            $logs = $task->report_task_logs;
+            foreach ($logs as $log) {
+                if ($log->files != null && strlen($log->files) > 0) {
+                    $exploded = explode(',', $log->files);
+                    foreach ($exploded as $file) {
+                        if (strlen($file) > 0) {
+                            $count++;
+                        }
+                    }
+                }
+            }
+            return $count;
+        }
+
+        function countReportTaskLogKpiKeys($task)
+        {
+            $uniqueKpiKeys = [];
+            $logs = $task->report_task_logs;
+            foreach ($logs as $log) {
+                if (count($log->kpi_keys) > 0) {
+                    foreach ($log->kpi_keys as $kpiKey) {
+                        if (!in_array($kpiKey, $uniqueKpiKeys)) {
+                            array_push($uniqueKpiKeys, $kpiKey);
+                        }
+                    }
+                }
+            }
+            return count($uniqueKpiKeys);
+        }
+
         // function findAllTargetLogDetails($targetDetail)
         // {
         //     $targetLogs = $targetDetail->targetLogs;
@@ -1408,210 +1441,214 @@
                 <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="/nhiem-vu-phat-sinh/cham-diem/{{ $reportTask->id }}" method="POST">
+                @method('PUT')
+                @csrf
 
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="">
-                            <table class="table table-bordered table-hover">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div>Tên nhiệm vụ</div>
-                                        </td>
-                                        <td>
-                                            <div>{{ $reportTask->name ?? '' }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>Mô tả</div>
-                                        </td>
-                                        <td>
-                                            <div>{{ $reportTask->description ?? '' }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>Người đảm nhiệm</div>
-                                        </td>
-                                        <td>
-                                            <div>{{ $reportTask->user->name ?? '' }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>Vị trí đảm nhiệm</div>
-                                        </td>
-                                        <td>
-                                            <div>{{ $reportTask->position->name ?? '' }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>Ngày bắt đầu</div>
-                                        </td>
-                                        <td>
-                                            <div>{{ date('d/m/Y', strtotime($reportTask->created_at)) }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>Hạn hoàn thành</div>
-                                        </td>
-                                        <td>
-                                            <div>{{ date('d/m/Y', strtotime($reportTask->deadline)) }}</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>Man day</div>
-                                        </td>
-                                        <td>
-                                            <div>{{ $reportTask->manDay }} ngày</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <div>
-                                            <td>Ý kiến TPB</td>
-                                            <td></td>
-                                        </div>
-                                    </tr>
-                                    <tr>
-                                        <div>
-                                            <td>Chấm điểm</td>
-                                            <td></td>
-                                        </div>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                    <div class="col-sm-12 mt-3">
-                        <div class="d-flex align-items-center">
-                            <div class="modal-title">Tổng hợp báo cáo</div>
-                            <span class="modal-title_mini ms-2">
-                                Kết quả tạm tính
-                            </span>
-                        </div>
-                        <div class="modal_list row">
-                            <div class="modal_items col-sm-6">
-                                Số báo cáo đã lập trong tháng: <span class="text-danger"> 0 file</span>
-                            </div>
-                            <div class="modal_items col-sm-6">
-                                Số tiêu chí đạt được trong tháng: <span class="text-danger">tiêu chí</span>
-                            </div>
-                            <div class="modal_items col-sm-6">
-                                Số nhân sự thực hiện: <span class="text-danger">1
-                                    nhân sự</span>
-                            </div>
-                            <div class="modal_items col-sm-6">
-                                Điểm KPI tạm tính: <span class="text-danger">0 ₫</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 mt-3">
-                        <div class="d-flex align-items-center">
-                            <div class="modal-title">Nhận xét nhiệm vụ</div>
-                        </div>
-                        <div class="modal_list row">
-
-                            <div class="col-sm-10 d-flex  align-items-center">
-                                <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="">
-
-                            </div>
-                            <div class="col-sm-2 d-flex  align-items-center">
-                                <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="">
-
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 mt-3">
-                        <div class="d-flex align-items-center">
-                            <div class="modal-title">Danh sách tiêu chí công việc</div>
-                        </div>
-                        <div class="">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Ngày báo cáo</th>
-                                        <th scope="col">Tiêu chí</th>
-                                        <th scope="col">Giá trị</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($reportTask->report_task_logs as $taskLog)
-                                        @foreach ($taskLog->kpi_keys as $key)
-                                            <tr>
-                                                <th class="fw-normal">
-                                                    {{ date('d/m/Y', strtotime($taskLog->report_date)) }}
-                                                </th>
-                                                <td>{{ $key->name }}</td>
-                                                <td>{{ $key->pivot->quantity }}</td>
-                                            </tr>
-                                        @endforeach
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 mt-3">
-                        <div class="d-flex align-items-center">
-                            <div class="modal-title">Danh sách báo cáo công việc</div>
-                        </div>
-                        <div class="">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" style="width: 15%">Ngày báo cáo</th>
-                                        <th scope="col" style="width: 45%">Nội dung báo cáo</th>
-                                        <th scope="col" style="width: 40%">File báo cáo</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($reportTask->report_task_logs as $log)
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <div class="">
+                                <table class="table table-bordered table-hover">
+                                    <tbody>
                                         <tr>
-                                            <th class="fw-normal">
-                                                {{ date('m/d/Y', strtotime($log->report_date)) }}</th>
-                                            <td>{{ $log->note }}</td>
                                             <td>
-                                                <div class="text-break">
-                                                    @if ($log->files && count(explode(',', $log->files)))
-                                                        <span>
-                                                            @foreach (explode(',', $log->files) as $file)
-                                                                @if (strlen($file) > 0)
-                                                                    <a class="d-flex align-items-center" href="{{ $file }}" target="_black">
-                                                                        <i class="bi bi-link-45deg"></i>
-                                                                        {{ $file }}
-                                                                    </a> <br />
-                                                                @endif
-                                                            @endforeach
-                                                        </span>
-                                                    @endif
-
-                                                </div>
-
+                                                <div>Tên nhiệm vụ</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ $reportTask->name ?? '' }}</div>
                                             </td>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                        <tr>
+                                            <td>
+                                                <div>Mô tả</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ $reportTask->description ?? '' }}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>Người đảm nhiệm</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ $reportTask->user->name ?? '' }}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>Vị trí đảm nhiệm</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ $reportTask->position->name ?? '' }}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>Ngày bắt đầu</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ date('d/m/Y', strtotime($reportTask->created_at)) }}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>Hạn hoàn thành</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ date('d/m/Y', strtotime($reportTask->deadline)) }}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>Man day</div>
+                                            </td>
+                                            <td>
+                                                <div>{{ $reportTask->manDay }} ngày</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <div>
+                                                <td>Ý kiến TPB</td>
+                                                <td>{{ $reportTask->managerComment }}</td>
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <div>
+                                                <td>Chấm điểm</td>
+                                                <td>{{ $reportTask->managerManDay }}</td>
+                                            </div>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-12 mt-3">
+                            <div class="d-flex align-items-center">
+                                <div class="modal-title">Tổng hợp báo cáo</div>
+                                <span class="modal-title_mini ms-2">
+                                    Kết quả tạm tính
+                                </span>
+                            </div>
+                            <div class="modal_list row">
+                                <div class="modal_items col-sm-6">
+                                    Số báo cáo đã lập trong tháng: <span class="text-danger"> {{ countReportTaskLogFiles($reportTask) }} file</span>
+                                </div>
+                                <div class="modal_items col-sm-6">
+                                    Số tiêu chí đạt được trong tháng: <span class="text-danger">tiêu chí {{ countReportTaskLogKpiKeys($reportTask) }}</span>
+                                </div>
+                                <div class="modal_items col-sm-6">
+                                    Số nhân sự thực hiện: <span class="text-danger">1
+                                        nhân sự</span>
+                                </div>
+                                <div class="modal_items col-sm-6">
+                                    Điểm KPI tạm tính: <span class="text-danger">0 ₫</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 mt-3">
+                            <div class="d-flex align-items-center">
+                                <div class="modal-title">Nhận xét nhiệm vụ</div>
+                            </div>
+                            <div class="modal_list row">
+
+                                <div class="col-sm-10 d-flex  align-items-center">
+                                    <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="{{ $reportTask->managerComment }}">
+
+                                </div>
+                                <div class="col-sm-2 d-flex  align-items-center">
+                                    <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="{{ $reportTask->managerManDay }}">
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 mt-3">
+                            <div class="d-flex align-items-center">
+                                <div class="modal-title">Danh sách tiêu chí công việc</div>
+                            </div>
+                            <div class="">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Ngày báo cáo</th>
+                                            <th scope="col">Tiêu chí</th>
+                                            <th scope="col">Giá trị</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($reportTask->report_task_logs as $taskLog)
+                                            @foreach ($taskLog->kpi_keys as $key)
+                                                <tr>
+                                                    <th class="fw-normal">
+                                                        {{ date('d/m/Y', strtotime($taskLog->report_date)) }}
+                                                    </th>
+                                                    <td>{{ $key->name }}</td>
+                                                    <td>{{ $key->pivot->quantity }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-3">
+                            <div class="d-flex align-items-center">
+                                <div class="modal-title">Danh sách báo cáo công việc</div>
+                            </div>
+                            <div class="">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 15%">Ngày báo cáo</th>
+                                            <th scope="col" style="width: 45%">Nội dung báo cáo</th>
+                                            <th scope="col" style="width: 40%">File báo cáo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($reportTask->report_task_logs as $log)
+                                            <tr>
+                                                <th class="fw-normal">
+                                                    {{ date('m/d/Y', strtotime($log->report_date)) }}</th>
+                                                <td>{{ $log->note }}</td>
+                                                <td>
+                                                    <div class="text-break">
+                                                        @if ($log->files && count(explode(',', $log->files)))
+                                                            <span>
+                                                                @foreach (explode(',', $log->files) as $file)
+                                                                    @if (strlen($file) > 0)
+                                                                        <a class="d-flex align-items-center" href="{{ $file }}" target="_black">
+                                                                            <i class="bi bi-link-45deg"></i>
+                                                                            {{ $file }}
+                                                                        </a> <br />
+                                                                    @endif
+                                                                @endforeach
+                                                            </span>
+                                                        @endif
+
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
-                <button type="submit" class="btn btn-danger">Lưu</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-danger">Lưu</button>
 
-            </div>
+                </div>
+            </form>
 
         </div>
     </div>

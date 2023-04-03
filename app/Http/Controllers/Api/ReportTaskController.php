@@ -37,6 +37,23 @@ class ReportTaskController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function evaluate($id, Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'managerManDay' => 'required|numeric',
+                'managerComment' => 'required',
+            ]);
+
+            $result = $this->dwtService->updateReportTask($id, $data);
+            return back()->with('success', 'Danh gia thành công');
+        } catch (Exception $e) {
+            dump($e->getMessage());
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
     public function reportTask($id, Request $request)
     {
         try {
@@ -114,7 +131,6 @@ class ReportTaskController extends Controller
             }
 
             return back()->withSuccess('Report task successfully');
-
         } catch (Exception $e) {
             return back()->withError($e->getMessage())->withInput();
         }
