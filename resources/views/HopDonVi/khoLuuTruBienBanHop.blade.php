@@ -31,8 +31,8 @@
                                                             <th class="text-nowrap" style="width:10%">Phòng ban</th>
                                                             <th class="text-nowrap" style="width:10%">Người chủ trì</th>
                                                             <th class="text-nowrap" style="width:10%">Trạng thái</th>
-                                                            <th class="text-nowrap" style="width:10%">Tham gia</th>
-                                                            {{-- <th class="text-nowrap" style="width:5%">Xem biên bản họp</th> --}}
+                                                            {{-- <th class="text-nowrap" style="width:10%">Tham gia</th> --}}
+                                                            <th class="text-nowrap" style="width:10%">Xem biên bản họp</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>

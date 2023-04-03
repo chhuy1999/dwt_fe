@@ -477,6 +477,7 @@
                                                             <th class="text-nowrap" style="width: 21%">
                                                                 Hướng giải quyết
                                                             </th>
+                                                            
                                                             <th class="text-nowrap" style="width: 4%">
                                                                 Người đảm nhiệm
                                                             </th>
@@ -582,7 +583,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 mt-3">
                             <div class="card" style="display: -webkit-box;">
                                 <div class="col-lg-3">
                                     <div class="col-md-12 card mb-12">
@@ -634,26 +635,36 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12" style="display: flex">
-                            <div class="col-lg-6">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                        <div class="card-title">LineChart</div>
-                                    </div>
-                                    <div class="mainSection_chart-container mt-3">
-                                        <canvas id="lineChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                        <div class="card-title">LineChart 2</div>
-                                    </div>
-                                    <div class="mainSection_chart-container mt-3">
-                                        <canvas id="LineChartTwo"></canvas>
+                        <div class="col-lg-12 mt-3" >
+                            <div class="card"  style="display: -webkit-box;">
+                                <div class="col-lg-6">
+                                    <div class="col-md-12 card mb-3">
+
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                                <div class="card-title">LineChart</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="lineChart"></canvas>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="col-md-12 card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                                <div class="card-title">LineChart 2</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="LineChartTwo"></canvas>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            
                             </div>
                         </div>
                     </div>
@@ -825,7 +836,7 @@ aria-hidden="true">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Tên nhiệm vụ</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" readonly
-                                        value="{{ $task->name }}"></input>
+                                        value="{{ $task->name }}">
                                 </div>
                             </div>
                         </div>
@@ -1778,7 +1789,7 @@ aria-hidden="true">
             }
         });
         $('div.three-title-wrapper-left').html(`
-        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
             <div class="d-flex justify-content-between align-items-center pb-2">
                 <div class="card-title">Báo cáo ngày của đơn vị</div>
                 <div class="mainSection_total-kpi">
