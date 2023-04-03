@@ -76,14 +76,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                             Giao Việc <i class="bi bi-chevron-right"></i>
                                         </a>
                                         <ul class="header_more">
-                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                 <li class="header_more-item">
                                                     <a href="{{ route('assignTask.list') }}" class="header_more-link">Giao việc định mức</a>
                                                 </li>
                                                 <li class="header_more-item">
                                                     <a href="" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinh" class="header_more-link">Giao việc phát sinh</a>
                                                 </li>
-                                            @endif
 
                                         </ul>
                                     </li>
