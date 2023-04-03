@@ -1474,13 +1474,13 @@
                                     <tr>
                                         <div>
                                             <td>Ý kiến TPB</td>
-                                            <td></td>
+                                            <td>{{ $reportTask->managerComment }}</td>
                                         </div>
                                     </tr>
                                     <tr>
                                         <div>
                                             <td>Chấm điểm</td>
-                                            <td></td>
+                                            <td>{{ $reportTask->managerManDay }}</td>
                                         </div>
                                     </tr>
                                 </tbody>

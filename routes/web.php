@@ -107,6 +107,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 //report-tasks
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::post('nhiem-vu-phat-sinh', [ReportTaskController::class, 'store'])->name('reportTask.store');
+    Route::put('nhiem-vu-phat-sinh/cham-diem/{id}', [ReportTaskController::class, 'evaluate'])->name('reportTask.evaluate');
     Route::post('nhiem-vu-phat-sinh/bao-cao/{id}', [ReportTaskController::class, 'reportTask'])->name('reportTask.reportTask');
 });
 
@@ -141,7 +142,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::post('giao-ban/tham-gia', [MeetingController::class, 'join']);
 
     Route::get('/danh-sach-cuoc-hop/danh-sach', [MeetingListController::class, 'index'])->name('meeting.list');
-    Route::get('/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra', [MeetingListController::class, 'meetingOpen'])->name('meeting.open');
+    Route::get('/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra', [MeetingListController::class, 'openingMeeting'])->name('meeting.open');
 });
 
 // Kho lưu trữ biên bản họp
