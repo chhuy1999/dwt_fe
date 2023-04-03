@@ -581,7 +581,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </select>
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_date">
+                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_time">
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}" name="code">

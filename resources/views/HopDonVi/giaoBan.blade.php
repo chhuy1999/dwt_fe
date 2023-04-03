@@ -179,13 +179,13 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="row">
-                                                        <input type="hidden" name="leader_id" value="0" id="leaderIdInput">
+                                                        <input type="hidden" name="leader_id" value="{{$meeting->leader_id ?? 0 }}" id="leaderIdInput">
                                                         <div class="col-md-7">
                                                             <div class="d-flex align-items-center mb-3">
                                                                 <div class="d-flex align-items-center">
                                                                     <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
                                                                 </div>
-                                                                <input {{-- value="{{ \Carbon\Carbon::parse($meeting->start_time)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($meeting->end_time)->format('d/m/Y') }}" --}} type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
+                                                                <input type="text" name="daterange" autocomplete="on" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                             </div>
                                                             <div class="d-flex align-items-start">
                                                                 <div class="d-flex">
@@ -713,7 +713,7 @@
                                                 <p class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</p>
                                             </td>
                                             <td>
-                                                <div name="daterange" class="fs-5">
+                                                {{ date('d/m/y H:i', strtotime($meeting->start_time)) }} - {{ date('d/m/y H:i', strtotime($meeting->end_time)) }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -1211,7 +1211,7 @@
 
     <script>
         $(function() {
-            $('input[name="daterange"]').daterangepicker({
+            const dateRangePicker = $('input[name="daterange"]').daterangepicker({
                 opens: 'left',
                 locale: {
                     format: 'DD/MM/YYYY'
@@ -1253,8 +1253,12 @@
             // $('input[name="daterange"]').val('');
             getThisMeeting().then(meet => {
                 if (!meet) return
+                const startTime = moment(meet.start_time).format('DD/MM/YYYY');
+                const endTime = meet.end_time ? moment(meet.end_time).format('DD/MM/YYYY') : moment(meet.start_time).add(1, 'days').format('DD/MM/YYYY');
+                console.log(startTime, endTime);
                 if (meet.start_time && meet.end_time)
-                    $('input[name="daterange"]').val(moment(meet.start_time).format('MM/DD/YYYY') + ' - ' + moment(meet.end_time).format('MM/DD/YYYY'));
+                   //set default value
+                    $('input[name="daterange"]').val(startTime + ' - ' + endTime);
             });
 
             $('input[name="daterange"]').attr("placeholder", "Chọn thời gian, thêm giờ");

@@ -480,13 +480,14 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchReports($q = "", $page = 1, $limit = 30)
+    public function searchReports($q = "", $department_id = null, $page = 1, $limit = 30)
     {
         $url = $this->url . '/reports';
         $response = $this->client->get($url, [
             'q' => $q,
             'page' => $page,
-            'limit' => $limit
+            'limit' => $limit,
+            'department_id' => $department_id
         ]);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
