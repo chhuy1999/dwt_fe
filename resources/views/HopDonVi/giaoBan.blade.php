@@ -329,6 +329,7 @@
                                                     @method('PUT')
                                                     @csrf
                                                     <div class="upload_wrapper-items">
+                                                        <input type="hidden" name="uploadedFiles[]" value="" />
                                                         @if ($meeting->files && count(explode(',', $meeting->files)))
                                                             <ul>
                                                                 @foreach (explode(',', $meeting->files) as $file)
@@ -795,7 +796,9 @@
                                 <div class="mt-3 modal_body-title">
                                     @if ($meeting->files != null && count(explode(',', $meeting->files)) > 0)
                                         @foreach (explode(',', $meeting->files) as $file)
-                                            <a href="{{ $file }}" target="_blank"> - {{ $file }}</a> <br />
+                                            @if (strlen($file) > 0)
+                                                <a href="{{ $file }}" target="_blank"> - {{ $file }}</a> <br />
+                                            @endif
                                         @endforeach
                                     @endif
                                 </div>

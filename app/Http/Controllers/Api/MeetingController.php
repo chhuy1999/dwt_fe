@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Services\DwtServices;
+use DateTime;
 use Exception;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
@@ -108,7 +109,7 @@ class MeetingController extends Controller
     }
     public function update($id, Request $request)
     {
-  
+
         try {
 
             $data = $request->validate([
@@ -118,10 +119,31 @@ class MeetingController extends Controller
                 "uploadedFiles" => "nullable|array",
                 'leader_id' => 'nullable',
                 'status' => 'nullable',
+                'daterange' => 'nullable',
             ]);
+
             if(isset($data['leader_id']) && $data['leader_id'] ==0) {
                 $data['leader_id'] = null;
             }
+
+            // if (isset($request['daterange'])) {
+            //     $dateRange = $data['daterange'];
+            //     $startDate = explode(" - ", $dateRange)[0];
+            //     //remove space
+            //     $startDate = str_replace(" ", "", $startDate);
+            //     $endDate = explode(" - ", $dateRange)[1];
+            //     //remove space
+            //     $endDate = str_replace(" ", "", $endDate);
+            //     $startTimeMs = DateTime::createFromFormat("d/M/Y", $startDate);
+            //     $startTimeMs = $startTimeMs->getTimestamp();
+
+            //     $endTimeMs = DateTime::createFromFormat("d/M/Y", $endDate);
+            //     $endTimeMs = $endTimeMs->getTimestamp();
+            //     $data['start_time'] = date('Y-m-d', strtotime($startTimeMs));
+            //     dd($data['start_time']);
+            //     $data['end_time'] = date('Y-m-d h:m:s', strtotime($endTimeMs));
+            // }
+
 
             if (isset($data['files'])) {
 
