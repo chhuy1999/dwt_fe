@@ -108,7 +108,7 @@ class MeetingController extends Controller
     }
     public function update($id, Request $request)
     {
-
+  
         try {
 
             $data = $request->validate([
@@ -119,7 +119,7 @@ class MeetingController extends Controller
                 'leader_id' => 'nullable',
                 'status' => 'nullable',
             ]);
-            if($data['leader_id'] ==0) {
+            if(isset($data['leader_id']) && $data['leader_id'] ==0) {
                 $data['leader_id'] = null;
             }
 
