@@ -177,7 +177,7 @@
                                 <input class="form-control" type="text" required placeholder="Nhập tên chỉ số key *" name="name">
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <select class="selectpicker" required title="Chọn đơn vị" name="unit_id" data-size="5" data-live-search="true">
+                                <select class="selectpicker" required title="Chọn đơn vị *" name="unit_id" data-size="5" data-live-search="true">
                                     
                                     @foreach ($listUnits->data as $unit)
                                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
@@ -186,7 +186,7 @@
                                 {{-- <input type="text" class="form-control" name="unit_id" placeholder="Nhập đơn vị"> --}}
                             </div>
                             <div class="col-sm-12">
-                                <textarea class="form-control" placeholder="Nhập mô tả chỉ số" name="description"></textarea>
+                                <textarea class="form-control" required placeholder="Nhập mô tả chỉ số *" name="description"></textarea>
                             </div>
 
                         </div>
