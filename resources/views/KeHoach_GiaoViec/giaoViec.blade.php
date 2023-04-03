@@ -733,20 +733,22 @@
         $('div.card-title-wrapper').html(`
             <div class="d-flex align-items-center">
                 <div class="card-title me-2">Danh sách định mức</div>
-                <div class="select">
-                    <select class="selectpicker" placeholder="Chọn đơn vị" title="Chọn đơn vị" data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
-                            <option value="1">Ban Giám Đốc</option>
-                            <option value="2">Ban Kiểm soát</option>
-                            <option value="3">Phòng Dịch vụ bán hàng</option>
-                            <option value="4">Bộ phận Kho Vận</option>
-                            <option value="5">Phòng Kế toán</option>
-                            <option value="6">Cung ứng MTT</option>
-                            <option value="7">Phòng marketing</option>
-                            <option value="8">Phòng quản trị nhãn và đào tạo</option>
-                    </select>
-                </div>
+                
             </div>
         `);
+
+        // <div class="select">
+        //             <select class="selectpicker" placeholder="Chọn đơn vị" title="Chọn đơn vị" data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
+        //                     <option value="1">Ban Giám Đốc</option>
+        //                     <option value="2">Ban Kiểm soát</option>
+        //                     <option value="3">Phòng Dịch vụ bán hàng</option>
+        //                     <option value="4">Bộ phận Kho Vận</option>
+        //                     <option value="5">Phòng Kế toán</option>
+        //                     <option value="6">Cung ứng MTT</option>
+        //                     <option value="7">Phòng marketing</option>
+        //                     <option value="8">Phòng quản trị nhãn và đào tạo</option>
+        //             </select>
+        //         </div>
 
         $('#listDanhSach').DataTable({
             paging: true,
