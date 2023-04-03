@@ -41,7 +41,27 @@
                     return $log;
                 }
             }
-            return null;
+            return (object) [
+                'id' => -1,
+                'note' => '',
+                'files' => '',
+                'kpi_keys' => [],
+            ];
+        }
+
+        function getReportTaskLogFile($task, $date)
+        {
+            $log = findReportTaskLog($task, $date);
+            $files = [];
+            if ($log->files != null && strlen($log->files) > 0) {
+                $exploded = explode(',', $log->files);
+                foreach ($exploded as $file) {
+                    if (strlen($file) > 0) {
+                        array_push($files, $file);
+                    }
+                }
+            }
+            return $files;
         }
 
         // function findAllTargetLogDetails($targetDetail)
@@ -188,8 +208,7 @@
                                                     <tr>
                                                         <th colspan="4" class="text-center bg-white position-sticky" style="left:0">Mục tiêu nhiệm vụ tháng
                                                         </th>
-                                                        <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}"
-                                                            class="bg-white text-center">Nhật kí công việc</th>
+                                                        <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}" class="bg-white text-center">Nhật kí công việc</th>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-nowrap bg-blue-blur">STT</th>
@@ -198,13 +217,11 @@
                                                         <th class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
                                                         @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                             @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                                <th style="padding: 0 14px" scope="col"
-                                                                    class="bg-warning bg-opacity-10 text-warning">
+                                                                <th style="padding: 0 14px" scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                     {{ $i + 1 }}
                                                                 </th>
                                                             @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
-                                                                <th style="padding: 0 14px" scope="col"
-                                                                    class="bg-danger bg-opacity-10 text-danger">
+                                                                <th style="padding: 0 14px" scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                     {{ $i + 1 }}
                                                                 </th>
                                                             @else
@@ -222,12 +239,9 @@
                                                                 </div>
                                                             </td>
                                                             <td class="text-nowrap bg-blue-blur">
-                                                                <div class="content_table justify-content-start"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#thongTinNhiemVu{{ $task->id }}"
-                                                                    role="button">
+                                                                <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
-                                                                    {{ $task->name }}
+                                                                        {{ $task->name }}
                                                                     </div>
                                                                 </div>
 
@@ -244,9 +258,7 @@
                                                                 </div>
                                                             </td>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif
-                                                                    @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif
-                                                                    @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
+                                                                <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
                                                                     <div class="content_table">
                                                                         @foreach ($task->targetLogs as $targetLog)
                                                                             @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
@@ -259,188 +271,180 @@
                                                             </td>
                                                         @endfor
                                                     </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
+                                </div>
 
-                                    <div class="table_wrapper">
-                                        <div class="table-responsive mt-3">
-                                            <table id="two_table" class="table m-0 bg-yellow-blur" style="width: 100%">
-                                                <thead>
+                                <div class="table_wrapper">
+                                    <div class="table-responsive mt-3">
+                                        <table id="two_table" class="table table-responsive table-bordered m-0 bg-yellow-blur" style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-nowrap bg-yellow-blur">STT</th>
+                                                    <th class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
+                                                        sinh</th>
+                                                    <th class="text-nowrap bg-yellow-blur">Thời hạn</th>
+                                                    <th class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
+                                                    @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                        @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
+                                                            <th style="padding: 0 14px" scope="col" class="bg-warning bg-opacity-10 text-warning">
+                                                                {{ $i + 1 }}
+                                                            </th>
+                                                        @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
+                                                            <th style="padding: 0 14px" scope="col" class="bg-danger bg-opacity-10 text-danger">
+                                                                {{ $i + 1 }}
+                                                            </th>
+                                                        @else
+                                                            <th style="padding: 0 14px" scope="col">{{ $i + 1 }}</th>
+                                                        @endif
+                                                    @endfor
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{-- fixed-side bg-yellow-blur --}}
+                                                @foreach ($reportTasks->data as $reportTask)
                                                     <tr>
-                                                        <th class="text-nowrap bg-yellow-blur">STT</th>
-                                                        <th class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
-                                                            sinh</th>
-                                                        <th class="text-nowrap bg-yellow-blur">Thời hạn</th>
-                                                        <th class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
+                                                        <td class="text-nowrap bg-yellow-blur">
+                                                            <div class="content_table">
+                                                                {{ $loop->iteration }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap bg-yellow-blur">
+                                                            <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
+                                                                <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
+                                                                    {{ $reportTask->name }}
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap bg-yellow-blur">
+                                                            <div class="content_table">
+                                                                {{ date('d/m', strtotime($reportTask->deadline)) }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap fw-bold bg-yellow-blur">
+                                                            <div class="progress-half">
+                                                                <div class="text-dark content_table">5</div>
+                                                            </div>
+                                                        </td>
                                                         @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                                <th  style="padding: 0 14px" scope="col" class="bg-warning bg-opacity-10 text-warning">
-                                                                    {{ $i + 1 }}
-                                                                </th>
-                                                            @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
-                                                                <th  style="padding: 0 14px" scope="col" class="bg-danger bg-opacity-10 text-danger">
-                                                                    {{ $i + 1 }}
-                                                                </th>
-                                                            @else
-                                                                <th  style="padding: 0 14px" scope="col">{{ $i + 1 }}</th>
-                                                            @endif
+                                                            <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}" role="button" @endif>
+                                                                <div class="content_table">
+
+                                                                    @if (findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->id > 0)
+                                                                        1
+                                                                    @endif
+                                                                </div>
+
+                                                            </td>
                                                         @endfor
                                                     </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {{-- fixed-side bg-yellow-blur --}}
-                                                    @foreach ($reportTasks->data as $reportTask)
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                        <div class="col-lg-12">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="table_wrapper">
+                                        <div class="mt-3 bg-white">
+                                            <div class="table-responsive">
+                                                <table id="three_table" class="table table-responsive table-bordered m-0" style="width: 100%">
+                                                    <thead>
                                                         <tr>
-                                                            <td class="text-nowrap bg-yellow-blur">
-                                                                <div class="content_table">
-                                                                    {{ $loop->iteration }}
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-nowrap bg-yellow-blur">
-                                                                <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
-                                                                    {{ $reportTask->name }}
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-nowrap bg-yellow-blur">
-                                                                <div class="content_table">
-                                                                    {{ date('d/m', strtotime($reportTask->deadline)) }}
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-nowrap fw-bold bg-yellow-blur">
-                                                                <div class="progress-half">
-                                                                    <div class="text-dark content_table">5</div>
-                                                                </div>
-                                                            </td>
+                                                            <th colspan="4" class="bg-white text-center position-sticky" style="left:0">Mục tiêu nhiệm
+                                                                vụ tháng
+                                                            </th>
+                                                            <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}" class="bg-white text-center">Nhật kí công việc</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-nowrap bg-blue-blur">STT</th>
+                                                            <th class="text-nowrap bg-blue-blur w-25">Mục tiêu nhiệm vụ</th>
+                                                            <th class="text-nowrap bg-blue-blur">Thời hạn</th>
+                                                            <th class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}" role="button" @endif>
+                                                                @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
+                                                                    <th style="padding: 0 14px" scope="col" class="bg-warning bg-opacity-10 text-warning">
+                                                                        {{ $i + 1 }}
+                                                                    </th>
+                                                                @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
+                                                                    <th style="padding: 0 14px" scope="col" class="bg-danger bg-opacity-10 text-danger">
+                                                                        {{ $i + 1 }}
+                                                                    </th>
+                                                                @else
+                                                                    <th style="padding: 0 14px" scope="col">{{ $i + 1 }}</th>
+                                                                @endif
+                                                            @endfor
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($listAssignedTasks->data as $task)
+                                                            <tr>
+                                                                <td class="text-nowrap bg-blue-blur">
                                                                     <div class="content_table">
-
-                                                                        &nbsp;
+                                                                        {{ $loop->iteration }}
                                                                     </div>
+                                                                </td>
+                                                                <td class="text-nowrap bg-blue-blur">
+                                                                    <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
+                                                                        <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
 
+                                                                            {{ $task->name }}
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="bg-blue-blur">
+                                                                    <div class="content_table">
+                                                                        {{ date('m/d', strtotime($task->deadline)) }}
+                                                                    </div>
+                                                                </td>
+                                                                <td class="fw-bold bg-blue-blur">
+                                                                    <div class="progress-half">
+                                                                        <div class="text-dark content_table">5</div>
+                                                                    </div>
+                                                                </td>
+                                                                @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                                    <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
+                                                                        <div class="content_table">
+                                                                            @foreach ($task->targetLogs as $targetLog)
+                                                                                @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
+                                                                                    {{ count($targetLog->targetLogDetails) }}
+                                                                                @break
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </div>
                                                                 </td>
                                                             @endfor
                                                         </tr>
                                                     @endforeach
-
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
+                    </div>
+                @endif
 
-
-                        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                            <div class="col-lg-12">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="table_wrapper">
-                                            <div class="mt-3 bg-white">
-                                                <div class="table-responsive">
-                                                    <table id="three_table" class="table m-0" style="width: 100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th colspan="4" class="bg-white text-center position-sticky" style="left:0">Mục tiêu nhiệm
-                                                                    vụ tháng
-                                                                </th>
-                                                                <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}"
-                                                                    class="bg-white text-center">Nhật kí công việc</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="text-nowrap bg-blue-blur">STT</th>
-                                                                <th class="text-nowrap bg-blue-blur w-25">Mục tiêu nhiệm vụ</th>
-                                                                <th class="text-nowrap bg-blue-blur">Thời hạn</th>
-                                                                <th class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
-                                                                @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                    @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                                        <th style="padding: 0 14px" scope="col"
-                                                                            class="bg-warning bg-opacity-10 text-warning">
-                                                                            {{ $i + 1 }}
-                                                                        </th>
-                                                                    @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
-                                                                        <th style="padding: 0 14px" scope="col"
-                                                                            class="bg-danger bg-opacity-10 text-danger">
-                                                                            {{ $i + 1 }}
-                                                                        </th>
-                                                                    @else
-                                                                        <th style="padding: 0 14px" scope="col">{{ $i + 1 }}</th>
-                                                                    @endif
-                                                                @endfor
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($listAssignedTasks->data as $task)
-                                                                <tr>
-                                                                    <td class="text-nowrap bg-blue-blur">
-                                                                        <div class="content_table">
-                                                                            {{ $loop->iteration }}
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="text-nowrap bg-blue-blur">
-                                                                        <div class="content_table justify-content-start"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#thongTinNhiemVu{{ $task->id }}"
-                                                                                role="button">
-                                                                                <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
-
-                                                                                {{ $task->name }}
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="bg-blue-blur">
-                                                                        <div class="content_table">
-                                                                            {{ date('m/d', strtotime($task->deadline)) }}
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="fw-bold bg-blue-blur">
-                                                                        <div class="progress-half">
-                                                                            <div class="text-dark content_table">5</div>
-                                                                        </div>
-                                                                    </td>
-                                                                    @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                        <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif
-                                                                        data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button"
-                                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                                            class="bg-warning bg-opacity-10 text-warning" @endif
-                                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
-                                                                            <div class="content_table">
-                                                                                @foreach ($task->targetLogs as $targetLog)
-                                                                                    @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
-                                                                                        {{ count($targetLog->targetLogDetails) }}
-                                                                                    @break
-                                                                                @endif
-                                                                            @endforeach
-                                                                        </div>
-                                                                    </td>
-                                                                @endfor
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        @endif
-
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    {{-- <div class="d-flex justify-content-between align-items-center pb-2">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            {{-- <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="card-title">Danh sách vấn đề</div>
-            
+
                                         <div class="action_wrapper d-flex">
                                             <div class="form-group has-search me-3">
                                                 <span class="bi bi-search form-control-feedback fs-5"></span>
@@ -452,238 +456,237 @@
                                             </div>
                                         </div>
                                     </div> --}}
-                                    <div class="table-responsive ">
-                                        <table id="dsVanDe" class="table table-hover table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-nowrap" style="width: 2%">STT</th>
-                                                            <th class="text-nowrap" style="width: 20%">
-                                                                <div class="d-flex justify-content-between">
-                                                                    Vấn đề tồn đọng
-                                                                    {{-- <div>
+                            <div class="table-responsive ">
+                                <table id="dsVanDe" class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-nowrap" style="width: 2%">STT</th>
+                                            <th class="text-nowrap" style="width: 20%">
+                                                <div class="d-flex justify-content-between">
+                                                    Vấn đề tồn đọng
+                                                    {{-- <div>
                                                                         <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
                                                                     </div> --}}
 
-                                                                </div>
-                                                            </th>
-                                                            <th class="text-nowrap" style="width: 8%">
-                                                                Phân loại
-                                                            </th>
-                                                            <th class="text-nowrap" style="width: 10%">Người nêu</th>
-                                                            <th class="text-nowrap" style="width: 20%">Nguyên nhân</th>
-                                                            <th class="text-nowrap" style="width: 21%">
-                                                                Hướng giải quyết
-                                                            </th>
-                                                            
-                                                            <th class="text-nowrap" style="width: 4%">
-                                                                Người đảm nhiệm
-                                                            </th>
-                                                            <th class="text-nowrap" style="width: 6%">Thời hạn</th>
-                                                            
-                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                            <th class="border-0"></th>
-                                                            <th class="border-start-0"></th>
-                                                            @else
-                                                            <th class="border-start-0"></th>
-                                                            @endif
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($handledReports as $item)
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center justify-content-center">
-                                                                {{ $loop->iteration }}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                                {{ $item->problem }}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
-                                                                    {{ $item->user->name ?? '' }}
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                                {{ $item->reason }}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                                {{ $item->solution }}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                @foreach ($item->pics as $u)
-                                                                    {{ $u->name }},
-                                                                @endforeach
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                {{ date('d/m', strtotime($item->deadline)) }}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center justify-content-center">
-                                                                <div class="circle_tracking-wrapper">
-                                                                    <div class="circle_tracking opacity-75 bg-danger">
-                                                                    </div>
-                                                                    <div class="circle_tracking opacity-75 bg-success">
-                                                                    </div>
-                                                                    <div class="circle_tracking opacity-75 bg-success">
-                                                                    </div>
-                                                                    <div class="circle_tracking opacity-75 bg-success">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                        <td>
-                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
-                                                            </div>
-                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{$item->id}}" data-repeater-delete>
-                                                                        <i class="bi bi-arrow-right-square-fill"></i>
-                                                                        Chuyển thành nhiệm vụ phát sinh
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                                                        Sửa
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                                        Xóa
-                                                                    </a>
-                                                                </li>
+                                                </div>
+                                            </th>
+                                            <th class="text-nowrap" style="width: 8%">
+                                                Phân loại
+                                            </th>
+                                            <th class="text-nowrap" style="width: 10%">Người nêu</th>
+                                            <th class="text-nowrap" style="width: 20%">Nguyên nhân</th>
+                                            <th class="text-nowrap" style="width: 21%">
+                                                Hướng giải quyết
+                                            </th>
 
-                                                            </ul>
-                                                        </td>
-                                                        @endif
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                            <th class="text-nowrap" style="width: 4%">
+                                                Người đảm nhiệm
+                                            </th>
+                                            <th class="text-nowrap" style="width: 6%">Thời hạn</th>
+
+                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                <th class="border-0"></th>
+                                                <th class="border-start-0"></th>
+                                            @else
+                                                <th class="border-start-0"></th>
+                                            @endif
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($handledReports as $item)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        {{ $loop->iteration }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                        {{ $item->problem }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
+                                                            {{ $item->user->name ?? '' }}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                        {{ $item->reason }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                        {{ $item->solution }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        @foreach ($item->pics as $u)
+                                                            {{ $u->name }},
+                                                        @endforeach
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        {{ date('d/m', strtotime($item->deadline)) }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <div class="circle_tracking-wrapper">
+                                                            <div class="circle_tracking opacity-75 bg-danger">
+                                                            </div>
+                                                            <div class="circle_tracking opacity-75 bg-success">
+                                                            </div>
+                                                            <div class="circle_tracking opacity-75 bg-success">
+                                                            </div>
+                                                            <div class="circle_tracking opacity-75 bg-success">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                    <td>
+                                                        <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                        </div>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <li>
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
+                                                                    <i class="bi bi-arrow-right-square-fill"></i>
+                                                                    Chuyển thành nhiệm vụ phát sinh
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
+                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    Sửa
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    Xóa
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </td>
+                                                @endif
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <div class="card" style="display: -webkit-box;">
+                        <div class="col-lg-3">
+                            <div class="col-md-12 card mb-12">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">PieChart</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="pieChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 mt-3">
-                            <div class="card" style="display: -webkit-box;">
-                                <div class="col-lg-3">
-                                    <div class="col-md-12 card mb-12">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="card-title">PieChart</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="pieChart"></canvas>
-                                            </div>
-                                        </div>
+                        <div class="col-lg-3">
+                            <div class="col-md-12 card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">DoughnutChart</div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="col-md-12 card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="card-title">DoughnutChart</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="doughnutChart"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="col-md-12 card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="card-title">BarChart 2</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="BarChartTwo"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="col-md-12 card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="card-title">BarChart 3</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="BarChartThree"></canvas>
-                                            </div>
-                                        </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="doughnutChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 mt-3" >
-                            <div class="card"  style="display: -webkit-box;">
-                                <div class="col-lg-6">
-                                    <div class="col-md-12 card mb-3">
-
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                                <div class="card-title">LineChart</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="lineChart"></canvas>
-                                            </div>
-                                        </div>
-
+                        <div class="col-lg-3">
+                            <div class="col-md-12 card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">BarChart 2</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="BarChartTwo"></canvas>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="col-md-12 card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                                <div class="card-title">LineChart 2</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="LineChartTwo"></canvas>
-                                            </div>
-                                        </div>
-
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="col-md-12 card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">BarChart 3</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="BarChartThree"></canvas>
                                     </div>
                                 </div>
-                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <div class="card" style="display: -webkit-box;">
+                        <div class="col-lg-6">
+                            <div class="col-md-12 card mb-3">
+
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                        <div class="card-title">LineChart</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="lineChart"></canvas>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="col-md-12 card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                        <div class="card-title">LineChart 2</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="LineChartTwo"></canvas>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-
-                        
-
             </div>
-            @include('template.footer.footer')
         </div>
+
+
+
+
     </div>
-    @include('template.sidebar.sidebarMaster.sidebarRight')
+    @include('template.footer.footer')
+</div>
+</div>
+@include('template.sidebar.sidebarMaster.sidebarRight')
 
 <!-- Modal Phản Hồi Vấn Đề -->
-<div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
+<div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" style="max-width:700px;">
     <div class="modal-content">
         <div class="modal-header text-center">
@@ -696,8 +699,7 @@ aria-hidden="true">
                     <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng
                     </label>
                     <div class="w-100" style="flex:1;overflow:hidden">
-                        <input type="text" class="form-control" class="contenteditable"
-                            value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin" />
+                        <input type="text" class="form-control" class="contenteditable" value="Chưa hoàn thành báo cáo do abc chưa gửi thông tin" />
                     </div>
                 </div>
             </div>
@@ -715,8 +717,7 @@ aria-hidden="true">
                     <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời
                         hạn</label>
                     <div class="w-100" style="flex:1">
-                        <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                            type="text">
+                        <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                     </div>
                 </div>
                 <div class="col-sm-5 d-flex  align-items-center">
@@ -736,11 +737,9 @@ aria-hidden="true">
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-12 d-flex  align-items-center">
-                    <label for="inputPassword" class="col-form-label"
-                        style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
+                    <label for="inputPassword" class="col-form-label" style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
                     <div class="w-100" style="flex:1;overflow:hidden">
-                        <div contenteditable="true" class="contenteditable"
-                            placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
+                        <div contenteditable="true" class="contenteditable" placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
                     </div>
                 </div>
 
@@ -755,8 +754,7 @@ aria-hidden="true">
 </div>
 
 {{-- Xóa vấn đề --}}
-<div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
+<div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
@@ -815,8 +813,7 @@ aria-hidden="true">
 @foreach ($listAssignedTasks->data as $task)
 @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
     <!-- Modal Báo cáo công việc -->
-    <div class="modal fade text-black" id="baoCaoCongViec-{{ $task->id }}-{{ $i }}"
-        tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade text-black" id="baoCaoCongViec-{{ $task->id }}-{{ $i }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
 
             <div class="modal-content">
@@ -826,22 +823,18 @@ aria-hidden="true">
                         <h6 class="text-capitalize fw-normal fs-5">Ngày {{ $i + 1 }} -
                             {{ $searchMonth }} - {{ $searchYear }}</h6>
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 {{-- <form action="/bao-cao-cong-viec/{{ $task->id }}" method="POST" --}}
-                <form action="{{ route('targetLog.store',$task->id)}}" method="POST"
-                    enctype="multipart/form-data">
-                    <input type="hidden" name="reportedDate"
-                        value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
+                <form action="{{ route('targetLog.store', $task->id) }}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="reportedDate" value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3 row">
                             <div class="col-sm-12 d-flex  align-items-center">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Tên nhiệm vụ</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" readonly
-                                        value="{{ $task->name }}">
+                                    <input class="form-control" type="text" readonly value="{{ $task->name }}">
                                 </div>
                             </div>
                         </div>
@@ -859,12 +852,8 @@ aria-hidden="true">
                         <div class="mb-3 row">
                             <div class="d-flex align-items-center">
                                 <div class="form-check">
-                                    <input role="button" type="checkbox" class="form-check-input fs-5"
-                                        id="form-check_wrapper{{ $task->id }}{{ $i }}"
-                                        onchange="toggleKpiKey(event, {{ $task->id }}, {{ $i }})"
-                                        @if (count(findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']))) checked @endif>
-                                    <label role="button" class="form-check-label user-select-none"
-                                        for="form-check_wrapper{{ $task->id }}{{ $i }}">
+                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="form-check_wrapper{{ $task->id }}{{ $i }}" onchange="toggleKpiKey(event, {{ $task->id }}, {{ $i }})" @if (count(findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']))) checked @endif>
+                                    <label role="button" class="form-check-label user-select-none" for="form-check_wrapper{{ $task->id }}{{ $i }}">
                                         Đạt giá trị kinh doanh
                                     </label>
                                 </div>
@@ -879,8 +868,7 @@ aria-hidden="true">
                                             @foreach (findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $key)
                                                 <div class="row" data-repeater-item>
                                                     <div class="col-md-6 mb-3">
-                                                        <select class='form-select' data-live-search="true"
-                                                            title="Chọn tiêu chí" name="id">
+                                                        <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
 
                                                             @foreach ($kpiKeys as $kpiKey)
                                                                 @if ($key->id == $kpiKey->id)
@@ -894,22 +882,17 @@ aria-hidden="true">
                                                         </select>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="number" class="form-control"
-                                                            placeholder="Giá trị" name="quantity"
-                                                            value="{{ $key->quantity }}" />
+                                                        <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
                                                     </div>
                                                     <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                        <img data-repeater-delete role="button"
-                                                            src="{{ asset('/assets/img/trash.svg') }}"
-                                                            width="20px" height="20px" />
+                                                        <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                     </div>
                                                 </div>
                                             @endforeach
                                         @else
                                             <div class="row" data-repeater-item>
                                                 <div class="col-md-6 mb-3">
-                                                    <select class='form-select' data-live-search="true"
-                                                        title="Chọn tiêu chí" name="id">
+                                                    <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
 
                                                         @foreach ($task->kpiKeys as $kpiKey)
                                                             <option value="{{ $kpiKey->id }}">
@@ -918,13 +901,10 @@ aria-hidden="true">
                                                     </select>
                                                 </div>
                                                 <div class="col-md-5 mb-3">
-                                                    <input type="number" class="form-control"
-                                                        placeholder="Giá trị" name="quantity" />
+                                                    <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button"
-                                                        src="{{ asset('/assets/img/trash.svg') }}"
-                                                        width="20px" height="20px" />
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                 </div>
                                             </div>
                                         @endif
@@ -932,8 +912,7 @@ aria-hidden="true">
 
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-start">
-                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i
-                                                    class="bi bi-plus-circle"></i></div>
+                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -947,38 +926,27 @@ aria-hidden="true">
                                     <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng JPG, PNG hoặc
                                         PDF, kích
                                         thước tệp không quá 10MB</div>
-                                    <div
-                                        class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                    <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                         <div class="modal_upload-addFile me-3">
-                                            <button role="button" type="button"
-                                                class="btn position-relative pe-4 ps-4">
-                                                <img style="width:16px;height:16px"
-                                                    src="{{ asset('assets/img/upload-file.svg') }}" />
+                                            <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
                                                 Tải file lên
-                                                <input role="button" type="file"
-                                                    class="modal_upload-input" name="files[]"
-                                                    class="modal_upload-file" multiple
-                                                    onchange="updateList(event)">
+                                                <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
                                             </button>
                                         </div>
 
                                         <div class="modal_upload-addLink">
-                                            <button role="button" type="button" class="btn"
-                                                id="addLinkOnline">
-                                                <img style="width:16px;height:16px"
-                                                    src="{{ asset('assets/img/add-link.svg') }}" />
+                                            <button role="button" type="button" class="btn" id="addLinkOnline">
+                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                 Thêm liên kết
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="modal_upload-inputAddLink mt-3" id="inputAddLink"
-                                        style="display:none">
-                                        <input class="form-control" type="text"
-                                            placeholder="Nhập link tại đây" />
+                                    <div class="modal_upload-inputAddLink mt-3" id="inputAddLink" style="display:none">
+                                        <input class="form-control" type="text" placeholder="Nhập link tại đây" />
                                     </div>
                                 </div>
-                                <div class="alert alert-danger alertNotSupport" role="alert"
-                                    style="display:none">
+                                <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                     File bạn tải lên hiện tại không hỗ trợ !
                                 </div>
 
@@ -991,12 +959,9 @@ aria-hidden="true">
                                                         <i class="bi bi-link-45deg"></i> {{ $file }}
                                                     </a>
                                                 </span>
-                                                <input type="hidden" name="uploadedFiles[]"
-                                                    value="{{ $file }}" />
-                                                <span class="modal_upload-remote"
-                                                    onclick="removeUploaded(event)">
-                                                    <img style="width:18px;height:18px"
-                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
+                                                <span class="modal_upload-remote" onclick="removeUploaded(event)">
+                                                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                                                 </span>
                                             </li>
                                         @endforeach
@@ -1015,8 +980,7 @@ aria-hidden="true">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Xóa
                             báo
                             cáo</button>
-                        <button type="button" class="btn btn-outline-danger"
-                            data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                         <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
                 </form>
@@ -1026,17 +990,14 @@ aria-hidden="true">
     </div>
 @endfor
 <!-- Modal Thông tin nhiệm vụ -->
-<div class="modal fade" id="thongTinNhiemVu{{ $task->id }}" tabindex="-1"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="thongTinNhiemVu{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            {{-- <form action="/danh-muc-nhiem-vu/{{ $task->id }}" method="POST"> --}}
-            <form action="{{ route('targetDetail.store', $task->id) }}" method="POST">
+            <form action="/danh-muc-nhiem-vu/{{ $task->id }}" method="POST">
                 @method('PUT')
                 @csrf
                 <div class="modal-body">
@@ -1142,12 +1103,10 @@ aria-hidden="true">
                             </div>
                             <div class="modal_list row">
                                 <div class="modal_items col-sm-6">
-                                    Số báo cáo đã lập trong tháng: <span
-                                        class="text-danger">{{ countFiles($task) }} file</span>
+                                    Số báo cáo đã lập trong tháng: <span class="text-danger">{{ countFiles($task) }} file</span>
                                 </div>
                                 <div class="modal_items col-sm-6">
-                                    Số tiêu chí đạt được trong tháng: <span
-                                        class="text-danger">{{ countKpiKeys($task) }} tiêu chí</span>
+                                    Số tiêu chí đạt được trong tháng: <span class="text-danger">{{ countKpiKeys($task) }} tiêu chí</span>
                                 </div>
                                 <div class="modal_items col-sm-6">
                                     Số nhân sự thực hiện: <span class="text-danger">{{ count($task->users) }}
@@ -1166,13 +1125,11 @@ aria-hidden="true">
                             <div class="modal_list row">
 
                                 <div class="col-sm-10 d-flex  align-items-center">
-                                    <input class="form-control" placeholder="Nhập nhận xét"
-                                        name="managerComment" value="{{ $task->managerComment }}">
+                                    <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="{{ $task->managerComment }}">
 
                                 </div>
                                 <div class="col-sm-2 d-flex  align-items-center">
-                                    <input placeholder="Điểm KPI" class="form-control" name="managerManDay"
-                                        value="{{ $task->managerManDay }}">
+                                    <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="{{ $task->managerManDay }}">
 
                                 </div>
 
@@ -1236,12 +1193,12 @@ aria-hidden="true">
                                                         @if ($log->files && count(explode(',', $log->files)))
                                                             <span>
                                                                 @foreach (explode(',', $log->files) as $file)
-                                                                    <a class="d-flex align-items-center"
-                                                                        href="{{ $file }}"
-                                                                        target="_black">
-                                                                        <i class="bi bi-link-45deg"></i>
-                                                                        {{ $file }}
-                                                                    </a> <br />
+                                                                    @if (strlen($file) > 0)
+                                                                        <a class="d-flex align-items-center" href="{{ $file }}" target="_black">
+                                                                            <i class="bi bi-link-45deg"></i>
+                                                                            {{ $file }}
+                                                                        </a> <br />
+                                                                    @endif
                                                                 @endforeach
                                                             </span>
                                                         @endif
@@ -1258,8 +1215,7 @@ aria-hidden="true">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger"
-                        data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
                     <button type="submit" class="btn btn-danger">Lưu</button>
 
                 </div>
@@ -1278,15 +1234,17 @@ aria-hidden="true">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <div class="d-flex w-100 flex-md-column">
-                        <h5 class="modal-title">Báo cáo công việc</h5>
+                        <h5 class="modal-title">Báo cáo công việc phảt sinh</h5>
                         <h6 class="text-capitalize fw-normal fs-5">Ngày {{ $i + 1 }} - {{ $searchMonth }} - {{ $searchYear }}</h6>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                {{-- <form action="/nhiem-vu-phat-sinh/bao-cao/{{ $reportTask->id }}" method="POST" enctype="multipart/form-data"> --}}
-                <form action="{{ route('reportTask.reportTask', $reportTask->id) }}" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="report_date" value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
+                <form action="/nhiem-vu-phat-sinh/bao-cao/{{ $reportTask->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="report_date" value="{{ $searchYear }}-{{ $searchMonth }}-{{ $i + 1 }}">
+                    @if (findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->id > 0)
+                        <input type="hidden" name="id" value="{{ findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->id }}">
+                    @endif
                     <div class="modal-body">
                         <div class="mb-3 row">
                             <div class="col-sm-12 d-flex  align-items-center">
@@ -1310,8 +1268,8 @@ aria-hidden="true">
                         <div class="mb-3 row">
                             <div class="d-flex align-items-center">
                                 <div class="form-check">
-                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="form-check_wrapper{{ $task->id }}{{ $i }}" onchange="toggleKpiKey(event, {{ $task->id }}, {{ $i }})" @if (count(findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']))) checked @endif>
-                                    <label role="button" class="form-check-label user-select-none" for="form-check_wrapper{{ $task->id }}{{ $i }}">
+                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="form-arise_wrapper{{ $reportTask->id }}{{ $i }}" onchange="toggleKpiKeyForArisingTask(event, {{ $reportTask->id }}, {{ $i }})" @if (count(findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->kpi_keys)) checked @endif>
+                                    <label role="button" class="form-check-label user-select-none" for="form-arise_wrapper{{ $reportTask->id }}{{ $i }}">
                                         Đạt giá trị kinh doanh
                                     </label>
                                 </div>
@@ -1319,11 +1277,11 @@ aria-hidden="true">
                         </div>
 
                         <div class="row mb-3">
-                            <div class="kpi-wrapper" id="kpi-wrapper{{ $task->id }}{{ $i }}">
+                            <div class="kpi-wrapper" id="kpi-wrapper-arising{{ $reportTask->id }}{{ $i }}">
                                 <div class="repeater-datGiaTriKinhDoanh">
                                     <div data-repeater-list="kpiKeys">
-                                        @if (count(findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id'])))
-                                            @foreach (findTargetLogDetailKpiKeys($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $key)
+                                        @if (count(findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->kpi_keys))
+                                            @foreach (findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->kpi_keys as $key)
                                                 <div class="row" data-repeater-item>
                                                     <div class="col-md-6 mb-3">
                                                         <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
@@ -1338,7 +1296,7 @@ aria-hidden="true">
                                                         </select>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
+                                                        <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->pivot->quantity ?? 0 }}" />
                                                     </div>
                                                     <div class="col-md-1 mb-3 d-flex align-items-center">
                                                         <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
@@ -1350,7 +1308,7 @@ aria-hidden="true">
                                                 <div class="col-md-6 mb-3">
                                                     <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
 
-                                                        @foreach ($task->kpiKeys as $kpiKey)
+                                                        @foreach ($reportTask->kpi_keys as $kpiKey)
                                                             <option value="{{ $kpiKey->id }}">{{ $kpiKey->name }}</option>
                                                         @endforeach
                                                     </select>
@@ -1404,9 +1362,9 @@ aria-hidden="true">
                                     File bạn tải lên hiện tại không hỗ trợ !
                                 </div>
 
-                                @if (count(findTargetLogDetailFiles($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id'])))
+                                @if (count(getReportTaskLogFile($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)))
                                     <ul>
-                                        @foreach (findTargetLogDetailFiles($task, $searchYear . '-' . $searchMonth . '-' . $i + 1, session('user')['id']) as $file)
+                                        @foreach (getReportTaskLogFile($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1) as $file)
                                             <li>
                                                 <span class="fs-5">
                                                     <a href="{{ $file }}" target="_black">
@@ -1421,7 +1379,7 @@ aria-hidden="true">
                                         @endforeach
                                     </ul>
                                 @endif
-
+                                <input type="hidden" name="uploadedFiles[]" value="" />
 
                                 <ul class="modal_upload-list">
 
@@ -1442,6 +1400,222 @@ aria-hidden="true">
         </div>
     </div>
 @endfor
+<!-- Modal Thông tin nhiệm vụ -->
+<div class="modal fade" id="thongTinNhiemVuPhatSinh{{ $reportTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="exampleModalLabel">Thông tin nhiệm vụ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="">
+                            <table class="table table-bordered table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>Tên nhiệm vụ</div>
+                                        </td>
+                                        <td>
+                                            <div>{{ $reportTask->name ?? '' }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>Mô tả</div>
+                                        </td>
+                                        <td>
+                                            <div>{{ $reportTask->description ?? '' }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>Người đảm nhiệm</div>
+                                        </td>
+                                        <td>
+                                            <div>{{ $reportTask->user->name ?? '' }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>Vị trí đảm nhiệm</div>
+                                        </td>
+                                        <td>
+                                            <div>{{ $reportTask->position->name ?? '' }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>Ngày bắt đầu</div>
+                                        </td>
+                                        <td>
+                                            <div>{{ date('d/m/Y', strtotime($reportTask->created_at)) }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>Hạn hoàn thành</div>
+                                        </td>
+                                        <td>
+                                            <div>{{ date('d/m/Y', strtotime($reportTask->deadline)) }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>Man day</div>
+                                        </td>
+                                        <td>
+                                            <div>{{ $reportTask->manDay }} ngày</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <div>
+                                            <td>Ý kiến TPB</td>
+                                            <td></td>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div>
+                                            <td>Chấm điểm</td>
+                                            <td></td>
+                                        </div>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="modal-title">Tổng hợp báo cáo</div>
+                            <span class="modal-title_mini ms-2">
+                                Kết quả tạm tính
+                            </span>
+                        </div>
+                        <div class="modal_list row">
+                            <div class="modal_items col-sm-6">
+                                Số báo cáo đã lập trong tháng: <span class="text-danger"> 0 file</span>
+                            </div>
+                            <div class="modal_items col-sm-6">
+                                Số tiêu chí đạt được trong tháng: <span class="text-danger">tiêu chí</span>
+                            </div>
+                            <div class="modal_items col-sm-6">
+                                Số nhân sự thực hiện: <span class="text-danger">1
+                                    nhân sự</span>
+                            </div>
+                            <div class="modal_items col-sm-6">
+                                Điểm KPI tạm tính: <span class="text-danger">0 ₫</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="modal-title">Nhận xét nhiệm vụ</div>
+                        </div>
+                        <div class="modal_list row">
+
+                            <div class="col-sm-10 d-flex  align-items-center">
+                                <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="">
+
+                            </div>
+                            <div class="col-sm-2 d-flex  align-items-center">
+                                <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="modal-title">Danh sách tiêu chí công việc</div>
+                        </div>
+                        <div class="">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Ngày báo cáo</th>
+                                        <th scope="col">Tiêu chí</th>
+                                        <th scope="col">Giá trị</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($reportTask->report_task_logs as $taskLog)
+                                        @foreach ($taskLog->kpi_keys as $key)
+                                            <tr>
+                                                <th class="fw-normal">
+                                                    {{ date('d/m/Y', strtotime($taskLog->report_date)) }}
+                                                </th>
+                                                <td>{{ $key->name }}</td>
+                                                <td>{{ $key->pivot->quantity }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="modal-title">Danh sách báo cáo công việc</div>
+                        </div>
+                        <div class="">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 15%">Ngày báo cáo</th>
+                                        <th scope="col" style="width: 45%">Nội dung báo cáo</th>
+                                        <th scope="col" style="width: 40%">File báo cáo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($reportTask->report_task_logs as $log)
+                                        <tr>
+                                            <th class="fw-normal">
+                                                {{ date('m/d/Y', strtotime($log->report_date)) }}</th>
+                                            <td>{{ $log->note }}</td>
+                                            <td>
+                                                <div class="text-break">
+                                                    @if ($log->files && count(explode(',', $log->files)))
+                                                        <span>
+                                                            @foreach (explode(',', $log->files) as $file)
+                                                                @if (strlen($file) > 0)
+                                                                    <a class="d-flex align-items-center" href="{{ $file }}" target="_black">
+                                                                        <i class="bi bi-link-45deg"></i>
+                                                                        {{ $file }}
+                                                                    </a> <br />
+                                                                @endif
+                                                            @endforeach
+                                                        </span>
+                                                    @endif
+
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-danger">Lưu</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 @endforeach
 
 
@@ -1494,6 +1668,16 @@ aria-hidden="true">
     const toggleKpiKey = (e, taskId, dayIndex) => {
         const isChecked = e.target.checked;
         const kpiKeyRepeater = document.getElementById('kpi-wrapper' + taskId + dayIndex);
+        if (isChecked) {
+            kpiKeyRepeater.style.display = 'block';
+        } else {
+            kpiKeyRepeater.style.display = 'none';
+        }
+    }
+
+    const toggleKpiKeyForArisingTask = (e, taskId, dayIndex) => {
+        const isChecked = e.target.checked;
+        const kpiKeyRepeater = document.getElementById('kpi-wrapper-arising' + taskId + dayIndex);
         if (isChecked) {
             kpiKeyRepeater.style.display = 'block';
         } else {
@@ -1678,7 +1862,7 @@ aria-hidden="true">
 </script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#main_table').DataTable({
             scrollY: "150px",
             scrollX: true,
@@ -1686,7 +1870,9 @@ aria-hidden="true">
             paging: false,
             pageLength: 10,
             ordering: false,
-            order: [[0, 'desc']],
+            order: [
+                [0, 'desc']
+            ],
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -1703,7 +1889,7 @@ aria-hidden="true">
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
             dom: '<"d-flex justify-content-between align-items-center mb-3"<"main-title-wrapper-left"><"d-flex "f<"main-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
-            fixedColumns:   {
+            fixedColumns: {
                 left: 4,
             }
         });
@@ -1735,7 +1921,9 @@ aria-hidden="true">
             paging: false,
             pageLength: 10,
             ordering: false,
-            order: [[0, 'desc']],
+            order: [
+                [0, 'desc']
+            ],
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -1752,7 +1940,7 @@ aria-hidden="true">
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
             dom: '<"d-flex justify-content-between align-items-center mb-3"<"two-title-wrapper-left"><"d-flex "f<"two-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
-            fixedColumns:   {
+            fixedColumns: {
                 left: 4,
             }
         });
@@ -1772,7 +1960,9 @@ aria-hidden="true">
             paging: false,
             pageLength: 10,
             ordering: false,
-            order: [[0, 'desc']],
+            order: [
+                [0, 'desc']
+            ],
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -1789,7 +1979,7 @@ aria-hidden="true">
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
             dom: '<"d-flex justify-content-between align-items-center mb-3"<"three-title-wrapper-left"><"d-flex "f<"three-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
-            fixedColumns:   {
+            fixedColumns: {
                 left: 4,
             }
         });
@@ -1818,7 +2008,9 @@ aria-hidden="true">
             paging: false,
             pageLength: 10,
             ordering: false,
-            order: [[0, 'desc']],
+            order: [
+                [0, 'desc']
+            ],
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -1848,7 +2040,6 @@ aria-hidden="true">
         `);
 
     });
-
 </script>
 
 @endsection
