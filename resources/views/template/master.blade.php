@@ -570,18 +570,19 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                     <option value="Khác">Khác</option>
                                 </select>
                             </div>
-                            <div class="col-sm-6 mb-3">
+                            <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
                                 <select class="form-select" data-size="5" title="Đơn vị" id="meet-dp-list" name="departement_id">
 
                                 </select>
                             </div>
-                            <div class="col-sm-6 mb-3">
+                            <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Chủ trì">
                                 <select class="form-select" data-size="5" title="Chủ trì" name="leader_id" id="user-select">
 
                                 </select>
                             </div>
-                            <div class="col-sm-4 mb-3">
-                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_date">
+                            <div class="col-sm-4 mb-3 position-relative">
+                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" autocomplete="off" data-bs-placement="top" title="Thời gian" class="form-control" placeholder="Thời gian" name="start_date">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}" name="code">

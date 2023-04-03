@@ -23,57 +23,58 @@
                                                 <table id="khoLuuTruBienBanHop" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-nowrap" style="width:5%">STT</th>
-                                                            <th class="text-nowrap" style="width:20%">Tên cuộc họp</th>
-                                                            <th class="text-nowrap" style="width:10%">Mã cuộc họp</th>
-                                                            <th class="text-nowrap" style="width:10%">Thời gian tạo</th>
-                                                            <th class="text-nowrap" style="width:10%">Phòng ban</th>
-                                                            <th class="text-nowrap" style="width:10%">Người chủ trì</th>
-                                                            <th class="text-nowrap" style="width:10%">Trạng thái</th>
-                                                            <th class="text-nowrap" style="width:10%">Tham gia</th>
-                                                            {{-- <th class="text-nowrap" style="width:5%">Xem biên bản họp</th> --}}
+                                                            <th class="text-nowrap text-center" style="width:2%">STT</th>
+                                                            <th class="text-nowrap text-center" style="width:20%">Tên cuộc họp</th>
+                                                            <th class="text-nowrap text-center" style="width:4%">Mã cuộc họp</th>
+                                                            <th class="text-nowrap text-center" style="width:8%">Thời gian tạo</th>
+                                                            <th class="text-nowrap text-center" style="width:10%">Phòng ban</th>
+                                                            <th class="text-nowrap text-center" style="width:10%">Người chủ trì</th>
+                                                            <th class="text-nowrap text-center" style="width:2%">Trạng thái</th>
+                                                            <th class="text-nowrap text-center" style="width:2%">Tham gia</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($listMeeting->data as $meeting)
                                                             <tr>
-                                                                <th scope="row">{{ $meeting->id }}</th>
+                                                                <th class="text-center" scope="row">{{ $meeting->id }}</th>
                                                                 <td>
                                                                     {{ $meeting->title }}
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-center">
                                                                     {{ $meeting->code }}
                                                                 </td>
-                                                                <td class="text-center">
+                                                                <td class="text-center text-nowrap">
                                                                     {{ \Carbon\Carbon::parse($meeting->created_at)->format('d-m-Y || H:i:s') }}
                                                                     {{-- {{ date('d/m/Y', strtotime($value->created_at->format('d-m-Y')) ) }} --}}
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     {{$meeting->department->name ?? ""}}
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     {{$meeting->leader->name ?? ""}}
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-center">
                                                                     @switch($meeting->status)
                                                                         @case(0)
-                                                                            <span>Đang diễn ra</span>
+                                                                            <span class="badge bg-success">Đang diễn ra</span>
                                                                         @break
 
                                                                         @case(1)
-                                                                            <span>Đã kết thúc</span>
+                                                                            <span class="badge bg-danger">Đã kết thúc</span>
                                                                         @break
 
                                                                         @default
                                                                             <span></span>
                                                                     @endswitch
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-center">
                                                                     <div>
                                                                         @if ($meeting->status == 0)
-                                                                            <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $meeting->id }}" class="header_more-link">
-                                                                                Tham gia cuộc họp
-                                                                            </a>
+                                                                            <div  role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia cuộc họp">
+                                                                                <div  data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $meeting->id }}">
+                                                                                    <i class="bi bi-arrow-right-square fs-5"></i>
+                                                                                </div>
+                                                                            </div>
                                                                         @elseif($meeting->status == 1)
                                                                             <span></span>
                                                                         @else
@@ -81,10 +82,6 @@
                                                                         @endif
                                                                     </div>
                                                                 </td>
-                                                                {{-- <td class="text-center">
-                                                                <a href="#" class="text-success"><u>Xem chi
-                                                                        tiết</u></a>
-                                                            </td> --}}
                                                             </tr>
                                                             {{-- Tham gia cuộc họp --}}
                                                             <div class="modal fade" id="thamGiaCuocHop{{ $meeting->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
