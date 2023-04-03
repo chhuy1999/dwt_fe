@@ -740,7 +740,7 @@
                                             <td>
                                                 <div class="fs-5">
                                                     @foreach ($listUsers->data as $user)
-                                                        @if ($user->id != $meeting->leader->id && $user->id != $meeting->secretary->id)
+                                                        @if ($user->id != $meeting->leader_id && $user->id != $meeting->secretary_id)
                                                             @if ($meeting->participants)
                                                                 @foreach ($meeting->participants as $participant)
                                                                     @if ($user->id != $participant->id)
