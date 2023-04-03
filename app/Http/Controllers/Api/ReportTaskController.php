@@ -42,8 +42,8 @@ class ReportTaskController extends Controller
     {
         try {
             $data = $request->validate([
-                'managerManDay' => 'required',
-                'managerComment' => 'required|numeric',
+                'managerManDay' => 'required|numeric',
+                'managerComment' => 'required',
             ]);
 
             $result = $this->dwtService->updateReportTask($id, $data);
