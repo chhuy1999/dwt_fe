@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Services\DwtServices;
+use Carbon\Carbon;
 use DateTime;
 use Exception;
 use Illuminate\Http\Request;
@@ -126,23 +127,22 @@ class MeetingController extends Controller
                 $data['leader_id'] = null;
             }
 
-            // if (isset($request['daterange'])) {
-            //     $dateRange = $data['daterange'];
-            //     $startDate = explode(" - ", $dateRange)[0];
-            //     //remove space
-            //     $startDate = str_replace(" ", "", $startDate);
-            //     $endDate = explode(" - ", $dateRange)[1];
-            //     //remove space
-            //     $endDate = str_replace(" ", "", $endDate);
-            //     $startTimeMs = DateTime::createFromFormat("d/M/Y", $startDate);
-            //     $startTimeMs = $startTimeMs->getTimestamp();
+            if (isset($request['daterange'])) {
+                $dateRange = $data['daterange'];
 
-            //     $endTimeMs = DateTime::createFromFormat("d/M/Y", $endDate);
-            //     $endTimeMs = $endTimeMs->getTimestamp();
-            //     $data['start_time'] = date('Y-m-d', strtotime($startTimeMs));
-            //     dd($data['start_time']);
-            //     $data['end_time'] = date('Y-m-d h:m:s', strtotime($endTimeMs));
-            // }
+                $startDate = explode(" - ", $dateRange)[0];
+                $startDate = str_replace(" ", "", $startDate);
+
+                $endDate = explode(" - ", $dateRange)[1];
+                $endDate = str_replace(" ", "", $endDate);
+
+                $endDate = Carbon::parse($endDate);
+                $data['end_time'] = $endDate->format('Y-m-d');
+
+                $startDate = Carbon::parse($startDate);
+                $data['start_time'] = $startDate->format('Y-m-d');
+      
+            }
 
 
             if (isset($data['files'])) {
