@@ -201,7 +201,7 @@ class DwtServices
     public function searchKpiTargetDetails($q = "", $page = 1, $limit = 30, $status = "", $userId = null, $startDate = null, $endDate = null)
     {
         $url = $this->url . '/target-details';
-
+//        dd($url);
         $response = $this->client->get($url, [
             'q' => $q,
             'page' => $page,

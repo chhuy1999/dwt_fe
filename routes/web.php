@@ -132,19 +132,19 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 
 //hop giao ban
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
-    Route::post('giao-ban/tham-gia',[MeetingController::class, 'join'])->name('checkJoinMeeting');
+
     Route::get('giao-ban/{code}', [MeetingController::class, 'index'])->name('joinMeeting');
     Route::put('giao-ban/{id}', [MeetingController::class, 'update']);
-    Route::post('giao-ban', [MeetingController::class, 'store']);
+    //    Route::post('giao-ban/tham-gia',[MeetingController::class, 'join'])->name('checkJoinMeeting');
+    Route::post('giao-ban', [MeetingController::class, 'store'])->name('createMeeting');
+    Route::post('giao-ban/tham-gia', [MeetingController::class, 'join']);
+
+    Route::get('/danh-sach-cuoc-hop/danh-sach', [MeetingListController::class, 'index'])->name('meeting.list');
+    Route::get('/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra', [MeetingListController::class, 'meetingOpen'])->name('meeting.open');
 });
 
 // Kho lưu trữ biên bản họp
-// Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
-//     Route::get('kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index']);
-// });
-Route::get('/danh-sach-cuoc-hop/danh-sach', [MeetingListController::class, 'index'])->name('meeting.list');
 Route::get('/kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'index'])->name('');
-
 
 //bao cao van de
 Route::group(['middleware' => 'auth.role:manager,admin'], function () {

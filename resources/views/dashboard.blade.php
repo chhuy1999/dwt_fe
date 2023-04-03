@@ -19,7 +19,7 @@
             }
             return [];
         }
-        
+
         function findTargetLogDetailNote($targetDetail, $date)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -57,7 +57,7 @@
         //     }
         //     return $targetLogDetails;
         // }
-        
+
         function findTargetLogDetailKpiKeys($targetDetail, $date, $userId)
         {
             $kpiKeys = [];
@@ -75,7 +75,7 @@
             }
             return $kpiKeys;
         }
-        
+
         function findTargetLogDetailFiles($targetDetail, $date, $userId)
         {
             $files = [];
@@ -95,7 +95,7 @@
             }
             return $files;
         }
-        
+
         function getAllTargetDetailKpiKeys($targetDetail)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -133,14 +133,14 @@
                         $toPush = $targetLogDetail;
                         //add reported date
                         $toPush->reportedDate = $targetLog->reportedDate;
-        
+
                         array_push($targetLogDetails, $toPush);
                     }
                 }
             }
             return $targetLogDetails;
         }
-        
+
         function getUsers($task)
         {
             $users = $task->users;
@@ -150,7 +150,7 @@
             }
             return implode(', ', $userNames);
         }
-        
+
         function countFiles($task)
         {
             $targetLogs = $task->targetLogs;
@@ -230,8 +230,8 @@
                                                                     {{ $task->name }}
                                                                     </div>
                                                                 </div>
-                                
-                                
+
+
                                                             </td>
                                                             <td class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table">
@@ -255,7 +255,7 @@
                                                                         @endif
                                                                     @endforeach
                                                                 </div>
-                                
+
                                                             </td>
                                                         @endfor
                                                     </tr>
@@ -319,26 +319,26 @@
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                                 <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}" role="button" @endif>
                                                                     <div class="content_table">
-    
+
                                                                         &nbsp;
                                                                     </div>
-    
+
                                                                 </td>
                                                             @endfor
                                                         </tr>
                                                     @endforeach
-    
+
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
 
-                                
+
 
                             </div>
                         </div>
-                    
+
 
                         @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                             <div class="col-lg-12">
@@ -392,7 +392,7 @@
                                                                                 data-bs-target="#thongTinNhiemVu{{ $task->id }}"
                                                                                 role="button">
                                                                                 <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
-                                                                            
+
                                                                                 {{ $task->name }}
                                                                             </div>
                                                                         </div>
@@ -410,7 +410,7 @@
                                                                     @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                                         <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif
                                                                         data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button"
-                                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) 
+                                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
                                                                             class="bg-warning bg-opacity-10 text-warning" @endif
                                                                             @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
                                                                             <div class="content_table">
@@ -432,12 +432,14 @@
                                     </div>
                                 </div>
                             </div>
+                            </div>
                         @endif
+                    </div>
+                </div>
 
-                        </div>
 
                         <div class="col-lg-12">
-                            <div class="card mb-3">
+                            <div class="card">
                                 <div class="card-body">
                                     {{-- <div class="d-flex justify-content-between align-items-center pb-2">
                                         <div class="card-title">Danh sách vấn đề</div>
@@ -574,70 +576,66 @@
                                                         @endif
                                                     </tr>
                                                 @endforeach
-
-
-
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="card-title">PieChart</div>
+                        <div class="col-lg-12">
+                            <div class="card" style="display: -webkit-box;">
+                                <div class="col-lg-3">
+                                    <div class="col-md-12 card mb-12">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="card-title">PieChart</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="pieChart"></canvas>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mainSection_chart-container mt-3">
-                                        <canvas id="pieChart"></canvas>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="col-md-12 card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="card-title">DoughnutChart</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="doughnutChart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="col-md-12 card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="card-title">BarChart 2</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="BarChartTwo"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="col-md-12 card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="card-title">BarChart 3</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="BarChartThree"></canvas>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="card-title">DoughnutChart</div>
-                                    </div>
-                                    <div class="mainSection_chart-container mt-3">
-                                        <canvas id="doughnutChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="card-title">BarChart 2</div>
-                                    </div>
-                                    <div class="mainSection_chart-container mt-3">
-                                        <canvas id="BarChartTwo"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="card-title">BarChart 3</div>
-                                    </div>
-                                    <div class="mainSection_chart-container mt-3">
-                                        <canvas id="BarChartThree"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="card mb-3">
+                        <div class="col-lg-12" style="display: flex">
+                            <div class="col-lg-6">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
                                         <div class="card-title">LineChart</div>
@@ -647,10 +645,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="card mb-3">
+                            <div class="col-lg-6">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-3 pt-3">
                                         <div class="card-title">LineChart 2</div>
@@ -661,7 +656,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
@@ -1025,7 +1019,8 @@ aria-hidden="true">
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <form action="/danh-muc-nhiem-vu/{{ $task->id }}" method="POST">
+            {{-- <form action="/danh-muc-nhiem-vu/{{ $task->id }}" method="POST"> --}}
+            <form action="{{ route('targetDetail.store', $task->id) }}" method="POST">
                 @method('PUT')
                 @csrf
                 <div class="modal-body">
@@ -1704,7 +1699,7 @@ aria-hidden="true">
                     <strong>40</strong>
                     KPI
                 </div>
-                
+
             </div>
             `);
         $('div.main-title-wrapper-right').html(`
@@ -1835,9 +1830,9 @@ aria-hidden="true">
                 </div>
             </div>
         `);
-        
+
     });
-    
+
 </script>
 
 @endsection
