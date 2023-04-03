@@ -93,6 +93,23 @@
             }
             return $listParticipantIds;
         }
+
+        function getListAbsence($meeting, $listUser)
+        {
+            $listAbsence = [];
+            if (!$meeting) {
+                return [];
+            }
+            if (count($meeting->participants) == 0) {
+                return $listUser;
+            }
+            foreach ($listUser as $user) {
+                if (!in_array($user->id, getListParticipantIds($meeting))) {
+                    array_push($listAbsence, $user);
+                }
+            }
+            return $listAbsence;
+        }
     @endphp
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
@@ -739,16 +756,8 @@
                                             </td>
                                             <td>
                                                 <div class="fs-5">
-                                                    @foreach ($listUsers->data as $user)
-                                                        @if ($user->id != $meeting->leader_id && $user->id != $meeting->secretary_id)
-                                                            @if ($meeting->participants)
-                                                                @foreach ($meeting->participants as $participant)
-                                                                    @if ($user->id != $participant->id)
-                                                                        {{ $user->name }} - {{ $user->code }}, &nbsp;
-                                                                    @endif
-                                                                @endforeach
-                                                            @endif
-                                                        @endif
+                                                    @foreach (getListAbsence($meeting, $listUsers->data) as $absence)
+                                                        {{ $absence->name }} - {{ $absence->code }},&nbsp;
                                                     @endforeach
                                                 </div>
                                             </td>
@@ -778,7 +787,25 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center  justify-content-between">
-                                <div class="modal-title fw-bolder">II. VẤN ĐỀ TỒN ĐỌNG</div>
+                                <div class="modal-title fw-bolder">II. FILES ĐÍNH KÈM</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="mt-3 modal_body-title">
+                                    @if ($meeting->files != null && count(explode(',', $meeting->files)) > 0)
+                                        @foreach (explode(',', $meeting->files) as $file)
+                                            <a href="{{ $file }}" target="_blank"> - {{ $file }}</a> <br />
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center  justify-content-between">
+                                <div class="modal-title fw-bolder">III. VẤN ĐỀ TỒN ĐỌNG</div>
                             </div>
                         </div>
                         <div class="col-sm-12">
