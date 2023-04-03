@@ -796,10 +796,12 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function listMeeting()
+    public function listMeeting($status = null)
     {
         $url = $this->url . '/meetings';
-        $response = $this->client->get($url);
+        $response = $this->client->get($url, [
+            'status' => $status
+        ]);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
         //get data from response
@@ -846,6 +848,28 @@ class DwtServices
         $response = $this->client->get($url, [
             'user_id' => $userId
         ]);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function createReportTaskLog($data) {
+        $url = $this->url . '/report-tasks-logs';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function updateReportTaskLog($id, $data) {
+        $url = $this->url . '/report-tasks-logs/' . $id;
+        $response = $this->client->put($url, $data);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
         //get data from response
