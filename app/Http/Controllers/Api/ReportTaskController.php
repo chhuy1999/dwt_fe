@@ -37,14 +37,86 @@ class ReportTaskController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
-
-    public function reportTask(Request $request) {
+    public function reportTask($id, Request $request)
+    {
         try {
-            dd($request->all());
+            $taskId = $id;
+            $data = $request->validate([
+                'note' => 'required',
+                'kpiKeys' => 'nullable|array',
+                'files' => 'nullable|array',
+                'report_date' => 'required|date',
+                'id' => 'nullable|numeric',
+                'uploadedFiles' => 'nullable|array',
+            ]);
+            $data['report_task_id'] = $taskId;
+            //validate kpikeys
+            $validKpis = [];
+            if (isset($data['kpiKeys'])) {
+                $kpiKeys = $data['kpiKeys'];
 
-        }catch(Exception $e) {
-            dump($e->getMessage());
-            return back()->with('error', $e->getMessage());
+                foreach ($kpiKeys as $kpiKey) {
+                    // dd($kpiKey);
+                    if (!$id || !is_numeric($id)) {
+                        continue;
+                    }
+
+                    $quantity = $kpiKey['quantity'];
+                    if (!$quantity || !is_numeric($quantity)) {
+                        continue;
+                    }
+
+                    $validKpis[] = $kpiKey;
+                }
+            }
+            $data['kpiKeys'] = $validKpis;
+            $uniqueKpiKeys = [];
+            //merge kpi keys
+            foreach ($data['kpiKeys'] as $kpiKey) {
+                $id = $kpiKey['id'];
+                $quantity = $kpiKey['quantity'];
+                //if kpi key exist in uniqueKpiKeys
+                if (isset($uniqueKpiKeys[$id])) {
+                    $uniqueKpiKeys[$id]['quantity'] += $quantity;
+                } else {
+                    $uniqueKpiKeys[$id] = $kpiKey;
+                }
+            }
+            $data['kpiKeys'] = array_values($uniqueKpiKeys);
+
+            if (isset($data['files'])) {
+                $files = $request->file('files');
+                $fileNames = [];
+                foreach ($files as $file) {
+                    //call uploadFileToRemoteHost function from DwtServices
+                    $fileNames[] = $this->dwtService->uploadFileToRemoteHost($file);
+                }
+                //comma separated file names
+                $data['files'] = implode(',', $fileNames);
+            }
+            if (isset($data['uploadedFiles'])) {
+
+                $data['files'] = $data['files'] ?? '';
+                $uploadedFilesStr = implode(',', $data['uploadedFiles']);
+                $data['files'] = $data['files'] . ',' . $uploadedFilesStr;
+            }
+
+            // dd($data['files']);
+
+
+
+            //if id is set, update
+            if (isset($data['id'])) {
+                $this->dwtService->updateReportTaskLog($data['id'], $data);
+            } else {
+                //call createArisingTask function from DwtServices
+                $this->dwtService->createReportTaskLog($data);
+            }
+
+            return back()->withSuccess('Report task successfully');
+
+        } catch (Exception $e) {
+            return back()->withError($e->getMessage())->withInput();
         }
     }
 }
