@@ -181,7 +181,7 @@
                                                                 <div class="d-flex align-items-center">
                                                                     <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
                                                                 </div>
-                                                                <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
+                                                                <input {{-- value="{{ \Carbon\Carbon::parse($meeting->start_time)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($meeting->end_time)->format('d/m/Y') }}" --}} type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                             </div>
                                                             <div class="d-flex align-items-start">
                                                                 <div class="d-flex">
@@ -1098,6 +1098,112 @@
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
+
+    <script>
+        let jwtToken = "{!! session()->get('token') !!}";
+
+        let user = {!! json_encode(session()->get('user')) !!};
+        const meetingId = {!! $meeting->id !!};
+        const meetCode = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
+        const form = document.getElementById('commentForm');
+        const notes = document.getElementById('notes');
+        const getThisMeeting = async () => {
+            try {
+                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meetings?code=' + meetCode, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + jwtToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                })
+                if (!resp.ok) {
+                    throw new Error('Error');
+                }
+                const data = await resp.json();
+                const meeting = data.data.data[0];
+                return meeting;
+
+            } catch (e) {
+                console.log(e);
+                return null;
+            }
+        }
+
+        const renderListNotes = async () => {
+            try {
+                notes.innerHTML = '';
+                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meetings?code=' + meetCode, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + jwtToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                })
+                if (!resp.ok) {
+                    throw new Error('Error');
+                }
+                const data = await resp.json();
+                const meeting = data.data.data[0];
+                console.log(meeting);
+                meeting.meeting_logs.forEach(item => {
+                    console.log(item);
+                    notes.innerHTML += `
+                <div class=" mb-3" style="background: #f8f9fa">
+                                                        <div class="row d-flex flex-start justify-between">
+                                                            <div class="col-md-10 d-flex">
+                                                                <i class="bi bi-journal-check mx-3 "></i>
+                                                                <div class="d-block text-nowrap text-truncate" style="max-width:435px">
+                                                                    <p data-bs-toggle="tooltip" data-bs-placement="top" title="It is a long established fact that a reader will be distracted by the readable content of a page." class="">
+                                                                        ${item.note}
+                                                                    </p>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <p class="fs-6">${moment(item.created_at).format('DD/MM/YYYY HH:mm')}</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                `
+
+                });
+            } catch (errr) {
+                console.log(errr);
+            }
+        };
+        renderListNotes();
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            const data = Object.fromEntries(formData);
+            //add meeting logs
+            try {
+                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meeting-logs', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + jwtToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                if (!resp.ok) {
+                    throw new Error('Error');
+                }
+                await resp.json();
+                await renderListNotes();
+                //clear form
+                form.reset();
+            } catch (err) {
+                console.log(err);
+            }
+        })
+    </script>
+
     <script>
         $(function() {
             $('input[name="daterange"]').daterangepicker({
@@ -1139,7 +1245,13 @@
                     ],
                 }
             });
-            $('input[name="daterange"]').val('');
+            // $('input[name="daterange"]').val('');
+            getThisMeeting().then(meet => {
+                if (!meet) return
+                if (meet.start_time && meet.end_time)
+                    $('input[name="daterange"]').val(moment(meet.start_time).format('MM/DD/YYYY') + ' - ' + moment(meet.end_time).format('MM/DD/YYYY'));
+            });
+
             $('input[name="daterange"]').attr("placeholder", "Chọn thời gian, thêm giờ");
         });
     </script>
@@ -1257,88 +1369,7 @@
             leaderInput.value = e.target.value;
         });
     </script>
-    <script>
-        let jwtToken = "{!! session()->get('token') !!}";
 
-        let user = {!! json_encode(session()->get('user')) !!};
-        const meetingId = {!! $meeting->id !!};
-        const meetCode = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
-        const form = document.getElementById('commentForm');
-        const notes = document.getElementById('notes');
-
-        const renderListNotes = async () => {
-            try {
-                notes.innerHTML = '';
-                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meetings?code=' + meetCode, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': 'Bearer ' + jwtToken,
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                })
-                if (!resp.ok) {
-                    throw new Error('Error');
-                }
-                const data = await resp.json();
-                const meeting = data.data.data[0];
-                console.log(meeting);
-                meeting.meeting_logs.forEach(item => {
-                    console.log(item);
-                    notes.innerHTML += `
-                <div class=" mb-3" style="background: #f8f9fa">
-                                                        <div class="row d-flex flex-start justify-between">
-                                                            <div class="col-md-10 d-flex">
-                                                                <i class="bi bi-journal-check mx-3 "></i>
-                                                                <div class="d-block text-nowrap text-truncate" style="max-width:435px">
-                                                                    <p data-bs-toggle="tooltip" data-bs-placement="top" title="It is a long established fact that a reader will be distracted by the readable content of a page." class="">
-                                                                        ${item.note}
-                                                                    </p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <p class="fs-6">${moment(item.created_at).format('DD/MM/YYYY HH:mm')}</p>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                `
-
-                });
-            } catch (errr) {
-                console.log(errr);
-            }
-        };
-        renderListNotes();
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-
-            const data = Object.fromEntries(formData);
-            //add meeting logs
-            try {
-                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meeting-logs', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': 'Bearer ' + jwtToken,
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                if (!resp.ok) {
-                    throw new Error('Error');
-                }
-                await resp.json();
-                await renderListNotes();
-                //clear form
-                form.reset();
-            } catch (err) {
-                console.log(err);
-            }
-        })
-    </script>
 
     {{-- <script>
     document.getElementById("commenttextarea").addEventListener("keydown", function(e) {
