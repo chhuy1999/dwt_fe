@@ -833,7 +833,7 @@
                                                     {{ $loop->index + 1 }}
                                                 </th>
                                                 <td>
-                                                    {{ $report->problem }}}
+                                                    {{ $report->problem }}
                                                 </td>
                                                 <td>
                                                     {{ $report->user->name ?? '' }} - {{ $report->user->code ?? '' }}

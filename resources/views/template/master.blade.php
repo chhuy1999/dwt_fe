@@ -607,7 +607,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Tham gia cuộc họp 2</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Tham gia cuộc họp</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/giao-ban/tham-gia" method="POST">
