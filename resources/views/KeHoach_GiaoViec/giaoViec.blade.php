@@ -108,7 +108,9 @@
                                                                 <textarea class="form-control" name="description" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
-                                                                <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday" />
+                                                                {{-- <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday" /> --}}
+                                                                <input type="text" class="form-control" data-bs-toggle="tooltip" readonly data-bs-placement="top" title="Manday" name="manday" placeholder="Manday" value="{{ $target->manday }}" />
+                                                            
                                                             </div>
                                                             <div class="col-md-9 mb-3">
                                                                 <textarea class="form-control" rows="1" placeholder="Kế hoạch thực hiện" name="executionPlan"></textarea>
