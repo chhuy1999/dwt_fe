@@ -21,30 +21,31 @@ class MeetingListController extends Controller
     public function index(Request $request)
     {
         try {
-            $q = $request->get('q');
-            $page = $request->get('page');
-            $limit = $request->get('limit');
-            $data = $this->dwtService->searchMeetingByCode($q, $page, $limit);
-            $listMeeting = $this->dwtService->listMeeting();
-            // $listMeeting = $listMeeting->data;
-            $listDepartments = $this->dwtService->listDepartments();
-            $listUnits = $this->dwtService->listUnits();
-            $listUsers = $this->dwtService->listUsers();
+            // $q = $request->get('q');
+            // $page = $request->get('page');
+            // $limit = $request->get('limit');
 
+            $listMeeting = $this->dwtService->listMeeting();
+
+            $listDepartments = $this->dwtService->listDepartments();
+
+            // $listUnits = $this->dwtService->listUnits();
+            $listUsers = $this->dwtService->listUsers();
             return view('HopDonVi.danhSachCuocHop')
-                ->with('data', $data)
                 ->with('listMeeting', $listMeeting)
                 ->with('listDepartments', $listDepartments)
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
+
             $error = $e->getMessage();
+            dd($error);
             return view('HopDonVi.danhSachCuocHop');
         }
     }
     public function meetingOpen(Request $request)
     {
 
-        
+
         try {
             $q = $request->get('q');
             $page = $request->get('page');
