@@ -105,7 +105,11 @@
             }
             foreach ($listUser as $user) {
                 if (!in_array($user->id, getListParticipantIds($meeting))) {
-                    array_push($listAbsence, $user);
+                    $userDepartement_id = $user->departement_id ?? 0;
+                    $meetingDepartement_id = $meeting->departement_id ?? 1;
+                    if ($userDepartement_id == $meetingDepartement_id) {
+                        array_push($listAbsence, $user);
+                    }
                 }
             }
             return $listAbsence;

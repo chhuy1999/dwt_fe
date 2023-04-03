@@ -35,35 +35,27 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($data->data as $value)
+                                                        @foreach ($listMeeting->data as $meeting)
                                                             <tr>
-                                                                <th scope="row">{{ $value->id }}</th>
+                                                                <th scope="row">{{ $meeting->id }}</th>
                                                                 <td>
-                                                                    {{ $value->title }}
+                                                                    {{ $meeting->title }}
                                                                 </td>
                                                                 <td>
-                                                                    {{ $value->code }}
+                                                                    {{ $meeting->code }}
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    {{ \Carbon\Carbon::parse($value->created_at)->format('d-m-Y || H:i:s') }}
+                                                                    {{ \Carbon\Carbon::parse($meeting->created_at)->format('d-m-Y || H:i:s') }}
                                                                     {{-- {{ date('d/m/Y', strtotime($value->created_at->format('d-m-Y')) ) }} --}}
                                                                 </td>
                                                                 <td>
-                                                                    @foreach ($listDepartments->data as $dep)
-                                                                        @if ($dep->id == $value->departement->id)
-                                                                            {{ $dep->name }}
-                                                                        @endif
-                                                                    @endforeach
+                                                                    {{$meeting->department->name ?? ""}}
                                                                 </td>
                                                                 <td>
-                                                                    @foreach ($listUsers->data as $pos)
-                                                                        @if ($pos->id == $value->leader_id)
-                                                                            {{ $pos->name }}
-                                                                        @endif
-                                                                    @endforeach
+                                                                    {{$meeting->leader->name ?? ""}}
                                                                 </td>
                                                                 <td>
-                                                                    @switch($value->status)
+                                                                    @switch($meeting->status)
                                                                         @case(0)
                                                                             <span>Đang diễn ra</span>
                                                                         @break
@@ -78,11 +70,11 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        @if ($value->status == 0)
-                                                                            <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $value->id }}" class="header_more-link">
+                                                                        @if ($meeting->status == 0)
+                                                                            <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop{{ $meeting->id }}" class="header_more-link">
                                                                                 Tham gia cuộc họp
                                                                             </a>
-                                                                        @elseif($value->status == 1)
+                                                                        @elseif($meeting->status == 1)
                                                                             <span></span>
                                                                         @else
                                                                             <span></span>
@@ -95,7 +87,7 @@
                                                             </td> --}}
                                                             </tr>
                                                             {{-- Tham gia cuộc họp --}}
-                                                            <div class="modal fade" id="thamGiaCuocHop{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="thamGiaCuocHop{{ $meeting->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
@@ -108,7 +100,7 @@
                                                                             <div class="modal-body">
                                                                                 <div class="row">
                                                                                     <div class="col-sm-8 mb-3">
-                                                                                        <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" value="{{ $value->code }}" name="code" id="listMeetCode">
+                                                                                        <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" value="{{ $meeting->code }}" name="code" id="listMeetCode">
                                                                                     </div>
                                                                                     <div class="col-sm-4 mb-3">
                                                                                         <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Nhập mật khẩu" placeholder="Nhập mật khẩu (nếu có)" class="form-control" name="password">

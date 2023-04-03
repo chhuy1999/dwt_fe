@@ -479,8 +479,11 @@
                                                                 Người đảm nhiệm
                                                             </th>
                                                             <th class="text-nowrap" style="width: 6%">Thời hạn</th>
+                                                            
                                                             @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                             <th class="border-0"></th>
+                                                            <th class="border-start-0"></th>
+                                                            @else
                                                             <th class="border-start-0"></th>
                                                             @endif
                                                 </tr>
