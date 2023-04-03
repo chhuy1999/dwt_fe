@@ -413,7 +413,8 @@
                                                                 Người đảm nhiệm
                                                             </th>
                                                             <th class="text-nowrap" style="width: 6%">Thời hạn</th>
-                                                            <th colspan="2"></th>
+                                                            <th class="border-0"></th>
+                                                            <th class="border-start-0"></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
