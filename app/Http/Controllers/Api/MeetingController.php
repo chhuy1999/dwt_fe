@@ -119,7 +119,9 @@ class MeetingController extends Controller
                 'leader_id' => 'nullable',
                 'status' => 'nullable',
             ]);
-
+            if($data['leader_id'] ==0) {
+                $data['leader_id'] = null;
+            }
 
             if (isset($data['files'])) {
 
