@@ -57,7 +57,7 @@
                                                                 </td>
                                                                 <td>
                                                                     @foreach ($listUsers->data as $pos)
-                                                                        @if ($pos->id == $value->leader->id)
+                                                                        @if ($pos->id == $value->leader_id)
                                                                             {{ $pos->name }}
                                                                         @endif
                                                                     @endforeach
