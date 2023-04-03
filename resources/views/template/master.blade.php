@@ -81,7 +81,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                     <a href="{{ route('assignTask.list') }}" class="header_more-link">Giao việc định mức</a>
                                                 </li>
                                                 <li class="header_more-item">
-                                                    <a href="" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinh" class="header_more-link">Giao việc phát sinh</a>
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinhGlobal" class="header_more-link">Giao việc phát sinh</a>
                                                 </li>
                                             @endif
 
@@ -581,7 +581,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </select>
                             </div>
                             <div class="col-sm-4 mb-3 position-relative">
-                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" autocomplete="off" data-bs-placement="top" title="Thời gian" class="form-control" placeholder="Thời gian" name="start_date">
+                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_time">
                                 <i class="bi bi-calendar-plus style_pickdate"></i>
                             </div>
                             <div class="col-sm-4 mb-3">
@@ -633,7 +633,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     </div>
 
     <!-- Modal Giao việc phát sinh -->
-    <div class="modal fade" id="giaoNhiemVuPhatSinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="giaoNhiemVuPhatSinhGlobal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -647,7 +647,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                <input id="giaoNhiemVuPhatSinhGiaoViec" placeholder="Thời hạn" class="form-control" type="text">
+                                <input id="giaoNhiemVuPhatSinhGiaoViecGlobal" placeholder="Thời hạn" class="form-control" type="text">
                                 <i class="bi bi-calendar-plus style_pickdate"></i>
                             </div>
                         </div>
@@ -868,6 +868,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 format: 'd/m/Y H:i',
                 timepicker: true,
             });
+            $('#giaoNhiemVuPhatSinhGiaoViecGlobal').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
         });
     </script>
     <script>
@@ -881,6 +885,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     format: 'H:mm - DD/MM/YYYY '
                 }
             });
+            
         });
     </script>
 

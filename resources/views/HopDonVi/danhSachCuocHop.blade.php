@@ -146,6 +146,9 @@
         $('#khoLuuTruBienBanHop').DataTable({
             paging: false,
             ordering: false,
+            order: [
+                [0, 'desc']
+            ],
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ biên bản họp',
                 infoEmpty: 'Hiện tại chưa có biên bản họp nào',
