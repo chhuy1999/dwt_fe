@@ -434,9 +434,6 @@
                             </div>
                             </div>
                         @endif
-                    </div>
-                </div>
-
 
                         <div class="col-lg-12">
                             <div class="card">
@@ -483,7 +480,8 @@
                                                             </th>
                                                             <th class="text-nowrap" style="width: 6%">Thời hạn</th>
                                                             @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                            <th colspan="2"></th>
+                                                            <th class="border-0"></th>
+                                                            <th class="border-start-0"></th>
                                                             @endif
                                                 </tr>
                                             </thead>
@@ -667,9 +665,13 @@
                             
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
+
+
+                        
+
             </div>
             @include('template.footer.footer')
         </div>
