@@ -183,7 +183,7 @@
                                 <div class="card-body">
                                     <div class="table_wrapper">
                                         <div class="table-responsive">
-                                            <table id="main_table" class="table table-responsive table-bordered m-0 bg-blue-blur" style="width: 100%">
+                                            <table id="main_table" class="table m-0 bg-blue-blur" style="width: 100%">
                                                 <thead>
                                                     <tr>
                                                         <th colspan="4" class="text-center bg-white position-sticky" style="left:0">Mục tiêu nhiệm vụ tháng
@@ -267,7 +267,7 @@
 
                                     <div class="table_wrapper">
                                         <div class="table-responsive mt-3">
-                                            <table id="two_table" class="table table-responsive table-bordered m-0 bg-yellow-blur" style="width: 100%">
+                                            <table id="two_table" class="table m-0 bg-yellow-blur" style="width: 100%">
                                                 <thead>
                                                     <tr>
                                                         <th class="text-nowrap bg-yellow-blur">STT</th>
@@ -347,7 +347,7 @@
                                         <div class="table_wrapper">
                                             <div class="mt-3 bg-white">
                                                 <div class="table-responsive">
-                                                    <table id="three_table" class="table table-responsive table-bordered m-0" style="width: 100%">
+                                                    <table id="three_table" class="table m-0" style="width: 100%">
                                                         <thead>
                                                             <tr>
                                                                 <th colspan="4" class="bg-white text-center position-sticky" style="left:0">Mục tiêu nhiệm

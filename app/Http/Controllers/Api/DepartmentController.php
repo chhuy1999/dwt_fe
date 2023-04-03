@@ -9,14 +9,13 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    private $dwtServices;
+    private $dwtService;
     //contructor
     public function __construct()
     {
         // $this->middleware('auth');
-        $this->dwtServices = new DwtServices();
+        $this->dwtService = new DwtServices();
     }
-
 
     /**
      * Display a listing of the resource.
@@ -29,9 +28,9 @@ class DepartmentController extends Controller
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtServices->searchDepartment($q, $page, $limit);
-            $listDepartments = $this->dwtServices->listDepartments();
-            $listUsers = $this->dwtServices->listUsers();
+            $data = $this->dwtService->searchDepartment($q, $page, $limit);
+            $listDepartments = $this->dwtService->listDepartments();
+            $listUsers = $this->dwtService->listUsers();
 
             return view('CauHinh.configProfile')
                  ->with('data', $data)
@@ -47,6 +46,8 @@ class DepartmentController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
+
         try {
             // dd($request);
             $data = $request->validate([
@@ -79,6 +80,7 @@ class DepartmentController extends Controller
             $this->dwtService->updateDepartment($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }

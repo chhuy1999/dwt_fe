@@ -160,7 +160,10 @@ option:hover {
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--primary-color-bold);
 }
-
+#three_tablel th,#three_table td { white-space: nowrap; padding:0 }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
 
 /* div:not(.dataTables_scrollFoot)::-webkit-scrollbar {
     display: none; //Dòng con cạc

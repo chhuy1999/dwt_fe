@@ -699,7 +699,7 @@
 
                 <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
                     <div class="d-block text-center mb-3">
-                        <h5 class="modal-title w-100 fs-3">BIÊN BẢN HOP GIAO BAN {{ $meeting->type }}</option>
+                        <h5 class="modal-title w-100 fs-3">BIÊN BẢN HỌP GIAO BAN {{ $meeting->type }}</option>
                         </h5>
                         {{-- <p class="m-0 fs-5 fst-italic">Phòng {{$meeting}}</p> --}}
                     </div>

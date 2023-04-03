@@ -116,16 +116,16 @@
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:60px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->code }}">{{ $value->code }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:90px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->name }}">{{ $value->name }}</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->name }}">{{ $value->name }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:70px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="1">Phòng ban</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $value->parent->name ?? "" }}">{{  $value->parent->name ?? "" }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:128px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->in_charge}}">{{ $value->in_charge}}</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:178px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->in_charge}}">{{ $value->in_charge}}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:600px" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:350px" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
                                                                 </td>
                                                                 @if (session('user')['role'] == 'admin')
                                                                 <td>
@@ -223,14 +223,28 @@
                                                                                     <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị mẹ">
                                                                                         <select class="selectpicker" title="Chọn đơn vị mẹ" data-width="100%"
                                                                                             data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                                                                            data-size="3">
+                                                                                            data-size="3" name="parent">
                                                                                             @foreach ($listDepartments->data as $dep)
                                                                                                         <option
                                                                                                             value="{{ $dep->id }}"
-                                                                                                            selected>
+                                                                                                            >
                                                                                                             {{ $dep->name }}
                                                                                                         </option>
                                                                                                 @endforeach
+                                                                                                {{-- @foreach ($listDepartments->data as $dep)
+                                                                                                @if ($dep->parent == $value->parent)
+                                                                                                    <option
+                                                                                                        value="{{ $dep->id }}"
+                                                                                                        selected>
+                                                                                                        {{ $dep->parent->name }}
+                                                                                                    </option>
+                                                                                                @else
+                                                                                                    <option
+                                                                                                        value="{{ $dep->id }}">
+                                                                                                        {{ $dep->name }}
+                                                                                                    </option>
+                                                                                                @endif
+                                                                                            @endforeach --}}
                                                                                         </select> 
                                                                                     </div>
 
@@ -251,9 +265,9 @@
                                                                                     <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Trưởng đơn vị">
                                                                                         <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
                                                                                         data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                                                                        data-size="3" name="in_charge" value="{{ $value->in_charge}}">
+                                                                                        data-size="3" name="in_charge">
                                                                                         @foreach ($listUsers->data as $user)
-                                                                                        <option  selected>{{ $user->name }}</option>
+                                                                                        <option  value="{{ $user->name }}">{{ $user->name }}</option>
                                                                                         @endforeach
                                                                                     </select> 
                                                                                     
