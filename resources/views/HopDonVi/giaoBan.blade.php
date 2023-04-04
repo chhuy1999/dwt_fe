@@ -126,14 +126,11 @@
                                     <div class="text-nowrap">Đơn vị: </div>
                                 </div>
                                 <div class="col-sm-10">
-                                    <strong
-                                        class="text-nowrap">{{ $meeting->departement->name ?? 'Chưa có đơn vị' }}</strong>
+                                    <strong class="text-nowrap">{{ $meeting->departement->name ?? 'Chưa có đơn vị' }}</strong>
                                 </div>
                                 <div class="col-sm-2">Chủ trì: </div>
                                 <div class="col-sm-10">
-                                    <select class="selectpicker mainSection_width-select" data-actions-box="true"
-                                        data-live-search="true" title="Chọn chủ trì..."
-                                        data-live-search-placeholder="Tìm kiếm..." data-size="5" id="leaderSelect">
+                                    <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5" id="leaderSelect">
                                         @foreach ($listUsers->data as $value)
                                             @if ($meeting->leader_id == $value->id)
                                                 <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
@@ -163,8 +160,7 @@
                             </div>
                         </div>
 
-                        <div id="mainSection_width"
-                            class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
+                        <div id="mainSection_width" class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
                             <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
                     </div>
@@ -187,41 +183,30 @@
                                                         <div class="col-md-7">
                                                             <div class="d-flex align-items-center mb-3">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px"
-                                                                        src="{{ asset('assets/img/time.svg') }}" />
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
                                                                 </div>
                                                                 <input type="text" name="daterange" id="meetTime" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                             </div>
                                                             <div class="d-flex align-items-start">
                                                                 <div class="d-flex">
-                                                                    <img style="height:14px; width:14px; margin-right:6px"
-                                                                        src="{{ asset('assets/img/muiten.svg') }}" />
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <textarea readonly name="" id="" rows="1" cols="" class="form-control"
-                                                                        placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
+                                                                    <textarea readonly name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <div
-                                                                class="mb-3 d-flex align-items-center justify-content-between">
+                                                            <div class="mb-3 d-flex align-items-center justify-content-between">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px"
-                                                                        src="{{ asset('assets/img/pencil.svg') }}" />
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <select class="selectpicker" data-width="100%"
-                                                                        data-live-search="true" title="Chọn thư ký..."
-                                                                        data-select-all-text="Chọn tất cả"
-                                                                        data-deselect-all-text="Bỏ chọn" data-size="3"
-                                                                        name="secretary_id"
-                                                                        data-live-search-placeholder="Tìm kiếm...">
+                                                                    <select class="selectpicker" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" name="secretary_id" data-live-search-placeholder="Tìm kiếm...">
 
                                                                         @foreach ($listUsers->data as $value)
                                                                             @if ($meeting->secretary_id == $value->id)
-                                                                                <option value="{{ $value->id }}"
-                                                                                    selected>
+                                                                                <option value="{{ $value->id }}" selected>
                                                                                     {{ $value->name }}</option>
                                                                             @else
                                                                                 <option value="{{ $value->id }}">
@@ -231,26 +216,15 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div
-                                                                class="mt-3 d-flex align-items-center justify-content-between">
+                                                            <div class="mt-3 d-flex align-items-center justify-content-between">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px"
-                                                                        src="{{ asset('assets/img/person-check.svg') }}" />
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <select class="selectpicker" multiple
-                                                                        data-actions-box="true" data-width="100%"
-                                                                        data-live-search="true" title="Chọn thành viên..."
-                                                                        data-select-all-text="Chọn tất cả"
-                                                                        data-deselect-all-text="Bỏ chọn" data-size="3"
-                                                                        data-selected-text-format="count > 1"
-                                                                        data-count-selected-text="Có {0} thành viên"
-                                                                        data-live-search-placeholder="Tìm kiếm..."
-                                                                        name="participants[]">
+                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="participants[]">
                                                                         @foreach ($listUsers->data as $value)
                                                                             @if (in_array($value->id, getListParticipantIds($meeting)))
-                                                                                <option value="{{ $value->id }}"
-                                                                                    selected>
+                                                                                <option value="{{ $value->id }}" selected>
                                                                                     {{ $value->name }}</option>
                                                                             @else
                                                                                 <option value="{{ $value->id }}">
@@ -264,8 +238,7 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="d-flex align-items-center justify-content-end mt-3"><button
-                                                            type="submit" class="btn btn-outline-danger">Xác
+                                                    <div class="d-flex align-items-center justify-content-end mt-3"><button type="submit" class="btn btn-outline-danger">Xác
                                                             nhận</button></div>
                                                 </form>
 
@@ -276,23 +249,20 @@
                                                 <div class="card-title d-flex align-items-center">
                                                     <div>Vấn đề tiếp nhận</div>
                                                     <div class="card_action-wrapper ms-3">
-                                                        <button role="button" class="btn btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#vanDeThaoLuan">Chọn
+                                                        <button role="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#vanDeThaoLuan">Chọn
                                                             vấn đề thảo luận</button>
                                                     </div>
 
                                                 </div>
 
-                                                <div class="alert alert-warning border-warning m-0"
-                                                    style="padding: 0 6px">
+                                                <div class="alert alert-warning border-warning m-0" style="padding: 0 6px">
                                                     <i class="bi bi-exclamation-triangle pe-2"></i><strong>Mã cuộc họp:
                                                         {{ $meeting->code }} </strong>
                                                 </div>
                                             </div>
 
                                             <div class="table-responsive rounded">
-                                                <table
-                                                    class="table table-responsive table-hover table-bordered m-0 style_disableAll">
+                                                <table class="table table-responsive table-hover table-bordered m-0 style_disableAll">
                                                     <thead>
                                                         <tr>
                                                             <th>STT</th>
@@ -304,19 +274,14 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($pendingReports as $item)
-                                                            <tr data-bs-toggle="modal"
-                                                                data-bs-target="#suaVanDeTonDong{{ $item->id }}"
-                                                                role="button">
+                                                            <tr data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}" role="button">
                                                                 <td>
-                                                                    <div
-                                                                        class="d-flex align-items-center justify-content-center">
+                                                                    <div class="d-flex align-items-center justify-content-center">
                                                                         {{ $loop->iteration }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="description-problem"
-                                                                        style="cursor: pointer;"
-                                                                        title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                    <div class="description-problem" style="cursor: pointer;" title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                         {{ $item->problem }}
                                                                     </div>
                                                                 </td>
@@ -354,21 +319,16 @@
                                                     <i class="bi bi-journal-check"></i>
                                                     Nội dung trao đổi
                                                 </div>
-                                                <div class=""
-                                                    style="max-height: 240px; overflow-y: scroll; overflow-x:hidden"
-                                                    id="notes">
+                                                <div class="" style="max-height: 240px; overflow-y: scroll; overflow-x:hidden" id="notes">
 
 
                                                 </div>
                                                 <div class="col-12 mt-4">
                                                     <form id="commentForm">
                                                         <div class="d-flex align-items-center">
-                                                            <input type="hidden" name="meeting_id"
-                                                                value="{{ $meeting->id }}">
-                                                            <textarea name="note" class="form-control" id="meeting-note" placeholder="Nhập nội dung" rows="1"
-                                                                maxlength="130"></textarea>
-                                                            <button type="submit"
-                                                                class="btn btn-outline-danger ms-3">Gửi</button>
+                                                            <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
+                                                            <textarea name="note" class="form-control" id="meeting-note" placeholder="Nhập nội dung" rows="1" maxlength="130"></textarea>
+                                                            <button type="submit" class="btn btn-outline-danger ms-3">Gửi</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -377,14 +337,12 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div
-                                                class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
+                                            <div class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
                                                 <div class="card-title mb-3">
                                                     <i class="bi bi-paperclip"></i>
                                                     File đính kèm
                                                 </div>
-                                                <form action="/giao-ban/{{ $meeting->id }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="/giao-ban/{{ $meeting->id }}" method="POST" enctype="multipart/form-data">
                                                     @method('PUT')
                                                     @csrf
                                                     <div class="upload_wrapper-items">
@@ -395,18 +353,14 @@
                                                                     @if (strlen($file))
                                                                         <li>
                                                                             <span class="fs-5">
-                                                                                <a href="{{ $file }}"
-                                                                                    target="_black">
+                                                                                <a href="{{ $file }}" target="_black">
                                                                                     <i class="bi bi-link-45deg"></i>
                                                                                     {{ $file }}
                                                                                 </a>
                                                                             </span>
-                                                                            <input type="hidden" name="uploadedFiles[]"
-                                                                                value="{{ $file }}" />
-                                                                            <span class="modal_upload-remote"
-                                                                                onclick="removeUploaded(event)">
-                                                                                <img style="width:18px;height:18px"
-                                                                                    src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
+                                                                            <span class="modal_upload-remote" onclick="removeUploaded(event)">
+                                                                                <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                             </span>
                                                                         </li>
                                                                     @endif
@@ -414,8 +368,7 @@
                                                             </ul>
                                                         @endif
                                                         <ul class="modal_upload-list"></ul>
-                                                        <div class="alert alert-danger alertNotSupport" role="alert"
-                                                            style="display:none">
+                                                        <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                                             File bạn tải lên hiện tại không hỗ trợ !
                                                         </div>
                                                         <div class="modal_upload-wrapper">
@@ -425,26 +378,19 @@
                                                                 JPG,
                                                                 PNG, PDF, XLSX, DOCX, hoặc PPTX kích
                                                                 thước tệp không quá 10MB</div>
-                                                            <div
-                                                                class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                                                 <div class="modal_upload-addFile me-3">
-                                                                    <button role="button" type="button"
-                                                                        class="btn position-relative pe-4 ps-4">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
                                                                         Tải file lên
-                                                                        <input role="button" type="file"
-                                                                            class="modal_upload-input modal_upload-file"
-                                                                            name="files[]" multiple
-                                                                            onchange="updateList(event)">
+                                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
                                                                     </button>
                                                                 </div>
 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex align-items-center justify-content-end"><button
-                                                            type="submit" class="btn btn-outline-danger">Tải
+                                                    <div class="d-flex align-items-center justify-content-end"><button type="submit" class="btn btn-outline-danger">Tải
                                                             file</button></div>
                                                 </form>
                                             </div>
@@ -492,48 +438,34 @@
                                                         @foreach ($handledReports as $item)
                                                             <tr>
                                                                 <td>
-                                                                    <div
-                                                                        class="d-flex align-items-center justify-content-center">
+                                                                    <div class="d-flex align-items-center justify-content-center">
                                                                         {{ $loop->iteration }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate"
-                                                                        style="max-width:200px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" data-bs-html="true"
-                                                                        data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                         {{ $item->problem }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <div type="text-nowrap d-inline-block text-truncate"
-                                                                            class="form-control border-0 bg-transparent"
-                                                                            value="Giải quyết">Giải quyết</div>
+                                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <div type="text-nowrap d-inline-block text-truncate"
-                                                                            class="form-control border-0 bg-transparent"
-                                                                            value="Nguyễn Ngọc Bảo">
+                                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
                                                                             {{ $item->user->name ?? '' }}
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate"
-                                                                        style="max-width:230px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" data-bs-html="true"
-                                                                        data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                         {{ $item->reason }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate"
-                                                                        style="max-width:220px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" data-bs-html="true"
-                                                                        data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
                                                                         {{ $item->solution }}
                                                                     </div>
                                                                 </td>
@@ -550,57 +482,38 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div
-                                                                        class="d-flex align-items-center justify-content-center">
+                                                                    <div class="d-flex align-items-center justify-content-center">
                                                                         <div class="circle_tracking-wrapper">
-                                                                            <div
-                                                                                class="circle_tracking opacity-75 bg-danger">
+                                                                            <div class="circle_tracking opacity-75 bg-danger">
                                                                             </div>
-                                                                            <div
-                                                                                class="circle_tracking opacity-75 bg-success">
+                                                                            <div class="circle_tracking opacity-75 bg-success">
                                                                             </div>
-                                                                            <div
-                                                                                class="circle_tracking opacity-75 bg-success">
+                                                                            <div class="circle_tracking opacity-75 bg-success">
                                                                             </div>
-                                                                            <div
-                                                                                class="circle_tracking opacity-75 bg-success">
+                                                                            <div class="circle_tracking opacity-75 bg-success">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                        data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                            class="bi bi-three-dots-vertical"></i>
+                                                                    <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                     </div>
-                                                                    <ul class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton1">
+                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#nhiemVuPhatSinh{{ $item->id }}"
-                                                                                data-repeater-delete>
-                                                                                <i
-                                                                                    class="bi bi-arrow-right-square-fill"></i>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
+                                                                                <i class="bi bi-arrow-right-square-fill"></i>
                                                                                 Chuyển thành nhiệm vụ phát sinh
                                                                             </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#suaVanDeTonDong{{ $item->id }}">
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/edit.svg') }}" />
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                                 Sửa
                                                                             </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#xoaThuocTinh"
-                                                                                data-repeater-delete>
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                                 Xóa
                                                                             </a>
                                                                         </li>
@@ -632,8 +545,7 @@
                             {{-- <a href='bien-ban-hop' class="btn btn-danger action_table-btn">
                                     Duyệt
                                 </a> --}}
-                            <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                                data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
+                            <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
                         </div>
                     </div>
                     {{-- <div class="col-lg-12 d-flex justify-content-end mb-3">
@@ -673,8 +585,7 @@
                             <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng
                             </label>
                             <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" readonly class="contenteditable"
-                                    placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông tin"></div>
+                                <div contenteditable="true" readonly class="contenteditable" placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông tin"></div>
                             </div>
                         </div>
                     </div>
@@ -691,8 +602,7 @@
                         <div class="col-sm-3 d-flex  align-items-center">
                             <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời hạn</label>
                             <div class="w-100" style="flex:1">
-                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                    type="text">
+                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="col-sm-5 d-flex  align-items-center">
@@ -712,11 +622,9 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-12 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label"
-                                style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
+                            <label for="inputPassword" class="col-form-label" style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
                             <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" class="contenteditable"
-                                    placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
+                                <div contenteditable="true" class="contenteditable" placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
                             </div>
                         </div>
 
@@ -731,8 +639,7 @@
     </div>
     <!-- Modal Sửa Vấn Đề -->
     @foreach ($pendingReports as $item)
-        <div class="modal fade" id="suaVanDeTonDong{{ $item->id }}" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="suaVanDeTonDong{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -747,21 +654,13 @@
 
                             <div class="row">
                                 <div class="col-sm-12 mb-3">
-                                    <input class="form-control" type="text" readonly data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Vấn đề tồn đọng" value="{{ $item->problem }}"
-                                        name="problem">
+                                    <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Vấn đề tồn đọng" value="{{ $item->problem }}" name="problem">
                                 </div>
                                 <div class="col-sm-7 mb-3">
-                                    <input class="form-control" type="text" readonly data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Người nêu" value="{{ $item->user->name ?? '' }}">
+                                    <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Người nêu" value="{{ $item->user->name ?? '' }}">
                                 </div>
                                 <div class="col-sm-5 mb-3">
-                                    <select class="selectpicker" multiple required data-actions-box="true"
-                                        data-width="100%" data-live-search="true" title="Người đảm nhiệm *"
-                                        data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
-                                        data-size="3" data-selected-text-format="count > 1"
-                                        data-count-selected-text="Có {0} người đảm nhiệm"
-                                        data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
+                                    <select class="selectpicker" multiple required data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm *" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
                                         @foreach ($listUsers->data as $value)
                                             <option value="{{ $value->id }}">
                                                 {{ $value->name }}
@@ -776,10 +675,8 @@
                                     <textarea rows="1" class="form-control" placeholder="Hướng giải quyết" name="solution">{{ $item->solution }}</textarea>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Thời hạn">
-                                        <input id="timeSuaVanDe" value="{{ date('d/m/Y', strtotime($item->deadline)) }}"
-                                            class="form-control" type="text" name="deadline">
+                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Thời hạn">
+                                        <input id="timeSuaVanDe" value="{{ date('d/m/Y', strtotime($item->deadline)) }}" class="form-control" type="text" name="deadline">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -1103,7 +1000,7 @@
                                             <div class="form-check">
 
                                                 <label class="form-check-label" for="vanDeCanThaoLuan1">
-                                                  Default checkbox
+                                                    Default checkbox
                                                 </label>
                                             </div>
                                         </td>
@@ -1118,7 +1015,7 @@
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label" for="vanDeCanThaoLuan2">
-                                                  Default checkbox
+                                                    Default checkbox
                                                 </label>
                                             </div>
                                         </td>
@@ -1134,7 +1031,7 @@
                                             <div class="form-check">
 
                                                 <label class="form-check-label" for="vanDeCanThaoLuan3">
-                                                  Default checkbox
+                                                    Default checkbox
                                                 </label>
                                             </div>
                                         </td>
@@ -1200,8 +1097,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themThanhVien">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1210,29 +1106,24 @@
     {{-- {{ dd($handledReports) }} --}}
     @foreach ($handledReports as $item)
         <!-- Modal Giao nhiệm vụ phát sinh -->
-        <div class="modal fade" id="nhiemVuPhatSinh{{ $item->id }}" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="nhiemVuPhatSinh{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <form action="{{ route('reportTask.store') }}", method="POST">
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <h5 class="modal-title w-100" id="exampleModalLabel">Giao nhiệm vụ phát sinh</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-8 mb-3">
-                                    <input type="text" readonly class="form-control" value="{{ $item->problem }}"
-                                        name="name">
+                                    <input type="text" readonly class="form-control" value="{{ $item->problem }}" name="name">
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                        <input id="giaoNhiemVuPhatSinh" name="deadline" value="19/03/2023"
-                                            class="form-control" type="text">
+                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
+                                        <input id="giaoNhiemVuPhatSinh" name="deadline" value="19/03/2023" class="form-control" type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -1240,21 +1131,18 @@
                                     <textarea class="form-control" rows="1" placeholder="Mô tả/Diễn giải" name="description"></textarea>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <input type="number" class="form-control" min="0" step="0.05"
-                                        oninput="onInput(this)" placeholder="Manday" id="title" name="manDay">
+                                    <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manDay">
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true"
-                                        data-size="5" name="user_id">
+                                    <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="user_id">
                                         @foreach ($listUsers->data as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true"
-                                        data-size="5" name="relatedUsers[]">
+                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
                                         @foreach ($listUsers->data as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
@@ -1266,8 +1154,7 @@
                                         <div data-repeater-list="kpiKeys">
                                             <div class="row" data-repeater-item>
                                                 <div class="col-md-9 mb-3">
-                                                    <select class='form-select' style="font-size:var(--fz-12)"
-                                                        title="Tiêu chí" data-live-search="true" name="id">
+                                                    <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
                                                         @foreach ($kpiKeys->data as $key)
                                                             <option value="{{ $key->id }}">{{ $key->name }}
                                                             </option>
@@ -1275,21 +1162,17 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="number" min="0" class="form-control"
-                                                        placeholder="Giá trị" name="quantity" />
+                                                    <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button"
-                                                        src="{{ asset('/assets/img/trash.svg') }}" width="20px"
-                                                        height="20px" />
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-start">
-                                                <div role="button" class="fs-4 text-danger" data-repeater-create><i
-                                                        class="bi bi-plus-circle"></i></div>
+                                                <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1320,10 +1203,8 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}">
-    </script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
@@ -1467,33 +1348,22 @@
         }
         $(function() {
             getThisMeeting().then(meet => {
+                console.log("meet", meet);
+                const startTime = meet.start_time ? moment(meet.start_time) : moment();
+                const endTime = meet.endTime ? moment(meet.endTime) : moment(meet.start_time).add(1, 'hours');
 
-                if (meet.start_time && meet.end_time) {
-                    console.log(moment(meet.start_time).format('DD/MM/YYYY hh:mm'));
-                    //set default value
-                    $('input[name="daterange"]').daterangepicker({
-                        opens: 'left',
-                        timePicker: true,
-                        locale: {
-                            ...locals,
-                            format: 'DD/MM/YYYY hh:mm',
-                        },
-                        startDate: moment(meet.start_time),
-                        endDate: moment(meet.end_time),
-                    });
-                } else {
-                    //set default value
-                    $('input[name="daterange"]').daterangepicker({
-                        opens: 'left',
-                        timePicker: true,
-                        locale: {
-                            ...locals,
-                            format: 'DD/MM/YYYY hh:mm',
-                        },
-                        startDate: moment(),
-                        endDate: moment().add(1, 'hours'),
-                    });
-                }
+
+                console.log(moment(meet.start_time).format('DD/MM/YYYY HH:mm'));
+                $('input[name="daterange"]').daterangepicker({
+                    opens: 'left',
+                    timePicker: true,
+                    locale: {
+                        ...locals,
+                        format: 'DD/MM/YYYY HH:mm',
+                    },
+                    startDate: startTime,
+                    endDate: endTime,
+                });
             }).catch(error => {
                 console.log(error);
                 $('input[name="daterange"]').daterangepicker({
@@ -1501,7 +1371,7 @@
                     timePicker: true,
                     locale: {
                         ...locals,
-                        format: 'DD/MM/YYYY hh:mm',
+                        format: 'DD/MM/YYYY HH:mm',
                     },
                     startDate: moment(),
                     endDate: moment().add(1, 'hours'),

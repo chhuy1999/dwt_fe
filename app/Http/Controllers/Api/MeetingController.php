@@ -94,8 +94,8 @@ class MeetingController extends Controller
 
             ]);
             // dd($data['start_time']);
-            $data['start_time'] = date('Y-m-d h:m', strtotime(str_replace("/", "-", $data['start_time'])));
-
+            $data['start_time'] = date('Y-m-d H:i', strtotime(str_replace("/", "-", $data['start_time'])));
+       
             $res = $this->dwtService->createMeeting($data);
             $meetCode = $res->code;
             //encode
@@ -141,10 +141,10 @@ class MeetingController extends Controller
                 $endDate = str_replace("/", "-", $endDate);
                 $endDate = str_replace(" ", "", $endDate);
 
-                $endDate = date('Y-m-d h:m', strtotime($endDate));
-               
+                $endDate = date('Y-m-d H:i', strtotime($endDate));
 
-                $startDate = date('Y-m-d h:m', strtotime($startDate));
+
+                $startDate = date('Y-m-d H:i', strtotime($startDate));
                 $data['start_time'] = $startDate;
                 $data['end_time'] = $endDate;
 
