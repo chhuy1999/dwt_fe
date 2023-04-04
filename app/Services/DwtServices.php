@@ -851,7 +851,8 @@ class DwtServices
     public function searchReportTasks($userId = null) {
         $url = $this->url . '/report-tasks';
         $response = $this->client->get($url, [
-            'user_id' => $userId
+            'user_id' => $userId,
+            'limit' => 1000
         ]);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
