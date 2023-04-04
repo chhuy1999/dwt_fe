@@ -270,8 +270,7 @@
                                                         {{ $meeting->code }} </strong>
                                                 </div>
                                             </div>
-
-                                            <div class="table-responsive rounded">
+                                            <div class="table-responsive rounded"  style="max-height: 100px;overflow-y: scroll;overflow-x: hidden;">
                                                 <table class="table table-responsive table-hover table-bordered m-0 style_disableAll">
                                                     <thead>
                                                         <tr>
@@ -309,11 +308,6 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-end mt-3">
-                                                <button type="submit" class="btn btn-outline-danger">
-                                                    Xác nhận
-                                                </button>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -324,7 +318,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="action_wrapper-cmt rounded border p-3">
+                                            <div class="action_wrapper-cmt rounded border p-3 h-100">
                                                 <div class="card-title mb-3">
                                                     <i class="bi bi-journal-check"></i>
                                                     Nội dung trao đổi
@@ -358,26 +352,28 @@
                                                     <div class="upload_wrapper-items">
                                                         <input type="hidden" name="uploadedFiles[]" value="" />
                                                         @if ($meeting->files && count(explode(',', $meeting->files)))
-                                                            <ul>
+                                                            <ul class="p-0" style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;">
                                                                 @foreach (explode(',', $meeting->files) as $file)
                                                                     @if (strlen($file))
                                                                         <li>
-                                                                            <span class="fs-5">
-                                                                                <a href="{{ $file }}" target="_black">
-                                                                                    <i class="bi bi-link-45deg"></i>
-                                                                                    {{ $file }}
-                                                                                </a>
-                                                                            </span>
-                                                                            <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
-                                                                            <span class="modal_upload-remote" onclick="removeUploaded(event)">
-                                                                                <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                                            </span>
+                                                                            <div class="d-flex align-items-center justify-content-between w-100 border-bottom pt-2 pb-2">
+                                                                                <span class="fs-5">
+                                                                                    <a href="{{ $file }}" target="_black">
+                                                                                        <i class="bi bi-link-45deg"></i>
+                                                                                        {{ $file }}
+                                                                                    </a>
+                                                                                </span>
+                                                                                <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
+                                                                                <span class="modal_upload-remote" onclick="removeUploaded(event)">
+                                                                                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                </span>
+                                                                            </div>
                                                                         </li>
                                                                     @endif
                                                                 @endforeach
                                                             </ul>
                                                         @endif
-                                                        <ul class="modal_upload-list"></ul>
+                                                        <ul class="modal_upload-list" style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;"></ul>
                                                         <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                                             File bạn tải lên hiện tại không hỗ trợ !
                                                         </div>
@@ -414,15 +410,14 @@
                                 <div class="card-body pb-4">
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="table-responsive position-relative">
-                                                <table id="dsDaDuocPhanHoi" class="table table-hover table-bordered">
+                                            <div class="table-responsive">
+                                                <table id="listDaDuocPhanHoi" class="table table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap" style="width: 2%">STT</th>
                                                             <th class="text-nowrap" style="width: 20%">
                                                                 <div class="d-flex justify-content-between">
                                                                     Vấn đề tồn đọng
-
                                                                 </div>
                                                             </th>
                                                             <th class="text-nowrap" style="width: 8%">
@@ -450,34 +445,30 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->problem }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->problem }}">
                                                                         {{ $item->problem }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>
-                                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                                    <div type="text-nowrap d-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div type="text-nowrap d-block text-truncate" class="form-control border-0 bg-transparent" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->user->name ?? '' }}">
+                                                                        {{ $item->user->name ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>
-                                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->user->name ?? '' }}">
-                                                                            {{ $item->user->name ?? '' }}
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->reason }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->reason }}">
                                                                         {{ $item->reason }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->solution }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->solution }}">
                                                                         {{ $item->solution }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
                                                                         @foreach ($item->pics as $u)
                                                                         
                                                                             {{ $u->name }},
@@ -1011,11 +1002,11 @@
                             <table id="dsVanDeThaoLuan" class="table table-responsive table-hover table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="text-nowrap" style="width:5%">&nbsp;</th>
-                                        <th scope="col" class="text-nowrap" style="width:5%">STT</th>
+                                        <th scope="col" class="text-nowrap text-center" style="width:3%">&nbsp;</th>
+                                        <th scope="col" class="text-nowrap text-center" style="width:3%">STT</th>
                                         <th scope="col" class="text-nowrap" style="width:30%">Vấn đề tồn đọng</th>
                                         <th scope="col" class="text-nowrap" style="width:30%">Người nêu</th>
-                                        <th scope="col" class="text-nowrap" style="width:10%">Đơn vị</th>
+                                        <th scope="col" class="text-nowrap" style="width:14%">Đơn vị</th>
                                         <th scope="col" class="text-nowrap" style="width:10%">Phân loại</th>
                                         <th scope="col" class="text-nowrap" style="width:10%">Thời hạn</th>
                                     </tr>
@@ -1023,23 +1014,28 @@
                                 <tbody>
                                     @foreach ($pendingReports as $rp)
                                         <tr>
-                                            <td><input class="form-check-input" type="checkbox" value="{{ $rp->id }}" name="reports[]" id="report{{ $rp->id }}"></td>
-                                            <th scope="row">
+                                            <td class="text-center">
+                                                <input class="form-check-input" type="checkbox" value="{{ $rp->id }}" name="reports[]" id="report{{ $rp->id }}">
+                                            </td>
+                                            <th class="text-center" scope="row">
                                                 {{ $loop->index + 1 }}
                                             </th>
                                             <td class="text-nowrap">
-                                                <div class="form-check">
-
-                                                    <label class="form-check-label" for="report{{ $rp->id }}">
+                                                <div class="form-check text-nowrap text-truncate p-0" style="width:150px;">
+                                                    <label class="form-check-label" style="cursor: pointer" for="report{{ $rp->id }}">
                                                         {{ $rp->problem }}
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td class="text-nowrap">
-                                                {{ $rp->user->name ?? '' }}
+                                            <td>
+                                                <div class="text-nowrap text-truncate" style="width:150px;">
+                                                    {{ $rp->user->name ?? '' }}
+                                                </div>
                                             </td>
-                                            <td class="text-nowrap">
-                                                {{ $rp->departement->name ?? '' }}
+                                            <td>
+                                                <div class="text-nowrap text-truncate" style="width:180px;">
+                                                    {{ $rp->departement->name ?? '' }}
+                                                </div>
                                             </td>
                                             <td class="text-nowrap">
                                                 Giải quyết
@@ -1280,22 +1276,22 @@
                     console.log(item);
                     notes.innerHTML += `
                 <div class=" mb-3" style="background: #f8f9fa">
-                                                        <div class="row d-flex flex-start justify-between">
-                                                            <div class="col-md-10 d-flex">
-                                                                <i class="bi bi-journal-check mx-3 "></i>
-                                                                <div class="d-block text-nowrap text-truncate" style="max-width:435px">
-                                                                    <p data-bs-toggle="tooltip" data-bs-placement="top" title="It is a long established fact that a reader will be distracted by the readable content of a page." class="">
-                                                                        ${item.note}
-                                                                    </p>
-                                                                </div>
+                    <div class="row d-flex flex-start justify-between align-items-center">
+                        <div class="col-md-10 d-flex">
+                            <i class="bi bi-journal-check mx-3 "></i>
+                            <div class="d-block text-nowrap text-truncate" style="max-width:435px">
+                                <p data-bs-toggle="tooltip" data-bs-placement="top" title="It is a long established fact that a reader will be distracted by the readable content of a page." class=" m-0">
+                                    ${item.note}
+                                </p>
+                            </div>
 
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <p class="fs-6">${moment(item.created_at).format('DD/MM/YYYY HH:mm')}</p>
-                                                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="fs-6 m-0">${moment(item.created_at).format('DD/MM/YYYY HH:mm')}</p>
+                        </div>
 
-                                                        </div>
-                                                    </div>
+                    </div>
+                </div>
                 `
 
                 });
@@ -1517,6 +1513,35 @@
     </script>
 
     <script>
+        $('#listDaDuocPhanHoi').DataTable({
+            paging: true,
+            ordering: false,
+            order: [
+                [0, 'desc']
+            ],
+            language: {
+                info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+                infoEmpty: 'Hiện tại chưa có bản ghi nào',
+                search: 'Tìm kiếm biên bản',
+                paginate: {
+                    previous: '<i class="bi bi-caret-left-fill"></i>',
+                    next: '<i class="bi bi-caret-right-fill"></i>',
+                },
+                search: '',
+                searchPlaceholder: 'Tìm kiếm...',
+                zeroRecords: 'Không tìm thấy kết quả',
+            },
+            oLanguage: {
+                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+            },
+            dom: '<"dataTables_top justify-content-between align-items-center"<"card-titles-wrapper">f>rt<"dataTables_bottom"ip>',
+        });
+        $('div.card-titles-wrapper').html(`
+            <div class="card-title">Đã được phản hồi</div>
+        `);
+    </script>
+
+    <script>
         $('#dsVanDeThaoLuan').DataTable({
             paging: true,
             ordering: false,
@@ -1541,34 +1566,7 @@
             dom: '<"dataTables_top justify-content-end align-items-center"f>rt<"dataTables_bottom"ip>',
         });
     </script>
-    <script>
-        $('#dsDaDuocPhanHoi').DataTable({
-            paging: true,
-            ordering: false,
-            order: [
-                [0, 'desc']
-            ],
-            language: {
-                info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
-                infoEmpty: 'Hiện tại chưa có bản ghi nào',
-                search: 'Tìm kiếm biên bản',
-                paginate: {
-                    previous: '<i class="bi bi-caret-left-fill"></i>',
-                    next: '<i class="bi bi-caret-right-fill"></i>',
-                },
-                search: '',
-                searchPlaceholder: 'Tìm kiếm...',
-                zeroRecords: 'Không tìm thấy kết quả',
-            },
-            oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
-            },
-            dom: '<"dataTables_top justify-content-between align-items-center"<"card-titles-wrapper">f>rt<"dataTables_bottom"ip>',
-            $('div.card-titles-wrapper').html(`
-            <div class="card-title">Đã được phản hồi</div>
-            `);
-        });
-    </script>
+    
 
 
     {{-- <script>
