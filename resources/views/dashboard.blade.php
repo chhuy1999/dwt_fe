@@ -244,10 +244,10 @@
                                                         <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}" class="bg-white text-center">Nhật kí công việc</th>
                                                     </tr>
                                                     <tr>
-                                                        <th style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur">STT</th>
-                                                        <th style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur w-25">Mục tiêu nhiệm vụ</th>
-                                                        <th style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur">Thời hạn</th>
-                                                        <th style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
+                                                        <th class="text-nowrap bg-blue-blur">STT</th>
+                                                        <th class="text-nowrap bg-blue-blur w-25">Mục tiêu nhiệm vụ</th>
+                                                        <th class="text-nowrap bg-blue-blur">Thời hạn</th>
+                                                        <th class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
                                                         @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                             @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
                                                                 <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
@@ -266,12 +266,12 @@
                                                 <tbody>
                                                     @foreach ($myAssignedTasks->data as $task)
                                                         <tr>
-                                                            <td  style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur">
+                                                            <td class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table">
                                                                     {{ $loop->iteration }}
                                                                 </div>
                                                             </td>
-                                                            <td style="border:1px solid #dee2e6;"  class="text-nowrap bg-blue-blur">
+                                                            <td  class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
                                                                         {{ $task->name }}
@@ -280,12 +280,12 @@
 
 
                                                             </td>
-                                                            <td style="border:1px solid #dee2e6;"  class="text-nowrap bg-blue-blur">
+                                                            <td  class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table">
                                                                     {{ date('d/m', strtotime($task->deadline)) }}
                                                                 </div>
                                                             </td>
-                                                            <td style="border:1px solid #dee2e6;"  class="text-nowrap fw-bold bg-blue-blur">
+                                                            <td  class="text-nowrap fw-bold bg-blue-blur">
                                                                 <div class="progress-half">
                                                                     <div class="text-dark content_table">5</div>
                                                                 </div>
@@ -315,11 +315,11 @@
                                         <table id="two_table" class="table table_style-fix m-0 bg-yellow-blur" style="width: 100%">
                                             <thead>
                                                 <tr>
-                                                    <th style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">STT</th>
-                                                    <th style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
+                                                    <th class="text-nowrap bg-yellow-blur">STT</th>
+                                                    <th class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
                                                         sinh</th>
-                                                    <th style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">Thời hạn</th>
-                                                    <th style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
+                                                    <th class="text-nowrap bg-yellow-blur">Thời hạn</th>
+                                                    <th class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
                                                     @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                         @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
                                                             <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
@@ -339,24 +339,24 @@
                                                 {{-- fixed-side bg-yellow-blur --}}
                                                 @foreach ($reportTasks->data as $reportTask)
                                                     <tr>
-                                                        <td style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">
+                                                        <td class="text-nowrap bg-yellow-blur">
                                                             <div class="content_table">
                                                                 {{ $loop->iteration }}
                                                             </div>
                                                         </td>
-                                                        <td style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">
+                                                        <td class="text-nowrap bg-yellow-blur">
                                                             <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
                                                                 <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
                                                                     {{ $reportTask->name }}
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">
+                                                        <td class="text-nowrap bg-yellow-blur">
                                                             <div class="content_table">
                                                                 {{ date('d/m', strtotime($reportTask->deadline)) }}
                                                             </div>
                                                         </td>
-                                                        <td style="border:1px solid #dee2e6;" class="text-nowrap fw-bold bg-yellow-blur">
+                                                        <td class="text-nowrap fw-bold bg-yellow-blur">
                                                             <div class="progress-half">
                                                                 <div class="text-dark content_table">5</div>
                                                             </div>
@@ -1991,7 +1991,7 @@
 
 
         $('#three_table').DataTable({
-            scrollY: "165px",
+            scrollY: "150px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
