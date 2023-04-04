@@ -63,7 +63,7 @@ class AssignTaskController extends Controller
                 'manday' => 'required|numeric',
                 'executionPlan' => 'nullable',
                 'users' => 'required|array',
-                'relatedUsers' => 'nullable|array',
+                'involvedPeople' => 'nullable|array',
                 'kpiKeys' => 'nullable|array',
                 "target_id" => "required|numeric",
 

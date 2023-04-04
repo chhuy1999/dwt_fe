@@ -20,8 +20,6 @@ class TargetLogController extends Controller
 
     public function store($id, Request $request)
     {
-
-
         try {
 
             $targetDetailId = $id;
@@ -65,7 +63,7 @@ class TargetLogController extends Controller
                 }
             }
             $data['kpiKeys'] = array_values($uniqueKpiKeys);
-        
+
 
 
             if (isset($data['files'])) {
@@ -83,8 +81,6 @@ class TargetLogController extends Controller
                 $uploadedFilesStr = implode(',', $data['uploadedFiles']);
                 $data['files'] = $data['files'] . ',' . $uploadedFilesStr;
             }
-
-
 
             //create target log
             $newTargetLog = [

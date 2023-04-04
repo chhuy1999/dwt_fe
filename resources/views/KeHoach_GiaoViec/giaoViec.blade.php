@@ -75,7 +75,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-5 overflow-auto" style="height: 276px">
-                                            
+
                                             @foreach ($listTargets->data as $target)
                                                 <div class="body_content-wrapper" id="body_content-{{ $target->id }}">
                                                     <form action="/giao-viec" method="POST" id="formTarget">
@@ -98,7 +98,7 @@
                                                             <div class="col-md-3 mb-3">
                                                                 {{-- <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday" /> --}}
                                                                 <input type="text" class="form-control" data-bs-toggle="tooltip" readonly data-bs-placement="top" title="Manday" name="manday" placeholder="Manday" value="{{ $target->manday }}" />
-                                                            
+
                                                             </div>
                                                             <div class="col-md-9 mb-3">
                                                                 <textarea class="form-control" rows="1" placeholder="Kế hoạch thực hiện" name="executionPlan"></textarea>
@@ -119,7 +119,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
+                                                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="involvedPeople[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -161,8 +161,7 @@
                                                         <div class="justify-content-end d-flex">
                                                             <div class="action_btn">
                                                                 <input class="btn btn-outline-danger px-4 me-3" type="reset" value="Hủy" />
-                                                                <button type="submit"
-                                                                    class="btn btn-danger px-4">Giao</button>
+                                                                <button type="submit" class="btn btn-danger px-4">Giao</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -226,7 +225,7 @@
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" title="@foreach ($assignedTask->users as $user) {{ $user->name }}, @endforeach">
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" title="@foreach ($assignedTask->users as $user) {{ $user->name }}, @endforeach">
                                                                                 @foreach ($assignedTask->users as $user)
                                                                                     {{ $user->name }},
                                                                                 @endforeach
@@ -234,8 +233,11 @@
 
                                                                         </td>
                                                                         <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Nguoi lien quan">
-
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" title="@foreach ($assignedTask->involvedPeople as $user)
+                                                                                {{ $user->name }}, @endforeach">
+                                                                                @foreach ($assignedTask->involvedPeople as $user)
+                                                                                    {{ $user->name }},
+                                                                                @endforeach
                                                                             </div>
 
                                                                         </td>
@@ -325,7 +327,7 @@
         </div>
     </div>
     @include('template.sidebar.sidebarGiaoViec.sidebarRight')
-   
+
     @foreach ($listAssignTasks->data as $assignedTask)
         <!-- Modal Sửa nvu -->
         <div class="modal fade" id="suaVanDeTonDong{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -344,7 +346,7 @@
                                 <div class="col-md-7 mb-3">
                                     <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" value="{{ $assignedTask->name }}" />
                                 </div>
-                                
+
                                 <div class="col-md-5 mb-3">
                                     <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
                                 </div>
@@ -356,7 +358,7 @@
                                 <div class="col-md-9 mb-3">
                                     <textarea class="form-control" rows="1" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả nhiệm vụ" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
                                 </div>
-                                
+
                                 <div class="col-md-3 mb-3">
                                     <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" name="manday" min="0" step="0.05" oninput="onInput(this)" value="{{ $assignedTask->manday }}" class="form-control" />
                                 </div>
@@ -721,7 +723,7 @@
         $('div.card-title-wrapper').html(`
             <div class="d-flex align-items-center">
                 <div class="card-title me-2">Danh sách định mức</div>
-                
+
             </div>
         `);
 

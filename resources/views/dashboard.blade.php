@@ -139,7 +139,12 @@
                         foreach ($targetLog->targetLogDetails as $targetLogDetail) {
                             if ($targetLogDetail->user->id == $userId) {
                                 if ($targetLogDetail->files != null) {
-                                    $files = explode(',', $targetLogDetail->files);
+                                    $fileArr = explode(',', $targetLogDetail->files);
+                                    foreach ($fileArr as $file) {
+                                        if (strlen($file)) {
+                                            array_push($files, $file);
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -271,7 +276,7 @@
                                                                     {{ $loop->iteration }}
                                                                 </div>
                                                             </td>
-                                                            <td  class="text-nowrap bg-blue-blur">
+                                                            <td class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
                                                                         {{ $task->name }}
@@ -280,12 +285,12 @@
 
 
                                                             </td>
-                                                            <td  class="text-nowrap bg-blue-blur">
+                                                            <td class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table">
                                                                     {{ date('d/m', strtotime($task->deadline)) }}
                                                                 </div>
                                                             </td>
-                                                            <td  class="text-nowrap fw-bold bg-blue-blur">
+                                                            <td class="text-nowrap fw-bold bg-blue-blur">
                                                                 <div class="progress-half">
                                                                     <div class="text-dark content_table">5</div>
                                                                 </div>
@@ -469,14 +474,14 @@
                                 </div>
                             </div>
                         </div>
-                    
 
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                {{-- <div class="d-flex justify-content-between align-items-center pb-2">
+
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    {{-- <div class="d-flex justify-content-between align-items-center pb-2">
                                             <div class="card-title">Danh sách vấn đề</div>
-    
+
                                             <div class="action_wrapper d-flex">
                                                 <div class="form-group has-search me-3">
                                                     <span class="bi bi-search form-control-feedback fs-5"></span>
@@ -488,144 +493,144 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-    
-                                <div class="table-responsive ">
-                                    <table id="dsVanDe" class="table table-hover table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-nowrap" style="width: 2%">STT</th>
-                                                <th class="text-nowrap" style="width: 20%">
-                                                    <div class="d-flex justify-content-between">
-                                                        Vấn đề tồn đọng
-                                                        {{-- <div>
+
+                                    <div class="table-responsive ">
+                                        <table id="dsVanDe" class="table table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-nowrap" style="width: 2%">STT</th>
+                                                    <th class="text-nowrap" style="width: 20%">
+                                                        <div class="d-flex justify-content-between">
+                                                            Vấn đề tồn đọng
+                                                            {{-- <div>
                                                                             <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
                                                                         </div> --}}
-    
-                                                    </div>
-                                                </th>
-                                                <th class="text-nowrap" style="width: 8%">
-                                                    Phân loại
-                                                </th>
-                                                <th class="text-nowrap" style="width: 10%">Người nêu</th>
-                                                <th class="text-nowrap" style="width: 20%">Nguyên nhân</th>
-                                                <th class="text-nowrap" style="width: 21%">
-                                                    Hướng giải quyết
-                                                </th>
-    
-                                                <th class="text-nowrap" style="width: 4%">
-                                                    Người đảm nhiệm
-                                                </th>
-                                                <th class="text-nowrap" style="width: 6%">Thời hạn</th>
-    
-                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                    <th class="border-0"></th>
-                                                    <th class="border-start-0"></th>
-                                                @else
-                                                    <th class="border-start-0"></th>
-                                                @endif
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($handledReports as $item)
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            {{ $loop->iteration }}
+
                                                         </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                            {{ $item->problem }}
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
-                                                                {{ $item->user->name ?? '' }}
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                            {{ $item->reason }}
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                            {{ $item->solution }}
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            @foreach ($item->pics as $u)
-                                                                {{ $u->name }},
-                                                            @endforeach
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            {{ date('d/m', strtotime($item->deadline)) }}
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="circle_tracking-wrapper">
-                                                                <div class="circle_tracking opacity-75 bg-danger">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-success">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-success">
-                                                                </div>
-                                                                <div class="circle_tracking opacity-75 bg-success">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
+                                                    </th>
+                                                    <th class="text-nowrap" style="width: 8%">
+                                                        Phân loại
+                                                    </th>
+                                                    <th class="text-nowrap" style="width: 10%">Người nêu</th>
+                                                    <th class="text-nowrap" style="width: 20%">Nguyên nhân</th>
+                                                    <th class="text-nowrap" style="width: 21%">
+                                                        Hướng giải quyết
+                                                    </th>
+
+                                                    <th class="text-nowrap" style="width: 4%">
+                                                        Người đảm nhiệm
+                                                    </th>
+                                                    <th class="text-nowrap" style="width: 6%">Thời hạn</th>
+
                                                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                        <td>
-                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
-                                                            </div>
-                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
-                                                                        <i class="bi bi-arrow-right-square-fill"></i>
-                                                                        Chuyển thành nhiệm vụ phát sinh
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                                                        Sửa
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                                        Xóa
-                                                                    </a>
-                                                                </li>
-    
-                                                            </ul>
-                                                        </td>
+                                                        <th class="border-0"></th>
+                                                        <th class="border-start-0"></th>
+                                                    @else
+                                                        <th class="border-start-0"></th>
                                                     @endif
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($handledReports as $item)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                {{ $loop->iteration }}
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                {{ $item->problem }}
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
+                                                                    {{ $item->user->name ?? '' }}
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                {{ $item->reason }}
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                {{ $item->solution }}
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                @foreach ($item->pics as $u)
+                                                                    {{ $u->name }},
+                                                                @endforeach
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                {{ date('d/m', strtotime($item->deadline)) }}
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <div class="circle_tracking-wrapper">
+                                                                    <div class="circle_tracking opacity-75 bg-danger">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                    <div class="circle_tracking opacity-75 bg-success">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                            <td>
+                                                                <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                                </div>
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                    <li>
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
+                                                                            <i class="bi bi-arrow-right-square-fill"></i>
+                                                                            Chuyển thành nhiệm vụ phát sinh
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                            Sửa
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            Xóa
+                                                                        </a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </td>
+                                                        @endif
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+
                                 </div>
-                                
                             </div>
                         </div>
-                    </div>
                 @endif
 
-                
-                
+
+
                 <div class="col-lg-12 mt-3">
                     <div class="card" style="display: -webkit-box;">
                         <div class="col-lg-3">
@@ -2071,11 +2076,11 @@
             dom: '<"d-flex justify-content-between align-items-center mb-3"<"dsVanDe-title-wrapper-left"><"d-flex "f<"dsVanDe-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
         });
         @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-        $('div.dsVanDe-title-wrapper-left').html(`
+            $('div.dsVanDe-title-wrapper-left').html(`
             <div class="card-title">Danh sách vấn đề</div>
-        
+
         `);
-        $('div.dsVanDe-title-wrapper-right').html(`
+            $('div.dsVanDe-title-wrapper-right').html(`
             <div class="action_wrapper d-flex ms-3">
                 <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                     <button class="btn-export"><i class="bi bi-download"></i></button>
