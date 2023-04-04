@@ -149,7 +149,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 Route::get('/kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'closedMeeting']);
 
 //bao cao van de
-Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::post('bao-cao-van-de', [ReportController::class, 'store'])->name('report.store');
     Route::put('bao-cao-van-de/{id}', [ReportController::class, 'update'])->name('report.update');
 });
