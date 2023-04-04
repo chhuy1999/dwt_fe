@@ -19,6 +19,7 @@ class ReportTaskController extends Controller
 
     public function store(Request $request)
     {
+
         try {
             $data = $request->validate([
                 'name' => 'required',
@@ -27,10 +28,15 @@ class ReportTaskController extends Controller
                 'manDay' => 'required',
                 'user_id' => 'required',
                 'kpiKeys' => 'nullable|array',
+                "report_id" => 'nullable|numeric',
             ]);
 
             $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
             $result = $this->dwtService->createReportTask($data);
+            //update report status
+            if(isset($data['report_id'])){
+                $this->dwtService->updateReports($data['report_id'], ['status' => 4]); //4 mean 'Converted'
+            }
             return back()->with('success', 'Tạo nhiệm vụ thành công');
         } catch (Exception $e) {
             dump($e->getMessage());

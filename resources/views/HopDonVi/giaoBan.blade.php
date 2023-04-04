@@ -114,6 +114,16 @@
             }
             return $listAbsence;
         }
+
+        function removeReportFromMeeting($meeting, $reportId)
+        {
+            $meetingReportIds = [];
+            foreach ($meeting->reports as $report) {
+                array_push($meetingReportIds, $report->id);
+            }
+            $newMeetingReportIds = array_diff($meetingReportIds, [$reportId]);
+            return $newMeetingReportIds;
+        }
     @endphp
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
@@ -273,7 +283,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($pendingReports as $item)
+                                                        @foreach ($unhandledReports as $item)
                                                             <tr data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}" role="button">
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-center">
@@ -430,7 +440,7 @@
                                                                 Người đảm nhiệm
                                                             </th>
                                                             <th class="text-nowrap" style="width: 6%">Thời hạn</th>
-                                                            <th class="border-0"></th>
+                                                            <th class="border-0">Trạng thái</th>
                                                             <th class="border-start-0"></th>
                                                         </tr>
                                                     </thead>
@@ -482,29 +492,44 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="d-flex align-items-center justify-content-center">
-                                                                        <div class="circle_tracking-wrapper">
-                                                                            <div class="circle_tracking opacity-75 bg-danger">
-                                                                            </div>
-                                                                            <div class="circle_tracking opacity-75 bg-success">
-                                                                            </div>
-                                                                            <div class="circle_tracking opacity-75 bg-success">
-                                                                            </div>
-                                                                            <div class="circle_tracking opacity-75 bg-success">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                    @switch($item->status)
+                                                                        @case('Sent')
+                                                                            Đã tiếp nhận
+                                                                        @break
+
+                                                                        @case('FoundSolution')
+                                                                            Đã có hướng giải quyết
+                                                                        @break
+
+                                                                        @case('Solved')
+                                                                            Đã giải quyết
+                                                                        @break
+
+                                                                        @case('Converted')
+                                                                            Đã giao
+                                                                        @break
+
+                                                                        @case('CantSolve')
+                                                                            không thể giải quyết
+                                                                        @break
+
+                                                                        @default
+                                                                        @break
+                                                                    @endswitch
+
                                                                 </td>
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                     </div>
                                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
-                                                                                <i class="bi bi-arrow-right-square-fill"></i>
-                                                                                Chuyển thành nhiệm vụ phát sinh
-                                                                            </a>
-                                                                        </li>
+                                                                        @if ($item->status != 'Converted')
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
+                                                                                    <i class="bi bi-arrow-right-square-fill"></i>
+                                                                                    Chuyển thành nhiệm vụ phát sinh
+                                                                                </a>
+                                                                            </li>
+                                                                        @endif
                                                                         <li>
                                                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
                                                                                 <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
@@ -512,7 +537,7 @@
                                                                             </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $item->id }}" data-repeater-delete>
                                                                                 <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                                 Xóa
                                                                             </a>
@@ -638,7 +663,7 @@
         </div>
     </div>
     <!-- Modal Sửa Vấn Đề -->
-    @foreach ($pendingReports as $item)
+    @foreach ($meeting->reports as $item)
         <div class="modal fade" id="suaVanDeTonDong{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -849,7 +874,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($listReports as $report)
+                                        @foreach ($meeting->reports as $report)
                                             <tr>
                                                 <th scope="row">
                                                     {{ $loop->index + 1 }}
@@ -885,6 +910,10 @@
 
                                                         @case('Solved')
                                                             Đã giải quyết
+                                                        @break
+
+                                                        @case('Converted')
+                                                            Đã giao
                                                         @break
 
                                                         @case('CantSolve')
@@ -975,8 +1004,9 @@
                     <h5 class="modal-title" id="exampleModalLabel">Chọn vấn đề thảo luận</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="">
+                <form action="/giao-ban/{{ $meeting->id }}" method="POST">
                     @csrf
+                    @method('PUT')
 
                     <div class="modal-body">
                         <div class="table-responsive">
@@ -993,53 +1023,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="vanDeCanThaoLuan1"></td>
-                                        <th scope="row">1</th>
-                                        <td>
-                                            <div class="form-check">
+                                    @foreach ($pendingReports as $rp)
+                                        <tr>
+                                            <td><input class="form-check-input" type="checkbox" value="{{ $rp->id }}" name="reports[]" id="report{{ $rp->id }}"></td>
+                                            <th scope="row">
+                                                {{ $loop->index + 1 }}
+                                            </th>
+                                            <td>
+                                                <div class="form-check">
 
-                                                <label class="form-check-label" for="vanDeCanThaoLuan1">
-                                                    Default checkbox
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="vanDeCanThaoLuan2"></td>
-                                        <th scope="row">2</th>
-                                        <td>
-                                            <div class="form-check">
-                                                <label class="form-check-label" for="vanDeCanThaoLuan2">
-                                                    Default checkbox
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="vanDeCanThaoLuan3"></td>
-                                        <th scope="row">3</th>
-                                        <td>
-                                            <div class="form-check">
-
-                                                <label class="form-check-label" for="vanDeCanThaoLuan3">
-                                                    Default checkbox
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                    </tr>
+                                                    <label class="form-check-label" for="report{{ $rp->id }}">
+                                                        {{ $rp->problem }}
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{ $rp->user->name ?? '' }}
+                                            </td>
+                                            <td>
+                                                {{ $rp->departement->name ?? '' }}
+                                            </td>
+                                            <td>
+                                                Giải quyết
+                                            </td>
+                                            <td>
+                                                {{ date('d/m/Y', strtotime($rp->deadline)) }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -1053,25 +1064,33 @@
             </div>
         </div>
     </div>
-
-    {{-- Xóa thuộc tính --}}
-    <div class="modal fade" id="xoaThuocTinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa vấn đề này</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có thực sự muốn xoá vấn đề đã chọn không?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
+    @foreach ($handledReports as $item)
+        {{-- Xóa thuộc tính --}}
+        <div class="modal fade" id="xoaThuocTinh{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa vấn đề này</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có thực sự muốn xoá vấn đề đã chọn không?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <form action="/giao-ban/{{ $meeting->id }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            @foreach (removeReportFromMeeting($meeting, $item->id) as $reportId)
+                                <input type="hidden" name="reports[]" value="{{ $reportId }}">
+                            @endforeach
+                            <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 
     {{-- Modal title other (khác) --}}
     <div class="modal fade" id="orther" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1110,6 +1129,8 @@
             <div class="modal-dialog modal-dialog-centered">
                 <form action="{{ route('reportTask.store') }}", method="POST">
                     @csrf
+                    {{-- to update status report id --}}
+                    <input type="hidden" name="report_id" value="{{ $item->id }}">
                     <div class="modal-content">
                         <div class="modal-header text-center">
                             <h5 class="modal-title w-100" id="exampleModalLabel">Giao nhiệm vụ phát sinh</h5>

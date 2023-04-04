@@ -40,25 +40,33 @@ class MeetingController extends Controller
                 }
             }
             $listUsers = $this->dwtService->searchUser("", 1, 200);
-            $listReports = $this->dwtService->searchReports("", $meeting->departement_id);
+            $listReports = $this->dwtService->searchReports();
             $kpiKeys = $this->dwtService->searchKpiKeys();
             $listReports = $listReports->data;
-            //get all reports with status == 'Sent'
+            // //get all reports with status == 'Sent'
+            // $pendingReports = array_filter($listReports, function ($item) {
+            //     return $item->status == 'Sent';
+            // });
+
+            $handledReports = array_filter($meeting->reports, function ($item) {
+                return $item->status != 'Sent';
+            });
+            $unhandledReports = array_filter($meeting->reports, function ($item) {
+                return $item->status == 'Sent';
+            });
+            //to pick report
             $pendingReports = array_filter($listReports, function ($item) {
                 return $item->status == 'Sent';
             });
 
-            $handledReports = array_filter($listReports, function ($item) {
-                return $item->status != 'Sent';
-            });
-
             return view('HopDonVi.giaoBan')
                 ->with('listUsers', $listUsers)
-                ->with('pendingReports', $pendingReports)
                 ->with('handledReports', $handledReports)
-                ->with('listReports', $listReports)
                 ->with('kpiKeys', $kpiKeys)
+                ->with('pendingReports', $pendingReports)
+                ->with('unhandledReports', $unhandledReports)
                 ->with('meeting', $meeting);
+
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -95,7 +103,7 @@ class MeetingController extends Controller
             ]);
             // dd($data['start_time']);
             $data['start_time'] = date('Y-m-d H:i', strtotime(str_replace("/", "-", $data['start_time'])));
-       
+
             $res = $this->dwtService->createMeeting($data);
             $meetCode = $res->code;
             //encode
@@ -112,7 +120,7 @@ class MeetingController extends Controller
     }
     public function update($id, Request $request)
     {
-
+        // dd($request->all());
         try {
             $data = $request->validate([
                 'participants' => 'nullable|array',
@@ -122,6 +130,7 @@ class MeetingController extends Controller
                 'leader_id' => 'nullable',
                 'status' => 'nullable',
                 'daterange' => 'nullable',
+                'reports' => 'nullable|array',
             ]);
 
             if (isset($data['leader_id']) && $data['leader_id'] == 0) {

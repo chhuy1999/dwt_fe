@@ -224,6 +224,35 @@
             }
             return $count;
         }
+
+        // function mergedKpiKey($kpiKeys)
+        // {
+        //     return uniqueKpiKeys = [];
+        //     //merge kpi keys
+        //     foreach ($kpiKeys as $kpiKey) {
+        //         $id = $kpiKey['id'];
+        //         $quantity = $kpiKey['quantity'];
+        //         //if kpi key exist in uniqueKpiKeys
+        //         if (isset($uniqueKpiKeys[$id])) {
+        //             $uniqueKpiKeys[$id]['quantity'] += $quantity;
+        //         } else {
+        //             $uniqueKpiKeys[$id] = $kpiKey;
+        //         }
+        //     }
+        //     return array_values($uniqueKpiKeys);
+        // }
+
+        // function caculatePersonalKpi($listTask, $userId)
+        // {
+        //     $kpi = 0;
+        //     foreach ($listTask as $task) {
+        //         $taskKpiKeys = $task->kpiKeys;
+        //         //merge kpi keys
+        //         $taskKpiKeys = mergedKpiKey($taskKpiKeys);
+
+        //     }
+        //     return $kpi;
+        // }
     @endphp
 
     <div id="mainWrap" class="mainWrap">
@@ -385,7 +414,7 @@
                                     </div>
                                 </div>
 
-                                
+
                             </div>
 
 
@@ -527,17 +556,17 @@
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                                 <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}" role="button" @endif>
                                                                     <div class="content_table">
-    
+
                                                                         @if (findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->id > 0)
                                                                             1
                                                                         @endif
                                                                     </div>
-    
+
                                                                 </td>
                                                             @endfor
                                                         </tr>
                                                     @endforeach
-    
+
                                                 </tbody>
                                             </table>
                                         </div>

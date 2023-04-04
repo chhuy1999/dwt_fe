@@ -34,6 +34,7 @@ class MeetingListController extends Controller
             return view('HopDonVi.danhSachCuocHop')
                 ->with('listMeeting', $listMeeting)
                 ->with('listDepartments', $listDepartments)
+                ->with("isClosed", "0")
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
 
@@ -58,6 +59,7 @@ class MeetingListController extends Controller
             $listUsers = $this->dwtService->listUsers();
             return view('HopDonVi.danhSachCuocHop')
                 ->with('listMeeting', $listMeeting)
+                ->with("isClosed", "1")
                 ->with('listDepartments', $listDepartments)
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
@@ -77,7 +79,7 @@ class MeetingListController extends Controller
             // $limit = $request->get('limit');
 
             $listMeeting = $this->dwtService->listMeeting(0);
-           
+
 
             $listDepartments = $this->dwtService->listDepartments();
 
@@ -86,6 +88,7 @@ class MeetingListController extends Controller
             return view('HopDonVi.danhSachCuocHop')
                 ->with('listMeeting', $listMeeting)
                 ->with('listDepartments', $listDepartments)
+                ->with("isClosed", "0")
                 ->with('listUsers', $listUsers);
         } catch (Exception $e) {
 
