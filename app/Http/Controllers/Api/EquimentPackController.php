@@ -72,7 +72,7 @@ class EquimentPackController extends Controller
             $this->dwtService->updateEquimentPack($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
-            dd($e);
+            // dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
