@@ -656,7 +656,7 @@
                                 <div class="col-sm-5">
                                     <div class="row">
                                         <div class="col-sm-5 mb-2">
-                                            <select class="selectpicker"placeholder="Giới tính" title="Giới tính"
+                                            <select class="selectpicker" required placeholder="Giới tính" title="Giới tính"
                                                 name="sex">
                                                 <option value="male">Nam</option>
                                                 <option value="female">Nữ</option>
@@ -664,16 +664,16 @@
                                         </div>
 
                                         <div class="col-sm-7 mb-2 position-relative">
-                                            <input id="createUser"   placeholder="Ngày sinh" class="form-control"
+                                            <input id="createUser" required placeholder="Ngày sinh" class="form-control"
                                                 type="text" name="dob" autocomplete="nope">
                                             <i class="bi bi-calendar-plus style_pickdate"></i>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control"   type="text" placeholder="Email liên hệ" name="email">
+                                        <input class="form-control" type="text" placeholder="Email liên hệ" name="email">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control"   type="text" placeholder="Địa chỉ liên hệ"
+                                        <input class="form-control" type="text" required placeholder="Địa chỉ liên hệ *"
                                             name="address">
                                     </div>
 
@@ -2639,10 +2639,10 @@
 
     <script>
         const targetTable = $('#dsToanCongTy').DataTable({
-            paging: false,
+            paging: true,
             ordering: false,
             order: [[0, 'desc']],
-            pageLength: 50,
+            pageLength: 20,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',

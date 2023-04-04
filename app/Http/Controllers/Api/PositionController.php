@@ -54,11 +54,11 @@ class PositionController extends Controller
 
             $data = $request->validate([
                 'name' => 'required',
-                'description' => 'required',
+                'description' => 'nullable',
                 'parent' => 'required|numeric',
                 'position_level' => 'required|numeric',
                 'salary_fund' => 'required|numeric',
-                'max_employees' => 'required|numeric',
+                'max_employees' => 'nullable|numeric',
             ]);
             $this->dwtService->createPosition($data);
             return back()->with('success', 'Thêm mới thành công');

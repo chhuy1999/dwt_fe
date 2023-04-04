@@ -26,7 +26,7 @@ class TargetController extends Controller
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchKpiTargets("", 1, 200);
+            $data = $this->dwtService->searchKpiTargets("", 1, 999);
             $listUnits = $this->dwtService->listUnits();
             $listPositions = $this->dwtService->listPositions();
             $listDepartments = $this->dwtService->listDepartments();
@@ -50,7 +50,7 @@ class TargetController extends Controller
             $data = $request->validate([
                 'name' => 'required',
                 'manday' => 'required|numeric',
-                'description' => 'required',
+                'description' => 'nullable',
                 'departement_id' => 'required|numeric',
                 'position_id' => 'required|numeric',
                 // 'unit_id' => 'required|numeric',

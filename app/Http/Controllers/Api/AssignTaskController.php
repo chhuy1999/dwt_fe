@@ -23,7 +23,7 @@ class AssignTaskController extends Controller
     {
         try {
             //get list target
-            $listTargets = $this->dwtService->searchKpiTargets("", 1, 100);
+            $listTargets = $this->dwtService->searchKpiTargets("", 1, 9999);
             //get list assigned task
             $listAssignTasks = $this->dwtService->searchKpiTargetDetails("", 1, 100, "assigned");
             // dd($listAssignTasks);

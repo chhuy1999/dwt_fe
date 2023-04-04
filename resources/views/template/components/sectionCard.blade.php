@@ -6,7 +6,7 @@
         <div class="col-md-9"><strong class="text-nowrap">{{Session::get('department_name') ?? ''}}</strong>
         </div>
         <div class="col-md-3">
-            <div class="text-nowrap">Trưởng đơn vị: </div>
+            <div class="text-nowrap">Họ và tên: </div>
         </div>
         <div class="col-md-9"><strong class="text-nowrap">{{ Session::get('user')['name'] }} -
                 {{ Session::get('user')['code'] ?? '' }}</strong></div>

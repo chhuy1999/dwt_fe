@@ -1323,7 +1323,7 @@
                                     data-width="100%"
                                     data-live-search="true"
                                     data-live-search-placeholder="Tìm kiếm..."
-                                    data-size="3">
+                                    data-size="5">
                                     @foreach ($listDepartments->data as $dep)
                                         @if ($dep->id == $value->parent)
                                             <option
@@ -1349,7 +1349,7 @@
                                     data-width="100%"
                                     data-live-search="true"
                                     data-live-search-placeholder="Tìm kiếm..."
-                                    data-size="3">
+                                    data-size="5">
                                     @foreach ($listPositionLevel->data as $level)
                                         @if ($level->id != $value->position_level)
                                             <option
@@ -1370,12 +1370,12 @@
                                 <textarea class="form-control" name="description" placeholder="Nhập mô tả công việc"></textarea>
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input class="form-control" type="number" min="0" name="max_employees"
-                                    placeholder="Định biên">
+                                <input class="form-control" required type="number" min="0" name="max_employees"
+                                    placeholder="Định biên *">
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input class="form-control" type="number" min="0" name="salary_fund"
-                                    placeholder="Quỹ lương năm" />
+                                <input class="form-control" required type="number" min="0" name="salary_fund"
+                                    placeholder="Quỹ lương năm *" />
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input class="form-control" placeholder="Gói trang bị" type="text" readonly />

@@ -141,6 +141,8 @@ option:hover {
     font-weight: 500;
 }
 
+#three_table th, #three_table td { white-space: nowrap; padding:6px 0 }
+
 /* STYLE SCROLLBAR */
 ::-webkit-scrollbar {
     width: 8px;

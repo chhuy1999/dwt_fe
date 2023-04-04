@@ -191,7 +191,7 @@
                             </div>
     
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Tên cấp nhân sự" name="name">
+                                <input class="form-control" required type="text" placeholder="Tên cấp nhân sự *" name="name">
                             </div>
                         </div>
                     </div>

@@ -409,7 +409,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="mb-3">
-                                    <textarea class="form-control" placeholder="Mô tả/Diễn giải *" name="description"></textarea>
+                                    <textarea class="form-control" placeholder="Mô tả/Diễn giải" name="description"></textarea>
                                 </div>
                             </div>
                             {{-- <div class="col-sm-6">
@@ -650,8 +650,7 @@
         paging: true,
         ordering: false,
         order: [[0, 'desc']],
-        pageLength: 30,
-            pageLength: 30,
+        pageLength: 20,
         language: {
             info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
             infoEmpty: 'Hiện tại chưa có bản ghi nào',
