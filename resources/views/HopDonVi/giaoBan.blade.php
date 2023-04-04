@@ -179,13 +179,13 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="row">
-                                                        <input type="hidden" name="leader_id" value="{{$meeting->leader_id ?? 0 }}" id="leaderIdInput">
+                                                        <input type="hidden" name="leader_id" value="{{ $meeting->leader_id ?? 0 }}" id="leaderIdInput">
                                                         <div class="col-md-7">
                                                             <div class="d-flex align-items-center mb-3">
                                                                 <div class="d-flex align-items-center">
                                                                     <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
                                                                 </div>
-                                                                <input type="text" name="daterange" autocomplete="on" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
+                                                                <input type="text" name="daterange" id="meetTime" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                             </div>
                                                             <div class="d-flex align-items-start">
                                                                 <div class="d-flex">
@@ -1210,56 +1210,79 @@
     </script>
 
     <script>
+        const locals = {
+            "separator": " - ",
+            "applyLabel": "Áp dụng",
+            "cancelLabel": "Hủy bỏ",
+            "fromLabel": "Từ",
+            "toLabel": "Đến",
+            "customRangeLabel": "Custom",
+            "daysOfWeek": [
+                "Th2",
+                "Th3",
+                "Th4",
+                "Th5",
+                "Th6",
+                "Th7",
+                "CN"
+            ],
+            "monthNames": [
+                "Tháng 1",
+                "Tháng 2",
+                "Tháng 3",
+                "Tháng 4",
+                "Tháng 5",
+                "Tháng 6",
+                "Tháng 7",
+                "Tháng 8",
+                "Tháng 9",
+                "Tháng 10",
+                "Tháng 11",
+                "Tháng 12",
+            ],
+        }
         $(function() {
-            const dateRangePicker = $('input[name="daterange"]').daterangepicker({
-                opens: 'left',
-                locale: {
-                    format: 'DD/MM/YYYY'
-                },
-                language: 'ru',
-                timePicker: true,
-                locale: {
-                    "separator": " - ",
-                    "applyLabel": "Áp dụng",
-                    "cancelLabel": "Hủy bỏ",
-                    "fromLabel": "Từ",
-                    "toLabel": "Đến",
-                    "customRangeLabel": "Custom",
-                    "daysOfWeek": [
-                        "Th2",
-                        "Th3",
-                        "Th4",
-                        "Th5",
-                        "Th6",
-                        "Th7",
-                        "CN"
-                    ],
-                    "monthNames": [
-                        "Tháng 1",
-                        "Tháng 2",
-                        "Tháng 3",
-                        "Tháng 4",
-                        "Tháng 5",
-                        "Tháng 6",
-                        "Tháng 7",
-                        "Tháng 8",
-                        "Tháng 9",
-                        "Tháng 10",
-                        "Tháng 11",
-                        "Tháng 12",
-                    ],
-                }
-            });
-            // $('input[name="daterange"]').val('');
             getThisMeeting().then(meet => {
-                if (!meet) return
-                const startTime = moment(meet.start_time).format('DD/MM/YYYY');
-                const endTime = meet.end_time ? moment(meet.end_time).format('DD/MM/YYYY') : moment(meet.start_time).add(1, 'days').format('DD/MM/YYYY');
-                console.log(startTime, endTime);
-                if (meet.start_time && meet.end_time)
-                   //set default value
-                    $('input[name="daterange"]').val(startTime + ' - ' + endTime);
-            });
+
+                if (meet.start_time && meet.end_time) {
+                    console.log(moment(meet.start_time).format('DD/MM/YYYY hh:mm'));
+                    //set default value
+                    $('input[name="daterange"]').daterangepicker({
+                        opens: 'left',
+                        timePicker: true,
+                        locale: {
+                            ...locals,
+                            format: 'DD/MM/YYYY hh:mm',
+                        },
+                        startDate: moment(meet.start_time),
+                        endDate: moment(meet.end_time),
+                    });
+                } else {
+                    //set default value
+                    $('input[name="daterange"]').daterangepicker({
+                        opens: 'left',
+                        timePicker: true,
+                        locale: {
+                            ...locals,
+                            format: 'DD/MM/YYYY hh:mm',
+                        },
+                        startDate: moment(),
+                        endDate: moment().add(1, 'hours'),
+                    });
+                }
+            }).catch(error => {
+                console.log(error);
+                $('input[name="daterange"]').daterangepicker({
+                    opens: 'left',
+                    timePicker: true,
+                    locale: {
+                        ...locals,
+                        format: 'DD/MM/YYYY hh:mm',
+                    },
+                    startDate: moment(),
+                    endDate: moment().add(1, 'hours'),
+                });
+            })
 
             $('input[name="daterange"]').attr("placeholder", "Chọn thời gian, thêm giờ");
         });

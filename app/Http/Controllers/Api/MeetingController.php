@@ -142,12 +142,12 @@ class MeetingController extends Controller
                 $endDate = str_replace(" ", "", $endDate);
 
                 $endDate = date('Y-m-d h:m', strtotime($endDate));
-
+               
 
                 $startDate = date('Y-m-d h:m', strtotime($startDate));
                 $data['start_time'] = $startDate;
                 $data['end_time'] = $endDate;
-               
+
             }
 
 

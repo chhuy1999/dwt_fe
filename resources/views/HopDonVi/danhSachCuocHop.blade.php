@@ -48,7 +48,7 @@
                                                                     {{-- {{ date('d/m/Y', strtotime($value->created_at->format('d-m-Y')) ) }} --}}
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    {{$meeting->department->name ?? ""}}
+                                                                    {{$meeting->departement->name ?? ""}}
                                                                 </td>
                                                                 <td class="text-nowrap">
                                                                     {{$meeting->leader->name ?? ""}}
