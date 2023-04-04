@@ -140,7 +140,9 @@ option:hover {
     color: #fff;
     font-weight: 500;
 }
-
+.tooltip .tooltip-inner{
+    max-width: 500px !important;
+  }
 #three_table th, #three_table td { white-space: nowrap; padding:6px 0 }
 
 /* STYLE SCROLLBAR */
