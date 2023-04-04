@@ -40,7 +40,7 @@ class MeetingController extends Controller
                 }
             }
             $listUsers = $this->dwtService->searchUser("", 1, 200);
-            $listReports = $this->dwtService->searchReports();
+            $listReports = $this->dwtService->searchReports(null, null, null, 100);
             $kpiKeys = $this->dwtService->searchKpiKeys();
             $listReports = $listReports->data;
             // //get all reports with status == 'Sent'
