@@ -27,8 +27,16 @@
                 <div class="container-fluid">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">Giao Việc</h5>
-                        @include('template.components.sectionCard')
-
+                        <div class="mainSection_card">
+                            <div class="mainSection_content">
+                                <div class="me-5" style="flex:1">Đơn vị: </div>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong></div>
+                            </div>
+                            <div class="mainSection_content">
+                                <div class="me-3">Trưởng đơn vị: </div>
+                                <div class="d-flex justify-content-start"><strong>{{ Session::get('user')['name'] }}</strong></div>
+                            </div>
+                        </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
                             <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
                         </div>
@@ -93,9 +101,8 @@
                                                             <div class="col-md-7 mb-3">
                                                                 <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" placeholder="Tên nhiệm vụ" value="{{ $target->name }}" />
                                                             </div>
-                                                            <div class="col-md-5 mb-3 position-relative">
-                                                                <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Chọn thời hạn" />
-                                                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                                                            <div class="col-md-5 mb-3">
+                                                                <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Thời hạn" />
                                                             </div>
                                                             <div class="col-md-9 mb-3">
                                                                 <textarea class="form-control" name="description" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
@@ -231,7 +238,7 @@
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" title="@foreach ($assignedTask->users as $user) {{ $user->name }}, @endforeach">
+                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" title="@foreach ($assignedTask->users as $user) {{ $user->name }}, @endforeach">
                                                                                 @foreach ($assignedTask->users as $user)
                                                                                     {{ $user->name }},
                                                                                 @endforeach
@@ -350,9 +357,8 @@
                                     <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" value="{{ $assignedTask->name }}" />
                                 </div>
                                 
-                                <div class="col-md-5 mb-3 position-relative">
-                                    <input type="text" name="daterange" autocomplete="on" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
-                                    <i class="bi bi-calendar-plus style_pickdate"></i>
+                                <div class="col-md-5 mb-3">
+                                    <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
                                 </div>
 
                                 <div class="col-md-12 mb-3">
@@ -472,7 +478,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                    <input name="deadline" id="giaoNhiemVuPhatSinhGiaoViec" placeholder="Chọn thời hạn" class="form-control" type="text">
+                                    <input name="deadline" id="giaoNhiemVuPhatSinhGiaoViec" placeholder="Thời hạn" class="form-control" type="text">
                                     <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                             </div>
@@ -669,7 +675,7 @@
     <script type="text/javascript">
         const targetTable = $('#danhSachDinhMuc').DataTable({
             paging: true,
-            ordering: false,
+            ordering: true,
             order: [
                 [0, 'desc']
             ],
@@ -746,7 +752,7 @@
 
         $('#listDanhSach').DataTable({
             paging: true,
-            ordering: false,
+            ordering: true,
             order: [
                 [0, 'desc']
             ],
@@ -787,14 +793,13 @@
         $(function() {
             $('input[name="daterange"]').daterangepicker({
                 opens: 'left',
-                autoUpdateInput: false,
                 locale: {
-                    format: 'DD/MM/YYYY',
+                    format: 'DD/MM/YYYY'
                 },
-                language: 'ru',
+                language: 'ru'
             });
-            // $('input[name="daterange"]').val('');
-            // $('input[name="daterange"]').attr("placeholder", "Chọn thời hạn");
+            $('input[name="daterange"]').val('');
+            $('input[name="daterange"]').attr("placeholder", "Chọn thời hạn");
         });
     </script>
 
