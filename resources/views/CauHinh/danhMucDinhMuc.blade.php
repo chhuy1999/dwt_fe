@@ -171,7 +171,7 @@
                                                                                                         </option>
                                                                                                     @else
                                                                                                         <option
-                                                                                                            value="{{ $dep->id }}" selected>
+                                                                                                            value="{{ $dep->id }}">
                                                                                                             {{ $dep->name }}
                                                                                                         </option>
                                                                                                     @endif
@@ -212,10 +212,10 @@
                                                                                         </div>
                                                                                     </div> --}}
                                                                                     <div class="col-sm-6">
-                                                                                        <div class="mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
+                                                                                        <div class="mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí phụ trách">
                                                                                             <select class="selectpicker"
                                                                                                 name="position_id"
-                                                                                                title="Chọn Vị trí"
+                                                                                                title="Vị trí phụ trách"
                                                                                                 data-live-search="true"
                                                                                                 data-live-search-placeholder="Tìm kiếm..."
                                                                                                 data-size="5">
@@ -228,7 +228,7 @@
                                                                                                         </option>
                                                                                                     @else
                                                                                                         <option
-                                                                                                            value="{{ $pos->id }}" selected>
+                                                                                                            value="{{ $pos->id }}">
                                                                                                             {{ $pos->name }}
                                                                                                         </option>
                                                                                                     @endif

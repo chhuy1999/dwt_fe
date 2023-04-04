@@ -79,9 +79,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <li class="header_more-item">
                                                     <a href="{{ route('assignTask.list') }}" class="header_more-link">Giao việc định mức</a>
                                                 </li>
-                                                <li class="header_more-item">
+                                                {{-- <li class="header_more-item">
                                                     <a href="" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinhGlobal" class="header_more-link">Giao việc phát sinh</a>
-                                                </li>
+                                                </li> --}}
 
                                         </ul>
                                     </li>
@@ -510,8 +510,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 <i class="bi bi-alarm style_pickdate-two"></i>
                             </div>
                             <div class="col-sm-9 mb-3">
-                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Vị trí">
-                                    <select class="form-select" disabled title="Vị trí" id="report-dp" name="departement_id">
+                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
+                                    <select class="form-select" title="Chọn đơn vị" id="report-dp" name="departement_id">
 
                                     </select>
                                 </div>

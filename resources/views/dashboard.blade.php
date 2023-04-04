@@ -384,13 +384,14 @@
                                         </table>
                                     </div>
                                 </div>
+
+                                
                             </div>
 
 
 
                         </div>
                     </div>
-
 
                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                         <div class="col-lg-12">
@@ -471,6 +472,76 @@
                                             </table>
                                         </div>
                                     </div>
+
+                                    <div class="table_wrapper">
+                                        <div class="table-responsive mt-3">
+                                            <table id="four_table" class="table table_style-fix m-0 bg-yellow-blur" style="width: 100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-nowrap bg-yellow-blur">STT</th>
+                                                        <th class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
+                                                            sinh</th>
+                                                        <th class="text-nowrap bg-yellow-blur">Thời hạn</th>
+                                                        <th class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
+                                                        @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
+                                                                    {{ $i + 1 }}
+                                                                </th>
+                                                            @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-danger bg-opacity-10 text-danger">
+                                                                    {{ $i + 1 }}
+                                                                </th>
+                                                            @else
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col">{{ $i + 1 }}</th>
+                                                            @endif
+                                                        @endfor
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{-- fixed-side bg-yellow-blur --}}
+                                                    @foreach ($reportTasks->data as $reportTask)
+                                                        <tr>
+                                                            <td class="text-nowrap bg-yellow-blur">
+                                                                <div class="content_table">
+                                                                    {{ $loop->iteration }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-nowrap bg-yellow-blur">
+                                                                <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
+                                                                        {{ $reportTask->name }}
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-nowrap bg-yellow-blur">
+                                                                <div class="content_table">
+                                                                    {{ date('d/m', strtotime($reportTask->deadline)) }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-nowrap fw-bold bg-yellow-blur">
+                                                                <div class="progress-half">
+                                                                    <div class="text-dark content_table">5</div>
+                                                                </div>
+                                                            </td>
+                                                            @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                                <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}" role="button" @endif>
+                                                                    <div class="content_table">
+    
+                                                                        @if (findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->id > 0)
+                                                                            1
+                                                                        @endif
+                                                                    </div>
+    
+                                                                </td>
+                                                            @endfor
+                                                        </tr>
+                                                    @endforeach
+    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -523,7 +594,7 @@
                                                     <th class="text-nowrap" style="width: 6%">Thời hạn</th>
 
                                                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                        <th class="border-0"></th>
+                                                        <th class="border-0 text-nowrap">Trạng thái</th>
                                                         <th class="border-start-0"></th>
                                                     @else
                                                         <th class="border-start-0"></th>
@@ -577,8 +648,8 @@
                                                                 {{ date('d/m', strtotime($item->deadline)) }}
                                                             </div>
                                                         </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center justify-content-center">
+                                                        <td class="text-nowrap">
+                                                            {{-- <div class="d-flex align-items-center justify-content-center">
                                                                 <div class="circle_tracking-wrapper">
                                                                     <div class="circle_tracking opacity-75 bg-danger">
                                                                     </div>
@@ -589,7 +660,8 @@
                                                                     <div class="circle_tracking opacity-75 bg-success">
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
+                                                            Đã giao
                                                         </td>
                                                         @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                             <td>
@@ -723,7 +795,7 @@
 
 
     </div>
-    @include('template.footer.footer')
+    {{-- @include('template.footer.footer') --}}
 </div>
 </div>
 @include('template.sidebar.sidebarMaster.sidebarRight')
@@ -1911,7 +1983,7 @@
 <script>
     $(document).ready(function() {
         $('#main_table').DataTable({
-            scrollY: "150px",
+            scrollY: "165px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
@@ -1945,7 +2017,7 @@
                 <div class="card-title">Mục tiêu nhiệm vụ cá nhân</div>
                 <div class="mainSection_total-kpi">
                     Tổng KPI cá nhân tạm tính:
-                    <strong>40</strong>
+                    <strong></strong>
                     KPI
                 </div>
 
@@ -1962,7 +2034,7 @@
 
 
         $('#two_table').DataTable({
-            scrollY: "150px",
+            scrollY: "165px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
@@ -2001,7 +2073,7 @@
 
 
         $('#three_table').DataTable({
-            scrollY: "150px",
+            scrollY: "165px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
@@ -2051,6 +2123,30 @@
         `);
 
 
+        $('#four_table').DataTable({
+            paging: false,
+            pageLength: 10,
+            ordering: false,
+            order: [
+                [0, 'desc']
+            ],
+            language: {
+                info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+                infoEmpty: 'Hiện tại chưa có bản ghi nào',
+                search: 'Tìm kiếm biên bản',
+                paginate: {
+                    previous: '<i class="bi bi-caret-left-fill"></i>',
+                    next: '<i class="bi bi-caret-right-fill"></i>',
+                },
+                search: '',
+                searchPlaceholder: 'Tìm kiếm vấn đề',
+                zeroRecords: 'Hiện chưa có vấn đề',
+            },
+            oLanguage: {
+                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+            },
+            dom: '<"d-flex justify-content-end align-items-center mb-3"<"d-flex "f>>rt<"dataTables_bottom  justify-content-end"p>',
+        });
         $('#dsVanDe').DataTable({
             paging: false,
             pageLength: 10,
