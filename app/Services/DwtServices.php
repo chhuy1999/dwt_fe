@@ -380,7 +380,10 @@ class DwtServices
     public function listUsers()
     {
         $url = $this->url . '/users';
-        $response = $this->client->get($url);
+        $response = $this->client->get($url, [
+            'page' => 1,
+            'limit' => 1000
+        ]);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
         //get data from response

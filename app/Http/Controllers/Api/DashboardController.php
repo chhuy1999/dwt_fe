@@ -40,11 +40,10 @@ class DashboardController extends Controller
 
             $reportTasks = $this->dwtServices->searchReportTasks($user['id']);
 
-            $listReports = $this->dwtServices->searchReports();
+            $listReports = $this->dwtServices->searchReports("", $user['departement_id'], 1, 100);
             $listReports = $listReports->data;
-            $handledReports = array_filter($listReports, function ($item) {
-                return $item->status != 'Sent';
-            });
+
+            $listUsers = $this->dwtServices->listUsers();
 
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
@@ -52,7 +51,8 @@ class DashboardController extends Controller
                 ->with('listAssignedTasks', $listAssignedTasks)
                 ->with('myAssignedTasks', $myAssignedTasks)
                 ->with('reportTasks', $reportTasks)
-                ->with('handledReports', $handledReports)
+                ->with('listReports', $listReports)
+                ->with('listUsers', $listUsers)
                 ->with('kpiKeys', $kpiKeys);
         } catch (Exception $e) {
             dd($e);

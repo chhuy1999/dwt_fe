@@ -253,6 +253,7 @@
         //     }
         //     return $kpi;
         // }
+
     @endphp
 
     <div id="mainWrap" class="mainWrap">
@@ -631,7 +632,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($handledReports as $item)
+                                                @foreach ($listReports as $item)
                                                     <tr>
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-center">
@@ -678,31 +679,44 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-nowrap">
-                                                            {{-- <div class="d-flex align-items-center justify-content-center">
-                                                                <div class="circle_tracking-wrapper">
-                                                                    <div class="circle_tracking opacity-75 bg-danger">
-                                                                    </div>
-                                                                    <div class="circle_tracking opacity-75 bg-success">
-                                                                    </div>
-                                                                    <div class="circle_tracking opacity-75 bg-success">
-                                                                    </div>
-                                                                    <div class="circle_tracking opacity-75 bg-success">
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
-                                                            Đã giao
+                                                            @switch($item->status)
+                                                                @case('Sent')
+                                                                    Đã tiếp nhận
+                                                                @break
+
+                                                                @case('FoundSolution')
+                                                                    Đã có hướng giải quyết
+                                                                @break
+
+                                                                @case('Solved')
+                                                                    Đã giải quyết
+                                                                @break
+
+                                                                @case('Converted')
+                                                                    Đã giao
+                                                                @break
+
+                                                                @case('CantSolve')
+                                                                    không thể giải quyết
+                                                                @break
+
+                                                                @default
+                                                                @break
+                                                            @endswitch
                                                         </td>
                                                         @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                             <td>
                                                                 <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                 </div>
                                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                    <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
-                                                                            <i class="bi bi-arrow-right-square-fill"></i>
-                                                                            Chuyển thành nhiệm vụ phát sinh
-                                                                        </a>
-                                                                    </li>
+                                                                    @if ($item->status != 'Converted')
+                                                                        <li>
+                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
+                                                                                <i class="bi bi-arrow-right-square-fill"></i>
+                                                                                Chuyển thành nhiệm vụ phát sinh
+                                                                            </a>
+                                                                        </li>
+                                                                    @endif
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
@@ -710,7 +724,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh" data-repeater-delete>
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $item->id }}" data-repeater-delete>
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                             Xóa
                                                                         </a>
@@ -718,6 +732,8 @@
 
                                                                 </ul>
                                                             </td>
+                                                        @else
+                                                            <td></td>
                                                         @endif
                                                     </tr>
                                                 @endforeach
@@ -828,6 +844,73 @@
 </div>
 </div>
 @include('template.sidebar.sidebarMaster.sidebarRight')
+
+<!-- Modal Sửa Vấn Đề -->
+@foreach ($listReports as $item)
+<div class="modal fade" id="suaVanDeTonDong{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="exampleModalLabel">Cập nhật vấn đề tồn đọng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('report.update', $item->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Vấn đề tồn đọng" value="{{ $item->problem }}" name="problem">
+                        </div>
+                        <div class="col-sm-7 mb-3">
+                            <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Người nêu" value="{{ $item->user->name ?? '' }}">
+                        </div>
+                        <div class="col-sm-5 mb-3">
+                            <select class="selectpicker" multiple required data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm *" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
+                                @foreach ($listUsers->data as $value)
+                                    <option value="{{ $value->id }}">
+                                        {{ $value->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                            <textarea rows="1" class="form-control" placeholder="Nguyên nhân" name="reason">{{ $item->reason }}</textarea>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                            <textarea rows="1" class="form-control" placeholder="Hướng giải quyết" name="solution">{{ $item->solution }}</textarea>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Thời hạn">
+                                <input id="timeSuaVanDe" value="{{ date('d/m/Y', strtotime($item->deadline)) }}" class="form-control" type="text" name="deadline">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Tình trạng">
+                                <select class="form-select" aria-label="Default select example" name="status">
+                                    <option value="0">Đã tiếp nhận</option>
+                                    <option value="1">Đã có hướng giải quyết</option>
+                                    <option value="2">Đã giải quyết</option>
+                                    <option value="3">Không thể giải quyết</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-danger">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 
 <!-- Modal Phản Hồi Vấn Đề -->
 <div class="modal fade" id="phanHoiVanDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
