@@ -999,7 +999,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Chọn vấn đề thảo luận</h5>
+                    <h5 class="modal-title w-100 text-center" id="exampleModalLabel">Chọn vấn đề thảo luận</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/giao-ban/{{ $meeting->id }}" method="POST">
@@ -1027,7 +1027,7 @@
                                             <th scope="row">
                                                 {{ $loop->index + 1 }}
                                             </th>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 <div class="form-check">
 
                                                     <label class="form-check-label" for="report{{ $rp->id }}">
@@ -1035,16 +1035,16 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 {{ $rp->user->name ?? '' }}
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 {{ $rp->departement->name ?? '' }}
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 Giải quyết
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 {{ date('d/m/Y', strtotime($rp->deadline)) }}
                                             </td>
                                         </tr>
