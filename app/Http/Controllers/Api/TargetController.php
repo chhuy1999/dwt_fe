@@ -37,7 +37,7 @@ class TargetController extends Controller
                 ->with('listPositions', $listPositions)
                 ->with('listDepartments', $listDepartments);
         } catch (Exception $e) {
-            dd($e);
+            // dd($e);
             $error = $e->getMessage();
             return view('CauHinh.danhMucDinhMuc')->with('listTargets', []);
         }
