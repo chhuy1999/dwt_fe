@@ -724,7 +724,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $item->id }}" data-repeater-delete>
+                                                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaVanDe{{ $item->id }}" data-repeater-delete>
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                             Xóa
                                                                         </a>
@@ -907,6 +907,28 @@
                     <button type="submit" class="btn btn-danger">Lưu</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="xoaVanDe{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa vấn đề này</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có thực sự muốn xoá vấn đề đã chọn không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                <form action="/bao-cao-van-de/{{$item->id}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
