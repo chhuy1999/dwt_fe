@@ -244,21 +244,21 @@
                                                         <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}" class="bg-white text-center">Nhật kí công việc</th>
                                                     </tr>
                                                     <tr>
-                                                        <th class="text-nowrap bg-blue-blur">STT</th>
-                                                        <th class="text-nowrap bg-blue-blur w-25">Mục tiêu nhiệm vụ</th>
-                                                        <th class="text-nowrap bg-blue-blur">Thời hạn</th>
-                                                        <th class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
+                                                        <th style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur">STT</th>
+                                                        <th style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur w-25">Mục tiêu nhiệm vụ</th>
+                                                        <th style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur">Thời hạn</th>
+                                                        <th style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
                                                         @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                             @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                                <th style="padding: 0 14px" scope="col" class="bg-warning bg-opacity-10 text-warning">
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                     {{ $i + 1 }}
                                                                 </th>
                                                             @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
-                                                                <th style="padding: 0 14px" scope="col" class="bg-danger bg-opacity-10 text-danger">
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                     {{ $i + 1 }}
                                                                 </th>
                                                             @else
-                                                                <th style="padding: 0 14px" scope="col">{{ $i + 1 }}</th>
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col">{{ $i + 1 }}</th>
                                                             @endif
                                                         @endfor
                                                     </tr>
@@ -266,12 +266,12 @@
                                                 <tbody>
                                                     @foreach ($myAssignedTasks->data as $task)
                                                         <tr>
-                                                            <td class="text-nowrap bg-blue-blur">
+                                                            <td  style="border:1px solid #dee2e6;" class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table">
                                                                     {{ $loop->iteration }}
                                                                 </div>
                                                             </td>
-                                                            <td class="text-nowrap bg-blue-blur">
+                                                            <td style="border:1px solid #dee2e6;"  class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
                                                                         {{ $task->name }}
@@ -280,18 +280,18 @@
 
 
                                                             </td>
-                                                            <td class="text-nowrap bg-blue-blur">
+                                                            <td style="border:1px solid #dee2e6;"  class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table">
                                                                     {{ date('d/m', strtotime($task->deadline)) }}
                                                                 </div>
                                                             </td>
-                                                            <td class="text-nowrap fw-bold bg-blue-blur">
+                                                            <td style="border:1px solid #dee2e6;"  class="text-nowrap fw-bold bg-blue-blur">
                                                                 <div class="progress-half">
                                                                     <div class="text-dark content_table">5</div>
                                                                 </div>
                                                             </td>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
+                                                                <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
                                                                     <div class="content_table">
                                                                         @foreach ($task->targetLogs as $targetLog)
                                                                             @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
@@ -315,22 +315,22 @@
                                         <table id="two_table" class="table table_style-fix m-0 bg-yellow-blur" style="width: 100%">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-nowrap bg-yellow-blur">STT</th>
-                                                    <th class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
+                                                    <th style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">STT</th>
+                                                    <th style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
                                                         sinh</th>
-                                                    <th class="text-nowrap bg-yellow-blur">Thời hạn</th>
-                                                    <th class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
+                                                    <th style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">Thời hạn</th>
+                                                    <th style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
                                                     @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                         @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                            <th style="padding: 0 14px" scope="col" class="bg-warning bg-opacity-10 text-warning">
+                                                            <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                 {{ $i + 1 }}
                                                             </th>
                                                         @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
-                                                            <th style="padding: 0 14px" scope="col" class="bg-danger bg-opacity-10 text-danger">
+                                                            <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                 {{ $i + 1 }}
                                                             </th>
                                                         @else
-                                                            <th style="padding: 0 14px" scope="col">{{ $i + 1 }}</th>
+                                                            <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col">{{ $i + 1 }}</th>
                                                         @endif
                                                     @endfor
                                                 </tr>
@@ -339,30 +339,30 @@
                                                 {{-- fixed-side bg-yellow-blur --}}
                                                 @foreach ($reportTasks->data as $reportTask)
                                                     <tr>
-                                                        <td class="text-nowrap bg-yellow-blur">
+                                                        <td style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">
                                                             <div class="content_table">
                                                                 {{ $loop->iteration }}
                                                             </div>
                                                         </td>
-                                                        <td class="text-nowrap bg-yellow-blur">
+                                                        <td style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">
                                                             <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
                                                                 <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
                                                                     {{ $reportTask->name }}
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td class="text-nowrap bg-yellow-blur">
+                                                        <td style="border:1px solid #dee2e6;" class="text-nowrap bg-yellow-blur">
                                                             <div class="content_table">
                                                                 {{ date('d/m', strtotime($reportTask->deadline)) }}
                                                             </div>
                                                         </td>
-                                                        <td class="text-nowrap fw-bold bg-yellow-blur">
+                                                        <td style="border:1px solid #dee2e6;" class="text-nowrap fw-bold bg-yellow-blur">
                                                             <div class="progress-half">
                                                                 <div class="text-dark content_table">5</div>
                                                             </div>
                                                         </td>
                                                         @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                            <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}" role="button" @endif>
+                                                            <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}" role="button" @endif>
                                                                 <div class="content_table">
 
                                                                     @if (findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->id > 0)
@@ -409,15 +409,15 @@
                                                             <th class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                                 @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                                    <th style="padding: 0 14px" scope="col" class="bg-warning bg-opacity-10 text-warning">
+                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                                         {{ $i + 1 }}
                                                                     </th>
                                                                 @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
-                                                                    <th style="padding: 0 14px" scope="col" class="bg-danger bg-opacity-10 text-danger">
+                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                                         {{ $i + 1 }}
                                                                     </th>
                                                                 @else
-                                                                    <th style="padding: 0 14px" scope="col">{{ $i + 1 }}</th>
+                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col">{{ $i + 1 }}</th>
                                                                 @endif
                                                             @endfor
                                                         </tr>
@@ -449,7 +449,7 @@
                                                                     </div>
                                                                 </td>
                                                                 @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                    <td style="padding: 0 14px" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
+                                                                    <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
                                                                         <div class="content_table">
                                                                             @foreach ($task->targetLogs as $targetLog)
                                                                                 @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
@@ -915,7 +915,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
-                                                        <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
+                                                        <input type="number" class="form-control" min="0" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
                                                     </div>
                                                     <div class="col-md-1 mb-3 d-flex align-items-center">
                                                         <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
@@ -934,7 +934,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-5 mb-3">
-                                                    <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                    <input type="number" class="form-control" min="0" placeholder="Giá trị" name="quantity" />
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
                                                     <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
@@ -1991,7 +1991,7 @@
 
 
         $('#three_table').DataTable({
-            scrollY: "150px",
+            scrollY: "165px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
