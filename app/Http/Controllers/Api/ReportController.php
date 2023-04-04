@@ -41,7 +41,7 @@ class ReportController extends Controller
     public function update($id, Request $request)
     {
         try {
-         
+
             $data = $request->validate([
                 'problem' => 'nullable',
                 'deadline' => 'required',
@@ -56,6 +56,16 @@ class ReportController extends Controller
 
             $result = $this->dwtService->updateReports($id, $data);
             return back()->with('success', 'Thêm mới thành công');
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            $result = $this->dwtService->deleteReports($id);
+            return back()->with('success', 'Xóa thành công');
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
