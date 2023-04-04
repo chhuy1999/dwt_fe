@@ -530,7 +530,7 @@
                                                 </thead>
                                                 <tbody>
                                                     {{-- fixed-side bg-yellow-blur --}}
-                                                    @foreach ($reportTasks->data as $reportTask)
+                                                    @foreach ($reportTaskAdmin->data as $reportTask)
                                                         <tr>
                                                             <td class="text-nowrap bg-yellow-blur">
                                                                 <div class="content_table">
@@ -923,13 +923,97 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                <form action="/bao-cao-van-de/{{$item->id}}" method="POST">
+                <form action="/bao-cao-van-de/{{ $item->id }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi muốn xóa</button>
                 </form>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="nhiemVuPhatSinh{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form action="{{ route('reportTask.store') }}", method="POST">
+            @csrf
+            {{-- to update status report id --}}
+            <input type="hidden" name="report_id" value="{{ $item->id }}">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Giao nhiệm vụ phát sinh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <input type="text" readonly class="form-control" value="{{ $item->problem }}" name="name">
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
+                                <input id="giaoNhiemVuPhatSinh" name="deadline" value="19/03/2023" class="form-control" type="text">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <textarea class="form-control" rows="1" placeholder="Mô tả/Diễn giải" name="description"></textarea>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manDay">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="user_id">
+                                @foreach ($listUsers->data as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
+                                @foreach ($listUsers->data as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <div class="repeater">
+                                <div data-repeater-list="kpiKeys">
+                                    <div class="row" data-repeater-item>
+                                        <div class="col-md-9 mb-3">
+                                            <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
+                                                @foreach ($kpiKeys as $key)
+                                                    <option value="{{ $key->id }}">{{ $key->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
+                                        </div>
+                                        <div class="col-md-1 mb-3 d-flex align-items-center">
+                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-start">
+                                        <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-danger">Giao</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 @endforeach

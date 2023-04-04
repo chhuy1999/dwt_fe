@@ -39,6 +39,7 @@ class DashboardController extends Controller
             $kpiKeys = $kpiKeys->data;
 
             $reportTasks = $this->dwtServices->searchReportTasks($user['id']);
+            $reportTaskAdmin = $this->dwtServices->searchReportTasks();
 
             $listReports = $this->dwtServices->searchReports("", $user['departement_id'], 1, 100);
             $listReports = $listReports->data;
@@ -51,6 +52,7 @@ class DashboardController extends Controller
                 ->with('listAssignedTasks', $listAssignedTasks)
                 ->with('myAssignedTasks', $myAssignedTasks)
                 ->with('reportTasks', $reportTasks)
+                ->with('reportTaskAdmin', $reportTaskAdmin)
                 ->with('listReports', $listReports)
                 ->with('listUsers', $listUsers)
                 ->with('kpiKeys', $kpiKeys);
