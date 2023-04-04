@@ -68,9 +68,9 @@
                                                         <td>
                                                             <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
                                                                 @foreach ($listDepartments->data as $dep)
-                                                                @if ($dep->id == $value->parent)
+                                                                @if ($dep->id == $value->department_id)
                                                                         {{ $dep->name }}
-            
+    
                                                                 @endif
                                                                 @endforeach
                                                             </div>
