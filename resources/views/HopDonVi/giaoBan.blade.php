@@ -412,13 +412,10 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body pb-4">
-                                    <div class="mb-2">
-                                        <div class="card-title">Đã được phản hồi</div>
-                                    </div>
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="repeater-hopPhongBan position-relative style_table-3">
-                                                <table class="table table-responsive table-hover table-bordered">
+                                            <div class="table-responsive position-relative">
+                                                <table id="dsDaDuocPhanHoi" class="table table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap" style="width: 2%">STT</th>
@@ -432,15 +429,15 @@
                                                                 Phân loại
                                                             </th>
                                                             <th class="text-nowrap" style="width: 10%">Người nêu</th>
-                                                            <th class="text-nowrap" style="width: 20%">Nguyên nhân</th>
-                                                            <th class="text-nowrap" style="width: 21%">
+                                                            <th class="text-nowrap" style="width: 15%">Nguyên nhân</th>
+                                                            <th class="text-nowrap" style="width: 15%">
                                                                 Hướng giải quyết
                                                             </th>
-                                                            <th class="text-nowrap" style="width: 4%">
+                                                            <th class="text-nowrap" style="width: 15%">
                                                                 Người đảm nhiệm
                                                             </th>
-                                                            <th class="text-nowrap" style="width: 6%">Thời hạn</th>
-                                                            <th class="border-0">Trạng thái</th>
+                                                            <th class="text-nowrap" style="width: 5%">Thời hạn</th>
+                                                            <th class="border-0 text-nowrap" style="width: 5%">Trạng thái</th>
                                                             <th class="border-start-0"></th>
                                                         </tr>
                                                     </thead>
@@ -453,7 +450,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->problem }}">
                                                                         {{ $item->problem }}
                                                                     </div>
                                                                 </td>
@@ -464,24 +461,25 @@
                                                                 </td>
                                                                 <td>
                                                                     <div>
-                                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
+                                                                        <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->user->name ?? '' }}">
                                                                             {{ $item->user->name ?? '' }}
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->reason }}">
                                                                         {{ $item->reason }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->solution }}">
                                                                         {{ $item->solution }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div>
+                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
                                                                         @foreach ($item->pics as $u)
+                                                                        
                                                                             {{ $u->name }},
                                                                         @endforeach
                                                                     </div>
@@ -491,7 +489,7 @@
                                                                         {{ date('d/m', strtotime($item->deadline)) }}
                                                                     </div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
                                                                     @switch($item->status)
                                                                         @case('Sent')
                                                                             Đã tiếp nhận
@@ -1541,6 +1539,34 @@
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
             dom: '<"dataTables_top justify-content-end align-items-center"f>rt<"dataTables_bottom"ip>',
+        });
+    </script>
+    <script>
+        $('#dsDaDuocPhanHoi').DataTable({
+            paging: true,
+            ordering: false,
+            order: [
+                [0, 'desc']
+            ],
+            language: {
+                info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+                infoEmpty: 'Hiện tại chưa có bản ghi nào',
+                search: 'Tìm kiếm biên bản',
+                paginate: {
+                    previous: '<i class="bi bi-caret-left-fill"></i>',
+                    next: '<i class="bi bi-caret-right-fill"></i>',
+                },
+                search: '',
+                searchPlaceholder: 'Tìm kiếm...',
+                zeroRecords: 'Không tìm thấy kết quả',
+            },
+            oLanguage: {
+                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+            },
+            dom: '<"dataTables_top justify-content-between align-items-center"<"card-titles-wrapper">f>rt<"dataTables_bottom"ip>',
+            $('div.card-titles-wrapper').html(`
+            <div class="card-title">Đã được phản hồi</div>
+            `);
         });
     </script>
 
