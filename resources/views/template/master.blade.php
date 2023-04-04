@@ -223,10 +223,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <a href="{{ route('position.list') }}" class="header_more-link">Danh sách vị
                                                     trí</a>
                                             </li>
-                                            <li class="header_more-item">
+                                            {{-- <li class="header_more-item">
                                                 <a href="{{ route('positionOri.list') }}" class="header_more-link">Danh sách cấp
                                                     tổ chức</a>
-                                            </li>
+                                            </li> --}}
                                             <li class="header_more-item">
                                                 <a href="{{ route('positionLevel.list') }}" class="header_more-link">Danh sách cấp
                                                     nhân sự</a>
