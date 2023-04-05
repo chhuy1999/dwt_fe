@@ -198,17 +198,11 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargetDetails($q = "", $page = 1, $limit = 30, $status = "", $userId = null, $startDate = null, $endDate = null)
+    public function searchKpiTargetDetails(array $params = [])
     {
         $url = $this->url . '/target-details';
-//        dd($url);
-        $response = $this->client->get($url, [
-            'q' => $q,
-            'page' => $page,
-            'limit' => $limit,
-            'status' => $status,
-            'user_id' => $userId
-        ]);
+        //        dd($url);
+        $response = $this->client->get($url, $params);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
         //get data from response
@@ -776,7 +770,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function createReport($data) {
+    public function createReport($data)
+    {
         $url = $this->url . '/reports';
         $response = $this->client->post($url, $data);
         //throw exception if response is not successful
@@ -787,7 +782,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchMeetingByCode($code) {
+    public function searchMeetingByCode($code)
+    {
         $url = $this->url . '/meetings';
         $response = $this->client->get($url, [
             'code' => $code
@@ -815,7 +811,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function createMeeting($data) {
+    public function createMeeting($data)
+    {
         $url = $this->url . '/meetings';
         $response = $this->client->post($url, $data);
         //throw exception if response is not successful
@@ -826,7 +823,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function updateMeeting($id, $data) {
+    public function updateMeeting($id, $data)
+    {
         $url = $this->url . '/meetings/' . $id;
         $response = $this->client->put($url, $data);
         //throw exception if response is not successful
@@ -837,7 +835,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function createReportTask($data) {
+    public function createReportTask($data)
+    {
         $url = $this->url . '/report-tasks';
         $response = $this->client->post($url, $data);
         //throw exception if response is not successful
@@ -848,7 +847,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchReportTasks($userId = null) {
+    public function searchReportTasks($userId = null)
+    {
         $url = $this->url . '/report-tasks';
         $response = $this->client->get($url, [
             'user_id' => $userId,
@@ -862,7 +862,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function createReportTaskLog($data) {
+    public function createReportTaskLog($data)
+    {
         $url = $this->url . '/report-tasks-logs';
         $response = $this->client->post($url, $data);
         //throw exception if response is not successful
@@ -873,7 +874,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function updateReportTaskLog($id, $data) {
+    public function updateReportTaskLog($id, $data)
+    {
         $url = $this->url . '/report-tasks-logs/' . $id;
         $response = $this->client->put($url, $data);
         //throw exception if response is not successful
@@ -884,7 +886,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function updateReportTask($id, $data) {
+    public function updateReportTask($id, $data)
+    {
         $url = $this->url . '/report-tasks/' . $id;
         $response = $this->client->put($url, $data);
         //throw exception if response is not successful

@@ -25,7 +25,11 @@ class AssignTaskController extends Controller
             //get list target
             $listTargets = $this->dwtService->searchKpiTargets("", 1, 9999);
             //get list assigned task
-            $listAssignTasks = $this->dwtService->searchKpiTargetDetails("", 1, 100, "assigned");
+            $listAssignTasks = $this->dwtService->searchKpiTargetDetails([
+                "page" => 1,
+                "limit" => 9999,
+                "status" => "assigned",
+            ]);
             // dd($listAssignTasks);
             $listUsers = $this->dwtService->listUsers();
             $listUsers = $listUsers->data;
@@ -95,7 +99,8 @@ class AssignTaskController extends Controller
         }
     }
 
-    public function unAssignTask($id, Request $request) {
+    public function unAssignTask($id, Request $request)
+    {
         try {
             $this->dwtService->unAssignTask($id);
             return back()->with('success', 'Hủy giao việc thành công');
@@ -104,6 +109,5 @@ class AssignTaskController extends Controller
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
-
     }
 }

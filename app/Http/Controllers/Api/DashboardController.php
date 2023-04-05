@@ -30,21 +30,40 @@ class DashboardController extends Controller
             $endDate = $currentYear . '-' . $currentMonth . '-31';
             //get list assigned task
             $user = session('user');
+            $searchDepartment_id = null;
+            if($user['role'] == 'manager'){
+                $searchDepartment_id = $user['departement_id'];
+            }
             $listAssignedTasks = $this->dwtServices
-                ->searchKpiTargetDetails("", 1, 100, "assigned", null, $startDate, $endDate);
+                ->searchKpiTargetDetails([
+                    "page" => 1,
+                    "limit" => 100,
+                    "startDate" => $startDate,
+                    "endDate" => $endDate,
+                    "status" => "assigned",
+                    "departement_id" => $searchDepartment_id
+                ]);
+
             $myAssignedTasks = $this->dwtServices
-                ->searchKpiTargetDetails("", 1, 100, "assigned", $user['id'], $startDate, $endDate);
+                ->searchKpiTargetDetails(
+                    [
+                        "page" => 1,
+                        "limit" => 100,
+                        "startDate" => $startDate,
+                        "endDate" => $endDate,
+                        "status" => "assigned",
+                        "user_id" => $user['id'],
+                    ]
+                );
 
             $myTotalKpi = 0;
-            for($i = 0; $i < count($myAssignedTasks->data); $i++)
-            {
+            for ($i = 0; $i < count($myAssignedTasks->data); $i++) {
                 $myTotalKpi += $myAssignedTasks->data[$i]->kpiValue;
             }
 
 
             $totalKpi = 0;
-            for($i = 0; $i < count($listAssignedTasks->data); $i++)
-            {
+            for ($i = 0; $i < count($listAssignedTasks->data); $i++) {
                 $totalKpi += $listAssignedTasks->data[$i]->kpiValue;
             }
 
