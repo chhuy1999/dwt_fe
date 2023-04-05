@@ -1446,7 +1446,7 @@
                                         nhân sự</span>
                                 </div>
                                 <div class="modal_items col-sm-6">
-                                    Điểm KPI tạm tính: <span class="text-danger">0 ₫</span>
+                                    Điểm KPI tạm tính: <span class="text-danger">{{$task->kpiValue}} ₫</span>
                                 </div>
                             </div>
                         </div>
@@ -2252,7 +2252,7 @@
                 <div class="card-title">Mục tiêu nhiệm vụ cá nhân</div>
                 <div class="mainSection_total-kpi">
                     Tổng KPI cá nhân tạm tính:
-                    <strong></strong>
+                    <strong>{!! $myTotalKpi !!}</strong>
                     KPI
                 </div>
 
@@ -2335,7 +2335,7 @@
                 <div class="card-title">Báo cáo ngày của đơn vị</div>
                 <div class="mainSection_total-kpi">
                     Tổng KPI bộ phận tạm tính:
-                    <strong>140</strong>
+                    <strong>{!! $totalKpi !!}</strong>
                     KPI
                 </div>
             </div>

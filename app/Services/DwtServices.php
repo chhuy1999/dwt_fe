@@ -13,11 +13,11 @@ class DwtServices
 {
 
     private mixed $client;
-    protected string $url = 'https://sdwtbe.sweetsica.com/api/v1';
+    protected string $url;
 
     public function __construct()
     {
-
+        $this->url = env('API_URL', '');
         //add middleware to attach token to request
         $this->client = Http::withMiddleware(
             Middleware::mapRequest(
