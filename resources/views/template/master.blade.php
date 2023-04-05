@@ -512,7 +512,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             <div class="col-sm-9 mb-3">
                                 <div data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
                                     <select class="form-select" title="Chọn đơn vị" id="report-dp" name="departement_id">
-
+                                        
                                     </select>
                                 </div>
                             </div>

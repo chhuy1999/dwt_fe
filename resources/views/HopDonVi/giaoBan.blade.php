@@ -248,8 +248,9 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="d-flex align-items-center justify-content-end mt-3"><button type="submit" class="btn btn-outline-danger">Xác
-                                                            nhận</button></div>
+                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                    <div class="d-flex align-items-center justify-content-end mt-3"><button type="submit" class="btn btn-outline-danger">Xác nhận</button></div>
+                                                    @endif
                                                 </form>
 
                                             </div>
@@ -258,10 +259,12 @@
                                             <div class="mb-2 d-flex justify-content-between align-items-center">
                                                 <div class="card-title d-flex align-items-center">
                                                     <div>Vấn đề tiếp nhận</div>
+                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                     <div class="card_action-wrapper ms-3">
                                                         <button role="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#vanDeThaoLuan">Chọn
                                                             vấn đề thảo luận</button>
                                                     </div>
+                                                    @endif
 
                                                 </div>
 
@@ -327,6 +330,7 @@
 
 
                                                 </div>
+                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                 <div class="col-12 mt-4">
                                                     <form id="commentForm">
                                                         <div class="d-flex align-items-center">
@@ -336,7 +340,7 @@
                                                         </div>
                                                     </form>
                                                 </div>
-
+                                                @endif
                                             </div>
                                         </div>
 
@@ -396,8 +400,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                     <div class="d-flex align-items-center justify-content-end"><button type="submit" class="btn btn-outline-danger">Tải
                                                             file</button></div>
+                                                    @endif
                                                 </form>
                                             </div>
                                         </div>
@@ -433,7 +439,10 @@
                                                             </th>
                                                             <th class="text-nowrap" style="width: 5%">Thời hạn</th>
                                                             <th class="border-0 text-nowrap" style="width: 5%">Trạng thái</th>
+                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+
                                                             <th class="border-start-0"></th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -507,6 +516,7 @@
                                                                     @endswitch
 
                                                                 </td>
+                                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                     </div>
@@ -534,6 +544,7 @@
 
                                                                     </ul>
                                                                 </td>
+                                                                @endif
                                                             </tr>
                                                         @endforeach
 
@@ -549,6 +560,8 @@
                         </div>
                     </div>
 
+
+                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                     <div class="col-lg-12 d-flex justify-content-end">
                         <div class="action_table-wrapper text-end mt-3 mb-3">
                             {{-- <a href="kho-luu-tru-bien-ban-hop"
@@ -562,6 +575,7 @@
                             <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
                         </div>
                     </div>
+                    @endif
                     {{-- <div class="col-lg-12 d-flex justify-content-end mb-3">
                         <div id='warning_notification' class="alert alert-warning alert-dismissible fade show border-left border-warning" role="alert">
                             <div class='d-flex align-items-center'>
@@ -652,6 +666,7 @@
         </div>
     </div>
     <!-- Modal Sửa Vấn Đề -->
+    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
     @foreach ($meeting->reports as $item)
         <div class="modal fade" id="suaVanDeTonDong{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -724,6 +739,7 @@
             </div>
         </div>
     @endforeach
+    @endif
 
     <!-- Modal duyệt biên bản họp -->
     <div class="modal fade" id="duyetbienbanhop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
