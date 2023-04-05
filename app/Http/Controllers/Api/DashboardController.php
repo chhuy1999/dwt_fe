@@ -35,6 +35,19 @@ class DashboardController extends Controller
             $myAssignedTasks = $this->dwtServices
                 ->searchKpiTargetDetails("", 1, 100, "assigned", $user['id'], $startDate, $endDate);
 
+            $myTotalKpi = 0;
+            for($i = 0; $i < count($myAssignedTasks->data); $i++)
+            {
+                $myTotalKpi += $myAssignedTasks->data[$i]->kpiValue;
+            }
+
+
+            $totalKpi = 0;
+            for($i = 0; $i < count($listAssignedTasks->data); $i++)
+            {
+                $totalKpi += $listAssignedTasks->data[$i]->kpiValue;
+            }
+
             $kpiKeys = $this->dwtServices->searchKpiKeys("", 1, 100);
             $kpiKeys = $kpiKeys->data;
 
@@ -55,6 +68,8 @@ class DashboardController extends Controller
                 ->with('reportTaskAdmin', $reportTaskAdmin)
                 ->with('listReports', $listReports)
                 ->with('listUsers', $listUsers)
+                ->with('myTotalKpi', $myTotalKpi)
+                ->with('totalKpi', $totalKpi)
                 ->with('kpiKeys', $kpiKeys);
         } catch (Exception $e) {
             dd($e);
