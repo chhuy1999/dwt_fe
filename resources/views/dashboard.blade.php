@@ -322,7 +322,7 @@
                                                             </td>
                                                             <td class="text-nowrap fw-bold bg-blue-blur">
                                                                 <div class="progress-half">
-                                                                    <div class="text-dark content_table">5</div>
+                                                                    <div class="text-dark content_table">{{$task->keysPassed}}</div>
                                                                 </div>
                                                             </td>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
@@ -393,7 +393,7 @@
                                                         </td>
                                                         <td class="text-nowrap fw-bold bg-yellow-blur">
                                                             <div class="progress-half">
-                                                                <div class="text-dark content_table">5</div>
+                                                                <div class="text-dark content_table"></div>
                                                             </div>
                                                         </td>
                                                         @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
@@ -481,7 +481,7 @@
                                                                 </td>
                                                                 <td class="fw-bold bg-blue-blur">
                                                                     <div class="progress-half">
-                                                                        <div class="text-dark content_table">5</div>
+                                                                        <div class="text-dark content_table">{{$task->keysPassed}}</div>
                                                                     </div>
                                                                 </td>
                                                                 @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
@@ -661,7 +661,7 @@
                                                         <td>
                                                             <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
                                                                 @foreach ($item->pics as $u)
-                                                                
+
                                                                     {{ $u->name }},
                                                                 @endforeach
                                                             </div>
@@ -1462,7 +1462,7 @@
                                     <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="{{ $task->managerComment }}">
                                     @else
                                     <input class="form-control" placeholder="Nhập nhận xét" readonly name="managerComment" value="{{ $task->managerComment }}">
-                                    
+
                                     @endif
                                 </div>
                                 <div class="col-sm-2 d-flex  align-items-center">

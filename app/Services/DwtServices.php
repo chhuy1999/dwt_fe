@@ -847,13 +847,10 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchReportTasks($userId = null)
+    public function searchReportTasks(array $params = [])
     {
         $url = $this->url . '/report-tasks';
-        $response = $this->client->get($url, [
-            'user_id' => $userId,
-            'limit' => 1000
-        ]);
+        $response = $this->client->get($url, $params);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
         //get data from response

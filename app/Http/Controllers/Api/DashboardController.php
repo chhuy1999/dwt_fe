@@ -70,8 +70,16 @@ class DashboardController extends Controller
             $kpiKeys = $this->dwtServices->searchKpiKeys("", 1, 100);
             $kpiKeys = $kpiKeys->data;
 
-            $reportTasks = $this->dwtServices->searchReportTasks($user['id']);
-            $reportTaskAdmin = $this->dwtServices->searchReportTasks();
+            $reportTasks = $this->dwtServices->searchReportTasks([
+                "page" => 1,
+                "limit" => 100,
+                "user_id" => $user['id']
+            ]);
+            $reportTaskAdmin = $this->dwtServices->searchReportTasks([
+                "page" => 1,
+                "limit" => 100,
+                "departement_id" => $searchDepartment_id
+            ]);
 
             $listReports = $this->dwtServices->searchReports("", $user['departement_id'], 1, 100);
             $listReports = $listReports->data;
