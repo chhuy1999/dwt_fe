@@ -603,28 +603,24 @@
                                                     <th class="text-nowrap" style="width: 20%">
                                                         <div class="d-flex justify-content-between">
                                                             Vấn đề tồn đọng
-                                                            {{-- <div>
-                                                                            <i class="bi bi-chat-right-text" style="font-size:1.4rem"></i>
-                                                                        </div> --}}
-
                                                         </div>
                                                     </th>
                                                     <th class="text-nowrap" style="width: 8%">
                                                         Phân loại
                                                     </th>
                                                     <th class="text-nowrap" style="width: 10%">Người nêu</th>
-                                                    <th class="text-nowrap" style="width: 20%">Nguyên nhân</th>
-                                                    <th class="text-nowrap" style="width: 21%">
+                                                    <th class="text-nowrap" style="width: 15%">Nguyên nhân</th>
+                                                    <th class="text-nowrap" style="width: 15%">
                                                         Hướng giải quyết
                                                     </th>
 
-                                                    <th class="text-nowrap" style="width: 4%">
+                                                    <th class="text-nowrap" style="width: 15%">
                                                         Người đảm nhiệm
                                                     </th>
-                                                    <th class="text-nowrap" style="width: 6%">Thời hạn</th>
+                                                    <th class="text-nowrap" style="width: 5%">Thời hạn</th>
 
                                                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                        <th class="border-0 text-nowrap">Trạng thái</th>
+                                                        <th class="border-0 text-nowrap" style="width: 5%">Trạng thái</th>
                                                         <th class="border-start-0"></th>
                                                     @else
                                                         <th class="border-start-0"></th>
@@ -640,35 +636,32 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->problem }}">
                                                                 {{ $item->problem }}
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div>
-                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
+                                                            <div class="text-nowrap d-inline-block text-truncate" value="Giải quyết">Giải quyết</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:90px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->user->name ?? '' }}">
+                                                                {{ $item->user->name ?? '' }}
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div>
-                                                                <div type="text-nowrap d-inline-block text-truncate" class="form-control border-0 bg-transparent" value="Nguyễn Ngọc Bảo">
-                                                                    {{ $item->user->name ?? '' }}
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:230px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->reason }}">
                                                                 {{ $item->reason }}
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->solution }}">
                                                                 {{ $item->solution }}
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div>
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
                                                                 @foreach ($item->pics as $u)
+                                                                
                                                                     {{ $u->name }},
                                                                 @endforeach
                                                             </div>
@@ -2211,7 +2204,7 @@
             scrollY: "165px",
             scrollX: true,
             scrollCollapse: true,
-            paging: false,
+            paging: true,
             pageLength: 10,
             ordering: false,
             order: [
@@ -2262,7 +2255,7 @@
             scrollY: "165px",
             scrollX: true,
             scrollCollapse: true,
-            paging: false,
+            paging: true,
             pageLength: 10,
             ordering: false,
             order: [
@@ -2283,25 +2276,17 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
-            dom: '<"d-flex justify-content-between align-items-center mb-3"<"two-title-wrapper-left"><"d-flex "f<"two-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex justify-content-end align-items-center mb-3"<"two-title-wrapper-left"><"d-flex "f>>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
                 left: 4,
             }
         });
-        $('div.two-title-wrapper-right').html(`
-            <div class="action_wrapper d-flex">
-                <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
-                    <button class="btn-export"><i class="bi bi-download"></i></button>
-                </div>
-            </div>
-        `);
-
 
         $('#three_table').DataTable({
             scrollY: "165px",
             scrollX: true,
             scrollCollapse: true,
-            paging: false,
+            paging: true,
             pageLength: 10,
             ordering: false,
             order: [
@@ -2349,7 +2334,10 @@
 
 
         $('#four_table').DataTable({
-            paging: false,
+            scrollY: "150px",
+            scrollX: true,
+            scrollCollapse: true,
+            paging: true,
             pageLength: 10,
             ordering: false,
             order: [
@@ -2371,9 +2359,12 @@
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
             dom: '<"d-flex justify-content-end align-items-center mb-3"<"d-flex "f>>rt<"dataTables_bottom  justify-content-end"p>',
+            fixedColumns: {
+                left: 4,
+            }
         });
         $('#dsVanDe').DataTable({
-            paging: false,
+            paging: true,
             pageLength: 10,
             ordering: false,
             order: [

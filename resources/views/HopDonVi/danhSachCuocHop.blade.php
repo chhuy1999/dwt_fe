@@ -437,7 +437,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    {{-- <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger ps-5 pe-5" data-bs-dismiss="modal">Hủy</button>
                         <form action="/giao-ban/{{ $meeting->id }}" method="POST">
                             @csrf
@@ -445,7 +445,7 @@
                             <input type="hidden" name="status" value="1">
                             <button type="submit" class="btn btn-danger">Xác nhận</button>
                         </form>
-                    </div>
+                    </div> --}}
 
 
                 </div>
