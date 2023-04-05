@@ -259,7 +259,7 @@
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="mainSection_heading">
                         <h5 class="mainSection_heading-title">Nhật trình công việc</h5>
                         @include('template.components.sectionCard')
@@ -740,7 +740,7 @@
                 @endif
 
 
-
+{{-- Chart --}}
                 <div class="col-lg-12 mt-3">
                     <div class="card" style="display: -webkit-box;">
                         <div class="col-lg-3">
@@ -1458,12 +1458,19 @@
                             <div class="modal_list row">
 
                                 <div class="col-sm-10 d-flex  align-items-center">
+                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                     <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="{{ $task->managerComment }}">
-
+                                    @else
+                                    <input class="form-control" placeholder="Nhập nhận xét" readonly name="managerComment" value="{{ $task->managerComment }}">
+                                    
+                                    @endif
                                 </div>
                                 <div class="col-sm-2 d-flex  align-items-center">
+                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                     <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="{{ $task->managerManDay }}">
-
+                                    @else
+                                    <input placeholder="Điểm KPI" class="form-control" readonly name="managerManDay" value="{{ $task->managerManDay }}">
+                                    @endif
                                 </div>
 
 
@@ -1547,11 +1554,13 @@
                         </div>
                     </div>
                 </div>
+                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
                     <button type="submit" class="btn btn-danger">Lưu</button>
 
                 </div>
+                @endif
             </form>
         </div>
     </div>
@@ -1856,12 +1865,18 @@
                             <div class="modal_list row">
 
                                 <div class="col-sm-10 d-flex  align-items-center">
+                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                     <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="{{ $reportTask->managerComment }}">
-
+                                    @else
+                                    <input class="form-control" placeholder="Nhập nhận xét" name="managerComment" value="{{ $reportTask->managerComment }}">
+                                    @endif
                                 </div>
                                 <div class="col-sm-2 d-flex  align-items-center">
+                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                     <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="{{ $reportTask->managerManDay }}">
-
+                                    @else
+                                    <input placeholder="Điểm KPI" class="form-control" name="managerManDay" value="{{ $reportTask->managerManDay }}">
+                                    @endif
                                 </div>
 
 
@@ -1943,11 +1958,13 @@
                         </div>
                     </div>
                 </div>
+                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
                     <button type="submit" class="btn btn-danger">Lưu</button>
 
                 </div>
+                @endif
             </form>
 
         </div>
@@ -2201,10 +2218,10 @@
 <script>
     $(document).ready(function() {
         $('#main_table').DataTable({
-            scrollY: "165px",
+            scrollY: "170px",
             scrollX: true,
             scrollCollapse: true,
-            paging: true,
+            paging: false,
             pageLength: 10,
             ordering: false,
             order: [
@@ -2225,7 +2242,7 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
-            dom: '<"d-flex justify-content-between align-items-center mb-3"<"main-title-wrapper-left"><"d-flex "f<"main-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex justify-content-between align-items-center hidden mb-3"<"main-title-wrapper-left"><"d-flex "f<"main-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
                 left: 4,
             }
@@ -2252,10 +2269,10 @@
 
 
         $('#two_table').DataTable({
-            scrollY: "165px",
+            scrollY: "150px",
             scrollX: true,
             scrollCollapse: true,
-            paging: true,
+            paging: false,
             pageLength: 10,
             ordering: false,
             order: [
@@ -2276,17 +2293,17 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
-            dom: '<"d-flex justify-content-end align-items-center mb-3"<"two-title-wrapper-left"><"d-flex "f>>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex justify-content-end align-items-center mb-3"<"two-title-wrapper-left">>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
                 left: 4,
             }
         });
 
         $('#three_table').DataTable({
-            scrollY: "165px",
+            scrollY: "170px",
             scrollX: true,
             scrollCollapse: true,
-            paging: true,
+            paging: false,
             pageLength: 10,
             ordering: false,
             order: [
@@ -2337,7 +2354,7 @@
             scrollY: "150px",
             scrollX: true,
             scrollCollapse: true,
-            paging: true,
+            paging: false,
             pageLength: 10,
             ordering: false,
             order: [
@@ -2358,11 +2375,14 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ bản ghi',
             },
-            dom: '<"d-flex justify-content-end align-items-center mb-3"<"d-flex "f>>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex justify-content-end align-items-center mb-3">rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
                 left: 4,
             }
         });
+
+
+
         $('#dsVanDe').DataTable({
             paging: true,
             pageLength: 10,

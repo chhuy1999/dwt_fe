@@ -28,7 +28,9 @@
                                                             <th style="width: 20%">Tên chỉ số key</th>
                                                             <th style="width: 66%">Mô tả</th>
                                                             <th style="width: 10%">Đơn vị tính</th>
+                                                            @if (session('user')['role'] == 'admin')
                                                             <th style="width: 2%"></th>
+                                                            @endif
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -55,9 +57,11 @@
                                                                     </div>
 
                                                                 </td>
+                                                                @if (session('user')['role'] == 'admin')
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                     </div>
+
                                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                         <li>
                                                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={{ '#suaChiSoKey' . $key->id }}>
@@ -73,6 +77,7 @@
                                                                         </li>
                                                                     </ul>
                                                                 </td>
+                                                                @endif
                                                             </tr>
                                                             <!-- Modal Sửa chỉ số key -->
                                                             <div class="modal fade" id="{{ 'suaChiSoKey' . $key->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,6 +150,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
                                                         @endforeach
                                                     </tbody>
                                                 </table>

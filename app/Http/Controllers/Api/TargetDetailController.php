@@ -9,9 +9,8 @@ use Illuminate\Http\Request;
 
 class TargetDetailController extends Controller
 {
-    //init serviceS
     private $dwtService;
-    //constructor
+    //contructor
     public function __construct()
     {
         // $this->middleware('auth');
