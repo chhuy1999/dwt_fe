@@ -551,68 +551,82 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm cơ cấu tổ chức</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM CƠ CẤU</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form action="" method="">
-                        @csrf
+
+                <form action="{{ route('department.store') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập tên cơ cấu tổ chức">
+                                <input class="form-control" required type="text" placeholder="Nhập Tên đơn vị *" name="name">
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập mã tổ chức">
+                                <input class="form-control" required type="text" placeholder="Nhập Mã đơn vị *" name="code">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" title="Chọn đơn vị mẹ">
-                                    <option>CTCP Mastertran</option>
-                                    <option>CTCP Thái Bình Hưng Thịnh</option>
+                                <select class="selectpicker" required placeholder="Chọn đơn vị mẹ *" data-size="5" title="Chọn đơn vị mẹ " data-actions-box="true"
+                                    data-live-search="true"
+                                    data-live-search-placeholder="Tìm kiếm..." name="parent">
+                                        @foreach ($listDepartments->data as $value)
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                         @endforeach
+                                    </select>
+                            </div>
+                            <div class="col-sm-6 mb-3 d-flex">
+                                <div class="col-sm-12">
+                                    <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%"
+                                    data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                    data-size="5">
+                                        <option>Công ty con</option>
+                                        <option>Chi nhánh</option>
+                                        <option>Văn phòng đại diện</option>
+                                        <option>Văn phòng</option>
+                                        <option>Trung tâm</option>
+                                        <option>Phòng ban</option>
+                                        <option>Nhóm/tổ/đội</option>
+                                        <option>Phân xưởng</option>
+                                        <option>Nhà máy</option>
+                                        <option>Công ty thành viên</option>
+                                    </select>
+                                </div>
+                                {{-- <div class="col-sm-1">
+                                    <div class="modal_list-more" data-bs-toggle="modal"
+                                    data-bs-target="#danhsachCapToChuc">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </div>
+                                </div> --}}
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <select class="selectpicker" required title="Chọn trưởng đơn vị" data-width="100%"
+                                data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
+                                data-size="3" name="in_charge">
+                                    @foreach ($listUsers->data as $value)
+                                        <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" title="Chọn cấp tổ chức">
-                                    <option>Công ty con</option>
-                                    <option>Chi nhánh</option>
-                                    <option>Văn phòng đại diện</option>
-                                    <option>Văn phòng</option>
-                                    <option>Trung tâm</option>
-                                    <option>Phòng ban</option>
-                                    <option>Nhóm/tổ/đội</option>
-                                    <option>Phân xưởng</option>
-                                    <option>Nhà máy</option>
-                                    <option>Công ty thành viên</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" title="Chọn trưởng đơn vị">
-                                    <option>Nguyễn Ngọc Bảo</option>
-                                    <option>Đặng Nguyễn Lam Mai</option>
-                                    <option>Hồ Thị Hồng Vân</option>
-                                    <option>Nguyễn Thị Ngọc Lan</option>
-                                    <option>Nguyễn Thị Hồng Oanh</option>
-                                    <option>Hà Nguyễn Minh Hiếu</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính">
+                                <input class="form-control" type="text" placeholder="Nhập trụ sở chính *">
                             </div>
                             <div class="col-sm-12 mb-3">
-                                <textarea name="" id="" class="form-control" placeholder="Nhập chức năng nhiệm vụ"></textarea>
+                                <textarea class="form-control" placeholder="Nhập chức năng, nhiệm vụ đơn vị" name="description"></textarea>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-target="#themThanhVien" data-bs-toggle="modal" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    {{-- Modal Them thanh vien --}}
+    {{-- Modal Them thanh vien --}} 
+    
     <div class="modal fade" id="themThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -645,35 +659,35 @@
                                     </div>
 
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" required   type="password" name="password"
-                                            placeholder="Mật khẩu *">
+                                        <input class="form-control" type="password" name="password"
+                                            placeholder="Mật khẩu">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control"   type="tel" placeholder="SĐT cá nhân" name="phone">
+                                        <input class="form-control"  type="tel" placeholder="SĐT cá nhân" name="phone">
                                     </div>
 
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="row">
                                         <div class="col-sm-5 mb-2">
-                                            <select class="selectpicker" required placeholder="Giới tính" title="Giới tính"
+                                            <select class="selectpicker" placeholder="Giới tính" title="Giới tính"
                                                 name="sex">
-                                                <option value="male">Nam</option>
+                                                <option value="male" selected>Nam</option>
                                                 <option value="female">Nữ</option>
                                             </select>
                                         </div>
 
                                         <div class="col-sm-7 mb-2 position-relative">
-                                            <input id="createUser" required placeholder="Ngày sinh" class="form-control"
+                                            <input id="createUser" placeholder="Ngày sinh" class="form-control"
                                                 type="text" name="dob" autocomplete="nope">
                                             <i class="bi bi-calendar-plus style_pickdate"></i>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" placeholder="Email liên hệ" name="email">
+                                        <input class="form-control" type="text" placeholder="Email liên hệ">
                                     </div>
                                     <div class="col-sm-12 mb-2">
-                                        <input class="form-control" type="text" required placeholder="Địa chỉ liên hệ *"
+                                        <input class="form-control" type="text" placeholder="Địa chỉ liên hệ"
                                             name="address">
                                     </div>
 
@@ -692,39 +706,47 @@
 
                                 <div class="col-sm-4 mb-2">
                                     <input class="form-control"  type="tel"
-                                        required placeholder="SĐT liên hệ *" name="company_phone">
+                                        placeholder="SĐT liên hệ" name="company_phone">
                                 </div>
 
                                 <div class="col-sm-4 mb-2">
-                                    <input class="form-control" required  type="email" placeholder="Email công ty *"
-                                        name="company_email">
-                                </div>
-
-                                <div class="col-sm-6 mb-2">
-                                    <select id="onchangeDonViCongTac" class="selectpicker" required data-live-search="true" name="departement_id"
-                                        data-width="100%" title="Đơn vị công tác *"
-                                        data-live-search-placeholder="Tìm kiếm..." data-size="5">
-                                        @foreach ($listDepartments->data as $dep)
-                                            <option value="{{ $dep->id }}">{{ $dep->name }}</option>
-                                        @endforeach
-                                        <option value="themCoCauToChuc" class="text-danger bg-white">+ Thêm mới</option>
-                                    </select>
+                                    <input class="form-control" type="email" placeholder="Email công ty *"
+                                        name="email">
                                 </div>
 
                                 <div class="col-sm-6 mb-2">
                                     <div class="d-flex align-items-center">
-                                        <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level_id"
+                                        <select id="onchangeDonViCongTac" class="selectpicker" data-live-search="true" name="departement_id"
+                                            data-width="100%" title="Đơn vị công tác"
+                                            data-live-search-placeholder="Tìm kiếm..." data-size="5">
+                                            @foreach ($listDepartments->data as $dep)
+                                                <option value="{{ $dep->id }}">{{ $dep->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#themCoCauToChuc">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <select id="onchangeCapNhanSu" class="selectpicker" title="Cấp nhân sự" name="position_level_id"
                                             data-width="100%" data-live-search="true"
                                             data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                             @foreach ($listPositionLevel->data as $pl)
                                                 <option value="{{ $pl->id }}">{{ $pl->name }}</option>
                                             @endforeach
-                                            <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
+                                            {{-- <option value="themCapNhanSu" class="text-danger">
+                                                <button class="btn btn-danger d-block" data-bs-toggle="modal"
+                                                 data-bs-target="#themThanhVien">Thêm</button>
+                                            </option> --}}
                                         </select>
-                                        {{-- <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachCapToChuc">
+                                        <div class="modal_list-more" data-bs-toggle="modal"
+                                            data-bs-target="#themCapNhanSu">
                                             <i class="bi bi-three-dots-vertical"></i>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -732,18 +754,18 @@
                                     <div class="">
                                         <div class="d-flex align-items-center">
 
-                                            <select required class="selectpicker"
-                                                title="Vị trí/Chức danh *" name="position_id" data-width="100%"
+                                            <select class="selectpicker"
+                                                title="Vị trí/Chức danh" name="position_id" data-width="100%"
                                                 data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
                                                 data-size="5">
                                                 @foreach ($listPositions->data as $p)
                                                     <option value="{{ $p->id}}">{{ $p->name }}</option>
                                                 @endforeach
                                             </select>
-                                            {{-- <div class="modal_list-more" data-bs-toggle="modal"
-                                                data-bs-target="#danhsachVitriChucdanh">
+                                            <div class="modal_list-more" data-bs-toggle="modal"
+                                                data-bs-target="#themDSThemViTri">
                                                 <i class="bi bi-three-dots-vertical"></i>
-                                            </div> --}}
+                                            </div>
 
                                         </div>
                                     </div>
@@ -799,6 +821,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Modal Danh sach phong ban -->
     <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -2343,140 +2366,103 @@
     </div>
 
     <!-- Modal Them Vi Tri chức danh -->
-    <div class="modal fade" id="themViTriChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">THÊM Vị trí/Chức danh</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+    <div class="modal fade" id="themDSThemViTri" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="exampleModalLabel">THÊM Vị trí/Chức danh</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-                <form action="/danh-sach-vi-tri" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Mã vị trí<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" placeholder="Nhập mã vị trí">
-                                    </div>
-                                </div>
-                            </div>
+            <form action="{{ route('position.store') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <input class="form-control" type="text" required placeholder="Nhập mã vị trí *">
+                        </div>
 
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Tên vị trí<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" placeholder="Nhập tên vị trí" name="name">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Đơn vị công tác<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8 d-flex align-items-center" >
-                                        <select class="selectpicker" title="Chọn đơn vị công tác">
-                                            <option>Cung ứng</option>
-                                            <option>Trade Marketing</option>
-                                            <option>Digital Marketing</option>
-                                            <option>Truyền thông</option>
-                                            <option>Quản trị Nhãn/Đào tạo</option>
-                                            <option>Kho & Giao vận</option>
-                                            <option>Hành chính nhân sự</option>
-                                            <option>Kế toán</option>
-                                            <option>Tài chính</option>
-                                            <option>Dịch vụ bán hàng</option>
-                                            <option>Kinh doanh OTC</option>
-                                            <option>Kinh doanh ETC</option>
-                                            <option>Kinh doanh MT</option>
-                                            <option>Kinh doanh online</option>
-                                        </select>
-                                        <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachPhongBan">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Cấp nhân sự<span class="text-danger">*</span></div>
-                                    </div>
-                                    <div class="col-sm-8 d-flex align-items-center">
-                                        <select class="selectpicker" title="Chọn cấp nhân sự">
-                                            <option>Chủ tịch HĐQT</option>
-                                            <option>Tổng Giám đốc</option>
-                                            <option>Phó Tổng Giám đốc</option>
-                                            <option>Giám đốc điều hành</option>
-                                            <option>Quản lý cấp cao</option>
-                                            <option>Quản lý cấp trung</option>
-                                            <option>Trưởng phòng</option>
-                                            <option>Phó phòng</option>
-                                            <option>Trưởng nhóm</option>
-                                            <option>Chuyên viên</option>
-                                            <option>Nhân viên</option>
-                                        </select>
-                                        <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachChucDanh">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Định biên<span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="number" name="max_employees">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Quỹ lương năm<span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" name="salary_fund"  />
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Gói trang bị<span class="text-danger">*</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="text" readonly />
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-sm-6 mb-3">
+                            <input class="form-control" required type="text" placeholder="Nhập tên vị trí *"
+                                name="name">
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                                <select class="selectpicker"
+                                required
+                                name="parent"
+                                title="Chọn đơn vị công tác *"
+                                data-width="100%"
+                                data-live-search="true"
+                                data-live-search-placeholder="Tìm kiếm..."
+                                data-size="5">
+                                @foreach ($listDepartments->data as $dep)
+                                    @if ($dep->id == $value->parent)
+                                        <option
+                                            value="{{ $value->parent }}" >
+                                            {{ $dep->name }}
+                                        </option>
+                                    @else
+                                        <option
+                                            value="{{ $value->parent }}">
+                                            {{ $dep->name }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>    
+                        </div>
+                        
+                        <div class="col-sm-6 mb-3">
+                            <select id="onchangeCapNhanSu" class="selectpicker"
+                                required
+                                placeholder="Chọn cấp nhân sự *"
+                                name="position_level"
+                                title="Chọn cấp nhân sự "
+                                data-width="100%"
+                                data-live-search="true"
+                                data-live-search-placeholder="Tìm kiếm..."
+                                data-size="5">
+                                @foreach ($listPositionLevel->data as $level)
+                                    @if ($level->id != $value->position_level)
+                                        <option
+                                            value="{{ $value->position_level }}">
+                                            {{ $level->name }}
+                                        </option>
+                                    @else
+                                        <option
+                                            value="{{$value->position_level }}">
+                                            {{ $level->name }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                                <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
+                            </select>    
+                        </div>
+                        <div class="col-sm12 mb-3">
+                            <textarea class="form-control" name="description" placeholder="Nhập mô tả công việc"></textarea>
+                        </div>
+                        <div class="col-sm-4 mb-3">
+                            <input class="form-control" required type="number" min="0" name="max_employees"
+                                placeholder="Định biên *">
+                        </div>
+                        <div class="col-sm-4 mb-3">
+                            <input class="form-control" required type="number" min="0" name="salary_fund"
+                                placeholder="Quỹ lương năm *" />
+                        </div>
+                        <div class="col-sm-4 mb-3">
+                            <input class="form-control" placeholder="Gói trang bị" type="text" readonly />
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Hủy</button>
-                        <button type="submit" class="btn btn-danger">Lưu</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-target="#themThanhVien" data-bs-toggle="modal" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-danger">Lưu</button>
+                </div>
 
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 
     <!-- Modal Them cấp nhân sự-->
     <div class="modal fade" id="themCapNhanSu" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -2488,21 +2474,21 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="/danh-sach-cap-nhan-su" method="POST">
+                <form action="{{ route('positionLevel.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập mã cấp nhân sự">
+                                <input class="form-control" type="text" placeholder="Mã cấp nhân sự">
                             </div>
-
+    
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập tên cấp nhân sự" name="name">
+                                <input class="form-control" required type="text" placeholder="Tên cấp nhân sự *" name="name">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-target="#themThanhVien" data-bs-toggle="modal" data-bs-dismiss="modal" >Hủy</button>
                         <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
 
