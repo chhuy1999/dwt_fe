@@ -60,32 +60,19 @@ class UsersController extends Controller
             // dd($request);
             $data = $request->validate([
                 'name' => 'required',
-                'password' => 'required',
-                'phone' => 'nullable|numeric',
-                'sex' => 'required',
-                'dob' => 'required',
-                'email' => 'nullable',
-                'address' => 'required',
-                'company_email' => 'required',
                 'code' => 'required',
-                'company_phone' => 'required|numeric',
-                'departement_id' => 'required',
-                'position_id' => 'required',
-                'position_level_id' => 'required',
-                'manager_id' => 'nullable',
-                'equipment_pack_id' => 'nullable',
-                'working_form' => 'nullable',
-                'status' => 'nullable',
+                'email' => 'nullable',
 
             ]);
             //format fe date to api required date dd/mm/yyyy to yyyy-MM-DD
             //replace / to -
 
-            // $dob = Carbon::parse($request['dob'])->format('d/m/Y H:i:s');
+            // $dob = Carbon::parse($request['dob'])->format('d/m/Y H:i:s')
+            
 
-            $data['dob'] = date('Y-m-d', strtotime($data['dob']));
+            $data['dob'] = date('Y-m-d');;
 
-
+            // dd($data);
             //update the dob to send to api
 
             // $data['dob'] = '30/03/2023 00:00:00';
@@ -104,7 +91,7 @@ class UsersController extends Controller
             $this->dwtService->createUser($data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
-            // dd($e);
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
