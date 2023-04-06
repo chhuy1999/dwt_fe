@@ -14,7 +14,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <title>@yield('title') - Thái Bình Hưng Thịnh</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
