@@ -4,6 +4,11 @@
 
 @section('header-style')
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
+    <style>
+        .sidebarBody {
+            overflow: auto;
+        }
+    </style>
 @endsection
 
 @section('content')
