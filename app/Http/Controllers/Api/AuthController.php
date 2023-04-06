@@ -29,6 +29,7 @@ class AuthController extends Controller
 
             $response = $this->dwtServices->login($request->email, $request->password);
             $token = $response['token'];
+       
             $request->session()->put('token', $token);
             $user = $response['user'];
             $request->session()->put('user', $user);
@@ -54,6 +55,8 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->session()->flush();
+        //unvalidate session
+        $request->session()->regenerate();
         return redirect('/login');
     }
 }

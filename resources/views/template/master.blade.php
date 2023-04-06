@@ -512,7 +512,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             <div class="col-sm-9 mb-3">
                                 <div data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
                                     <select class="form-select" title="Chọn đơn vị" id="report-dp" name="departement_id">
-                                        
+
                                     </select>
                                 </div>
                             </div>
@@ -658,7 +658,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manDay">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select class="selectpicker" data-live-search="true" data-size="5"  id="" title="Người đảm nhiệm" name="user_id">
+                                <select class="selectpicker" data-live-search="true" data-size="5" id="" title="Người đảm nhiệm" name="user_id">
                                     @foreach ($global_users as $u)
                                         <option value="{{ $u->id }}">{{ $u->name }}</option>
                                     @endforeach
@@ -710,6 +710,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         </div>
     </div>
 
+    <script>
+        //IMPORTANT: GLOBAL VARIABLE CAN USE EVERY WHERE
+        const JWT_TOKEN = "{!! session()->get('token') !!}";
+        const USER = {!! json_encode(session()->get('user')) !!};
+        const API_URL = "{!! env('API_URL') !!}";
+    </script>
+
     {{-- momemtjs --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Vendor JS Files -->
@@ -725,16 +732,17 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     @yield('footer-script')
     <script>
-        let jwtToken2 = "{!! session()->get('token') !!}";
-
-
+        //IMPORTANT: GLOBAL VARIABLE CAN USE EVERY WHERE
+        // const JWT_TOKEN = "{!! session()->get('token') !!}";
+        // const USER = {!! json_encode(session()->get('user')) !!};
+        // const API_URL
         // get list departments
         const fetchListDeparments = async () => {
             try {
-                const resp = await fetch("https://sdwtbe.sweetsica.com/api/v1/departments", {
+                const resp = await fetch(API_URL + "/departments", {
                     method: "GET",
                     headers: {
-                        'Authorization': 'Bearer ' + jwtToken2,
+                        'Authorization': 'Bearer ' + JWT_TOKEN,
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     }
@@ -767,10 +775,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         const userSelect = document.getElementById('user-select');
         const fetchUsers = async () => {
             try {
-                const resp = await fetch("https://sdwtbe.sweetsica.com/api/v1/users", {
+                const resp = await fetch(API_URL + "/users", {
                     method: "GET",
                     headers: {
-                        'Authorization': 'Bearer ' + jwtToken2,
+                        'Authorization': 'Bearer ' + JWT_TOKEN,
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     }
