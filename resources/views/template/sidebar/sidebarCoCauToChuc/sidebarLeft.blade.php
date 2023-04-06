@@ -25,11 +25,11 @@
                             <label class="d-flex" for="all"></label>
                             <span class="clicktree d-block" style="padding-left: 20px" data-href="#body_content-1"> Công ty Cổ phần Mastertran</span>
                             <ul class="tree_sublist">
-                                {{-- <li class="section tree_sublist-item">
+                                <li class="section tree_sublist-item">
                                     <input type="checkbox" id="groupA">
                                     <label class="d-flex" for="groupA"></label>
                                     <span class="clicktree d-block" data-href="#body_content-2">Khối Kinh doanh</span>
-                                    <ul class="tree_sublist-more">
+                                    {{-- <ul class="tree_sublist-more">
                                         <li class="tree_sublist-more-item">
                                             <input type="checkbox" id="groupOTC">
                                             <label class="d-flex" for="groupOTC"></label>
@@ -51,9 +51,9 @@
                                         <li class="tree_sublist-more-item">Kinh doanh ETC</li>
                                         <li class="tree_sublist-more-item">Kinh doanh MT</li>
                                         <li class="tree_sublist-more-item">Kinh doanh Online</li>
-                                    </ul>
-                                </li> --}}
-                                {{-- <li class="section tree_sublist-item">
+                                    </ul> --}}
+                                </li>
+                                <li class="section tree_sublist-item">
                                     <input type="checkbox" id="groupB">
                                     <label class="d-flex" for="groupB"></label>
                                     <span class="clicktree d-block" data-href="#body_content-3">Khối Marketing</span>
@@ -63,25 +63,9 @@
                                         <li class="tree_sublist-more-item">Trade Marketing</li>
                                         <li class="tree_sublist-more-item">Truyền thông nội bộ</li>
                                     </ul>
-                                </li> --}}
-                                @foreach($data->data as $treeValue)
-                                <li class="section tree_sublist-item">
-                                    <input type="checkbox" id="group{{ $treeValue->id }}">
-                                    <label class="d-flex" for="group{{ $treeValue->id }}"></label>
-                                    {{-- <span class="clicktree d-block" data-href="">Khối văn phòng</span> --}}
-                                    <span class="clicktree d-block" data-href="#body_content-3">{{ $treeValue->name }}</span>
-                                    {{-- <ul class="tree_sublist-more"> --}}
-                                        {{-- @foreach($treeValue as $treeSub)
-                                        <li class="tree_sublist-more-item">{{ $treeSub->name }}</li>
-                                        @endforeach --}}
-                                        {{-- <li class="tree_sublist-more-item">Quản trị nhãn & Đào tạo</li> --}}
-                                        {{-- <li class="tree_sublist-more-item">Digital Marketing</li>
-                                        <li class="tree_sublist-more-item">Trade Marketing</li>
-                                        <li class="tree_sublist-more-item">Truyền thông nội bộ</li> --}}
-                                    {{-- </ul> --}}
                                 </li>
-                                @endforeach
-                                {{-- <li class="tree_sublist-item">
+                                
+                                <li class="tree_sublist-item">
                                     <span class="clicktree d-block">Kế toán</span>
                                 </li>
                                 <li class="tree_sublist-item">
@@ -98,7 +82,25 @@
                                 </li>
                                 <li class="tree_sublist-item">
                                     <span class="clicktree d-block">Dịch vụ bán hàng</span>
-                                </li> --}}
+                                </li>
+
+                                {{-- @foreach($data->data as $treeValue) --}}
+                                {{-- <li class="section tree_sublist-item"> --}}
+                                    {{-- <input type="checkbox" id="group{{ $treeValue->id }}"> --}}
+                                    {{-- <label class="d-flex" for="group{{ $treeValue->id }}"></label> --}}
+                                    {{-- <span class="clicktree d-block" data-href="">Khối văn phòng</span> --}}
+                                    {{-- <span class="clicktree d-block" data-href="#body_content-3">{{ $treeValue->name }}</span> --}}
+                                    {{-- <ul class="tree_sublist-more"> --}}
+                                        {{-- @foreach($treeValue as $treeSub)
+                                        <li class="tree_sublist-more-item">{{ $treeSub->name }}</li>
+                                        @endforeach --}}
+                                        {{-- <li class="tree_sublist-more-item">Quản trị nhãn & Đào tạo</li> --}}
+                                        {{-- <li class="tree_sublist-more-item">Digital Marketing</li>
+                                        <li class="tree_sublist-more-item">Trade Marketing</li>
+                                        <li class="tree_sublist-more-item">Truyền thông nội bộ</li> --}}
+                                    {{-- </ul> --}}
+                                {{-- </li> --}}
+                                {{-- @endforeach --}}
                             </ul>
                         </li>
 

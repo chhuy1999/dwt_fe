@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Đăng nhập - Mastertran</title>
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{ asset('assets/img/favicon.jpg') }}">
+<link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,7 +44,8 @@
                                 <label for="floatingInput">Tên đăng nhập</label>
                             </div>
                             @error('email')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                {{-- <div class="alert alert-danger">{{ $message }}</div> --}}
+                                <div class="alert alert-danger">Tên tài khoản hoặc mật khẩu không chính xác</div>
                             @enderror
                             <div class="form-floating mb-3">
                                 <input type="password" autocomplete="off" class="form-control" id="floatingPassword"
@@ -52,7 +53,8 @@
                                 <label for="floatingPassword">Mật khẩu</label>
                             </div>
                             @error('email')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                {{-- <div class="alert alert-danger">{{ $message }}</div> --}}
+                                <div class="alert alert-danger">Tên tài khoản hoặc mật khẩu không chính xác</div>
                             @enderror
                             <div class="d-grid">
                                 <button class="btn btn-login text-uppercase fw-bold h-100" type="submit">
@@ -65,7 +67,7 @@
                 </div>
             </div>
             <div class="login_about">
-                Mastertran - Powered by STeam
+                Thái Bình Hưng Thịnh - Powered by STeam
             </div>
         </div>
     </div>
