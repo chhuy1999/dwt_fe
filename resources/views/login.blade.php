@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Đăng nhập - Mastertran</title>
+<title>Đăng nhập - {{ env('SLOGAN_URL', ''); }}</title>
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
+<link rel="shortcut icon" href="{{ env('FAVICON_URL', ''); }}">
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,7 @@
                 <div class="login_content">
                     <div class="login_header">
                         <a href="/">
-                            <img src="{{ asset('/assets/img/logo.jpg') }}" alt="logo"
+                            <img src="{{ env('LOGO_URL', ''); }}" alt="logo"
                                 class="login_logo" />
                         </a>
                         <!-- <h1 class="login_title">Đăng nhập hệ thống DWT</h1> -->
