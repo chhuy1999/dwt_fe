@@ -862,7 +862,7 @@
                         </div>
                         <div class="col-sm-5 mb-3">
                             <select class="selectpicker" multiple required data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm *" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
-                                @foreach ($listUsers->data as $value)
+                                @foreach (session('listUsers') as $value)
                                     @if (in_array($value->id, array_column($item->pics, 'id')))
                                         <option value="{{ $value->id }}" selected>
                                             {{ $value->name }}
@@ -965,14 +965,14 @@
 
                         <div class="col-md-6 mb-3">
                             <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="user_id">
-                                @foreach ($listUsers->data as $user)
+                                @foreach (session('listUsers') as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
-                                @foreach ($listUsers->data as $user)
+                                @foreach (session('listUsers') as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach
                             </select>
@@ -984,7 +984,7 @@
                                     <div class="row" data-repeater-item>
                                         <div class="col-md-9 mb-3">
                                             <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
-                                                @foreach ($kpiKeys as $key)
+                                                @foreach (session('listKpiKeys') as $key)
                                                     <option value="{{ $key->id }}">{{ $key->name }}
                                                     </option>
                                                 @endforeach
@@ -1203,7 +1203,7 @@
                                                     <div class="col-md-6 mb-3">
                                                         <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
 
-                                                            @foreach ($kpiKeys as $kpiKey)
+                                                            @foreach (session('listKpiKeys') as $kpiKey)
                                                                 @if ($key->id == $kpiKey->id)
                                                                     <option value="{{ $kpiKey->id }}" selected>
                                                                         {{ $kpiKey->name }}</option>
@@ -1628,7 +1628,7 @@
                                                     <div class="col-md-6 mb-3">
                                                         <select class='form-select' data-live-search="true" title="Chọn tiêu chí" name="id">
 
-                                                            @foreach ($kpiKeys as $kpiKey)
+                                                            @foreach (session('listKpiKeys') as $kpiKey)
                                                                 @if ($key->id == $kpiKey->id)
                                                                     <option value="{{ $kpiKey->id }}" selected>{{ $kpiKey->name }}</option>
                                                                 @else
