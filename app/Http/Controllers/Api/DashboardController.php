@@ -67,8 +67,6 @@ class DashboardController extends Controller
                 $totalKpi += $listAssignedTasks->data[$i]->kpiValue;
             }
 
-            $kpiKeys = $this->dwtServices->searchKpiKeys("", 1, 100);
-            $kpiKeys = $kpiKeys->data;
 
             $reportTasks = $this->dwtServices->searchReportTasks([
                 "page" => 1,
@@ -84,7 +82,7 @@ class DashboardController extends Controller
             $listReports = $this->dwtServices->searchReports("", $user['departement_id'], 1, 100);
             $listReports = $listReports->data;
 
-            $listUsers = $this->dwtServices->listUsers();
+
 
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
@@ -94,12 +92,9 @@ class DashboardController extends Controller
                 ->with('reportTasks', $reportTasks)
                 ->with('reportTaskAdmin', $reportTaskAdmin)
                 ->with('listReports', $listReports)
-                ->with('listUsers', $listUsers)
                 ->with('myTotalKpi', $myTotalKpi)
-                ->with('totalKpi', $totalKpi)
-                ->with('kpiKeys', $kpiKeys);
+                ->with('totalKpi', $totalKpi);
         } catch (Exception $e) {
-            dd($e);
             $error = $e->getMessage();
             return view('dashboard')->with('error', $error);
         }

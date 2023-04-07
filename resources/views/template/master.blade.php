@@ -659,16 +659,20 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </div>
                             <div class="col-md-6 mb-3">
                                 <select class="selectpicker" data-live-search="true" data-size="5" id="" title="Người đảm nhiệm" name="user_id">
-                                    @foreach ($global_users as $u)
-                                        <option value="{{ $u->id }}">{{ $u->name }}</option>
-                                    @endforeach
+                                    @if(session('listUsers'))
+                                        @foreach (session('listUsers') as $u)
+                                            <option value="{{ $u->id }}">{{ $u->name }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="involedPeople[]">
-                                    @foreach ($global_users as $u)
-                                        <option value="{{ $u->id }}">{{ $u->name }}</option>
-                                    @endforeach
+                                    @if(session('listUsers'))
+                                        @foreach (session('listUsers') as $u)
+                                            <option value="{{ $u->id }}">{{ $u->name }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
 
@@ -678,9 +682,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         <div class="row" data-repeater-item>
                                             <div class="col-md-7 mb-3">
                                                 <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
-                                                    @foreach ($global_kpiKeys as $kpi)
-                                                        <option value="{{ $kpi->id }}">{{ $kpi->name }}</option>
-                                                    @endforeach
+                                                    @if(session('listKpiKeys'))
+                                                        @foreach (session('listKpiKeys') as $kpi)
+                                                            <option value="{{ $kpi->id }}">{{ $kpi->name }}</option>
+                                                        @endforeach
+                                                    @endif
                                                 </select>
                                             </div>
                                             <div class="col-md-4 mb-3">
