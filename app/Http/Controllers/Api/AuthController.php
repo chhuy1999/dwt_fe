@@ -29,18 +29,23 @@ class AuthController extends Controller
 
             $response = $this->dwtServices->login($request->email, $request->password);
             $token = $response['token'];
+
             $request->session()->put('token', $token);
             $user = $response['user'];
             $request->session()->put('user', $user);
             // //regenerate session id $response['user']['departement_id']
-            if($user['departement_id']){
-                $idDept = ($response['user']['departement_id'])-1;
-                $listDepartments = $this->dwtServices->listDepartments()->data;
-                $nameDepartment =$listDepartments[$idDept]->name;
-                $request->session()->put('department_name',$nameDepartment);
-            }else{
-                $request->session()->put('department_name','Trống');
+            if ($user['departement_id']) {
+                $department = $this->dwtServices->getDepartmentDetail($user['departement_id']);
+                $request->session()->put('department_name', $department->name);
+            } else {
+                $request->session()->put('department_name', 'Trống');
             }
+            $listDepartments = $this->dwtServices->listDepartments()->data;
+            $listUsers = $this->dwtServices->listUsers()->data;
+            $listKpiKeys = $this->dwtServices->searchKpiKeys("", 1, 100)->data;
+            session()->put('listDepartments', $listDepartments);
+            session()->put('listUsers', $listUsers);
+            session()->put('listKpiKeys', $listKpiKeys);
             $request->session()->regenerate();
             return redirect('/');
         } catch (Exception $e) {
@@ -54,6 +59,8 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->session()->flush();
+        //unvalidate session
+        $request->session()->regenerate();
         return redirect('/login');
     }
 }

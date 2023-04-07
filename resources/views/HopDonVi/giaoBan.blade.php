@@ -479,7 +479,7 @@
                                                                 <td>
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
                                                                         @foreach ($item->pics as $u)
-                                                                        
+
                                                                             {{ $u->name }},
                                                                         @endforeach
                                                                     </div>
@@ -1248,19 +1248,16 @@
 
 
     <script>
-        let jwtToken = "{!! session()->get('token') !!}";
-
-        let user = {!! json_encode(session()->get('user')) !!};
         const meetingId = {!! $meeting->id !!};
         const meetCode = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
         const form = document.getElementById('commentForm');
         const notes = document.getElementById('notes');
         const getThisMeeting = async () => {
             try {
-                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meetings?code=' + meetCode, {
+                const resp = await fetch(API_URL + '/meetings?code=' + meetCode, {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer ' + jwtToken,
+                        'Authorization': 'Bearer ' + JWT_TOKEN,
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
@@ -1281,10 +1278,10 @@
         const renderListNotes = async () => {
             try {
                 notes.innerHTML = '';
-                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meetings?code=' + meetCode, {
+                const resp = await fetch(API_URL + '/meetings?code=' + meetCode, {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer ' + jwtToken,
+                        'Authorization': 'Bearer ' + JWT_TOKEN,
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
@@ -1330,10 +1327,10 @@
             const data = Object.fromEntries(formData);
             //add meeting logs
             try {
-                const resp = await fetch('https://sdwtbe.sweetsica.com/api/v1/meeting-logs', {
+                const resp = await fetch(API_URL + '/meeting-logs', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer ' + jwtToken,
+                        'Authorization': 'Bearer ' + JWT_TOKEN,
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
@@ -1589,7 +1586,7 @@
             dom: '<"dataTables_top justify-content-end align-items-center"f>rt<"dataTables_bottom"ip>',
         });
     </script>
-    
+
 
 
     {{-- <script>

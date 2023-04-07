@@ -894,4 +894,15 @@ class DwtServices
         $dataObj = $this->_toObject($data);
         return $dataObj->data;
     }
+
+    public function getDepartmentDetail($id) {
+        $url = $this->url . '/departments/' . $id;
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 }
