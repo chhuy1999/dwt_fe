@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 .htaccess
 dwt-fe.zip
+storage/debugbar
