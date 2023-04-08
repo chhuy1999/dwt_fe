@@ -333,7 +333,8 @@
                                                             <td>
                                                                 <div
                                                                     class="fs-5 modal_body-title fw-bolder text-nowrap">
-                                                                    Địa bàn:</div>
+                                                                        Địa bàn:
+                                                                    </div>
                                                             </td>
                                                             <td>
                                                                 <div class="fs-5"> 
@@ -343,10 +344,9 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <div
-                                                                    class="fs-5 modal_body-title fw-bolder text-nowrap">
-                                                                    Thành viên tham
-                                                                    gia:</div>
+                                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">
+                                                                    Thành viên tham gia:
+                                                                </div>
                                                             </td>
                                                             <td>
                                                                 <div class="fs-5">
@@ -373,36 +373,6 @@
                                                                     Phạm Thị Huyền - MTT014,&nbsp;
                                                                     Nguyễn Vũ Nguyệt Minh - MTT149,&nbsp;
                                                                     Đinh Thị Hà - MTT008,&nbsp;
-                                                                    Nguyễn Thị Thúy Nhung - MTT545,&nbsp;
-                                                                    Đỗ Thị Kim Liên - MTT185,&nbsp;
-                                                                    Đỗ Văn Thoại - MTT041,&nbsp;
-                                                                    Đinh Công Đức - MTT030,&nbsp;
-                                                                    Nguyễn Văn Huyên - MTT101,&nbsp;
-                                                                    Trần Thị Vũ Thủy - MTT087,&nbsp;
-                                                                    Nguyễn Đức Cảnh - MTT232,&nbsp;
-                                                                    Nguyễn Thị Thanh Nga - MTT271,&nbsp;
-                                                                    Đặng Vũ Lam Mai - MTT239,&nbsp;
-                                                                    Đào Thị Huyền Trang - MTT502,&nbsp;
-                                                                    Admin Dev - admin_dev,&nbsp;
-                                                                    Tester - admin_test,&nbsp;
-                                                                    Ngọc Bảo - dev999999,&nbsp;
-                                                                    Sơn - MTT230,&nbsp;
-                                                                    Sơn 2 - MTT123,&nbsp;
-                                                                    Ngọc bảo - MTTTEST,&nbsp;
-                                                                    Duc Minh Vu - 123123,&nbsp;
-                                                                    Duc Minh Vu 123 - 123321,&nbsp;
-                                                                    test - a12345,&nbsp;
-                                                                    tesst12345 - as1234,&nbsp;
-                                                                    thanh - asc241,&nbsp;
-                                                                    Vân Mint - ABC123,&nbsp;
-                                                                    Duc Minh Vu hello - MTT233,&nbsp;
-                                                                    Mai - avd123,&nbsp;
-                                                                    duc - MTT999,&nbsp;
-                                                                    Anh Đức - avd345,&nbsp;
-                                                                    Duc Minh Vu ao vai - MTT33333,&nbsp;
-                                                                    Bảo kê - MTT11111111111,&nbsp;
-                                                                    Duc Minh Vuhihi - AWSXA123,&nbsp;
-                                                                    Duc Minh Vuvaithat222 - ZXKCL123,&nbsp;
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -415,7 +385,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="d-flex align-items-center  justify-content-between">
-                                                <div class="modal-title fw-bolder">I. NỘI DUNG TRAO ĐỔI</div>
+                                                <div class="modal-title fw-bolder">I. Ý KIẾN KIỂM SOÁT</div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
@@ -429,7 +399,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="d-flex align-items-center  justify-content-between">
-                                                <div class="modal-title fw-bolder">II. FILES ĐÍNH KÈM</div>
+                                                <div class="modal-title fw-bolder">II. Ý KIẾN HỌC VIÊN</div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
@@ -514,20 +484,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-danger ps-5 pe-5"
-                                        data-bs-dismiss="modal">Hủy</button>
-                                    <form action="/giao-ban/54" method="POST">
-                                        <input type="hidden" name="_token"
-                                            value="s7135MNI98m1bWZWGqOn0UgU7GJHxG7PZc1foK71"> <input type="hidden"
-                                            name="_method" value="PUT"> <input type="hidden" name="status"
-                                            value="1">
-                                        <button type="submit" class="btn btn-danger">Xác nhận</button>
-                                    </form>
-                                </div>
-
 
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger ps-5 pe-5 me-3"
+                                data-bs-dismiss="modal">Hủy</button>
+                            <form action="/giao-ban/54" method="POST">
+                                <input type="hidden" name="_token"
+                                    value="s7135MNI98m1bWZWGqOn0UgU7GJHxG7PZc1foK71"> <input type="hidden"
+                                    name="_method" value="PUT"> <input type="hidden" name="status"
+                                    value="1">
+                                <button type="submit" class="btn btn-danger">Xác nhận</button>
+                            </form>
                         </div>
                     </div>
                 </div>
