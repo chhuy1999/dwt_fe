@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class AssignTaskController extends Controller
 {
     //
-    private $dwtService;
+    private DwtServices $dwtService;
 
     public function __construct()
     {
