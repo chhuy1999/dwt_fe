@@ -198,17 +198,29 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargetDetails(array $params = [])
-    {
-        $url = $this->url . '/target-details';
-        //        dd($url);
-        $response = $this->client->get($url, $params);
-        //throw exception if response is not successful
-        $response->throw()->json()['message'];
-        //get data from response
-        $data = $response->json();
-        $dataObj = $this->_toObject($data);
-        return $dataObj->data;
+    // public function searchKpiTargetDetails(array $params = [])
+    // {
+    //     $url = $this->url . '/target-details';
+    //     //        dd($url);
+    //     $response = $this->client->get($url, $params);
+    //     //throw exception if response is not successful
+    //     $response->throw()->json()['message'];
+    //     //get data from response
+    //     $data = $response->json();
+    //     $dataObj = $this->_toObject($data);
+    //     return $dataObj->data;
+    // }
+    public function searchKpiTargetDetails(array $params = null) 
+    { 
+        $url = $this->url . '/target-details'; 
+        //        dd($url); 
+        $response = $this->client->get($url, $params); 
+        //throw exception if response is not successful 
+        $response->throw()->json()['message']; 
+        //get data from response 
+        $data = $response->json(); 
+        $dataObj = $this->_toObject($data); 
+        return $dataObj->data; 
     }
 
     public function updateKpiTargetDetail($id, $data)

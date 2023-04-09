@@ -152,6 +152,10 @@ option:hover,
 }
 
 /* DATA TABLES */
+.dataTables_length {
+    margin-right: 10px;
+}
+
 .dataTables_length label {
     display: flex;
     font-size: 1.2rem;
