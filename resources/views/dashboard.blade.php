@@ -1575,7 +1575,7 @@
 </div>
 @endforeach
 
-@foreach ($reportTasks->data as $reportTask)
+@foreach ($reportTaskAdmin->data as $reportTask)
 @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
     <!-- Modal Báo cáo công việc phat sinh -->
     <div class="modal fade text-black" id="baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

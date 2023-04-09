@@ -30,7 +30,7 @@
             box-shadow: none;
         }
 
-        .bootstrap-select>.dropdown-toggle:after {
+        .bootstrap-select > .dropdown-toggle:after {
             display: none;
         }
 
@@ -107,6 +107,11 @@
                 if (!in_array($user->id, getListParticipantIds($meeting))) {
                     $userDepartement_id = $user->departement_id ?? 0;
                     $meetingDepartement_id = $meeting->departement_id ?? 1;
+                    $meetingLeaderId = $meeting->leader_id ?? 0;
+                    $meetingSecretaryId = $meeting->secretary_id ?? 0;
+                    if ($user->id == $meetingLeaderId || $user->id == $meetingSecretaryId) {
+                        continue;
+                    }
                     if ($userDepartement_id == $meetingDepartement_id) {
                         array_push($listAbsence, $user);
                     }
@@ -133,14 +138,17 @@
                         <div class="mainSection_card position-relative" style="flex:1">
                             <div class="mainSection_content row">
                                 <div class="col-sm-2">
-                                    <div class="text-nowrap">Đơn vị: </div>
+                                    <div class="text-nowrap">Đơn vị:</div>
                                 </div>
                                 <div class="col-sm-10">
-                                    <strong class="text-nowrap">{{ $meeting->departement->name ?? 'Chưa có đơn vị' }}</strong>
+                                    <strong
+                                        class="text-nowrap">{{ $meeting->departement->name ?? 'Chưa có đơn vị' }}</strong>
                                 </div>
-                                <div class="col-sm-2">Chủ trì: </div>
+                                <div class="col-sm-2">Chủ trì:</div>
                                 <div class="col-sm-10">
-                                    <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5" id="leaderSelect">
+                                    <select class="selectpicker mainSection_width-select" data-actions-box="true"
+                                            data-live-search="true" title="Chọn chủ trì..."
+                                            data-live-search-placeholder="Tìm kiếm..." data-size="5" id="leaderSelect">
                                         @foreach ($listUsers->data as $value)
                                             @if ($meeting->leader_id == $value->id)
                                                 <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
@@ -170,8 +178,10 @@
                             </div>
                         </div>
 
-                        <div id="mainSection_width" class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
-                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
+                        <div id="mainSection_width"
+                             class="mainSection_thismonth position-relative d-flex align-items-center overflow-hidden">
+                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control"
+                                   type="text"/>
                         </div>
                     </div>
                     <div class="row">
@@ -189,34 +199,54 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="row">
-                                                        <input type="hidden" name="leader_id" value="{{ $meeting->leader_id ?? 0 }}" id="leaderIdInput">
+                                                        <input type="hidden" name="leader_id"
+                                                               value="{{ $meeting->leader_id ?? 0 }}"
+                                                               id="leaderIdInput">
                                                         <div class="col-md-7">
                                                             <div class="d-flex align-items-center mb-3">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
+                                                                    <img
+                                                                        style="height:14px; width:14px; margin-right:6px"
+                                                                        src="{{ asset('assets/img/time.svg') }}"/>
                                                                 </div>
-                                                                <input type="text" name="daterange" id="meetTime" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
+                                                                <input type="text" name="daterange" id="meetTime"
+                                                                       autocomplete="off" class="form-control"
+                                                                       placeholder="Chọn thời gian, thêm giờ"/>
                                                             </div>
                                                             <div class="d-flex align-items-start">
                                                                 <div class="d-flex">
-                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
+                                                                    <img
+                                                                        style="height:14px; width:14px; margin-right:6px"
+                                                                        src="{{ asset('assets/img/muiten.svg') }}"/>
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <textarea readonly name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
+                                                                    <textarea readonly name="" id="" rows="1" cols=""
+                                                                              class="form-control"
+                                                                              placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <div class="mb-3 d-flex align-items-center justify-content-between">
+                                                            <div
+                                                                class="mb-3 d-flex align-items-center justify-content-between">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
+                                                                    <img
+                                                                        style="height:14px; width:14px; margin-right:6px"
+                                                                        src="{{ asset('assets/img/pencil.svg') }}"/>
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <select class="selectpicker" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" name="secretary_id" data-live-search-placeholder="Tìm kiếm...">
+                                                                    <select class="selectpicker" data-width="100%"
+                                                                            data-live-search="true"
+                                                                            title="Chọn thư ký..."
+                                                                            data-select-all-text="Chọn tất cả"
+                                                                            data-deselect-all-text="Bỏ chọn"
+                                                                            data-size="3" name="secretary_id"
+                                                                            data-live-search-placeholder="Tìm kiếm...">
 
                                                                         @foreach ($listUsers->data as $value)
                                                                             @if ($meeting->secretary_id == $value->id)
-                                                                                <option value="{{ $value->id }}" selected>
+                                                                                <option value="{{ $value->id }}"
+                                                                                        selected>
                                                                                     {{ $value->name }}</option>
                                                                             @else
                                                                                 <option value="{{ $value->id }}">
@@ -226,15 +256,29 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="mt-3 d-flex align-items-center justify-content-between">
+                                                            <div
+                                                                class="mt-3 d-flex align-items-center justify-content-between">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
+                                                                    <img
+                                                                        style="height:14px; width:14px; margin-right:6px"
+                                                                        src="{{ asset('assets/img/person-check.svg') }}"/>
                                                                 </div>
                                                                 <div style="flex:1">
-                                                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="participants[]">
+                                                                    <select class="selectpicker" multiple
+                                                                            data-actions-box="true" data-width="100%"
+                                                                            data-live-search="true"
+                                                                            title="Chọn thành viên..."
+                                                                            data-select-all-text="Chọn tất cả"
+                                                                            data-deselect-all-text="Bỏ chọn"
+                                                                            data-size="3"
+                                                                            data-selected-text-format="count > 1"
+                                                                            data-count-selected-text="Có {0} thành viên"
+                                                                            data-live-search-placeholder="Tìm kiếm..."
+                                                                            name="participants[]">
                                                                         @foreach ($listUsers->data as $value)
                                                                             @if (in_array($value->id, getListParticipantIds($meeting)))
-                                                                                <option value="{{ $value->id }}" selected>
+                                                                                <option value="{{ $value->id }}"
+                                                                                        selected>
                                                                                     {{ $value->name }}</option>
                                                                             @else
                                                                                 <option value="{{ $value->id }}">
@@ -248,8 +292,12 @@
                                                         </div>
 
                                                     </div>
-                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                    <div class="d-flex align-items-center justify-content-end mt-3"><button type="submit" class="btn btn-outline-danger">Xác nhận</button></div>
+                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
+                                                        <div class="d-flex align-items-center justify-content-end mt-3">
+                                                            <button type="submit" class="btn btn-outline-danger">Xác
+                                                                nhận
+                                                            </button>
+                                                        </div>
                                                     @endif
                                                 </form>
 
@@ -260,54 +308,65 @@
                                                 <div class="card-title d-flex align-items-center">
                                                     <div>Vấn đề tiếp nhận</div>
                                                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                    <div class="card_action-wrapper ms-3">
-                                                        <button role="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#vanDeThaoLuan">Chọn
-                                                            vấn đề thảo luận</button>
-                                                    </div>
+                                                        <div class="card_action-wrapper ms-3">
+                                                            <button role="button" class="btn btn-outline-danger"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#vanDeThaoLuan">Chọn
+                                                                vấn đề thảo luận
+                                                            </button>
+                                                        </div>
                                                     @endif
 
                                                 </div>
 
-                                                <div class="alert alert-warning border-warning m-0" style="padding: 0 6px">
+                                                <div class="alert alert-warning border-warning m-0"
+                                                     style="padding: 0 6px">
                                                     <i class="bi bi-exclamation-triangle pe-2"></i><strong>Mã cuộc họp:
                                                         {{ $meeting->code }} </strong>
                                                 </div>
                                             </div>
-                                            <div class="table-responsive rounded"  style="max-height: 100px;overflow-y: scroll;overflow-x: hidden;">
-                                                <table class="table table-responsive table-hover table-bordered m-0 style_disableAll">
+                                            <div class="table-responsive rounded"
+                                                 style="max-height: 100px;overflow-y: scroll;overflow-x: hidden;">
+                                                <table
+                                                    class="table table-responsive table-hover table-bordered m-0 style_disableAll">
                                                     <thead>
-                                                        <tr>
-                                                            <th>STT</th>
-                                                            <th>Vấn đề tồn đọng</th>
-                                                            <th>Người nêu</th>
-                                                            <th>Thời hạn</th>
-                                                            <th>Tình trạng</th>
-                                                        </tr>
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Vấn đề tồn đọng</th>
+                                                        <th>Người nêu</th>
+                                                        <th>Thời hạn</th>
+                                                        <th>Tình trạng</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($unhandledReports as $item)
-                                                            <tr data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}" role="button">
-                                                                <td>
-                                                                    <div class="d-flex align-items-center justify-content-center">
-                                                                        {{ $loop->iteration }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="description-problem" style="cursor: pointer;" title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
-                                                                        {{ $item->problem }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="issuer" title="Đặng Vũ Lam Mai - MTT123">
-                                                                        {{ $item->user->name ?? '' }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>{{ date('d/m', strtotime($item->deadline)) }}</td>
-                                                                <td>
-                                                                    <div>Đã tiếp nhận</div>
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
+                                                    @foreach ($unhandledReports as $item)
+                                                        <tr data-bs-toggle="modal"
+                                                            data-bs-target="#suaVanDeTonDong{{ $item->id }}"
+                                                            role="button">
+                                                            <td>
+                                                                <div
+                                                                    class="d-flex align-items-center justify-content-center">
+                                                                    {{ $loop->iteration }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="description-problem"
+                                                                     style="cursor: pointer;"
+                                                                     title="Chưa hoàn thành báo cáo do abc chưa gửi thông tin">
+                                                                    {{ $item->problem }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="issuer" title="Đặng Vũ Lam Mai - MTT123">
+                                                                    {{ $item->user->name ?? '' }}
+                                                                </div>
+                                                            </td>
+                                                            <td>{{ date('d/m', strtotime($item->deadline)) }}</td>
+                                                            <td>
+                                                                <div>Đã tiếp nhận</div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -326,50 +385,66 @@
                                                     <i class="bi bi-journal-check"></i>
                                                     Nội dung trao đổi
                                                 </div>
-                                                <div class="" style="max-height: 240px; overflow-y: scroll; overflow-x:hidden" id="notes">
+                                                <div class=""
+                                                     style="max-height: 240px; overflow-y: scroll; overflow-x:hidden"
+                                                     id="notes">
 
 
                                                 </div>
-                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                <div class="col-12 mt-4">
-                                                    <form id="commentForm">
-                                                        <div class="d-flex align-items-center">
-                                                            <input type="hidden" name="meeting_id" value="{{ $meeting->id }}">
-                                                            <textarea name="note" class="form-control" id="meeting-note" placeholder="Nhập nội dung" rows="1" maxlength="130"></textarea>
-                                                            <button type="submit" class="btn btn-outline-danger ms-3">Gửi</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
+                                                    <div class="col-12 mt-4">
+                                                        <form id="commentForm">
+                                                            <div class="d-flex align-items-center">
+                                                                <input type="hidden" name="meeting_id"
+                                                                       value="{{ $meeting->id }}">
+                                                                <textarea name="note" class="form-control"
+                                                                          id="meeting-note" placeholder="Nhập nội dung"
+                                                                          rows="1" maxlength="130"></textarea>
+                                                                <button type="submit"
+                                                                        class="btn btn-outline-danger ms-3">Gửi
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
+                                            <div
+                                                class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
                                                 <div class="card-title mb-3">
                                                     <i class="bi bi-paperclip"></i>
                                                     File đính kèm
                                                 </div>
-                                                <form action="/giao-ban/{{ $meeting->id }}" method="POST" enctype="multipart/form-data">
+                                                <form action="/giao-ban/{{ $meeting->id }}" method="POST"
+                                                      enctype="multipart/form-data">
                                                     @method('PUT')
                                                     @csrf
                                                     <div class="upload_wrapper-items">
-                                                        <input type="hidden" name="uploadedFiles[]" value="" />
+                                                        <input type="hidden" name="uploadedFiles[]" value=""/>
                                                         @if ($meeting->files && count(explode(',', $meeting->files)))
-                                                            <ul class="p-0" style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;">
+                                                            <ul class="p-0"
+                                                                style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;">
                                                                 @foreach (explode(',', $meeting->files) as $file)
                                                                     @if (strlen($file))
                                                                         <li>
-                                                                            <div class="d-flex align-items-center justify-content-between w-100 border-bottom pt-2 pb-2">
+                                                                            <div
+                                                                                class="d-flex align-items-center justify-content-between w-100 border-bottom pt-2 pb-2">
                                                                                 <span class="fs-5">
-                                                                                    <a href="{{ $file }}" target="_black">
+                                                                                    <a href="{{ $file }}"
+                                                                                       target="_black">
                                                                                         <i class="bi bi-link-45deg"></i>
                                                                                         {{ $file }}
                                                                                     </a>
                                                                                 </span>
-                                                                                <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
-                                                                                <span class="modal_upload-remote" onclick="removeUploaded(event)">
-                                                                                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                <input type="hidden"
+                                                                                       name="uploadedFiles[]"
+                                                                                       value="{{ $file }}"/>
+                                                                                <span class="modal_upload-remote"
+                                                                                      onclick="removeUploaded(event)">
+                                                                                    <img style="width:18px;height:18px"
+                                                                                         src="{{ asset('assets/img/trash.svg') }}"/>
                                                                                 </span>
                                                                             </div>
                                                                         </li>
@@ -377,8 +452,10 @@
                                                                 @endforeach
                                                             </ul>
                                                         @endif
-                                                        <ul class="modal_upload-list" style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;"></ul>
-                                                        <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                                        <ul class="modal_upload-list"
+                                                            style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;"></ul>
+                                                        <div class="alert alert-danger alertNotSupport" role="alert"
+                                                             style="display:none">
                                                             File bạn tải lên hiện tại không hỗ trợ !
                                                         </div>
                                                         <div class="modal_upload-wrapper">
@@ -387,13 +464,20 @@
                                                             <div class="mt-2 text-secondary fst-italic">Hỗ trợ định dạng
                                                                 JPG,
                                                                 PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                                thước tệp không quá 10MB</div>
-                                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                                thước tệp không quá 10MB
+                                                            </div>
+                                                            <div
+                                                                class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                                                 <div class="modal_upload-addFile me-3">
-                                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                    <button role="button" type="button"
+                                                                            class="btn position-relative pe-4 ps-4">
+                                                                        <img style="width:16px;height:16px"
+                                                                             src="{{ asset('assets/img/upload-file.svg') }}"/>
                                                                         Tải file lên
-                                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                                        <input role="button" type="file"
+                                                                               class="modal_upload-input modal_upload-file"
+                                                                               name="files[]" multiple
+                                                                               onchange="updateList(event)">
                                                                     </button>
                                                                 </div>
 
@@ -401,8 +485,11 @@
                                                         </div>
                                                     </div>
                                                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                    <div class="d-flex align-items-center justify-content-end"><button type="submit" class="btn btn-outline-danger">Tải
-                                                            file</button></div>
+                                                        <div class="d-flex align-items-center justify-content-end">
+                                                            <button type="submit" class="btn btn-outline-danger">Tải
+                                                                file
+                                                            </button>
+                                                        </div>
                                                     @endif
                                                 </form>
                                             </div>
@@ -419,135 +506,169 @@
                                             <div class="table-responsive">
                                                 <table id="listDaDuocPhanHoi" class="table table-hover table-bordered">
                                                     <thead>
-                                                        <tr>
-                                                            <th class="text-nowrap" style="width: 2%">STT</th>
-                                                            <th class="text-nowrap" style="width: 20%">
-                                                                <div class="d-flex justify-content-between">
-                                                                    Vấn đề tồn đọng
-                                                                </div>
-                                                            </th>
-                                                            <th class="text-nowrap" style="width: 8%">
-                                                                Phân loại
-                                                            </th>
-                                                            <th class="text-nowrap" style="width: 10%">Người nêu</th>
-                                                            <th class="text-nowrap" style="width: 15%">Nguyên nhân</th>
-                                                            <th class="text-nowrap" style="width: 15%">
-                                                                Hướng giải quyết
-                                                            </th>
-                                                            <th class="text-nowrap" style="width: 15%">
-                                                                Người đảm nhiệm
-                                                            </th>
-                                                            <th class="text-nowrap" style="width: 5%">Thời hạn</th>
-                                                            <th class="border-0 text-nowrap" style="width: 5%">Trạng thái</th>
-                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                    <tr>
+                                                        <th class="text-nowrap" style="width: 2%">STT</th>
+                                                        <th class="text-nowrap" style="width: 20%">
+                                                            <div class="d-flex justify-content-between">
+                                                                Vấn đề tồn đọng
+                                                            </div>
+                                                        </th>
+                                                        <th class="text-nowrap" style="width: 8%">
+                                                            Phân loại
+                                                        </th>
+                                                        <th class="text-nowrap" style="width: 10%">Người nêu</th>
+                                                        <th class="text-nowrap" style="width: 15%">Nguyên nhân</th>
+                                                        <th class="text-nowrap" style="width: 15%">
+                                                            Hướng giải quyết
+                                                        </th>
+                                                        <th class="text-nowrap" style="width: 15%">
+                                                            Người đảm nhiệm
+                                                        </th>
+                                                        <th class="text-nowrap" style="width: 5%">Thời hạn</th>
+                                                        <th class="border-0 text-nowrap" style="width: 5%">Trạng thái
+                                                        </th>
+                                                        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
 
                                                             <th class="border-start-0"></th>
-                                                            @endif
-                                                        </tr>
+                                                        @endif
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($handledReports as $item)
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center justify-content-center">
-                                                                        {{ $loop->iteration }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->problem }}">
-                                                                        {{ $item->problem }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div type="text-nowrap d-block text-truncate" class="form-control border-0 bg-transparent" value="Giải quyết">Giải quyết</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div type="text-nowrap d-block text-truncate" class="form-control border-0 bg-transparent" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->user->name ?? '' }}">
-                                                                        {{ $item->user->name ?? '' }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->reason }}">
-                                                                        {{ $item->reason }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->solution }}">
-                                                                        {{ $item->solution }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
-                                                                        @foreach ($item->pics as $u)
+                                                    @foreach ($handledReports as $item)
+                                                        <tr>
+                                                            <td>
+                                                                <div
+                                                                    class="d-flex align-items-center justify-content-center">
+                                                                    {{ $loop->iteration }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-nowrap d-block text-truncate"
+                                                                     style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                     data-bs-placement="top" data-bs-html="true"
+                                                                     data-bs-original-title="{{ $item->problem }}">
+                                                                    {{ $item->problem }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div type="text-nowrap d-block text-truncate"
+                                                                     class="form-control border-0 bg-transparent"
+                                                                     value="Giải quyết">Giải quyết
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div type="text-nowrap d-block text-truncate"
+                                                                     class="form-control border-0 bg-transparent"
+                                                                     data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                     data-bs-html="true"
+                                                                     data-bs-original-title="{{ $item->user->name ?? '' }}">
+                                                                    {{ $item->user->name ?? '' }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-nowrap d-block text-truncate"
+                                                                     style="max-width:100px;" data-bs-toggle="tooltip"
+                                                                     data-bs-placement="top" data-bs-html="true"
+                                                                     data-bs-original-title="{{ $item->reason }}">
+                                                                    {{ $item->reason }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-nowrap d-block text-truncate"
+                                                                     style="max-width:220px;" data-bs-toggle="tooltip"
+                                                                     data-bs-placement="top" data-bs-html="true"
+                                                                     data-bs-original-title="{{ $item->solution }}">
+                                                                    {{ $item->solution }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-nowrap d-block text-truncate"
+                                                                     style="max-width:150px;" data-bs-toggle="tooltip"
+                                                                     data-bs-placement="top" data-bs-html="true"
+                                                                     data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
+                                                                    @foreach ($item->pics as $u)
 
-                                                                            {{ $u->name }},
-                                                                        @endforeach
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        {{ date('d/m', strtotime($item->deadline)) }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    @switch($item->status)
-                                                                        @case('Sent')
-                                                                            Đã tiếp nhận
+                                                                        {{ $u->name }},
+                                                                    @endforeach
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div>
+                                                                    {{ date('d/m', strtotime($item->deadline)) }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-nowrap">
+                                                                @switch($item->status)
+                                                                    @case('Sent')
+                                                                        Đã tiếp nhận
                                                                         @break
 
-                                                                        @case('FoundSolution')
-                                                                            Đã có hướng giải quyết
+                                                                    @case('FoundSolution')
+                                                                        Đã có hướng giải quyết
                                                                         @break
 
-                                                                        @case('Solved')
-                                                                            Đã giải quyết
+                                                                    @case('Solved')
+                                                                        Đã giải quyết
                                                                         @break
 
-                                                                        @case('Converted')
-                                                                            Đã giao
+                                                                    @case('Converted')
+                                                                        Đã giao
                                                                         @break
 
-                                                                        @case('CantSolve')
-                                                                            không thể giải quyết
+                                                                    @case('CantSolve')
+                                                                        không thể giải quyết
                                                                         @break
 
-                                                                        @default
+                                                                    @default
                                                                         @break
-                                                                    @endswitch
+                                                                @endswitch
 
-                                                                </td>
-                                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                            </td>
+                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                                 <td>
-                                                                    <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                                    <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                         data-bs-toggle="dropdown"
+                                                                         aria-expanded="false"><i
+                                                                            class="bi bi-three-dots-vertical"></i>
                                                                     </div>
-                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                    <ul class="dropdown-menu"
+                                                                        aria-labelledby="dropdownMenuButton1">
                                                                         @if ($item->status != 'Converted')
                                                                             <li>
-                                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh{{ $item->id }}" data-repeater-delete>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                   data-bs-toggle="modal"
+                                                                                   data-bs-target="#nhiemVuPhatSinh{{ $item->id }}"
+                                                                                   data-repeater-delete>
                                                                                     <i class="bi bi-arrow-right-square-fill"></i>
                                                                                     Chuyển thành nhiệm vụ phát sinh
                                                                                 </a>
                                                                             </li>
                                                                         @endif
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
-                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                            <a class="dropdown-item" href="#"
+                                                                               data-bs-toggle="modal"
+                                                                               data-bs-target="#suaVanDeTonDong{{ $item->id }}">
+                                                                                <img style="width:16px;height:16px"
+                                                                                     src="{{ asset('assets/img/edit.svg') }}"/>
                                                                                 Sửa
                                                                             </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $item->id }}" data-repeater-delete>
-                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            <a class="dropdown-item" href="#"
+                                                                               data-bs-toggle="modal"
+                                                                               data-bs-target="#xoaThuocTinh{{ $item->id }}"
+                                                                               data-repeater-delete>
+                                                                                <img style="width:16px;height:16px"
+                                                                                     src="{{ asset('assets/img/trash.svg') }}"/>
                                                                                 Xóa
                                                                             </a>
                                                                         </li>
 
                                                                     </ul>
                                                                 </td>
-                                                                @endif
-                                                            </tr>
-                                                        @endforeach
-
+                                                            @endif
+                                                        </tr>
+                                                    @endforeach
 
 
                                                     </tbody>
@@ -562,19 +683,20 @@
 
 
                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                    <div class="col-lg-12 d-flex justify-content-end">
-                        <div class="action_table-wrapper text-end mt-3 mb-3">
-                            {{-- <a href="kho-luu-tru-bien-ban-hop"
-                                    class="btn btn-outline-danger action_table-btn"
-                                    style="margin-right:6px;">
-                                    Đến kho lưu trữ
-                                </a> --}}
-                            {{-- <a href='bien-ban-hop' class="btn btn-danger action_table-btn">
-                                    Duyệt
-                                </a> --}}
-                            <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
+                        <div class="col-lg-12 d-flex justify-content-end">
+                            <div class="action_table-wrapper text-end mt-3 mb-3">
+                                {{-- <a href="kho-luu-tru-bien-ban-hop"
+                                        class="btn btn-outline-danger action_table-btn"
+                                        style="margin-right:6px;">
+                                        Đến kho lưu trữ
+                                    </a> --}}
+                                {{-- <a href='bien-ban-hop' class="btn btn-danger action_table-btn">
+                                        Duyệt
+                                    </a> --}}
+                                <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                                   data-bs-toggle="modal" data-bs-target="#duyetbienbanhop">Duyệt</a>
+                            </div>
                         </div>
-                    </div>
                     @endif
                     {{-- <div class="col-lg-12 d-flex justify-content-end mb-3">
                         <div id='warning_notification' class="alert alert-warning alert-dismissible fade show border-left border-warning" role="alert">
@@ -613,7 +735,8 @@
                             <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng
                             </label>
                             <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" readonly class="contenteditable" placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông tin"></div>
+                                <div contenteditable="true" readonly class="contenteditable"
+                                     placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông tin"></div>
                             </div>
                         </div>
                     </div>
@@ -628,9 +751,11 @@
                             </div>
                         </div>
                         <div class="col-sm-3 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời hạn</label>
+                            <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời
+                                hạn</label>
                             <div class="w-100" style="flex:1">
-                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
+                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>"
+                                       class="form-control" type="text">
                             </div>
                         </div>
                         <div class="col-sm-5 d-flex  align-items-center">
@@ -650,9 +775,11 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-12 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label" style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
+                            <label for="inputPassword" class="col-form-label"
+                                   style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
                             <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" class="contenteditable" placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
+                                <div contenteditable="true" class="contenteditable"
+                                     placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
                             </div>
                         </div>
 
@@ -667,78 +794,107 @@
     </div>
     <!-- Modal Sửa Vấn Đề -->
     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-    @foreach ($meeting->reports as $item)
-        <div class="modal fade" id="suaVanDeTonDong{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title w-100" id="exampleModalLabel">Cập nhật vấn đề tồn đọng</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="{{ route('report.update', $item->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+        @foreach ($meeting->reports as $item)
+            <div class="modal fade" id="suaVanDeTonDong{{ $item->id }}" tabindex="-1"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title w-100" id="exampleModalLabel">Cập nhật vấn đề tồn đọng</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="{{ route('report.update', $item->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
 
-                        <div class="modal-body">
+                            <div class="modal-body">
 
-                            <div class="row">
-                                <div class="col-sm-12 mb-3">
-                                    <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Vấn đề tồn đọng" value="{{ $item->problem }}" name="problem">
-                                </div>
-                                <div class="col-sm-7 mb-3">
-                                    <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Người nêu" value="{{ $item->user->name ?? '' }}">
-                                </div>
-                                <div class="col-sm-5 mb-3">
-                                    <select class="selectpicker" multiple required data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm *" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
-                                        @foreach ($listUsers->data as $value)
-                                            @if (in_array($value->id, array_column($item->pics, 'id')))
-                                                <option value="{{ $value->id }}" selected>
-                                                    {{ $value->name }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $value->id }}">
-                                                    {{ $value->name }}
-
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-sm-12 mb-3">
-                                    <textarea rows="1" class="form-control" placeholder="Nguyên nhân" name="reason">{{ $item->reason }}</textarea>
-                                </div>
-                                <div class="col-sm-12 mb-3">
-                                    <textarea rows="1" class="form-control" placeholder="Hướng giải quyết" name="solution">{{ $item->solution }}</textarea>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Thời hạn">
-                                        <input id="timeSuaVanDe" value="{{ date('d/m/Y', strtotime($item->deadline)) }}" class="form-control" type="text" name="deadline">
-                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                <div class="row">
+                                    <div class="col-sm-12 mb-3">
+                                        <input class="form-control" type="text" readonly data-bs-toggle="tooltip"
+                                               data-bs-placement="top" title="Vấn đề tồn đọng"
+                                               value="{{ $item->problem }}" name="problem">
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
+                                    <div class="col-sm-7 mb-3">
+                                        <input class="form-control" type="text" readonly data-bs-toggle="tooltip"
+                                               data-bs-placement="top" title="Người nêu"
+                                               value="{{ $item->user->name ?? '' }}">
+                                    </div>
+                                    <div class="col-sm-5 mb-3">
+                                        <select class="selectpicker" multiple required data-actions-box="true"
+                                                data-width="100%" data-live-search="true" title="Người đảm nhiệm *"
+                                                data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                                data-size="3" data-selected-text-format="count > 1"
+                                                data-count-selected-text="Có {0} người đảm nhiệm"
+                                                data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
+                                            @foreach ($listUsers->data as $value)
+                                                @if (in_array($value->id, array_column($item->pics, 'id')))
+                                                    <option value="{{ $value->id }}" selected>
+                                                        {{ $value->name }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $value->id }}">
+                                                        {{ $value->name }}
 
-                                    <div data-bs-toggle="tooltip" data-bs-placement="top" title="Tình trạng">
-                                        <select class="form-select" aria-label="Default select example" name="status">
-                                            <option value="0">Đã tiếp nhận</option>
-                                            <option value="1">Đã có hướng giải quyết</option>
-                                            <option value="2">Đã giải quyết</option>
-                                            <option value="3">Không thể giải quyết</option>
+                                                    </option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <textarea rows="1" class="form-control" placeholder="Nguyên nhân"
+                                                  name="reason">{{ $item->reason }}</textarea>
+                                    </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <textarea rows="1" class="form-control" placeholder="Hướng giải quyết"
+                                                  name="solution">{{ $item->solution }}</textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
+                                             title="Thời hạn">
+                                            <input id="timeSuaVanDe"
+                                                   value="{{ date('d/m/Y', strtotime($item->deadline)) }}"
+                                                   class="form-control" type="text" name="deadline">
+                                            <i class="bi bi-calendar-plus style_pickdate"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                            <button type="submit" class="btn btn-danger">Lưu</button>
-                        </div>
-                    </form>
+                                        <div data-bs-toggle="tooltip" data-bs-placement="top" title="Tình trạng">
+                                            <select class="form-select" aria-label="Default select example"
+                                                    name="status">
+
+                                                <option value="0" @if($item->status == 'Sent') selected @endif>Đã tiếp
+                                                    nhận
+                                                </option>
+                                                <option value="1" @if($item->status == 'FoundSolution') selected @endif>
+                                                    Đã có hướng giải quyết
+                                                </option>
+                                                <option value="2" @if($item->status == 'Solved') selected @endif>Đã giải
+                                                    quyết
+                                                </option>
+                                                <option value="3" @if($item->status == 'CantSolve') selected @endif>
+                                                    Không thể giải quyết
+                                                </option>
+                                                <option value="4" @if($item->status == 'Converted') selected @endif>Đã
+                                                    giao
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy
+                                </button>
+                                <button type="submit" class="btn btn-danger">Lưu</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
     @endif
 
     <!-- Modal duyệt biên bản họp -->
@@ -758,69 +914,70 @@
                             <div class="table-responsive">
                                 <table class="table table-borderless">
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <p class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</p>
-                                            </td>
-                                            <td>
-                                                {{ date('d/m/y H:i', strtotime($meeting->start_time)) }} -
-                                                {{ date('d/m/y H:i', strtotime($meeting->end_time)) }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ đề:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">{{ $meeting->title }}</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ trì:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">{{ $meeting->leader->name ?? '' }} -
-                                                    {{ $meeting->leader->code ?? '' }}</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thư kí:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">{{ $meeting->secretary->name ?? '' }} -
-                                                    {{ $meeting->secretary->code ?? '' }}</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
-                                                    gia:</div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">
-                                                    @if ($meeting->participants)
-                                                        @foreach ($meeting->participants as $participant)
-                                                            {{ $participant->name }} - {{ $participant->code }}
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="fs-5">
-                                                    @foreach (getListAbsence($meeting, $listUsers->data) as $absence)
-                                                        {{ $absence->name }} - {{ $absence->code }},&nbsp;
+                                    <tr>
+                                        <td>
+                                            <p class="fs-5 modal_body-title fw-bolder text-nowrap">Thời gian:</p>
+                                        </td>
+                                        <td>
+                                            {{ date('d/m/y H:i', strtotime($meeting->start_time)) }} -
+                                            {{ date('d/m/y H:i', strtotime($meeting->end_time)) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ đề:</div>
+                                        </td>
+                                        <td>
+                                            <div class="fs-5">{{ $meeting->title }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="fs-5 modal_body-title fw-bolder text-nowrap">Chủ trì:</div>
+                                        </td>
+                                        <td>
+                                            <div class="fs-5">{{ $meeting->leader->name ?? '' }} -
+                                                {{ $meeting->leader->code ?? '' }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thư kí:</div>
+                                        </td>
+                                        <td>
+                                            <div class="fs-5">{{ $meeting->secretary->name ?? '' }} -
+                                                {{ $meeting->secretary->code ?? '' }}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
+                                                gia:
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fs-5">
+                                                @if ($meeting->participants)
+                                                    @foreach ($meeting->participants as $participant)
+                                                        {{ $participant->name }} - {{ $participant->code }}
                                                     @endforeach
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                @endif
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fs-5">
+                                                @foreach (getListAbsence($meeting, $listUsers->data) as $absence)
+                                                    {{ $absence->name }} - {{ $absence->code }},&nbsp;
+                                                @endforeach
+                                            </div>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -856,7 +1013,7 @@
                                         @foreach (explode(',', $meeting->files) as $file)
                                             @if (strlen($file) > 0)
                                                 <a href="{{ $file }}" target="_blank"> - {{ $file }}</a>
-                                                <br />
+                                                <br/>
                                             @endif
                                         @endforeach
                                     @endif
@@ -874,70 +1031,70 @@
                             <div class="mt-4 modal_body-title">
                                 <table class="table table-bordered">
                                     <thead>
-                                        <tr>
-                                            <th scope="col">STT</th>
-                                            <th scope="col">Vấn đề</th>
-                                            <th scope="col">Người nêu</th>
-                                            <th scope="col">Nguyên nhân</th>
-                                            <th scope="col">Hướng giải quyết</th>
-                                            <th scope="col">PIC</th>
-                                            <th scope="col">Thời hạn</th>
-                                            <th scope="col">Tình trạng</th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col">STT</th>
+                                        <th scope="col">Vấn đề</th>
+                                        <th scope="col">Người nêu</th>
+                                        <th scope="col">Nguyên nhân</th>
+                                        <th scope="col">Hướng giải quyết</th>
+                                        <th scope="col">PIC</th>
+                                        <th scope="col">Thời hạn</th>
+                                        <th scope="col">Tình trạng</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($meeting->reports as $report)
-                                            <tr>
-                                                <th scope="row">
-                                                    {{ $loop->index + 1 }}
-                                                </th>
-                                                <td>
-                                                    {{ $report->problem }}
-                                                </td>
-                                                <td>
-                                                    {{ $report->user->name ?? '' }} - {{ $report->user->code ?? '' }}
-                                                </td>
-                                                <td>
-                                                    {{ $report->reason }}
-                                                </td>
-                                                <td>
-                                                    {{ $report->solution }}
-                                                </td>
-                                                <td>
-                                                    @foreach ($report->pics as $pic)
-                                                        {{ $pic->name ?? '' }} - {{ $pic->code ?? '' }}
-                                                    @endforeach
-                                                </td>
-                                                <td>{{ $report->deadline ? date('d/m/y', strtotime($report->deadline)) : '' }}
-                                                </td>
-                                                <td>
-                                                    @switch($report->status)
-                                                        @case('Sent')
-                                                            Đã tiếp nhận
+                                    @foreach ($meeting->reports as $report)
+                                        <tr>
+                                            <th scope="row">
+                                                {{ $loop->index + 1 }}
+                                            </th>
+                                            <td>
+                                                {{ $report->problem }}
+                                            </td>
+                                            <td>
+                                                {{ $report->user->name ?? '' }} - {{ $report->user->code ?? '' }}
+                                            </td>
+                                            <td>
+                                                {{ $report->reason }}
+                                            </td>
+                                            <td>
+                                                {{ $report->solution }}
+                                            </td>
+                                            <td>
+                                                @foreach ($report->pics as $pic)
+                                                    {{ $pic->name ?? '' }} - {{ $pic->code ?? '' }}
+                                                @endforeach
+                                            </td>
+                                            <td>{{ $report->deadline ? date('d/m/y', strtotime($report->deadline)) : '' }}
+                                            </td>
+                                            <td>
+                                                @switch($report->status)
+                                                    @case('Sent')
+                                                        Đã tiếp nhận
                                                         @break
 
-                                                        @case('FoundSolution')
-                                                            Đã có hướng giải quyết
+                                                    @case('FoundSolution')
+                                                        Đã có hướng giải quyết
                                                         @break
 
-                                                        @case('Solved')
-                                                            Đã giải quyết
+                                                    @case('Solved')
+                                                        Đã giải quyết
                                                         @break
 
-                                                        @case('Converted')
-                                                            Đã giao
+                                                    @case('Converted')
+                                                        Đã giao
                                                         @break
 
-                                                        @case('CantSolve')
-                                                            không thể giải quyết
+                                                    @case('CantSolve')
+                                                        không thể giải quyết
                                                         @break
 
-                                                        @default
+                                                    @default
                                                         @break
-                                                    @endswitch
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                                @endswitch
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
                                     </tbody>
                                 </table>
@@ -954,7 +1111,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <p class="modal_body-title"></p>
-                                <img src="" height="60" alt="" />
+                                <img src="" height="60" alt=""/>
                             </div>
                             <div class="d-flex align-items-center  justify-content-center">
                                 <p class="modal_body-title mb-0">{{ $meeting->leader->name ?? '' }}</p>
@@ -985,7 +1142,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <p class="modal_body-title"></p>
-                                <img src="" height="60" alt="" />
+                                <img src="" height="60" alt=""/>
                             </div>
                             <div class="d-flex align-items-center  justify-content-center">
                                 <p class="modal_body-title mb-0">{{ $meeting->secretary->name ?? '' }}</p>
@@ -1024,50 +1181,52 @@
                         <div class="table-responsive">
                             <table id="dsVanDeThaoLuan" class="table table-responsive table-hover table-bordered">
                                 <thead>
-                                    <tr>
-                                        <th scope="col" class="text-nowrap text-center" style="width:3%">&nbsp;</th>
-                                        <th scope="col" class="text-nowrap text-center" style="width:3%">STT</th>
-                                        <th scope="col" class="text-nowrap" style="width:30%">Vấn đề tồn đọng</th>
-                                        <th scope="col" class="text-nowrap" style="width:30%">Người nêu</th>
-                                        <th scope="col" class="text-nowrap" style="width:14%">Đơn vị</th>
-                                        <th scope="col" class="text-nowrap" style="width:10%">Phân loại</th>
-                                        <th scope="col" class="text-nowrap" style="width:10%">Thời hạn</th>
-                                    </tr>
+                                <tr>
+                                    <th scope="col" class="text-nowrap text-center" style="width:3%">&nbsp;</th>
+                                    <th scope="col" class="text-nowrap text-center" style="width:3%">STT</th>
+                                    <th scope="col" class="text-nowrap" style="width:30%">Vấn đề tồn đọng</th>
+                                    <th scope="col" class="text-nowrap" style="width:30%">Người nêu</th>
+                                    <th scope="col" class="text-nowrap" style="width:14%">Đơn vị</th>
+                                    <th scope="col" class="text-nowrap" style="width:10%">Phân loại</th>
+                                    <th scope="col" class="text-nowrap" style="width:10%">Thời hạn</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pendingReports as $rp)
-                                        <tr>
-                                            <td class="text-center">
-                                                <input class="form-check-input" type="checkbox" value="{{ $rp->id }}" name="reports[]" id="report{{ $rp->id }}">
-                                            </td>
-                                            <th class="text-center" scope="row">
-                                                {{ $loop->index + 1 }}
-                                            </th>
-                                            <td class="text-nowrap">
-                                                <div class="form-check text-nowrap text-truncate p-0" style="width:150px;">
-                                                    <label class="form-check-label" style="cursor: pointer" for="report{{ $rp->id }}">
-                                                        {{ $rp->problem }}
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="text-nowrap text-truncate" style="width:150px;">
-                                                    {{ $rp->user->name ?? '' }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="text-nowrap text-truncate" style="width:180px;">
-                                                    {{ $rp->departement->name ?? '' }}
-                                                </div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                Giải quyết
-                                            </td>
-                                            <td class="text-nowrap">
-                                                {{ date('d/m/Y', strtotime($rp->deadline)) }}
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach ($pendingReports as $rp)
+                                    <tr>
+                                        <td class="text-center">
+                                            <input class="form-check-input" type="checkbox" value="{{ $rp->id }}"
+                                                   name="reports[]" id="report{{ $rp->id }}">
+                                        </td>
+                                        <th class="text-center" scope="row">
+                                            {{ $loop->index + 1 }}
+                                        </th>
+                                        <td class="text-nowrap">
+                                            <div class="form-check text-nowrap text-truncate p-0" style="width:150px;">
+                                                <label class="form-check-label" style="cursor: pointer"
+                                                       for="report{{ $rp->id }}">
+                                                    {{ $rp->problem }}
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-nowrap text-truncate" style="width:150px;">
+                                                {{ $rp->user->name ?? '' }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-nowrap text-truncate" style="width:180px;">
+                                                {{ $rp->departement->name ?? '' }}
+                                            </div>
+                                        </td>
+                                        <td class="text-nowrap">
+                                            Giải quyết
+                                        </td>
+                                        <td class="text-nowrap">
+                                            {{ date('d/m/Y', strtotime($rp->deadline)) }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -1083,7 +1242,8 @@
     </div>
     @foreach ($handledReports as $item)
         {{-- Xóa thuộc tính --}}
-        <div class="modal fade" id="xoaThuocTinh{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="xoaThuocTinh{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1133,7 +1293,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                            data-bs-target="#themThanhVien">Hủy
+                    </button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1142,9 +1304,10 @@
     {{-- {{ dd($handledReports) }} --}}
     @foreach ($handledReports as $item)
         <!-- Modal Giao nhiệm vụ phát sinh -->
-        <div class="modal fade" id="nhiemVuPhatSinh{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="nhiemVuPhatSinh{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <form action="{{ route('reportTask.store') }}", method="POST">
+                <form action="{{ route('reportTask.store') }}" , method="POST">
                     @csrf
                     {{-- to update status report id --}}
                     <input type="hidden" name="report_id" value="{{ $item->id }}">
@@ -1156,31 +1319,38 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-8 mb-3">
-                                    <input type="text" readonly class="form-control" value="{{ $item->problem }}" name="name">
+                                    <input type="text" readonly class="form-control" value="{{ $item->problem }}"
+                                           name="name">
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                        <input id="giaoNhiemVuPhatSinh" name="deadline" value="19/03/2023" class="form-control" type="text">
+                                    <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
+                                         aria-label="Thời hạn" data-bs-original-title="Thời hạn">
+                                        <input id="giaoNhiemVuPhatSinh" name="deadline" value="19/03/2023"
+                                               class="form-control" type="text">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8 mb-3">
-                                    <textarea class="form-control" rows="1" placeholder="Mô tả/Diễn giải" name="description"></textarea>
+                                    <textarea class="form-control" rows="1" placeholder="Mô tả/Diễn giải"
+                                              name="description"></textarea>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manDay">
+                                    <input type="number" class="form-control" min="0" step="0.05"
+                                           oninput="onInput(this)" placeholder="Manday" id="title" name="manDay">
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="user_id">
+                                    <select class='selectpicker' title="Người đảm nhiệm" multiple
+                                            data-live-search="true" data-size="5" name="user_id">
                                         @foreach ($listUsers->data as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="relatedUsers[]">
+                                    <select class='selectpicker' title="Người liên quan" multiple
+                                            data-live-search="true" data-size="5" name="relatedUsers[]">
                                         @foreach ($listUsers->data as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
@@ -1192,7 +1362,8 @@
                                         <div data-repeater-list="kpiKeys">
                                             <div class="row" data-repeater-item>
                                                 <div class="col-md-9 mb-3">
-                                                    <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
+                                                    <select class='form-select' style="font-size:var(--fz-12)"
+                                                            title="Tiêu chí" data-live-search="true" name="id">
                                                         @foreach ($kpiKeys->data as $key)
                                                             <option value="{{ $key->id }}">{{ $key->name }}
                                                             </option>
@@ -1200,17 +1371,21 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                    <input type="number" min="0" class="form-control"
+                                                           placeholder="Giá trị" name="quantity"/>
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                    <img data-repeater-delete role="button"
+                                                         src="{{ asset('/assets/img/trash.svg') }}" width="20px"
+                                                         height="20px"/>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-start">
-                                                <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                                <div role="button" class="fs-4 text-danger" data-repeater-create><i
+                                                        class="bi bi-plus-circle"></i></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1233,16 +1408,20 @@
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
     <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
@@ -1315,6 +1494,8 @@
                 `
 
                 });
+                //scroll to bottom
+                notes.scrollTop = notes.scrollHeight;
             } catch (errr) {
                 console.log(errr);
             }
@@ -1346,6 +1527,14 @@
             } catch (err) {
                 console.log(err);
             }
+        })
+        //re render list notes every 30s
+        setInterval(async () => {
+            await renderListNotes();
+        }, 1000 * 30);
+        //remvove interval when leave page
+        window.addEventListener('beforeunload', () => {
+            clearInterval();
         })
     </script>
 
@@ -1381,7 +1570,7 @@
                 "Tháng 12",
             ],
         }
-        $(function() {
+        $(function () {
             getThisMeeting().then(meet => {
                 console.log("meet", meet);
                 const startTime = meet.start_time ? moment(meet.start_time) : moment();
@@ -1418,7 +1607,7 @@
     </script>
 
     <script>
-        updateList = function(e) {
+        updateList = function (e) {
             const input = e.target;
             const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(
                 '.modal_upload-list');
@@ -1451,6 +1640,7 @@
             }
             outPut.innerHTML = children;
         }
+
         //delete file from input
         function removeFileFromFileList(event, index) {
             const deleteButton = event.target;
@@ -1497,7 +1687,7 @@
     </script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $.datetimepicker.setLocale('vi');
             $('#hopGiaoBanNgayVanDeTonDong').datetimepicker({
                 format: 'd/m/Y',
@@ -1515,7 +1705,7 @@
     </script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $.datetimepicker.setLocale('vi');
             $('#giaoNhiemVuPhatSinh').datetimepicker({
                 format: 'd/m/Y',
