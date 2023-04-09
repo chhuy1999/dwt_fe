@@ -169,6 +169,15 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 // Route::get('kho-luu-tru-bien-ban-hop', function () {
 //     return view('HopDonVi.khoLuuTruBienBanHop');
 // });
+
+Route::get('danh-sach-dao-tao', function () {
+    return view('KeHoach_GiaoViec.danhSachDaoTao');
+});
+Route::get('danh-sach-dao-tao/chi-tiet', function () {
+    return view('KeHoach_GiaoViec.chiTietDaoTao');
+});
+
+
 Route::get('bien-ban-hop', function () {
     return view('HopDonVi.bienBanHop');
 });

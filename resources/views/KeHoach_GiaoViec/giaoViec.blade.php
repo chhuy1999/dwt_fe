@@ -19,6 +19,18 @@
             }
             return $isAssigned;
         }
+
+        function isInvolved($assignedTask, $userId)
+        {
+            $isInvolved = false;
+            for ($i = 0; $i < count($assignedTask->involvedPeople); $i++) {
+                if ($assignedTask->involvedPeople[$i]->id == $userId) {
+                    $isInvolved = true;
+                    break;
+                }
+            }
+            return $isInvolved;
+        }
     @endphp
 
     <div id="mainWrap" class="mainWrap">
@@ -36,40 +48,52 @@
                                     <div class='row'>
                                         <div class="col-md-7">
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="danhSachDinhMuc" class="table table-responsive table-hover table-bordered">
+                                                <table id="danhSachDinhMuc"
+                                                       class="table table-responsive table-hover table-bordered">
                                                     <thead>
-                                                        <tr>
-                                                            <th class="text-center">STT</th>
-                                                            <th class="text-nowrap">Tên định mức</th>
-                                                            <th class="text-nowrap">Mô tả</th>
-                                                            <th class="text-center">MD</th>
-                                                        </tr>
+                                                    <tr>
+                                                        <th class="text-center">STT</th>
+                                                        <th class="text-nowrap">Tên định mức</th>
+                                                        <th class="text-nowrap">Mô tả</th>
+                                                        <th class="text-center">MD</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($listTargets->data as $target)
-                                                            <tr class="clickTable" data-href="#body_content-{{ $target->id }}" style="cursor: pointer">
-                                                                <th scope="row">
-                                                                    <div class="d-flex align-items-center justify-content-center">
-                                                                        {{ $loop->iteration }}
-                                                                    </div>
-                                                                </th>
-                                                                <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->name }}">
-                                                                        {{ $target->name }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:280px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->description }}">
-                                                                        {{ $target->description }}
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->manday }} manday">
-                                                                        {{ $target->manday }}
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
+                                                    @foreach ($listTargets->data as $target)
+                                                        <tr class="clickTable"
+                                                            data-href="#body_content-{{ $target->id }}"
+                                                            style="cursor: pointer">
+                                                            <th scope="row">
+                                                                <div
+                                                                    class="d-flex align-items-center justify-content-center">
+                                                                    {{ $loop->iteration }}
+                                                                </div>
+                                                            </th>
+                                                            <td>
+                                                                <div class="text-nowrap d-inline-block text-truncate"
+                                                                     style="max-width:250px;" data-bs-toggle="tooltip"
+                                                                     data-bs-placement="top"
+                                                                     title="{{ $target->name }}">
+                                                                    {{ $target->name }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-nowrap d-inline-block text-truncate"
+                                                                     style="max-width:280px;" data-bs-toggle="tooltip"
+                                                                     data-bs-placement="top"
+                                                                     title="{{ $target->description }}">
+                                                                    {{ $target->description }}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex justify-content-center"
+                                                                     data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                     title="{{ $target->manday }} manday">
+                                                                    {{ $target->manday }}
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -82,36 +106,61 @@
                                                         @csrf
                                                         <input type="hidden" name="target_id" value="{{ $target->id }}">
                                                         <div class="card-title mb-2">
-                                                            <div class="text-nowrap d-block text-truncate" style="max-width:100%;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name }}">Giao việc cho
-                                                                định mức: "{{ $target->name }}"</div>
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                 style="max-width:100%;" data-bs-toggle="tooltip"
+                                                                 data-bs-placement="top"
+                                                                 data-bs-original-title="{{ $target->name }}">Giao việc
+                                                                cho
+                                                                định mức: "{{ $target->name }}"
+                                                            </div>
                                                         </div>
                                                         <div class="mb-3 row align-items-center">
                                                             <div class="col-md-7 mb-3">
-                                                                <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" placeholder="Tên nhiệm vụ" value="{{ $target->name }}" />
+                                                                <input type="text" class="form-control"
+                                                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                       title="Tên nhiệm vụ" name="name"
+                                                                       placeholder="Tên nhiệm vụ"
+                                                                       value="{{ $target->name }}"/>
                                                             </div>
                                                             <div class="col-md-5 mb-3">
-                                                                <input type="text" name="daterange" autocomplete="off" class="form-control" placeholder="Thời hạn" />
+                                                                <input type="text" name="daterange" autocomplete="off"
+                                                                       class="form-control" placeholder="Thời hạn"/>
                                                             </div>
                                                             <div class="col-md-9 mb-3">
-                                                                <textarea class="form-control" name="description" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
+                                                                <textarea class="form-control" name="description"
+                                                                          rows="1"
+                                                                          placeholder="Mô tả/Diễn giải"></textarea>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
                                                                 {{-- <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday" /> --}}
-                                                                <input type="text" class="form-control" data-bs-toggle="tooltip" readonly data-bs-placement="top" title="Manday" name="manday" placeholder="Manday" value="{{ $target->manday }}" />
+                                                                <input type="text" class="form-control"
+                                                                       data-bs-toggle="tooltip" readonly
+                                                                       data-bs-placement="top" title="Manday"
+                                                                       name="manday" placeholder="Manday"
+                                                                       value="{{ $target->manday }}"/>
 
                                                             </div>
                                                             <div class="col-md-9 mb-3">
-                                                                <textarea class="form-control" rows="1" placeholder="Kế hoạch thực hiện" name="executionPlan"></textarea>
+                                                                <textarea class="form-control" rows="1"
+                                                                          placeholder="Kế hoạch thực hiện"
+                                                                          name="executionPlan"></textarea>
                                                             </div>
                                                             <div class="col-md-3 mb-3">
                                                                 <div class="form-check">
-                                                                    <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $target->id }}" name="saveAsForm">
-                                                                    <label role="button" class="form-check-label user-select-none fs-5" for="datGiaTriKinhDoanh{{ $target->id }}">Lưu
+                                                                    <input role="button" type="checkbox"
+                                                                           class="form-check-input fs-5"
+                                                                           id="datGiaTriKinhDoanh{{ $target->id }}"
+                                                                           name="saveAsForm">
+                                                                    <label role="button"
+                                                                           class="form-check-label user-select-none fs-5"
+                                                                           for="datGiaTriKinhDoanh{{ $target->id }}">Lưu
                                                                         thành mẫu</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="users[]">
+                                                                <select class='selectpicker' title="Người đảm nhiệm"
+                                                                        multiple data-live-search="true" data-size="5"
+                                                                        name="users[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -119,7 +168,9 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Người liên quan" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="involvedPeople[]">
+                                                                <select class='selectpicker' title="Người liên quan"
+                                                                        multiple data-live-search="true" data-size="5"
+                                                                        name="involvedPeople[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -130,9 +181,13 @@
                                                                 <div data-repeater-list="kpiKeys">
                                                                     <div class="row" data-repeater-item>
                                                                         <div class="col-md-8 mb-3">
-                                                                            <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
+                                                                            <select class='form-select'
+                                                                                    style="font-size:var(--fz-12)"
+                                                                                    title="Tiêu chí"
+                                                                                    data-live-search="true" name="id">
                                                                                 <option value="" hidden>Chọn chỉ số
-                                                                                    key</option>
+                                                                                    key
+                                                                                </option>
                                                                                 @foreach ($kpiKeys as $kpiKey)
                                                                                     <option value="{{ $kpiKey->id }}">
                                                                                         {{ $kpiKey->name }}
@@ -141,17 +196,25 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-md-3 mb-3">
-                                                                            <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                                            <input type="number" min="0"
+                                                                                   class="form-control"
+                                                                                   placeholder="Giá trị"
+                                                                                   name="quantity"/>
                                                                         </div>
-                                                                        <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                                        <div
+                                                                            class="col-md-1 mb-3 d-flex align-items-center">
+                                                                            <img data-repeater-delete role="button"
+                                                                                 src="{{ asset('/assets/img/trash.svg') }}"
+                                                                                 width="20px" height="20px"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="col-md-12">
                                                                     <div class="d-flex justify-content-start">
-                                                                        <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                                                        <div role="button" class="fs-4 text-danger"
+                                                                             data-repeater-create><i
+                                                                                class="bi bi-plus-circle"></i></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -160,8 +223,10 @@
 
                                                         <div class="justify-content-end d-flex">
                                                             <div class="action_btn">
-                                                                <input class="btn btn-outline-danger px-4 me-3" type="reset" value="Hủy" />
-                                                                <button type="submit" class="btn btn-danger px-4">Giao</button>
+                                                                <input class="btn btn-outline-danger px-4 me-3"
+                                                                       type="reset" value="Hủy"/>
+                                                                <button type="submit" class="btn btn-danger px-4">Giao
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -172,7 +237,8 @@
                                             <div class="body_noContent-wrapper">
                                                 Vui lòng chọn định mức để giao việc
                                                 <button type="button" class="btn btn-danger ms-2" id="toggleDinhMuc">tại
-                                                    đây</button>
+                                                    đây
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -188,128 +254,280 @@
                                             <div class='row'>
                                                 <div class="col-md-12">
                                                     <div class="position-relative">
-                                                        <table id="listDanhSach" class="table table-responsive table-hover table-bordered  style_table-6">
+                                                        <table id="listDanhSach"
+                                                               class="table table-responsive table-hover table-bordered  style_table-6">
                                                             <thead>
-                                                                <tr>
-                                                                    <th class="text-nowrap" style="width: 2%" class="text-center">STT</th>
-                                                                    <th class="text-nowrap" style="width: 26%">Tên nhiệm
-                                                                        vụ</th>
-                                                                    <th class="text-nowrap" style="width: 20%">Thuộc định
-                                                                        mức</th>
-                                                                    <th class="text-nowrap" style="width:20%">Người đảm
-                                                                        nhiệm</th>
-                                                                    <th class="text-nowrap" style="width:20%">Người liên
-                                                                        quan</th>
-                                                                    <th class="text-nowrap" style="width:8%">Thời hạn</th>
-                                                                    {{-- <th>Tình trạng</th> --}}
-                                                                    <th style="width: 2%"></th>
-                                                                </tr>
+                                                            <tr>
+                                                                <th class="text-nowrap" style="width: 2%"
+                                                                    class="text-center">STT
+                                                                </th>
+                                                                <th class="text-nowrap" style="width: 26%">Tên nhiệm
+                                                                    vụ
+                                                                </th>
+                                                                <th class="text-nowrap" style="width: 20%">Thuộc định
+                                                                    mức
+                                                                </th>
+                                                                <th class="text-nowrap" style="width:20%">Người đảm
+                                                                    nhiệm
+                                                                </th>
+                                                                <th class="text-nowrap" style="width:20%">Người liên
+                                                                    quan
+                                                                </th>
+                                                                <th class="text-nowrap" style="width:8%">Thời hạn</th>
+                                                                {{-- <th>Tình trạng</th> --}}
+                                                                <th style="width: 2%"></th>
+                                                            </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach ($listAssignTasks->data as $assignedTask)
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="d-flex align-items-center justify-content-center">
-                                                                                {{ $loop->iteration }}
-
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:295px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->name }}">
-                                                                                {{ $assignedTask->name }}
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:225px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $assignedTask->target->name }}">
-                                                                                {{ $assignedTask->target->name ?? '' }}
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" title="@foreach ($assignedTask->users as $user) {{ $user->name }}, @endforeach">
-                                                                                @foreach ($assignedTask->users as $user)
-                                                                                    {{ $user->name }},
-                                                                                @endforeach
-                                                                            </div>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="text-nowrap d-inline-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" title="@foreach ($assignedTask->involvedPeople as $user)
-                                                                                {{ $user->name }}, @endforeach">
-                                                                                @foreach ($assignedTask->involvedPeople as $user)
-                                                                                    {{ $user->name }},
-                                                                                @endforeach
-                                                                            </div>
-
-                                                                        </td>
-                                                                        <td>
-                                                                            {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}
-                                                                        </td>
-                                                                        {{-- <td>
+                                                            @foreach ($listAssignTasks->data as $assignedTask)
+                                                                <tr>
+                                                                    <td>
                                                                         <div
                                                                             class="d-flex align-items-center justify-content-center">
-                                                                            <div class="circle_tracking-wrapper"
-                                                                                style="border: 1px solid">
-                                                                                <div class="circle_tracking bg-white">
-                                                                                </div>
-                                                                                <div class="circle_tracking bg-white">
-                                                                                </div>
-                                                                                <div class="circle_tracking bg-white">
-                                                                                </div>
-                                                                                <div class="circle_tracking bg-white">
-                                                                                </div>
-                                                                            </div>
+                                                                            {{ $loop->iteration }}
+
                                                                         </div>
-                                                                    </td> --}}
-                                                                        <td>
-                                                                            <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            style="max-width:295px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="{{ $assignedTask->name }}">
+                                                                            {{ $assignedTask->name }}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            style="max-width:225px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="{{ $assignedTask->target->name }}">
+                                                                            {{ $assignedTask->target->name ?? '' }}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            style="max-width:100px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="@foreach ($assignedTask->users as $user) {{ $user->name }}, @endforeach">
+                                                                            @foreach ($assignedTask->users as $user)
+                                                                                {{ $user->name }},
+                                                                            @endforeach
+                                                                        </div>
+
+                                                                    </td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            style="max-width:100px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top" title="@foreach ($assignedTask->involvedPeople as $user)
+                                                                                {{ $user->name }}, @endforeach">
+                                                                            @foreach ($assignedTask->involvedPeople as $user)
+                                                                                {{ $user->name }},
+                                                                            @endforeach
+                                                                        </div>
+
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}
+                                                                    </td>
+                                                                    {{-- <td>
+                                                                    <div
+                                                                        class="d-flex align-items-center justify-content-center">
+                                                                        <div class="circle_tracking-wrapper"
+                                                                            style="border: 1px solid">
+                                                                            <div class="circle_tracking bg-white">
                                                                             </div>
-                                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                                <li>
-                                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $assignedTask->id }}">
-                                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                                                                        Sửa
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $assignedTask->id }}" data-repeater-delete>
-                                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                                                        Xóa
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-
-                                                                        </td>
-                                                                    </tr>
-
-
-                                                                    {{-- Xóa thuộc tính --}}
-                                                                    <div class="modal fade" id="xoaThuocTinh{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa nhiệm vụ
-                                                                                    </h5>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    Bạn có thực sự muốn xoá nhiệm vụ đã chọn
-                                                                                    không?
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                                    <form method="POST" action="/huy-giao-viec/{{ $assignedTask->id }}">
-                                                                                        @csrf
-                                                                                        @method('PUT')
-                                                                                        <button type="submit" class="btn btn-danger" id="deleteRowElement">Có, tôi
-                                                                                            muốn
-                                                                                            xóa</button>
-                                                                                    </form>
-
-                                                                                </div>
+                                                                            <div class="circle_tracking bg-white">
+                                                                            </div>
+                                                                            <div class="circle_tracking bg-white">
+                                                                            </div>
+                                                                            <div class="circle_tracking bg-white">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                @endforeach
+                                                                </td> --}}
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                             data-bs-toggle="dropdown"
+                                                                             aria-expanded="false"><i
+                                                                                class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        <ul class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                   data-bs-toggle="modal"
+                                                                                   data-bs-target="#suaVanDeTonDong{{ $assignedTask->id }}">
+                                                                                    <img style="width:16px;height:16px"
+                                                                                         src="{{ asset('assets/img/edit.svg') }}"/>
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#"
+                                                                                   data-bs-toggle="modal"
+                                                                                   data-bs-target="#xoaThuocTinh{{ $assignedTask->id }}"
+                                                                                   data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px"
+                                                                                         src="{{ asset('assets/img/trash.svg') }}"/>
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+
+                                                                    </td>
+                                                                </tr>
+                                                                {{-- Xóa thuộc tính --}}
+                                                                <div class="modal fade"
+                                                                     id="xoaThuocTinh{{ $assignedTask->id }}"
+                                                                     tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                     aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title text-danger"
+                                                                                    id="exampleModalLabel">Xóa nhiệm vụ
+                                                                                </h5>
+                                                                                <button type="button" class="btn-close"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Bạn có thực sự muốn xoá nhiệm vụ đã chọn
+                                                                                không?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                        class="btn btn-outline-danger"
+                                                                                        data-bs-dismiss="modal">Hủy
+                                                                                </button>
+                                                                                <form method="POST"
+                                                                                      action="/huy-giao-viec/{{ $assignedTask->id }}">
+                                                                                    @csrf
+                                                                                    @method('PUT')
+                                                                                    <button type="submit"
+                                                                                            class="btn btn-danger"
+                                                                                            id="deleteRowElement">Có,
+                                                                                        tôi
+                                                                                        muốn
+                                                                                        xóa
+                                                                                    </button>
+                                                                                </form>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                            {{-- nvu phat sinh--}}
+                                                            @foreach($reportTasks->data as $task)
+                                                                <tr>
+                                                                    <td>
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-center">
+                                                                            {{ $loop->iteration + count($listAssignTasks->data) }}
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            style="max-width:295px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="{{ $assignedTask->name }}">
+                                                                            {{ $task->name }}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            style="max-width:225px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="Nhiệm vụ phát sinh">
+                                                                            Nhiệm vụ phát sinh
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            style="max-width:100px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            title="{{$task->user->name ?? ""}}">
+                                                                            {{$task->user->name ?? ""}}
+                                                                        </div>
+
+                                                                    </td>
+                                                                    <td>
+                                                                        <div
+                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            style="max-width:100px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top" title="">
+
+                                                                        </div>
+
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ date('d/m/Y', strtotime($task->deadline)) }}
+                                                                    </td>
+                                                                    {{-- <td>
+                                                                    <div
+                                                                        class="d-flex align-items-center justify-content-center">
+                                                                        <div class="circle_tracking-wrapper"
+                                                                            style="border: 1px solid">
+                                                                            <div class="circle_tracking bg-white">
+                                                                            </div>
+                                                                            <div class="circle_tracking bg-white">
+                                                                            </div>
+                                                                            <div class="circle_tracking bg-white">
+                                                                            </div>
+                                                                            <div class="circle_tracking bg-white">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td> --}}
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                             data-bs-toggle="dropdown"
+                                                                             aria-expanded="false"><i
+                                                                                class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        {{--                                                                        <ul class="dropdown-menu"--}}
+                                                                        {{--                                                                            aria-labelledby="dropdownMenuButton1">--}}
+                                                                        {{--                                                                            <li>--}}
+                                                                        {{--                                                                                <a class="dropdown-item" href="#"--}}
+                                                                        {{--                                                                                   data-bs-toggle="modal"--}}
+                                                                        {{--                                                                                   data-bs-target="#suaVanDeTonDong{{ $assignedTask->id }}">--}}
+                                                                        {{--                                                                                    <img style="width:16px;height:16px"--}}
+                                                                        {{--                                                                                         src="{{ asset('assets/img/edit.svg') }}"/>--}}
+                                                                        {{--                                                                                    Sửa--}}
+                                                                        {{--                                                                                </a>--}}
+                                                                        {{--                                                                            </li>--}}
+                                                                        {{--                                                                            <li>--}}
+                                                                        {{--                                                                                <a class="dropdown-item" href="#"--}}
+                                                                        {{--                                                                                   data-bs-toggle="modal"--}}
+                                                                        {{--                                                                                   data-bs-target="#xoaThuocTinh{{ $assignedTask->id }}"--}}
+                                                                        {{--                                                                                   data-repeater-delete>--}}
+                                                                        {{--                                                                                    <img style="width:16px;height:16px"--}}
+                                                                        {{--                                                                                         src="{{ asset('assets/img/trash.svg') }}"/>--}}
+                                                                        {{--                                                                                    Xóa--}}
+                                                                        {{--                                                                                </a>--}}
+                                                                        {{--                                                                            </li>--}}
+                                                                        {{--                                                                        </ul>--}}
+
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -330,7 +548,8 @@
 
     @foreach ($listAssignTasks->data as $assignedTask)
         <!-- Modal Sửa nvu -->
-        <div class="modal fade" id="suaVanDeTonDong{{ $assignedTask->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="suaVanDeTonDong{{ $assignedTask->id }}" tabindex="-1"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header text-center">
@@ -344,38 +563,55 @@
                         <div class="modal-body">
                             <div class="mb-3 row">
                                 <div class="col-md-7 mb-3">
-                                    <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" value="{{ $assignedTask->name }}" />
+                                    <input type="text" class="form-control" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Tên nhiệm vụ" name="name"
+                                           value="{{ $assignedTask->name }}"/>
                                 </div>
 
                                 <div class="col-md-5 mb-3">
-                                    <input type="text" name="daterange" class="form-control" value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}" />
+                                    <input type="text" name="daterange" class="form-control"
+                                           value="{{ date('d/m/Y', strtotime($assignedTask->startDate)) }} - {{ date('d/m/Y', strtotime($assignedTask->deadline)) }}"/>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
-                                    <input type="text" class="form-control" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Thuộc định mức" value="{{ $assignedTask->target->name ?? '' }}" />
+                                    <input type="text" class="form-control" readonly data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Thuộc định mức"
+                                           value="{{ $assignedTask->target->name ?? '' }}"/>
                                 </div>
 
                                 <div class="col-md-9 mb-3">
-                                    <textarea class="form-control" rows="1" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả nhiệm vụ" name="description" id="" placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
+                                    <textarea class="form-control" rows="1" data-bs-toggle="tooltip"
+                                              data-bs-placement="top" title="Mô tả nhiệm vụ" name="description" id=""
+                                              placeholder="Nhập mô tả nhiệm vụ">{{ $assignedTask->description }}</textarea>
                                 </div>
 
                                 <div class="col-md-3 mb-3">
-                                    <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday" name="manday" min="0" step="0.05" oninput="onInput(this)" value="{{ $assignedTask->manday }}" class="form-control" />
+                                    <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Manday"
+                                           name="manday" min="0" step="0.05" oninput="onInput(this)"
+                                           value="{{ $assignedTask->manday }}" class="form-control"/>
                                 </div>
                                 <div class="col-md-9 mb-3">
-                                    <textarea class="form-control" rows="1" data-bs-toggle="tooltip" data-bs-placement="top" title="Kế hoạch thực hiện" name="executionPlan" id="" placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
+                                    <textarea class="form-control" rows="1" data-bs-toggle="tooltip"
+                                              data-bs-placement="top" title="Kế hoạch thực hiện" name="executionPlan"
+                                              id=""
+                                              placeholder="Nhập kê hoạch thực hiẹn">{{ $assignedTask->executionPlan }}</textarea>
                                 </div>
 
                                 <div class="col-md-3 mb-3">
                                     <div class="form-check">
-                                        <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $assignedTask->id }}" name="saveAsForm">
-                                        <label role="button" class="form-check-label user-select-none fs-5" for="datGiaTriKinhDoanh{{ $assignedTask->id }}">Lưu
+                                        <input role="button" type="checkbox" class="form-check-input fs-5"
+                                               id="datGiaTriKinhDoanh{{ $assignedTask->id }}" name="saveAsForm">
+                                        <label role="button" class="form-check-label user-select-none fs-5"
+                                               for="datGiaTriKinhDoanh{{ $assignedTask->id }}">Lưu
                                             thành mẫu</label>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người đảm nhiệm">
-                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="users[]">
+                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top"
+                                     title="Người đảm nhiệm">
+                                    <select class='selectpicker' multiple data-size="5" data-live-search="true"
+                                            data-selected-text-format="count > 1"
+                                            data-count-selected-text="Có {0} người đảm nhiệm" name="users[]">
                                         @foreach ($listUsers as $user)
                                             @if (isAssigned($assignedTask, $user->id))
                                                 <option value="{{ $user->id }}" selected>
@@ -391,12 +627,22 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người liên quan">
-                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Người liên quan" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="relatedUsers[]" id="">
+                                <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top"
+                                     title="Người liên quan">
+                                    <select class='selectpicker' title="Người liên quan" multiple
+                                            data-live-search="true" data-size="5" data-selected-text-format="count > 1"
+                                            data-count-selected-text="Có {0} người liên quan" name="involvedPeople[]"
+                                            id="">
                                         @foreach ($listUsers as $user)
-                                            <option value="{{ $user->id }}" selected>
-                                                {{ $user->name }}
-                                            </option>
+                                            @if(isInvolved($assignedTask, $user->id))
+                                                <option value="{{ $user->id }}" selected>
+                                                    {{ $user->name }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $user->id }}">
+                                                    {{ $user->name }}
+                                                </option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -422,10 +668,14 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-5 mb-3">
-                                                    <input type="number" class="form-control" min="0" placeholder="Giá trị" name="quantity" value="{{ $kpiKey->quantity }}" />
+                                                    <input type="number" class="form-control" min="0"
+                                                           placeholder="Giá trị" name="quantity"
+                                                           value="{{ $kpiKey->quantity }}"/>
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                    <img data-repeater-delete role="button"
+                                                         src="{{ asset('/assets/img/trash.svg') }}" width="20px"
+                                                         height="20px"/>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -434,7 +684,8 @@
 
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-start">
-                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i
+                                                    class="bi bi-plus-circle"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -452,7 +703,8 @@
     @endforeach
 
     <!-- Modal Giao việc phát sinh -->
-    <div class="modal fade" id="giaoNhiemVuPhatSinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="giaoNhiemVuPhatSinh" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -467,19 +719,24 @@
                                 <input type="text" class="form-control" name="name" placeholder="Tên nhiệm vụ">
                             </div>
                             <div class="col-md-4 mb-3">
-                                <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                    <input name="deadline" id="giaoNhiemVuPhatSinhGiaoViec" placeholder="Thời hạn" class="form-control" type="text">
+                                <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
+                                     aria-label="Thời hạn" data-bs-original-title="Thời hạn">
+                                    <input name="deadline" id="giaoNhiemVuPhatSinhGiaoViec" placeholder="Thời hạn"
+                                           class="form-control" type="text">
                                     <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <textarea class="form-control" name="description"rows="1" placeholder="Mô tả/Diễn giải"></textarea>
+                                <textarea class="form-control" name="description" rows="1"
+                                          placeholder="Mô tả/Diễn giải"></textarea>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <input type="number" name="manDay" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday">
+                                <input type="number" name="manDay" class="form-control" min="0" step="0.05"
+                                       oninput="onInput(this)" placeholder="Manday" id="title" name="manday">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select class="selectpicker" data-live-search="true" data-size="5" name="user_id" id="" title="Người đảm nhiệm">
+                                <select class="selectpicker" data-live-search="true" data-size="5" name="user_id" id=""
+                                        title="Người đảm nhiệm">
                                     @foreach ($listUsers as $user)
                                         <option value="{{ $user->id }}">
                                             {{ $user->name }}</option>
@@ -487,7 +744,8 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5">
+                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true"
+                                        data-size="5">
                                     @foreach ($listUsers as $user)
                                         <option value="{{ $user->id }}">
                                             {{ $user->name }}</option>
@@ -500,7 +758,8 @@
                                     <div data-repeater-list="kpiKeys">
                                         <div class="row" data-repeater-item>
                                             <div class="col-md-7 mb-3">
-                                                <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
+                                                <select class='form-select' style="font-size:var(--fz-12)"
+                                                        title="Tiêu chí" data-live-search="true" name="id">
                                                     <option value="" hidden>Chọn chỉ số key</option>
                                                     @foreach ($kpiKeys as $kpiKey)
                                                         <option value="{{ $kpiKey->id }}">
@@ -510,17 +769,21 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-4 mb-3">
-                                                <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
+                                                <input type="number" min="0" class="form-control" placeholder="Giá trị"
+                                                       name="quantity"/>
                                             </div>
                                             <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                <img data-repeater-delete role="button"
+                                                     src="{{ asset('/assets/img/trash.svg') }}" width="20px"
+                                                     height="20px"/>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-start">
-                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                            <div role="button" class="fs-4 text-danger" data-repeater-create><i
+                                                    class="bi bi-plus-circle"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -540,7 +803,8 @@
 @section('footer-script')
 
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
     <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
@@ -549,8 +813,10 @@
 
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
     <!-- Chart Types -->
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
@@ -582,7 +848,7 @@
 
         select.innerHTML = selectOpt.join('');
 
-        select.addEventListener('change', function() {
+        select.addEventListener('change', function () {
             for (let i = 0, iLen = select.options.length; i < iLen; i++) {
                 const opt = select.options[i];
 
@@ -648,9 +914,10 @@
 
 
         }
+
         // Toggle List Table
         const handleBtn = document.querySelector('#toggleDinhMuc');
-        handleBtn.addEventListener('click', function(e) {
+        handleBtn.addEventListener('click', function (e) {
             e.preventDefault();
             const dataTable = document.querySelector('.dataTables_wrapper')
             dataTable.setAttribute('id', 'bg-blink');
@@ -690,7 +957,7 @@
         //get all tr elements
         var trs = targetTable.rows().nodes();
         //add click event to all tr elements
-        $(trs).click(function() {
+        $(trs).click(function () {
             //get dat-href attribute value on each tr
             const id = $(this).attr('data-href');
             // //get element by id
@@ -780,7 +1047,7 @@
     </script>
 
     <script>
-        $(function() {
+        $(function () {
             $('input[name="daterange"]').daterangepicker({
                 opens: 'left',
                 locale: {
@@ -794,7 +1061,7 @@
     </script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $.datetimepicker.setLocale('vi');
             $('#giaoNhiemVuPhatSinhGiaoViec').datetimepicker({
                 format: 'd/m/Y',

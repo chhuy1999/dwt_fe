@@ -11,10 +11,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title') - Mastertran</title>
+    <title>@yield('title') - {{ env('SLOGAN_URL', ''); }}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.jpg') }}">
+    <link rel="shortcut icon" href="{{ env('FAVICON_URL', ''); }}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,7 +51,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             <div class="container-fluid d-flex align-items-center justify-content-between">
                 <div class="header_logo">
                     <a href="/" class="navbar-brand d-flex align-items-center scrollto me-auto me-lg-0">
-                        <img class="header_logo" src="{{ asset('assets/img/logo-notext.jpg') }}" />
+                        <img class="header_logo" src="{{ env('LOGO_URL', ''); }}" />
                     </a>
                 </div>
 
@@ -66,24 +66,32 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                     <span>Kế hoạch & Giao việc</span>
                                 </a>
                                 <ul id="header_submenu">
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Kế hoạch</a>
-                                        {{--                                        <a href="ke-hoach" class="header_submenu-link">Kế hoạch</a> --}}
+                                    <li class="header_submenu-items more position-relative">
+                                        <a href="#" class="header_submenu-link more_btn">
+                                            Đào tạo <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                        <ul class="header_more">
+                                            <li class="header_more-item">
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#themDsDaoTao" class="header_more-link">Thêm đánh giá đào tạo</a>
+                                            </li>
+                                            <li class="header_more-item">
+                                                <a href="danh-sach-dao-tao" class="header_more-link">Danh sách đánh giá</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                        <li class="header_submenu-items more position-relative">
-                                            <a href="#" class="header_submenu-link more_btn">
-                                                Giao Việc <i class="bi bi-chevron-right"></i>
+                                        <li class="header_submenu-items">
+                                            <a href="{{ route('assignTask.list') }}" class="header_submenu-link">
+                                                Giao Việc
                                             </a>
-                                            <ul class="header_more">
+                                            {{-- <ul class="header_more">
                                                 <li class="header_more-item">
-                                                    <a href="{{ route('assignTask.list') }}" class="header_more-link">Giao việc định mức</a>
+                                                    <a href="" class="header_more-link">Giao việc định mức</a>
                                                 </li>
-                                                {{-- <li class="header_more-item">
+                                                <li class="header_more-item">
                                                     <a href="" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinhGlobal" class="header_more-link">Giao việc phát sinh</a>
-                                                </li> --}}
-
-                                            </ul>
+                                                </li>
+                                            </ul> --}}
                                         </li>
                                     @endif
 
@@ -494,7 +502,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng 23</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('report.store') }}" method="POST">
@@ -716,6 +724,69 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         </div>
     </div>
 
+    <!-- Modal Thêm DS Đào Tạo -->
+    <div class="modal fade" id="themDsDaoTao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm mới đánh giá đào tạo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="" action="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5 mb-3 position-relative">
+                                <input id="dateDanhGia" type="text" placeholder="Ngày tạo" class="form-control">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                            </div>
+                            <div class="col-md-7 mb-3">
+                                <select name="" class="selectpicker" multiple data-size="5" data-live-search="true" data-actions-box="true"
+                                title="Chọn học viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} học viên" data-live-search-placeholder="Tìm kiếm..." >
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select name="" class="selectpicker" multiple data-size="5" data-live-search="true" data-actions-box="true"
+                                title="Chọn người hướng dẫn..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} người hướng dẫn" data-live-search-placeholder="Tìm kiếm..." >
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                </select>
+                            </div>
+                            <div class="col-md-7 mb-3">
+                                <select name="" class="selectpicker" multiple data-size="5" data-live-search="true" data-actions-box="true"
+                                title="Chọn địa bàn..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} địa bàn" data-live-search-placeholder="Tìm kiếm..." >
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         //IMPORTANT: GLOBAL VARIABLE CAN USE EVERY WHERE
         const JWT_TOKEN = "{!! session()->get('token') !!}";
@@ -738,9 +809,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     @yield('footer-script')
     <script>
-        //IMPORTANT: GLOBAL VARIABLE CAN USE EVERY WHERE
-        // const JWT_TOKEN = "{!! session()->get('token') !!}";
-        // const USER = {!! json_encode(session()->get('user')) !!};
         // const API_URL
         // get list departments
         const fetchListDeparments = async () => {
@@ -756,11 +824,14 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 const data = await resp.json();
                 const listDp = data.data.data;
                 const selectDp = document.getElementById('report-dp');
-                console.log(listDp);
                 listDp.forEach(dp => {
                     const option = document.createElement('option');
                     option.value = dp.id;
                     option.text = dp.name;
+                    if(dp.id === USER.departement_id) {
+                        console.log("selected", dp.name, dp.id, USER.departement_id);
+                        option.selected = true;
+                    }
                     selectDp.appendChild(option);
                 });
 
@@ -791,7 +862,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 });
                 const data = await resp.json();
                 const listUsers = data.data.data;
-                console.log(listUsers)
+
                 listUsers.forEach(user => {
                     const option = document.createElement('option');
                     option.value = user.id;
