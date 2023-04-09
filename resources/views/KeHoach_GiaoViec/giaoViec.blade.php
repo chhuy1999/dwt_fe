@@ -70,7 +70,7 @@
                                                                 </div>
                                                             </th>
                                                             <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate"
+                                                                <div class="text-nowrap d-block text-truncate"
                                                                      style="max-width:250px;" data-bs-toggle="tooltip"
                                                                      data-bs-placement="top"
                                                                      title="{{ $target->name }}">
@@ -78,7 +78,7 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate"
+                                                                <div class="text-nowrap d-block text-truncate"
                                                                      style="max-width:280px;" data-bs-toggle="tooltip"
                                                                      data-bs-placement="top"
                                                                      title="{{ $target->description }}">
@@ -288,7 +288,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div
-                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            class="text-nowrap d-block text-truncate"
                                                                             style="max-width:295px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
@@ -298,7 +298,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div
-                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            class="text-nowrap d-block text-truncate"
                                                                             style="max-width:225px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
@@ -308,8 +308,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <div
-                                                                            class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:100px;"
+                                                                            class="text-nowrap d-block text-truncate"
+                                                                            style="max-width:215px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="@foreach ($assignedTask->users as $user) {{ $user->name }}, @endforeach">
@@ -321,8 +321,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <div
-                                                                            class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:100px;"
+                                                                            class="text-nowrap d-block text-truncate"
+                                                                            style="max-width:215px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top" title="@foreach ($assignedTask->involvedPeople as $user)
                                                                                 {{ $user->name }}, @endforeach">
@@ -436,7 +436,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div
-                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            class="text-nowrap d-block text-truncate"
                                                                             style="max-width:295px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
@@ -446,7 +446,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div
-                                                                            class="text-nowrap d-inline-block text-truncate"
+                                                                            class="text-nowrap d-block text-truncate"
                                                                             style="max-width:225px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
@@ -456,8 +456,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <div
-                                                                            class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:100px;"
+                                                                            class="text-nowrap d-block text-truncate"
+                                                                            style="max-width:215px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top"
                                                                             title="{{$task->user->name ?? ""}}">
@@ -467,8 +467,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <div
-                                                                            class="text-nowrap d-inline-block text-truncate"
-                                                                            style="max-width:100px;"
+                                                                            class="text-nowrap d-block text-truncate"
+                                                                            style="max-width:215px;"
                                                                             data-bs-toggle="tooltip"
                                                                             data-bs-placement="top" title="">
 
@@ -1180,19 +1180,6 @@
 
             </div>
         `);
-
-        // <div class="select">
-        //             <select class="selectpicker" placeholder="Chọn đơn vị" title="Chọn đơn vị" data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
-        //                     <option value="1">Ban Giám Đốc</option>
-        //                     <option value="2">Ban Kiểm soát</option>
-        //                     <option value="3">Phòng Dịch vụ bán hàng</option>
-        //                     <option value="4">Bộ phận Kho Vận</option>
-        //                     <option value="5">Phòng Kế toán</option>
-        //                     <option value="6">Cung ứng MTT</option>
-        //                     <option value="7">Phòng marketing</option>
-        //                     <option value="8">Phòng quản trị nhãn và đào tạo</option>
-        //             </select>
-        //         </div>
 
         $('#listDanhSach').DataTable({
             paging: true,
