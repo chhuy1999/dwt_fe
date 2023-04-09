@@ -77,14 +77,14 @@ class TargetDetailController extends Controller
                 'manday' => 'nullable|numeric',
                 "daterange" => "nullable",
                 "users" => "nullable|array",
-                "relatedUsers" => "nullable|array",
+                "involvedPeople" => "nullable|array",
                 'managerComment' => 'nullable',
                 'managerManDay' => 'nullable|numeric',
             ]);
 
-            
 
-            if (isset($request['daterange'])) {
+
+            if (isset($data['daterange'])) {
                 $dateRange = $data['daterange'];
                 $startDate = explode(" - ", $dateRange)[0];
                 //remove space
@@ -104,6 +104,7 @@ class TargetDetailController extends Controller
             $this->dwtService->updateKpiTargetDetail($id, $data);
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
+
             $error = $e->getMessage();
             return back()->with('error', $error);
         }

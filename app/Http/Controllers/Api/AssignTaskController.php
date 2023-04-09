@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class AssignTaskController extends Controller
 {
     //
-    private $dwtService;
+    private DwtServices $dwtService;
 
     public function __construct()
     {
@@ -37,12 +37,18 @@ class AssignTaskController extends Controller
             $kpiKeys = $kpiKeys->data;
             $listPositions = $this->dwtService->listPositions();
 
+            $reportTasks = $this->dwtService->searchReportTasks([
+                "page" => 1,
+                "limit" => 100
+            ]);
+
 
             return view('KeHoach_GiaoViec.giaoViec')
                 ->with('listTargets', $listTargets)
                 ->with('listAssignTasks', $listAssignTasks)
                 ->with('listUsers', $listUsers)
                 ->with('kpiKeys', $kpiKeys)
+                ->with('reportTasks', $reportTasks)
                 ->with('listPositions', $listPositions);
         } catch (Exception $e) {
             error_log($e->getMessage());

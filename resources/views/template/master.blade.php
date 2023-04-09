@@ -502,7 +502,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng 23</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('report.store') }}" method="POST">
@@ -809,9 +809,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     @yield('footer-script')
     <script>
-        //IMPORTANT: GLOBAL VARIABLE CAN USE EVERY WHERE
-        // const JWT_TOKEN = "{!! session()->get('token') !!}";
-        // const USER = {!! json_encode(session()->get('user')) !!};
         // const API_URL
         // get list departments
         const fetchListDeparments = async () => {
@@ -827,11 +824,14 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 const data = await resp.json();
                 const listDp = data.data.data;
                 const selectDp = document.getElementById('report-dp');
-                console.log(listDp);
                 listDp.forEach(dp => {
                     const option = document.createElement('option');
                     option.value = dp.id;
                     option.text = dp.name;
+                    if(dp.id === USER.departement_id) {
+                        console.log("selected", dp.name, dp.id, USER.departement_id);
+                        option.selected = true;
+                    }
                     selectDp.appendChild(option);
                 });
 
@@ -862,7 +862,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 });
                 const data = await resp.json();
                 const listUsers = data.data.data;
-                console.log(listUsers)
+
                 listUsers.forEach(user => {
                     const option = document.createElement('option');
                     option.value = user.id;
