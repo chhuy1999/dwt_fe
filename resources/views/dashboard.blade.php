@@ -1338,12 +1338,12 @@
                                             </button>
                                         </div>
 
-                                        <div class="modal_upload-addLink">
+                                        {{-- <div class="modal_upload-addLink">
                                             <button role="button" type="button" class="btn" id="addLinkOnline">
                                                 <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                 Thêm liên kết
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="modal_upload-inputAddLink mt-3" id="inputAddLink" style="display:none">
                                         <input class="form-control" type="text" placeholder="Nhập link tại đây" />
@@ -1759,12 +1759,12 @@
                                             </button>
                                         </div>
 
-                                        <div class="modal_upload-addLink">
+                                        {{-- <div class="modal_upload-addLink">
                                             <button role="button" type="button" class="btn" id="addLinkOnline">
                                                 <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                 Thêm liên kết
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="modal_upload-inputAddLink mt-3" id="inputAddLink" style="display:none">
                                         <input class="form-control" type="text" placeholder="Nhập link tại đây" />
@@ -2288,7 +2288,7 @@
 <script>
     $(document).ready(function() {
         $('#main_table').DataTable({
-            scrollY: "170px",
+            scrollY: "150px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
@@ -2370,7 +2370,7 @@
         });
 
         $('#three_table').DataTable({
-            scrollY: "170px",
+            scrollY: "150px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
