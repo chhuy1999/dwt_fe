@@ -2642,9 +2642,9 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
-            dom: '<"d-flex justify-content-between"<"card-title-left"><"d-flex "f<"card-title-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex justify-content-between"<"card-title-left"><"d-flex "f<"card-title-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         $('div.card-title-left').html(`
         <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">

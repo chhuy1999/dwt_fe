@@ -109,9 +109,7 @@
                                                             <div class="text-nowrap d-block text-truncate"
                                                                  style="max-width:100%;" data-bs-toggle="tooltip"
                                                                  data-bs-placement="top"
-                                                                 data-bs-original-title="{{ $target->name }}">Giao việc
-                                                                cho
-                                                                định mức: "{{ $target->name }}"
+                                                                 data-bs-original-title="{{ $target->name }}">Giao cho đầu việc: "{{ $target->name }}"
                                                             </div>
                                                         </div>
                                                         <div class="mb-3 row align-items-center">
@@ -1139,7 +1137,7 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"dataTables_top justify-content-between align-items-center"<"card-title-wrapper">f>rt<"dataTables_bottom  justify-content-end"p>',
         });
@@ -1178,7 +1176,7 @@
 
         $('div.card-title-wrapper').html(`
             <div class="d-flex align-items-center">
-                <div class="card-title me-2">Danh sách định mức</div>
+                <div class="card-title me-2">Danh mục đầu việc tiêu chuẩn</div>
 
             </div>
         `);
@@ -1215,9 +1213,9 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
-            dom: '<"dataTables_top justify-content-between align-items-center"<"card-titles-wrapper">f>rt<"dataTables_bottom"ip>',
+            dom: '<"dataTables_top justify-content-between align-items-center"<"card-titles-wrapper">f>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         $('div.card-titles-wrapper').html(`
             <div class="card-title">Lịch sử giao việc</div>

@@ -495,9 +495,9 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
-            dom: '<"d-flex mb-3 justify-content-end"f<"card-title-wrapper">>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex mb-3 justify-content-end"f<"card-title-wrapper">>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex ms-3">

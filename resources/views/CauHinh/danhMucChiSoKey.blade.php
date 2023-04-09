@@ -231,7 +231,7 @@
             order: [
                 [0, 'desc']
             ],
-            pageLength: 30,
+            // pageLength: 30,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
                 infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -245,9 +245,9 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
-            dom: '<"d-flex mb-3 justify-content-between"f<"card-title-wrapper">>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex mb-3 justify-content-between"f<"card-title-wrapper">>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex me-3">

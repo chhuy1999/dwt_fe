@@ -1742,7 +1742,7 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"dataTables_top justify-content-between align-items-center"<"card-titles-wrapper">f>rt<"dataTables_bottom"ip>',
         });
@@ -1771,7 +1771,7 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"dataTables_top justify-content-end align-items-center"f>rt<"dataTables_bottom"ip>',
         });

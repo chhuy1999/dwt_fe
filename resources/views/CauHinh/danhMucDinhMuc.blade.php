@@ -696,9 +696,9 @@
             zeroRecords: 'Không tìm thấy kết quả',
         },
         oLanguage: {
-            sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+            sLengthMenu: "_MENU_ bản ghi trên trang",
         },
-        dom: '<"d-flex justify-content-between mb-3"<"action_wrapper"><"d-flex align-items-center"f<"card-title-wrapper">>>rt<"dataTables_bottom  justify-content-end"p>',
+        dom: '<"d-flex justify-content-between mb-3"<"action_wrapper"><"d-flex align-items-center"f<"card-title-wrapper">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
     });
     $('div.action_wrapper').html(`
         <div class="action_wrapper d-flex">

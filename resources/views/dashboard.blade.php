@@ -2248,7 +2248,7 @@
                 zeroRecords: 'Hiện chưa có nhiệm vụ',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-between align-items-center hidden mb-3"<"main-title-wrapper-left"><"d-flex "f<"main-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
@@ -2299,7 +2299,7 @@
                 zeroRecords: 'Hiện chưa có nhiệm vụ',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-end align-items-center mb-3"<"two-title-wrapper-left">>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
@@ -2330,7 +2330,7 @@
                 zeroRecords: 'Hiện chưa có nhiệm vụ',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-between align-items-center mb-3"<"three-title-wrapper-left"><"d-flex "f<"three-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
@@ -2381,7 +2381,7 @@
                 zeroRecords: 'Hiện chưa có vấn đề',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-end align-items-center mb-3">rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
@@ -2411,7 +2411,7 @@
                 zeroRecords: 'Hiện chưa có vấn đề',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-between align-items-center mb-3"<"dsVanDe-title-wrapper-left"><"d-flex "f<"dsVanDe-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
         });

@@ -557,7 +557,7 @@
                     zeroRecords: 'Không tìm thấy kết quả',
                 },
                 oLanguage: {
-                    sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                    sLengthMenu: "_MENU_ bản ghi trên trang",
                 },
                 dom: '<"d-flex justify-content-between align-items-center mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
                 fixedColumns:   {
