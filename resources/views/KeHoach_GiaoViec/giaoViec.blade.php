@@ -111,7 +111,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" name="users[]">
+                                                                <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="users[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -119,7 +119,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6 mb-3">
-                                                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="involvedPeople[]">
+                                                                <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Người liên quan" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="involvedPeople[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
                                                                             {{ $user->name }}</option>
@@ -375,7 +375,7 @@
                                 </div>
 
                                 <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người đảm nhiệm">
-                                    <select class='selectpicker' multiple data-size="5" data-live-search="true" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" name="users[]">
+                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="users[]">
                                         @foreach ($listUsers as $user)
                                             @if (isAssigned($assignedTask, $user->id))
                                                 <option value="{{ $user->id }}" selected>
@@ -392,7 +392,7 @@
                                 </div>
 
                                 <div class="col-md-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Người liên quan">
-                                    <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người liên quan" name="relatedUsers[]" id="">
+                                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Người liên quan" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="5" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="relatedUsers[]" id="">
                                         @foreach ($listUsers as $user)
                                             <option value="{{ $user->id }}" selected>
                                                 {{ $user->name }}
