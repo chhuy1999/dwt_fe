@@ -1176,7 +1176,9 @@
                 <form action="/giao-ban/{{ $meeting->id }}" method="POST">
                     @csrf
                     @method('PUT')
-
+                    @foreach($meeting->reports as $report)
+                        <input type="hidden" name="reports[]" value="{{ $report->id }}">
+                    @endforeach
                     <div class="modal-body">
                         <div class="table-responsive">
                             <table id="dsVanDeThaoLuan" class="table table-responsive table-hover table-bordered">
