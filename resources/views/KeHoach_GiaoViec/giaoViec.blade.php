@@ -725,8 +725,8 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
                                          aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                        <input name="deadline" id="giaoNhiemVuPhatSinhGiaoViec" placeholder="Thời hạn"
-                                               class="form-control" type="text"
+                                        <input name="deadline" placeholder="Thời hạn"
+                                               class="form-control deadlinePicker" type="text"
                                                value="{{date('d/m/Y', strtotime($task->deadline))}}">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
@@ -910,8 +910,8 @@
                             <div class="col-md-4 mb-3">
                                 <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
                                      aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                    <input name="deadline" id="giaoNhiemVuPhatSinhGiaoViec" placeholder="Thời hạn"
-                                           class="form-control" type="text">
+                                    <input name="deadline" placeholder="Thời hạn"
+                                           class="form-control deadlinePicker" type="text">
                                     <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                             </div>
@@ -1252,7 +1252,7 @@
     <script>
         $(document).ready(function () {
             $.datetimepicker.setLocale('vi');
-            $('#giaoNhiemVuPhatSinhGiaoViec').datetimepicker({
+            $('.deadlinePicker').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
