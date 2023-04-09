@@ -16,20 +16,7 @@
                         <h5 class="mainSection_heading-title">
                             Danh sách định mức lao động
                         </h5>
-                        <div class="mainSection_card">
-                            <div class="mainSection_content">
-                                <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong>
-                                </div>
-                            </div>
-                            <div class="mainSection_content">
-                                <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
-                            </div>
-                        </div>
-                        <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
-                            <input id="thismonth" value="<?php echo date('H:i - d/m/Y'); ?>" class="form-control" type="text" />
-                        </div>
+                        @include('template.components.sectionCard')
                     </div>
 
                     <div class="row">
@@ -64,21 +51,21 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name  ?? "" }}">{{ $target->name  ?? "" }}</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->name  ?? "" }}">{{ $target->name  ?? "" }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:400px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description  ?? "" }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:490px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $target->description  ?? "" }}">
                                                                         {{ $target->description  ?? "" }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->departement->name  ?? "" }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->departement->name  ?? "" }}">
                                                                         {{  $target->departement->name ?? "" }}
                                                                     </div>
 
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-inline-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->position->name  ?? "" }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:115px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $target->position->name  ?? "" }}">
                                                                         {{  $target->position->name ?? "" }}
                                                                     </div>
                                                                 </td>
@@ -402,9 +389,22 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" type="text" required
-                                        placeholder="Tên định mức *" name="name">
+                                <div class="mb-3">
+                                    <input class="form-control" required type="text" required
+                                        placeholder="Tên đầu việc *" name="name">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="mb-3">
+                                    <select class="selectpicker" required title="Thuộc nhóm việc" name=""
+                                        data-width="100%" data-live-search="true"
+                                        data-live-search-placeholder="Tìm kiếm..." data-size="5">
+                                        <option>1</option>
+                                        <option>1</option>
+                                        <option>1</option>
+                                        <option>1</option>
+                                        <option>1</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -420,10 +420,10 @@
                             </div> --}}
 
                             <div class="col-sm-6">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <select class="selectpicker" required title="Đơn vị phụ trách *" name="departement_id"
+                                <div class="mb-3">
+                                    <select class="selectpicker" required title="Phòng ban phụ trách *" name="departement_id"
                                         data-width="100%" data-live-search="true"
-                                        data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                        data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                         @foreach ($listDepartments->data as $dep)
                                             <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                         @endforeach
@@ -431,40 +431,43 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
+                                <div class="mb-3">
                                     <select class="selectpicker" required title="Vị trí phụ trách *" name="position_id"
                                         data-width="100%" data-live-search="true"
-                                        data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                        data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                         @foreach ($listPositions->data as $pos)
                                             <option value="{{ $pos->id }}">{{ $pos->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            {{-- <div class="col-sm-4">
-                                <div class=" d-flex align-items-center  justify-content-between">
-                                    <select class="selectpicker" title="Chọn đơn vị" name="unit_id">
-                                        @foreach ($listUnits->data as $unit)
-                                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                            
+                            <div class="col-sm-4">
+                                <div class="mb-3">
+                                    <input class="form-control" required type="number" min="0" step="0.05" oninput="onInput(this)" placeholder="Thời lượng manday *" name="manday">
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mb-3">
+                                    <select class="selectpicker" title="Chọn chỉ số key" data-live-search="true" data-size="5" name="">
+                                        {{-- <option value="" hidden>Chọn chỉ số key</option> --}}
+                                        @foreach ($listKpi->data as $kpi)
+                                            <option value="{{ $kpi->id }}">{{ $kpi->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div>
                             <div class="col-sm-3">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                    <input class="form-control" required type="number" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday *" name="manday">
+                                <div class="mb-3">
+                                    <select id="onChangeDonVi" class="selectpicker" title="Chọn đơn vị tính" name="unit_id" data-live-search="true" data-size="5">
+                                        @foreach ($listUnits->data as $unit)
+                                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                        @endforeach
+                                        <option value="themDonVi" class="text-danger bg-white">+ Thêm mới</option>
+                                    </select>
                                 </div>
                             </div>
-                            {{-- <div class="col-sm-6">
-                                <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                        <select class="selectpicker" title="Chọn phòng/ban" name="departement_id">
-                                            @foreach ($listDepartments->data as $dep)
-                                                <option value="{{ $dep->id }}">{{ $dep->name }}</option>
-                                            @endforeach
-                                        </select>
-                                </div>
-                            </div> --}}
-
+                            
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -477,7 +480,36 @@
         </div>
     </div>
 
+    <!-- Modal Thêm Đơn vị -->
+    <div class="modal fade" id="themDonVi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm Đơn vị</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <input class="form-control" type="text" placeholder="Nhập tên đơn vị" name="name">
+                            </div>
+                            
+                            <div class="col-sm-12">
+                                <textarea class="form-control" placeholder="Nhập mô tả đơn vị" name="description"></textarea>
+                            </div>
 
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themMoiDinhMuc">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
@@ -703,6 +735,17 @@
         </div>
     `);
 </script>
+
+<script>
+    $('#onChangeDonVi').change(function() {
+        var opval = $(this).val();
+        if (opval == "themDonVi") {
+            $('#themDonVi').modal("show");
+            $('#themMoiDinhMuc').modal("hide");
+        }
+    });
+</script>
+
 <script>
     function onInput(event) {
         let value = parseFloat(event.value);
