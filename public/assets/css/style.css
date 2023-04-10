@@ -53,7 +53,8 @@ label.col-form-label {
 
 .tree_list,
 .section .tree_sublist,
-.tree_sublist-more {
+.tree_sublist-more,
+.tree_list-more {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -118,6 +119,10 @@ label.col-form-label {
 .section input:checked ~ label:after {
     content: "\F2E9";
     font-family: "bootstrap-icons";
+}
+
+.tree_list li:last-child {
+    padding-bottom: 0;
 }
 
 /*** Start Style Table ***/

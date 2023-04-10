@@ -5,9 +5,9 @@
 @section('header-style')
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
     <style>
-        .sidebarBody {
+        /* .sidebarBody {
             overflow: auto;
-        }
+        } */
     </style>
 @endsection
 
@@ -19,9 +19,11 @@ function displayChild($data, $parentId) {
         $result .= '<ul class="tree_list-more">';
         foreach($children as $child) {
             $result .= '<li class="section tree_list-more-item">';
-            $result .= '<input type="checkbox" id="group'. $child->id .'">';
-            $result .= '<label class="d-flex" for="group'. $child->id .'"></label>';
-            $result .= '<span class="clicktree d-block" data-href="#body_content-3">'. $child->name .'</span>';
+            if (count(getChild($data, $child->id)) > 0) {
+                $result .= '<input type="checkbox" id="group'. $child->id .'">';
+                $result .= '<label class="d-flex" for="group'. $child->id .'"></label>';
+            }
+            $result .= '<span class="clicktree d-block" data-href="#body_content-1">'. $child->name .'</span>';
             $result .= displayChild($data, $child->id);
             $result .= '</li>';
         }

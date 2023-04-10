@@ -1,3 +1,3 @@
 <div class="footer">
-    <div class="container">© 2023 Thái Bình Hưng Thịnh - Powered by STeam</div>
+    <div class="container">© 2023 {{ env('SLOGAN_URL', ''); }} - Powered by STeam</div>
 </div>

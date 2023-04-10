@@ -2708,7 +2708,7 @@
                 <div class="action_export ms-3" data-bs-toggle="tooltip"
                     data-bs-placement="top" aria-label="Thêm thành viên"
                     data-bs-original-title="Thêm thành viên">
-                    <button class="btn btn-danger d-block" data-bs-toggle="modal"
+                    <button class="btn btn-danger d-block testCreateUser" data-bs-toggle="modal"
                         data-bs-target="#themThanhVien">Thêm thành viên</button>
                 </div>
                 @endif
