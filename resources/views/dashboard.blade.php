@@ -520,7 +520,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                
+
                                                                 <td class="text-nowrap bg-blue-blur">
                                                                     <div class="content_table">
                                                                         {{ date('m/d', strtotime($task->deadline)) }}
@@ -1574,7 +1574,6 @@
                                                 @endforeach
                                             @endforeach
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>

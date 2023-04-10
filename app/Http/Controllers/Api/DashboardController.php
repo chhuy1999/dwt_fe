@@ -13,6 +13,7 @@ class DashboardController extends Controller
 
     //
     private $dwtServices;
+
     //contructor
     public function __construct()
     {
@@ -23,15 +24,16 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
+        $currentMonth = date('m');
+        $currentYear = date('Y');
         try {
-            $currentMonth = date('m');
-            $currentYear = date('Y');
+
             $startDate = $currentYear . '-' . $currentMonth . '-01';
             $endDate = $currentYear . '-' . $currentMonth . '-31';
             //get list assigned task
             $user = session('user');
             $searchDepartment_id = null;
-            if($user['role'] == 'manager'){
+            if ($user['role'] == 'manager') {
                 $searchDepartment_id = $user['departement_id'];
             }
             $listAssignedTasks = $this->dwtServices
@@ -83,7 +85,6 @@ class DashboardController extends Controller
             $listReports = $listReports->data;
 
 
-
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
                 ->with('searchYear', $currentYear)
@@ -96,7 +97,17 @@ class DashboardController extends Controller
                 ->with('totalKpi', $totalKpi);
         } catch (Exception $e) {
             $error = $e->getMessage();
-            return view('dashboard')->with('error', $error);
+            return view('dashboard')
+                ->with('searchMonth', $currentMonth)
+                ->with('searchYear', $currentYear)
+                ->with('listAssignedTasks', (object)['data' => []])
+                ->with('myAssignedTasks', (object)['data' => []])
+                ->with('reportTasks', (object)['data' => []])
+                ->with('reportTaskAdmin', (object)['data' => []])
+                ->with('listReports', (object)['data' => []])
+                ->with('myTotalKpi', 0)
+                ->with('totalKpi', 0)
+                ->with('error', $error);
         }
     }
 }
