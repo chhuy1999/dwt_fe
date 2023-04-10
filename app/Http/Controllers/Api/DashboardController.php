@@ -98,6 +98,8 @@ class DashboardController extends Controller
             if (strpos($error, "Your token is invalid. Please, login again")) {
                 //logout
                 session()->flush();
+                //invalidate token
+                session()->regenerateToken();
                 return redirect('/login');
             }
 

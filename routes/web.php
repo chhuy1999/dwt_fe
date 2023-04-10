@@ -32,9 +32,7 @@ use App\Http\Controllers\TotalController;
 |
 */
 // Đăng nhập
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 

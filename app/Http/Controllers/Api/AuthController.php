@@ -12,10 +12,20 @@ class AuthController extends Controller
 {
     //
     private $dwtServices;
+
     //constructor
     public function __construct()
     {
         $this->dwtServices = new DwtServices();
+    }
+
+    public function index(Request $request)
+    {
+        //logout old session
+        $request->session()->flush();
+        //regenerate session id
+        $request->session()->regenerate();
+        return view('login');
     }
 
     public function login(Request $request)
