@@ -30,12 +30,16 @@ class TargetController extends Controller
             $listUnits = $this->dwtService->listUnits();
             $listPositions = $this->dwtService->listPositions();
             $listDepartments = $this->dwtService->listDepartments();
+            //get list KPI Key
+            $listKpi = $this->dwtService->searchKpiKeys($q, $page, $limit);
+            // dd($listKPI);
 
             return view('CauHinh.danhMucDinhMuc')
                 ->with('listTargets', $data)
                 ->with('listUnits', $listUnits)
                 ->with('listPositions', $listPositions)
-                ->with('listDepartments', $listDepartments);
+                ->with('listDepartments', $listDepartments)
+                ->with('listKpi', $listKpi);
         } catch (Exception $e) {
             // dd($e);
             $error = $e->getMessage();

@@ -1176,7 +1176,9 @@
                 <form action="/giao-ban/{{ $meeting->id }}" method="POST">
                     @csrf
                     @method('PUT')
-
+                    @foreach($meeting->reports as $report)
+                        <input type="hidden" name="reports[]" value="{{ $report->id }}">
+                    @endforeach
                     <div class="modal-body">
                         <div class="table-responsive">
                             <table id="dsVanDeThaoLuan" class="table table-responsive table-hover table-bordered">
@@ -1319,8 +1321,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-8 mb-3">
-                                    <input type="text" readonly class="form-control" value="{{ $item->problem }}"
-                                           name="name">
+                                    <input type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Người đảm nhiệm"  data-bs-original-title="Vấn đề tồn đọng" class="form-control" value="{{ $item->problem }}" name="name">
                                 </div>
 
                                 <div class="col-md-4 mb-3">
@@ -1332,29 +1333,41 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 mb-3">
-                                    <textarea class="form-control" rows="1" placeholder="Mô tả/Diễn giải"
-                                              name="description"></textarea>
+                                    <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Người đảm nhiệm" data-bs-original-title="Mô tả/Diễn giải" rows="1" placeholder="Mô tả/Diễn giải" name="description"></textarea>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <input type="number" class="form-control" min="0" step="0.05"
+                                    <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Người đảm nhiệm" data-bs-original-title="Manday" required class="form-control" min="0" step="0.05"
                                            oninput="onInput(this)" placeholder="Manday" id="title" name="manDay">
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <select class='selectpicker' title="Người đảm nhiệm" multiple
-                                            data-live-search="true" data-size="5" name="user_id">
-                                        @foreach ($listUsers->data as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <div data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Người đảm nhiệm" data-bs-original-title="Người đảm nhiệm">
+                                        <select class='selectpicker' title="Người đảm nhiệm" multiple data-live-search="true" data-size="5" data-actions-box="true" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name="user_id">
+                                            @foreach ($listUsers->data as $user)
+                                                @if ($user->id != $value->manager_id)
+                                                    <option value="{{$user->id}}" >
+                                                        {{ $user->name }}
+                                                    </option>
+                                                @else
+                                                    @foreach ($item->pics as $u)
+                                                        <option value="{{$u->id}}" selected>
+                                                            {{ $u->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
+
                                 <div class="col-md-6 mb-3">
-                                    <select class='selectpicker' title="Người liên quan" multiple
-                                            data-live-search="true" data-size="5" name="relatedUsers[]">
-                                        @foreach ($listUsers->data as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <div data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Người liên quan"  data-bs-original-title="Người liên quan">
+                                        <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" data-actions-box="true" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} người liên quan" data-live-search-placeholder="Tìm kiếm..." name="relatedUsers[]">
+                                            @foreach ($listUsers->data as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
@@ -1362,17 +1375,18 @@
                                         <div data-repeater-list="kpiKeys">
                                             <div class="row" data-repeater-item>
                                                 <div class="col-md-9 mb-3">
-                                                    <select class='form-select' style="font-size:var(--fz-12)"
-                                                            title="Tiêu chí" data-live-search="true" name="id">
-                                                        @foreach ($kpiKeys->data as $key)
-                                                            <option value="{{ $key->id }}">{{ $key->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Tiêu chí">
+                                                        <select class='form-select' style="font-size:var(--fz-12)"
+                                                                title="Tiêu chí" data-live-search="true" name="id">
+                                                            @foreach ($kpiKeys->data as $key)
+                                                                <option value="{{ $key->id }}">{{ $key->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="number" min="0" class="form-control"
-                                                           placeholder="Giá trị" name="quantity"/>
+                                                    <input type="number"  data-bs-toggle="tooltip" data-bs-placement="top"  data-bs-original-title="Giá trị" min="0" class="form-control" placeholder="Giá trị" name="quantity"/>
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
                                                     <img data-repeater-delete role="button"
@@ -1742,7 +1756,7 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"dataTables_top justify-content-between align-items-center"<"card-titles-wrapper">f>rt<"dataTables_bottom"ip>',
         });
@@ -1771,7 +1785,7 @@
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"dataTables_top justify-content-end align-items-center"f>rt<"dataTables_bottom"ip>',
         });

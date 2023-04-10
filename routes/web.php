@@ -109,6 +109,9 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::post('nhiem-vu-phat-sinh', [ReportTaskController::class, 'store'])->name('reportTask.store');
     Route::put('nhiem-vu-phat-sinh/cham-diem/{id}', [ReportTaskController::class, 'evaluate'])->name('reportTask.evaluate');
     Route::post('nhiem-vu-phat-sinh/bao-cao/{id}', [ReportTaskController::class, 'reportTask'])->name('reportTask.reportTask');
+    Route::put('nhiem-vu-phat-sinh/{id}', [ReportTaskController::class, 'update'])->name('reportTask.update');
+    //delete
+    Route::delete('nhiem-vu-phat-sinh/{id}', [ReportTaskController::class, 'delete'])->name('reportTask.delete');
 });
 
 // Danh sách cấp tổ chức

@@ -64,13 +64,14 @@ select[disabled] {
     cursor: not-allowed;
     border-color: #d9d9d9;
     color: rgb(0 0 0 / 28%);
-    background-color: rgba(0,0,0,.04);
+    background-color: rgba(0, 0, 0, 0.04);
     box-shadow: none;
 }
 
 input[type=file], /* FF, IE7+, chrome (except button) */
-input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
-    cursor: pointer; 
+input[type=file]::-webkit-file-upload-button {
+    /* chromes and blink button */
+    cursor: pointer;
 }
 
 button {
@@ -93,7 +94,8 @@ textarea {
     border: 1px solid #ced4da !important;
 }
 input:focus,
-textarea:focus {
+textarea:focus,
+.dataTables_length select:focus {
     border: 1px solid var(--primary-color) !important;
     box-shadow: var(--box-shadow) !important;
     outline: none;
@@ -105,7 +107,8 @@ select optgroup {
     outline: none;
 }
 
-option:hover {
+option:hover,
+.dataTables_length select option:hover {
     background-color: red !important;
 }
 
@@ -123,7 +126,6 @@ option:hover {
 }
 
 /* DateTimePicker */
-
 .xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_today {
     color: var(--primary-color);
 }
@@ -140,10 +142,33 @@ option:hover {
     color: #fff;
     font-weight: 500;
 }
-.tooltip .tooltip-inner{
+.tooltip .tooltip-inner {
     max-width: 500px !important;
-  }
-#three_table th, #three_table td { white-space: nowrap; padding:6px 0 }
+}
+/* #three_table th,
+#three_table td {
+    white-space: nowrap;
+    padding: 6px 0;
+} */
+
+/* DATA TABLES */
+.dataTables_length {
+    margin-right: 10px;
+}
+
+.dataTables_length label {
+    display: flex;
+    font-size: 1.2rem;
+    align-items: center;
+}
+.dataTables_length select {
+    width: 40px;
+    padding: 4px;
+    margin: 0 6px;
+    font-size: 1.2rem;
+    background-position: right 0.5rem center;
+    background-size: 10px 10px;
+}
 
 /* STYLE SCROLLBAR */
 ::-webkit-scrollbar {

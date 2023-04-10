@@ -8,7 +8,7 @@
         <div class="main">
             <div class="container-fluid job-offer">
                 <div class="mainSection_heading">
-                    <h5 class="mainSection_heading-title">HỒ SƠ NHÂN VIÊN</h5>
+                    <h5 class="mainSection_heading-title">Hồ sơ người dùng</h5>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">

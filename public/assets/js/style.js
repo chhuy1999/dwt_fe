@@ -19,14 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // CHANGE TITLE
-    const docTitle = document.title;
-    window.addEventListener('blur', () => {
-        document.title = 'Hãy tập trung làm việc 🤟';
-    });
+    // const docTitle = document.title;
+    // window.addEventListener('blur', () => {
+    //     document.title = 'Hãy tập trung làm việc 🤟';
+    // });
 
-    window.addEventListener('focus', () => {
-        document.title = docTitle;
-    });
+    // window.addEventListener('focus', () => {
+    //     document.title = docTitle;
+    // });
 
     // BTN SHOW/HIDE LEFT RIGHT
     const mainWrap = document.getElementById('mainWrap');

@@ -11,6 +11,7 @@ class ReportTaskController extends Controller
 {
 
     private $dwtService;
+
     public function __construct()
     {
 
@@ -34,12 +35,12 @@ class ReportTaskController extends Controller
             $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
             $result = $this->dwtService->createReportTask($data);
             //update report status
-            if(isset($data['report_id'])){
+            if (isset($data['report_id'])) {
                 $this->dwtService->updateReports($data['report_id'], ['status' => 4]); //4 mean 'Converted'
             }
             return back()->with('success', 'Tạo nhiệm vụ thành công');
         } catch (Exception $e) {
-            dump($e->getMessage());
+
             return back()->with('error', $e->getMessage());
         }
     }
@@ -59,6 +60,32 @@ class ReportTaskController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function update($id, Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'name' => 'nullable',
+                'deadline' => 'nullable',
+                'description' => 'nullable',
+                'manDay' => 'nullable',
+                'user_id' => 'required',
+                'kpiKeys' => 'nullable|array',
+                "report_id" => 'nullable|numeric',
+            ]);
+            if (isset($data['deadline'])) {
+                $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
+            }
+            $result = $this->dwtService->updateReportTask($id, $data);
+            //return
+            return back()->with('success', 'Cập nhật thành công');
+
+        } catch (Exception $e) {
+
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
 
     public function reportTask($id, Request $request)
     {
@@ -127,7 +154,6 @@ class ReportTaskController extends Controller
             // dd($data['files']);
 
 
-
             //if id is set, update
             if (isset($data['id'])) {
                 $this->dwtService->updateReportTaskLog($data['id'], $data);
@@ -139,6 +165,16 @@ class ReportTaskController extends Controller
             return back()->withSuccess('Report task successfully');
         } catch (Exception $e) {
             return back()->withError($e->getMessage())->withInput();
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            $this->dwtService->deleteReportTask($id);
+            return back()->with('success', 'Xóa thành công');
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
     }
 }

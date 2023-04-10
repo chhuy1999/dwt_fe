@@ -1954,10 +1954,10 @@
 
 <script>
     const targetTable = $('#coCauToChuc').DataTable({
-        paging: false,
+        paging: true,
         ordering: false,
         order: [[0, 'desc']],
-        pageLength: 10,
+        // pageLength: 20,
         language: {
             info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
             infoEmpty: 'Hiện tại chưa có bản ghi nào',
@@ -1971,9 +1971,9 @@
             zeroRecords: 'Không tìm thấy kết quả',
         },
         oLanguage: {
-            sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+            sLengthMenu: "_MENU_ bản ghi trên trang",
         },
-        dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+        dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
     });
     $('div.card-title-wrapper-left').html(`
         <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>

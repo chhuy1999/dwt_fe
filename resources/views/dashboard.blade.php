@@ -279,10 +279,26 @@
                                                         <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}" class="bg-white text-center">Nhật kí công việc</th>
                                                     </tr>
                                                     <tr>
-                                                        <th class="text-nowrap bg-blue-blur">STT</th>
-                                                        <th class="text-nowrap bg-blue-blur w-25">Mục tiêu nhiệm vụ</th>
-                                                        <th class="text-nowrap bg-blue-blur">Thời hạn</th>
-                                                        <th class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
+                                                        <th class="text-nowrap text-center bg-blue-blur">
+                                                            <div style="width:30px">
+                                                                STT
+                                                            </div>
+                                                        </th>
+                                                        <th class="text-nowrap bg-blue-blur">
+                                                            <div style="width:160px">
+                                                                Mục tiêu nhiệm vụ
+                                                            </div>
+                                                        </th>
+                                                        <th class="text-nowrap bg-blue-blur">
+                                                            <div style="width:50px">
+                                                                Thời hạn
+                                                            </div>
+                                                        </th>
+                                                        <th class="text-nowrap bg-blue-blur">
+                                                            <div style="width:50px">
+                                                                Σ Lũy kế
+                                                            </div>
+                                                        </th>
                                                         @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                             @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
                                                                 <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
@@ -308,7 +324,7 @@
                                                             </td>
                                                             <td class="text-nowrap bg-blue-blur">
                                                                 <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
                                                                         {{ $task->name }}
                                                                     </div>
                                                                 </div>
@@ -350,11 +366,26 @@
                                         <table id="two_table" class="table table_style-fix m-0 bg-yellow-blur" style="width: 100%">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-nowrap bg-yellow-blur">STT</th>
-                                                    <th class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
-                                                        sinh</th>
-                                                    <th class="text-nowrap bg-yellow-blur">Thời hạn</th>
-                                                    <th class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
+                                                    <th class="text-nowrap text-center bg-yellow-blur">
+                                                        <div style="width:30px">
+                                                            STT
+                                                        </div>
+                                                    </th>
+                                                    <th class="text-nowrap bg-yellow-blur">
+                                                        <div style="width:160px">
+                                                            Mục tiêu nhiệm vụ phát sinh
+                                                        </div>
+                                                    </th>
+                                                    <th class="text-nowrap bg-yellow-blur">
+                                                        <div style="width:50px">
+                                                            Thời hạn
+                                                        </div>
+                                                    </th>
+                                                    <th class="text-nowrap bg-yellow-blur">
+                                                        <div style="width:50px">
+                                                            Σ Lũy kế
+                                                        </div>
+                                                    </th>
                                                     @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                         @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
                                                             <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
@@ -381,7 +412,7 @@
                                                         </td>
                                                         <td class="text-nowrap bg-yellow-blur">
                                                             <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
-                                                                <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
+                                                                <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
                                                                     {{ $reportTask->name }}
                                                                 </div>
                                                             </div>
@@ -430,19 +461,34 @@
                                     <div class="table_wrapper">
                                         <div class="mt-3 bg-white">
                                             <div class="table-responsive">
-                                                <table id="three_table" class="table table_style-fix m-0" style="width: 100%">
+                                                <table id="three_table" class="table table_style-fix m-0 bg-blue-blur" style="width: 100%">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan="4" class="bg-white text-center position-sticky" style="left:0">Mục tiêu nhiệm
-                                                                vụ tháng
+                                                            <th colspan="4" class="bg-white text-center position-sticky" style="left:0">Mục tiêu nhiệm vụ tháng
                                                             </th>
                                                             <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}" class="bg-white text-center">Nhật kí công việc</th>
                                                         </tr>
                                                         <tr>
-                                                            <th class="text-nowrap bg-blue-blur">STT</th>
-                                                            <th class="text-nowrap bg-blue-blur w-25">Mục tiêu nhiệm vụ</th>
-                                                            <th class="text-nowrap bg-blue-blur">Thời hạn</th>
-                                                            <th class="text-nowrap bg-blue-blur">Σ Lũy kế</th>
+                                                            <th class="text-nowrap text-center bg-blue-blur">
+                                                                <div style="width:30px">
+                                                                    STT
+                                                                </div>
+                                                            </th>
+                                                            <th class="text-nowrap bg-blue-blur">
+                                                                <div style="width:160px">
+                                                                    Mục tiêu nhiệm vụ
+                                                                </div>
+                                                            </th>
+                                                            <th class="text-nowrap bg-blue-blur">
+                                                                <div style="width:50px">
+                                                                    Thời hạn
+                                                                </div>
+                                                            </th>
+                                                            <th class="text-nowrap bg-blue-blur">
+                                                                <div style="width:50px">
+                                                                    Σ Lũy kế
+                                                                </div>
+                                                            </th>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                                 @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
                                                                     <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
@@ -468,24 +514,25 @@
                                                                 </td>
                                                                 <td class="text-nowrap bg-blue-blur">
                                                                     <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
-                                                                        <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
+                                                                        <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
 
                                                                             {{ $task->name }}
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td class="bg-blue-blur">
+                                                                
+                                                                <td class="text-nowrap bg-blue-blur">
                                                                     <div class="content_table">
                                                                         {{ date('m/d', strtotime($task->deadline)) }}
                                                                     </div>
                                                                 </td>
-                                                                <td class="fw-bold bg-blue-blur">
+                                                                <td class="text-nowrap fw-bold bg-blue-blur">
                                                                     <div class="progress-half">
                                                                         <div class="text-dark content_table">{{$task->keysPassed}}</div>
                                                                     </div>
                                                                 </td>
                                                                 @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                    <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
+                                                                    <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal" data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}" role="button" @endif>
                                                                         <div class="content_table">
                                                                             @foreach ($task->targetLogs as $targetLog)
                                                                                 @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
@@ -508,11 +555,26 @@
                                             <table id="four_table" class="table table_style-fix m-0 bg-yellow-blur" style="width: 100%">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-nowrap bg-yellow-blur">STT</th>
-                                                        <th class="text-nowrap bg-yellow-blur w-25">Mục tiêu nhiệm vụ phát
-                                                            sinh</th>
-                                                        <th class="text-nowrap bg-yellow-blur">Thời hạn</th>
-                                                        <th class="text-nowrap bg-yellow-blur">Σ Lũy kế</th>
+                                                        <th class="text-nowrap text-center bg-yellow-blur">
+                                                        <div style="width:30px">
+                                                            STT
+                                                        </div>
+                                                    </th>
+                                                    <th class="text-nowrap bg-yellow-blur">
+                                                        <div style="width:160px">
+                                                            Mục tiêu nhiệm vụ phát sinh
+                                                        </div>
+                                                    </th>
+                                                    <th class="text-nowrap bg-yellow-blur">
+                                                        <div style="width:50px">
+                                                            Thời hạn
+                                                        </div>
+                                                    </th>
+                                                    <th class="text-nowrap bg-yellow-blur">
+                                                        <div style="width:50px">
+                                                            Σ Lũy kế
+                                                        </div>
+                                                    </th>
                                                         @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
                                                             @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
                                                                 <th style="padding: 0 14px; border:1px solid #dee2e6;" scope="col" class="bg-warning bg-opacity-10 text-warning">
@@ -539,7 +601,7 @@
                                                             </td>
                                                             <td class="text-nowrap bg-yellow-blur">
                                                                 <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:165px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
                                                                         {{ $reportTask->name }}
                                                                     </div>
                                                                 </div>
@@ -1276,12 +1338,12 @@
                                             </button>
                                         </div>
 
-                                        <div class="modal_upload-addLink">
+                                        {{-- <div class="modal_upload-addLink">
                                             <button role="button" type="button" class="btn" id="addLinkOnline">
                                                 <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                 Thêm liên kết
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="modal_upload-inputAddLink mt-3" id="inputAddLink" style="display:none">
                                         <input class="form-control" type="text" placeholder="Nhập link tại đây" />
@@ -1697,12 +1759,12 @@
                                             </button>
                                         </div>
 
-                                        <div class="modal_upload-addLink">
+                                        {{-- <div class="modal_upload-addLink">
                                             <button role="button" type="button" class="btn" id="addLinkOnline">
                                                 <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                 Thêm liên kết
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="modal_upload-inputAddLink mt-3" id="inputAddLink" style="display:none">
                                         <input class="form-control" type="text" placeholder="Nhập link tại đây" />
@@ -2226,7 +2288,7 @@
 <script>
     $(document).ready(function() {
         $('#main_table').DataTable({
-            scrollY: "170px",
+            scrollY: "150px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
@@ -2248,7 +2310,7 @@
                 zeroRecords: 'Hiện chưa có nhiệm vụ',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-between align-items-center hidden mb-3"<"main-title-wrapper-left"><"d-flex "f<"main-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
@@ -2299,7 +2361,7 @@
                 zeroRecords: 'Hiện chưa có nhiệm vụ',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-end align-items-center mb-3"<"two-title-wrapper-left">>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
@@ -2308,7 +2370,7 @@
         });
 
         $('#three_table').DataTable({
-            scrollY: "170px",
+            scrollY: "150px",
             scrollX: true,
             scrollCollapse: true,
             paging: false,
@@ -2330,7 +2392,7 @@
                 zeroRecords: 'Hiện chưa có nhiệm vụ',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-between align-items-center mb-3"<"three-title-wrapper-left"><"d-flex "f<"three-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
@@ -2381,7 +2443,7 @@
                 zeroRecords: 'Hiện chưa có vấn đề',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-end align-items-center mb-3">rt<"dataTables_bottom  justify-content-end"p>',
             fixedColumns: {
@@ -2411,7 +2473,7 @@
                 zeroRecords: 'Hiện chưa có vấn đề',
             },
             oLanguage: {
-                sLengthMenu: 'Hiển thị _MENU_ bản ghi',
+                sLengthMenu: "_MENU_ bản ghi trên trang",
             },
             dom: '<"d-flex justify-content-between align-items-center mb-3"<"dsVanDe-title-wrapper-left"><"d-flex "f<"dsVanDe-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
         });
