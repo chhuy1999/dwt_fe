@@ -345,11 +345,12 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="fs-5 modal_body-title fw-bolder text-nowrap">
-                                                                    Thành viên tham gia:
+                                                                    Kỹ năng/Nghiệp vụ:
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div class="fs-5">
+                                                                    Kỹ năng/Nghiệp vụ1 Kỹ năng/Nghiệp vụ2
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -357,22 +358,12 @@
                                                             <td>
                                                                 <div
                                                                     class="fs-5 modal_body-title fw-bolder text-nowrap">
-                                                                    Thành viên vắng:
+                                                                    Hạn chế:
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div class="fs-5">
-                                                                    Bùi Thị Minh Hoa - MTT002,&nbsp;
-                                                                    Trần Minh Thao - MTT001,&nbsp;
-                                                                    Cao Thúy Hằng - MTT003,&nbsp;
-                                                                    Chu Văn Linh - MTT403,&nbsp;
-                                                                    Mai Văn Sơn - MTT155,&nbsp;
-                                                                    Đỗ Thị Nhàn - MTT009,&nbsp;
-                                                                    Bùi Kim Anh - MTT049,&nbsp;
-                                                                    Nguyễn Thị Yến Hoa - MTT532,&nbsp;
-                                                                    Phạm Thị Huyền - MTT014,&nbsp;
-                                                                    Nguyễn Vũ Nguyệt Minh - MTT149,&nbsp;
-                                                                    Đinh Thị Hà - MTT008,&nbsp;
+                                                                    Hạn chế 1 - Hạn chế 2
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -385,13 +376,13 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="d-flex align-items-center  justify-content-between">
-                                                <div class="modal-title fw-bolder">I. Ý KIẾN KIỂM SOÁT</div>
+                                                <div class="modal-title fw-bolder">Tình huống</div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="d-flex align-items-center  justify-content-between">
                                                 <div class="mt-3 modal_body-title">
-                                                    <p> - sdfasfasdf</p>
+                                                    <p> - Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni totam eum perferendis, veniam incidunt laborum doloremque est deleniti dolorum, veritatis sed distinctio odit odio ipsa ipsum! Nesciunt pariatur dicta libero.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -399,12 +390,13 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="d-flex align-items-center  justify-content-between">
-                                                <div class="modal-title fw-bolder">II. Ý KIẾN HỌC VIÊN</div>
+                                                <div class="modal-title fw-bolder">HƯỚNG DẪN</div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="d-flex align-items-center  justify-content-between">
                                                 <div class="mt-3 modal_body-title">
+                                                    <p> - Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni totam eum perferendis, veniam incidunt laborum doloremque est deleniti dolorum, veritatis sed distinctio odit odio ipsa ipsum! Nesciunt pariatur dicta libero.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -412,31 +404,32 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="d-flex align-items-center  justify-content-between">
-                                                <div class="modal-title fw-bolder">III. VẤN ĐỀ TỒN ĐỌNG</div>
+                                                <div class="modal-title fw-bolder">Ý KIẾN KIỂM SOÁT</div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
-                                            <div class="mt-4 modal_body-title">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">STT</th>
-                                                            <th scope="col">Vấn đề</th>
-                                                            <th scope="col">Người nêu</th>
-                                                            <th scope="col">Nguyên nhân</th>
-                                                            <th scope="col">Hướng giải quyết</th>
-                                                            <th scope="col">PIC</th>
-                                                            <th scope="col">Thời hạn</th>
-                                                            <th scope="col">Tình trạng</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                    </tbody>
-                                                </table>
+                                            <div class="d-flex align-items-center  justify-content-between">
+                                                <div class="mt-3 modal_body-title">
+                                                    <p> - Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni totam eum perferendis, veniam incidunt laborum doloremque est deleniti dolorum, veritatis sed distinctio odit odio ipsa ipsum! Nesciunt pariatur dicta libero.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="d-flex align-items-center  justify-content-between">
+                                                <div class="modal-title fw-bolder">Ý KIẾN HỌC VIÊN</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="d-flex align-items-center  justify-content-between">
+                                                <div class="mt-3 modal_body-title">
+                                                    <p> - Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio maiores in illo temporibus, incidunt ut eaque blanditiis molestiae laudantium quasi accusantium eum commodi repudiandae similique debitis dolor reiciendis, quia magnam.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="row">
                                         <div class="col-md-4 d-flex flex-column justify-content-between">
                                             <div class="d-flex align-items-center justify-content-center">

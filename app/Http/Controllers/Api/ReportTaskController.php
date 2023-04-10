@@ -30,6 +30,7 @@ class ReportTaskController extends Controller
                 'user_id' => 'required',
                 'kpiKeys' => 'nullable|array',
                 "report_id" => 'nullable|numeric',
+                'involvedPeople' => 'nullable|array',
             ]);
 
             $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
@@ -72,7 +73,9 @@ class ReportTaskController extends Controller
                 'user_id' => 'required',
                 'kpiKeys' => 'nullable|array',
                 "report_id" => 'nullable|numeric',
+                'involvedPeople' => 'nullable|array',
             ]);
+
             if (isset($data['deadline'])) {
                 $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
             }

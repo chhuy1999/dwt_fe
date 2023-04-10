@@ -83,8 +83,6 @@ class DashboardController extends Controller
 
             $listReports = $this->dwtServices->searchReports("", $user['departement_id'], 1, 100);
             $listReports = $listReports->data;
-
-
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
                 ->with('searchYear', $currentYear)
@@ -97,6 +95,12 @@ class DashboardController extends Controller
                 ->with('totalKpi', $totalKpi);
         } catch (Exception $e) {
             $error = $e->getMessage();
+            if (strpos($error, "Your token is invalid. Please, login again")) {
+                //logout
+                session()->flush();
+                return redirect('/login');
+            }
+
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
                 ->with('searchYear', $currentYear)
@@ -104,7 +108,7 @@ class DashboardController extends Controller
                 ->with('myAssignedTasks', (object)['data' => []])
                 ->with('reportTasks', (object)['data' => []])
                 ->with('reportTaskAdmin', (object)['data' => []])
-                ->with('listReports', (object)['data' => []])
+                ->with('listReports', [])
                 ->with('myTotalKpi', 0)
                 ->with('totalKpi', 0)
                 ->with('error', $error);

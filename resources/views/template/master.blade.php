@@ -913,6 +913,21 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
             }).showToast();
         @endif
+
+        @if (isset($error))
+        Toastify({
+
+            text: "{!! $error !!}",
+            // gravity: "top", // `top` or `bottom`
+            // position: "center"
+            duration: 3000,
+            stopOnFocus: true,
+            style: {
+                background: "#FE6244",
+            },
+
+        }).showToast();
+        @endif
     </script>
 
     <script>

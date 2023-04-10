@@ -1361,8 +1361,8 @@
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <div data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Người liên quan"  data-bs-original-title="Người liên quan">
-                                        <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" data-actions-box="true" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} người liên quan" data-live-search-placeholder="Tìm kiếm..." name="relatedUsers[]">
+                                    <div data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Người liên quan"  data-bs-original-title="Người liên quan" name="involvedPeople">
+                                        <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" data-actions-box="true" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} người liên quan" data-live-search-placeholder="Tìm kiếm..." name="involvedPeople[]">
                                             @foreach ($listUsers->data as $user)
                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach

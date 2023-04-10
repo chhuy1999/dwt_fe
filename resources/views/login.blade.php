@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="login_about">
-                Thái Bình Hưng Thịnh - Powered by STeam
+                {{ env('SLOGAN_URL', ''); }} - Powered by STeam
             </div>
         </div>
     </div>
