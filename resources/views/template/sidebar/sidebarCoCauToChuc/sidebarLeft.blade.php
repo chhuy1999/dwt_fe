@@ -25,29 +25,8 @@
                                 <li class="section tree_list-item">
                                     <input type="checkbox" id="group{{ $parent->id }}">
                                     <label class="d-flex" for="group{{ $parent->id }}"></label>
-                                    <span class="clicktree d-block" data-href="#body_content-3">{{ $parent->name }}</span>
-                                    <ul class="tree_list-more">
-                                        @foreach($data->data as $child1)
-                                            @if($child1->parent != null && $child1->parent->id == $parent->id)
-                                                <li class="section tree_list-more-item">
-                                                    <input type="checkbox" id="group{{ $child1->id }}">
-                                                    <label class="d-flex" for="group{{ $child1->id }}"></label>
-                                                    <span class="clicktree d-block" data-href="#body_content-3">{{ $child1->name }}</span>
-                                                    <ul class="tree_list-more">
-                                                        @foreach($data->data as $child2)
-                                                            @if($child2->parent != null && $child2->parent->id == $child1->id)
-                                                                <li class="section tree_sublist-more-item">
-                                                                    {{-- <input type="checkbox" id="group{{ $child2->id }}">
-                                                                    <label class="d-flex" for="group{{ $child2->id }}"></label> --}}
-                                                                    <span class="clicktree d-block" data-href="#body_content-3">{{ $child2->name }}</span>
-                                                                </li>
-                                                            @endif
-                                                        @endforeach
-                                                    </ul>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
+                                    <span class="clicktree d-block" data-href="#body_content-1">{{ $parent->name }}</span>
+                                    {!! displayChild($data->data, $parent->id) !!}
                                 </li>
                             @endif
                         @endforeach

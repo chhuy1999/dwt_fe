@@ -11,6 +11,36 @@
     </style>
 @endsection
 
+@php
+function displayChild($data, $parentId) {
+    $result = '';
+    $children = getChild($data, $parentId);
+    if (count($children) > 0) {
+        $result .= '<ul class="tree_list-more">';
+        foreach($children as $child) {
+            $result .= '<li class="section tree_list-more-item">';
+            $result .= '<input type="checkbox" id="group'. $child->id .'">';
+            $result .= '<label class="d-flex" for="group'. $child->id .'"></label>';
+            $result .= '<span class="clicktree d-block" data-href="#body_content-3">'. $child->name .'</span>';
+            $result .= displayChild($data, $child->id);
+            $result .= '</li>';
+        }
+        $result .= '</ul>';
+    }
+    return $result;
+}
+
+function getChild($data, $parentId) {
+    $children = [];
+    foreach($data as $child) {
+        if($child->parent != null && $child->parent->id == $parentId) {
+            $children[] = $child;
+        }
+    }
+    return $children;
+}
+@endphp
+
 @section('content')
     @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
