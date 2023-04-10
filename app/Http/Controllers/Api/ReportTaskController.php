@@ -32,7 +32,7 @@ class ReportTaskController extends Controller
                 "report_id" => 'nullable|numeric',
                 'involvedPeople' => 'nullable|array',
             ]);
-            dd($data);
+
             $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
             $result = $this->dwtService->createReportTask($data);
             //update report status

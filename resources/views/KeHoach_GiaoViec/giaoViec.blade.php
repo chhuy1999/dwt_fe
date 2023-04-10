@@ -31,6 +31,18 @@
             }
             return $isInvolved;
         }
+
+        function isInvolvedReportTask($assignedTask, $userId)
+        {
+            $isInvolved = false;
+            for ($i = 0; $i < count($assignedTask->involved_people); $i++) {
+                if ($assignedTask->involved_people[$i]->id == $userId) {
+                    $isInvolved = true;
+                    break;
+                }
+            }
+            return $isInvolved;
+        }
     @endphp
 
     <div id="mainWrap" class="mainWrap">
@@ -787,11 +799,19 @@
                                                 data-live-search="true" data-size="5" data-actions-box="true"
                                                 data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
                                                 data-selected-text-format="count > 1"
+                                                name="involvedPeople[]"
                                                 data-count-selected-text="Có {0} người liên quan"
                                                 data-live-search-placeholder="Tìm kiếm...">
                                             @foreach ($listUsers as $user)
-                                                <option value="{{ $user->id }}">
-                                                    {{ $user->name }}</option>
+                                                @if(isInvolvedReportTask($task, $user->id))
+                                                    <option value="{{ $user->id }}" selected>
+                                                        {{ $user->name }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $user->id }}">
+                                                        {{ $user->name }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
