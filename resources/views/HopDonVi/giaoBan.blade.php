@@ -1549,6 +1549,7 @@
             await renderListNotes();
         }, 1000 * 30);
         //render these other things every 5s
+        //render
         setInterval(async () => {
             await renderListUploadedFile();
             await renderUnHandledReports();
