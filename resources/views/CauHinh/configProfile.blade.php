@@ -1822,32 +1822,16 @@ function getChild($data, $parentId) {
     <script>
         $(document).ready(function() {
             $.datetimepicker.setLocale('vi');
-            $('#ngayThuViec').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-
-            $('#ngayChinhThuc').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-
-            $('#suaNgayThuViec').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-
-            $('#suaNgayChinhThuc').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-            });
-
             $('#createUser').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
 
             $('#suaCreateUser').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('#thoiHanVanDeTonDong').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
