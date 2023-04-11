@@ -175,7 +175,7 @@ Route::get('danh-sach-dao-tao', function () {
     return view('KeHoach_GiaoViec.danhSachDaoTao');
 });
 Route::get('danh-sach-dao-tao/chi-tiet', function () {
-    return view('KeHoach_GiaoViec.chiTietDaoTao');
+    return view('KeHoach_GiaoViec.chiTietBienBan');
 });
 
 
