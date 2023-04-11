@@ -1554,7 +1554,7 @@
             await renderListUploadedFile();
             await renderUnHandledReports();
             await renderHandledReports();
-        }, 1000 * 5);
+        }, 1000 * 10);
 
         //remvove interval when leave page
         window.addEventListener('beforeunload', () => {
