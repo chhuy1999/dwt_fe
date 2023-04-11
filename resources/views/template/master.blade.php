@@ -505,7 +505,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('report.store') }}" method="POST">
+                <form action="{{ route('report.store') }}" method="POST" autocomplete="off">
                     @csrf
 
                     <div class="modal-body">

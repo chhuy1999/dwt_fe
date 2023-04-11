@@ -1287,7 +1287,7 @@
     <script>
         $(document).ready(function () {
             $.datetimepicker.setLocale('vi');
-            $('.deadlinePicker').datetimepicker({
+            $('.deadlinePicker').daterangepicker({
                 format: 'd-m-Y',
                 timepicker: false,
             });
