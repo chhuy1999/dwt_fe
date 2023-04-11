@@ -307,7 +307,7 @@
                                             <div class="mb-2 d-flex justify-content-between align-items-center">
                                                 <div class="card-title d-flex align-items-center">
                                                     <div>Vấn đề tiếp nhận</div>
-                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
                                                         <div class="card_action-wrapper ms-3">
                                                             <button role="button" class="btn btn-outline-danger"
                                                                     data-bs-toggle="modal"
@@ -441,11 +441,13 @@
                                                                                 <input type="hidden"
                                                                                        name="uploadedFiles[]"
                                                                                        value="{{ $file }}"/>
+                                                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
                                                                                 <span class="modal_upload-remote"
                                                                                       onclick="removeUploaded(event)">
                                                                                     <img style="width:18px;height:18px"
                                                                                          src="{{ asset('assets/img/trash.svg') }}"/>
                                                                                 </span>
+                                                                                @endif
                                                                             </div>
                                                                         </li>
                                                                     @endif
@@ -469,6 +471,7 @@
                                                             <div
                                                                 class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                                                 <div class="modal_upload-addFile me-3">
+                                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
                                                                     <button role="button" type="button"
                                                                             class="btn position-relative pe-4 ps-4">
                                                                         <img style="width:16px;height:16px"
@@ -479,12 +482,13 @@
                                                                                name="files[]" multiple
                                                                                onchange="updateList(event)">
                                                                     </button>
+                                                                    @endif
                                                                 </div>
 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
                                                         <div class="d-flex align-items-center justify-content-end">
                                                             <button type="submit" class="btn btn-outline-danger">Tải
                                                                 file
@@ -682,7 +686,7 @@
                     </div>
 
 
-                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
                         <div class="col-lg-12 d-flex justify-content-end">
                             <div class="action_table-wrapper text-end mt-3 mb-3">
                                 {{-- <a href="kho-luu-tru-bien-ban-hop"
