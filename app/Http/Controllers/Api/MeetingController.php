@@ -14,12 +14,14 @@ class MeetingController extends Controller
 {
     //
     private $dwtService;
+
     //contructor
     public function __construct()
     {
         // $this->middleware('auth');
         $this->dwtService = new DwtServices();
     }
+
     public function index($code, Request $request)
     {
         try {
@@ -82,7 +84,7 @@ class MeetingController extends Controller
         $encodedPwd = "";
         if ($data['password']) {
             //encode
-            $encodedPwd =  base64_encode($data['password']);
+            $encodedPwd = base64_encode($data['password']);
         }
         return redirect('/giao-ban/' . $data["code"] . '?pwd=' . $encodedPwd);
     }
@@ -110,7 +112,7 @@ class MeetingController extends Controller
             $encodedPwd = "";
             if ($data['password']) {
                 //encode
-                $encodedPwd =  base64_encode($data['password']);
+                $encodedPwd = base64_encode($data['password']);
             }
 
             return redirect('/giao-ban/' . $meetCode . '?pwd=' . $encodedPwd)->with('success', 'Tạo cuộc họp thành công voi mã: ' . $meetCode);
@@ -118,6 +120,7 @@ class MeetingController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
     public function update($id, Request $request)
     {
         // dd($request->all());
@@ -189,4 +192,5 @@ class MeetingController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
 }

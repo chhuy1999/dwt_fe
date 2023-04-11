@@ -146,6 +146,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra', [MeetingListController::class, 'openingMeeting'])->name('meeting.open');
 });
 
+
 // Kho lưu trữ biên bản họp
 Route::get('/kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'closedMeeting']);
 
@@ -170,13 +171,13 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 // Route::get('kho-luu-tru-bien-ban-hop', function () {
 //     return view('HopDonVi.khoLuuTruBienBanHop');
 // });
-
+//Đào tạo
 Route::get('danh-sach-dao-tao', function () {
     return view('KeHoach_GiaoViec.danhSachDaoTao');
-});
+})->middleware('auth.role:manager,admin,user');
 Route::get('danh-sach-dao-tao/chi-tiet', function () {
-    return view('KeHoach_GiaoViec.chiTietBienBan');
-});
+    return view('KeHoach_GiaoViec.chiTietDaoTao');
+})->middleware('auth.role:manager,admin,user');
 
 
 Route::get('bien-ban-hop', function () {
