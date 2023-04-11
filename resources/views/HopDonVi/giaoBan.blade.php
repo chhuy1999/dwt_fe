@@ -903,7 +903,7 @@
 
     <!-- Modal duyệt biên bản họp -->
     <div class="modal fade" id="duyetbienbanhop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 21cm">
+        <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 24cm">
             <div class="modal-content">
 
 
@@ -915,7 +915,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="table-responsive">
+                            <div class="table-responsive" style="overflow-x:hidden">
                                 <table class="table table-borderless">
                                     <tbody>
                                     <tr>
@@ -975,9 +975,9 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="fs-5">
+                                            <div class="fs-5 row">
                                                 @foreach (getListAbsence($meeting, $listUsers->data) as $absence)
-                                                    {{ $absence->name }} - {{ $absence->code }},&nbsp;
+                                                    <div class="col-md-4">{{ $absence->name }} - {{ $absence->code }}</div>
                                                 @endforeach
                                             </div>
                                         </td>
@@ -1033,75 +1033,77 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="mt-4 modal_body-title">
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">STT</th>
-                                        <th scope="col">Vấn đề</th>
-                                        <th scope="col">Người nêu</th>
-                                        <th scope="col">Nguyên nhân</th>
-                                        <th scope="col">Hướng giải quyết</th>
-                                        <th scope="col">PIC</th>
-                                        <th scope="col">Thời hạn</th>
-                                        <th scope="col">Tình trạng</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($meeting->reports as $report)
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
                                         <tr>
-                                            <th scope="row">
-                                                {{ $loop->index + 1 }}
-                                            </th>
-                                            <td>
-                                                {{ $report->problem }}
-                                            </td>
-                                            <td>
-                                                {{ $report->user->name ?? '' }} - {{ $report->user->code ?? '' }}
-                                            </td>
-                                            <td>
-                                                {{ $report->reason }}
-                                            </td>
-                                            <td>
-                                                {{ $report->solution }}
-                                            </td>
-                                            <td>
-                                                @foreach ($report->pics as $pic)
-                                                    {{ $pic->name ?? '' }} - {{ $pic->code ?? '' }}
-                                                @endforeach
-                                            </td>
-                                            <td>{{ $report->deadline ? date('d/m/y', strtotime($report->deadline)) : '' }}
-                                            </td>
-                                            <td>
-                                                @switch($report->status)
-                                                    @case('Sent')
-                                                        Đã tiếp nhận
-                                                        @break
-
-                                                    @case('FoundSolution')
-                                                        Đã có hướng giải quyết
-                                                        @break
-
-                                                    @case('Solved')
-                                                        Đã giải quyết
-                                                        @break
-
-                                                    @case('Converted')
-                                                        Đã giao
-                                                        @break
-
-                                                    @case('CantSolve')
-                                                        không thể giải quyết
-                                                        @break
-
-                                                    @default
-                                                        @break
-                                                @endswitch
-                                            </td>
+                                            <th scope="col" class="text-nowrap">STT</th>
+                                            <th scope="col" class="text-nowrap">Vấn đề</th>
+                                            <th scope="col" class="text-nowrap">Người nêu</th>
+                                            <th scope="col" class="text-nowrap">Nguyên nhân</th>
+                                            <th scope="col" class="text-nowrap">Hướng giải quyết</th>
+                                            <th scope="col" class="text-nowrap">PIC</th>
+                                            <th scope="col" class="text-nowrap">Thời hạn</th>
+                                            <th scope="col" class="text-nowrap">Tình trạng</th>
                                         </tr>
-                                    @endforeach
-
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($meeting->reports as $report)
+                                            <tr>
+                                                <th scope="row">
+                                                    {{ $loop->index + 1 }}
+                                                </th>
+                                                <td style="word-break: break-all;">
+                                                    {{ $report->problem }}
+                                                </td>
+                                                <td>
+                                                    {{ $report->user->name ?? '' }} - {{ $report->user->code ?? '' }}
+                                                </td>
+                                                <td>
+                                                    {{ $report->reason }}
+                                                </td>
+                                                <td>
+                                                    {{ $report->solution }}
+                                                </td>
+                                                <td>
+                                                    @foreach ($report->pics as $pic)
+                                                        {{ $pic->name ?? '' }} - {{ $pic->code ?? '' }}
+                                                    @endforeach
+                                                </td>
+                                                <td>{{ $report->deadline ? date('d/m/y', strtotime($report->deadline)) : '' }}
+                                                </td>
+                                                <td>
+                                                    @switch($report->status)
+                                                        @case('Sent')
+                                                            Đã tiếp nhận
+                                                            @break
+    
+                                                        @case('FoundSolution')
+                                                            Đã có hướng giải quyết
+                                                            @break
+    
+                                                        @case('Solved')
+                                                            Đã giải quyết
+                                                            @break
+    
+                                                        @case('Converted')
+                                                            Đã giao
+                                                            @break
+    
+                                                        @case('CantSolve')
+                                                            không thể giải quyết
+                                                            @break
+    
+                                                        @default
+                                                            @break
+                                                    @endswitch
+                                                </td>
+                                            </tr>
+                                        @endforeach
+    
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1208,7 +1210,7 @@
                                             {{ $loop->index + 1 }}
                                         </th>
                                         <td class="text-nowrap">
-                                            <div class="form-check text-nowrap text-truncate p-0" style="width:150px;">
+                                            <div class="form-check text-nowrap text-truncate p-0" style="width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $rp->problem }}">
                                                 <label class="form-check-label" style="cursor: pointer"
                                                        for="report{{ $rp->id }}">
                                                     {{ $rp->problem }}
@@ -1216,12 +1218,12 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="text-nowrap text-truncate" style="width:150px;">
+                                            <div class="text-nowrap text-truncate" style="width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $rp->user->name ?? '' }}">
                                                 {{ $rp->user->name ?? '' }}
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="text-nowrap text-truncate" style="width:180px;">
+                                            <div class="text-nowrap text-truncate" style="width:180px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $rp->departement->name ?? '' }}">
                                                 {{ $rp->departement->name ?? '' }}
                                             </div>
                                         </td>

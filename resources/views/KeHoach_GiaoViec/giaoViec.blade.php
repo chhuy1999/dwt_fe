@@ -1288,7 +1288,7 @@
         $(document).ready(function () {
             $.datetimepicker.setLocale('vi');
             $('.deadlinePicker').datetimepicker({
-                format: 'd/m/Y',
+                format: 'd-m-Y',
                 timepicker: false,
             });
         });
