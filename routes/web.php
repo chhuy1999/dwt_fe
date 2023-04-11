@@ -146,6 +146,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra', [MeetingListController::class, 'openingMeeting'])->name('meeting.open');
 });
 
+
 // Kho lưu trữ biên bản họp
 Route::get('/kho-luu-tru-bien-ban-hop', [MeetingListController::class, 'closedMeeting']);
 
