@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
 });
 
 //kpi key
-Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('danh-muc-chi-so-key', [KeyController::class, 'index'])->name('key.list');
     Route::post('danh-muc-chi-so-key', [KeyController::class, 'store'])->name('key.store');
     Route::put('danh-muc-chi-so-key/{id}', [KeyController::class, 'update'])->name('key.update');
@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 });
 
 //target => danh muc dinh muc
-Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('danh-muc-dinh-muc', [TargetController::class, 'index'])->name('target.list');
     Route::post('danh-muc-dinh-muc', [TargetController::class, 'store'])->name('target.store');
     Route::put('danh-muc-dinh-muc/{id}', [TargetController::class, 'update'])->name('target.update');
@@ -85,7 +85,7 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 });
 
 //target detail => danh muc nhiem vu
-Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('danh-muc-nhiem-vu', [TargetDetailController::class, 'index'])->name('targetDetail.list');
     Route::post('danh-muc-nhiem-vu', [TargetDetailController::class, 'store'])->name('targetDetail.store');
     Route::put('danh-muc-nhiem-vu/{id}', [TargetDetailController::class, 'update'])->name('targetDetail.update');
@@ -113,7 +113,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 });
 
 // Danh sách cấp tổ chức
-Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('danh-sach-cap-to-chuc', [PositionOrganizationController::class, 'index'])->name('positionOri.list');
     Route::post('danh-sach-cap-to-chuc', [PositionOrganizationController::class, 'store'])->name('positionOri.store');
     Route::put('danh-sach-cap-to-chuc/{id}', [PositionOrganizationController::class, 'update'])->name('positionOri.update');
@@ -121,7 +121,7 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 });
 
 // Danh sách cấp nhân sự
-Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('danh-sach-cap-nhan-su', [PositionLevelController::class, 'index'])->name('positionLevel.list');
     Route::post('danh-sach-cap-nhan-su', [PositionLevelController::class, 'store'])->name('positionLevel.store');
     Route::put('danh-sach-cap-nhan-su/{id}', [PositionLevelController::class, 'update'])->name('positionLevel.update');
@@ -158,7 +158,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 });
 
 // Danh mục gói trang bị
-Route::group(['middleware' => 'auth.role:manager,admin'], function () {
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('danh-muc-goi-trang-bi', [EquimentPackController::class, 'index'])->name('equimentPack.list');
     Route::post('danh-muc-goi-trang-bi', [EquimentPackController::class, 'store'])->name('equimentPack.store');
     Route::put('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'update'])->name('equimentPack.update');

@@ -55,8 +55,10 @@ class ReportController extends Controller
                 'status' => 'required',
             ]);
             $data['user_id'] = session('user')['id'];
-            $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
-
+            if(isset($data['deadline'])) {
+                $data['deadline'] = str_replace('/', '-', $data['deadline']);
+                $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
+            }
             $result = $this->dwtService->updateReports($id, $data);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
