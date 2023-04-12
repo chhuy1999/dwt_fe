@@ -29,12 +29,13 @@
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-nowrap text-center" style="width:5%">STT</th>
-                                                            <th class="text-nowrap text-center" style="width:10%">Mã biên
-                                                                bản</th>
-                                                            <th class="text-nowrap" style="width:33%">Người hướng dẫn</th>
-                                                            <th class="text-nowrap" style="width:50%">Học viên</th>
-                                                            <th class="text-nowrap text-center" style="width:2%"></th>
+                                                            <th class="text-nowrap text-center" style="width:2%">STT</th>
+                                                            <th class="text-nowrap text-center" style="width:10%">Mã biên bản</th>
+                                                            <th class="text-nowrap" style="width:20%">Người hướng dẫn</th>
+                                                            <th class="text-nowrap" style="width:20%">Học viên</th>
+                                                            <th class="text-nowrap" style="width:41%">Địa bàn</th>
+                                                            <th class="text-nowrap" style="width:5%">Thời gian</th>
+                                                            <th class="text-nowrap text-center" style="width:10%">Hành động</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -69,7 +70,23 @@
                                                                         {{ $list['student'] }} - {{ $list['studentCode'] }}
                                                                     </div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="max-width:565px;" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="demo">
+                                                                        demo
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="max-width:565px;" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="12/04/2023">
+                                                                        12/04/2023
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-center">
                                                                     <div role="button" data-bs-toggle="tooltip"
                                                                         data-bs-placement="top"
                                                                         aria-label="Xem biên bản đánh giá"
@@ -232,7 +249,6 @@
                                     <thead>
                                         <tr>
                                             <th class="text-nowrap" style="width:5%">STT</th>
-                                            <th class="text-nowrap" style="width:5%">Mã biên bản</th>
                                             <th class="text-nowrap" style="width:10%">Khách hàng</th>
                                             <th class="text-nowrap" style="width:20%">Tình huống</th>
                                             <th class="text-nowrap" style="width:10%">KN/NV</th>
@@ -245,12 +261,6 @@
                                                 <td class="text-nowrap text-center">
                                                     <div class="text-nowrap d-block text-truncate" style="">
                                                         {{ $list['id'] }}
-                                                    </div>
-                                                </td>
-                                                <td class="text-nowrap text-center">
-                                                    <div class="text-nowrap d-block text-truncate" style="" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="{{ $list['code'] }}">
-                                                        {{ $list['code'] }}
                                                     </div>
                                                 </td>
                                                 <td class="text-nowrap">
@@ -344,6 +354,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">In</button>
                 </div>
             </div>
         </div>

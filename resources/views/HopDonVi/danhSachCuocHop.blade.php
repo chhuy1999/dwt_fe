@@ -485,10 +485,13 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ biên bản họp',
             },
-            dom: '<"d-flex justify-content-between align-items-center mb-3"<"card-title-wrapper-left"><"d-flex "f>>rt<"dataTables_bottom  justify-content-end"p>',
+            dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         $('div.card-title-wrapper-left').html(`
-                <div class="card-title">Bảng lưu trữ biên bản họp</div>
-            `);
+                <div class="card-title">Bộ lọc</div>
+        `);
+        $('div.card-title-wrapper-right').html(`
+                <div class="card-title">Bộ lọc2</div>
+        `);
     </script>
 @endsection

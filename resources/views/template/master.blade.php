@@ -61,7 +61,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <div class="header_menu">
                         <ul class="header_menu-list">
                             <li class="header_menu-item">
-                                <a class="header_menu-link" href="">
+                                <a class="header_menu-link" href="#">
                                     <i class="bi bi-compass"></i>
                                     <span>Kế hoạch & Giao việc</span>
                                 </a>
@@ -73,10 +73,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         <ul class="header_more">
                                             
                                             <li class="header_more-item">
-                                                <a href="danh-sach-danh-gia" class="header_more-link">Danh sách đánh giá</a>
+                                                <a href="/danh-sach-danh-gia" class="header_more-link">Danh sách đánh giá</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="kho-bien-ban-danh-gia" class="header_more-link">Kho biên bản đánh giá</a>
+                                                <a href="/kho-bien-ban-danh-gia" class="header_more-link">Kho biên bản đánh giá</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -87,10 +87,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                             </a>
                                             {{-- <ul class="header_more">
                                                 <li class="header_more-item">
-                                                    <a href="" class="header_more-link">Giao việc định mức</a>
+                                                    <a href="#" class="header_more-link">Giao việc định mức</a>
                                                 </li>
                                                 <li class="header_more-item">
-                                                    <a href="" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinhGlobal" class="header_more-link">Giao việc phát sinh</a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinhGlobal" class="header_more-link">Giao việc phát sinh</a>
                                                 </li>
                                             </ul> --}}
                                         </li>
@@ -112,11 +112,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         <ul class="header_more">
                                             @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                 <li class="header_more-item">
-                                                    <a href="" data-bs-toggle="modal" data-bs-target="#taoCuocHop" class="header_more-link">Tạo cuộc họp</a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#taoCuocHop" class="header_more-link">Tạo cuộc họp</a>
                                                 </li>
                                             @endif
                                             <li class="header_more-item">
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia họp</a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia họp</a>
                                             </li>
                                             <li class="header_more-item">
                                                 <a href="/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra" class="header_more-link">Cuộc họp đang diễn ra</a>
@@ -171,7 +171,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Sự việc và ý
+                                        <a href="#" class="header_submenu-link">Sự việc và ý
                                             kiến</a>
                                     </li>
                                     <li class="header_submenu-items">
@@ -179,10 +179,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                             sắm</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Công tác</a>
+                                        <a href="#" class="header_submenu-link">Công tác</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Văn bản</a>
+                                        <a href="#" class="header_submenu-link">Văn bản</a>
                                     </li>
                                 </ul>
                             </li>
@@ -193,17 +193,17 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                                 <ul id="header_submenu">
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Sự việc và ý
+                                        <a href="#" class="header_submenu-link">Sự việc và ý
                                             kiến</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Chi tiêu mua sắm</a>
+                                        <a href="#" class="header_submenu-link">Chi tiêu mua sắm</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Công tác</a>
+                                        <a href="#" class="header_submenu-link">Công tác</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Văn bản</a>
+                                        <a href="#" class="header_submenu-link">Văn bản</a>
                                     </li>
                                 </ul>
                             </li>
@@ -276,22 +276,22 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                     doanh</a>
                                             </li>
                                             {{-- <li class="header_more-item">
-                                                <a href="" class="header_more-link">Danh mục đơn
+                                                <a href="#" class="header_more-link">Danh mục đơn
                                                     vị tính</a>
                                             </li> --}}
                                         </ul>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Quy trình</a>
+                                        <a href="#" class="header_submenu-link">Quy trình</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">KPI</a>
+                                        <a href="#" class="header_submenu-link">KPI</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Phân quyền</a>
+                                        <a href="#" class="header_submenu-link">Phân quyền</a>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="" class="header_submenu-link">Chữ ký</a>
+                                        <a href="#" class="header_submenu-link">Chữ ký</a>
                                     </li>
                                     <li class="header_submenu-items more position-relative">
                                         <a href="#" class="header_submenu-link more_btn">

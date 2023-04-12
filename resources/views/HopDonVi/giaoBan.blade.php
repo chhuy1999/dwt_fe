@@ -30,7 +30,7 @@
             box-shadow: none;
         }
 
-        .bootstrap-select>.dropdown-toggle:after {
+        .hidden-arrow .bootstrap-select>.dropdown-toggle:after {
             display: none;
         }
 
@@ -144,7 +144,7 @@
                                     <strong class="text-nowrap">{{ $meeting->departement->name ?? 'Chưa có đơn vị' }}</strong>
                                 </div>
                                 <div class="col-sm-2">Chủ trì:</div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10 hidden-arrow">
                                     <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5" id="leaderSelect">
                                         @foreach ($listUsers->data as $value)
                                             @if ($meeting->leader_id == $value->id)
@@ -163,8 +163,8 @@
                                     Biên bản họp
                                 </h5>
                             </div>
-                            <div>
-                                <select class="form-select form-select-lg style_input ms-2 fw-bolder">
+                            <div class="hidden-arrow">
+                                <select class="selectpicker mainSection_width-select form-select-lg style_input ms-2 fw-bolder">
                                     {{-- <option >Giao ban Ngày</option>
                                     <option>Tuần</option>
                                     <option>Tháng</option>
