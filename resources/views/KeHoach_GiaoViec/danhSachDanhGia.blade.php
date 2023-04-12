@@ -37,7 +37,7 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($lists as $list)
-                                                            <tr data-href="/danh-sach-dao-tao/chi-tiet" role="button">
+                                                            <tr data-href="/danh-sach-danh-gia/chi-tiet" role="button">
                                                                 <td class="text-nowrap text-center">
                                                                     <div class="text-nowrap d-block text-truncate"
                                                                         style="">
@@ -308,7 +308,7 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
 
-<script>
+    <script>
         const targetTable = $('#dsDaoTao').DataTable({
             paging: true,
             ordering: false,
@@ -348,8 +348,10 @@
     </script>
 
     <script>
-        $('tr[data-href]').on("click", function() {
-            window.location.href = $(this).data('href');
+        $('tr[data-href]').on("click", function(event) {
+            if ($(event.target).closest('td').index() !== $(this).find('td').length - 1) {
+                window.location.href = $(this).data('href');
+            }
         });
     </script>
 

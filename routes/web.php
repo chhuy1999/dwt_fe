@@ -172,11 +172,14 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 //     return view('HopDonVi.khoLuuTruBienBanHop');
 // });
 //Đào tạo
-Route::get('danh-sach-dao-tao', function () {
-    return view('KeHoach_GiaoViec.danhSachDaoTao');
+Route::get('danh-sach-danh-gia', function () {
+    return view('KeHoach_GiaoViec.danhSachDanhGia');
 })->middleware('auth.role:manager,admin,user');
-Route::get('danh-sach-dao-tao/chi-tiet', function () {
-    return view('KeHoach_GiaoViec.chiTietDaoTao');
+Route::get('kho-bien-ban-danh-gia', function () {
+    return view('KeHoach_GiaoViec.khoDanhSachDanhGia');
+})->middleware('auth.role:manager,admin,user');
+Route::get('danh-sach-danh-gia/chi-tiet', function () {
+    return view('KeHoach_GiaoViec.chiTietBienBan');
 })->middleware('auth.role:manager,admin,user');
 
 

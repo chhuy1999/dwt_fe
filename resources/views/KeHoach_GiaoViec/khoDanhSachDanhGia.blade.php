@@ -1,101 +1,21 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Danh sách biên bản')
+@section('title', 'Kho danh sách đánh giá')
 
 @php
-    $lists = [['id' => 1, 'code' => 'BB001', 'customer' => 'Nguyễn Văn A', 'situation' => 'Sự cố máy móc', 'expert' => 'Nguyễn Thị B', 'restrictions' => 'Không được tắt máy', 'guidance' => 'Kiểm tra máy móc', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn'], ['id' => 2, 'code' => 'BB002', 'customer' => 'Trần Thị C', 'situation' => 'Sự cố phần mềm', 'expert' => 'Lê Văn D', 'restrictions' => 'Không được đổi password', 'guidance' => 'Cài đặt lại phần mềm', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn'], ['id' => 3, 'code' => 'BB003', 'customer' => 'Phạm Văn E', 'situation' => 'Sự cố kết nối', 'expert' => 'Trần Thị F', 'restrictions' => 'Không được restart router', 'guidance' => 'Thay đổi mạng kết nối', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn']];
+    $lists = [['id' => '1', 'code' => 'MBB01', 'user' => 'Nguyễn Thị Thanh Nga', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'], ['id' => '2', 'code' => 'MBB02', 'user' => 'Nguyễn Thị Thanh Nga', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'], ['id' => '3', 'code' => 'MBB03', 'user' => 'Nguyễn Thị Thanh Nga', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036']];
+
+    $listsModal = [['id' => 1, 'code' => 'BB001', 'customer' => 'Nguyễn Văn A', 'situation' => 'Sự cố máy móc', 'expert' => 'Nguyễn Thị B', 'restrictions' => 'Không được tắt máy', 'guidance' => 'Kiểm tra máy móc', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn'], ['id' => 2, 'code' => 'BB002', 'customer' => 'Trần Thị C', 'situation' => 'Sự cố phần mềm', 'expert' => 'Lê Văn D', 'restrictions' => 'Không được đổi password', 'guidance' => 'Cài đặt lại phần mềm', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn'], ['id' => 3, 'code' => 'BB003', 'customer' => 'Phạm Văn E', 'situation' => 'Sự cố kết nối', 'expert' => 'Trần Thị F', 'restrictions' => 'Không được restart router', 'guidance' => 'Thay đổi mạng kết nối', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn']];
 @endphp
-
-@section('header-style')
-    <style>
-        .mainSection_width-select {
-            width: 140px !important;
-            border: none;
-        }
-
-        .mainSection_width-select button.btn.dropdown-toggle.btn-light {
-            padding: 5px 0;
-            background-color: transparent;
-            outline: none;
-            border: none;
-        }
-
-        .style_input,
-        .style_input:focus {
-            border: none !important;
-            background-color: transparent;
-            font-size: 1.1rem;
-            outline: none;
-            box-shadow: none !important;
-        }
-
-        .mainSection_width-select button.btn.dropdown-toggle.btn-light:hover {
-            background-color: transparent;
-            outline: none;
-            border: none;
-            box-shadow: none;
-        }
-    </style>
-
-@endsection
 @section('content')
     {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft') --}}
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
-                    <div class="row align-items-center mb-3">
-                        <div class="col-md-3 mainSection_card-left">
-                            <div class="row align-items-center">
-                                <div class="col-md-5">
-                                    <div class="text-nowrap fs-5">Ngày tạo: </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <strong class="text-nowrap">
-                                        <input type="text" value="07/04/2023" class="form-control style_input fs-5">
-                                    </strong>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="text-nowrap fs-5">Người hướng dẫn: </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <strong class="text-nowrap">
-                                        <input type="text" value="Nguyễn Văn ABC" class="form-control style_input fs-5">
-                                    </strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h5 class="mainSection_heading-title">
-                                Biên bản đào tạo
-                            </h5>
-                        </div>
-                        <div class="col-md-3 mainSection_card-right">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="text-nowrap fs-5">Họ tên học viên: </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="text-nowrap d-block text-truncate" style="max-width:168px" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="Nguyễn Văn ABCDXYZABCASD">
-                                        <strong class="text-nowrap fs-5">
-                                            <input type="text" value="Nguyễn Văn ABC" class="form-control style_input fs-5">
-                                        </strong>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="text-nowrap fs-5">Địa bàn: </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="text-nowrap d-block text-truncate" style="max-width:168px" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="66b Nguyễn Sỹ Sách">
-                                        <strong class="text-nowrap fs-5">
-                                            <input type="text" value="66b Nguyễn Sỹ Sách" class="form-control style_input fs-5">
-                                        </strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="mainSection_heading">
+                        <h5 class="mainSection_heading-title">Kho danh sách đánh giá</h5>
+                        @include('template.components.sectionCard')
                     </div>
 
                     <div class="row">
@@ -104,77 +24,60 @@
                                 <div class="card-body">
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="table-responsive">
-                                                <table id="dsDaoTao" class="table table-responsive table-hover table-bordered">
+                                            <div class="position-relative">
+                                                <table id="dsDaoTao"
+                                                    class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-nowrap" style="width:5%">STT</th>
-                                                            <th class="text-nowrap" style="width:5%">Mã biên bản</th>
-                                                            <th class="text-nowrap" style="width:10%">Khách hàng</th>
-                                                            <th class="text-nowrap" style="width:20%">Tình huống</th>
-                                                            <th class="text-nowrap" style="width:10%">KN/NV</th>
-                                                            <th class="text-nowrap" style="width:10%">Hạn chế</th>
-                                                            <th class="text-nowrap" style="width:10%">Hướng dẫn</th>
-                                                            <th class="text-nowrap" style="width:15%">Ý kiến người hướng dẫn
-                                                            </th>
-                                                            <th class="text-nowrap" style="width:15%">Ý kiến học viên</th>
+                                                            <th class="text-nowrap text-center" style="width:5%">STT</th>
+                                                            <th class="text-nowrap text-center" style="width:10%">Mã biên
+                                                                bản</th>
+                                                            <th class="text-nowrap" style="width:33%">Người hướng dẫn</th>
+                                                            <th class="text-nowrap" style="width:50%">Học viên</th>
+                                                            <th class="text-nowrap text-center" style="width:2%"></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($lists as $list)
-                                                            <tr>
+                                                            <tr data-href="/danh-sach-danh-gia/chi-tiet" role="button">
                                                                 <td class="text-nowrap text-center">
-                                                                    <div class="text-nowrap d-block text-truncate" style="">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="">
                                                                         {{ $list['id'] }}
                                                                     </div>
                                                                 </td>
                                                                 <td class="text-nowrap text-center">
-                                                                    <div class="text-nowrap d-block text-truncate" style="" data-bs-toggle="tooltip"
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="" data-bs-toggle="tooltip"
                                                                         data-bs-placement="top" title="{{ $list['code'] }}">
                                                                         {{ $list['code'] }}
                                                                     </div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="{{ $list['customer'] }}">
-                                                                        {{ $list['customer'] }}
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="max-width:350px;" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="{{ $list['user'] }} - {{ $list['userCode'] }}">
+                                                                        {{ $list['user'] }} - {{ $list['userCode'] }}
                                                                     </div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="{{ $list['situation'] }}">
-                                                                        {{ $list['situation'] }}
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="max-width:565px;" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="{{ $list['student'] }} - {{ $list['studentCode'] }}">
+                                                                        {{ $list['student'] }} - {{ $list['studentCode'] }}
                                                                     </div>
                                                                 </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:90px;"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $list['expert'] }}">
-                                                                        {{ $list['expert'] }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:90px;"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $list['restrictions'] }}">
-                                                                        {{ $list['restrictions'] }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:90px;"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $list['guidance'] }}">
-                                                                        {{ $list['guidance'] }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:160px;"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="{{ $list['instructor_comment'] }}">
-                                                                        {{ $list['instructor_comment'] }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:160px;"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $list['student_comment'] }}">
-                                                                        {{ $list['student_comment'] }}
+                                                                <td>
+                                                                    <div role="button" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        aria-label="Xem biên bản đánh giá"
+                                                                        data-bs-original-title="Xem biên bản đánh giá">
+                                                                        <div data-bs-toggle="modal"
+                                                                            data-bs-target="#duyetBienBanDaoTao">
+                                                                            <i class="bi bi-arrow-right-square fs-5"></i>
+                                                                        </div>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -194,6 +97,78 @@
         </div>
     </div>
     {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarRight') --}}
+
+    <!-- Modal Thêm DS biên bản -->
+    <div class="modal fade" id="themDanhGia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Biên bản đào tạo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="" action="" autocomplete="off">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5 mb-3 position-relative">
+                                <input id="dateDanhGia" type="text" placeholder="Ngày tạo" class="form-control">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                            </div>
+                            <div class="col-md-7 mb-3">
+                                <select name="" class="selectpicker" multiple data-size="5" data-live-search="true"
+                                    data-actions-box="true" title="Chọn học viên..." data-select-all-text="Chọn tất cả"
+                                    data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2"
+                                    data-count-selected-text="Có {0} học viên" data-live-search-placeholder="Tìm kiếm...">
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select name="" class="selectpicker" multiple data-size="5" data-live-search="true"
+                                    data-actions-box="true" title="Chọn người hướng dẫn..."
+                                    data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                    data-selected-text-format="count > 2"
+                                    data-count-selected-text="Có {0} người hướng dẫn"
+                                    data-live-search-placeholder="Tìm kiếm...">
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                </select>
+                            </div>
+                            <div class="col-md-7 mb-3">
+                                <select name="" class="selectpicker" multiple data-size="5"
+                                    data-live-search="true" data-actions-box="true" title="Chọn địa bàn..."
+                                    data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                    data-selected-text-format="count > 2" data-count-selected-text="Có {0} địa bàn"
+                                    data-live-search-placeholder="Tìm kiếm...">
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                    <option>1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal duyệt biên bản đào tạo -->
     <div class="modal fade" id="duyetBienBanDaoTao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -265,7 +240,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($lists as $list)
+                                        @foreach ($listsModal as $list)
                                             <tr>
                                                 <td class="text-nowrap text-center">
                                                     <div class="text-nowrap d-block text-truncate" style="">
@@ -370,32 +345,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger ps-5 pe-5" data-bs-dismiss="modal">Hủy</button>
-                    <form action="" method="POST">
-                        @csrf
-                        {{-- @method('PUT') --}}
-                        <input type="hidden" name="status" value="1">
-                        <button type="submit" class="btn btn-danger ps-5 pe-5">Lưu</button>
-                    </form>
-                </div>
-
-
             </div>
         </div>
     </div>
 @endsection
 @section('footer-script')
-    <!-- ChartJS -->
-    {{-- <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script> --}}
-    {{-- <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script> --}}
     <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
-
-    <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
     <script>
         const targetTable = $('#dsDaoTao').DataTable({
@@ -420,23 +376,20 @@
             oLanguage: {
                 sLengthMenu: "_MENU_ bản ghi trên trang",
             },
-            dom: '<"d-flex justify-content-between mb-3"<"card-title-left"><"d-flex "<"card-title-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
+            dom: '<"d-flex justify-content-between mb-3"<"card-title-left"><"d-flex "f<"card-title-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
-        $('div.card-title-right').html(`
-            <div class="action_wrapper d-flex">
-                @if (session('user')['role'] == 'admin')
-                <div class="action_export ms-3">
-                    <button class="btn btn-danger d-block testCreateUser" data-bs-toggle="modal"
-                        data-bs-target="#duyetBienBanDaoTao">Duyệt</button>
-                </div>
-                @endif
-            </div>
-        `);
+    </script>
+
+    <script>
+        $('tr[data-href]').on("click", function(event) {
+            if ($(event.target).closest('td').index() !== $(this).find('td').length - 1) {
+                window.location.href = $(this).data('href');
+            }
+        });
     </script>
 
     <script>
         $(document).ready(function() {
-
             $('#dateDanhGia').daterangepicker({
                 singleDatePicker: true,
                 timePicker: false,
