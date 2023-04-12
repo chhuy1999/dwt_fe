@@ -71,11 +71,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                             Đào tạo <i class="bi bi-chevron-right"></i>
                                         </a>
                                         <ul class="header_more">
+                                            
                                             <li class="header_more-item">
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#themDsDaoTao" class="header_more-link">Thêm đánh giá đào tạo</a>
+                                                <a href="danh-sach-danh-gia" class="header_more-link">Danh sách đánh giá</a>
                                             </li>
                                             <li class="header_more-item">
-                                                <a href="danh-sach-dao-tao" class="header_more-link">Danh sách đánh giá</a>
+                                                <a href="kho-bien-ban-danh-gia" class="header_more-link">Kho biên bản đánh giá</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -123,7 +124,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         </ul>
                                     </li>
                                     <li class="header_submenu-items">
-                                        <a href="/kho-luu-tru-bien-ban-hop" class="header_submenu-link">Kho biên bản</a>
+                                        <a href="/kho-luu-tru-bien-ban-hop" class="header_submenu-link">Kho biên bản họp</a>
                                     </li>
                                 </ul>
                             </li>
@@ -718,69 +719,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                         <button type="submit" class="btn btn-danger">Giao</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Thêm DS Đào Tạo -->
-    <div class="modal fade" id="themDsDaoTao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Thêm mới đánh giá đào tạo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="" action="">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-5 mb-3 position-relative">
-                                <input id="dateDanhGia" type="text" placeholder="Ngày tạo" class="form-control">
-                                <i class="bi bi-calendar-plus style_pickdate"></i>
-                            </div>
-                            <div class="col-md-7 mb-3">
-                                <select name="" class="selectpicker" multiple data-size="5" data-live-search="true" data-actions-box="true"
-                                title="Chọn học viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} học viên" data-live-search-placeholder="Tìm kiếm..." >
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                </select>
-                            </div>
-                            <div class="col-md-5 mb-3">
-                                <select name="" class="selectpicker" multiple data-size="5" data-live-search="true" data-actions-box="true"
-                                title="Chọn người hướng dẫn..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} người hướng dẫn" data-live-search-placeholder="Tìm kiếm..." >
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                </select>
-                            </div>
-                            <div class="col-md-7 mb-3">
-                                <select name="" class="selectpicker" multiple data-size="5" data-live-search="true" data-actions-box="true"
-                                title="Chọn địa bàn..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 2" data-count-selected-text="Có {0} địa bàn" data-live-search-placeholder="Tìm kiếm..." >
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                    <option>1</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                        <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
                 </form>
             </div>
