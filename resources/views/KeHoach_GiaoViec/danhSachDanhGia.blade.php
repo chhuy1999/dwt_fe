@@ -27,12 +27,13 @@
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-nowrap text-center" style="width:5%">STT</th>
-                                                            <th class="text-nowrap text-center" style="width:10%">Mã biên
-                                                                bản</th>
-                                                            <th class="text-nowrap" style="width:33%">Người hướng dẫn</th>
-                                                            <th class="text-nowrap" style="width:50%">Học viên</th>
-                                                            <th class="text-nowrap text-center" style="width:2%"></th>
+                                                            <th class="text-nowrap text-center" style="width:2%">STT</th>
+                                                            <th class="text-nowrap text-center" style="width:10%">Mã biên bản</th>
+                                                            <th class="text-nowrap" style="width:20%">Người hướng dẫn</th>
+                                                            <th class="text-nowrap" style="width:20%">Học viên</th>
+                                                            <th class="text-nowrap" style="width:41%">Địa bàn</th>
+                                                            <th class="text-nowrap" style="width:5%">Thời gian</th>
+                                                            <th class="text-nowrap text-center" style="width:10%">Hành động</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -67,34 +68,43 @@
                                                                         {{ $list['student'] }} - {{ $list['studentCode'] }}
                                                                     </div>
                                                                 </td>
-                                                                <td>
-                                                                    <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                        data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                            class="bi bi-three-dots-vertical"></i>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="max-width:565px;" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="demo">
+                                                                        demo
                                                                     </div>
-
-                                                                    <ul class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton1">
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#suaBienBanDaoTao">
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/edit.svg') }}" />
-                                                                                Sửa
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#xoaThuocTinh">
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/trash.svg') }}" />
-                                                                                Xóa
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
                                                                 </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="max-width:565px;" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top"
+                                                                        title="12/04/2023">
+                                                                        12/04/2023
+                                                                    </div>
+                                                                </td>
+
+                                                                @if (session('user')['role'] == 'admin')
+                                                                <td>
+                                                                    <div
+                                                                        class="table_actions d-flex justify-content-center">
+                                                                        <div class="btn" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#suaBienBanDaoTao">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        </div>
+                                                                        <div class="btn" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#xoaThuocTinh">
+                                                                            <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                @endif
+
                                                                 <!-- Modal Sửa biên bản đào tạo -->
                                                                 <div class="modal fade" id="suaBienBanDaoTao" tabindex="-1"
                                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -112,7 +122,58 @@
                                                                                 @csrf
                                                                                 {{-- @method('PUT') --}}
                                                                                 <div class="modal-body">
-
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-5 mb-3 position-relative">
+                                                                                            <input id="dateDanhGia" type="text" placeholder="Ngày tạo" class="form-control">
+                                                                                            <i class="bi bi-calendar-plus style_pickdate"></i>
+                                                                                        </div>
+                                                                                        <div class="col-md-7 mb-3">
+                                                                                            <select name="" class="selectpicker" multiple data-size="5"
+                                                                                                data-live-search="true" data-actions-box="true" title="Chọn học viên..."
+                                                                                                data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                                                                                data-selected-text-format="count > 2" data-count-selected-text="Có {0} học viên"
+                                                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-5 mb-3">
+                                                                                            <select name="" class="selectpicker" multiple data-size="5"
+                                                                                                data-live-search="true" data-actions-box="true" title="Chọn người hướng dẫn..."
+                                                                                                data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                                                                                data-selected-text-format="count > 2"
+                                                                                                data-count-selected-text="Có {0} người hướng dẫn"
+                                                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="col-md-7 mb-3">
+                                                                                            <select name="" class="selectpicker" multiple data-size="5"
+                                                                                                data-live-search="true" data-actions-box="true" title="Chọn địa bàn..."
+                                                                                                data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn"
+                                                                                                data-selected-text-format="count > 2" data-count-selected-text="Có {0} địa bàn"
+                                                                                                data-live-search-placeholder="Tìm kiếm...">
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                                <option>1</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button"
@@ -159,7 +220,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
