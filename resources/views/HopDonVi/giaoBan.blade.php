@@ -1466,7 +1466,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="text-nowrap d-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->problem }}">
+                        <div class="text-nowrap d-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="${report.problem }">
                             ${report.problem}
                         </div>
                     </td>
@@ -1475,17 +1475,17 @@
                         </div>
                     </td>
                     <td>
-                        <div type="text-nowrap d-block text-truncate" class="form-control border-0 bg-transparent" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->user->name ?? '' }}">
+                        <div type="text-nowrap d-block text-truncate" class="form-control border-0 bg-transparent" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="${report?.user?.name ?? ""}">
                             ${report?.user?.name}
                         </div>
                     </td>
                     <td>
-                        <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->reason }}">
+                        <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="${report.reason}">
                             ${report.reason}
                         </div>
                     </td>
                     <td>
-                        <div class="text-nowrap d-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="{{ $item->solution }}">
+                        <div class="text-nowrap d-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="${report.solution}">
                             ${report.solution}
                         </div>
                     </td>
