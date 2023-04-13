@@ -131,13 +131,13 @@
                                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                         <li>
                                                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc{{ $targetDetail->id }}">
-                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                                 Sửa
                                                                             </a>
                                                                         </li>
                                                                         <li>
                                                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $targetDetail->id }}" data-repeater-delete>
-                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                                 Xóa
                                                                             </a>
                                                                         </li>
@@ -464,15 +464,12 @@
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
-    <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script src="{{ secure_asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
     <script>
         const targetTable = $('#dsMauNhiemVu').DataTable({

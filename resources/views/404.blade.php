@@ -73,7 +73,7 @@
                     <div class="notFound_content">
                         <div class="notFound_header">
                             <a href="/">
-                                <img src="{{ asset('assets/img/404.png') }}" alt="404" width="400px">
+                                <img src="{{ secure_asset('assets/img/404.png') }}" alt="404" width="400px">
                             </a>
                         </div>
                         <div class="notFound_body">
@@ -94,16 +94,16 @@
 @endsection
 @section('footer-script')
             <!-- ChartJS -->
-            <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
             <!-- Chart Types -->
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
 
 @endsection

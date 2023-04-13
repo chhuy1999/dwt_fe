@@ -179,13 +179,13 @@
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#suaBienBanDaoTao">
                                                                             <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                         </div>
                                                                         <div class="btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#xoaBienBanDaoTao">
                                                                             <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -509,13 +509,9 @@
     </div>
 @endsection
 @section('footer-script')
-    
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
-    <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script src="{{ secure_asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
     <script>
         const targetTable = $('#dsDaoTao').DataTable({

@@ -12,9 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 
 <!-- Vendor CSS Files -->
-<link href="{{ asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-<link href="{{ asset('/assets/css/variables.css') }}" rel="stylesheet" />
-<link href="{{ asset('/assets/css/login.css') }}" rel="stylesheet" />
+<link href="{{ secure_asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+<link href="{{ secure_asset('/assets/css/variables.css') }}" rel="stylesheet" />
+<link href="{{ secure_asset('/assets/css/login.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -39,7 +39,7 @@
                         <form action="/login" method="POST">
                             @csrf
                             <div class="form-floating mb-3">
-                                <input type="text" autocomplete="off" class="form-control" id="floatingInput"
+                                <input type="text" class="form-control" id="floatingInput"
                                     placeholder="admin" name="email" />
                                 <label for="floatingInput">Tên đăng nhập</label>
                             </div>
@@ -48,7 +48,7 @@
                                 <div class="alert alert-danger">Tên tài khoản hoặc mật khẩu không chính xác</div>
                             @enderror
                             <div class="form-floating mb-3">
-                                <input type="password" autocomplete="off" class="form-control" id="floatingPassword"
+                                <input type="password" class="form-control" id="floatingPassword"
                                     placeholder="matkhau" name="password" />
                                 <label for="floatingPassword">Mật khẩu</label>
                             </div>

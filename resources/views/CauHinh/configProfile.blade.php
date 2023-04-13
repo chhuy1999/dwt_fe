@@ -3,7 +3,7 @@
 @section('title', 'Hồ sơ đơn vị')
 
 @section('header-style')
-    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
     <style>
         /* .sidebarBody {
             overflow: auto;
@@ -63,10 +63,10 @@ function getChild($data, $parentId) {
                                     <div class="pb-2 d-flex align-items-center">
                                         <div class="card-title">Toàn công ty</div>
                                         <div class="btn" data-bs-toggle="modal" data-bs-target="#suaCoCauToChuc">
-                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                            <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                         </div>
                                         <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
-                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                            <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                         </div>
                                     </div>
                                     <div class="text_wrapper mb-3">
@@ -172,13 +172,13 @@ function getChild($data, $parentId) {
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#suaCoCauToChuc{{ $value->id }}">
                                                                             <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                         </div>
                                                                         <div class="btn" href="#"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#xoaCoCauToChuc{{ $value->id }}">
                                                                             <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -453,10 +453,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -471,10 +471,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -489,10 +489,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -507,10 +507,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -525,10 +525,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -543,10 +543,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -561,10 +561,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -581,10 +581,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -599,10 +599,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -617,10 +617,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -635,10 +635,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -653,10 +653,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -671,10 +671,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -689,10 +689,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -738,10 +738,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -756,10 +756,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -774,10 +774,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -792,10 +792,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -810,10 +810,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -828,10 +828,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -846,10 +846,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -866,10 +866,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -884,10 +884,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -902,10 +902,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -949,10 +949,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -967,10 +967,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -985,10 +985,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1003,10 +1003,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1021,10 +1021,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1039,10 +1039,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1057,10 +1057,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1077,10 +1077,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1095,10 +1095,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1113,10 +1113,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1131,10 +1131,10 @@ function getChild($data, $parentId) {
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1813,11 +1813,7 @@ function getChild($data, $parentId) {
 @endsection
 @section('footer-script')
 
-    <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
 
     <script>
         $(document).ready(function() {

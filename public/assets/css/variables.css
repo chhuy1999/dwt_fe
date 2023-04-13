@@ -326,3 +326,12 @@ option:hover,
     -o-animation: blink 700ms infinite;
     animation: blink 700ms infinite;
 }
+
+@media print {
+#mainWrap,
+#header,
+#btnPrint {
+    visibility: hidden;
+}
+
+}

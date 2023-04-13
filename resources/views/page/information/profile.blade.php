@@ -22,7 +22,7 @@
                                                     <input type="file" name="" id="logo" onchange="fileValue(this)">
                                                     <label for="logo" class="upload-field" id="file-label">
                                                         <div class="file-thumbnail">
-                                                            <img id="image-preview" src="{{ asset('assets/img/preview.jpg') }}"
+                                                            <img id="image-preview" src="{{ secure_asset('assets/img/preview.jpg') }}"
                                                                 alt="">
                                                         </div>
                                                     </label>
@@ -46,7 +46,7 @@
                                                     <div class="btn mt-3" data-bs-toggle="modal"
                                                     data-bs-target="#suathongtin">
                                                         <img style="width:16px;height:16px"
-                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                      </div>
                                                 </div>
                                             </td>
@@ -168,7 +168,7 @@
                                                                 <input type="file" name="" id="logo" onchange="fileValue(this)">
                                                                 <label for="logo" class="upload-field" id="file-label">
                                                                     <div class="file-thumbnail">
-                                                                        <img id="image-preview" src="{{ asset('assets/img/preview.jpg') }}"
+                                                                        <img id="image-preview" src="{{ secure_asset('assets/img/preview.jpg') }}"
                                                                             alt="">
                                                                     </div>
                                                                 </label>

@@ -11,6 +11,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
+
     <title>@yield('title') - {{ env('SLOGAN_URL', ''); }}</title>
 
     <!-- Favicon -->
@@ -22,22 +24,22 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/vendor/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('/assets/vendor/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
 
     <!-- Plugins -->
-    <link href="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
+    <link href="{{ secure_asset('/assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
 
     {{-- toastify --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <!-- Base -->
-    <link href="{{ asset('assets/css/normalize.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/variables.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('/assets/css/normalize.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('/assets/css/variables.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('/assets/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ secure_asset('/assets/css/responsive.css') }}" rel="stylesheet" />
     @yield('header-style')
 </head>
 
@@ -58,327 +60,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <div class="header_menu-wrapper d-flex">
                     <!-- HEADER_MENU -->
                     <!-- Menu Desktop -->
-                    <div class="header_menu">
-                        <ul class="header_menu-list">
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="#">
-                                    <i class="bi bi-compass"></i>
-                                    <span>Kế hoạch & Giao việc</span>
-                                </a>
-                                <ul id="header_submenu">
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="#" class="header_submenu-link more_btn">
-                                            Đào tạo <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            
-                                            <li class="header_more-item">
-                                                <a href="/danh-sach-danh-gia" class="header_more-link">Danh sách đánh giá</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="/kho-bien-ban-danh-gia" class="header_more-link">Kho biên bản đánh giá</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                        <li class="header_submenu-items">
-                                            <a href="{{ route('assignTask.list') }}" class="header_submenu-link">
-                                                Giao Việc
-                                            </a>
-                                            {{-- <ul class="header_more">
-                                                <li class="header_more-item">
-                                                    <a href="#" class="header_more-link">Giao việc định mức</a>
-                                                </li>
-                                                <li class="header_more-item">
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#giaoNhiemVuPhatSinhGlobal" class="header_more-link">Giao việc phát sinh</a>
-                                                </li>
-                                            </ul> --}}
-                                        </li>
-                                    @endif
-
-                                </ul>
-                            </li>
-
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="#">
-                                    <i class="bi bi-people"></i>
-                                    <span>Họp đơn vị</span>
-                                </a>
-                                <ul id="header_submenu">
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="#" class="header_submenu-link more_btn">
-                                            Giao ban <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                <li class="header_more-item">
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#taoCuocHop" class="header_more-link">Tạo cuộc họp</a>
-                                                </li>
-                                            @endif
-                                            <li class="header_more-item">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop" class="header_more-link">Tham gia họp</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="/danh-sach-cuoc-hop/cuoc-hop-dang-dien-ra" class="header_more-link">Cuộc họp đang diễn ra</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="/kho-luu-tru-bien-ban-hop" class="header_submenu-link">Kho biên bản họp</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="quan-ly-nhan-su">
-                                    <i class="bi bi-person-add"></i>
-                                    <span>Quản lý nhân sự</span>
-                                </a>
-                                <ul id="header_submenu">
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Tuyển dụng</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Đánh giá nhân viên</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="#">
-                                    <i class="bi bi-journal-arrow-up"></i>
-                                    <span>DWT & KPI</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="#">
-                                    <i class="bi bi-shield-lock"></i>
-                                    <span>Kiểm soát NV & CV</span>
-                                </a>
-                                <ul id="header_submenu">
-                                    <li class="header_submenu-items">
-                                        <a href="su-co-phat-sinh" class="header_submenu-link">Sự cố phát sinh</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="phan-anh" class="header_submenu-link">Phản ánh</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="#">
-                                    <i class="bi bi-list-check"></i>
-                                    <span>Xét duyệt</span>
-                                </a>
-                                <ul id="header_submenu">
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Sự việc và ý
-                                            kiến</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="xet-duyet-chi-tieu-mua-sam" class="header_submenu-link">Chi tiêu mua
-                                            sắm</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Công tác</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Văn bản</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="#">
-                                    <i class="bi bi-ui-checks-grid"></i>
-                                    <span>Đề xuất</span>
-                                </a>
-                                <ul id="header_submenu">
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Sự việc và ý
-                                            kiến</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Chi tiêu mua sắm</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Công tác</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Văn bản</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="header_menu-item">
-                                <a class="header_menu-link" href="#">
-                                    <i class="bi bi-share"></i>
-                                    <span>VBĐH tham khảo</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-item">
-                                <a class="header_menu-link active" aria-current="page" href="#">
-                                    <i class="bi bi-gear"></i>
-                                    <span>Cấu hình</span>
-
-                                </a>
-                                <ul id="header_submenu">
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="#" class="header_submenu-link more_btn">
-                                            Hồ sơ đơn vị <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            <li class="header_more-item">
-                                                <a href="{{ route('department.list') }}" class="header_more-link">Cơ cấu đơn vị</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="{{ route('position.list') }}" class="header_more-link">Danh sách vị
-                                                    trí</a>
-                                            </li>
-                                            {{-- <li class="header_more-item">
-                                                <a href="{{ route('positionOri.list') }}" class="header_more-link">Danh sách cấp
-                                                    tổ chức</a>
-                                            </li> --}}
-                                            <li class="header_more-item">
-                                                <a href="{{ route('positionLevel.list') }}" class="header_more-link">Danh sách cấp
-                                                    nhân sự</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="{{ route('equimentPack.list') }}" class="header_more-link">Danh mục gói
-                                                    trang bị</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="ho-so-nhan-vien" class="header_submenu-link more_btn">
-                                            Hồ sơ nhân viên <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            <li class="header_more-item">
-                                                <a href="{{ route('user.list') }}" class="header_more-link">Danh sách
-                                                    thành viên</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
-                                    </li>
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="#" class="header_submenu-link more_btn">
-                                            Định mức lao động <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            <li class="header_more-item">
-                                                <a href="{{ route('target.list') }}" class="header_more-link">Định mức</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="{{ route('targetDetail.list') }}" class="header_more-link">Mẫu nhiệm vụ</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="{{ route('key.list') }}" class="header_more-link">Chỉ số kinh
-                                                    doanh</a>
-                                            </li>
-                                            {{-- <li class="header_more-item">
-                                                <a href="#" class="header_more-link">Danh mục đơn
-                                                    vị tính</a>
-                                            </li> --}}
-                                        </ul>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Quy trình</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">KPI</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Phân quyền</a>
-                                    </li>
-                                    <li class="header_submenu-items">
-                                        <a href="#" class="header_submenu-link">Chữ ký</a>
-                                    </li>
-                                    <li class="header_submenu-items more position-relative">
-                                        <a href="#" class="header_submenu-link more_btn">
-                                            Biểu đồ <i class="bi bi-chevron-right"></i>
-                                        </a>
-                                        <ul class="header_more">
-                                            <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách key
-                                                    chart</a>
-                                            </li>
-                                            <li class="header_more-item">
-                                                <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách
-                                                    chart</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    @include('template.partials.header_desktop')
                     <!-- Menu Mobile -->
-                    <label for="header_mobile-check" class="header_mobile-bars">
-                        <i class="bi bi-list"></i>
-                    </label>
-
-                    <input type="checkbox" hidden class="header_input" id="header_mobile-check" />
-
-                    <label for="header_mobile-check" class="header_overlay"></label>
-                    <div class="header_menu-mobile">
-                        <ul class="header_menu-mobile-list">
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link active" aria-current="page" href="#">
-                                    <i class="bi bi-gear"></i>
-                                    <span>Cấu hình</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link" href="#">
-                                    <i class="bi bi-person-add"></i>
-                                    <span>Quản lý nhân sự</span>
-                                </a>
-                            </li>
-
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link" href="#">
-                                    <i class="bi bi-people"></i>
-                                    <span>Họp đơn vị</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link" href="#">
-                                    <i class="bi bi-compass"></i>
-                                    <span>Kế hoạch & Giao việc</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link" href="#">
-                                    <i class="bi bi-journal-arrow-up"></i>
-                                    <span>DWT & KPI</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link" href="#">
-                                    <i class="bi bi-shield-lock"></i>
-                                    <span>Kiểm soát NV & CV</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link" href="#">
-                                    <i class="bi bi-list-check"></i>
-                                    <span>Xét duyệt</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link" href="#">
-                                    <i class="bi bi-ui-checks-grid"></i>
-                                    <span>Đề xuất</span>
-                                </a>
-                            </li>
-                            <li class="header_menu-mobile-item">
-                                <a class="header_menu-mobile-link" href="#">
-                                    <i class="bi bi-share"></i>
-                                    <span>VBĐH tham khảo</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    @include('template.partials.header_mobile')
                     <!-- END HEADER_MENU -->
                 </div>
 
@@ -461,7 +145,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     </div>
                     <div class="header_user dropdown">
                         <button class="dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="header_user-img" src="{{ asset('assets/img/avatar.jpeg') }}" />
+                            <img class="header_user-img" src="{{ secure_asset('assets/img/avatar.jpeg') }}" />
                         </button>
                         <ul class="dropdown-menu header_user-list" aria-labelledby="dropdownUser">
                             <li class="header_user-item">
@@ -506,7 +190,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     <h5 class="modal-title w-100" id="exampleModalLabel">Vấn đề tồn đọng</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('report.store') }}" method="POST" autocomplete="off">
+                <form action="{{ route('report.store') }}" method="POST">
                     @csrf
 
                     <div class="modal-body">
@@ -554,7 +238,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     </div>
 
     {{-- Tạo cuộc họp --}}
-    <div class="modal fade" id="taoCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="taoCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -594,7 +278,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             <div class="col-sm-4 mb-3">
                                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}" name="code">
                                 {{-- <p>Mã cuộc họp: {{ time() }}</p> --}}
-                            </div>
+                            {{-- </div>
                             <div class="col-sm-4 mb-3">
                                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Đặt mật khẩu" placeholder="Đặt mật khẩu (nếu có)" class="form-control" name="password">
                             </div>
@@ -608,10 +292,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Tham gia cuộc họp --}}
-    <div class="modal fade" id="thamGiaCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="thamGiaCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -637,7 +321,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Modal Giao việc phát sinh -->
     <div class="modal fade" id="giaoNhiemVuPhatSinhGlobal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -702,7 +386,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                             </div>
                                             <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                             </div>
                                         </div>
                                     </div>
@@ -735,15 +419,18 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     {{-- momemtjs --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Vendor JS Files -->
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/style.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/js/style.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/datatables/datatables.min.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+
+    
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
 
     @yield('footer-script')
     <script>
@@ -913,6 +600,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         });
     </script>
 
+    <script>
+        // Tắt gợi ý trong form
+        $(document).ready(function() {
+            $('form').attr('autocomplete', 'off');
+        });
+    </script>
 </body>
 
 </html>

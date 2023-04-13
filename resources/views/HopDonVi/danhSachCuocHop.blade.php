@@ -453,16 +453,103 @@
         </div>
     @endforeach
 
+
+    {{-- Tạo cuộc họp --}}
+    <div class="modal fade" id="taoCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Tạo cuộc họp</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/giao-ban" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-9 mb-3">
+                                <input type="text" class="form-control" placeholder="Tên cuộc họp" name="title">
+                            </div>
+                            <div class="col-sm-3 mb-3">
+                                <select class="selectpicker" data-size="5" title="Loại cuộc họp" name="type">
+                                    <option value="Ngày">Ngày</option>
+                                    <option value="Tuần">Tuần</option>
+                                    <option value="Tháng">Tháng</option>
+                                    <option value="Quý">Quý</option>
+                                    <option value="Khác">Khác</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị">
+                                <select class="form-select" data-size="5" title="Đơn vị" id="meet-dp-list" name="departement_id">
+
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Chủ trì">
+                                <select class="form-select" data-size="5" title="Chủ trì" name="leader_id" id="user-select">
+
+                                </select>
+                            </div>
+                            <div class="col-sm-4 mb-3 position-relative">
+                                <input id="thoiGianCuoCHop" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Thời gian" name="start_time">
+                                <i class="bi bi-calendar-plus style_pickdate"></i>
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}" name="code">
+                                {{-- <p>Mã cuộc họp: {{ time() }}</p> --}}
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Đặt mật khẩu" placeholder="Đặt mật khẩu (nếu có)" class="form-control" name="password">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Tạo cuộc họp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Tham gia cuộc họp --}}
+    <div class="modal fade" id="thamGiaCuocHop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Tham gia cuộc họp</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/giao-ban/tham-gia" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-8 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" class="form-control" placeholder="Nhập mã cuộc họp" id="meetCode" name="code">
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Nhập mật khẩu" placeholder="Nhập mật khẩu (nếu có)" class="form-control" name="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-danger" id="joinMeet">Tham gia cuộc họp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 @endsection
 @section('footer-script')
-    <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/custom-datatable.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/datatables/custom-datatable.js') }}"></script>
     <!-- ChartJS -->
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
-    <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script src="{{ secure_asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
     <script>
         $('#khoLuuTruBienBanHop').DataTable({
             paging: false,
@@ -485,13 +572,22 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ biên bản họp',
             },
-            dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
+            dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "<"card-title-wrapper-right justify-content-end">f>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         $('div.card-title-wrapper-left').html(`
                 <div class="card-title">Bộ lọc</div>
         `);
         $('div.card-title-wrapper-right').html(`
-                <div class="card-title">Bộ lọc2</div>
+                <div class="action_wrapper d-flex">
+                    <div class="action_export me-3">
+                        <button class="btn btn-outline-danger d-block" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop">Tham gia cuộc họp</button>
+                    </div>
+                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                    <div class="action_export me-3">
+                        <button class="btn btn-danger d-block" data-bs-toggle="modal" data-bs-target="#taoCuocHop">Tạo cuộc họp</button>
+                    </div>
+                    @endif
+                </div>
         `);
     </script>
 @endsection
