@@ -2113,8 +2113,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="position-relative">
-                                        <table class="table table-responsive table-hover table-bordered">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered">
                                             <thead>
                                                 <tr>
                                                     <th style="width: 2%">STT</th>

@@ -25,8 +25,8 @@
                                 <div class="card-body">
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="position-relative">
-                                                <table id="dsDinhMuc" class="table table-responsive table-hover table-bordered">
+                                            <div class="table-responsive">
+                                                <table id="dsDinhMuc" class="table table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center">STT</th>

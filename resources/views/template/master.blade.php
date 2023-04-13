@@ -59,10 +59,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 
                 <div class="header_menu-wrapper d-flex">
                     <!-- HEADER_MENU -->
-                    <!-- Menu Desktop -->
                     @include('template.partials.header_desktop')
-                    <!-- Menu Mobile -->
-                    @include('template.partials.header_mobile')
                     <!-- END HEADER_MENU -->
                 </div>
 
@@ -176,9 +173,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             </div>
         </header>
 
-        <div class="pageWithSidebar">
+        <div class="pageWithSidebar" style="min-height: 1000px">
             @yield('content')
         </div>
+
+        @include('template.components.sectionMenuMobile')
 
     </div><!-- End Wrapper -->
 
@@ -422,6 +421,9 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <script type="text/javascript" src="{{ secure_asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ secure_asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script type="text/javascript" src="{{ secure_asset('assets/js/style.js') }}"></script>
+
+    <script type="text/javascript" src="{{ secure_asset('assets/js/style-mobile.js') }}"></script>
+    
     <script type="text/javascript" src="{{ secure_asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
     <script type="text/javascript" src="{{ secure_asset('assets/plugins/datatables/datatables.min.js') }}"></script>
 

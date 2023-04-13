@@ -13,7 +13,7 @@
     $listsModal = [['id' => 1, 'code' => 'BB001', 'customer' => 'Nguyễn Văn A', 'situation' => 'Sự cố máy móc', 'expert' => 'Nguyễn Thị B', 'restrictions' => 'Không được tắt máy', 'guidance' => 'Kiểm tra máy móc', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn'], ['id' => 2, 'code' => 'BB002', 'customer' => 'Trần Thị C', 'situation' => 'Sự cố phần mềm', 'expert' => 'Lê Văn D', 'restrictions' => 'Không được đổi password', 'guidance' => 'Cài đặt lại phần mềm', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn'], ['id' => 3, 'code' => 'BB003', 'customer' => 'Phạm Văn E', 'situation' => 'Sự cố kết nối', 'expert' => 'Trần Thị F', 'restrictions' => 'Không được restart router', 'guidance' => 'Thay đổi mạng kết nối', 'instructor_comment' => 'Đã giải quyết sự cố', 'student_comment' => 'Cảm ơn người hướng dẫn']];
 @endphp
 @section('content')
-    {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft') --}}
+    @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -118,7 +118,7 @@
             @include('template.footer.footer')
         </div>
     </div>
-    {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarRight') --}}
+    @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
 
     <!-- Modal Thêm DS biên bản -->
     <div class="modal fade" id="themDanhGia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

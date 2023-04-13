@@ -22,7 +22,7 @@
                                 <div class="card-body">
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="position-relative">
+                                            <div class="table-responsive">
                                                 <table id="dsDaoTao"
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>

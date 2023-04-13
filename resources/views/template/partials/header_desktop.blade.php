@@ -1,7 +1,7 @@
 <div class="header_menu">
     <ul class="header_menu-list">
         <li class="header_menu-item">
-            <a class="header_menu-link {{ request()->is('danh-sach-danh-gia', 'giao-viec', 'kho-bien-ban-danh-gia') ? 'active' : '' }}"
+            <a class="header_menu-link menu_btn-sub {{ request()->is('danh-sach-danh-gia', 'giao-viec', 'kho-bien-ban-danh-gia') ? 'active' : '' }}"
                 href="#">
                 <i class="bi bi-compass"></i>
                 <span>Kế hoạch & Giao việc</span>
@@ -47,7 +47,7 @@
         </li>
 
         <li class="header_menu-item">
-            <a class="header_menu-link {{ request()->is('kho-luu-tru-bien-ban-hop', 'danh-sach-cuoc-hop/*', 'giao-ban/*') ? 'active' : '' }}"
+            <a class="header_menu-link menu_btn-sub {{ request()->is('kho-luu-tru-bien-ban-hop', 'danh-sach-cuoc-hop/*', 'giao-ban/*') ? 'active' : '' }}"
                 href="#">
                 <i class="bi bi-people"></i>
                 <span>Họp đơn vị</span>
@@ -83,7 +83,7 @@
         </li>
 
         <li class="header_menu-item">
-            <a class="header_menu-link" href="quan-ly-nhan-su">
+            <a class="header_menu-link menu_btn-sub" href="quan-ly-nhan-su">
                 <i class="bi bi-person-add"></i>
                 <span>Quản lý nhân sự</span>
             </a>
@@ -104,7 +104,7 @@
             </a>
         </li>
         <li class="header_menu-item">
-            <a class="header_menu-link" href="#">
+            <a class="header_menu-link menu_btn-sub" href="#">
                 <i class="bi bi-shield-lock"></i>
                 <span>Kiểm soát NV & CV</span>
             </a>
@@ -118,7 +118,7 @@
             </ul>
         </li>
         <li class="header_menu-item">
-            <a class="header_menu-link" href="#">
+            <a class="header_menu-link menu_btn-sub" href="#">
                 <i class="bi bi-list-check"></i>
                 <span>Xét duyệt</span>
             </a>
@@ -140,7 +140,7 @@
             </ul>
         </li>
         <li class="header_menu-item">
-            <a class="header_menu-link" href="#">
+            <a class="header_menu-link menu_btn-sub" href="#">
                 <i class="bi bi-ui-checks-grid"></i>
                 <span>Đề xuất</span>
             </a>
@@ -161,13 +161,13 @@
             </ul>
         </li>
         <li class="header_menu-item">
-            <a class="header_menu-link" href="#">
+            <a class="header_menu-link menu_btn-sub" href="#">
                 <i class="bi bi-share"></i>
                 <span>VBĐH tham khảo</span>
             </a>
         </li>
         <li class="header_menu-item">
-            <a class="header_menu-link {{ request()->is('ho-so-don-vi', 'danh-sach-vi-tri', 'danh-sach-cap-nhan-su', 'danh-muc-goi-trang-bi', 'danh-sach-thanh-vien', 'danh-muc-dinh-muc', 'danh-muc-nhiem-vu', 'danh-muc-chi-so-key') ? 'active' : '' }}"
+            <a class="header_menu-link menu_btn-sub {{ request()->is('ho-so-don-vi', 'danh-sach-vi-tri', 'danh-sach-cap-nhan-su', 'danh-muc-goi-trang-bi', 'danh-sach-thanh-vien', 'danh-muc-dinh-muc', 'danh-muc-nhiem-vu', 'danh-muc-chi-so-key') ? 'active' : '' }}"
                 aria-current="page" href="#">
                 <i class="bi bi-gear"></i>
                 <span>Cấu hình</span>
