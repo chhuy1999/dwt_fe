@@ -554,9 +554,10 @@ class DwtServices
         //send form data
         $response = Http::attach(
             'files',
-            $fileStream,
-            basename($file)
+            file_get_contents($file),
+            $file->getClientOriginalName()
         )->post($url);
+
         //throw exception if response is not successful
         $response->throw()->json();
         //get data from response

@@ -24,7 +24,7 @@ class TargetLogController extends Controller
 
             $targetDetailId = $id;
             $data = $request->validate([
-                'note' => 'required',
+                'note' => 'nullable',
                 'kpiKeys' => 'nullable|array',
                 'files' => 'nullable|array',
                 'reportedDate' => 'required|date',
