@@ -61,10 +61,10 @@
                                                                 'KeyLineChart_PointStyling' => 'KeyLineChart_PointStyling',
                                                                 'KeyLineChart_SteppedLineCharts' => 'KeyLineChart_SteppedLineCharts',
                                                             ],
-                                                            // 'Scales' => [
-                                                            //         'KeyScales_MinMax' => 'KeyScales_MinMax',
-                                                            //         'KeyScales_SuggestedMinMax' => 'KeyScales_SuggestedMinMax',
-                                                            // ],
+                                                            'Scales' => [
+                                                                    'KeyScales_MinMax' => 'KeyScales_MinMax',
+                                                                    'KeyScales' => 'KeyScales',
+                                                            ],
                                                             'OtherChart' => [
                                                                     'KeyOtherChart_Doughnut' => 'KeyOtherChart_Doughnut',
                                                                     'KeyOtherChart_MultiSeriesPie' => 'KeyOtherChart_MultiSeriesPie',
@@ -217,7 +217,7 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Radar.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales_MinMax.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales_SuggestedMinMax.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales.js') }}"></script>
     
 
     

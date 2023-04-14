@@ -1,57 +1,66 @@
 const KeyScales_MinMax = document.getElementById("KeyScales_MinMax");
 
-function channelValue(x, y, values) {
-    return x < 0 && y < 0 ? values[0] : x < 0 ? values[1] : y < 0 ? values[2] : values[3];
-  }
-  
-  function colorize(opaque, context) {
-    const value = context.raw;
-    const x = value.x / 100;
-    const y = value.y / 100;
-    const r = channelValue(x, y, [250, 150, 50, 0]);
-    const g = channelValue(x, y, [0, 50, 150, 250]);
-    const b = channelValue(x, y, [0, 150, 150, 250]);
-    const a = opaque ? 1 : 0.5 * value.v / 1000;
-  
-    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
-  }
+function dynamicColors() {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    return 'rgba(' + r + ',' + g + ',' + b + ', 0.5)';
+}
 
 new Chart(KeyScales_MinMax, {
-    type: 'bubble',
-    data: data,
+    type: "line",
+    data: {
+        labels: [
+            "T1",
+            "T2",
+            "T3",
+            "T4",
+            "T5",
+            "T6",
+            "T7",
+            "T8",
+            "T9",
+            "T10",
+            "T11",
+            "T12",
+        ],
+        datasets: [
+            {
+                label: "Ngày",
+                data: [10, 30, 40, 20, 25, 44, -10],
+                backgroundColor: "rgb(255, 99, 132)",
+                borderColor: "rgb(255, 99, 132)",
+            },
+            
+            {
+                label: "Tháng",
+                data: [30, 33, 22, 19, 11, 20, 30],
+                backgroundColor: "rgb(54, 162, 235)",
+                borderColor: "rgb(54, 162, 235)",
+            },
+            {
+                label: "Năm",
+                data: [30, 33, 22, 19, 11, 10, 40],
+                backgroundColor: "rgb(71,255,0)",
+                borderColor: "rgba(71,255,0,0.75)",
+            },
+        ],
+    },
     options: {
-      aspectRatio: 1,
-      plugins: {
-        legend: false,
-        tooltip: false,
-      },
-      elements: {
-        point: {
-          backgroundColor: colorize.bind(null, false),
-  
-          borderColor: colorize.bind(null, true),
-  
-          borderWidth: function(context) {
-            return Math.min(Math.max(1, context.datasetIndex + 1), 8);
-          },
-  
-          hoverBackgroundColor: 'transparent',
-  
-          hoverBorderColor: function(context) {
-            return Utils.color(context.datasetIndex);
-          },
-  
-          hoverBorderWidth: function(context) {
-            return Math.round(8 * context.raw.v / 1000);
-          },
-  
-          radius: function(context) {
-            const size = context.chart.width;
-            const base = Math.abs(context.raw.v) / 1000;
-            return (size / 24) * base;
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Min and Max Settings'
+          }
+        },
+        scales: {
+          y: {
+            min: 10,
+            max: 50,
           }
         }
-      }
-    }
+      },
+    
 });
 
