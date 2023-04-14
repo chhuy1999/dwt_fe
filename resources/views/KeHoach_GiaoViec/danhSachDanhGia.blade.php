@@ -6,7 +6,7 @@
     $lists = [['id' => '1', 'code' => 'MBB01', 'user' => 'Nguyễn Thị Thanh Nga', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'], ['id' => '2', 'code' => 'MBB02', 'user' => 'Nguyễn Thị Thanh Nga', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'], ['id' => '3', 'code' => 'MBB03', 'user' => 'Nguyễn Thị Thanh Nga', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036']];
 @endphp
 @section('content')
-    {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft') --}}
+    @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -185,7 +185,7 @@
             @include('template.footer.footer')
         </div>
     </div>
-    {{-- @include('template.sidebar.sidebarHopGiaoBan.sidebarRight') --}}
+    @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
 
     <!-- Modal Backup -->
     {{-- <div class="modal fade" id="themDsDaoTaoNew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
