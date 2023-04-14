@@ -92,35 +92,6 @@
                                                 </div>
                                             @endforeach
                                         </div>
-
-                                        {{-- <div class="col-md-3">
-                                            <div id="Doanh số" class="data_chart-items">
-                                                <canvas id="pieChart"></canvas>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div id="Khách hàng mới" class="data_chart-items">
-                                                <canvas id="BarChartTwo"></canvas>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div id="Khách hàng Active" class="data_chart-items">
-                                                <canvas id="doughnutChart"></canvas>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-3">
-                                            <div id="Nhân Sự" class="data_chart-items">
-                                                <canvas id="BarChartThree"></canvas>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                        
-                                            <div id="Số đơn hàng" class="data_chart-items">
-                                                <canvas id="LineChartTwo"></canvas>
-                                            </div>
-                                        </div> --}}
                                     </div>
 
 
