@@ -185,16 +185,16 @@ Route::get('danh-sach-danh-gia/chi-tiet', function () {
 
 Route::get('bien-ban-hop', function () {
     return view('HopDonVi.bienBanHop');
-});
+})->middleware('auth.role:manager,admin,user');
 Route::get('su-co-phat-sinh', function () {
     return view('HopDonVi.suCoPhatSinh');
-});
+})->middleware('auth.role:manager,admin,user');
 Route::get('quan-ly-nhan-su', function () {
     return view('HopDonVi.quanLyNhanSu');
-});
+})->middleware('auth.role:manager,admin,user');
 Route::get('ho-so-nhan-vien', function () {
     return view('HopDonVi.hoSoNhanVien');
-});
+})->middleware('auth.role:manager,admin,user');
 
 // Kế hoạch & giao việc
 
@@ -214,43 +214,46 @@ Route::get('ho-so-nhan-vien', function () {
 // Orther
 Route::get('thong-tin-ca-nhan', function () {
     return view('page.information.profile');
-});
+})->middleware('auth.role:manager,admin,user');
 
 Route::get('kpi-nhan-vien', function () {
     return view('page.staff.kpiStaff');
-});
+})->middleware('auth.role:manager,admin,user');
 
 // Biểu đồ
 Route::get('danh-sach-key-chart', function () {
     return view('CauHinh.danhSachKeyChart');
-});
+})->middleware('auth.role:manager,admin,user');
 Route::get('kho-chart', function () {
     return view('CauHinh.khoChart');
-});
+})->middleware('auth.role:manager,admin,user');
+Route::get('kho-key', function () {
+    return view('CauHinh.khoKey');
+})->middleware('auth.role:manager,admin,user');
 
 
 // DWT&KPI
 Route::get('dashboard_admin', function () {
     return view('DWT&KPI.dashboardAdmin');
-});
+})->middleware('auth.role:manager,admin,user');
 
 
 // Trang Dịch vụ Bán Hàng
 Route::get('dich-vu-ban-hang', function () {
     return view('page.sell.serviceSell');
-});
+})->middleware('auth.role:manager,admin,user');
 
 // Trang Kế Toán
 Route::get('ke-toan', function () {
     return view('page.sell.ketoan');
-});
+})->middleware('auth.role:manager,admin,user');
 
 // Trang kinh doanh
 Route::get('kinh-doanh', function () {
     return view('page.sell.kinhdoanh');
-});
+})->middleware('auth.role:manager,admin,user');
 
 // 404
 Route::fallback(function () {
     return view('404');
-});
+})->middleware('auth.role:manager,admin,user');

@@ -1109,8 +1109,8 @@ th {
     /* text-transform: uppercase; */
     display: block;
     position: relative;
-    border-left: 3px solid;
-    padding-left: 8px;
+    /* border-left: 3px solid;
+    padding-left: 8px; */
 }
 
 .sidebarBody_heading-mini {

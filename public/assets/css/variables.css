@@ -170,6 +170,15 @@ option:hover,
     background-size: 10px 10px;
 }
 
+/* Code form */
+code {
+    padding: 6px;
+    background-color: var(--pink-color-blur);
+    border-radius: var(--border-radius-mini);
+    color: var(--black-color);
+}
+
+
 /* STYLE SCROLLBAR */
 ::-webkit-scrollbar {
     width: 8px;

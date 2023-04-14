@@ -283,6 +283,9 @@
                         </li>
                     </ul>
                 </li>
+                <li class="header_submenu-items">
+                    <a href="/chi-so-key" class="header_submenu-link">Chỉ số key</a>
+                </li>
             </ul>
         </li>
     </ul>
