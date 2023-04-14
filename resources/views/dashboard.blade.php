@@ -490,511 +490,508 @@
                         </div>
 
                         @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                            <div class="col-lg-12">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="table_wrapper">
-                                            <div class="mt-3 bg-white">
-                                                <div class="table-responsive">
-                                                    <table id="three_table"
-                                                           class="table table_style-fix m-0 bg-blue-blur"
-                                                           style="width: 100%">
-                                                        <thead>
-                                                        <tr>
-                                                            <th colspan="4" class="bg-white text-center position-sticky"
-                                                                style="left:0">Mục tiêu nhiệm vụ tháng
-                                                            </th>
-                                                            <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}"
-                                                                class="bg-white text-center">Nhật kí công việc
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th class="text-nowrap text-center bg-blue-blur">
-                                                                <div style="width:30px">
-                                                                    STT
-                                                                </div>
-                                                            </th>
-                                                            <th class="text-nowrap bg-blue-blur">
-                                                                <div style="width:160px">
-                                                                    Mục tiêu nhiệm vụ
-                                                                </div>
-                                                            </th>
-                                                            <th class="text-nowrap bg-blue-blur">
-                                                                <div style="width:50px">
-                                                                    Thời hạn
-                                                                </div>
-                                                            </th>
-                                                            <th class="text-nowrap bg-blue-blur">
-                                                                <div style="width:50px">
-                                                                    Σ Lũy kế
-                                                                </div>
-                                                            </th>
-                                                            @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;"
-                                                                        scope="col"
-                                                                        class="bg-warning bg-opacity-10 text-warning">
-                                                                        {{ $i + 1 }}
-                                                                    </th>
-                                                                @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
-                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;"
-                                                                        scope="col"
-                                                                        class="bg-danger bg-opacity-10 text-danger">
-                                                                        {{ $i + 1 }}
-                                                                    </th>
-                                                                @else
-                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;"
-                                                                        scope="col">{{ $i + 1 }}</th>
-                                                                @endif
-                                                            @endfor
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        @foreach ($listAssignedTasks->data as $task)
-                                                            <tr>
-                                                                <td class="text-nowrap bg-blue-blur">
-                                                                    <div class="content_table">
-                                                                        {{ $loop->iteration }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap bg-blue-blur">
-                                                                    <div class="content_table justify-content-start"
-                                                                         data-bs-toggle="modal"
-                                                                         data-bs-target="#thongTinNhiemVu{{ $task->id }}"
-                                                                         role="button">
-                                                                        <div class="text-nowrap d-block text-truncate"
-                                                                             style="max-width:160px;"
-                                                                             data-bs-toggle="tooltip"
-                                                                             data-bs-placement="top"
-                                                                             data-bs-original-title="{{ $task->name }}">
-
-                                                                            {{ $task->name }}
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-
-                                                                <td class="text-nowrap bg-blue-blur">
-                                                                    <div class="content_table">
-                                                                        {{ date('m/d', strtotime($task->deadline)) }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap fw-bold bg-blue-blur">
-                                                                    <div class="progress-half">
-                                                                        <div
-                                                                            class="text-dark content_table">{{ $task->keysPassed }}</div>
-                                                                    </div>
-                                                                </td>
-                                                                @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                    <td style="padding: 0 14px; border:1px solid #dee2e6;"
-                                                                        @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger"
-                                                                        @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning"
-                                                                        @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
-                                                                        data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}"
-                                                                        role="button" @endif>
-                                                                        <div class="content_table">
-                                                                            @foreach ($task->targetLogs as $targetLog)
-                                                                                @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
-                                                                                    {{ count($targetLog->targetLogDetails) }}
-                                                                                    @break
-                                                                                @endif
-                                                                            @endforeach
-                                                                        </div>
-                                                                    </td>
-                                                                @endfor
-                                                            </tr>
-                                                        @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="table_wrapper">
-                                                <div class="table-responsive mt-3">
-                                                    <table id="four_table"
-                                                           class="table table_style-fix m-0 bg-yellow-blur"
-                                                           style="width: 100%">
-                                                        <thead>
-                                                        <tr>
-                                                            <th class="text-nowrap text-center bg-yellow-blur">
-                                                                <div style="width:30px">
-                                                                    STT
-                                                                </div>
-                                                            </th>
-                                                            <th class="text-nowrap bg-yellow-blur">
-                                                                <div style="width:160px">
-                                                                    Mục tiêu nhiệm vụ phát sinh
-                                                                </div>
-                                                            </th>
-                                                            <th class="text-nowrap bg-yellow-blur">
-                                                                <div style="width:50px">
-                                                                    Thời hạn
-                                                                </div>
-                                                            </th>
-                                                            <th class="text-nowrap bg-yellow-blur">
-                                                                <div style="width:50px">
-                                                                    Σ Lũy kế
-                                                                </div>
-                                                            </th>
-                                                            @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
-                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;"
-                                                                        scope="col"
-                                                                        class="bg-warning bg-opacity-10 text-warning">
-                                                                        {{ $i + 1 }}
-                                                                    </th>
-                                                                @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
-                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;"
-                                                                        scope="col"
-                                                                        class="bg-danger bg-opacity-10 text-danger">
-                                                                        {{ $i + 1 }}
-                                                                    </th>
-                                                                @else
-                                                                    <th style="padding: 0 14px; border:1px solid #dee2e6;"
-                                                                        scope="col">{{ $i + 1 }}</th>
-                                                                @endif
-                                                            @endfor
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        {{-- fixed-side bg-yellow-blur --}}
-                                                        @foreach ($reportTaskAdmin->data as $reportTask)
-                                                            <tr>
-                                                                <td class="text-nowrap bg-yellow-blur">
-                                                                    <div class="content_table">
-                                                                        {{ $loop->iteration }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap bg-yellow-blur">
-                                                                    <div class="content_table justify-content-start"
-                                                                         data-bs-toggle="modal"
-                                                                         data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}"
-                                                                         role="button">
-                                                                        <div class="text-nowrap d-block text-truncate"
-                                                                             style="max-width:160px;"
-                                                                             data-bs-toggle="tooltip"
-                                                                             data-bs-placement="top"
-                                                                             data-bs-original-title="{{ $reportTask->name }}">
-                                                                            {{ $reportTask->name }}
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap bg-yellow-blur">
-                                                                    <div class="content_table">
-                                                                        {{ date('d/m', strtotime($reportTask->deadline)) }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap fw-bold bg-yellow-blur">
-                                                                    <div class="progress-half">
-                                                                        <div class="text-dark content_table">5</div>
-                                                                    </div>
-                                                                </td>
-                                                                @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                    <td style="padding: 0 14px; border:1px solid #dee2e6;"
-                                                                        @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger"
-                                                                        @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning"
-                                                                        @endif
-                                                                        @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
-                                                                        data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}"
-                                                                        role="button" @endif>
-                                                                        <div class="content_table">
-
-                                                                            @if (findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->id > 0)
-                                                                                1
-                                                                            @endif
-                                                                        </div>
-
-                                                                    </td>
-                                                                @endfor
-                                                            </tr>
-                                                        @endforeach
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-lg-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            {{-- <div class="d-flex justify-content-between align-items-center pb-2">
-                                                            <div class="card-title">Danh sách vấn đề</div>
-
-                                                            <div class="action_wrapper d-flex">
-                                                                <div class="form-group has-search me-3">
-                                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                                    <input type="text" class="form-control" placeholder="Tìm kiếm vấn đề">
-                                                                </div>
-                                                                <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                    title="Xuất file Excel">
-                                                                    <button class="btn-export"><i class="bi bi-download"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div> --}}
-
-                                            <div class="table-responsive ">
-                                                <table id="dsVanDe" class="table table-hover table-bordered">
+                        <div class="col-lg-12">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="table_wrapper">
+                                        <div class="mt-3 bg-white">
+                                            <div class="table-responsive">
+                                                <table id="three_table"
+                                                        class="table table_style-fix m-0 bg-blue-blur"
+                                                        style="width: 100%">
                                                     <thead>
                                                     <tr>
-                                                        <th class="text-nowrap" style="width: 2%">STT</th>
-                                                        <th class="text-nowrap" style="width: 20%">
-                                                            <div class="d-flex justify-content-between">
-                                                                Vấn đề tồn đọng
+                                                        <th colspan="4" class="bg-white text-center position-sticky"
+                                                            style="left:0">Mục tiêu nhiệm vụ tháng
+                                                        </th>
+                                                        <th colspan="{{ cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear) }}"
+                                                            class="bg-white text-center">Nhật kí công việc
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="text-nowrap text-center bg-blue-blur">
+                                                            <div style="width:30px">
+                                                                STT
                                                             </div>
                                                         </th>
-                                                        <th class="text-nowrap" style="width: 8%">
-                                                            Phân loại
+                                                        <th class="text-nowrap bg-blue-blur">
+                                                            <div style="width:160px">
+                                                                Mục tiêu nhiệm vụ
+                                                            </div>
                                                         </th>
-                                                        <th class="text-nowrap" style="width: 10%">Người nêu</th>
-                                                        <th class="text-nowrap" style="width: 15%">Nguyên nhân</th>
-                                                        <th class="text-nowrap" style="width: 15%">
-                                                            Hướng giải quyết
+                                                        <th class="text-nowrap bg-blue-blur">
+                                                            <div style="width:50px">
+                                                                Thời hạn
+                                                            </div>
                                                         </th>
-
-                                                        <th class="text-nowrap" style="width: 15%">
-                                                            Người đảm nhiệm
+                                                        <th class="text-nowrap bg-blue-blur">
+                                                            <div style="width:50px">
+                                                                Σ Lũy kế
+                                                            </div>
                                                         </th>
-                                                        <th class="text-nowrap" style="width: 5%">Thời hạn</th>
-
-                                                        @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                            <th class="border-0 text-nowrap" style="width: 5%">Trạng
-                                                                thái
-                                                            </th>
-                                                            <th class="border-start-0"></th>
-                                                        @else
-                                                            <th class="border-start-0"></th>
-                                                        @endif
+                                                        @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;"
+                                                                    scope="col"
+                                                                    class="bg-warning bg-opacity-10 text-warning">
+                                                                    {{ $i + 1 }}
+                                                                </th>
+                                                            @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;"
+                                                                    scope="col"
+                                                                    class="bg-danger bg-opacity-10 text-danger">
+                                                                    {{ $i + 1 }}
+                                                                </th>
+                                                            @else
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;"
+                                                                    scope="col">{{ $i + 1 }}</th>
+                                                            @endif
+                                                        @endfor
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach ($listReports as $item)
+                                                    @foreach ($listAssignedTasks->data as $task)
                                                         <tr>
-                                                            <td>
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center">
+                                                            <td class="text-nowrap bg-blue-blur">
+                                                                <div class="content_table">
                                                                     {{ $loop->iteration }}
                                                                 </div>
                                                             </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-block text-truncate"
-                                                                     style="max-width:200px;" data-bs-toggle="tooltip"
-                                                                     data-bs-placement="top" data-bs-html="true"
-                                                                     data-bs-original-title="{{ $item->problem }}">
-                                                                    {{ $item->problem }}
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-inline-block text-truncate"
-                                                                     value="Giải quyết">Giải quyết
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-block text-truncate"
-                                                                     style="max-width:90px;" data-bs-toggle="tooltip"
-                                                                     data-bs-placement="top" data-bs-html="true"
-                                                                     data-bs-original-title="{{ $item->user->name ?? '' }}">
-                                                                    {{ $item->user->name ?? '' }}
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-block text-truncate"
-                                                                     style="max-width:100px;" data-bs-toggle="tooltip"
-                                                                     data-bs-placement="top" data-bs-html="true"
-                                                                     data-bs-original-title="{{ $item->reason }}">
-                                                                    {{ $item->reason }}
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-block text-truncate"
-                                                                     style="max-width:220px;" data-bs-toggle="tooltip"
-                                                                     data-bs-placement="top" data-bs-html="true"
-                                                                     data-bs-original-title="{{ $item->solution }}">
-                                                                    {{ $item->solution }}
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="text-nowrap d-block text-truncate"
-                                                                     style="max-width:150px;" data-bs-toggle="tooltip"
-                                                                     data-bs-placement="top" data-bs-html="true"
-                                                                     data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
-                                                                    @foreach ($item->pics as $u)
-                                                                        {{ $u->name }},
-                                                                    @endforeach
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    {{ date('d/m', strtotime($item->deadline)) }}
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-nowrap">
-                                                                @switch($item->status)
-                                                                    @case('Sent')
-                                                                    Đã tiếp nhận
-                                                                    @break
+                                                            <td class="text-nowrap bg-blue-blur">
+                                                                <div class="content_table justify-content-start"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#thongTinNhiemVu{{ $task->id }}"
+                                                                        role="button">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                            style="max-width:160px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            data-bs-original-title="{{ $task->name }}">
 
-                                                                    @case('FoundSolution')
-                                                                    Đã có hướng giải quyết
-                                                                    @break
-
-                                                                    @case('Solved')
-                                                                    Đã giải quyết
-                                                                    @break
-
-                                                                    @case('Converted')
-                                                                    Đã giao
-                                                                    @break
-
-                                                                    @case('CantSolve')
-                                                                    không thể giải quyết
-                                                                    @break
-
-                                                                    @default
-                                                                    @break
-                                                                @endswitch
-                                                            </td>
-                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                                <td>
-                                                                    <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                         data-bs-toggle="dropdown"
-                                                                         aria-expanded="false"><i
-                                                                            class="bi bi-three-dots-vertical"></i>
+                                                                        {{ $task->name }}
                                                                     </div>
-                                                                    <ul class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton1">
-                                                                        @if ($item->status != 'Converted')
-                                                                            <li>
-                                                                                <a class="dropdown-item" href="#"
-                                                                                   data-bs-toggle="modal"
-                                                                                   data-bs-target="#nhiemVuPhatSinh{{ $item->id }}"
-                                                                                   data-repeater-delete>
-                                                                                    <i class="bi bi-arrow-right-square-fill"></i>
-                                                                                    Chuyển thành nhiệm vụ phát sinh
-                                                                                </a>
-                                                                            </li>
-                                                                        @endif
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                               data-bs-toggle="modal"
-                                                                               data-bs-target="#suaVanDeTonDong{{ $item->id }}">
-                                                                                <img style="width:16px;height:16px"
-                                                                                     src="{{ asset('assets/img/edit.svg') }}"/>
-                                                                                Sửa
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#"
-                                                                               data-bs-toggle="modal"
-                                                                               data-bs-target="#xoaVanDe{{ $item->id }}"
-                                                                               data-repeater-delete>
-                                                                                <img style="width:16px;height:16px"
-                                                                                     src="{{ asset('assets/img/trash.svg') }}"/>
-                                                                                Xóa
-                                                                            </a>
-                                                                        </li>
+                                                                </div>
+                                                            </td>
 
-                                                                    </ul>
+                                                            <td class="text-nowrap bg-blue-blur">
+                                                                <div class="content_table">
+                                                                    {{ date('m/d', strtotime($task->deadline)) }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-nowrap fw-bold bg-blue-blur">
+                                                                <div class="progress-half">
+                                                                    <div
+                                                                        class="text-dark content_table">{{ $task->keysPassed }}</div>
+                                                                </div>
+                                                            </td>
+                                                            @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                                <td style="padding: 0 14px; border:1px solid #dee2e6;"
+                                                                    @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger"
+                                                                    @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning"
+                                                                    @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
+                                                                    data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}"
+                                                                    role="button" @endif>
+                                                                    <div class="content_table">
+                                                                        @foreach ($task->targetLogs as $targetLog)
+                                                                            @if (strtotime($targetLog->reportedDate) == strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1))
+                                                                                {{ count($targetLog->targetLogDetails) }}
+                                                                                @break
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </div>
                                                                 </td>
-                                                            @else
-                                                                <td></td>
-                                                            @endif
+                                                            @endfor
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
+                                        </div>
 
+                                        <div class="table_wrapper">
+                                            <div class="table-responsive mt-3">
+                                                <table id="four_table"
+                                                        class="table table_style-fix m-0 bg-yellow-blur"
+                                                        style="width: 100%">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-nowrap text-center bg-yellow-blur">
+                                                            <div style="width:30px">
+                                                                STT
+                                                            </div>
+                                                        </th>
+                                                        <th class="text-nowrap bg-yellow-blur">
+                                                            <div style="width:160px">
+                                                                Mục tiêu nhiệm vụ phát sinh
+                                                            </div>
+                                                        </th>
+                                                        <th class="text-nowrap bg-yellow-blur">
+                                                            <div style="width:50px">
+                                                                Thời hạn
+                                                            </div>
+                                                        </th>
+                                                        <th class="text-nowrap bg-yellow-blur">
+                                                            <div style="width:50px">
+                                                                Σ Lũy kế
+                                                            </div>
+                                                        </th>
+                                                        @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                            @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6)
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;"
+                                                                    scope="col"
+                                                                    class="bg-warning bg-opacity-10 text-warning">
+                                                                    {{ $i + 1 }}
+                                                                </th>
+                                                            @elseif (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7)
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;"
+                                                                    scope="col"
+                                                                    class="bg-danger bg-opacity-10 text-danger">
+                                                                    {{ $i + 1 }}
+                                                                </th>
+                                                            @else
+                                                                <th style="padding: 0 14px; border:1px solid #dee2e6;"
+                                                                    scope="col">{{ $i + 1 }}</th>
+                                                            @endif
+                                                        @endfor
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {{-- fixed-side bg-yellow-blur --}}
+                                                    @foreach ($reportTaskAdmin->data as $reportTask)
+                                                        <tr>
+                                                            <td class="text-nowrap bg-yellow-blur">
+                                                                <div class="content_table">
+                                                                    {{ $loop->iteration }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-nowrap bg-yellow-blur">
+                                                                <div class="content_table justify-content-start"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}"
+                                                                        role="button">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                            style="max-width:160px;"
+                                                                            data-bs-toggle="tooltip"
+                                                                            data-bs-placement="top"
+                                                                            data-bs-original-title="{{ $reportTask->name }}">
+                                                                        {{ $reportTask->name }}
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-nowrap bg-yellow-blur">
+                                                                <div class="content_table">
+                                                                    {{ date('d/m', strtotime($reportTask->deadline)) }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-nowrap fw-bold bg-yellow-blur">
+                                                                <div class="progress-half">
+                                                                    <div class="text-dark content_table">5</div>
+                                                                </div>
+                                                            </td>
+                                                            @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
+                                                                <td style="padding: 0 14px; border:1px solid #dee2e6;"
+                                                                    @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger"
+                                                                    @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning"
+                                                                    @endif
+                                                                    @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
+                                                                    data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}"
+                                                                    role="button" @endif>
+                                                                    <div class="content_table">
+
+                                                                        @if (findReportTaskLog($reportTask, $searchYear . '-' . $searchMonth . '-' . $i + 1)->id > 0)
+                                                                            1
+                                                                        @endif
+                                                                    </div>
+
+                                                                </td>
+                                                            @endfor
+                                                        </tr>
+                                                    @endforeach
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    {{-- <div class="d-flex justify-content-between align-items-center pb-2">
+                                                    <div class="card-title">Danh sách vấn đề</div>
+
+                                                    <div class="action_wrapper d-flex">
+                                                        <div class="form-group has-search me-3">
+                                                            <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                            <input type="text" class="form-control" placeholder="Tìm kiếm vấn đề">
+                                                        </div>
+                                                        <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Xuất file Excel">
+                                                            <button class="btn-export"><i class="bi bi-download"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div> --}}
+
+                                    <div class="table-responsive ">
+                                        <table id="dsVanDe" class="table table-hover table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-nowrap" style="width: 2%">STT</th>
+                                                <th class="text-nowrap" style="width: 20%">
+                                                    <div class="d-flex justify-content-between">
+                                                        Vấn đề tồn đọng
+                                                    </div>
+                                                </th>
+                                                <th class="text-nowrap" style="width: 8%">
+                                                    Phân loại
+                                                </th>
+                                                <th class="text-nowrap" style="width: 10%">Người nêu</th>
+                                                <th class="text-nowrap" style="width: 15%">Nguyên nhân</th>
+                                                <th class="text-nowrap" style="width: 15%">
+                                                    Hướng giải quyết
+                                                </th>
+
+                                                <th class="text-nowrap" style="width: 15%">
+                                                    Người đảm nhiệm
+                                                </th>
+                                                <th class="text-nowrap" style="width: 5%">Thời hạn</th>
+
+                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                    <th class="border-0 text-nowrap" style="width: 5%">Trạng
+                                                        thái
+                                                    </th>
+                                                    <th class="border-start-0"></th>
+                                                @else
+                                                    <th class="border-start-0"></th>
+                                                @endif
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach ($listReports as $item)
+                                                <tr>
+                                                    <td>
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center">
+                                                            {{ $loop->iteration }}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="{{ $item->problem }}">
+                                                            {{ $item->problem }}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-inline-block text-truncate"
+                                                                value="Giải quyết">Giải quyết
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:90px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="{{ $item->user->name ?? '' }}">
+                                                            {{ $item->user->name ?? '' }}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:100px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="{{ $item->reason }}">
+                                                            {{ $item->reason }}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:220px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title="{{ $item->solution }}">
+                                                            {{ $item->solution }}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:150px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" data-bs-html="true"
+                                                                data-bs-original-title=" @foreach ($item->pics as $u) {{ $u->name }}, @endforeach">
+                                                            @foreach ($item->pics as $u)
+                                                                {{ $u->name }},
+                                                            @endforeach
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            {{ date('d/m', strtotime($item->deadline)) }}
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-nowrap">
+                                                        @switch($item->status)
+                                                            @case('Sent')
+                                                            Đã tiếp nhận
+                                                            @break
+
+                                                            @case('FoundSolution')
+                                                            Đã có hướng giải quyết
+                                                            @break
+
+                                                            @case('Solved')
+                                                            Đã giải quyết
+                                                            @break
+
+                                                            @case('Converted')
+                                                            Đã giao
+                                                            @break
+
+                                                            @case('CantSolve')
+                                                            không thể giải quyết
+                                                            @break
+
+                                                            @default
+                                                            @break
+                                                        @endswitch
+                                                    </td>
+                                                    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                        <td>
+                                                            <div class="dotdotdot" id="dropdownMenuButton1"
+                                                                    data-bs-toggle="dropdown"
+                                                                    aria-expanded="false"><i
+                                                                    class="bi bi-three-dots-vertical"></i>
+                                                            </div>
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
+                                                                @if ($item->status != 'Converted')
+                                                                    <li>
+                                                                        <a class="dropdown-item" href="#"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#nhiemVuPhatSinh{{ $item->id }}"
+                                                                            data-repeater-delete>
+                                                                            <i class="bi bi-arrow-right-square-fill"></i>
+                                                                            Chuyển thành nhiệm vụ phát sinh
+                                                                        </a>
+                                                                    </li>
+                                                                @endif
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#suaVanDeTonDong{{ $item->id }}">
+                                                                        <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/edit.svg') }}"/>
+                                                                        Sửa
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaVanDe{{ $item->id }}"
+                                                                        data-repeater-delete>
+                                                                        <img style="width:16px;height:16px"
+                                                                                src="{{ asset('assets/img/trash.svg') }}"/>
+                                                                        Xóa
+                                                                    </a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </td>
+                                                    @else
+                                                        <td></td>
+                                                    @endif
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        @endif
 
 
-                                {{-- Chart --}}
-                                <div class="col-lg-12 mt-3">
-                                    <div class="card" style="display: -webkit-box;">
-                                        <div class="col-lg-3">
-                                            <div class="col-md-12 card mb-12">
-                                                <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="card-title">PieChart</div>
-                                                    </div>
-                                                    <div class="mainSection_chart-container mt-3">
-                                                        <canvas id="pieChart"></canvas>
-                                                    </div>
-                                                </div>
+                        {{-- Chart --}}
+                        <div class="col-lg-12 mt-3">
+                            <div class="card" style="display: -webkit-box;">
+                                <div class="col-lg-3">
+                                    <div class="col-md-12 card mb-12">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="card-title">PieChart</div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="col-md-12 card mb-3">
-                                                <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="card-title">DoughnutChart</div>
-                                                    </div>
-                                                    <div class="mainSection_chart-container mt-3">
-                                                        <canvas id="doughnutChart"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="col-md-12 card mb-3">
-                                                <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="card-title">BarChart 2</div>
-                                                    </div>
-                                                    <div class="mainSection_chart-container mt-3">
-                                                        <canvas id="BarChartTwo"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <div class="col-md-12 card mb-3">
-                                                <div class="card-body">
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="card-title">BarChart 3</div>
-                                                    </div>
-                                                    <div class="mainSection_chart-container mt-3">
-                                                        <canvas id="BarChartThree"></canvas>
-                                                    </div>
-                                                </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="pieChart"></canvas>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 mt-3">
-                                    <div class="card" style="display: -webkit-box;">
-                                        <div class="col-lg-6">
-                                            <div class="col-md-12 card mb-3">
-
-                                                <div class="card-body">
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                                        <div class="card-title">LineChart</div>
-                                                    </div>
-                                                    <div class="mainSection_chart-container mt-3">
-                                                        <canvas id="lineChart"></canvas>
-                                                    </div>
-                                                </div>
-
+                                <div class="col-lg-3">
+                                    <div class="col-md-12 card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="card-title">DoughnutChart</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="doughnutChart"></canvas>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="col-md-12 card mb-3">
-                                                <div class="card-body">
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                                        <div class="card-title">LineChart 2</div>
-                                                    </div>
-                                                    <div class="mainSection_chart-container mt-3">
-                                                        <canvas id="LineChartTwo"></canvas>
-                                                    </div>
-                                                </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="col-md-12 card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="card-title">BarChart 2</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="BarChartTwo"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="col-md-12 card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="card-title">BarChart 3</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="BarChartThree"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mt-3">
+                            <div class="card" style="display: -webkit-box;">
+                                <div class="col-lg-6">
+                                    <div class="col-md-12 card mb-3">
 
+                                        <div class="card-body">
+                                            <div
+                                                class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                                <div class="card-title">LineChart</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="lineChart"></canvas>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="col-md-12 card mb-3">
+                                        <div class="card-body">
+                                            <div
+                                                class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                                <div class="card-title">LineChart 2</div>
+                                            </div>
+                                            <div class="mainSection_chart-container mt-3">
+                                                <canvas id="LineChartTwo"></canvas>
                                             </div>
                                         </div>
 
@@ -1002,7 +999,10 @@
                                 </div>
 
                             </div>
-                            @include('template.footer.footer')
+                        </div>
+
+                        
+                        @include('template.footer.footer')
                     </div>
 
 
