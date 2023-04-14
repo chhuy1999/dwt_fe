@@ -24,7 +24,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     @php
-                                                        $chartNames = ['pieChart', 'BarChartTwo', 'doughnutChart', 'BarChartThree', 'LineChartTwo'];
+                                                        $chartNames = ['KeyBarChart_Vertical', 'BarChartTwo', 'doughnutChart', 'BarChartThree', 'LineChartTwo'];
                                                         $chartLabels = ['Bar Chart Border Radius', 'Floating Bars', 'Horizontal Bar Chart', 'Stacked Bar Chart', 'Stacked Bar Chart with Groups'];
                                                     @endphp
                                                     <div class="row d-flex justify-content-start">
@@ -158,8 +158,8 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_BorderRadius.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Horizontal.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Stacked.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_StackedWithGroups.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Vertical.js') }}"></script> --}}
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_StackedWithGroups.js') }}"></script> --}}
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Vertical.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>

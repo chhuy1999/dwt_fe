@@ -271,11 +271,11 @@
                     </a>
                     <ul class="header_more">
                         <li class="header_more-item">
-                            <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách key
+                            <a href="#" class="header_more-link">Danh sách key
                                 chart</a>
                         </li>
                         <li class="header_more-item">
-                            <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách
+                            <a href="/kho-chart" class="header_more-link">Danh sách
                                 chart</a>
                         </li>
                     </ul>

@@ -1010,7 +1010,8 @@
 
             </div>
         </div>
-    @include('template.sidebar.sidebarMaster.sidebarRight')
+        @include('template.sidebar.sidebarMaster.sidebarRight')
+    </div>
 
     <!-- Modal Sửa Vấn Đề -->
         @foreach ($listReports as $item)
