@@ -21,8 +21,7 @@
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="dsCapToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
+                                                <table id="dsCapToChuc" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th style="width: 2%">STT</th>
@@ -34,8 +33,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     1
                                                                 </div>
                                                             </th>
@@ -47,21 +45,17 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaDSCapToChuc">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaDSCapToChuc">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaViTri">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaViTri">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
 
-                                                        {{-- Xóa Vi tri--}}
+                                                        {{-- Xóa Vi tri --}}
                                                         <div class="modal fade" id="xoaViTri" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
@@ -80,7 +74,7 @@
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit" class="btn btn-danger">Xóa</button>
-                                                                        
+
                                                                         </form> --}}
                                                                     </div>
                                                                 </div>
@@ -120,7 +114,7 @@
                                                                 </div>
                                                             </div> --}}
 
-                                                        
+
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -140,7 +134,7 @@
 
 
 
-    
+
     <!-- Modal Them Cấp tổ chức -->
     <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -224,8 +218,7 @@
 
 
     <!-- Modal Them Cấp tổ chức -->
-    <div class="modal fade" id="themDSCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themDSCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -240,15 +233,15 @@
                             <div class="col-sm-6 mb-3">
                                 <input class="form-control" type="text" placeholder="Mã cấp tổ chức">
                             </div>
-    
+
                             <div class="col-sm-6 mb-3">
                                 <input class="form-control" type="text" placeholder="Tên cấp tổ chức" name="name">
                             </div>
- 
+
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Hủy</button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                         <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
 
@@ -276,7 +269,9 @@
         const targetTable = $('#dsCapToChuc').DataTable({
             paging: true,
             ordering: false,
-            order: [[0, 'desc']],
+            order: [
+                [0, 'desc']
+            ],
             pageLength: 5,
             language: {
                 info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',

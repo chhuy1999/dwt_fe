@@ -19,7 +19,7 @@
             }
             return $isAssigned;
         }
-
+        
         function isInvolved($assignedTask, $userId)
         {
             $isInvolved = false;
@@ -31,7 +31,7 @@
             }
             return $isInvolved;
         }
-
+        
         function isInvolvedReportTask($assignedTask, $userId)
         {
             $isInvolved = false;
@@ -170,7 +170,7 @@
                                                                             <input type="number" min="0" required class="form-control" placeholder="Giá trị" name="quantity" />
                                                                         </div>
                                                                         <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                                            <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -299,13 +299,13 @@
                                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                                 <li>
                                                                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $assignedTask->id }}">
-                                                                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                                         Sửa
                                                                                     </a>
                                                                                 </li>
                                                                                 <li>
                                                                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $assignedTask->id }}" data-repeater-delete>
-                                                                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                                         Xóa
                                                                                     </a>
                                                                                 </li>
@@ -402,13 +402,13 @@
                                                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                                 <li>
                                                                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editGiaoNhiemVuPhatSinh{{ $task->id }}">
-                                                                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                                         Sửa
                                                                                     </a>
                                                                                 </li>
                                                                                 <li>
                                                                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaNhiemVuPhatSinh{{ $task->id }}" data-repeater-delete>
-                                                                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                                         Xóa
                                                                                     </a>
                                                                                 </li>
@@ -538,7 +538,7 @@
                                                     <input type="number" class="form-control" min="0" placeholder="Giá trị" name="quantity" value="{{ $kpiKey->quantity }}" />
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                 </div>
                                             </div>
                                         @endforeach
@@ -583,9 +583,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                        <input name="deadline" placeholder="Thời hạn" class="form-control deadlinePicker" type="text"
-                                        value="{{$task->startDate ? date('d/m/Y', strtotime($task->startDate)) : date('d/m/Y')}} - {{date('d/m/Y', strtotime($task->deadline))}}"
-                                        >
+                                        <input name="deadline" placeholder="Thời hạn" class="form-control deadlinePicker" type="text" value="{{ $task->startDate ? date('d/m/Y', strtotime($task->startDate)) : date('d/m/Y') }} - {{ date('d/m/Y', strtotime($task->deadline)) }}">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
                                     </div>
                                 </div>
@@ -655,7 +653,7 @@
                                                         <input type="number" min="0" class="form-control" placeholder="Giá trị" value="{{ $key->pivot->quantity }}" name="quantity" />
                                                     </div>
                                                     <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                        <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                        <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -675,7 +673,7 @@
                                                         <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                                     </div>
                                                     <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                        <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                        <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                     </div>
                                                 </div>
                                             @endif
@@ -791,7 +789,7 @@
                                                 <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                             </div>
                                             <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                             </div>
                                         </div>
                                     </div>
@@ -817,21 +815,21 @@
 @endsection
 @section('footer-script')
     <!-- Plugins -->
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <!-- ChartJS -->
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
     <!-- Chart Types -->
-    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
 
     <script type="text/javascript">
         // SELECT MULTIPLE LEFT SIDEBAR

@@ -3,7 +3,7 @@
 @section('title', 'Danh sách vị trí')
 
 @section('header-style')
-    {{-- <link rel="stylesheet" href="{{ secure_asset('assets/plugins/jquery-treeSelect/cbtree.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}"> --}}
 @endsection
 
 @section('content')
@@ -36,7 +36,7 @@
                                                     <th class="text-nowrap" style="width: 10%">Quỹ lương năm</th>
                                                     <th class="text-nowrap" style="width: 8%">Gói trang bị</th>
                                                     @if (session('user')['role'] == 'admin')
-                                                    <th class="text-nowrap" style="width: 5%">Hành động</th>
+                                                        <th class="text-nowrap" style="width: 5%">Hành động</th>
                                                     @endif
                                                 </tr>
                                             </thead>
@@ -44,8 +44,7 @@
                                                 @foreach ($data->data as $value)
                                                     <tr>
                                                         <th scope="row">
-                                                            <div
-                                                                class="d-flex justify-content-center align-items-center">
+                                                            <div class="d-flex justify-content-center align-items-center">
                                                                 {{ $loop->iteration }}
                                                             </div>
                                                         </th>
@@ -58,94 +57,70 @@
                                                         <td>
                                                             <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
                                                                 @foreach ($listPositionLevel->data as $level)
-                                                                @if ($level->id == $value->position_level)
+                                                                    @if ($level->id == $value->position_level)
                                                                         {{ $level->name }}
-            
-                                                                @endif
+                                                                    @endif
                                                                 @endforeach
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="">
                                                                 @foreach ($listDepartments->data as $dep)
-                                                                @if ($dep->id == $value->department_id)
+                                                                    @if ($dep->id == $value->department_id)
                                                                         {{ $dep->name }}
-    
-                                                                @endif
+                                                                    @endif
                                                                 @endforeach
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-block text-truncate" style="max-width:330px;"  data-bs-toggle="tooltip"
-                                                                data-bs-placement="top"
-                                                                title="{{ $value->description }}">
+                                                            <div class="text-nowrap d-block text-truncate" style="max-width:330px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description }}">
                                                                 {{ $value->description }}</div>
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-block text-truncate text-center" style="max-width:50px;"  data-bs-toggle="tooltip"
-                                                                data-bs-placement="top"
-                                                                title="{{ $value->max_employees }}">
+                                                            <div class="text-nowrap d-block text-truncate text-center" style="max-width:50px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->max_employees }}">
                                                                 {{ $value->max_employees }}</div>
-                                                            
+
                                                         </td>
                                                         <td>
-                                                            <div class="text-nowrap d-block text-truncate text-center" style="max-width:100px;"  data-bs-toggle="tooltip"
-                                                                data-bs-placement="top"
-                                                                title="{{ $value->salary_fund }}">
+                                                            <div class="text-nowrap d-block text-truncate text-center" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->salary_fund }}">
                                                                 {{ $value->salary_fund }}</div>
                                                         </td>
                                                         <td>
-                                                            <div data-bs-toggle="modal"
-                                                                data-bs-target="#trangBiHanhChinh">
+                                                            <div data-bs-toggle="modal" data-bs-target="#trangBiHanhChinh">
                                                                 Pack Quản lý
                                                             </div>
                                                         </td>
                                                         @if (session('user')['role'] == 'admin')
-                                                        <td>
-                                                            <div
-                                                                class="table_actions d-flex justify-content-center">
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                    data-bs-target="#suaDSThemViTri{{ $value->id }}">
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                                            <td>
+                                                                <div class="table_actions d-flex justify-content-center">
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaDSThemViTri{{ $value->id }}">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    </div>
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaViTri{{ $value->id }}">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    </div>
                                                                 </div>
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                    data-bs-target="#xoaViTri{{ $value->id }}">
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ secure_asset('assets/img/trash.svg') }}" />
-                                                                </div>
-                                                            </div>
-                                                        </td>
+                                                            </td>
                                                         @endif
                                                     </tr>
 
                                                     {{-- Xóa Vi tri --}}
-                                                    <div class="modal fade" id="xoaViTri{{ $value->id }}"
-                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
+                                                    <div class="modal fade" id="xoaViTri{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title text-danger"
-                                                                        id="exampleModalLabel">Xóa vị trí</h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
+                                                                    <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa vị trí</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     Bạn có thực sự muốn xoá vị trí này không?
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button"
-                                                                        class="btn btn-outline-danger"
-                                                                        data-bs-dismiss="modal">Hủy</button>
-                                                                    <form
-                                                                        action="{{ route('position.delete', $value->id) }}"
-                                                                        method="POST">
+                                                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                    <form action="{{ route('position.delete', $value->id) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Xóa</button>
+                                                                        <button type="submit" class="btn btn-danger">Xóa</button>
 
                                                                     </form>
                                                                 </div>
@@ -154,78 +129,65 @@
                                                     </div>
 
                                                     <!-- Modal Sua Vi Tri chức danh -->
-                                                    <div class="modal fade"
-                                                        id="suaDSThemViTri{{ $value->id }}" tabindex="-1"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="suaDSThemViTri{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header text-center">
-                                                                    <h5 class="modal-title w-100"
-                                                                        id="exampleModalLabel">Sửa Vị trí/Chức danh
+                                                                    <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Vị trí/Chức danh
                                                                     </h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
 
-                                                                <form method="POST"
-                                                                    action="{{ route('position.update', $value->id) }}">
+                                                                <form method="POST" action="{{ route('position.update', $value->id) }}">
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <div class="modal-body">
                                                                         <div class="row">
                                                                             <div class="col-sm-6 mb-3">
-                                                                                <input class="form-control"
-                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã vị trí" value="AMKT">
+                                                                                <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã vị trí" value="AMKT">
                                                                             </div>
 
                                                                             <div class="col-sm-6 mb-3">
-                                                                                <input class="form-control"
-                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên vị trí" name="name"
-                                                                                    value="{{ $value->name }}">
+                                                                                <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên vị trí" name="name" value="{{ $value->name }}">
                                                                             </div>
-                                                                            <div class="col-sm-6 mb-3" >
-                                                                                <select class="selectpicker" required data-live-search="true" name="parent"
-                                                                                    data-width="100%" title="Đơn vị công tác *"
-                                                                                    data-live-search-placeholder="Tìm kiếm..." data-size="3" >
-                                                                                        @foreach ($listDepartments->data as $dep)
-                                                                                            @if ($dep->id != $value->parent)
-                                                                                                <option value="{{ $value->parent }}">
-                                                                                                    {{ $dep->name }}
-                                                                                                </option>
-                                                                                            @else
-                                                                                                <option value="{{ $value->parent}}" selected>
-                                                                                                    {{ $dep->name }}
-                                                                                                </option>
-                                                                                            @endif
-                                                                                        @endforeach
-                                                                                    </select>
-                                                                            
+                                                                            <div class="col-sm-6 mb-3">
+                                                                                <select class="selectpicker" required data-live-search="true" name="parent" data-width="100%" title="Đơn vị công tác *" data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                                                                    @foreach ($listDepartments->data as $dep)
+                                                                                        @if ($dep->id != $value->parent)
+                                                                                            <option value="{{ $value->parent }}">
+                                                                                                {{ $dep->name }}
+                                                                                            </option>
+                                                                                        @else
+                                                                                            <option value="{{ $value->parent }}" selected>
+                                                                                                {{ $dep->name }}
+                                                                                            </option>
+                                                                                        @endif
+                                                                                    @endforeach
+                                                                                </select>
+
                                                                             </div>
                                                                             <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp nhân sự">
-                                                                                <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level"
-                                                                                            data-width="100%" data-live-search="true"
-                                                                                            data-live-search-placeholder="Tìm kiếm..." data-size="3">
-                                                                                            @foreach ($listPositionLevel->data as $pl)
-                                                                                            @if ($pl->id != $value->position_level)
-                                                                                                <option value="{{ $value->position_level }}">
-                                                                                                    {{ $pl->name }}
-                                                                                                </option>
-                                                                                            @else
-                                                                                                <option value="{{ $value->position_level}}" selected>
-                                                                                                    {{ $pl->name }}
-                                                                                                </option>
-                                                                                            @endif
-                                                                                            @endforeach
+                                                                                <select id="onchangeCapNhanSu" class="selectpicker" required title="Cấp nhân sự *" name="position_level" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="3">
+                                                                                    @foreach ($listPositionLevel->data as $pl)
+                                                                                        @if ($pl->id != $value->position_level)
+                                                                                            <option value="{{ $value->position_level }}">
+                                                                                                {{ $pl->name }}
+                                                                                            </option>
+                                                                                        @else
+                                                                                            <option value="{{ $value->position_level }}" selected>
+                                                                                                {{ $pl->name }}
+                                                                                            </option>
+                                                                                        @endif
+                                                                                    @endforeach
 
-                                                                                            <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
-                                                                                        </select>
-                                                                                        
+                                                                                    <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
+                                                                                </select>
+
                                                                                 {{-- <div class="modal_list-more" data-bs-toggle="modal"
                                                                                 data-bs-target="#danhsachChucDanh">
                                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                                             </div> --}}
-                                                                            
+
                                                                             </div>
 
                                                                             <div class="col-sm-12 mb-3">
@@ -233,32 +195,19 @@
                                                                             </div>
 
                                                                             <div class="col-sm-4 mb-3">
-                                                                                <input class="form-control"
-                                                                                    type="number" min="0"
-                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Định biên"
-                                                                                    name="max_employees"
-                                                                                    value="{{ $value->max_employees }}">
+                                                                                <input class="form-control" type="number" min="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Định biên" name="max_employees" value="{{ $value->max_employees }}">
                                                                             </div>
                                                                             <div class="col-sm-4 mb-3">
-                                                                                <input class="form-control"
-                                                                                    type="text"
-                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Quỹ lương năm"
-                                                                                    name="salary_fund"
-                                                                                    value="{{ $value->salary_fund }}" />
+                                                                                <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Quỹ lương năm" name="salary_fund" value="{{ $value->salary_fund }}" />
                                                                             </div>
                                                                             <div class="col-sm-4 mb-3">
-                                                                                <input class="form-control"
-                                                                                    type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị" readonly
-                                                                                    value="2 gói" />
+                                                                                <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Gói trang bị" readonly value="2 gói" />
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-danger"
-                                                                            data-bs-dismiss="modal">Hủy</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Lưu</button>
+                                                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                        <button type="submit" class="btn btn-danger">Lưu</button>
                                                                     </div>
 
                                                                 </form>
@@ -318,8 +267,7 @@
     </div>
 
     <!-- Modal Them Co Cau -->
-    <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -380,8 +328,7 @@
                                         <option>Nhà máy</option>
                                         <option>Công ty thành viên</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachCapToChuc">
+                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -412,8 +359,7 @@
                                     <div class="modal_body-title">Trụ sở chính <span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="text"
-                                        value="219 Trung Kính, Yên Hòa, Cầu Giấy, Hà Nội">
+                                    <input class="form-control" type="text" value="219 Trung Kính, Yên Hòa, Cầu Giấy, Hà Nội">
                                 </div>
                             </div>
                         </div>
@@ -424,8 +370,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text"
-                                        value="Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng.">
+                                    <input class="form-control" type="text" value="Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng.">
                                 </div>
                             </div>
                         </div>
@@ -440,8 +385,7 @@
     </div>
 
     <!-- Modal Danh sach phong ban -->
-    <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -451,257 +395,229 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Cung ứng
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Trade Marketing
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Digital Marketing
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Truyền thông
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Quản trị Nhãn/Đào tạo
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Kho & Giao vận
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Hành chính nhân sự
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Kế toán
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Tài chính
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Dịch vụ bán hàng
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault11">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault11">
                                     <label class="form-check-label ms-3" for="flexRadioDefault11">
                                         Kinh doanh OTC
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault12">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault12">
                                     <label class="form-check-label ms-3" for="flexRadioDefault12">
                                         Kinh doanh ETC
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault13">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault13">
                                     <label class="form-check-label ms-3" for="flexRadioDefault13">
                                         Kinh doanh MT
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault14">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault14">
                                     <label class="form-check-label ms-3" for="flexRadioDefault14">
                                         Kinh doanh online
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -716,8 +632,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themDSThemViTri">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -725,8 +640,7 @@
     </div>
 
     <!-- Modal Danh sach cap to chuc -->
-    <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -736,185 +650,165 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Công ty con
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Chi nhánh
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Văn phòng đại diện
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Văn phòng
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Trung tâm
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Phòng ban
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Nhóm/tổ/đội
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Phân xưởng
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Nhà máy
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Công ty thành viên
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -927,8 +821,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themPhongBan">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themPhongBan">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -936,8 +829,7 @@
     </div>
 
     <!-- Modal Danh sach chuc danh -->
-    <div class="modal fade" id="danhsachChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -947,215 +839,181 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Chủ tịch HĐQT
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Tổng Giám đốc
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Phó Tổng Giám đốc
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Giám đốc điều hành
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Quản lý cấp cao
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Quản lý cấp trung
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Trưởng phòng
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Phó phòng
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Trưởng nhóm
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Chuyên viên
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Nhân viên
                                     </label>
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1168,8 +1026,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1177,8 +1034,7 @@
     </div>
 
     <!-- Modal Them phong ban -->
-    <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1240,8 +1096,7 @@
                                         <option>Nhà máy</option>
                                         <option>Công ty thành viên</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachCapToChuc">
+                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -1274,8 +1129,7 @@
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center">
                                 <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span
-                                            class="text-danger">*</span></div>
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" placeholder="Nhập Chức năng, nhiệm vụ">
@@ -1285,8 +1139,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1294,8 +1147,7 @@
     </div>
 
     <!-- Modal Them Vi Tri chức danh -->
-    <div class="modal fade" id="themDSThemViTri" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themDSThemViTri" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1312,70 +1164,48 @@
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" required type="text" placeholder="Nhập tên vị trí *"
-                                    name="name">
+                                <input class="form-control" required type="text" placeholder="Nhập tên vị trí *" name="name">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                    <select class="selectpicker"
-                                    required
-                                    name="parent"
-                                    title="Chọn đơn vị công tác *"
-                                    data-width="100%"
-                                    data-live-search="true"
-                                    data-live-search-placeholder="Tìm kiếm..."
-                                    data-size="5">
+                                <select class="selectpicker" required name="parent" title="Chọn đơn vị công tác *" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                     @foreach ($listDepartments->data as $dep)
                                         @if ($dep->id == $value->parent)
-                                            <option
-                                                value="{{ $value->parent }}" >
+                                            <option value="{{ $value->parent }}">
                                                 {{ $dep->name }}
                                             </option>
                                         @else
-                                            <option
-                                                value="{{ $value->parent }}">
+                                            <option value="{{ $value->parent }}">
                                                 {{ $dep->name }}
                                             </option>
                                         @endif
                                     @endforeach
-                                </select>    
+                                </select>
                             </div>
-                            
+
                             <div class="col-sm-6 mb-3">
-                                <select id="onchangeCapNhanSu" class="selectpicker"
-                                    required
-                                    placeholder="Chọn cấp nhân sự *"
-                                    name="position_level"
-                                    title="Chọn cấp nhân sự "
-                                    data-width="100%"
-                                    data-live-search="true"
-                                    data-live-search-placeholder="Tìm kiếm..."
-                                    data-size="5">
+                                <select id="onchangeCapNhanSu" class="selectpicker" required placeholder="Chọn cấp nhân sự *" name="position_level" title="Chọn cấp nhân sự " data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                     @foreach ($listPositionLevel->data as $level)
                                         @if ($level->id != $value->position_level)
-                                            <option
-                                                value="{{ $value->position_level }}">
+                                            <option value="{{ $value->position_level }}">
                                                 {{ $level->name }}
                                             </option>
                                         @else
-                                            <option
-                                                value="{{$value->position_level }}">
+                                            <option value="{{ $value->position_level }}">
                                                 {{ $level->name }}
                                             </option>
                                         @endif
                                     @endforeach
                                     <option value="themCapNhanSu" class="text-danger">+ Thêm mới</option>
-                                </select>    
+                                </select>
                             </div>
                             <div class="col-sm12 mb-3">
                                 <textarea class="form-control" name="description" placeholder="Nhập mô tả công việc"></textarea>
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input class="form-control" required type="number" min="0" name="max_employees"
-                                    placeholder="Định biên *">
+                                <input class="form-control" required type="number" min="0" name="max_employees" placeholder="Định biên *">
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input class="form-control" required type="number" min="0" name="salary_fund"
-                                    placeholder="Quỹ lương năm *" />
+                                <input class="form-control" required type="number" min="0" name="salary_fund" placeholder="Quỹ lương năm *" />
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input class="form-control" placeholder="Gói trang bị" type="text" readonly />
@@ -1393,8 +1223,7 @@
     </div>
 
     <!-- Modal TRANG BỊ HÀNH CHÍNH -->
-    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1403,315 +1232,259 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex align-items-start">
-                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
-                            aria-orientation="vertical">
-                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-home" type="button" role="tab"
-                                aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
-                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-profile" type="button" role="tab"
-                                aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
-                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-messages" type="button" role="tab"
-                                aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings" type="button" role="tab"
-                                aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings2" type="button" role="tab"
-                                aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
+                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
+                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
+                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings2" type="button" role="tab" aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                aria-labelledby="v-pills-home-tab">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                aria-labelledby="v-pills-profile-tab">
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                aria-labelledby="v-pills-messages-tab">
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1">
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2">
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
@@ -1729,8 +1502,7 @@
     </div>
 
     <!-- Modal Them cấp nhân sự-->
-    <div class="modal fade" id="themCapNhanSu" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themCapNhanSu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1747,14 +1519,12 @@
                             </div>
 
                             <div class="col-sm-6 mb-3">
-                                <input class="form-control" type="text" placeholder="Nhập tên cấp nhân sự"
-                                    name="name">
+                                <input class="form-control" type="text" placeholder="Nhập tên cấp nhân sự" name="name">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                            data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Hủy</button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themDSThemViTri">Hủy</button>
                         <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
 
@@ -1764,7 +1534,7 @@
     </div>
 @endsection
 @section('footer-script')
-{{-- <script src="{{ secure_asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script> --}}
+    {{-- <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script> --}}
 
     <script>
         $(document).ready(function() {
@@ -1877,11 +1647,13 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#danhSachViTri').DataTable({
                 paging: true,
                 ordering: false,
-                order: [[0, 'desc']],
+                order: [
+                    [0, 'desc']
+                ],
                 pageLength: 30,
                 language: {
                     info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
@@ -1911,7 +1683,6 @@
                 @endif
             `);
         });
-        
     </script>
 
     <script type="text/javascript">
@@ -2057,5 +1828,5 @@
         });
     </script>
 
-    
+
 @endsection

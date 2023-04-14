@@ -2,67 +2,70 @@
 {{-- 404 not found --}}
 @section('title', 'Trang không tồn tại')
 @section('header-style')
-<style>
-    .mainSection {
-        position: initial
-    }
-    .main {
-        height: initial;
-    }
-    .mainWrap {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        overflow: hidden;
-        position: relative;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-    .main::before {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../assets/img/bg-404.jpg);
-        background-size: cover;
-        background-position: center center;
-        bottom: -5px;
-        content: '';
-        -webkit-filter: blur(5px);
-        filter: blur(5px);
-        left: -5px;
-        position: absolute;
-        right: -5px;
-        top: -5px;
-    }
+    <style>
+        .mainSection {
+            position: initial
+        }
 
-    .notFound_container {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        text-align: center;
-        /* z-index: 2; */
-    }
+        .main {
+            height: initial;
+        }
 
-    .notFound_content {
-        --width: 500px;
-        background-color: rgb(80 80 80 / 26%);
-        border-radius: var(--border-radius-main);
-        max-width: calc(100vw - 32px);
-        min-height: 400px;
-        padding: 30px 16px 48px;
-        position: relative;
-        width: var(--width);
-    }
+        .mainWrap {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
-    .notFound_header {
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-    }
-    .notFound_body {
-        margin-top: var(--border-radius-main);
-    }
+        .main::before {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../assets/img/bg-404.jpg);
+            background-size: cover;
+            background-position: center center;
+            bottom: -5px;
+            content: '';
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+            left: -5px;
+            position: absolute;
+            right: -5px;
+            top: -5px;
+        }
 
-</style>
+        .notFound_container {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            text-align: center;
+            /* z-index: 2; */
+        }
+
+        .notFound_content {
+            --width: 500px;
+            background-color: rgb(80 80 80 / 26%);
+            border-radius: var(--border-radius-main);
+            max-width: calc(100vw - 32px);
+            min-height: 400px;
+            padding: 30px 16px 48px;
+            position: relative;
+            width: var(--width);
+        }
+
+        .notFound_header {
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .notFound_body {
+            margin-top: var(--border-radius-main);
+        }
+    </style>
 @endsection
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
@@ -73,7 +76,7 @@
                     <div class="notFound_content">
                         <div class="notFound_header">
                             <a href="/">
-                                <img src="{{ secure_asset('assets/img/404.png') }}" alt="404" width="400px">
+                                <img src="{{ asset('assets/img/404.png') }}" alt="404" width="400px">
                             </a>
                         </div>
                         <div class="notFound_body">
@@ -93,17 +96,17 @@
 
 @endsection
 @section('footer-script')
-            <!-- ChartJS -->
-            <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
-            <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-            <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    <!-- ChartJS -->
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
-            <!-- Chart Types -->
-            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
-            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
-            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
-            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
-            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
-            <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+    <!-- Chart Types -->
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
 
 @endsection

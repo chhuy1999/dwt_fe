@@ -23,14 +23,11 @@
                                         <div class="text_content">
                                             <div class="pb-2 d-flex align-items-center">
                                                 <div class="card-title">Digital Marketing</div>
-                                                <div class="btn" data-bs-toggle="modal"
-                                                    data-bs-target="#suaDonViPhongBan">
-                                                    <img style="width:16px;height:16px"
-                                                        src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                                <div class="btn" data-bs-toggle="modal" data-bs-target="#suaDonViPhongBan">
+                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                 </div>
                                                 <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
-                                                    <img style="width:16px;height:16px"
-                                                        src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                 </div>
                                             </div>
                                             <div class="info_wrapper">
@@ -103,10 +100,8 @@
 
                                             <div class="main_search d-flex mt-2">
                                                 <i class="bi bi-search"></i>
-                                                <input type="text" class="form-control" placeholder="Tìm kiếm..."
-                                                    name="data_search" id="search" />
-                                                <button class="btn btn-danger d-block w-50" data-bs-toggle="modal"
-                                                    data-bs-target="#themThanhVien">Thêm thành
+                                                <input type="text" class="form-control" placeholder="Tìm kiếm..." name="data_search" id="search" />
+                                                <button class="btn btn-danger d-block w-50" data-bs-toggle="modal" data-bs-target="#themThanhVien">Thêm thành
                                                     viên</button>
                                             </div>
                                         </div>
@@ -114,8 +109,7 @@
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
+                                                <table id="coCauToChuc" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th>STT</th>
@@ -136,8 +130,7 @@
                                                         @foreach ($data['data'] as $value)
                                                             <tr>
                                                                 <th scope="row">
-                                                                    <div
-                                                                        class="d-flex justify-content-center align-items-center">
+                                                                    <div class="d-flex justify-content-center align-items-center">
                                                                         {{ $value['id'] }}
                                                                     </div>
                                                                 </th>
@@ -157,8 +150,7 @@
                                                                     {{ $value['salary_fund'] }}
                                                                 </td>
                                                                 <td>
-                                                                    <div data-bs-toggle="modal"
-                                                                        data-bs-target="#trangBiHanhChinh">
+                                                                    <div data-bs-toggle="modal" data-bs-target="#trangBiHanhChinh">
                                                                         Pack Quản lý
                                                                     </div>
                                                                 </td>
@@ -167,15 +159,11 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="table_actions d-flex justify-content-center">
-                                                                        <div class="btn" data-bs-toggle="modal"
-                                                                            data-bs-target="#suaThanhVien">
-                                                                            <img style="width:16px;height:16px"
-                                                                                src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                         </div>
-                                                                        <div class="btn" data-bs-toggle="modal"
-                                                                            data-bs-target="#xoaThanhVien">
-                                                                            <img style="width:16px;height:16px"
-                                                                                src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                         </div>
                                                                 </td>
                                                             </tr>
@@ -235,8 +223,7 @@
     </div>
 
     {{-- Modal SỬA ĐƠN VỊ/PHÒNG BAN --}}
-    <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="z-index:1999">
+    <div class="modal fade" id="suaDonViPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:1999">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -309,8 +296,7 @@
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ*<span
-                                            class="text-danger">*</span></div>
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ*<span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
@@ -329,8 +315,7 @@
     </div>
 
     {{-- Modal Sua thanh vien --}}
-    <div class="modal fade" id="suaThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="z-index:1999">
+    <div class="modal fade" id="suaThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:1999">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -346,8 +331,7 @@
                                     <input type="file" name="" id="logo" onchange="fileValue(this)">
                                     <label for="logo" class="upload-field" id="file-label">
                                         <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ secure_asset('assets/img/preview.jpg') }}"
-                                                alt="">
+                                            <img id="image-preview" src="{{ asset('assets/img/preview.jpg') }}" alt="">
                                         </div>
                                     </label>
                                 </div>
@@ -367,12 +351,10 @@
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                             <label class="form-check-label" for="inlineRadio1">Nam</label>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" checked type="radio"
-                                                    name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                                 <label class="form-check-label" for="inlineRadio2">Nữ</label>
                                             </div>
                                         </div>
@@ -416,8 +398,7 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Số điện thoại liên hệ <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Số điện thoại liên hệ <span class="text-danger">*</span></div>
                                     </div>
                                     <div class=" col-sm-8">
                                         <input class="form-control" type="text" value="0123456789">
@@ -567,8 +548,7 @@
                             <div class="col-sm-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trạng thái làm việc <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Trạng thái làm việc <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="text" value="Đang làm việc">
@@ -587,8 +567,7 @@
     </div>
 
     {{-- Modal Them thanh vien --}}
-    <div class="modal fade" id="themThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        style="z-index:1999">
+    <div class="modal fade" id="themThanhVien" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:1999">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 44%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -604,8 +583,7 @@
                                     <input type="file" name="" id="logo" onchange="fileValue(this)">
                                     <label for="logo" class="upload-field" id="file-label">
                                         <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ secure_asset('assets/img/preview-image.svg') }}"
-                                                alt="">
+                                            <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}" alt="">
                                         </div>
                                     </label>
                                 </div>
@@ -624,8 +602,7 @@
                                         <div class="modal_body-title">Ngày sinh<span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="createUser" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                        <input id="createUser" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
@@ -646,12 +623,10 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                             <label class="form-check-label" for="inlineRadio1">Nam</label>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio2" value="option2">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                                 <label class="form-check-label" for="inlineRadio2">Nữ</label>
                                             </div>
                                         </div>
@@ -746,8 +721,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                        <select id="onchangeViTriCongViec" class="selectpicker"
-                                            title="Chọn vị trí công việc">
+                                        <select id="onchangeViTriCongViec" class="selectpicker" title="Chọn vị trí công việc">
                                             <option>Quản lý phòng</option>
                                             <option>Quản lý sàn TMĐT</option>
                                             <option>Content Website</option>
@@ -821,8 +795,7 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trang bị hành chính <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Trang bị hành chính <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn gói trang bị">
@@ -843,8 +816,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="ngayThuViec" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                        <input id="ngayThuViec" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                                     </div>
                                 </div>
                             </div>
@@ -855,16 +827,14 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="ngayChinhThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                            type="text">
+                                        <input id="ngayChinhThuc" value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trạng thái làm việc <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Trạng thái làm việc <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn trạng thái">
@@ -960,8 +930,7 @@
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center">
                                 <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span
-                                            class="text-danger">*</span></div>
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" placeholder="Nhập Chức năng, nhiệm vụ">
@@ -979,8 +948,7 @@
     </div>
 
     <!-- Modal Them Vi Tri Cong Viec -->
-    <div class="modal fade" id="themViTriCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themViTriCongViec" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1066,8 +1034,7 @@
         </div>
     </div>
     <!-- Modal TRANG BỊ HÀNH CHÍNH -->
-    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1076,315 +1043,259 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex align-items-start">
-                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
-                            aria-orientation="vertical">
-                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-home" type="button" role="tab"
-                                aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
-                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-profile" type="button" role="tab"
-                                aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
-                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-messages" type="button" role="tab"
-                                aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings" type="button" role="tab"
-                                aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings2" type="button" role="tab"
-                                aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
+                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
+                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
+                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings2" type="button" role="tab" aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                aria-labelledby="v-pills-home-tab">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                aria-labelledby="v-pills-profile-tab">
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                aria-labelledby="v-pills-messages-tab">
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1">
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2">
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
@@ -1490,7 +1401,7 @@
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    
+
     </script>
-    <script src="{{ secure_asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 @endsection

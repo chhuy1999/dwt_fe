@@ -13,10 +13,10 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
 
-    <title>@yield('title') - {{ env('SLOGAN_URL', ''); }}</title>
+    <title>@yield('title') - {{ env('SLOGAN_URL', '') }}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ env('FAVICON_URL', ''); }}">
+    <link rel="shortcut icon" href="{{ env('FAVICON_URL', '') }}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,22 +24,22 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
-    <link href="{{ secure_asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ secure_asset('/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
-    <link href="{{ secure_asset('/assets/vendor/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/vendor/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
 
     <!-- Plugins -->
-    <link href="{{ secure_asset('/assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{ secure_asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
+    <link href="{{ asset('/assets/plugins/jquery-datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.css') }}" />
 
     {{-- toastify --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <!-- Base -->
-    <link href="{{ secure_asset('/assets/css/normalize.css') }}" rel="stylesheet" />
-    <link href="{{ secure_asset('/assets/css/variables.css') }}" rel="stylesheet" />
-    <link href="{{ secure_asset('/assets/css/style.css') }}" rel="stylesheet" />
-    <link href="{{ secure_asset('/assets/css/responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/css/normalize.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/css/variables.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/css/responsive.css') }}" rel="stylesheet" />
     @yield('header-style')
 </head>
 
@@ -53,7 +53,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             <div class="container-fluid d-flex align-items-center justify-content-between">
                 <div class="header_logo">
                     <a href="/" class="navbar-brand d-flex align-items-center scrollto me-auto me-lg-0">
-                        <img class="header_logo" src="{{ env('LOGO_URL', ''); }}" />
+                        <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
                     </a>
                 </div>
 
@@ -142,7 +142,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     </div>
                     <div class="header_user dropdown">
                         <button class="dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="header_user-img" src="{{ secure_asset('assets/img/avatar.jpeg') }}" />
+                            <img class="header_user-img" src="{{ asset('assets/img/avatar.jpeg') }}" />
                         </button>
                         <ul class="dropdown-menu header_user-list" aria-labelledby="dropdownUser">
                             <li class="header_user-item">
@@ -277,7 +277,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             <div class="col-sm-4 mb-3">
                                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã cuộc họp" readonly class="form-control" value="{{ time() }}" name="code">
                                 {{-- <p>Mã cuộc họp: {{ time() }}</p> --}}
-                            {{-- </div>
+    {{-- </div>
                             <div class="col-sm-4 mb-3">
                                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Đặt mật khẩu" placeholder="Đặt mật khẩu (nếu có)" class="form-control" name="password">
                             </div>
@@ -351,7 +351,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </div>
                             <div class="col-md-6 mb-3">
                                 <select class="selectpicker" data-live-search="true" data-size="5" id="" title="Người đảm nhiệm" name="user_id">
-                                    @if(session('listUsers'))
+                                    @if (session('listUsers'))
                                         @foreach (session('listUsers') as $u)
                                             <option value="{{ $u->id }}">{{ $u->name }}</option>
                                         @endforeach
@@ -360,7 +360,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             </div>
                             <div class="col-md-6 mb-3">
                                 <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" name="involedPeople[]">
-                                    @if(session('listUsers'))
+                                    @if (session('listUsers'))
                                         @foreach (session('listUsers') as $u)
                                             <option value="{{ $u->id }}">{{ $u->name }}</option>
                                         @endforeach
@@ -374,7 +374,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                         <div class="row" data-repeater-item>
                                             <div class="col-md-7 mb-3">
                                                 <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
-                                                    @if(session('listKpiKeys'))
+                                                    @if (session('listKpiKeys'))
                                                         @foreach (session('listKpiKeys') as $kpi)
                                                             <option value="{{ $kpi->id }}">{{ $kpi->name }}</option>
                                                         @endforeach
@@ -385,7 +385,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                                 <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                             </div>
                                             <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                             </div>
                                         </div>
                                     </div>
@@ -418,21 +418,21 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     {{-- momemtjs --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Vendor JS Files -->
-    <script type="text/javascript" src="{{ secure_asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/js/style.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/style.js') }}"></script>
 
-    <script type="text/javascript" src="{{ secure_asset('assets/js/style-mobile.js') }}"></script>
-    
-    <script type="text/javascript" src="{{ secure_asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/style-mobile.js') }}"></script>
 
-    <script type="text/javascript" src="{{ secure_asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
 
-    
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/daterangepicker.min.js') }}"></script>
 
     @yield('footer-script')
     <script>
@@ -455,7 +455,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     const option = document.createElement('option');
                     option.value = dp.id;
                     option.text = dp.name;
-                    if(dp.id === USER.departement_id) {
+                    if (dp.id === USER.departement_id) {
                         console.log("selected", dp.name, dp.id, USER.departement_id);
                         option.selected = true;
                     }
@@ -542,18 +542,18 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
         @endif
 
         @if (isset($error))
-        Toastify({
+            Toastify({
 
-            text: "{!! $error !!}",
-            // gravity: "top", // `top` or `bottom`
-            // position: "center"
-            duration: 3000,
-            stopOnFocus: true,
-            style: {
-                background: "#FE6244",
-            },
+                text: "{!! $error !!}",
+                // gravity: "top", // `top` or `bottom`
+                // position: "center"
+                duration: 3000,
+                stopOnFocus: true,
+                style: {
+                    background: "#FE6244",
+                },
 
-        }).showToast();
+            }).showToast();
         @endif
     </script>
 

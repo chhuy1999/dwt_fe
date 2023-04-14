@@ -19,7 +19,7 @@
             }
             return [];
         }
-
+        
         function findTargetLogDetailNote($targetDetail, $date)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -32,7 +32,7 @@
             }
             return '';
         }
-
+        
         function findReportTaskLog($task, $date)
         {
             $logs = $task->report_task_logs;
@@ -48,7 +48,7 @@
                 'kpi_keys' => [],
             ];
         }
-
+        
         function getReportTaskLogFile($task, $date)
         {
             $log = findReportTaskLog($task, $date);
@@ -63,7 +63,7 @@
             }
             return $files;
         }
-
+        
         function countReportTaskLogFiles($task)
         {
             $count = 0;
@@ -80,7 +80,7 @@
             }
             return $count;
         }
-
+        
         function countReportTaskLogKpiKeys($task)
         {
             $uniqueKpiKeys = [];
@@ -96,7 +96,7 @@
             }
             return count($uniqueKpiKeys);
         }
-
+        
         // function findAllTargetLogDetails($targetDetail)
         // {
         //     $targetLogs = $targetDetail->targetLogs;
@@ -110,7 +110,7 @@
         //     }
         //     return $targetLogDetails;
         // }
-
+        
         function findTargetLogDetailKpiKeys($targetDetail, $date, $userId)
         {
             $kpiKeys = [];
@@ -128,7 +128,7 @@
             }
             return $kpiKeys;
         }
-
+        
         function findTargetLogDetailFiles($targetDetail, $date, $userId)
         {
             $files = [];
@@ -153,7 +153,7 @@
             }
             return $files;
         }
-
+        
         function getAllTargetDetailKpiKeys($targetDetail)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -191,14 +191,14 @@
                         $toPush = $targetLogDetail;
                         //add reported date
                         $toPush->reportedDate = $targetLog->reportedDate;
-
+        
                         array_push($targetLogDetails, $toPush);
                     }
                 }
             }
             return $targetLogDetails;
         }
-
+        
         function getUsers($task)
         {
             $users = $task->users;
@@ -208,7 +208,7 @@
             }
             return implode(', ', $userNames);
         }
-
+        
         function countFiles($task)
         {
             $targetLogs = $task->targetLogs;
@@ -224,7 +224,7 @@
             }
             return $count;
         }
-
+        
         // function mergedKpiKey($kpiKeys)
         // {
         //     return uniqueKpiKeys = [];
@@ -241,7 +241,7 @@
         //     }
         //     return array_values($uniqueKpiKeys);
         // }
-
+        
         // function caculatePersonalKpi($listTask, $userId)
         // {
         //     $kpi = 0;
@@ -249,11 +249,11 @@
         //         $taskKpiKeys = $task->kpiKeys;
         //         //merge kpi keys
         //         $taskKpiKeys = mergedKpiKey($taskKpiKeys);
-
+        
         //     }
         //     return $kpi;
         // }
-
+        
     @endphp
 
     <div id="mainWrap" class="mainWrap">
@@ -786,13 +786,13 @@
                                                                     @endif
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
-                                                                            <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                             Sửa
                                                                         </a>
                                                                     </li>
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaVanDe{{ $item->id }}" data-repeater-delete>
-                                                                            <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                             Xóa
                                                                         </a>
                                                                     </li>
@@ -1039,7 +1039,7 @@
 
                         <div class="col-md-4 mb-3">
                             <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
-                                <input name="deadline"  class="giaonvuphatsinh form-control" type="text">
+                                <input name="deadline" class="giaonvuphatsinh form-control" type="text">
                                 <i class="bi bi-calendar-plus style_pickdate"></i>
                             </div>
                         </div>
@@ -1087,7 +1087,7 @@
                                             <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                         </div>
                                         <div class="col-md-1 mb-3 d-flex align-items-center">
-                                            <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                         </div>
                                     </div>
                                 </div>
@@ -1312,7 +1312,7 @@
                                                         <input type="number" class="form-control" min="0" placeholder="Giá trị" name="quantity" value="{{ $key->quantity }}" />
                                                     </div>
                                                     <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                        <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                        <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -1331,7 +1331,7 @@
                                                     <input type="number" class="form-control" min="0" placeholder="Giá trị" name="quantity" />
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                 </div>
                                             </div>
                                         @endif
@@ -1359,7 +1359,7 @@
                                     <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                         <div class="modal_upload-addFile me-3">
                                             <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/upload-file.svg') }}" />
+                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
                                                 Tải file lên
                                                 <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
                                             </button>
@@ -1367,7 +1367,7 @@
 
                                         {{-- <div class="modal_upload-addLink">
                                                         <button role="button" type="button" class="btn" id="addLinkOnline">
-                                                            <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/add-link.svg') }}" />
+                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                             Thêm liên kết
                                                         </button>
                                                     </div> --}}
@@ -1391,7 +1391,7 @@
                                                 </span>
                                                 <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
                                                 <span class="modal_upload-remote" onclick="removeUploaded(event)">
-                                                    <img style="width:18px;height:18px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                                                 </span>
                                             </li>
                                         @endforeach
@@ -1741,7 +1741,7 @@
                                                         <input type="number" class="form-control" placeholder="Giá trị" name="quantity" value="{{ $key->pivot->quantity ?? 0 }}" />
                                                     </div>
                                                     <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                        <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                        <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -1759,7 +1759,7 @@
                                                     <input type="number" class="form-control" placeholder="Giá trị" name="quantity" />
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                 </div>
                                             </div>
                                         @endif
@@ -1786,7 +1786,7 @@
                                     <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                         <div class="modal_upload-addFile me-3">
                                             <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/upload-file.svg') }}" />
+                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
                                                 Tải file lên
                                                 <input role="button" type="file" class="modal_upload-input" name="files[]" class="modal_upload-file" multiple onchange="updateList(event)">
                                             </button>
@@ -1794,7 +1794,7 @@
 
                                         {{-- <div class="modal_upload-addLink">
                                                         <button role="button" type="button" class="btn" id="addLinkOnline">
-                                                            <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/add-link.svg') }}" />
+                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/add-link.svg') }}" />
                                                             Thêm liên kết
                                                         </button>
                                                     </div> --}}
@@ -1818,7 +1818,7 @@
                                                 </span>
                                                 <input type="hidden" name="uploadedFiles[]" value="{{ $file }}" />
                                                 <span class="modal_upload-remote" onclick="removeUploaded(event)">
-                                                    <img style="width:18px;height:18px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                                                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                                                 </span>
                                             </li>
                                         @endforeach
@@ -2084,29 +2084,29 @@
 @endsection
 @section('footer-script')
 <!-- ChartJS -->
-<script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
 <!-- Plugins -->
 <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/fixedcolumns/4.2.2/js/dataTables.fixedColumns.min.js"></script>
-<script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
 <!-- Chart Types -->
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/DoughnutChart.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/BarChartThree.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/BarChartTwo.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/BarChart.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/LineChartTwo.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/LineChart.js') }}"></script>
-<script type="text/javascript" src="{{ secure_asset('/assets/js/chart/PieChart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/BarChart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/LineChart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
 
 <script>
     //on domload
@@ -2173,7 +2173,7 @@
                     <i class="bi bi-link-45deg"></i> ${file.name}
                 </span>
                 <span class="modal_upload-remote" onclick="removeFileFromFileList(event, ${i})">
-                    <img style="width:18px;height:18px" src="{{ secure_asset('assets/img/trash.svg') }}" />
+                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
                 </span>
             </li>`;
             } else {

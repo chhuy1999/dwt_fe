@@ -29,7 +29,7 @@
                                                             <th style="width: 66%">Mô tả</th>
                                                             <th style="width: 10%">Đơn vị tính</th>
                                                             @if (session('user')['role'] == 'admin')
-                                                            <th style="width: 2%"></th>
+                                                                <th style="width: 2%"></th>
                                                             @endif
                                                         </tr>
                                                     </thead>
@@ -58,25 +58,25 @@
 
                                                                 </td>
                                                                 @if (session('user')['role'] == 'admin')
-                                                                <td>
-                                                                    <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
-                                                                    </div>
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
 
-                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={{ '#suaChiSoKey' . $key->id }}>
-                                                                                <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
-                                                                                Sửa
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $key->id }}" data-repeater-delete>
-                                                                                <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
-                                                                                Xóa
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </td>
+                                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={{ '#suaChiSoKey' . $key->id }}>
+                                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $key->id }}" data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
                                                                 @endif
                                                             </tr>
                                                             <!-- Modal Sửa chỉ số key -->
@@ -150,7 +150,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -184,7 +183,7 @@
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <select class="selectpicker" required title="Chọn đơn vị *" name="unit_id" data-size="5" data-live-search="true">
-                                    
+
                                     @foreach ($listUnits->data as $unit)
                                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach
@@ -214,12 +213,12 @@
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
-    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
-    <script src="{{ secure_asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
-    <script src="{{ secure_asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
     <script>
         const targetTable = $('#dsChiSoKey').DataTable({
