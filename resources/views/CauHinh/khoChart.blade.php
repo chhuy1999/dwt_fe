@@ -77,7 +77,7 @@
                                                         $chartLabels = ['Bar Chart', 'Line Chart', 'Scales', 'OtherChart'];
                                                     @endphp
                                                     <div class="row d-flex justify-content-start">
-                                                        <div class="col-md-4 card-title">Loại biểu đồ</div>
+                                                        <div class="col-md-4 card-title d-flex align-items-center">Loại biểu đồ</div>
                                                         <div class="col-md-8">
                                                             <select id="select" class="selectpicker" data-live-search="true" title="Chọn chart">
                                                                 @foreach($chartNames as $key => $chartName)
@@ -90,7 +90,7 @@
                                         
                                                 <div class="col-md-4">
                                                     <div class="row d-flex justify-content-start">
-                                                        <div class="col-md-4 card-title">Mục tiêu</div>
+                                                        <div class="col-md-4 card-title  d-flex align-items-center">Mục tiêu</div>
                                                         <div class="col-md-8">
                                                             <select class="selectpicker" id="" name="">
                                                                 <option disabled selected value>-</option>
@@ -106,7 +106,7 @@
         
                                                 <div class="col-md-4">
                                                     <div class="row d-flex justify-content-start" >
-                                                        <div class="col-md-4 card-title">Chỉ số key</div>
+                                                        <div class="col-md-4 card-title  d-flex align-items-center">Chỉ số key</div>
                                                         <div class="col-md-8">
                                                             <select class="selectpicker" name="doanhsoId">
                                                                <option disabled selected value>-</option>
@@ -143,17 +143,20 @@
                                     </div> --}}
 
                                     <div class="row mt-3">
-                                        <div class="col-md-12 result card ">
+                                        <div class="col-md-12 result">
                                             @foreach($barCharts as $chartName => $subCharts)
                                                 <div id="{{ $chartName }}Container" class="chart-container" style="display: @if($chartName == $chartNames[0]) block @else none @endif">
                                                     <div class="d-flex row">
                                                         @foreach($subCharts as $subChartKey => $subChartLabel)
-                                                        <div class="card-body col-sm-6 ">
-                                                            <div class="mainSection_chart-container mt-3 ">
-    
-                                                                    <canvas id="{{ $subChartKey }}" class="chart"></canvas>
+                                                        <div class=" col-sm-6 mb-3">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div class="mainSection_chart-container">
+                                                                        <canvas id="{{ $subChartKey }}" class="chart"></canvas>
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
                                                         @endforeach
 
                                                     </div>
