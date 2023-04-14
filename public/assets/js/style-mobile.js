@@ -17,19 +17,19 @@ $(document).ready(function () {
         $(".header_menu").slideToggle("fast");
         $(".center-menu-icon").toggleClass("bi-list bi-x");
     });
-    
 
-    $(document).click(function (event) {
-        // Nếu màn hình có chiều rộng nhỏ hơn 1023px
-        if ($(window).width() < 1023) {
+    if ($(window).width() < 1023) {
+        $(".menu_btn-sub").click(function () {
+            $(this).next("#header_submenu").slideToggle();
+        });
 
-            $(".menu_btn-sub").click(function () {
-                $(this).next("#header_submenu").slideToggle();
-            });
+        $(".more_btn").click(function () {
+            $(this).next(".header_more").slideToggle();
+        });
+        $(document).click(function (event) {
+            // Nếu màn hình có chiều rộng nhỏ hơn 1023px
 
-            $(".more_btn").click(function () {
-                $(this).next(".header_more").slideToggle();
-            });
+            
 
             // Nếu người dùng click ra ngoài aside-left và left-toggle-aside
             if (
@@ -52,6 +52,6 @@ $(document).ready(function () {
                     .removeClass("bi-box-arrow-in-right")
                     .addClass("bi-box-arrow-in-left");
             }
-        }
-    });
+        });
+    }
 });

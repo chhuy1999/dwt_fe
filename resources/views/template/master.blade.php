@@ -173,7 +173,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
             </div>
         </header>
 
-        <div class="pageWithSidebar" style="min-height: 1000px">
+        <div class="pageWithSidebar">
             @yield('content')
         </div>
 

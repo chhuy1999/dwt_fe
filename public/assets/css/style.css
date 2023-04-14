@@ -845,6 +845,8 @@ th {
     width: 100%;
     max-width: 40px;
     max-height: 40px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 
@@ -913,7 +915,7 @@ th {
 .aside-left {
     height: 100%;
     position: fixed;
-    z-index: 3;
+    z-index: 9;
     top: 0;
     left: 0;
     width: var(--width-sidebar);
@@ -1467,10 +1469,10 @@ th {
     font-size: var(--fz-12);
     text-align: center;
     padding: 7px 8px;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
 .header_menu-link span {
     display: block;
@@ -1877,4 +1879,8 @@ ul.modal_upload-list li:last-child {
 
 .section_mobile-wrapper {
     display: none;
+}
+
+.chart_wrapper {
+    display: flex;
 }
