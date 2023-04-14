@@ -1,4 +1,6 @@
-<div class="mainSection_card">
+
+
+<div class="mainSection_card d-none d-sm-block">
     <div class="row">
         <div class="col-md-3">
             <div class="text-nowrap">Đơn vị: </div>
@@ -14,6 +16,6 @@
 </div>
 
 {{-- Date Time Picker --}}
-<div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
+<div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden d-none d-sm-block">
     <input id="thismonth" class="form-control" type="text" />
 </div>

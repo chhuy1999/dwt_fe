@@ -1603,28 +1603,28 @@
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
 
     <!-- Chart Types -->
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_doanhSoVung.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart_kinhdoanh/StackedChart_doanhSoVung.js') }}"></script>
     <script type="text/javascript"
-        src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_doanhSoKhachHangPhoThong.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_doanhSoKhachHangSystem.js') }}">
+        src="{{ secure_asset('/assets/js/chart_kinhdoanh/StackedChart_doanhSoKhachHangPhoThong.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart_kinhdoanh/StackedChart_doanhSoKhachHangSystem.js') }}">
     </script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_soKhachHangActive.js') }}">
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart_kinhdoanh/StackedChart_soKhachHangActive.js') }}">
     </script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_soKhachHangMoMoi.js') }}">
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart_kinhdoanh/StackedChart_soKhachHangMoMoi.js') }}">
     </script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_soSkuActive.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart_kinhdoanh/StackedChart_soDoiDiaBan.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart_kinhdoanh/StackedChart_soSkuActive.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart_kinhdoanh/StackedChart_soDoiDiaBan.js') }}"></script>
 
     <script type="text/javascript" >
         // SELECT MULTIPLE LEFT SIDEBAR

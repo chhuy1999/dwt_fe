@@ -1,19 +1,5 @@
 <div id="aside-left" class="aside-left">
     <div class="sidebar">
-        <!-- <div class="sidebarHeader">
-            <div class="container">
-                <div class="sidebarHeader_wrapper">
-                    <div class="sidebarHeader_card">
-                        <div class="sidebarHeader_content">
-                            <span>Đơn vị: </span><strong>Kế toán</strong>
-                        </div>
-                        <div class="sidebarHeader_content">
-                            <span>Trưởng đơn vị: </span><strong>{{Session::get('user')['name']}}</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="sidebarBody">
             <div class="container">
                 <div class="sidebarBody_wrapper">

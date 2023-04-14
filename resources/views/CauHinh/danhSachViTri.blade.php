@@ -3,7 +3,7 @@
 @section('title', 'Danh sách vị trí')
 
 @section('header-style')
-    {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ secure_asset('assets/plugins/jquery-treeSelect/cbtree.css') }}"> --}}
 @endsection
 
 @section('content')
@@ -107,12 +107,12 @@
                                                                 <div class="btn" data-bs-toggle="modal"
                                                                     data-bs-target="#suaDSThemViTri{{ $value->id }}">
                                                                     <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                                        src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                 </div>
                                                                 <div class="btn" data-bs-toggle="modal"
                                                                     data-bs-target="#xoaViTri{{ $value->id }}">
                                                                     <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                                        src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -462,10 +462,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -480,10 +480,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -498,10 +498,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -516,10 +516,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -534,10 +534,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -552,10 +552,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -570,10 +570,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -590,10 +590,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -608,10 +608,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -626,10 +626,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -644,10 +644,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -662,10 +662,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -680,10 +680,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -698,10 +698,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -747,10 +747,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -765,10 +765,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -783,10 +783,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -801,10 +801,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -819,10 +819,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -837,10 +837,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -855,10 +855,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -875,10 +875,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -893,10 +893,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -911,10 +911,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -958,10 +958,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -976,10 +976,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -994,10 +994,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1012,10 +1012,10 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1030,11 +1030,11 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1049,11 +1049,11 @@
                                 </div>
                                 <div class="form-check_actions">
                                     <div class="btn">
-                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1069,11 +1069,11 @@
                                 <div class="form-check_actions">
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1091,11 +1091,11 @@
                                 <div class="form-check_actions">
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1111,11 +1111,11 @@
                                 <div class="form-check_actions">
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1131,11 +1131,11 @@
                                 <div class="form-check_actions">
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1151,11 +1151,11 @@
                                 <div class="form-check_actions">
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
                                         <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1764,15 +1764,7 @@
     </div>
 @endsection
 @section('footer-script')
-
-
-<script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-<script type="text/javascript"
-src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-
-{{-- <script src="https://www.jqueryscript.net/demo/Drop-Down-Combo-Tree/comboTreePlugin.js"  type="text/javascript"></script> --}}
-{{-- <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script> --}}
+{{-- <script src="{{ secure_asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script> --}}
 
     <script>
         $(document).ready(function() {

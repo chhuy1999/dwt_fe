@@ -50,12 +50,12 @@
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suaDSCapToChuc">
                                                                         <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                     </div>
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#xoaViTri">
                                                                         <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -259,10 +259,6 @@
 
 @endsection
 @section('footer-script')
-    
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    
     <script>
         function fileValue(value) {
             var path = value.value;

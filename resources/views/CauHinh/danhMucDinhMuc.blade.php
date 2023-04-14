@@ -3,7 +3,7 @@
 @section('title', 'Danh sách định mức lao động')
 
 @section('header-style')
-    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
 @endsection
 
 @section('content')
@@ -25,8 +25,8 @@
                                 <div class="card-body">
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="position-relative">
-                                                <table id="dsDinhMuc" class="table table-responsive table-hover table-bordered">
+                                            <div class="table-responsive">
+                                                <table id="dsDinhMuc" class="table table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center">STT</th>
@@ -86,7 +86,7 @@
                                                                                 data-bs-toggle="modal"
                                                                                 data-bs-target="#suaMoiDinhMuc{{ $target->id }}">
                                                                                 <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                                 Sửa
                                                                             </a>
                                                                         </li>
@@ -96,7 +96,7 @@
                                                                                 data-bs-target="#xoaThuocTinh{{ $target->id }}"
                                                                                 data-repeater-delete>
                                                                                 <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                                 Xóa
                                                                             </a>
                                                                         </li>
@@ -415,7 +415,7 @@
                             {{-- <div class="col-sm-6">
                                 <div class="mb-3">
                                     <input type="text" class="form-control comboTreeInputBox" name="description"
-                                        autocomplete="off" id="thuocDonVi" placeholder="Đơn vị phụ trách *">
+                                        id="thuocDonVi" placeholder="Đơn vị phụ trách *">
                                 </div>
                             </div> --}}
 
@@ -513,17 +513,14 @@
 @endsection
 @section('footer-script')
     <!-- ChartJS -->
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    
+    <script src="{{ secure_asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
-    <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
+    <script src="{{ secure_asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
         var data = [{
@@ -680,7 +677,7 @@
 <script>
     const targetTable = $('#dsDinhMuc').DataTable({
         paging: true,
-        ordering: false,
+        ordering: true,
         order: [[0, 'desc']],
         pageLength: 20,
         language: {

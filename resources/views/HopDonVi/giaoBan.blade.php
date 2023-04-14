@@ -30,7 +30,7 @@
             box-shadow: none;
         }
 
-        .bootstrap-select>.dropdown-toggle:after {
+        .hidden-arrow .bootstrap-select>.dropdown-toggle:after {
             display: none;
         }
 
@@ -144,7 +144,7 @@
                                     <strong class="text-nowrap">{{ $meeting->departement->name ?? 'Chưa có đơn vị' }}</strong>
                                 </div>
                                 <div class="col-sm-2">Chủ trì:</div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10 hidden-arrow">
                                     <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5" id="leaderSelect">
                                         @foreach ($listUsers->data as $value)
                                             @if ($meeting->leader_id == $value->id)
@@ -163,8 +163,8 @@
                                     Biên bản họp
                                 </h5>
                             </div>
-                            <div>
-                                <select class="form-select form-select-lg style_input ms-2 fw-bolder">
+                            <div class="hidden-arrow">
+                                <select class="selectpicker mainSection_width-select form-select-lg style_input ms-2 fw-bolder">
                                     {{-- <option >Giao ban Ngày</option>
                                     <option>Tuần</option>
                                     <option>Tháng</option>
@@ -198,13 +198,13 @@
                                                         <div class="col-md-7">
                                                             <div class="d-flex align-items-center mb-3">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ secure_asset('assets/img/time.svg') }}" />
                                                                 </div>
-                                                                <input type="text" name="daterange" id="meetTime" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
+                                                                <input type="text" name="daterange" id="meetTime" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                             </div>
                                                             <div class="d-flex align-items-start">
                                                                 <div class="d-flex">
-                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/muiten.svg') }}" />
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ secure_asset('assets/img/muiten.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
                                                                     <textarea readonly name="" id="" rows="1" cols="" class="form-control" placeholder="Nhập chủ đề/mục tiêu cuộc họp">{{ $meeting->title }}</textarea>
@@ -214,7 +214,7 @@
                                                         <div class="col-md-5">
                                                             <div class="mb-3 d-flex align-items-center justify-content-between">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ secure_asset('assets/img/pencil.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
                                                                     <select class="selectpicker" data-width="100%" data-live-search="true" title="Chọn thư ký..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" name="secretary_id" data-live-search-placeholder="Tìm kiếm...">
@@ -233,7 +233,7 @@
                                                             </div>
                                                             <div class="mt-3 d-flex align-items-center justify-content-between">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/person-check.svg') }}" />
+                                                                    <img style="height:14px; width:14px; margin-right:6px" src="{{ secure_asset('assets/img/person-check.svg') }}" />
                                                                 </div>
                                                                 <div style="flex:1">
                                                                     <select class="selectpicker" multiple data-actions-box="true" data-width="100%" data-live-search="true" title="Chọn thành viên..." data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} thành viên" data-live-search-placeholder="Tìm kiếm..." name="participants[]">
@@ -368,7 +368,7 @@
                                                                 <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
                                                                     <div class="modal_upload-addFile me-3">
                                                                         <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                            <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/upload-file.svg') }}" />
                                                                             Tải file lên
                                                                             <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
                                                                         </button>
@@ -512,13 +512,13 @@
                                                                             @endif
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong{{ $item->id }}">
-                                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                                     Sửa
                                                                                 </a>
                                                                             </li>
                                                                             <li>
                                                                                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $item->id }}" data-repeater-delete>
-                                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    <img style="width:16px;height:16px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                                     Xóa
                                                                                 </a>
                                                                             </li>
@@ -1222,7 +1222,7 @@
                                                     <input type="number" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Giá trị" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                                 </div>
                                                 <div class="col-md-1 mb-3 d-flex align-items-center">
-                                                    <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
+                                                    <img data-repeater-delete role="button" src="{{ secure_asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1248,22 +1248,18 @@
 
 @endsection
 @section('footer-script')
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
     <!-- ChartJS -->
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
     <!-- Plugins -->
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
 
     <script>
@@ -1651,7 +1647,7 @@
                     <i class="bi bi-link-45deg"></i> ${file.name}
                 </span>
                 <span class="modal_upload-remote" onclick="removeFileFromFileList(event, ${i})">
-                    <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
+                    <img style="width:18px;height:18px" src="{{ secure_asset('assets/img/trash.svg') }}" />
                 </span>
             </li>`;
                 } else {

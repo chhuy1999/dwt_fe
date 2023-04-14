@@ -22,7 +22,7 @@
                                 <div class="card-body">
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="position-relative">
+                                            <div class="table-responsive">
                                                 <table id="dsDaoTao"
                                                     class="table table-responsive table-hover table-bordered">
                                                     <thead>
@@ -93,13 +93,13 @@
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#suaBienBanDaoTao">
                                                                             <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                         </div>
                                                                         <div class="btn" href="#"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#xoaThuocTinh">
                                                                             <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -298,7 +298,7 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Biên bản đào tạo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="" action="" autocomplete="off">
+                <form method="" action="">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -365,8 +365,6 @@
 
 @endsection
 @section('footer-script')
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
 
     <script>
         const targetTable = $('#dsDaoTao').DataTable({

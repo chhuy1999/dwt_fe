@@ -51,12 +51,12 @@
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#suacapnhansu{{ $value->id }}">
                                                                         <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                            src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                     </div>
                                                                     <div class="btn" data-bs-toggle="modal"
                                                                         data-bs-target="#xoacapnhansu{{ $value->id }}">
                                                                         <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -207,11 +207,6 @@
 
 @endsection
 @section('footer-script')
-    
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-
     <script>
         const targetTable = $('#dsCapNhanSu').DataTable({
             paging: true,

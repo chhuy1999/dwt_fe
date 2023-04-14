@@ -26,11 +26,11 @@
                                                 <div class="btn" data-bs-toggle="modal"
                                                     data-bs-target="#suaDonViPhongBan">
                                                     <img style="width:16px;height:16px"
-                                                        src="{{ asset('assets/img/edit.svg') }}" />
+                                                        src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                 </div>
                                                 <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc">
                                                     <img style="width:16px;height:16px"
-                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                        src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                 </div>
                                             </div>
                                             <div class="info_wrapper">
@@ -170,12 +170,12 @@
                                                                         <div class="btn" data-bs-toggle="modal"
                                                                             data-bs-target="#suaThanhVien">
                                                                             <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                src="{{ secure_asset('assets/img/edit.svg') }}" />
                                                                         </div>
                                                                         <div class="btn" data-bs-toggle="modal"
                                                                             data-bs-target="#xoaThanhVien">
                                                                             <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                src="{{ secure_asset('assets/img/trash.svg') }}" />
                                                                         </div>
                                                                 </td>
                                                             </tr>
@@ -346,7 +346,7 @@
                                     <input type="file" name="" id="logo" onchange="fileValue(this)">
                                     <label for="logo" class="upload-field" id="file-label">
                                         <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ asset('assets/img/preview.jpg') }}"
+                                            <img id="image-preview" src="{{ secure_asset('assets/img/preview.jpg') }}"
                                                 alt="">
                                         </div>
                                     </label>
@@ -604,7 +604,7 @@
                                     <input type="file" name="" id="logo" onchange="fileValue(this)">
                                     <label for="logo" class="upload-field" id="file-label">
                                         <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}"
+                                            <img id="image-preview" src="{{ secure_asset('assets/img/preview-image.svg') }}"
                                                 alt="">
                                         </div>
                                     </label>
@@ -1402,7 +1402,6 @@
     </div>
 @endsection
 @section('footer-script')
-    <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script>
         //     $('#coCauToChuc').DataTable({
         //         paging: true,
@@ -1491,8 +1490,7 @@
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js">
+    
     </script>
-    <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
+    <script src="{{ secure_asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 @endsection

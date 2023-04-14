@@ -31,11 +31,6 @@ label.col-form-label {
     align-items: center;
 }
 
-.modal-ku {
-    width: 750px;
-    margin: auto;
-}
-
 .contenteditable {
     font-size: 1.2rem;
     outline: none;
@@ -588,7 +583,6 @@ th {
     font-size: var(--fz-12);
 }
 
-
 .has-search .form-control {
     padding-left: 0;
     text-indent: 24px;
@@ -612,7 +606,7 @@ th {
     display: inline-block;
     padding: 7px 8px;
     border-radius: var(--border-radius-mini);
-    color: var(--white-color)
+    color: var(--white-color);
 }
 .btn-export:hover {
     background-color: transparent;
@@ -919,7 +913,7 @@ th {
 .aside-left {
     height: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     top: 0;
     left: 0;
     width: var(--width-sidebar);
@@ -931,7 +925,7 @@ th {
 .aside-right {
     height: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     top: 0;
     right: 0;
     width: var(--width-sidebar);
@@ -1031,16 +1025,16 @@ th {
 }
 
 .sidebarBody_card.bg-pink-blur {
-    background-color: var(--pink-color-blur)!important;
+    background-color: var(--pink-color-blur) !important;
 }
 
 .sidebarBody_card.bg-yellow-blur,
 .bg-yellow-blur {
-    background-color: var(--yellow-color-blur)!important;
+    background-color: var(--yellow-color-blur) !important;
 }
 .sidebarBody_card.bg-blue-blur,
 .bg-blue-blur {
-    background-color: var(--blue-color-blur)!important;
+    background-color: var(--blue-color-blur) !important;
 }
 
 .sidebarBody_card-title strong {
@@ -1300,7 +1294,7 @@ th {
 }
 .mainWrap {
     /* width: calc(100% - var(--width-sidebar) * 2); */
-    height: 100vw;
+    /* height: 100vw; */
     line-height: var(--fz-20);
     background-color: var(--white-color-blur);
     position: relative;
@@ -1313,6 +1307,9 @@ th {
     border-top: 1px solid var(--grey-color);
     position: relative;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .mainSection_heading {
@@ -1378,7 +1375,7 @@ th {
     background-color: transparent;
     max-width: 140px;
     width: 100%;
-    box-shadow: none!important;
+    box-shadow: none !important;
 }
 
 .mainSection_thismonth input:focus {
@@ -1616,62 +1613,6 @@ th {
     border-bottom: initial;
 }
 
-/*** Mobile Menu ***/
-.header_menu-mobile {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 200px;
-    max-width: 100%;
-    background-color: #fff;
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: all ease-in 0.2s;
-    z-index: 1;
-}
-.header_overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: none;
-    animation: fadeIn ease-in 0.2s;
-    z-index: 1;
-}
-
-.header_input:checked ~ .header_overlay {
-    display: block;
-}
-.header_input:checked ~ .header_menu-mobile {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.header_menu-mobile-list {
-    margin-top: 10px;
-    padding: 10px;
-}
-
-.header_menu-mobile-link {
-    display: block;
-    padding: 8px 0;
-    font-size: var(--fz-12);
-    color: var(--primary-color);
-    font-weight: 500;
-}
-
-.header_mobile-bars i {
-    display: none;
-}
-
-.header_menu-mobile-link i {
-    margin-right: 10px;
-    text-align: center;
-}
 /* END STYLE MENU */
 
 .header_actions-wrapper .header_actions-notification {
@@ -1680,7 +1621,7 @@ th {
 
 .main {
     padding: 70px 0 50px;
-    height: 100%;
+    flex: 1;
 }
 .mainContent {
     background-color: #4f5f71;
@@ -1700,8 +1641,6 @@ th {
     line-height: 32px;
     text-align: center;
     background-color: #e5e5e5;
-    /* position: absolute; */
-    /* width: 100%; */
 }
 
 .showhide {
@@ -1924,7 +1863,7 @@ ul.modal_upload-list li:last-child {
 .modal_upload-action .modal_upload-addFile button,
 .modal_upload-action .modal_upload-addLink button {
     color: var(--primary-color);
-    border: 1px solid #B4B3B2;
+    border: 1px solid #b4b3b2;
     font-weight: 500;
 }
 .modal_upload-action .modal_upload-addFile button:hover,
@@ -1933,5 +1872,9 @@ ul.modal_upload-list li:last-child {
 }
 
 .form-check_wrapper {
+    display: none;
+}
+
+.section_mobile-wrapper {
     display: none;
 }
