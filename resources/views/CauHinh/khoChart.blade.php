@@ -160,12 +160,15 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Stacked.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_StackedWithGroups.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Vertical.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/LineChartTwo.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
+    <!--Line Charts JS -->
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_InterpolationModes.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_LineChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_LineSegmentStyling.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_LineStyling.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_MultiAxisLineChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_PointStyling.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_SteppedLineCharts.js') }}"></script>
 
     <script>
             document.addEventListener('DOMContentLoaded', function () {

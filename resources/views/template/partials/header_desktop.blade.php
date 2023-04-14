@@ -102,6 +102,11 @@
                 <i class="bi bi-journal-arrow-up"></i>
                 <span>DWT & KPI</span>
             </a>
+            <ul id="header_submenu">
+                <li class="header_submenu-items">
+                    <a href="/dashboard_admin" class="header_submenu-link">Dashboard Admin</a>
+                </li>
+            </ul>
         </li>
         <li class="header_menu-item">
             <a class="header_menu-link menu_btn-sub" href="#">

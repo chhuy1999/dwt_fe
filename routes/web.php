@@ -228,6 +228,13 @@ Route::get('kho-chart', function () {
     return view('CauHinh.khoChart');
 });
 
+
+// DWT&KPI
+Route::get('dashboard_admin', function () {
+    return view('DWT&KPI.dashboardAdmin');
+});
+
+
 // Trang Dịch vụ Bán Hàng
 Route::get('dich-vu-ban-hang', function () {
     return view('page.sell.serviceSell');
