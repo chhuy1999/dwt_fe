@@ -21,9 +21,7 @@
 
                                         <div class="mainSection_total-kpi">
                                             Tổng KPI cá nhân tạm tính:
-                                            <strong style="color: var(--primary-color); font-weight: 700"
-                                                >40</strong
-                                            >
+                                            <strong style="color: var(--primary-color); font-weight: 700">40</strong>
                                             KPI
                                         </div>
                                         <div class="action_wrapper d-flex">
@@ -37,44 +35,33 @@
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <div
-                                            class="table-responsive style_table-1 table-bordered mainSection_table w-50"
-                                        >
+                                        <div class="table-responsive style_table-1 table-bordered mainSection_table w-50">
                                             <table class="table caption-top">
                                                 <thead>
-                                                    <td
-                                                        colspan="4"
-                                                        style="
+                                                    <td colspan="4" style="
                                                             text-align: center;
                                                             color: inherit;
                                                             font-weight: 700;
                                                             padding: 0;
-                                                        "
-                                                    >
+                                                        ">
                                                         Mục tiêu nhiệm vụ tháng
                                                     </td>
                                                     <tr>
                                                         <th scope="col" style="font-weight: bold">TT</th>
-                                                        <th
-                                                            scope="col"
-                                                            style="
+                                                        <th scope="col" style="
                                                                 text-align: left;
                                                                 font-weight: bold;
                                                                 padding-left: 4px;
-                                                            "
-                                                        >
+                                                            ">
                                                             Mục tiêu nhiệm vụ
                                                         </th>
                                                         <th scope="col" style="font-weight: bold">
                                                             Thời hạn
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            style="
+                                                        <th scope="col" style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: bold;
-                                                            "
-                                                        >
+                                                            ">
                                                             Lũy kế
                                                         </th>
                                                     </tr>
@@ -85,22 +72,17 @@
                                                             <div class="content_table">1</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Tìm kiếm nhà cung cấp
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">31/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">5</div>
                                                         </td>
                                                     </tr>
@@ -109,22 +91,17 @@
                                                             <div class="content_table">2</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Mua hàng nội địa
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">31/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">6</div>
                                                         </td>
                                                     </tr>
@@ -133,22 +110,17 @@
                                                             <div class="content_table">3</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Viết bài
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">21/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">7</div>
                                                         </td>
                                                     </tr>
@@ -157,22 +129,17 @@
                                                             <div class="content_table">4</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Thiết kế giao diện
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">13/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">8</div>
                                                         </td>
                                                     </tr>
@@ -181,58 +148,42 @@
                                                             <div class="content_table">5</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Viết bài
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">23/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">9</div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div
-                                            class="table-responsive style_table-2 table-bordered mainSection_table w-100"
-                                        >
+                                        <div class="table-responsive style_table-2 table-bordered mainSection_table w-100">
                                             <table class="table">
                                                 <thead>
-                                                    <td
-                                                        colspan="30"
-                                                        style="
+                                                    <td colspan="30" style="
                                                             text-align: center;
                                                             color: inherit;
                                                             font-weight: 700;
                                                             padding: 0;
-                                                        "
-                                                    >
+                                                        ">
                                                         Nhật kí công việc
                                                     </td>
                                                     <tr>
                                                         <th scope="col">1</th>
                                                         <th scope="col">2</th>
                                                         <th scope="col">3</th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning"
-                                                        >
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             4
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-danger bg-opacity-10 text-danger"
-                                                        >
+                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                             5
                                                         </th>
                                                         <th scope="col">6</th>
@@ -240,16 +191,10 @@
                                                         <th scope="col">8</th>
                                                         <th scope="col">9</th>
                                                         <th scope="col">10</th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning"
-                                                        >
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             11
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-danger bg-opacity-10 text-danger"
-                                                        >
+                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                             12
                                                         </th>
                                                         <th scope="col">13</th>
@@ -257,16 +202,10 @@
                                                         <th scope="col">15</th>
                                                         <th scope="col">16</th>
                                                         <th scope="col">17</th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning"
-                                                        >
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             18
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-danger bg-opacity-10 text-danger"
-                                                        >
+                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                             19
                                                         </th>
                                                         <th scope="col">20</th>
@@ -274,16 +213,10 @@
                                                         <th scope="col">22</th>
                                                         <th scope="col">23</th>
                                                         <th scope="col">24</th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning"
-                                                        >
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             25
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-danger bg-opacity-10 text-danger"
-                                                        >
+                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                             26
                                                         </th>
                                                         <th scope="col">27</th>
@@ -769,9 +702,7 @@
 
                                         <div class="mainSection_total-kpi">
                                             Tổng KPI bộ phận tạm tính:
-                                            <strong style="color: var(--primary-color); font-weight: 700"
-                                                >140</strong
-                                            >
+                                            <strong style="color: var(--primary-color); font-weight: 700">140</strong>
                                             KPI
                                         </div>
                                         <div class="action_wrapper d-flex">
@@ -785,44 +716,33 @@
                                         </div>
                                     </div>
                                     <div class="d-flex">
-                                        <div
-                                            class="table-responsive style_table-1 table-bordered mainSection_table w-50"
-                                        >
+                                        <div class="table-responsive style_table-1 table-bordered mainSection_table w-50">
                                             <table class="table">
                                                 <thead>
-                                                    <td
-                                                        colspan="4"
-                                                        style="
+                                                    <td colspan="4" style="
                                                             text-align: center;
                                                             color: inherit;
                                                             font-weight: 700;
                                                             padding: 0;
-                                                        "
-                                                    >
+                                                        ">
                                                         Mục tiêu nhiệm vụ tháng
                                                     </td>
                                                     <tr>
                                                         <th scope="col" style="font-weight: bold">TT</th>
-                                                        <th
-                                                            scope="col"
-                                                            style="
+                                                        <th scope="col" style="
                                                                 text-align: left;
                                                                 font-weight: bold;
                                                                 padding-left: 4px;
-                                                            "
-                                                        >
+                                                            ">
                                                             Mục tiêu nhiệm vụ
                                                         </th>
                                                         <th scope="col" style="font-weight: bold">
                                                             Thời hạn
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            style="
+                                                        <th scope="col" style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: bold;
-                                                            "
-                                                        >
+                                                            ">
                                                             Lũy kế
                                                         </th>
                                                     </tr>
@@ -833,22 +753,17 @@
                                                             <div class="content_table">1</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Tìm kiếm nhà cung cấp
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">31/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">5</div>
                                                         </td>
                                                     </tr>
@@ -857,22 +772,17 @@
                                                             <div class="content_table">2</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Mua hàng nội địa
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">31/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">6</div>
                                                         </td>
                                                     </tr>
@@ -881,22 +791,17 @@
                                                             <div class="content_table">3</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Viết bài
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">21/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">7</div>
                                                         </td>
                                                     </tr>
@@ -905,22 +810,17 @@
                                                             <div class="content_table">4</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Thiết kế giao diện
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">13/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">8</div>
                                                         </td>
                                                     </tr>
@@ -929,58 +829,42 @@
                                                             <div class="content_table">5</div>
                                                         </td>
                                                         <td>
-                                                            <div
-                                                                class="content_table"
-                                                                style="justify-content: flex-start"
-                                                            >
+                                                            <div class="content_table" style="justify-content: flex-start">
                                                                 Viết bài
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="content_table">23/01</div>
                                                         </td>
-                                                        <td
-                                                            style="
+                                                        <td style="
                                                                 border-right: 1px solid #e3e3e3;
                                                                 font-weight: 700;
-                                                            "
-                                                        >
+                                                            ">
                                                             <div class="content_table">9</div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div
-                                            class="table-responsive style_table-2 table-bordered mainSection_table w-100"
-                                        >
+                                        <div class="table-responsive style_table-2 table-bordered mainSection_table w-100">
                                             <table class="table">
                                                 <thead>
-                                                    <td
-                                                        colspan="30"
-                                                        style="
+                                                    <td colspan="30" style="
                                                             text-align: center;
                                                             color: inherit;
                                                             font-weight: 700;
                                                             padding: 0;
-                                                        "
-                                                    >
+                                                        ">
                                                         Nhật kí công việc
                                                     </td>
                                                     <tr>
                                                         <th scope="col">1</th>
                                                         <th scope="col">2</th>
                                                         <th scope="col">3</th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning"
-                                                        >
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             4
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-danger bg-opacity-10 text-danger"
-                                                        >
+                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                             5
                                                         </th>
                                                         <th scope="col">6</th>
@@ -988,16 +872,10 @@
                                                         <th scope="col">8</th>
                                                         <th scope="col">9</th>
                                                         <th scope="col">10</th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning"
-                                                        >
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             11
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-danger bg-opacity-10 text-danger"
-                                                        >
+                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                             12
                                                         </th>
                                                         <th scope="col">13</th>
@@ -1005,16 +883,10 @@
                                                         <th scope="col">15</th>
                                                         <th scope="col">16</th>
                                                         <th scope="col">17</th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning"
-                                                        >
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             18
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-danger bg-opacity-10 text-danger"
-                                                        >
+                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                             19
                                                         </th>
                                                         <th scope="col">20</th>
@@ -1022,16 +894,10 @@
                                                         <th scope="col">22</th>
                                                         <th scope="col">23</th>
                                                         <th scope="col">24</th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-warning bg-opacity-10 text-warning"
-                                                        >
+                                                        <th scope="col" class="bg-warning bg-opacity-10 text-warning">
                                                             25
                                                         </th>
-                                                        <th
-                                                            scope="col"
-                                                            class="bg-danger bg-opacity-10 text-danger"
-                                                        >
+                                                        <th scope="col" class="bg-danger bg-opacity-10 text-danger">
                                                             26
                                                         </th>
                                                         <th scope="col">27</th>
@@ -1605,15 +1471,15 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
 
 
-    <script  type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_doanhThuToanCongTy.js') }}"></script>
-    <script  type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_tongChiPhiThang.js') }}"></script>
-    <script  type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/LineChart_dongTienThuan.js') }}"></script>
-    <script  type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_tinhTrangKho.js') }}"></script>
-    <script  type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_congNoPhaiThu.js') }}"></script>
-    <script  type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_noVayTaiChinh.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_doanhThuToanCongTy.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_tongChiPhiThang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/LineChart_dongTienThuan.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_tinhTrangKho.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_congNoPhaiThu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart_ketoan/PieChart_noVayTaiChinh.js') }}"></script>
 
 
-    <script type="text/javascript" >
+    <script type="text/javascript">
         // SELECT MULTIPLE LEFT SIDEBAR
         const select = document.getElementById('select');
         const elems = document.querySelectorAll('.data_chart-items');

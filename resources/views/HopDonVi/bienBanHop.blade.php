@@ -258,7 +258,6 @@
     @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
 @endsection
 @section('footer-script')
-    <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>

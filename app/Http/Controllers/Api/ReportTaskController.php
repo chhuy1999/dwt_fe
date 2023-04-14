@@ -33,7 +33,23 @@ class ReportTaskController extends Controller
                 'involvedPeople' => 'nullable|array',
             ]);
 
-            $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
+            if(isset($data['deadline'])) {
+                $dateRange = $data['deadline'];
+                $startDate = explode(" - ", $dateRange)[0];
+                //remove space
+                $startDate = str_replace(" ", "", $startDate);
+                //replace / to -
+                $startDate = str_replace("/", "-", $startDate);
+                $endDate = explode(" - ", $dateRange)[1];
+                //remove space
+                $endDate = str_replace(" ", "", $endDate);
+                //replace / to -
+                $endDate = str_replace("/", "-", $endDate);
+
+                $data['startDate'] = date('Y-m-d', strtotime($startDate));
+                $data['deadline'] = date('Y-m-d', strtotime($endDate));
+
+            }
             $result = $this->dwtService->createReportTask($data);
             //update report status
             if (isset($data['report_id'])) {
@@ -76,8 +92,22 @@ class ReportTaskController extends Controller
                 'involvedPeople' => 'nullable|array',
             ]);
 
-            if (isset($data['deadline'])) {
-                $data['deadline'] = date('Y-m-d', strtotime($data['deadline']));
+            if(isset($data['deadline'])) {
+                $dateRange = $data['deadline'];
+                $startDate = explode(" - ", $dateRange)[0];
+                //remove space
+                $startDate = str_replace(" ", "", $startDate);
+                //replace / to -
+                $startDate = str_replace("/", "-", $startDate);
+                $endDate = explode(" - ", $dateRange)[1];
+                //remove space
+                $endDate = str_replace(" ", "", $endDate);
+                //replace / to -
+                $endDate = str_replace("/", "-", $endDate);
+
+                $data['startDate'] = date('Y-m-d', strtotime($startDate));
+                $data['deadline'] = date('Y-m-d', strtotime($endDate));
+
             }
             $result = $this->dwtService->updateReportTask($id, $data);
             //return

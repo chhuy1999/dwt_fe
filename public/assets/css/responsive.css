@@ -241,10 +241,6 @@
         font-size: 1.6rem;
     }
 
-    .header_menu {
-        display: none;
-    }
-
     .aside-left,
     .aside-right {
         display: none;
@@ -261,13 +257,107 @@
     .header_actions-wrapper .header_actions-notification {
         padding-right: 0px;
     }
-    .mainWrap {
+    #btn-left, #btn-right,
+    .header_menu-list {
         display: none;
+    }
+
+    .header_menu-list {
+        position: fixed;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        display: block;
+        background: #23252b;
+        max-width: 350px;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        padding: 90px 50px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        list-style: none;
+        z-index: 1;
+    }
+    
+    .header_menu-list .header_menu-item,
+    .header_menu-link {
+        text-align: left;
+    }
+
+    .header_menu-link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .header_menu-link span {
+        padding-left: 10px;
+    }
+
+    .header_menu-list > li > #header_submenu{
+        opacity: 1;
+        position: relative;
+        top: 0;
+        transform: translateX(10px);
+        background-color: blue;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .header_menu-list > li:hover > #header_submenu{
+        transform: translateX(10px);
+    }
+
+    .header_menu-list .header_menu-item {
+        position: initial;
+    }
+    
+    .header_menu-list > li:hover > #header_submenu .header_submenu-items{
+        box-shadow: none;
+    }
+    .header_menu-list > li:hover > #header_submenu .header_submenu-items:hover{
+        background-color: none;
+    }
+    .header_menu-list > li:hover > #header_submenu .header_submenu-items .header_submenu-link:hover{
+        color: red;
+        transition: 0.3s;
+    }
+
+    .more .header_more {
+        position: initial;
+        pointer-events: all;
+        transform: translateX(10px)!important;
+        opacity: 1;
+    }
+
+    #header_submenu,
+    .header_more {
+        display: none;
+    }
+    
+    /* Menu bottom */
+    .section_mobile-wrapper {
+        position: fixed;
+        display: flex;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: var(--white-color-blur);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px -10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        z-index: 1995;
+    }
+
+    .section_mobile-link {
+        padding: 10px;
+        display: block;
+        font-size: var(--fz-18);
+        color: var(--primary-color) !important;
     }
 }
 
 /* Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
+    
 
 }
 

@@ -14,12 +14,12 @@
                         <div class="mainSection_card">
                             <div class="mainSection_content">
                                 <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{ Session::get('department_name') }}</strong>
                                 </div>
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{ Session::get('user')['name'] }}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -68,8 +68,7 @@
                                                     <tbody data-repeater-list="group-a">
                                                         <tr data-repeater-item>
                                                             <td>
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center">
+                                                                <div class="d-flex align-items-center justify-content-center">
                                                                     1
                                                                 </div>
                                                             </td>
@@ -98,12 +97,9 @@
                                                                 1.5
                                                             </td>
                                                             <td>
-                                                                <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                        class="bi bi-three-dots-vertical"></i>
+                                                                <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                 </div>
-                                                                <ul class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuButton1">
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
@@ -121,8 +117,7 @@
 
                                                         <tr data-repeater-item>
                                                             <td>
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center">
+                                                                <div class="d-flex align-items-center justify-content-center">
                                                                     2
                                                                 </div>
                                                             </td>
@@ -151,12 +146,9 @@
                                                                 1.5
                                                             </td>
                                                             <td>
-                                                                <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                        class="bi bi-three-dots-vertical"></i>
+                                                                <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                 </div>
-                                                                <ul class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuButton1">
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
@@ -173,8 +165,7 @@
                                                         </tr>
                                                         <tr data-repeater-item>
                                                             <td>
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center">
+                                                                <div class="d-flex align-items-center justify-content-center">
                                                                     3
                                                                 </div>
                                                             </td>
@@ -203,12 +194,9 @@
                                                                 1.5
                                                             </td>
                                                             <td>
-                                                                <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                        class="bi bi-three-dots-vertical"></i>
+                                                                <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                 </div>
-                                                                <ul class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuButton1">
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
@@ -225,8 +213,7 @@
                                                         </tr>
                                                         <tr data-repeater-item>
                                                             <td>
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center">
+                                                                <div class="d-flex align-items-center justify-content-center">
                                                                     4
                                                                 </div>
                                                             </td>
@@ -255,12 +242,9 @@
                                                                 1.5
                                                             </td>
                                                             <td>
-                                                                <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                        class="bi bi-three-dots-vertical"></i>
+                                                                <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                 </div>
-                                                                <ul class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuButton1">
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
@@ -277,8 +261,7 @@
                                                         </tr>
                                                         <tr data-repeater-item>
                                                             <td>
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center">
+                                                                <div class="d-flex align-items-center justify-content-center">
                                                                     5
                                                                 </div>
                                                             </td>
@@ -307,12 +290,9 @@
                                                                 1.5
                                                             </td>
                                                             <td>
-                                                                <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                        class="bi bi-three-dots-vertical"></i>
+                                                                <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                 </div>
-                                                                <ul class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuButton1">
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
@@ -329,8 +309,7 @@
                                                         </tr>
                                                         <tr data-repeater-item>
                                                             <td>
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center">
+                                                                <div class="d-flex align-items-center justify-content-center">
                                                                     6
                                                                 </div>
                                                             </td>
@@ -359,12 +338,9 @@
                                                                 1.5
                                                             </td>
                                                             <td>
-                                                                <div class="dotdotdot" id="dropdownMenuButton1"
-                                                                    data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                                        class="bi bi-three-dots-vertical"></i>
+                                                                <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                 </div>
-                                                                <ul class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuButton1">
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                                     <li>
                                                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc">
                                                                             <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
@@ -409,8 +385,7 @@
                             <label for="staticEmail" class="col-form-label" style="padding-right:6px;">Vấn đề tồn đọng
                             </label>
                             <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" readonly class="contenteditable"
-                                    placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông"></div>
+                                <div contenteditable="true" readonly class="contenteditable" placeholder="Chưa hoàn thành báo cáo do abc chưa gửi thông"></div>
                             </div>
                         </div>
                     </div>
@@ -427,8 +402,7 @@
                         <div class="col-sm-3 d-flex  align-items-center">
                             <label for="inputPassword" class="col-form-label" style="padding-right:6px;">Thời hạn</label>
                             <div class="w-100" style="flex:1">
-                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control"
-                                    type="text">
+                                <input id="datetimepicker3" readonly value="<?php echo date('d/m/Y'); ?>" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="col-sm-5 d-flex  align-items-center">
@@ -448,11 +422,9 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-12 d-flex  align-items-center">
-                            <label for="inputPassword" class="col-form-label"
-                                style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
+                            <label for="inputPassword" class="col-form-label" style="padding-right:10px;border-radius:4px">Phản hồi vấn đề</label>
                             <div class="w-100" style="flex:1;overflow:hidden">
-                                <div contenteditable="true" class="contenteditable"
-                                    placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
+                                <div contenteditable="true" class="contenteditable" placeholder="Vui lòng phản hồi vấn đề tại đây"></div>
                             </div>
                         </div>
 
@@ -479,7 +451,7 @@
                         <div class="col-sm-12">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
                                 <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên định mức">
+                                &nbsp;<input class="form-control" style="width:80%" type="text" placeholder="Nhập tên định mức">
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -514,7 +486,9 @@
                         </div>
                         <div class="col-sm-5">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
+                                <div class="col-sm-3">
+                                    <div class=" modal_body-title">Vị trí</div>
+                                </div>
                                 <div class="col-sm-9">
                                     <select class="selectpicker" title="Chọn Vị trí">
                                         <option>Quản lý phòng</option>
@@ -529,7 +503,9 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
+                                <div class="col-sm-4">
+                                    <div class="modal_body-title">Đơn vị phòng ban</div>
+                                </div>
                                 <div class="col-sm-8">
                                     <select class="selectpicker" title="Chọn phòng/ban">
                                         <option>Trade Marketing</option>
@@ -566,7 +542,7 @@
                         <div class="col-sm-12">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
                                 <div class="modal_body-title">Tên định mức <span class="text-danger">*</span></div>
-                                &nbsp;<input class="form-control"  style="width:80%" type="text" placeholder="Nhập tên định mức">
+                                &nbsp;<input class="form-control" style="width:80%" type="text" placeholder="Nhập tên định mức">
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -601,7 +577,9 @@
                         </div>
                         <div class="col-sm-5">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-3"><div class=" modal_body-title">Vị trí</div></div>
+                                <div class="col-sm-3">
+                                    <div class=" modal_body-title">Vị trí</div>
+                                </div>
                                 <div class="col-sm-9">
                                     <select class="selectpicker" title="Chọn Vị trí">
                                         <option>Quản lý phòng</option>
@@ -616,7 +594,9 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="mb-3 d-flex align-items-center  justify-content-between">
-                                <div class="col-sm-4"><div class="modal_body-title">Đơn vị phòng ban</div></div>
+                                <div class="col-sm-4">
+                                    <div class="modal_body-title">Đơn vị phòng ban</div>
+                                </div>
                                 <div class="col-sm-8">
                                     <select class="selectpicker" title="Chọn phòng/ban">
                                         <option>Trade Marketing</option>
@@ -665,8 +645,6 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>

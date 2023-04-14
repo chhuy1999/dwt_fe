@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Đăng nhập - {{ env('SLOGAN_URL', ''); }}</title>
+<title>Đăng nhập - {{ env('SLOGAN_URL', '') }}</title>
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{ env('FAVICON_URL', ''); }}">
+<link rel="shortcut icon" href="{{ env('FAVICON_URL', '') }}">
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,8 +24,7 @@
                 <div class="login_content">
                     <div class="login_header">
                         <a href="/">
-                            <img src="{{ env('LOGO_URL', ''); }}" alt="logo"
-                                class="login_logo" />
+                            <img src="{{ env('LOGO_URL', '') }}" alt="logo" class="login_logo" />
                         </a>
                         <!-- <h1 class="login_title">Đăng nhập hệ thống DWT</h1> -->
                     </div>
@@ -39,8 +38,7 @@
                         <form action="/login" method="POST">
                             @csrf
                             <div class="form-floating mb-3">
-                                <input type="text" autocomplete="off" class="form-control" id="floatingInput"
-                                    placeholder="admin" name="email" />
+                                <input type="text" class="form-control" id="floatingInput" placeholder="admin" name="email" />
                                 <label for="floatingInput">Tên đăng nhập</label>
                             </div>
                             @error('email')
@@ -48,8 +46,7 @@
                                 <div class="alert alert-danger">Tên tài khoản hoặc mật khẩu không chính xác</div>
                             @enderror
                             <div class="form-floating mb-3">
-                                <input type="password" autocomplete="off" class="form-control" id="floatingPassword"
-                                    placeholder="matkhau" name="password" />
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="matkhau" name="password" />
                                 <label for="floatingPassword">Mật khẩu</label>
                             </div>
                             @error('email')
@@ -67,7 +64,7 @@
                 </div>
             </div>
             <div class="login_about">
-                {{ env('SLOGAN_URL', ''); }} - Powered by STeam
+                {{ env('SLOGAN_URL', '') }} - Powered by STeam
             </div>
         </div>
     </div>

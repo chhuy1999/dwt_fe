@@ -6,41 +6,43 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
     <style>
         /* .sidebarBody {
-            overflow: auto;
-        } */
+                overflow: auto;
+            } */
     </style>
 @endsection
 
 @php
-function displayChild($data, $parentId) {
-    $result = '';
-    $children = getChild($data, $parentId);
-    if (count($children) > 0) {
-        $result .= '<ul class="tree_list-more">';
-        foreach($children as $child) {
-            $result .= '<li class="section tree_list-more-item">';
-            if (count(getChild($data, $child->id)) > 0) {
-                $result .= '<input type="checkbox" id="group'. $child->id .'">';
-                $result .= '<label class="d-flex" for="group'. $child->id .'"></label>';
+    function displayChild($data, $parentId)
+    {
+        $result = '';
+        $children = getChild($data, $parentId);
+        if (count($children) > 0) {
+            $result .= '<ul class="tree_list-more">';
+            foreach ($children as $child) {
+                $result .= '<li class="section tree_list-more-item">';
+                if (count(getChild($data, $child->id)) > 0) {
+                    $result .= '<input type="checkbox" id="group' . $child->id . '">';
+                    $result .= '<label class="d-flex" for="group' . $child->id . '"></label>';
+                }
+                $result .= '<span class="clicktree d-block" data-href="#body_content-1">' . $child->name . '</span>';
+                $result .= displayChild($data, $child->id);
+                $result .= '</li>';
             }
-            $result .= '<span class="clicktree d-block" data-href="#body_content-1">'. $child->name .'</span>';
-            $result .= displayChild($data, $child->id);
-            $result .= '</li>';
+            $result .= '</ul>';
         }
-        $result .= '</ul>';
+        return $result;
     }
-    return $result;
-}
-
-function getChild($data, $parentId) {
-    $children = [];
-    foreach($data as $child) {
-        if($child->parent != null && $child->parent->id == $parentId) {
-            $children[] = $child;
+    
+    function getChild($data, $parentId)
+    {
+        $children = [];
+        foreach ($data as $child) {
+            if ($child->parent != null && $child->parent->id == $parentId) {
+                $children[] = $child;
+            }
         }
+        return $children;
     }
-    return $children;
-}
 @endphp
 
 @section('content')
@@ -58,8 +60,7 @@ function getChild($data, $parentId) {
                     <div class='row'>
                         <div class="col-md-12">
                             <div class="card mb-3">
-                                <div class="card-body position-relative body_content-wrapper" id="body_content-1"
-                                    style="display:block">
+                                <div class="card-body position-relative body_content-wrapper" id="body_content-1" style="display:block">
                                     <div class="pb-2 d-flex align-items-center">
                                         <div class="card-title">Toàn công ty</div>
                                         <div class="btn" data-bs-toggle="modal" data-bs-target="#suaCoCauToChuc">
@@ -125,8 +126,7 @@ function getChild($data, $parentId) {
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
+                                                <table id="coCauToChuc" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th class="text-center">STT</th>
@@ -136,7 +136,7 @@ function getChild($data, $parentId) {
                                                             <th class="text-nowrap">Trưởng đơn vị</th>
                                                             <th class="text-nowrap">Chức năng nhiệm vụ</th>
                                                             @if (session('user')['role'] == 'admin')
-                                                            <th class="text-nowrap">Hành động</th>
+                                                                <th class="text-nowrap">Hành động</th>
                                                             @endif
                                                         </tr>
                                                     </thead>
@@ -144,8 +144,7 @@ function getChild($data, $parentId) {
                                                         @foreach ($data->data as $value)
                                                             <tr>
                                                                 <th scope="row">
-                                                                    <div
-                                                                        class="d-flex justify-content-center align-items-center">
+                                                                    <div class="d-flex justify-content-center align-items-center">
                                                                         {{ $loop->iteration }}
                                                                     </div>
                                                                 </th>
@@ -156,64 +155,46 @@ function getChild($data, $parentId) {
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->name }}">{{ $value->name }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{  $value->parent->name ?? "" }}">{{  $value->parent->name ?? "" }}</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->parent->name ?? '' }}">{{ $value->parent->name ?? '' }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:178px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->in_charge}}">{{ $value->in_charge}}</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:178px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $value->in_charge }}">{{ $value->in_charge }}</div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:350px" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description}}">{{ $value->description }}</div>
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:350px" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $value->description }}">{{ $value->description }}</div>
                                                                 </td>
                                                                 @if (session('user')['role'] == 'admin')
-                                                                <td>
-                                                                    <div
-                                                                        class="table_actions d-flex justify-content-center">
-                                                                        <div class="btn" href="#"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#suaCoCauToChuc{{ $value->id }}">
-                                                                            <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <td>
+                                                                        <div class="table_actions d-flex justify-content-center">
+                                                                            <div class="btn" href="#" data-bs-toggle="modal" data-bs-target="#suaCoCauToChuc{{ $value->id }}">
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                            </div>
+                                                                            <div class="btn" href="#" data-bs-toggle="modal" data-bs-target="#xoaCoCauToChuc{{ $value->id }}">
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="btn" href="#"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#xoaCoCauToChuc{{ $value->id }}">
-                                                                            <img style="width:16px;height:16px"
-                                                                                src="{{ asset('assets/img/trash.svg') }}" />
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
+                                                                    </td>
                                                                 @endif
                                                             </tr>
                                                             {{-- Xóa Cơ cấu tổ chức --}}
-                                                            <div class="modal fade" id="xoaCoCauToChuc{{ $value->id }}"
-                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                aria-hidden="true">
+                                                            <div class="modal fade" id="xoaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
-                                                                            <h5 class="modal-title text-danger"
-                                                                                id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC
+                                                                            <h5 class="modal-title text-danger" id="exampleModalLabel">XOÁ CƠ CẤU TỔ CHỨC
                                                                             </h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             Bạn có thực sự muốn xoá cơ cấu tổ chức đã chọn
                                                                             không?
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-outline-danger"
-                                                                                data-bs-dismiss="modal">Hủy</button>
-                                                                            <form
-                                                                                action="{{ route('department.delete',$value->id) }}"
-                                                                                method="POST">
+                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                            <form action="{{ route('department.delete', $value->id) }}" method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger"
-                                                                                    id="deleteRowElement">Xóa</button>
+                                                                                <button type="submit" class="btn btn-danger" id="deleteRowElement">Xóa</button>
                                                                             </form>
                                                                         </div>
                                                                     </div>
@@ -221,22 +202,16 @@ function getChild($data, $parentId) {
                                                             </div>
 
                                                             {{-- Modal Sửa Cơ cấu tổ chức --}}
-                                                            <div class="modal fade"
-                                                                id="suaCoCauToChuc{{ $value->id }}" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="suaCoCauToChuc{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header text-center">
-                                                                            <h5 class="modal-title w-100"
-                                                                                id="exampleModalLabel">Sửa Cơ cấu tổ chức
+                                                                            <h5 class="modal-title w-100" id="exampleModalLabel">Sửa Cơ cấu tổ chức
                                                                             </h5>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
 
-                                                                        <form method="POST"
-                                                                            action="{{ route('department.update',$value->id) }}">
+                                                                        <form method="POST" action="{{ route('department.update', $value->id) }}">
                                                                             @csrf
                                                                             @method('PUT')
 
@@ -244,31 +219,19 @@ function getChild($data, $parentId) {
                                                                             <div class="modal-body">
                                                                                 <div class="row">
                                                                                     <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Tên đơn vị"
-                                                                                                    value="{{ $value->name }}"
-                                                                                                    name="name">
+                                                                                        <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên đơn vị" value="{{ $value->name }}" name="name">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3">
-                                                                                        <input class="form-control"
-                                                                                                    type="text"
-                                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Mã đơn vị"
-                                                                                                    value="{{ $value->code }}"
-                                                                                                    name="code">
+                                                                                        <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã đơn vị" value="{{ $value->code }}" name="code">
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Đơn vị mẹ">
-                                                                                        <select class="selectpicker" title="Chọn đơn vị mẹ" data-width="100%"
-                                                                                            data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                                                                            data-size="3" name="parent">
+                                                                                        <select class="selectpicker" title="Chọn đơn vị mẹ" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="3" name="parent">
                                                                                             @foreach ($listDepartments->data as $dep)
-                                                                                                        <option
-                                                                                                            value="{{ $dep->id }}"
-                                                                                                            >
-                                                                                                            {{ $dep->name }}
-                                                                                                        </option>
-                                                                                                @endforeach
-                                                                                                {{-- @foreach ($listDepartments->data as $dep)
+                                                                                                <option value="{{ $dep->id }}">
+                                                                                                    {{ $dep->name }}
+                                                                                                </option>
+                                                                                            @endforeach
+                                                                                            {{-- @foreach ($listDepartments->data as $dep)
                                                                                                 @if ($dep->parent == $value->parent)
                                                                                                     <option
                                                                                                         value="{{ $dep->id }}"
@@ -282,11 +245,11 @@ function getChild($data, $parentId) {
                                                                                                     </option>
                                                                                                 @endif
                                                                                             @endforeach --}}
-                                                                                        </select> 
+                                                                                        </select>
                                                                                     </div>
 
                                                                                     <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Cấp tổ chức">
-                                                                                        <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="3" >
+                                                                                        <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="3">
                                                                                             <option value="1" selected>Công ty con</option>
                                                                                             <option value="1">Chi nhánh</option>
                                                                                             <option value="1">Văn phòng đại diện</option>
@@ -300,33 +263,24 @@ function getChild($data, $parentId) {
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="col-sm-6 mb-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Trưởng đơn vị">
-                                                                                        <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%"
-                                                                                        data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                                                                        data-size="3" name="in_charge">
-                                                                                        @foreach ($listUsers->data as $user)
-                                                                                        <option  value="{{ $user->name }}">{{ $user->name }}</option>
-                                                                                        @endforeach
-                                                                                    </select> 
-                                                                                    
-                                                                                </div>
-                                                                                <div class="col-sm-6 mb-3">
-                                                                                    <input class="form-control"
-                                                                                    type="text"
-                                                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Trụ sở chính"
-                                                                                    value="219 Trung Kính, Yên Hoà, Cầu...">
-                                                                                </div>
-                                                                                <div class="col-sm-12 mb-3">
-                                                                                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Chức năng, nhiệm vụ đơn vị" value="{{ $value->description }}"
-                                                                                    name="description">
+                                                                                        <select class="selectpicker" title="Chọn trưởng đơn vị" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="3" name="in_charge">
+                                                                                            @foreach ($listUsers->data as $user)
+                                                                                                <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+
+                                                                                    </div>
+                                                                                    <div class="col-sm-6 mb-3">
+                                                                                        <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Trụ sở chính" value="219 Trung Kính, Yên Hoà, Cầu...">
+                                                                                    </div>
+                                                                                    <div class="col-sm-12 mb-3">
+                                                                                        <input class="form-control" type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Chức năng, nhiệm vụ đơn vị" value="{{ $value->description }}" name="description">
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-outline-danger"
-                                                                                    data-bs-dismiss="modal">Hủy</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger">Lưu</button>
+                                                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                                <button type="submit" class="btn btn-danger">Lưu</button>
                                                                             </div>
 
                                                                         </form>
@@ -372,19 +326,15 @@ function getChild($data, $parentId) {
                                 <input class="form-control" required type="text" placeholder="Nhập Mã đơn vị *" name="code">
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" required placeholder="Chọn đơn vị mẹ *" data-size="5" title="Chọn đơn vị mẹ " data-actions-box="true"
-                                    data-live-search="true"
-                                    data-live-search-placeholder="Tìm kiếm..." name="parent">
-                                        @foreach ($listDepartments->data as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                         @endforeach
-                                    </select>
+                                <select class="selectpicker" required placeholder="Chọn đơn vị mẹ *" data-size="5" title="Chọn đơn vị mẹ " data-actions-box="true" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." name="parent">
+                                    @foreach ($listDepartments->data as $value)
+                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-sm-6 mb-3 d-flex">
                                 <div class="col-sm-12">
-                                    <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%"
-                                    data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                    data-size="5">
+                                    <select class="selectpicker" title="Chọn cấp tổ chức" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="5">
                                         <option>Công ty con</option>
                                         <option>Chi nhánh</option>
                                         <option>Văn phòng đại diện</option>
@@ -405,9 +355,7 @@ function getChild($data, $parentId) {
                                 </div> --}}
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <select class="selectpicker" required title="Chọn trưởng đơn vị" data-width="100%"
-                                data-live-search="true" data-live-search-placeholder="Tìm kiếm..."
-                                data-size="3" name="in_charge">
+                                <select class="selectpicker" required title="Chọn trưởng đơn vị" data-width="100%" data-live-search="true" data-live-search-placeholder="Tìm kiếm..." data-size="3" name="in_charge">
                                     @foreach ($listUsers->data as $value)
                                         <option value="{{ $value->name }}">{{ $value->name }}</option>
                                     @endforeach
@@ -431,8 +379,7 @@ function getChild($data, $parentId) {
     </div>
 
     <!-- Modal Danh sach phong ban -->
-    <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -442,11 +389,9 @@ function getChild($data, $parentId) {
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Cung ứng
                                     </label>
@@ -460,11 +405,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Trade Marketing
                                     </label>
@@ -478,11 +421,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Digital Marketing
                                     </label>
@@ -496,11 +437,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Truyền thông
                                     </label>
@@ -514,11 +453,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Quản trị Nhãn/Đào tạo
                                     </label>
@@ -532,11 +469,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Kho & Giao vận
                                     </label>
@@ -550,11 +485,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Hành chính nhân sự
                                     </label>
@@ -570,11 +503,9 @@ function getChild($data, $parentId) {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Kế toán
                                     </label>
@@ -588,11 +519,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Tài chính
                                     </label>
@@ -606,11 +535,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Dịch vụ bán hàng
                                     </label>
@@ -624,11 +551,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault11">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault11">
                                     <label class="form-check-label ms-3" for="flexRadioDefault11">
                                         Kinh doanh OTC
                                     </label>
@@ -642,11 +567,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault12">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault12">
                                     <label class="form-check-label ms-3" for="flexRadioDefault12">
                                         Kinh doanh ETC
                                     </label>
@@ -660,11 +583,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault13">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault13">
                                     <label class="form-check-label ms-3" for="flexRadioDefault13">
                                         Kinh doanh MT
                                     </label>
@@ -678,11 +599,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault14">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault14">
                                     <label class="form-check-label ms-3" for="flexRadioDefault14">
                                         Kinh doanh online
                                     </label>
@@ -707,8 +626,7 @@ function getChild($data, $parentId) {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -716,8 +634,7 @@ function getChild($data, $parentId) {
     </div>
 
     <!-- Modal Danh sach cap to chuc -->
-    <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -727,11 +644,9 @@ function getChild($data, $parentId) {
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Công ty con
                                     </label>
@@ -745,11 +660,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Chi nhánh
                                     </label>
@@ -763,11 +676,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Văn phòng đại diện
                                     </label>
@@ -781,11 +692,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Văn phòng
                                     </label>
@@ -799,11 +708,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Trung tâm
                                     </label>
@@ -817,11 +724,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Phòng ban
                                     </label>
@@ -835,11 +740,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Nhóm/tổ/đội
                                     </label>
@@ -855,11 +758,9 @@ function getChild($data, $parentId) {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Phân xưởng
                                     </label>
@@ -873,11 +774,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Nhà máy
                                     </label>
@@ -891,11 +790,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Công ty thành viên
                                     </label>
@@ -918,8 +815,7 @@ function getChild($data, $parentId) {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themPhongBan">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themPhongBan">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -927,8 +823,7 @@ function getChild($data, $parentId) {
     </div>
 
     <!-- Modal Danh sach chuc danh -->
-    <div class="modal fade" id="danhsachChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -938,11 +833,9 @@ function getChild($data, $parentId) {
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Chủ tịch HĐQT
                                     </label>
@@ -956,11 +849,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Tổng Giám đốc
                                     </label>
@@ -974,11 +865,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Phó Tổng Giám đốc
                                     </label>
@@ -992,11 +881,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Giám đốc điều hành
                                     </label>
@@ -1010,11 +897,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Quản lý cấp cao
                                     </label>
@@ -1028,11 +913,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Quản lý cấp trung
                                     </label>
@@ -1046,11 +929,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Trưởng phòng
                                     </label>
@@ -1066,11 +947,9 @@ function getChild($data, $parentId) {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Phó phòng
                                     </label>
@@ -1084,11 +963,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Trưởng nhóm
                                     </label>
@@ -1102,11 +979,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Chuyên viên
                                     </label>
@@ -1120,11 +995,9 @@ function getChild($data, $parentId) {
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Nhân viên
                                     </label>
@@ -1147,8 +1020,7 @@ function getChild($data, $parentId) {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1218,8 +1090,7 @@ function getChild($data, $parentId) {
                                         <option>Nhà máy</option>
                                         <option>Công ty thành viên</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachCapToChuc">
+                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -1252,8 +1123,7 @@ function getChild($data, $parentId) {
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center">
                                 <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span
-                                            class="text-danger">*</span></div>
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" placeholder="Nhập Chức năng, nhiệm vụ">
@@ -1263,8 +1133,7 @@ function getChild($data, $parentId) {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1272,8 +1141,7 @@ function getChild($data, $parentId) {
     </div>
 
     <!-- Modal Them Vi Tri Cong Viec -->
-    <div class="modal fade" id="themViTriCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themViTriCongViec" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1325,8 +1193,7 @@ function getChild($data, $parentId) {
                                         <option>Kinh doanh MT</option>
                                         <option>Kinh doanh online</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachPhongBan">
+                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachPhongBan">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -1351,8 +1218,7 @@ function getChild($data, $parentId) {
                                         <option>Chuyên viên</option>
                                         <option>Nhân viên</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachChucDanh">
+                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachChucDanh">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -1372,8 +1238,7 @@ function getChild($data, $parentId) {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1381,8 +1246,7 @@ function getChild($data, $parentId) {
     </div>
 
     <!-- Modal TRANG BỊ HÀNH CHÍNH -->
-    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1391,315 +1255,259 @@ function getChild($data, $parentId) {
                 </div>
                 <div class="modal-body">
                     <div class="d-flex align-items-start">
-                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
-                            aria-orientation="vertical">
-                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-home" type="button" role="tab"
-                                aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
-                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-profile" type="button" role="tab"
-                                aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
-                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-messages" type="button" role="tab"
-                                aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings" type="button" role="tab"
-                                aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings2" type="button" role="tab"
-                                aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
+                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
+                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
+                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings2" type="button" role="tab" aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                aria-labelledby="v-pills-home-tab">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                aria-labelledby="v-pills-profile-tab">
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                aria-labelledby="v-pills-messages-tab">
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1">
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2">
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
@@ -1814,10 +1622,6 @@ function getChild($data, $parentId) {
 @section('footer-script')
 
     <script src="{{ asset('assets/plugins/jquery-treeSelect/cbtree.js') }}" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -1968,33 +1772,35 @@ function getChild($data, $parentId) {
         });
     </script>
 
-<script>
-    const targetTable = $('#coCauToChuc').DataTable({
-        paging: true,
-        ordering: false,
-        order: [[0, 'desc']],
-        // pageLength: 20,
-        language: {
-            info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
-            infoEmpty: 'Hiện tại chưa có bản ghi nào',
-            search: 'Tìm kiếm biên bản',
-            paginate: {
-                previous: '<i class="bi bi-caret-left-fill"></i>',
-                next: '<i class="bi bi-caret-right-fill"></i>',
+    <script>
+        const targetTable = $('#coCauToChuc').DataTable({
+            paging: true,
+            ordering: false,
+            order: [
+                [0, 'desc']
+            ],
+            // pageLength: 20,
+            language: {
+                info: 'Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi',
+                infoEmpty: 'Hiện tại chưa có bản ghi nào',
+                search: 'Tìm kiếm biên bản',
+                paginate: {
+                    previous: '<i class="bi bi-caret-left-fill"></i>',
+                    next: '<i class="bi bi-caret-right-fill"></i>',
+                },
+                search: '',
+                searchPlaceholder: 'Tìm kiếm...',
+                zeroRecords: 'Không tìm thấy kết quả',
             },
-            search: '',
-            searchPlaceholder: 'Tìm kiếm...',
-            zeroRecords: 'Không tìm thấy kết quả',
-        },
-        oLanguage: {
-            sLengthMenu: "_MENU_ bản ghi trên trang",
-        },
-        dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
-    });
-    $('div.card-title-wrapper-left').html(`
+            oLanguage: {
+                sLengthMenu: "_MENU_ bản ghi trên trang",
+            },
+            dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "f<"card-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
+        });
+        $('div.card-title-wrapper-left').html(`
         <div class="card-title text-dark">Danh sách đơn vị trực thuộc</div>
     `);
-    $('div.card-title-wrapper-right').html(`
+        $('div.card-title-wrapper-right').html(`
         @if (session('user')['role'] == 'admin')
         <div class="main_search d-flex ms-3">
             <button class="btn btn-danger d-block" data-bs-toggle="modal"
@@ -2002,7 +1808,7 @@ function getChild($data, $parentId) {
         </div>
         @endif
     `);
-</script>
+    </script>
 
 
 @endsection

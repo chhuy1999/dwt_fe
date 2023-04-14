@@ -18,7 +18,7 @@
                         <div class="col-md-12">
                             <div class="card mb-3">
                                 <div class="card-body position-relative body_content-wrapper" id="body_content-1" style="display:block">
-                                    
+
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">
@@ -26,17 +26,15 @@
                                                     <div class="card-title">Toàn công ty</div>
                                                 </div>
                                                 <div class="main_search d-flex mt-2">
-                                                   <div class="form-group has-search">
-                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
-                                                </div>
-                                                    <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCau">Thêm phòng ban</button>
+                                                    <div class="form-group has-search">
+                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                    </div>
+                                                    <button class="btn btn-danger d-block w-75" data-bs-toggle="modal" data-bs-target="#themCoCau">Thêm phòng ban</button>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
+                                                <table id="coCauToChuc" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th>STT</th>
@@ -51,8 +49,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     1</div>
                                                             </th>
                                                             <td>
@@ -72,23 +69,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     2</div>
                                                             </th>
                                                             <td>
@@ -108,23 +100,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     3</div>
                                                             </th>
                                                             <td>
@@ -144,23 +131,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     4</div>
                                                             </th>
                                                             <td>
@@ -180,15 +162,11 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -203,14 +181,14 @@
                                         <div class="signature_con">
                                             <div class="signature_items">
                                                 <div class="signature_title"></div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body position-relative body_content-wrapper" id="body_content-2">
-                                    
-                                    
+
+
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">
@@ -218,17 +196,15 @@
                                                     <div class="card-title">Phòng Kinh Doanh</div>
                                                 </div>
                                                 <div class="main_search d-flex mt-2">
-                                                   <div class="form-group has-search">
-                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
-                                                </div>
-                                                    <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCau">Thêm phòng ban</button>
+                                                    <div class="form-group has-search">
+                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                    </div>
+                                                    <button class="btn btn-danger d-block w-75" data-bs-toggle="modal" data-bs-target="#themCoCau">Thêm phòng ban</button>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
+                                                <table id="coCauToChuc" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th>STT</th>
@@ -243,8 +219,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     1</div>
                                                             </th>
                                                             <td>
@@ -264,23 +239,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     2</div>
                                                             </th>
                                                             <td>
@@ -300,23 +270,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     3</div>
                                                             </th>
                                                             <td>
@@ -336,23 +301,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     4</div>
                                                             </th>
                                                             <td>
@@ -372,15 +332,11 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -395,14 +351,14 @@
                                         <div class="signature_con">
                                             <div class="signature_items">
                                                 <div class="signature_title"></div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body position-relative body_content-wrapper" id="body_content-3">
-                                    
-                                    
+
+
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="title_wrapper d-flex align-items-center justify-content-between mb-3">
@@ -410,17 +366,15 @@
                                                     <div class="card-title">Phòng Marketing</div>
                                                 </div>
                                                 <div class="main_search d-flex mt-2">
-                                                   <div class="form-group has-search">
-                                                    <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
-                                                </div>
-                                                    <button class="btn btn-danger d-block w-75" data-bs-toggle="modal"
-                                                        data-bs-target="#themCoCau">Thêm phòng ban</button>
+                                                    <div class="form-group has-search">
+                                                        <span class="bi bi-search form-control-feedback fs-5"></span>
+                                                        <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
+                                                    </div>
+                                                    <button class="btn btn-danger d-block w-75" data-bs-toggle="modal" data-bs-target="#themCoCau">Thêm phòng ban</button>
                                                 </div>
                                             </div>
                                             <div class="table-responsive dataTables_wrapper">
-                                                <table id="coCauToChuc"
-                                                    class="table table-responsive table-hover table-bordered">
+                                                <table id="coCauToChuc" class="table table-responsive table-hover table-bordered">
                                                     <thead>
                                                         <tr class="bg-light">
                                                             <th>STT</th>
@@ -435,8 +389,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     1</div>
                                                             </th>
                                                             <td>
@@ -456,23 +409,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     2</div>
                                                             </th>
                                                             <td>
@@ -492,23 +440,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     3</div>
                                                             </th>
                                                             <td>
@@ -528,23 +471,18 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">
-                                                                <div
-                                                                    class="d-flex justify-content-center align-items-center">
+                                                                <div class="d-flex justify-content-center align-items-center">
                                                                     4</div>
                                                             </th>
                                                             <td>
@@ -564,15 +502,11 @@
                                                             </td>
                                                             <td>
                                                                 <div class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#suaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#suaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaThanhVien">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                                                    <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaThanhVien">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -587,7 +521,7 @@
                                         <div class="signature_con">
                                             <div class="signature_items">
                                                 <div class="signature_title"></div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -641,8 +575,7 @@
     </div>
 
     {{-- Modal Sửa phòng ban tổ chức --}}
-    <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -715,8 +648,7 @@
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ*<span
-                                            class="text-danger">*</span></div>
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ*<span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" type="text">Xây dựng chiến lược truyền thông và chiến lược Marketing để tiếp cận với nhóm khách hàng trên các nền tảng kỹ thuật số.</textarea>
@@ -733,7 +665,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal Them Co Cau -->
     <div class="modal fade" id="suaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 40%">
@@ -803,7 +735,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                        
+
                             <div class="d-flex align-items-center mb-3">
                                 <div class="d-flex col-sm-4">
                                     <div class="modal_body-title">Trưởng đơn vị <span class="text-danger">*</span></div>
@@ -869,8 +801,7 @@
                                     <input type="file" name="" id="logo" onchange="fileValue(this)">
                                     <label for="logo" class="upload-field" id="file-label">
                                         <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ asset('assets/img/preview.jpg') }}"
-                                                alt="">
+                                            <img id="image-preview" src="{{ asset('assets/img/preview.jpg') }}" alt="">
                                         </div>
                                     </label>
                                 </div>
@@ -911,12 +842,10 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                             <label class="form-check-label" for="inlineRadio1">Nam</label>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" checked type="radio"
-                                                    name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                                 <label class="form-check-label" for="inlineRadio2">Nữ</label>
                                             </div>
                                         </div>
@@ -982,7 +911,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
@@ -992,8 +921,8 @@
                                     <div class="col-sm-8 d-flex align-items-center">
                                         <select class="selectpicker" title="Chọn đơn vị công tác">
                                             <option>Doppelherz</option>
-                                                <option selected>CTCP Mastertran</option>
-                                                <option>CTCP Thái Bình Hưng Thịnh</option>
+                                            <option selected>CTCP Mastertran</option>
+                                            <option>CTCP Thái Bình Hưng Thịnh</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1018,8 +947,7 @@
                                             <option>Chuyên viên</option>
                                             <option>Nhân viên</option>
                                         </select>
-                                        <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachChucDanh">
+                                        <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachChucDanh">
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </div>
                                     </div>
@@ -1046,7 +974,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
@@ -1066,8 +994,7 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Quỹ lương năm <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Quỹ lương năm <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <input type="text" readonly class="form-control" />
@@ -1077,8 +1004,7 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trang bị hành chính <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Trang bị hành chính <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn gói trang bị">
@@ -1092,12 +1018,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Hình thức làm việc <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Hình thức làm việc <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn trạng thái">
@@ -1110,8 +1035,7 @@
                             <div class="col-sm-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trạng thái làm việc <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Trạng thái làm việc <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn trạng thái">
@@ -1150,8 +1074,7 @@
                                     <input type="file" name="" id="logo" onchange="fileValue(this)">
                                     <label for="logo" class="upload-field" id="file-label">
                                         <div class="file-thumbnail">
-                                            <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}"
-                                                alt="">
+                                            <img id="image-preview" src="{{ asset('assets/img/preview-image.svg') }}" alt="">
                                         </div>
                                     </label>
                                 </div>
@@ -1192,12 +1115,10 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                             <label class="form-check-label" for="inlineRadio1">Nam</label>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio2" value="option2">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                                 <label class="form-check-label" for="inlineRadio2">Nữ</label>
                                             </div>
                                         </div>
@@ -1273,8 +1194,8 @@
                                     <div class="col-sm-8 d-flex align-items-center">
                                         <select class="selectpicker" title="Chọn đơn vị công tác">
                                             <option>Doppelherz</option>
-                                                <option>CTCP Mastertran</option>
-                                                <option>CTCP Thái Bình Hưng Thịnh</option>
+                                            <option>CTCP Mastertran</option>
+                                            <option>CTCP Thái Bình Hưng Thịnh</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1299,8 +1220,7 @@
                                             <option>Chuyên viên</option>
                                             <option>Nhân viên</option>
                                         </select>
-                                        <div class="modal_list-more" data-bs-toggle="modal"
-                                            data-bs-target="#danhsachChucDanh">
+                                        <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachChucDanh">
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </div>
                                     </div>
@@ -1314,8 +1234,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                        <select id="onchangeViTriCongViec" class="selectpicker"
-                                            title="Chọn Vị trí/Chức danh">
+                                        <select id="onchangeViTriCongViec" class="selectpicker" title="Chọn Vị trí/Chức danh">
                                             <option>Quản lý phòng</option>
                                             <option>Quản lý sàn TMĐT</option>
                                             <option>Content Website</option>
@@ -1327,7 +1246,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
@@ -1346,8 +1265,7 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Quỹ lương năm <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Quỹ lương năm <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <input type="text" readonly class="form-control" />
@@ -1357,8 +1275,7 @@
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trang bị hành chính <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Trang bị hành chính <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn gói trang bị">
@@ -1372,12 +1289,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Hình thức làm việc <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Hình thức làm việc <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn trạng thái">
@@ -1390,8 +1306,7 @@
                             <div class="col-sm-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex col-sm-4">
-                                        <div class="modal_body-title">Trạng thái làm việc <span
-                                                class="text-danger">*</span></div>
+                                        <div class="modal_body-title">Trạng thái làm việc <span class="text-danger">*</span></div>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="selectpicker" title="Chọn trạng thái">
@@ -1414,8 +1329,7 @@
     </div>
 
     <!-- Modal Danh sach phong ban -->
-    <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1425,11 +1339,9 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Cung ứng
                                     </label>
@@ -1443,11 +1355,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Trade Marketing
                                     </label>
@@ -1461,11 +1371,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Digital Marketing
                                     </label>
@@ -1479,11 +1387,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Truyền thông
                                     </label>
@@ -1497,11 +1403,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Quản trị Nhãn/Đào tạo
                                     </label>
@@ -1515,11 +1419,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Kho & Giao vận
                                     </label>
@@ -1533,11 +1435,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Hành chính nhân sự
                                     </label>
@@ -1553,11 +1453,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Kế toán
                                     </label>
@@ -1571,11 +1469,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Tài chính
                                     </label>
@@ -1589,11 +1485,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Dịch vụ bán hàng
                                     </label>
@@ -1607,11 +1501,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault11">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault11">
                                     <label class="form-check-label ms-3" for="flexRadioDefault11">
                                         Kinh doanh OTC
                                     </label>
@@ -1625,11 +1517,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault12">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault12">
                                     <label class="form-check-label ms-3" for="flexRadioDefault12">
                                         Kinh doanh ETC
                                     </label>
@@ -1643,11 +1533,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault13">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault13">
                                     <label class="form-check-label ms-3" for="flexRadioDefault13">
                                         Kinh doanh MT
                                     </label>
@@ -1661,11 +1549,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault14">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault14">
                                     <label class="form-check-label ms-3" for="flexRadioDefault14">
                                         Kinh doanh online
                                     </label>
@@ -1690,8 +1576,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1699,8 +1584,7 @@
     </div>
 
     <!-- Modal Danh sach cap to chuc -->
-    <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachCapToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1710,11 +1594,9 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Công ty con
                                     </label>
@@ -1728,11 +1610,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Chi nhánh
                                     </label>
@@ -1742,16 +1622,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Văn phòng đại diện
                                     </label>
@@ -1761,16 +1638,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Văn phòng
                                     </label>
@@ -1780,16 +1654,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Trung tâm
                                     </label>
@@ -1799,16 +1670,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Phòng ban
                                     </label>
@@ -1818,16 +1686,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Nhóm/tổ/đội
                                     </label>
@@ -1837,18 +1702,15 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Phân xưởng
                                     </label>
@@ -1858,16 +1720,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Nhà máy
                                     </label>
@@ -1877,16 +1736,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Công ty thành viên
                                     </label>
@@ -1896,8 +1752,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1910,8 +1765,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themPhongBan">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themPhongBan">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -1919,8 +1773,7 @@
     </div>
 
     <!-- Modal Danh sach chuc danh -->
-    <div class="modal fade" id="danhsachChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="danhsachChucDanh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -1930,11 +1783,9 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label ms-3" for="flexRadioDefault1">
                                         Chủ tịch HĐQT
                                     </label>
@@ -1944,16 +1795,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label ms-3" for="flexRadioDefault2">
                                         Tổng Giám đốc
                                     </label>
@@ -1963,16 +1811,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label ms-3" for="flexRadioDefault3">
                                         Phó Tổng Giám đốc
                                     </label>
@@ -1982,16 +1827,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault4">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label ms-3" for="flexRadioDefault4">
                                         Giám đốc điều hành
                                     </label>
@@ -2001,16 +1843,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault5">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label ms-3" for="flexRadioDefault5">
                                         Quản lý cấp cao
                                     </label>
@@ -2020,16 +1859,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault6">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label ms-3" for="flexRadioDefault6">
                                         Quản lý cấp trung
                                     </label>
@@ -2039,16 +1875,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault7">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label ms-3" for="flexRadioDefault7">
                                         Trưởng phòng
                                     </label>
@@ -2058,18 +1891,15 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault8">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label ms-3" for="flexRadioDefault8">
                                         Phó phòng
                                     </label>
@@ -2079,16 +1909,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault9">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label ms-3" for="flexRadioDefault9">
                                         Trưởng nhóm
                                     </label>
@@ -2098,16 +1925,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Chuyên viên
                                     </label>
@@ -2117,16 +1941,13 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
+                            <div class="form-check_wrapper d-flex justify-content-between align-items-center border-bottom">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault10">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault10">
                                     <label class="form-check-label ms-3" for="flexRadioDefault10">
                                         Nhân viên
                                     </label>
@@ -2136,8 +1957,7 @@
                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                     </div>
                                     <div class="btn">
-                                        <img style="width:16px;height:16px"
-                                            src="{{ asset('assets/img/trash.svg') }}" />
+                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -2150,8 +1970,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -2159,8 +1978,7 @@
     </div>
 
     <!-- Modal Them phong ban -->
-    <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themPhongBan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -2222,8 +2040,7 @@
                                         <option>Nhà máy</option>
                                         <option>Công ty thành viên</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachCapToChuc">
+                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachCapToChuc">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -2256,8 +2073,7 @@
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center">
                                 <div class="d-flex col-sm-2">
-                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span
-                                            class="text-danger">*</span></div>
+                                    <div class="modal_body-title">Chức năng <br> nhiệm vụ<span class="text-danger">*</span></div>
                                 </div>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" placeholder="Nhập Chức năng, nhiệm vụ">
@@ -2267,8 +2083,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themViTriCongViec">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -2276,8 +2091,7 @@
     </div>
 
     <!-- Modal Them Vi Tri Cong Viec -->
-    <div class="modal fade" id="themViTriCongViec" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="themViTriCongViec" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 38%">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -2329,8 +2143,7 @@
                                         <option>Kinh doanh MT</option>
                                         <option>Kinh doanh online</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachPhongBan">
+                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachPhongBan">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -2355,8 +2168,7 @@
                                         <option>Chuyên viên</option>
                                         <option>Nhân viên</option>
                                     </select>
-                                    <div class="modal_list-more" data-bs-toggle="modal"
-                                        data-bs-target="#danhsachChucDanh">
+                                    <div class="modal_list-more" data-bs-toggle="modal" data-bs-target="#danhsachChucDanh">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </div>
                                 </div>
@@ -2376,8 +2188,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                        data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#themThanhVien">Hủy</button>
                     <button type="button" class="btn btn-danger">Lưu</button>
                 </div>
             </div>
@@ -2385,8 +2196,7 @@
     </div>
 
     <!-- Modal TRANG BỊ HÀNH CHÍNH -->
-    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="trangBiHanhChinh" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -2395,315 +2205,259 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex align-items-start">
-                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
-                            aria-orientation="vertical">
-                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-home" type="button" role="tab"
-                                aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
-                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-profile" type="button" role="tab"
-                                aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
-                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-messages" type="button" role="tab"
-                                aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings" type="button" role="tab"
-                                aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-settings2" type="button" role="tab"
-                                aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
+                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Trang bị cơ bản</button>
+                            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Trang bị nhân viên</button>
+                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Trang bị chuyên viên</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Trang bị quản lý</button>
+                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings2" type="button" role="tab" aria-controls="v-pills-settings2" aria-selected="false">Trang bị Giám đốc</button>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                aria-labelledby="v-pills-home-tab">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                aria-labelledby="v-pills-profile-tab">
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                aria-labelledby="v-pills-messages-tab">
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4">
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5">
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1">
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2">
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3">
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3">
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
+                            <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="1" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="1" checked>
                                     <label class="form-check-label" for="1">
                                         Hộp đựng bút
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="2" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="2" checked>
                                     <label class="form-check-label" for="2">
                                         Bàn ghế
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="3" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="3" checked>
                                     <label class="form-check-label" for="3">
                                         Áo phông Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="4" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="4" checked>
                                     <label class="form-check-label" for="4">
                                         Áo sơ mi Doppelherz
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="5" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="5" checked>
                                     <label class="form-check-label" for="5">
                                         Sổ tay
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="6" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="6" checked>
                                     <label class="form-check-label" for="6">
                                         Tủ
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="7" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="7" checked>
                                     <label class="form-check-label" for="7">
                                         Máy tính
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault"
-                                        id="8" checked>
+                                    <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="8" checked>
                                     <label class="form-check-label" for="8">
                                         Ô tô
                                     </label>
@@ -2721,11 +2475,6 @@
     </div>
 @endsection
 @section('footer-script')
-    
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
-
     <script>
         $(document).ready(function() {
             $.datetimepicker.setLocale('vi');
@@ -2733,27 +2482,27 @@
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#ngayChinhThuc').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaNgayThuViec').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaNgayChinhThuc').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#createUser').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });
-            
+
             $('#suaCreateUser').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
@@ -2773,7 +2522,6 @@
                 }
             });
         });
-        
     </script>
     <script>
         function fileValue(value) {
@@ -2788,46 +2536,46 @@
         }
     </script>
 
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", () => {
-        // Click Tree
-        const clickTrees = document.querySelectorAll(".clicktree");
-        clickTrees.forEach((clickTree) => {
-            clickTree.addEventListener("click", () => {
-            const id = clickTree.getAttribute("data-href");
-            const element = document.querySelector(id);
-            if (element) {
-                const items = document.querySelectorAll(".body_content-wrapper");
-                items.forEach((item) => {
-                    item.style.display = "none";
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            // Click Tree
+            const clickTrees = document.querySelectorAll(".clicktree");
+            clickTrees.forEach((clickTree) => {
+                clickTree.addEventListener("click", () => {
+                    const id = clickTree.getAttribute("data-href");
+                    const element = document.querySelector(id);
+                    if (element) {
+                        const items = document.querySelectorAll(".body_content-wrapper");
+                        items.forEach((item) => {
+                            item.style.display = "none";
+                        });
+                        element.style.display = "block";
+                        const noContent = document.querySelector(".body_noContent-wrapper");
+                        noContent.style.display = "none";
+                    } else {
+                        const items = document.querySelectorAll(".body_content-wrapper");
+                        items.forEach((item) => {
+                            item.style.display = "none";
+                        });
+                    }
                 });
-                element.style.display = "block";
-                const noContent = document.querySelector(".body_noContent-wrapper");
-                noContent.style.display = "none";
-            } else {
-                const items = document.querySelectorAll(".body_content-wrapper");
-                items.forEach((item) => {
-                item.style.display = "none";
-                });
-            }
+            });
+
+            // Search Tree
+            document.querySelector("#search_tree").addEventListener("keyup", function() {
+                var value = this.value.toLowerCase();
+                var lis = document.querySelectorAll(".tree li");
+                for (var i = 0; i < lis.length; i++) {
+                    var li = lis[i];
+                    var text = li.textContent.toLowerCase();
+                    if (text.indexOf(value) > -1) {
+                        li.style.display = "";
+                    } else {
+                        li.style.display = "none";
+                    }
+                }
             });
         });
-
-        // Search Tree
-        document.querySelector("#search_tree").addEventListener("keyup", function() {
-            var value = this.value.toLowerCase();
-            var lis = document.querySelectorAll(".tree li");
-            for (var i = 0; i < lis.length; i++) {
-            var li = lis[i];
-            var text = li.textContent.toLowerCase();
-            if (text.indexOf(value) > -1) {
-                li.style.display = "";
-            } else {
-                li.style.display = "none";
-            }
-            }
-        });
-    });
-</script>
+    </script>
 
 @endsection

@@ -41,7 +41,7 @@
                                                         <span class="badge bg-warning text-dark">Phát sinh</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -63,7 +63,7 @@
                                                         <span class="badge bg-success">Hoàn thành</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -85,7 +85,7 @@
                                                         <span class="badge bg-warning text-dark">Phát sinh</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -107,7 +107,7 @@
                                                         <span class="badge bg-danger">Chậm</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -129,7 +129,7 @@
                                                         <span class="badge bg-info text-dark">Phát sinh</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -151,7 +151,7 @@
                                                         <span class="badge bg-warning text-dark">Phát sinh</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -173,7 +173,7 @@
                                                         <span class="badge bg-warning text-dark">Phát sinh</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -195,7 +195,7 @@
                                                         <span class="badge bg-warning text-dark">Phát sinh</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -217,7 +217,7 @@
                                                         <span class="badge bg-warning text-dark">Phát sinh</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -239,7 +239,7 @@
                                                         <span class="badge bg-warning text-dark">Phát sinh</span>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?php echo date("d/m/Y");?>
+                                                        <?php echo date('d/m/Y'); ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="table_actions d-flex justify-content-center">
@@ -270,22 +270,22 @@
                                 </div>
                                 <div class="modal-body">
                                     <form>
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Phòng / Ban:</label>
-                                        <input type="text" class="form-control" id="recipient-name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="message-text" class="col-form-label">Miêu tả sự cố:</label>
-                                        <textarea class="form-control" id="message-text"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="message-text" class="col-form-label">Chịu trách nhiệm:</label>
-                                        <textarea class="form-control" id="message-text"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="message-text" class="col-form-label">Tình trạng:</label>
-                                        <textarea class="form-control" id="message-text"></textarea>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Phòng / Ban:</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">Miêu tả sự cố:</label>
+                                            <textarea class="form-control" id="message-text"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">Chịu trách nhiệm:</label>
+                                            <textarea class="form-control" id="message-text"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">Tình trạng:</label>
+                                            <textarea class="form-control" id="message-text"></textarea>
+                                        </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -303,7 +303,6 @@
     @include('template.sidebar.sidebarMaster.sidebarRight')
 @endsection
 @section('footer-script')
-    <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <!-- ChartJS -->
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
@@ -317,7 +316,7 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
 
-    <script type="text/javascript" >
+    <script type="text/javascript">
         // SELECT MULTIPLE LEFT SIDEBAR
         const select = document.getElementById('select');
         const elems = document.querySelectorAll('.data_chart-items');

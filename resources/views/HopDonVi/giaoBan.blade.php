@@ -30,7 +30,7 @@
             box-shadow: none;
         }
 
-        .bootstrap-select>.dropdown-toggle:after {
+        .hidden-arrow .bootstrap-select>.dropdown-toggle:after {
             display: none;
         }
 
@@ -93,7 +93,7 @@
             }
             return $listParticipantIds;
         }
-
+        
         function getListAbsence($meeting, $listUser)
         {
             $listAbsence = [];
@@ -119,7 +119,7 @@
             }
             return $listAbsence;
         }
-
+        
         function removeReportFromMeeting($meeting, $reportId)
         {
             $meetingReportIds = [];
@@ -144,7 +144,7 @@
                                     <strong class="text-nowrap">{{ $meeting->departement->name ?? 'Chưa có đơn vị' }}</strong>
                                 </div>
                                 <div class="col-sm-2">Chủ trì:</div>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10 hidden-arrow">
                                     <select class="selectpicker mainSection_width-select" data-actions-box="true" data-live-search="true" title="Chọn chủ trì..." data-live-search-placeholder="Tìm kiếm..." data-size="5" id="leaderSelect">
                                         @foreach ($listUsers->data as $value)
                                             @if ($meeting->leader_id == $value->id)
@@ -163,8 +163,8 @@
                                     Biên bản họp
                                 </h5>
                             </div>
-                            <div>
-                                <select class="form-select form-select-lg style_input ms-2 fw-bolder">
+                            <div class="hidden-arrow">
+                                <select class="selectpicker mainSection_width-select form-select-lg style_input ms-2 fw-bolder">
                                     {{-- <option >Giao ban Ngày</option>
                                     <option>Tuần</option>
                                     <option>Tháng</option>
@@ -200,7 +200,7 @@
                                                                 <div class="d-flex align-items-center">
                                                                     <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/time.svg') }}" />
                                                                 </div>
-                                                                <input type="text" name="daterange" id="meetTime" autocomplete="off" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
+                                                                <input type="text" name="daterange" id="meetTime" class="form-control" placeholder="Chọn thời gian, thêm giờ" />
                                                             </div>
                                                             <div class="d-flex align-items-start">
                                                                 <div class="d-flex">
@@ -1248,9 +1248,7 @@
 
 @endsection
 @section('footer-script')
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-daterangepicker/moment.min.js') }}"></script>
     <!-- ChartJS -->
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
@@ -1259,8 +1257,6 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
@@ -1391,10 +1387,10 @@
                             </span>
                             <input type="hidden" name="uploadedFiles[]" value="${file}"/>
                             ${(USER.role == 'admin' || USER.role == 'manager' || meeting.secretary_id == USER.id || meeting.leader_id == USER.id) ? `
-                                            <span class="modal_upload-remote" onclick="removeUploaded(event)">
-                                                  <img style="width:18px;height:18px" src="/assets/img/trash.svg" />
-                                            </span>
-                                        ` : ''}
+                                                <span class="modal_upload-remote" onclick="removeUploaded(event)">
+                                                      <img style="width:18px;height:18px" src="/assets/img/trash.svg" />
+                                                </span>
+                                            ` : ''}
                         </div>
                       </li>
                     `
@@ -1503,7 +1499,7 @@
                         ${getReportStatusText(report.status)}
                     </td>
                 `
-                if(USER.role === 'admin' || USER.role === 'manager') {
+                if (USER.role === 'admin' || USER.role === 'manager') {
                     tr += `
                     <td>
                         <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
@@ -1511,13 +1507,13 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             ${report.status !== 'Converted' ? `
 
-                                <li>
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh${report.id}" data-repeater-delete>
-                                        <i class="bi bi-arrow-right-square-fill"></i>
-                                        Chuyển thành nhiệm vụ phát sinh
-                                    </a>
-                                </li>
-                            ` : ""}
+                                    <li>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nhiemVuPhatSinh${report.id}" data-repeater-delete>
+                                            <i class="bi bi-arrow-right-square-fill"></i>
+                                            Chuyển thành nhiệm vụ phát sinh
+                                        </a>
+                                    </li>
+                                ` : ""}
                             <li>
                                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaVanDeTonDong${report.id}">
                                     <img style="width:16px;height:16px" src="/assets/img/edit.svg" />
@@ -1534,7 +1530,7 @@
                         </ul>
                     </td>
                     `
-                }else {
+                } else {
                     tr += "<td></td>"
                 }
                 tr += "</tr>"

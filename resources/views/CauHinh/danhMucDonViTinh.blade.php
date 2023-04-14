@@ -14,12 +14,12 @@
                         <div class="mainSection_card">
                             <div class="mainSection_content">
                                 <div class="me-5" style="flex:1">Đơn vị: </div>
-                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{Session::get('department_name')}}</strong>
+                                <div class="d-flex justify-content-start" style="flex:2"><strong>{{ Session::get('department_name') }}</strong>
                                 </div>
                             </div>
                             <div class="mainSection_content">
                                 <div class="me-3">Trưởng đơn vị: </div>
-                                <div class="d-flex justify-content-start"><strong>{{Session::get('user')['name']}}</strong></div>
+                                <div class="d-flex justify-content-start"><strong>{{ Session::get('user')['name'] }}</strong></div>
                             </div>
                         </div>
                         <div id="mainSection_width" class="mainSection_thismonth d-flex align-items-center overflow-hidden">
@@ -33,8 +33,8 @@
                                 <div class="card-body">
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="position-relative">
-                                                <table id="dsChiSoKey" class="table table-responsive table-hover table-bordered">
+                                            <div class="table-responsive">
+                                                <table id="dsChiSoKey" class="table table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 2%" class="text-center">STT</th>
@@ -223,9 +223,6 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>

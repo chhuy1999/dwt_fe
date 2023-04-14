@@ -29,8 +29,8 @@
                                 <div class="card-body">
                                     <div class='row'>
                                         <div class="col-md-12">
-                                            <div class="position-relative">
-                                                <table id="dsMauNhiemVu" class="table table-responsive table-hover table-bordered">
+                                            <div class="table-responsive">
+                                                <table id="dsMauNhiemVu" class="table table-hover table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 2%" class="text-center">STT</th>
@@ -72,7 +72,7 @@
                                                             <th style="width: 8%">Chỉ số key</th>
                                                             <th style="width: 5%">Manday</th>
                                                             @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                            <th style="width: 2%"></th>
+                                                                <th style="width: 2%"></th>
                                                             @endif
                                                         </tr>
                                                     </thead>
@@ -85,27 +85,27 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $targetDetail->name ?? "" }}">
-                                                                        {{ $targetDetail->name ?? ""  }}
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $targetDetail->name ?? '' }}">
+                                                                        {{ $targetDetail->name ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:150px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Tham gia xây dựng và/hoặc điều phối dự án Marketing theo yêu cầu của Ban Giám đốc">
-                                                                        {{ $targetDetail->target->name ?? ""  }}
+                                                                        {{ $targetDetail->target->name ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:300px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->description ?? ""  }}">
-                                                                        {{ $targetDetail->description ?? ""  }}
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:300px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->description ?? '' }}">
+                                                                        {{ $targetDetail->description ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->departement->name ?? ""  }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->departement->name ?? '' }}">
                                                                         {{ $targetDetail->departement->name ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->position->name ?? "" }}">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:110px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="{{ $targetDetail->position->name ?? '' }}">
                                                                         {{ $targetDetail->position->name ?? '' }}
                                                                     </div>
                                                                 </td>
@@ -113,8 +113,7 @@
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:100px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="@foreach ($targetDetail->kpiKeys as $kpiKey) - {{ $kpiKey->name }} <br> @endforeach">
                                                                         @foreach ($targetDetail->kpiKeys as $kpiKey)
                                                                             {{-- {{ $kpiKey->quantity }} {{ $kpiKey->name }} ({{ $kpiKey->unit->name }}) <br> --}}
-                                                                           - {{ $kpiKey->name }} <br>
-
+                                                                            - {{ $kpiKey->name }} <br>
                                                                         @endforeach
                                                                     </div>
                                                                 </td>
@@ -125,24 +124,24 @@
                                                                     </div>
                                                                 </td>
                                                                 @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
-                                                                <td>
-                                                                    <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
-                                                                    </div>
-                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc{{ $targetDetail->id }}">
-                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                                                                Sửa
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $targetDetail->id }}" data-repeater-delete>
-                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                                                Xóa
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </td>
+                                                                    <td>
+                                                                        <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                                        </div>
+                                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#suaMoiDinhMuc{{ $targetDetail->id }}">
+                                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                                    Sửa
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#xoaThuocTinh{{ $targetDetail->id }}" data-repeater-delete>
+                                                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                                    Xóa
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
                                                                 @endif
                                                             </tr>
 
@@ -178,7 +177,7 @@
                                                                                             @endforeach
                                                                                         </select>
                                                                                     </div>
-                                                                                    <div class="col-sm-12 mb-3" >
+                                                                                    <div class="col-sm-12 mb-3">
                                                                                         <textarea class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mô tả" name="description" placeholder="Nhập mô tả ">{{ $targetDetail->description }}</textarea>
                                                                                     </div>
                                                                                     <div class="col-sm-12 mb-3">
@@ -467,9 +466,6 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-datetimepicker/custom-datetimepicker.js') }}"></script>
 
     <script src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>

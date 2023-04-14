@@ -287,10 +287,7 @@
     @include('template.sidebar.sidebarMaster.sidebarRight')
 @endsection
 @section('footer-script')
-    <script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
     <!-- ChartJS -->
-    <!-- ChartJS -->
-
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0') }}"></script>
