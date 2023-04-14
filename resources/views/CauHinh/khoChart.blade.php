@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-3">
-                                <div class="card-body">
+                                <div class="card-body" style="padding-bottom: 0">
                                     
                                     <div class="col-md-3 card-title">Thông số</div>
                                     <div class='row mt-4 d-flex justify-content-start'>
@@ -70,7 +70,7 @@
                                                                     'KeyOtherChart_MultiSeriesPie' => 'KeyOtherChart_MultiSeriesPie',
                                                                     'KeyOtherChart_Pie' => 'KeyOtherChart_Pie',
                                                                     'KeyOtherChart_Polararea' => 'KeyOtherChart_Polararea',
-                                                                    // 'KeyOtherChart_Radar' => 'KeyOtherChart_Radar',
+                                                                    // 'KeyOtherChart_Quadrants' => 'KeyOtherChart_Quadrants',
                                                             ],
                                                         ];
                                                         $chartNames = array_keys($barCharts);
@@ -215,6 +215,7 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Pie.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Polararea.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Radar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Quadrants.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales_MinMax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales.js') }}"></script>
