@@ -684,8 +684,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 
-
-
     <script>
         const previewSelect = document.getElementById('preview-select');
         const previews = document.querySelectorAll('.preview_items-wrapper');
@@ -724,70 +722,31 @@
         }
     </script>
 
-<script>
-    var copyButtons = document.querySelectorAll('.btn-copy');
-    for (var i = 0; i < copyButtons.length; i++) {
-        var copyButton = copyButtons[i];
-        copyButton.addEventListener('click', function() {
-            var currentPre = this.parentNode.nextElementSibling;
-            if (currentPre) {
-                var content = currentPre.textContent;
-                var input = document.createElement('textarea');
-                input.value = content;
-                document.body.appendChild(input);
-                input.select();
-                document.execCommand('copy');
-                document.body.removeChild(input);
-
-                // Thay đổi văn bản của nút "Sao chép" thành "Đã sao chép"
-                this.innerHTML = '<i class="bi bi-check"></i> Đã sao chép';
-
-                // Sau 3 giây đổi lại thành "Sao chép"
-                var self = this;
-                setTimeout(function() {
-                    self.innerHTML = '<i class="bi bi-clipboard"></i> Sao chép';
-                }, 3000);
-            }
-        });
-    }
-</script>
-
     <script>
-        //        // Lấy tất cả các phần tử pre và sửa lại nội dung bên trong
-        // var preElements = document.querySelectorAll('pre');
-        // for (var i = 0; i < preElements.length; i++) {
-        //   var pre = preElements[i];
-        //   var code = pre.querySelector('code');
-        //   pre.textContent = code.innerHTML.trim();
-        // }
+        var copyButtons = document.querySelectorAll('.btn-copy');
+        for (var i = 0; i < copyButtons.length; i++) {
+            var copyButton = copyButtons[i];
+            copyButton.addEventListener('click', function() {
+                var currentPre = this.parentNode.nextElementSibling;
+                if (currentPre) {
+                    var content = currentPre.textContent;
+                    var input = document.createElement('textarea');
+                    input.value = content;
+                    document.body.appendChild(input);
+                    input.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(input);
 
-        // // Gán sự kiện click cho nút sao chép
-        // var copyButtons = document.querySelectorAll('.copy-button');
-        // for (var i = 0; i < copyButtons.length; i++) {
-        //   var copyButton = copyButtons[i];
-        //   copyButton.addEventListener('click', function() {
-        //     var currentPre = this.nextElementSibling;
-        //     if (currentPre) {
-        //       var content = currentPre.textContent;
-        //       var input = document.createElement('textarea');
-        //       input.value = content;
-        //       document.body.appendChild(input);
-        //       input.select();
-        //       document.execCommand('copy');
-        //       document.body.removeChild(input);
+                    // Thay đổi văn bản của nút "Sao chép" thành "Đã sao chép"
+                    this.innerHTML = '<i class="bi bi-check"></i> Đã sao chép';
 
-        //       // Thay đổi văn bản của nút "Sao chép" thành "Đã sao chép"
-        //       this.innerHTML = '<i class="bi bi-check"></i> Đã sao chép';
-
-        //       // Sau 3 giây đổi lại thành "Sao chép"
-        //       var self = this;
-        //       setTimeout(function() {
-        //         self.innerHTML = '<i class="bi bi-clipboard"></i> Sao chép';
-        //       }, 3000);
-        //     }
-        //   });
-        // }
+                    // Sau 3 giây đổi lại thành "Sao chép"
+                    var self = this;
+                    setTimeout(function() {
+                        self.innerHTML = '<i class="bi bi-clipboard"></i> Sao chép';
+                    }, 3000);
+                }
+            });
+        }
     </script>
-
-
 @endsection
