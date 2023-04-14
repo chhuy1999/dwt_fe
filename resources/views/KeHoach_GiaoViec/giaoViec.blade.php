@@ -98,7 +98,7 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <div class="col-md-5 overflow-auto" style="height: 276px">
+                                        <div class="col-md-5 overflow-auto mt-sm-3 mt-xs-3" style="height: 276px">
 
                                             @foreach ($listTargets->data as $target)
                                                 <div class="body_content-wrapper" id="body_content-{{ $target->id }}">
@@ -111,31 +111,31 @@
                                                             </div>
                                                         </div>
                                                         <div class="mb-3 row align-items-center">
-                                                            <div class="col-md-7 mb-3">
+                                                            <div class="col-7 col-md-7 mb-3">
                                                                 <input type="text" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" name="name" placeholder="Tên nhiệm vụ" value="{{ $target->name }}" />
                                                             </div>
-                                                            <div class="col-md-5 mb-3">
+                                                            <div class="col-5 col-md-5 mb-3">
                                                                 <input type="text" name="daterange" required class="form-control" placeholder="Thời hạn" />
                                                             </div>
-                                                            <div class="col-md-9 mb-3">
+                                                            <div class="col-9 col-md-9 mb-3">
                                                                 <textarea class="form-control" name="description" rows="1" placeholder="Mô tả/Diễn giải"></textarea>
                                                             </div>
-                                                            <div class="col-md-3 mb-3">
+                                                            <div class="col-3 col-md-3 mb-3">
                                                                 {{-- <input type="number" class="form-control" min="0" step="0.05" oninput="onInput(this)" placeholder="Manday" id="title" name="manday" /> --}}
                                                                 <input type="text" class="form-control" data-bs-toggle="tooltip" readonly data-bs-placement="top" title="Manday" name="manday" placeholder="Manday" value="{{ $target->manday }}" />
 
                                                             </div>
-                                                            <div class="col-md-9 mb-3">
+                                                            <div class="col-9 col-md-9 mb-3">
                                                                 <textarea class="form-control" rows="1" placeholder="Kế hoạch thực hiện" name="executionPlan"></textarea>
                                                             </div>
-                                                            <div class="col-md-3 mb-3">
+                                                            <div class="col-3 col-md-3 mb-3">
                                                                 <div class="form-check">
                                                                     <input role="button" type="checkbox" class="form-check-input fs-5" id="datGiaTriKinhDoanh{{ $target->id }}" name="saveAsForm">
                                                                     <label role="button" class="form-check-label user-select-none fs-5" for="datGiaTriKinhDoanh{{ $target->id }}">Lưu
                                                                         thành mẫu</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6 mb-3">
+                                                            <div class="col-6 col-md-6 mb-3">
                                                                 <select class='selectpicker' title="Người đảm nhiệm" required multiple data-live-search="true" data-size="5" data-actions-box="true" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name="users[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
@@ -143,7 +143,7 @@
                                                                     @endforeach
                                                                 </select>
                                                             </div>
-                                                            <div class="col-md-6 mb-3">
+                                                            <div class="col-6 col-md-6 mb-3">
                                                                 <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" data-actions-box="true" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người liên quan" data-live-search-placeholder="Tìm kiếm..." name="involvedPeople[]">
                                                                     @foreach ($listUsers as $user)
                                                                         <option value="{{ $user->id }}">
@@ -154,7 +154,7 @@
                                                             <div class="repeater">
                                                                 <div data-repeater-list="kpiKeys">
                                                                     <div class="row" data-repeater-item>
-                                                                        <div class="col-md-8 mb-3">
+                                                                        <div class="col-8 col-md-8 mb-3">
                                                                             <select class='form-select' required style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
                                                                                 <option value="" hidden>Chọn chỉ số
                                                                                     key
@@ -166,10 +166,10 @@
                                                                                 @endforeach
                                                                             </select>
                                                                         </div>
-                                                                        <div class="col-md-3 mb-3">
+                                                                        <div class="col-3 col-md-3 mb-3">
                                                                             <input type="number" min="0" required class="form-control" placeholder="Giá trị" name="quantity" />
                                                                         </div>
-                                                                        <div class="col-md-1 mb-3 d-flex align-items-center">
+                                                                        <div class="col-1 col-md-1 mb-3 d-flex align-items-center">
                                                                             <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                                                         </div>
                                                                     </div>
@@ -775,7 +775,7 @@
                                 <div class="repeater">
                                     <div data-repeater-list="kpiKeys">
                                         <div class="row" data-repeater-item>
-                                            <div class="col-md-7 mb-3">
+                                            <div class="col-7 col-md-7 mb-3">
                                                 <select class='form-select' style="font-size:var(--fz-12)" title="Tiêu chí" data-live-search="true" name="id">
                                                     <option value="" hidden>Chọn chỉ số key</option>
                                                     @foreach ($kpiKeys as $kpiKey)
@@ -785,10 +785,10 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-4 col-md-4 mb-3">
                                                 <input type="number" min="0" class="form-control" placeholder="Giá trị" name="quantity" />
                                             </div>
-                                            <div class="col-md-1 mb-3 d-flex align-items-center">
+                                            <div class="col-1 col-md-1 mb-3 d-flex align-items-center">
                                                 <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                             </div>
                                         </div>

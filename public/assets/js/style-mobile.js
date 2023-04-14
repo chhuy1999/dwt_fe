@@ -13,9 +13,24 @@ $(document).ready(function () {
         );
     });
 
-    $(document).click(function (event) {
-        // Nếu màn hình có chiều rộng nhỏ hơn 1023px
-        if ($(window).width() < 1023) {
+    $(".section_mobile-list").click(function () {
+        $(".header_menu").slideToggle("fast");
+        $(".center-menu-icon").toggleClass("bi-list bi-x");
+    });
+
+    if ($(window).width() < 1023) {
+        $(".menu_btn-sub").click(function () {
+            $(this).next("#header_submenu").slideToggle();
+        });
+
+        $(".more_btn").click(function () {
+            $(this).next(".header_more").slideToggle();
+        });
+        $(document).click(function (event) {
+            // Nếu màn hình có chiều rộng nhỏ hơn 1023px
+
+            
+
             // Nếu người dùng click ra ngoài aside-left và left-toggle-aside
             if (
                 !$(event.target).closest(".aside-left, .left-toggle-aside")
@@ -37,18 +52,6 @@ $(document).ready(function () {
                     .removeClass("bi-box-arrow-in-right")
                     .addClass("bi-box-arrow-in-left");
             }
-        }
-    });
+        });
+    }
 });
-
-if ($(window).width() < 1023) {
-    $(".menu_btn-sub").click(function () {
-        $(this).next("#header_submenu").slideToggle();
-    });
-    $(".more_btn").click(function () {
-        $(this).next(".header_more").slideToggle();
-    });
-    $(".section_mobile-menu").click(function() {
-        $(".header_menu-list").toggle();
-      });
-}

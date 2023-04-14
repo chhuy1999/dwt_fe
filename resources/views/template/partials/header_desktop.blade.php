@@ -102,6 +102,11 @@
                 <i class="bi bi-journal-arrow-up"></i>
                 <span>DWT & KPI</span>
             </a>
+            <ul id="header_submenu">
+                <li class="header_submenu-items">
+                    <a href="/dashboard_admin" class="header_submenu-link">Dashboard Admin</a>
+                </li>
+            </ul>
         </li>
         <li class="header_menu-item">
             <a class="header_menu-link menu_btn-sub" href="#">
@@ -271,12 +276,10 @@
                     </a>
                     <ul class="header_more">
                         <li class="header_more-item">
-                            <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách key
-                                chart</a>
+                            <a href="/danh-sach-key-chart" class="header_more-link">Danh sách key chart</a>
                         </li>
                         <li class="header_more-item">
-                            <a href="danh-muc-dinh-muc" class="header_more-link">Danh sách
-                                chart</a>
+                            <a href="/kho-chart" class="header_more-link">Kho chart</a>
                         </li>
                     </ul>
                 </li>

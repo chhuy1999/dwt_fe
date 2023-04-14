@@ -31,7 +31,7 @@
                                         <div class="col-md-12">
                                             <div class="table-responsive">
                                                 <table id="dsDaoTao"
-                                                    class="table table-hover table-bordered">
+                                                    class="table table-hover table-bordered" width="100%">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center" style="width:2%">STT</th>
@@ -385,6 +385,7 @@
         responsive: true,
             paging: true,
             ordering: false,
+            autoWidth: false,
             order: [
                 [0, 'desc']
             ],
