@@ -146,7 +146,7 @@
                                         <div class="col-md-12 result">
                                             @foreach($barCharts as $chartName => $subCharts)
                                                 <div id="{{ $chartName }}Container" class="chart-container" style="display: @if($chartName == $chartNames[0]) block @else none @endif">
-                                                    <div class="d-flex row">
+                                                    <div class="row">
                                                         @foreach($subCharts as $subChartKey => $subChartLabel)
                                                         <div class=" col-sm-6 mb-3">
                                                             <div class="card">
