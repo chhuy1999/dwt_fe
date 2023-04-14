@@ -265,7 +265,7 @@
                         @include('template.components.sectionCard')
                     </div>
 
-                    <div class="row ">
+                    <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -718,23 +718,8 @@
                         </div>
 
                         <div class="col-lg-12">
-                            <div class="card">
+                            <div class="card mb-3">
                                 <div class="card-body">
-                                    {{-- <div class="d-flex justify-content-between align-items-center pb-2">
-                                                    <div class="card-title">Danh sách vấn đề</div>
-
-                                                    <div class="action_wrapper d-flex">
-                                                        <div class="form-group has-search me-3">
-                                                            <span class="bi bi-search form-control-feedback fs-5"></span>
-                                                            <input type="text" class="form-control" placeholder="Tìm kiếm vấn đề">
-                                                        </div>
-                                                        <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Xuất file Excel">
-                                                            <button class="btn-export"><i class="bi bi-download"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
-
                                     <div class="table-responsive ">
                                         <table id="dsVanDe" class="table table-hover table-bordered">
                                             <thead>
@@ -914,101 +899,87 @@
 
 
                         {{-- Chart --}}
-                        <div class="col-lg-12 mt-3">
-                            <div class="card" style="display: -webkit-box;">
-                                <div class="col-lg-3">
-                                    <div class="col-md-12 card mb-12">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="card-title">PieChart</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="pieChart"></canvas>
-                                            </div>
-                                        </div>
+                        <div class="col-md-12 chart_wrapper">
+                            <div class="card mb-3 col-md-3 col-sm-6 col-xs-6 col-lg-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">PieChart</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="pieChart"></canvas>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="col-md-12 card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="card-title">DoughnutChart</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="doughnutChart"></canvas>
-                                            </div>
-                                        </div>
+                            </div>
+
+                            <div class="card mb-3 col-md-3 col-sm-6 col-xs-6 col-lg-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">DoughnutChart</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="doughnutChart"></canvas>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="col-md-12 card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="card-title">BarChart 2</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="BarChartTwo"></canvas>
-                                            </div>
-                                        </div>
+                            </div>
+
+                            <div class="card mb-3 col-md-3 col-sm-6 col-xs-6 col-lg-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">BarChart 2</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="BarChartTwo"></canvas>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="col-md-12 card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="card-title">BarChart 3</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="BarChartThree"></canvas>
-                                            </div>
-                                        </div>
+                            </div>
+
+                            <div class="card mb-3 col-md-3 col-sm-6 col-xs-6 col-lg-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="card-title">BarChart 3</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="BarChartThree"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 mt-3">
-                            <div class="card" style="display: -webkit-box;">
-                                <div class="col-lg-6">
-                                    <div class="col-md-12 card mb-3">
+                        <div class="col-md-12 chart_wrapper">
+                            <div class="card mb-3 col-md-6">
 
-                                        <div class="card-body">
-                                            <div
-                                                class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                                <div class="card-title">LineChart</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="lineChart"></canvas>
-                                            </div>
-                                        </div>
-
+                                <div class="card-body">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                        <div class="card-title">LineChart</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="lineChart"></canvas>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="col-md-12 card mb-3">
-                                        <div class="card-body">
-                                            <div
-                                                class="d-flex justify-content-between align-items-center pb-3 pt-3">
-                                                <div class="card-title">LineChart 2</div>
-                                            </div>
-                                            <div class="mainSection_chart-container mt-3">
-                                                <canvas id="LineChartTwo"></canvas>
-                                            </div>
-                                        </div>
 
+                            </div>
+                            <div class="card mb-3 col-md-6">
+
+                                <div class="card-body">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center pb-3 pt-3">
+                                        <div class="card-title">LineChart 2</div>
+                                    </div>
+                                    <div class="mainSection_chart-container mt-3">
+                                        <canvas id="LineChartTwo"></canvas>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-
                         
-                        @include('template.footer.footer')
                     </div>
-
-
+                    
+                    
                 </div>
-
+                
             </div>
+            @include('template.footer.footer')
         </div>
         @include('template.sidebar.sidebarMaster.sidebarRight')
     </div>
