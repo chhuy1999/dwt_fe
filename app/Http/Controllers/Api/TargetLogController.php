@@ -24,12 +24,13 @@ class TargetLogController extends Controller
 
             $targetDetailId = $id;
             $data = $request->validate([
-                'note' => 'required',
+                'note' => 'nullable',
                 'kpiKeys' => 'nullable|array',
                 'files' => 'nullable|array',
                 'reportedDate' => 'required|date',
                 'uploadedFiles' => 'nullable|array',
             ]);
+
             //validate kpikeys
             $validKpis = [];
             if (isset($data['kpiKeys'])) {
@@ -101,6 +102,7 @@ class TargetLogController extends Controller
             }
 
             $targetLogId = $targetLog->id;
+        
             //current user
             $loggedInUserId = session('user')['id'];
             //if target detail exist and belong to current user
@@ -135,7 +137,7 @@ class TargetLogController extends Controller
 
             $newTargetLogDetail = [
                 "target_log_id" => $targetLogId,
-                "note" => $data['note'],
+                "note" => $data['note'] ?? null,
                 "files" => $data['files'] ?? null,
                 "kpiKeys" => $data['kpiKeys'] ?? null
             ];
@@ -143,6 +145,7 @@ class TargetLogController extends Controller
             $this->dwtService->createTargetLogDetail($newTargetLogDetail);
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             error_log($error);
             return back()->with('error', $error);
