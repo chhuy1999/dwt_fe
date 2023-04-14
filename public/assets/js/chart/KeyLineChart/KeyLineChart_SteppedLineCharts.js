@@ -53,6 +53,7 @@ new Chart(KeyLineChart_SteppedLineCharts, {
   },
   options: {
     responsive: true,
+      maintainAspectRatio: false,
     interaction: {
       intersect: false,
       axis: 'x'

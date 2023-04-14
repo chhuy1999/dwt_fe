@@ -19,6 +19,8 @@ new Chart(KeyOtherChart_Quadrants, {
     ]
   },
   options: {
+    responsive: true,
+      maintainAspectRatio: false,
     plugins: {
       quadrants: {
         topLeft: "rgb(255, 99, 132)",

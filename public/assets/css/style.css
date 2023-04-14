@@ -1884,3 +1884,11 @@ ul.modal_upload-list li:last-child {
 .chart_wrapper {
     display: flex;
 }
+
+
+.box_code-title {
+    font-size: var(--fz-14);
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+}

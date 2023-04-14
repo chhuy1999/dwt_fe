@@ -284,7 +284,7 @@
                     </ul>
                 </li>
                 <li class="header_submenu-items">
-                    <a href="/chi-so-key" class="header_submenu-link">Chỉ số key</a>
+                    <a href="/kho-key" class="header_submenu-link">Kho chỉ số key</a>
                 </li>
             </ul>
         </li>

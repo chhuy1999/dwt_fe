@@ -47,6 +47,7 @@ new Chart(KeyBarChart_StackedWithGroups, {
       },
     },
     responsive: true,
+      maintainAspectRatio: false,
     interaction: {
       intersect: false,
     },

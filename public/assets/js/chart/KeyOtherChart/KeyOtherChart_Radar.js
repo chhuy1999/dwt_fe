@@ -14,6 +14,7 @@ new Chart(KeyOtherChart_Radar, {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,

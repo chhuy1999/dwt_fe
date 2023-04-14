@@ -41,6 +41,7 @@ new Chart(KeyBarChart_Vertical, {
 },
   options: {
     responsive: true,
+      maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',

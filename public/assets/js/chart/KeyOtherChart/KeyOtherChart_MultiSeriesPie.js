@@ -25,6 +25,7 @@ new Chart(KeyOtherChart_MultiSeriesPie, {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           labels: {

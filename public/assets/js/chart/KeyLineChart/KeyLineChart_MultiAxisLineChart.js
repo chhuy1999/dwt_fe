@@ -54,6 +54,7 @@ new Chart(KeyLineChart_MultiAxisLineChart, {
 },
 options: {
   responsive: true,
+      maintainAspectRatio: false,
   interaction: {
     mode: 'index',
     intersect: false,

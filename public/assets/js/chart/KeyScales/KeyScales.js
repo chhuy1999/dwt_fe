@@ -27,7 +27,8 @@ new Chart(KeyScales, {
         ],
     },
     options: {
-        responsive: true,
+      responsive: true,
+      maintainAspectRatio: false,
         plugins: {
           title: {
             display: true,

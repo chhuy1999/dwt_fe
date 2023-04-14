@@ -172,12 +172,46 @@ option:hover,
 
 /* Code form */
 code {
-    padding: 6px;
+    /* padding: 6px;
     background-color: var(--pink-color-blur);
     border-radius: var(--border-radius-mini);
-    color: var(--black-color);
+    color: var(--black-color); */
 }
 
+pre {
+    clear: both;
+    color: #fff;
+    background-color: #343541;
+    padding: 24px 10px 10px;
+    white-space: pre-wrap;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+    tab-size: 2;
+    -ms-word-break: normal;
+    word-break: normal;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    position: relative;
+    line-height: 20px;
+    border-radius: var(--border-radius-main);
+    overflow: auto;
+    max-height: 200px;
+}
+
+pre[rel]:not([rel=""]):before {
+    font-style: normal;
+    font-weight: 700;
+    font-size: var(--fz-12);
+    content: attr(rel);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    color: var(--white-color)!important;
+    background-color: #1b1b1b;
+}
 
 /* STYLE SCROLLBAR */
 ::-webkit-scrollbar {
@@ -243,6 +277,8 @@ code {
     animation: heartbeat 3.5s linear infinite alternate;
 }
 
+
+/* Style Scroll hover show */
 .sidebarBody::-webkit-scrollbar-track {
     background-color: transparent;
 }
@@ -254,6 +290,32 @@ code {
     width: 4px;
 }
 .sidebarBody:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.box_code-preview::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.box_code-preview::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.box_code-preview::-webkit-scrollbar {
+    width: 4px;
+}
+.box_code-preview:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.trim_pre::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.trim_pre::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.trim_pre::-webkit-scrollbar {
+    width: 6px;
+}
+.trim_pre:hover::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
 }
 

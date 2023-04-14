@@ -51,7 +51,19 @@ new Chart(KeyLineChart_LineSegmentStyling, {
           },
       ],
   },
-  options: genericOptions
+  options: {
+    responsive: true,
+      maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Line Chart'
+      }
+    }
+  },
 });
 
 

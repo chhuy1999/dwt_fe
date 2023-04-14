@@ -2,7 +2,7 @@
     <div class="sidebarBody_heading-wrapper">
         <h6 class="sidebarBody_heading mt-1">
             {{-- Icon --}}
-            {{ isset($icon) ? '<i class="bi ' . $icon . '"></i>' : '' }}
+            {!! isset($icon) ? '<i class="bi ' . $icon . '"></i>' : '' !!}
             {{-- Heading --}}
             {{ isset($heading) ? $heading : '' }}
             {{-- Heading Mini --}}

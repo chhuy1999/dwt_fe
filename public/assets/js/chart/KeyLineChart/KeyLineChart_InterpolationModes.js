@@ -72,6 +72,7 @@ new Chart(KeyLineChart_InterpolationModes, {
   },
   options: {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,

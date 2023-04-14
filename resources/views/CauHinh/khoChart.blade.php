@@ -60,6 +60,7 @@
                                                                 'KeyLineChart_MultiAxisLineChart' => 'KeyLineChart_MultiAxisLineChart',
                                                                 'KeyLineChart_PointStyling' => 'KeyLineChart_PointStyling',
                                                                 'KeyLineChart_SteppedLineCharts' => 'KeyLineChart_SteppedLineCharts',
+                                                                'KeyLineChart_Vertical' => 'KeyLineChart_Vertical',
                                                             ],
                                                             'Scales' => [
                                                                     'KeyScales_MinMax' => 'KeyScales_MinMax',
@@ -70,7 +71,8 @@
                                                                     'KeyOtherChart_MultiSeriesPie' => 'KeyOtherChart_MultiSeriesPie',
                                                                     'KeyOtherChart_Pie' => 'KeyOtherChart_Pie',
                                                                     'KeyOtherChart_Polararea' => 'KeyOtherChart_Polararea',
-                                                                    // 'KeyOtherChart_Quadrants' => 'KeyOtherChart_Quadrants',
+                                                                    'KeyOtherChart_Bubble' => 'KeyOtherChart_Bubble',
+                                                                    'KeyOtherChart_Radar' => 'KeyOtherChart_Radar',
                                                             ],
                                                         ];
                                                         $chartNames = array_keys($barCharts);
@@ -211,6 +213,7 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_MultiAxisLineChart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_PointStyling.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_SteppedLineCharts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyLineChart/KeyLineChart_Vertical.js') }}"></script>
 
     <!--Other Charts JS -->
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Doughnut.js') }}"></script>
@@ -219,6 +222,7 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Polararea.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Radar.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Quadrants.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Bubble.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales_MinMax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales.js') }}"></script>

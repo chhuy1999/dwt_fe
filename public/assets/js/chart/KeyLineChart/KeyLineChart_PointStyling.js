@@ -53,6 +53,7 @@ new Chart(KeyLineChart_PointStyling, {
   },
   options: {
     responsive: true,
+      maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,

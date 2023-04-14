@@ -40,6 +40,7 @@ new Chart(KeyBarChart_BorderRadius, {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'top',

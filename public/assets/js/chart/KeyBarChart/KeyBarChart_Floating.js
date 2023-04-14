@@ -41,6 +41,7 @@ new Chart(KeyBarChart_Floating, {
 },
   options: {
     responsive: true,
+      maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',

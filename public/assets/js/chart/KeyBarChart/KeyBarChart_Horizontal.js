@@ -49,6 +49,7 @@ new Chart(KeyBarChart_Horizontal, {
       }
     },
     responsive: true,
+      maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'right',

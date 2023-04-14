@@ -47,6 +47,7 @@ new Chart(KeyBarChart_Stacked, {
       },
     },
     responsive: true,
+      maintainAspectRatio: false,
     scales: {
       x: {
         stacked: true,

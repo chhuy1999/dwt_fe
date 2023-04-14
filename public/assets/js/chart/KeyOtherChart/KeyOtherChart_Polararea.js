@@ -14,6 +14,7 @@ new Chart(KeyOtherChart_Polararea, {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'top',

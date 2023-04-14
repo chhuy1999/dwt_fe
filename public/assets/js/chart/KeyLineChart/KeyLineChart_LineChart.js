@@ -54,6 +54,7 @@ new Chart(KeyLineChart_LineChart, {
 },
 options: {
   responsive: true,
+    maintainAspectRatio: false,
   plugins: {
     legend: {
       position: 'top',
