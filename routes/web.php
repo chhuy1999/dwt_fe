@@ -220,6 +220,13 @@ Route::get('kpi-nhan-vien', function () {
     return view('page.staff.kpiStaff');
 });
 
+// Biểu đồ
+Route::get('danh-sach-key-chart', function () {
+    return view('CauHinh.danhSachKeyChart');
+});
+Route::get('kho-chart', function () {
+    return view('CauHinh.khoChart');
+});
 
 // Trang Dịch vụ Bán Hàng
 Route::get('dich-vu-ban-hang', function () {
