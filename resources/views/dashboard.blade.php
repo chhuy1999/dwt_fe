@@ -19,7 +19,7 @@
             }
             return [];
         }
-        
+
         function findTargetLogDetailNote($targetDetail, $date)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -32,7 +32,7 @@
             }
             return '';
         }
-        
+
         function findReportTaskLog($task, $date)
         {
             $logs = $task->report_task_logs;
@@ -48,7 +48,7 @@
                 'kpi_keys' => [],
             ];
         }
-        
+
         function getReportTaskLogFile($task, $date)
         {
             $log = findReportTaskLog($task, $date);
@@ -63,7 +63,7 @@
             }
             return $files;
         }
-        
+
         function countReportTaskLogFiles($task)
         {
             $count = 0;
@@ -80,7 +80,7 @@
             }
             return $count;
         }
-        
+
         function countReportTaskLogKpiKeys($task)
         {
             $uniqueKpiKeys = [];
@@ -96,7 +96,7 @@
             }
             return count($uniqueKpiKeys);
         }
-        
+
         // function findAllTargetLogDetails($targetDetail)
         // {
         //     $targetLogs = $targetDetail->targetLogs;
@@ -110,7 +110,7 @@
         //     }
         //     return $targetLogDetails;
         // }
-        
+
         function findTargetLogDetailKpiKeys($targetDetail, $date, $userId)
         {
             $kpiKeys = [];
@@ -128,7 +128,7 @@
             }
             return $kpiKeys;
         }
-        
+
         function findTargetLogDetailFiles($targetDetail, $date, $userId)
         {
             $files = [];
@@ -153,7 +153,7 @@
             }
             return $files;
         }
-        
+
         function getAllTargetDetailKpiKeys($targetDetail)
         {
             $targetLogs = $targetDetail->targetLogs;
@@ -191,14 +191,14 @@
                         $toPush = $targetLogDetail;
                         //add reported date
                         $toPush->reportedDate = $targetLog->reportedDate;
-        
+
                         array_push($targetLogDetails, $toPush);
                     }
                 }
             }
             return $targetLogDetails;
         }
-        
+
         function getUsers($task)
         {
             $users = $task->users;
@@ -208,7 +208,7 @@
             }
             return implode(', ', $userNames);
         }
-        
+
         function countFiles($task)
         {
             $targetLogs = $task->targetLogs;
@@ -224,7 +224,7 @@
             }
             return $count;
         }
-        
+
         // function mergedKpiKey($kpiKeys)
         // {
         //     return uniqueKpiKeys = [];
@@ -241,7 +241,7 @@
         //     }
         //     return array_values($uniqueKpiKeys);
         // }
-        
+
         // function caculatePersonalKpi($listTask, $userId)
         // {
         //     $kpi = 0;
@@ -249,7 +249,7 @@
         //         $taskKpiKeys = $task->kpiKeys;
         //         //merge kpi keys
         //         $taskKpiKeys = mergedKpiKey($taskKpiKeys);
-        
+
         //     }
         //     return $kpi;
         // }
@@ -972,12 +972,12 @@
 
                             </div>
                         </div>
-                        
+
                     </div>
-                    
-                    
+
+
                 </div>
-                
+
             </div>
             @include('template.footer.footer')
         </div>
@@ -1548,9 +1548,7 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Xóa
-                                        báo
-                                        cáo
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Xóa báo cáo
                                     </button>
                                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy
                                     </button>

@@ -125,7 +125,7 @@ class ReportTaskController extends Controller
         try {
             $taskId = $id;
             $data = $request->validate([
-                'note' => 'required',
+                'note' => 'nullable',
                 'kpiKeys' => 'nullable|array',
                 'files' => 'nullable|array',
                 'report_date' => 'required|date',

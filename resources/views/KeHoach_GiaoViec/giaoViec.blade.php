@@ -19,7 +19,7 @@
             }
             return $isAssigned;
         }
-        
+
         function isInvolved($assignedTask, $userId)
         {
             $isInvolved = false;
@@ -31,7 +31,7 @@
             }
             return $isInvolved;
         }
-        
+
         function isInvolvedReportTask($assignedTask, $userId)
         {
             $isInvolved = false;
@@ -1047,7 +1047,7 @@
                 },
                 language: 'ru'
             });
-            $('input[name="daterange"]').val('');
+            // $('input[name="daterange"]').val('');
             $('input[name="daterange"]').attr("placeholder", "Chọn thời hạn");
         });
     </script>
