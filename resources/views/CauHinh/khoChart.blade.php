@@ -24,8 +24,8 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     @php
-                                                        $chartNames = ['pieChart', 'BarChartTwo', 'doughnutChart', 'BarChartThree', 'LineChartTwo'];
-                                                        $chartLabels = ['Bar Chart Border Radius', 'Floating Bars', 'Horizontal Bar Chart', 'Stacked Bar Chart', 'Stacked Bar Chart with Groups'];
+                                                        $chartNames = ['KeyBarChart_BorderRadius', 'KeyBarChart_Floating', 'KeyBarChart_Horizontal', 'KeyBarChart_Stacked', 'KeyBarChart_StackedWithGroups', 'KeyBarChart_Vertical'];
+                                                        $chartLabels = ['Bar Chart Border Radius', 'Floating Bars', 'Horizontal Bar Chart', 'Stacked Bar Chart', 'Stacked Bar Chart with Groups', 'Vertical Chart'];
                                                     @endphp
                                                     <div class="row d-flex justify-content-start">
                                                         <div class="col-md-4 card-title">Loại biểu đồ</div>
@@ -154,12 +154,12 @@
     
 
     <!--Bar Charts JS -->
-    {{-- <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Floating.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Floating.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_BorderRadius.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Horizontal.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Stacked.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_StackedWithGroups.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Vertical.js') }}"></script> --}}
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Vertical.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartTwo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/BarChartThree.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
