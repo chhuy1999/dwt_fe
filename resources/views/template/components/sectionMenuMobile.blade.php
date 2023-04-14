@@ -5,8 +5,8 @@
         </span>
     </div>
     <div class="section_mobile-menu">
-        <span class="section_mobile-link section_mobile-menu">
-            <i class="bi bi-list"></i>
+        <span class="section_mobile-link section_mobile-list">
+            <i class="bi bi-list center-menu-icon"></i>
         </span>
     </div>
     <div class="section_mobile-menu">
