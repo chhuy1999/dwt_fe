@@ -35,7 +35,7 @@
                                                             <th class="text-nowrap">Đơn vị phụ trách</th>
                                                             <th class="text-nowrap">Vị trí phụ trách</th>
                                                             <th class="text-nowrap text-center">Manday</th>
-                                                            @if (session('user')['role'] == 'admin')
+                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                             <th></th>
                                                             @endif
                                                         </tr>
@@ -73,7 +73,7 @@
                                                                 <td>
                                                                     <div class="text-center">{{ $target->manday }}</div>
                                                                 </td>
-                                                                @if (session('user')['role'] == 'admin')
+                                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                                 <td>
                                                                     <div class="dotdotdot" id="dropdownMenuButton1"
                                                                         data-bs-toggle="dropdown" aria-expanded="false"><i
@@ -441,7 +441,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <input class="form-control" required type="number" min="0" step="0.05" oninput="onInput(this)" placeholder="Thời lượng manday *" name="manday">
@@ -467,7 +467,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -475,7 +475,7 @@
                         <button type="submit" class="btn btn-danger">Lưu</button>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </div>
@@ -495,7 +495,7 @@
                             <div class="col-sm-12 mb-3">
                                 <input class="form-control" type="text" placeholder="Nhập tên đơn vị" name="name">
                             </div>
-                            
+
                             <div class="col-sm-12">
                                 <textarea class="form-control" placeholder="Nhập mô tả đơn vị" name="description"></textarea>
                             </div>
@@ -720,7 +720,7 @@
         <div class="d-flex justify-content-between align-items-center">
 
             <div class="main_action ms-3">
-                @if (session('user')['role'] == 'admin')
+                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                 <button id="exporttable" class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themMoiDinhMuc">
                     Thêm định mức

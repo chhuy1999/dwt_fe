@@ -41,7 +41,6 @@ class TargetController extends Controller
                 ->with('listDepartments', $listDepartments)
                 ->with('listKpi', $listKpi);
         } catch (Exception $e) {
-            // dd($e);
             $error = $e->getMessage();
             return view('CauHinh.danhMucDinhMuc')->with('listTargets', []);
         }
