@@ -225,6 +225,9 @@
                                 sách
                                 thành viên</a>
                         </li>
+                        <li class="header_submenu-items">
+                            <a href="#" class="header_submenu-link">Chữ ký</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="header_submenu-items">
@@ -259,7 +262,7 @@
                     </ul>
                 </li>
                 <li class="header_submenu-items more position-relative">
-                    <a href="#" class="header_submenu-link">Quy trình</a>
+                    <a href="#" class="header_submenu-link more_btn">Quy trình<i class="bi bi-chevron-right"></i></a>
                     <ul class="header_more">
                         <li class="header_more-item">
                             <a href="/ky-nang-nghiep-vu"
@@ -267,15 +270,21 @@
                         </li>
                     </ul>
                 </li>
-                <li class="header_submenu-items">
-                    <a href="#" class="header_submenu-link">KPI</a>
+                <li class="header_submenu-items more position-relative">
+                    <a href="#" class="header_submenu-link more_btn">
+                        KPI<i class="bi bi-chevron-right"></i>
+                    </a>
+                    <ul class="header_more">
+                        <li class="header_submenu-items">
+                            <a href="/kho-key" class="header_submenu-link">Kho chỉ số key</a>
+                        </li>
+                    </ul>
+                    
                 </li>
                 <li class="header_submenu-items">
                     <a href="#" class="header_submenu-link">Phân quyền</a>
                 </li>
-                <li class="header_submenu-items">
-                    <a href="#" class="header_submenu-link">Chữ ký</a>
-                </li>
+                
                 <li class="header_submenu-items more position-relative">
                     <a href="#" class="header_submenu-link more_btn">
                         Biểu đồ <i class="bi bi-chevron-right"></i>
@@ -289,9 +298,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="header_submenu-items">
-                    <a href="/kho-key" class="header_submenu-link">Kho chỉ số key</a>
-                </li>
+                
             </ul>
         </li>
     </ul>
