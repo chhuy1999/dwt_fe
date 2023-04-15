@@ -54,5 +54,11 @@ new Chart(KeyLineChart_Vertical, {
                 beginAtZero: true,
             },
         },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Chart.js Vertical Chart'
+          },
+        },
     },
 });

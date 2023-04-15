@@ -98,7 +98,7 @@
 
                                                     <div class="col-4">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3" >
+                                                            <div class="d-flex mb-3" style="margin: 10px">
                                                                 <div class="card-title me-auto" style="font-size: 28px; ">27.7m</div>
                                                                 <div class="">
                                                                     <i class="bi bi-caret-up-fill"></i> 2.7% Prior Yr
@@ -106,15 +106,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="" style="border-bottom: 2px solid var(--primary-color)"></div>
-                                                        <div class="card-title" style="text-align: center;"> YTD Sales East Coast</div>     
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;"> YTD Sales East Coast</div>     
                                                  
-                                                        <div class="d-flex" >
+                                                        <div class="d-flex" style="margin: 10px" >
                                                             <div class="me-auto">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/1.jpg') }}" />
+                                                                <img class="" style="width: 70px; height: 50px" src="{{ asset('assets/img/1.jpg') }}" />
 
                                                             </div>
                                                             <div class="">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/2.jpg') }}" />
+                                                                <img class="" style="width: 70px; height: 50px" src="{{ asset('assets/img/2.jpg') }}" />
 
                                                             </div>
                                                         </div>
@@ -122,23 +122,19 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3" >
-                                                                <div class="card-title me-auto" style="font-size: 28px; ">27.7m</div>
+                                                            <div class="d-flex mb-3"  style="margin: 10px" >
+                                                                <div class="card-title me-auto" style="font-size: 28px; ">12.6m</div>
                                                                 <div class="">
-                                                                    <i class="bi bi-caret-up-fill"></i> 2.7% Prior Yr
+                                                                    <i class="bi bi-caret-up-fill"></i> 6.0% Prior Yr
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="" style="border-bottom: 2px solid var(--primary-color)"></div>
-                                                        <div class="card-title" style="text-align: center;"> YTD Sales East Coast</div>     
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;"> YTD Expenses East Coast</div>     
                                                  
-                                                        <div class="d-flex" >
-                                                            <div class="me-auto">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/1.jpg') }}" />
-
-                                                            </div>
+                                                        <div class="d-flex "  style="margin: 10px" >
                                                             <div class="">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/2.jpg') }}" />
+                                                                <img class="align-items: center" style="width: 80px; height: 50px" src="{{ asset('assets/img/tenlua.jpg') }}" />
 
                                                             </div>
                                                         </div>
@@ -146,25 +142,22 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3" >
-                                                                <div class="card-title me-auto" style="font-size: 28px; ">27.7m</div>
+                                                            <div class="d-flex mb-3"  style="margin: 10px">
+                                                                <div class="card-title me-auto" style="font-size: 28px; ">1.8%</div>
                                                                 <div class="">
-                                                                    <i class="bi bi-caret-up-fill"></i> 2.7% Prior Yr
+                                                                    <i class="bi bi-caret-down-fill"></i> 39% Prior Yr
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="" style="border-bottom: 2px solid var(--primary-color)"></div>
-                                                        <div class="card-title" style="text-align: center;"> YTD Sales East Coast</div>     
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;"> YOY Change Bad Debts</div>     
                                                  
-                                                        <div class="d-flex" >
+                                                        <div class="d-flex"  style="margin: 10px">
                                                             <div class="me-auto">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/1.jpg') }}" />
+                                                                <img class="" style="width: 70px; height: 50px" src="{{ asset('assets/img/3.jpg') }}" />
 
                                                             </div>
-                                                            <div class="">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/2.jpg') }}" />
-
-                                                            </div>
+                                                        
                                                         </div>
     
                                                     </div>
@@ -180,7 +173,7 @@
 
                                                     <div class="col-4">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3" >
+                                                            <div class="d-flex mb-3" style="margin: 10px">
                                                                 <div class="card-title me-auto" style="font-size: 28px; ">27.7m</div>
                                                                 <div class="">
                                                                     <i class="bi bi-caret-up-fill"></i> 2.7% Prior Yr
@@ -188,15 +181,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="" style="border-bottom: 2px solid var(--primary-color)"></div>
-                                                        <div class="card-title" style="text-align: center;"> YTD Sales East Coast</div>     
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;"> YTD Sales East Coast</div>     
                                                  
-                                                        <div class="d-flex" >
+                                                        <div class="d-flex" style="margin: 10px" >
                                                             <div class="me-auto">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/1.jpg') }}" />
+                                                                <img class="" style="width: 70px; height: 50px" src="{{ asset('assets/img/4.jpg') }}" />
 
                                                             </div>
                                                             <div class="">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/2.jpg') }}" />
+                                                                <img class="" style="width: 70px; height: 50px" src="{{ asset('assets/img/5.jpg') }}" />
 
                                                             </div>
                                                         </div>
@@ -204,23 +197,19 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3" >
-                                                                <div class="card-title me-auto" style="font-size: 28px; ">27.7m</div>
+                                                            <div class="d-flex mb-3"  style="margin: 10px" >
+                                                                <div class="card-title me-auto" style="font-size: 28px; ">12.6m</div>
                                                                 <div class="">
-                                                                    <i class="bi bi-caret-up-fill"></i> 2.7% Prior Yr
+                                                                    <i class="bi bi-caret-up-fill"></i> 6.0% Prior Yr
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="" style="border-bottom: 2px solid var(--primary-color)"></div>
-                                                        <div class="card-title" style="text-align: center;"> YTD Sales East Coast</div>     
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;"> YTD Expenses East Coast</div>     
                                                  
-                                                        <div class="d-flex" >
-                                                            <div class="me-auto">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/1.jpg') }}" />
-
-                                                            </div>
+                                                        <div class="d-flex "  style="margin: 10px" >
                                                             <div class="">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/2.jpg') }}" />
+                                                                <img class="align-items: center" style="width: 80px; height: 50px" src="{{ asset('assets/img/tenlua.jpg') }}" />
 
                                                             </div>
                                                         </div>
@@ -228,25 +217,22 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3" >
-                                                                <div class="card-title me-auto" style="font-size: 28px; ">27.7m</div>
+                                                            <div class="d-flex mb-3"  style="margin: 10px">
+                                                                <div class="card-title me-auto" style="font-size: 28px; ">1.8%</div>
                                                                 <div class="">
-                                                                    <i class="bi bi-caret-up-fill"></i> 2.7% Prior Yr
+                                                                    <i class="bi bi-caret-down-fill"></i> 39% Prior Yr
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="" style="border-bottom: 2px solid var(--primary-color)"></div>
-                                                        <div class="card-title" style="text-align: center;"> YTD Sales East Coast</div>     
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;"> YOY Change Bad Debts</div>     
                                                  
-                                                        <div class="d-flex" >
+                                                        <div class="d-flex"  style="margin: 10px">
                                                             <div class="me-auto">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/1.jpg') }}" />
+                                                                <img class="" style="width: 70px; height: 50px" src="{{ asset('assets/img/3.jpg') }}" />
 
                                                             </div>
-                                                            <div class="">
-                                                                <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/2.jpg') }}" />
-
-                                                            </div>
+                                                        
                                                         </div>
     
                                                     </div>
