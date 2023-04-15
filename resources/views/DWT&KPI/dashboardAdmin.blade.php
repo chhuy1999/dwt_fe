@@ -10,10 +10,14 @@
                             <div class="card-body">
                                 
                                 <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="mainSection_heading d-flex row" style="max-height: 60px; border-bottom: 3px solid var(--primary-color);">
-                                            
-                                            <div class="col-md-6">
+                                    <div class="" style="margin: 2px">
+                                        <div class="container-fluid mainSection_heading d-flex row" style="max-height: 60px; border-bottom: 3px solid var(--primary-color);">
+                                            <div class="col header_logo d-flex">
+                                                <a href="/" class="navbar-brand d-flex align-items-center scrollto me-auto me-lg-0">
+                                                    <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
+                                                </a>
+                                            </div>
+                                            <div class="col-md-4">
                                                 <h5 class="mainSection_heading-title">
                                                     Dashboard Admin
                                                 </h5>
@@ -24,8 +28,8 @@
                                                     
                                                 </div>
                                                 <div class="">
-                                                    <p>190%</p>
-                                                    <p >Tỉ lệ hoàn thành CV</p>
+                                                    <p style="margin-bottom: 0">190%</p>
+                                                    <p class="card-title mt-1 " style="text-align: center; font-size: 10px;" >Tỉ lệ hoàn thành CV</p>
                                                 </div>
                                             </div>
                                             <div class="col d-flex">
@@ -34,17 +38,17 @@
                                                     <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/kinhlup.jpg') }}" />
                                                 </div>
                                                 <div class="">
-                                                    <p>41</p>
-                                                    <p>Doanh thu</p>
+                                                    <p style="margin-bottom: 0">41</p>
+                                                    <p class="card-title mt-1 " style="text-align: center; font-size: 10px;" >Doanh thu</p>
                                                 </div>
                                             </div>
-                                            <div class="col d-flex">
+                                            <div class="col d-flex" >
                                                 <div class="">
                                                     <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/nhanvien.jpg ') }}" />
                                                 </div>
                                                 <div class="">
-                                                    <p>300</p>
-                                                    <p>Nhân viên</p>
+                                                    <p  style="margin-bottom: 0">300</p>
+                                                    <p class="card-title mt-1 " style="text-align: center; font-size: 10px;">Nhân viên</p>
                                                 </div>
                                             </div>
                                             <div class="col d-flex">
@@ -52,8 +56,8 @@
                                                     <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/ruiro.jpg') }}" />
                                                 </div>
                                                 <div class="">
-                                                    <p>37</p>
-                                                    <p>Rủi ro</p>
+                                                    <p  style="margin-bottom: 0">37</p>
+                                                    <p class="card-title mt-1 " style="text-align: center; font-size: 10px;">Rủi ro</p>
                                                 </div>
                                             </div>
                                             <div class="col d-flex">
@@ -61,9 +65,12 @@
                                                     <img class="" style="width: 50px; height: 50px" src="{{ asset('assets/img/clock.jpg') }}" />
                                                 </div>
                                                 <div class="">
-                                                    <p>90%</p>
-                                                    <p>Tỷ lệ đi làm đúng giờ</p>
+                                                    <p  style="margin-bottom: 0">90%</p>
+                                                    <p class="card-title mt-1 " style="text-align: center; font-size: 10px;">Tỷ lệ đi làm đúng giờ</p>
                                                 </div>
+                                            </div>
+                                            <div class="col d-flex justify-content-center">
+                                                <button type="button" class="btn btn-outline-danger btn-lg">Tới Trang chủ</button>
                                             </div>
                                             
                                             
@@ -112,7 +119,7 @@
                                                         <div class="" style="border-bottom: 3px solid #0B2447"></div>
                                                         <div class="card-title mt-3" style="text-align: center; font-size: 20px; color: #0B2447 "> YTD Expenses East Coast</div>     
                                                  
-                                                        <div class="d-flex "  style="margin: 10px" >
+                                                        <div class="d-flex justify-content-end"  style="margin: 10px" >
                                                             <div class="">
                                                                 <img class="align-items: center" style="width: 80px; height: 50px" src="{{ asset('assets/img/tenlua.jpg') }}" />
 
@@ -132,8 +139,8 @@
                                                         <div class="" style="border-bottom: 3px solid #F7DB6A"></div>
                                                         <div class="card-title mt-3" style="text-align: center; font-size: 20px;color:  #F7DB6A"> YOY Change Bad Debts</div>     
                                                  
-                                                        <div class="d-flex"  style="margin: 10px">
-                                                            <div class="me-auto">
+                                                        <div class="d-flex justify-content-end "  style="margin: 10px">
+                                                            <div class="">
                                                                 <img class="" style="width: 70px; height: 50px" src="{{ asset('assets/img/3.jpg') }}" />
 
                                                             </div>
@@ -151,10 +158,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="" style="border-bottom: 3px solid #E8A0BF"></div>
-                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;color:  #E8A0BF"> YTD Fresh Leads</div>     
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;color:  #E8A0BF;"> YTD Fresh Leads</div>     
                                                  
-                                                        <div class="d-flex"  style="margin: 10px">
-                                                            <div class="me-auto">
+                                                        <div class="d-flex justify-content-end"  style="margin: 10px">
+                                                            <div class="">
                                                                 <img class="" style="width: 90px; height: 50px" src="{{ asset('assets/img/8.jpg') }}" />
 
                                                             </div>
@@ -227,8 +234,8 @@
                                                         <div class="" style="border-bottom: 3px solid #F7DB6A"></div>
                                                         <div class="card-title mt-3" style="text-align: center; font-size: 20px;color:  #F7DB6A"> YOY Change Bad Debts</div>     
                                                  
-                                                        <div class="d-flex"  style="margin: 10px">
-                                                            <div class="me-auto">
+                                                        <div class="d-flex justify-content-end"  style="margin: 10px">
+                                                            <div class="">
                                                                 <img class="" style="width: 100px; height: 50px" src="{{ asset('assets/img/7.jpg') }}" />
 
                                                             </div>
