@@ -258,8 +258,14 @@
                         </li> --}}
                     </ul>
                 </li>
-                <li class="header_submenu-items">
+                <li class="header_submenu-items more position-relative">
                     <a href="#" class="header_submenu-link">Quy trình</a>
+                    <ul class="header_more">
+                        <li class="header_more-item">
+                            <a href="/ky-nang-nghiep-vu"
+                                class="header_more-link">Kỹ Năng Nghiệp Vụ</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="header_submenu-items">
                     <a href="#" class="header_submenu-link">KPI</a>

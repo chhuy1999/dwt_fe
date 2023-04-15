@@ -1,30 +1,10 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Kho chart')
-@section('header-style')
-    <style>
-        /* .mainSection_chart-container {
-        width: 100%;
-        height: 100%;
-        }
-
-        .mainSection_chart-container canvas {
-        width: 100%;
-        height: 100%;
-        } */
-    </style>
-@endsection
 @section('content')
     <div id="mainWrap" class="mainWrap m-0">
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
-                    {{-- <div class="mainSection_heading">
-                        <h5 class="mainSection_heading-title">
-                            Kho chart
-                        </h5>
-                        @include('template.components.sectionCard')
-                    </div> --}}
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card-body">
@@ -34,9 +14,9 @@
                                         <div class="mainSection_heading d-flex row" style="max-height: 60px; border-bottom: 3px solid var(--primary-color);">
                                             
                                             <div class="col-md-6">
-                                            <h5 class="mainSection_heading-title">
-                                                Dashboard Admin
-                                            </h5>
+                                                <h5 class="mainSection_heading-title">
+                                                    Dashboard Admin
+                                                </h5>
                                             </div>
                                             <div class="col d-flex">
                                                 <div class="">
@@ -94,13 +74,13 @@
 
                                         <div class="mainSection_heading row">
                                             <div class="col-6">
-                                                <div class="row">
+                                                <div class="row" >
 
-                                                    <div class="col-4" style="border-right: 2px solid var(--primary-color)" >
+                                                    <div class="col-3" style="border-right: 2px solid var(--primary-color)" >
                                                         <div class="" >
-                                                            <div class="d-flex mb-3" style="margin: 10px">
-                                                                <div class="card-title me-auto" style="font-size: 28px; color: #3E54AC">27.7m</div>
-                                                                <div class="" style="font-size: 14px; ">
+                                                            <div class="d-flex mb-3 row" style="margin: 10px">
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px; color: #3E54AC">27.7m</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
                                                                     <i class="bi bi-caret-up-fill"></i> 2.7% Prior Yr
                                                                 </div>
                                                             </div>
@@ -120,11 +100,11 @@
                                                         </div>
     
                                                     </div>
-                                                    <div class="col-4" style="border-right: 3px solid var(--primary-color)">
+                                                    <div class="col-3" style="border-right: 3px solid var(--primary-color)">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3"  style="margin: 10px" >
-                                                                <div class="card-title me-auto" style="font-size: 28px; color: #0B2447 ">12.6m</div>
-                                                                <div class="" style="font-size: 14px; ">
+                                                            <div class="d-flex mb-3 row"  style="margin: 10px" >
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px; color: #0B2447 ">12.6m</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
                                                                     <i class="bi bi-caret-up-fill"></i> 6.0% Prior Yr
                                                                 </div>
                                                             </div>
@@ -140,11 +120,11 @@
                                                         </div>
     
                                                     </div>
-                                                    <div class="col-4" style="border-right: 3px solid var(--primary-color)">
+                                                    <div class="col-3" style="border-right: 3px solid var(--primary-color)">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3"  style="margin: 10px">
-                                                                <div class="card-title me-auto" style="font-size: 28px;color:  #F7DB6A ">1.8%</div>
-                                                                <div class="" style="font-size: 14px; ">
+                                                            <div class="d-flex mb-3 row"  style="margin: 10px">
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px;color:  #F7DB6A ">1.8%</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
                                                                     <i class="bi bi-caret-down-fill"></i> 39% Prior Yr
                                                                 </div>
                                                             </div>
@@ -161,21 +141,41 @@
                                                         </div>
     
                                                     </div>
+                                                    <div class="col-3" style="border-right: 3px solid var(--primary-color)">
+                                                        <div class="" >
+                                                            <div class="d-flex row mb-3"  style="margin: 10px">
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px;color:  #E8A0BF ">911</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
+                                                                    <i class="bi bi-caret-up-fill"></i> 09% Prior Yr
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="" style="border-bottom: 3px solid #E8A0BF"></div>
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;color:  #E8A0BF"> YTD Fresh Leads</div>     
+                                                 
+                                                        <div class="d-flex"  style="margin: 10px">
+                                                            <div class="me-auto">
+                                                                <img class="" style="width: 90px; height: 50px" src="{{ asset('assets/img/8.jpg') }}" />
+
+                                                            </div>
+                                                        
+                                                        </div>
+    
+                                                    </div>
 
 
                                                     
                                                     
                                                 </div>
                                             </div>
-
                                             <div class="col-6">
-                                                <div class="row">
+                                                <div class="row" >
 
-                                                    <div class="col-4" style="border-right: 3px solid var(--primary-color)">
+                                                    <div class="col-3" style="border-right: 2px solid var(--primary-color)" >
                                                         <div class="" >
-                                                            <div class="d-flex mb-3" style="margin: 10px">
-                                                                <div class="card-title me-auto" style="font-size: 28px; color: #3E54AC ">42.2m</div>
-                                                                <div class="" style="font-size: 14px; ">
+                                                            <div class="d-flex mb-3 row" style="margin: 10px">
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px; color: #3E54AC ">42.2m</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
                                                                     <i class="bi bi-caret-up-fill"></i> 01% Prior Yr
                                                                 </div>
                                                             </div>
@@ -195,11 +195,11 @@
                                                         </div>
     
                                                     </div>
-                                                    <div class="col-4" style="border-right: 3px solid var(--primary-color)">
+                                                    <div class="col-3" style="border-right: 3px solid var(--primary-color)">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3"  style="margin: 10px" >
-                                                                <div class="card-title me-auto" style="font-size: 28px; color: #0B2447 ">8,480m</div>
-                                                                <div class="" style="font-size: 14px; ">
+                                                            <div class="d-flex mb-3 row"  style="margin: 10px" >
+                                                                <div class="col-8 card-title me-auto" style="font-size: 28px; color: #0B2447 ">8,480m</div>
+                                                                <div class="col-4 " style="font-size: 12px; ">
                                                                     <i class="bi bi-caret-down-fill"></i> 15% Prior Yr
                                                                 </div>
                                                             </div>
@@ -215,11 +215,90 @@
                                                         </div>
     
                                                     </div>
-                                                    <div class="col-4" >
+                                                    <div class="col-3" style="border-right: 3px solid var(--primary-color)">
                                                         <div class="" >
-                                                            <div class="d-flex mb-3"  style="margin: 10px">
-                                                                <div class="card-title me-auto" style="font-size: 28px; color:  #F7DB6A">97.4%</div>
-                                                                <div class="" style="font-size: 14px; ">
+                                                            <div class="d-flex mb-3 row"  style="margin: 10px">
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px; color:  #F7DB6A">97.4%</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
+                                                                    <i class="bi bi-caret-up-fill"></i> 05% Prior Yr
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="" style="border-bottom: 3px solid #F7DB6A"></div>
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px;color:  #F7DB6A"> YOY Change Bad Debts</div>     
+                                                 
+                                                        <div class="d-flex"  style="margin: 10px">
+                                                            <div class="me-auto">
+                                                                <img class="" style="width: 100px; height: 50px" src="{{ asset('assets/img/7.jpg') }}" />
+
+                                                            </div>
+                                                        
+                                                        </div>
+    
+                                                    </div>
+                                                    <div class="col-3" >
+                                                        <div class="" >
+                                                            <div class="d-flex mb-3 row"  style="margin: 10px">
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px; color:  #E8A0BF">35</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
+                                                                    <i class="bi bi-caret-up-fill"></i> 05% Prior Yr
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="" style="border-bottom: 3px solid #E8A0BF"></div>
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px; color:  #E8A0BF"> YTD Creditor Days</div>     
+                                                 
+                                                        <div class="d-flex"  style="margin: 10px">
+                                                            <div class="me-auto">
+                                                                <img class="" style="width: 60px; height: 50px" src="{{ asset('assets/img/9.jpg') }}" />
+
+                                                            </div>
+                                                        
+                                                        </div>
+    
+                                                    </div>
+
+
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                            {{-- <div class="col-6">
+                                                <div class="row">
+
+                                                    <div class="col-3" style="border-right: 3px solid var(--primary-color)">
+                                                        <div class="" >
+                                                            <div class="d-flex mb-3 row" style="margin: 10px">
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px; color: #3E54AC ">42.2m</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
+                                                                    <i class="bi bi-caret-up-fill"></i> 01% Prior Yr
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="" style="border-bottom: 3px solid #3E54AC"></div>
+                                                        <div class="card-title mt-3" style="text-align: center; font-size: 20px; color: #3E54AC "> YTD Net Assets</div>     
+                                                 
+                                                        <div class="d-flex" style="margin: 10px" >
+                                                            <div class="me-auto">
+                                                                <img class="" style="width: 80px; height: 50px" src="{{ asset('assets/img/4.jpg') }}" />
+
+                                                            </div>
+                                                            <div class="">
+                                                                <img class="" style="width: 70px; height: 50px" src="{{ asset('assets/img/5.jpg') }}" />
+
+                                                            </div>
+                                                        </div>
+    
+                                                    </div>
+                                                    <div class="col-3" style="border-right: 3px solid var(--primary-color)">
+                                                       
+    
+                                                    </div>
+                                                    <div class="col-3" style="border-right: 3px solid var(--primary-color)">
+                                                        <div class="" >
+                                                            <div class="d-flex mb-3 row"  style="margin: 10px">
+                                                                <div class="card-title col-8 me-auto" style="font-size: 28px; color:  #F7DB6A">97.4%</div>
+                                                                <div class="col-4" style="font-size: 12px; ">
                                                                     <i class="bi bi-caret-up-fill"></i> 05% Prior Yr
                                                                 </div>
                                                             </div>
@@ -236,12 +315,17 @@
                                                         </div>
     
                                                     </div>
+                                                    <div class="col-3">
+                                                        
+    
+                                                    </div>
 
 
                                                     
                                                     
                                                 </div>
-                                            </div>
+                                            </div> --}}
+
                                             
                                         </div>
 

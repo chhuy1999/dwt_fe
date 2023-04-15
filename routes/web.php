@@ -256,4 +256,9 @@ Route::get('kinh-doanh', function () {
 // 404
 Route::fallback(function () {
     return view('404');
+})->middleware('auth.role:managermanager,admin,user');
+
+// Quy trinhf
+Route::get('ky-nang-nghiep-vu', function () {
+    return view('CauHinh.kyNangNghiepVu');
 })->middleware('auth.role:manager,admin,user');
