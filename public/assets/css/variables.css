@@ -438,7 +438,9 @@ pre[rel]:not([rel=""]):before {
 @media print {
     #mainWrap,
     #header,
-    #btnPrint {
+    #btnPrint,
+    .section_mobile-wrapper,
+    .tooltip {
         visibility: hidden;
     }
 }

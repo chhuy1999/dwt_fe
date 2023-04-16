@@ -253,6 +253,11 @@
     #mainSection_width {
         display: none!important;
     }
+
+    .print_body {
+        padding: 10px 20px; 
+        margin: initial;
+    }
     
     .aside-left, .aside-right {
         overflow: auto;

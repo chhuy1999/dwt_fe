@@ -1912,3 +1912,8 @@ ul.modal_upload-list li:last-child {
     -ms-user-select: none;
     user-select: none;
 }
+
+.print_body {
+    padding: 0; 
+    margin: 1.5cm 1.5cm 1.5cm 2cm;
+}

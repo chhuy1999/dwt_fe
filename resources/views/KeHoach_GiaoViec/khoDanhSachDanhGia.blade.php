@@ -200,9 +200,9 @@
             <div class="modal-content">
 
 
-                <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
+                <div class="modal-body print_body">
                     <div class="row mb-3">
-                        <div class="col-md-3 mb-3 text-center modal_body-title">
+                        <div class="col-3 col-md-3 mb-3 text-center modal_body-title">
                             <div class="text-nowrap">
                                 Mã biên bản:
                             </div>
@@ -210,13 +210,13 @@
                                 <strong class="text-nowrap">MBB01</strong>
                             </div>
                         </div>
-                        <div class="col-md-5 mb-3">
+                        <div class="col-1 col-md-5 mb-3">
                             <div class="text-center">
                                 {{-- <img class="header_logo" src="{{ env('LOGO_URL', ''); }}" /> --}}
                             </div>
 
                         </div>
-                        <div class="col-md-4 mb-3 text-center modal_body-title">
+                        <div class="col-8 col-md-4 mb-3 text-center modal_body-title">
                             <div class="text-nowrap fw-bold">
                                 Công hòa xã hội chủ nghĩa Việt Nam<br>
                                 <span class="text-decoration-underline">Độc lập - Tự do - Hạnh phúc</span>
@@ -328,8 +328,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 d-flex flex-column justify-content-between">
-                            <div class="text-center fw-bold modal_body-title">&nbsp;<br>&nbsp;</div>
+                        <div class="col-6 col-md-6 d-flex flex-column justify-content-between">
+                            <div class="" style="height: 20px"></div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="modal_body-title fw-bolder">Người hướng dẫn</div>
                             </div>
@@ -344,7 +344,7 @@
                                 <p class="modal_body-title mb-0">Nguyên Ngọc Bảo</p>
                             </div>
                         </div>
-                        <div class="col-md-6 d-flex flex-column justify-content-between">
+                        <div class="col-6 col-md-6 d-flex flex-column justify-content-between">
                             <div class="text-center fw-bold modal_body-title">
                                 @php
                                     echo 'Ngày ' . date('j') . ' tháng ' . date('n') . ' năm ' . date('Y');
@@ -375,7 +375,10 @@
     </div>
 @endsection
 @section('footer-script')
-{{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/r-2.2.7/datatables.min.js"></script> --}}
+<script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
     <script>
         const targetTable = $('#dsDaoTao').DataTable({
