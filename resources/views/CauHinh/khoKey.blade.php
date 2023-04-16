@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="card mb-3">
-                        <div class="card-body col-3">
+                        <div class="card-body col-6 col-md-3">
                             <select id="preview-select" class="selectpicker" title="Chọn hiển thị">
                                 <option value="all">Xem tất cả</option>
                                 <option value="preview-1">Chỉ số đơn vị tổng</option>
@@ -34,24 +34,32 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="box_code-preview" style="max-height:246px; overflow: auto;">
-                                                <div class="box_code-title">Xem trước</div>
-                                                <div class="sidebarBody_card" style="line-height: 26px;">
-                                                    <div class="sidebarBody_heading-wrapper">
-                                                        <h6 class="sidebarBody_heading">Chỉ số công việc đơn vị</h6>
+                                                <div class="box_code-title d-flex justify-content-between">
+                                                    Xem trước
+                                                    <button class="btn-edit btn btn-outline-danger">
+                                                        <i class="bi bi-pencil-square"></i> Sửa
+                                                    </button>
+                                                </div>
+
+                                                <div class="box_code-preview-content" contenteditable="false">
+                                                    <div class="sidebarBody_card" style="line-height: 26px;">
+                                                        <div class="sidebarBody_heading-wrapper">
+                                                            <h6 class="sidebarBody_heading">Chỉ số công việc đơn vị</h6>
+                                                        </div>
+
+                                                        @php
+                                                            $datasTong = [['title' => 'Số ca đào tạo', 'number_before' => '65', 'number_after' => '120', 'icon' => 'bi-person-add'], ['title' => 'Số XNCB', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add'], ['title' => 'Số GPQC', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add'], ['title' => 'Số GPQC', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add'], ['title' => 'Số GPQC', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add'], ['title' => 'Số GPQC', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add']];
+                                                        @endphp
+
+                                                        @foreach ($datasTong as $dataTong)
+                                                            @include(
+                                                                'template.components.KeyIndex.elementCardMini',
+                                                                ['value' => (object) $dataTong]
+                                                            )
+                                                        @endforeach
+
+
                                                     </div>
-
-                                                    @php
-                                                        $datasTong = [['title' => 'Số ca đào tạo', 'number_before' => '65', 'number_after' => '120', 'icon' => 'bi-person-add'], ['title' => 'Số XNCB', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add'], ['title' => 'Số GPQC', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add'], ['title' => 'Số GPQC', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add'], ['title' => 'Số GPQC', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add'], ['title' => 'Số GPQC', 'number_before' => '3', 'number_after' => '10', 'icon' => 'bi-person-add']];
-                                                    @endphp
-
-                                                    @foreach ($datasTong as $dataTong)
-                                                        @include(
-                                                            'template.components.KeyIndex.elementCardMini',
-                                                            ['value' => (object) $dataTong]
-                                                        )
-                                                    @endforeach
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -59,7 +67,7 @@
                                         <div class="col-md-8">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
                                             </div>
@@ -71,8 +79,8 @@
                                                         </div>
                                                     
                                                         @foreach ($datasTong as $dataTong)
-@include('template.components.KeyIndex.elementCardMini', ['value' => (object) $dataTong])
-@endforeach
+                                                            @include('template.components.KeyIndex.elementCardMini', ['value' => (object) $dataTong])
+                                                        @endforeach
                                                     
                                                     
                                                     </div>
@@ -93,22 +101,30 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="box_code-preview" style="max-height:246px; overflow: auto;">
-                                                <div class="box_code-title">Xem trước</div>
+                                                <div class="box_code-title d-flex justify-content-between">
+                                                    Xem trước
+                                                    <button class="btn-edit btn btn-outline-danger">
+                                                        <i class="bi bi-pencil-square"></i> Sửa
+                                                    </button>
+                                                </div>
+                                                
                                                 @php
                                                     $datasDichVu = [['title' => ' Đơn hàng xuất bán', 'number_before' => '64', 'number_after' => '100', 'icon' => 'bi-person-add'], ['title' => 'Tỉ lệ đơn đổi trả', 'number_before' => '15%', 'icon' => 'bi-person-add'], ['title' => 'Doanh thu', 'number_before' => '3.2 tỷ', 'icon' => 'bi-person-add'], ['title' => 'SKU active', 'number_before' => '15', 'number_after' => '20', 'icon' => 'bi-person-add'], ['title' => 'Số TDV hiện có', 'number_before' => '45', 'number_after' => '55', 'icon' => 'bi-person-add'], ['title' => 'Số địa bàn hoàn thành 100% DS', 'number_before' => '7', 'number_after' => '14', 'icon' => 'bi-person-add'], ['title' => 'Số địa bàn hoàn thành < 70% DS', 'number_before' => '2', 'number_after' => '14', 'icon' => 'bi-person-add']];
                                                 @endphp
 
-                                                <div class="sidebarBody_card" style="line-height: 26px;">
-                                                    <div class="sidebarBody_heading-wrapper">
-                                                        <h6 class="sidebarBody_heading">KPI năm của phòng/ban</h6>
-                                                    </div>
+                                                <div class="box_code-preview-content" contenteditable="false">
+                                                    <div class="sidebarBody_card" style="line-height: 26px;">
+                                                        <div class="sidebarBody_heading-wrapper">
+                                                            <h6 class="sidebarBody_heading">KPI năm của phòng/ban</h6>
+                                                        </div>
 
-                                                    @foreach ($datasDichVu as $dataDichVu)
-                                                        @include(
-                                                            'template.components.KeyIndex.elementCardMini',
-                                                            ['value' => (object) $dataDichVu]
-                                                        )
-                                                    @endforeach
+                                                        @foreach ($datasDichVu as $dataDichVu)
+                                                            @include(
+                                                                'template.components.KeyIndex.elementCardMini',
+                                                                ['value' => (object) $dataDichVu]
+                                                            )
+                                                        @endforeach
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,7 +132,7 @@
                                         <div class="col-md-8">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
                                             </div>
@@ -128,8 +144,8 @@
                                                         </div>
     
                                                         @foreach ($datasDichVu as $dataDichVu)
-@include('template.components.KeyIndex.elementCardMini', ['value' => (object) $dataDichVu])
-@endforeach
+                                                            @include('template.components.KeyIndex.elementCardMini', ['value' => (object) $dataDichVu])
+                                                        @endforeach
                                                     </div>
                                                 </code>
                                             </pre>
@@ -170,7 +186,7 @@
                                         <div class="col-md-8">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
                                             </div>
@@ -182,8 +198,8 @@
                                                         </div>
     
                                                         @foreach ($datasKeToan as $dataKeToan)
-@include('template.components.KeyIndex.elementCardMini', ['value' => (object) $dataKeToan])
-@endforeach
+                                                            @include('template.components.KeyIndex.elementCardMini', ['value' => (object) $dataKeToan])
+                                                        @endforeach
                                                     </div>
                                                 </code>
                                             </pre>
@@ -224,7 +240,7 @@
                                         <div class="col-md-8">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
                                             </div>
@@ -236,8 +252,8 @@
                                                         </div>
     
                                                         @foreach ($datasKinhDoanh as $dataKinhDoanh)
-@include('template.components.KeyIndex.elementCardMini', ['value' => (object) $dataKinhDoanh])
-@endforeach
+                                                            @include('template.components.KeyIndex.elementCardMini', ['value' => (object) $dataKinhDoanh])
+                                                        @endforeach
                                                     </div>
                                                 </code>
                                             </pre>
@@ -324,7 +340,7 @@
                                         <div class="col-md-8">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
                                             </div>
@@ -432,7 +448,7 @@
                                         <div class="col-md-8 mb-3">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
 
@@ -500,7 +516,7 @@
                                         <div class="col-md-8 mb-3">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
 
@@ -568,7 +584,7 @@
                                         <div class="col-md-8 mb-3">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
 
@@ -635,7 +651,7 @@
                                         <div class="col-md-8 mb-3">
                                             <div class="box_code-title d-flex justify-content-between">
                                                 Code
-                                                <button id="copy-button" class="btn-copy btn btn-outline-danger">
+                                                <button id="copy-button" class="btn-copy btn btn-danger">
                                                     <i class="bi bi-clipboard"></i> Sao chép
                                                 </button>
 
@@ -714,19 +730,38 @@
     </script>
 
     <script>
-        var preElements = document.querySelectorAll('pre');
+        var preElements = document.querySelectorAll('pre code');
+        var editButton = document.querySelector('.btn-edit');
+        var previewContent = document.querySelector('.box_code-preview-content');
+        var codePreview = document.querySelector('.trim_pre code.my-code');
+
         for (var i = 0; i < preElements.length; i++) {
-            var pre = preElements[i];
-            var code = pre.querySelector('code');
-            pre.textContent = code.innerHTML.trim();
+            var code = preElements[i];
+            code.textContent = code.innerHTML.trim();
         }
+
+        editButton.addEventListener('click', function () {
+            if (previewContent.getAttribute('contenteditable') === 'false') {
+                // Chuyển sang chế độ chỉnh sửa
+                previewContent.setAttribute('contenteditable', 'true');
+                editButton.innerHTML = '<i class="bi bi-save2"></i> Lưu';
+            } else {
+                // Chuyển sang chế độ xem trước và lưu nội dung đã chỉnh sửa
+                previewContent.setAttribute('contenteditable', 'false');
+                editButton.innerHTML = '<i class="bi bi-pencil-square"></i> Sửa';
+                // Lưu nội dung mới vào database hoặc thực hiện các thao tác khác tùy vào nhu cầu
+                var editedContent = previewContent.innerHTML.trim();
+                // Cập nhật nội dung mới vào phần tử <code> trong <pre>
+                codePreview.textContent = editedContent;
+            }
+        });
     </script>
 
     <script>
         var copyButtons = document.querySelectorAll('.btn-copy');
         for (var i = 0; i < copyButtons.length; i++) {
             var copyButton = copyButtons[i];
-            copyButton.addEventListener('click', function() {
+            copyButton.addEventListener('click', function () {
                 var currentPre = this.parentNode.nextElementSibling;
                 if (currentPre) {
                     var content = currentPre.textContent;
@@ -742,7 +777,7 @@
 
                     // Sau 3 giây đổi lại thành "Sao chép"
                     var self = this;
-                    setTimeout(function() {
+                    setTimeout(function () {
                         self.innerHTML = '<i class="bi bi-clipboard"></i> Sao chép';
                     }, 3000);
                 }

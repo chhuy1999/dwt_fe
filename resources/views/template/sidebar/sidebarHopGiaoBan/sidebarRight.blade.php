@@ -10,179 +10,18 @@
                         <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#neuvande">Nêu vấn đề</button>
                     </div>
                     <div class="sidebarBody_card bg-yellow-blur">
-                        <div class="sidebarBody_heading-wrapper">
-                            <h6 class="sidebarBody_heading mt-2">
-                                Họp giao ban
-                                <span class="sidebarBody_heading-mini text-black">( Đã thực hiện / Số phòng )</span>
-                            </h6>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-borderless text-left" style="margin: 0">
-                                <thead>
-                                    <tr>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Hôm nay:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before">
-                                                    2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Tuần này:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before"
-                                                    >2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Tháng này:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before"
-                                                    >2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                        {{-- Họp giao ban --}}
+                        @include('template.components.KeyIndex.elementCard', ['heading' => 'Họp giao ban', 'heading_mini' => 'Đã thực hiện / Số phòng', 'title_today' => 'Hôm nay', 'title_week' => 'Tuần này', 'title_month' => 'Tháng này', 'today_completed' => '2', 'today_total' => '3', 'week_completed' => '2', 'week_total' => '3','month_completed' => '2', 'month_total' => '3', 'separate' => '/', 'space' => 'letter-spacing: -1px;', 'icon' => 'bi-x-octagon-fill'])
                     </div>
                 </div>
 
                 <div class="sidebarBody_wrapper mt-4">
                     <div class="sidebarBody_card bg-pink-blur">
-                        <div class="sidebarBody_heading-wrapper">
-                            <h6 class="sidebarBody_heading mt-2">
-                                Vấn đề tồn đọng
-                                <span class="sidebarBody_heading-mini text-black">(Tồn đọng/Phát sinh)</span>
-                            </h6>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-borderless text-left" style="margin: 0">
-                                <thead>
-                                    <tr>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Hôm nay:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before">
-                                                    2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Tuần này:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before"
-                                                    >2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Tháng này:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before"
-                                                    >2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="sidebarBody_heading-wrapper">
-                            <h6 class="sidebarBody_heading mt-2">
-                                Số nhiệm vụ quá hạn
-                                <span class="sidebarBody_heading-mini text-black">(Quá hạn/Tổng)</span>
-                            </h6>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-borderless text-left" style="margin: 0">
-                                <thead>
-                                    <tr>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Hôm nay:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before">
-                                                    2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Tuần này:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before"
-                                                    >2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                        <th style="padding: 0; text-align: left; letter-spacing: -1px">
-                                            Tháng này:&nbsp;
-                                            <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before"
-                                                    >2</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-separate"
-                                                    >/</span
-                                                >
-                                                <span class="sidebarBody_card-body-subtitle-after"
-                                                    >3</span
-                                                >
-                                            </span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                        {{-- Vấn đề tồn đọng --}}
+                        @include('template.components.KeyIndex.elementCard', ['heading' => 'Vấn đề tồn đọng', 'heading_mini' => 'Tồn đọng/Phát sinh', 'title_today' => 'Hôm nay', 'title_week' => 'Tuần này', 'title_month' => 'Tháng này', 'today_completed' => '2', 'today_total' => '3', 'week_completed' => '2', 'week_total' => '3','month_completed' => '2', 'month_total' => '3', 'separate' => '/', 'space' => 'letter-spacing: -1px;', 'icon' => 'bi-x-octagon-fill'])
+                        
+                        {{-- Số nhiệm vụ quá hạn --}}
+                        @include('template.components.KeyIndex.elementCard', ['heading' => 'Số nhiệm vụ quá hạn', 'heading_mini' => 'Quá hạn/Tổng', 'title_today' => 'Hôm nay', 'title_week' => 'Tuần này', 'title_month' => 'Tháng này', 'today_completed' => '2', 'today_total' => '3', 'week_completed' => '2', 'week_total' => '3','month_completed' => '2', 'month_total' => '3', 'separate' => '/', 'space' => 'letter-spacing: -1px;', 'icon' => 'bi-x-octagon-fill'])
                     </div>
                 </div>
                 <div class="sidebarBody_wrapper mt-4">

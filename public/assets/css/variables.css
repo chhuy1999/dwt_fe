@@ -308,7 +308,6 @@ pre[rel]:not([rel=""]):before {
 .trim_pre::-webkit-scrollbar-track {
     background-color: transparent;
 }
-
 .trim_pre::-webkit-scrollbar-thumb {
     background-color: transparent;
 }

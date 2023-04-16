@@ -1,5 +1,7 @@
 @extends('template.masterNoHeader')
-{{-- Trang chủ GIao Ban --}}
+
+@section('title', 'Bảng điều khiển Admin')
+
 @section('content')
     <div id="mainWrap" class="mainWrap m-0">
         <div class="mainSection">

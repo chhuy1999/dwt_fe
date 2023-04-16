@@ -630,7 +630,7 @@
             dom: '<"d-flex justify-content-between mb-3"<"action_wrapper"><"d-flex align-items-center"f<"card-title-wrapper">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         $('div.action_wrapper').html(`
-        <div class="action_wrapper d-flex">
+        <div class="action_wrapper">
             <div class="action_export">
                 <select class="selectpicker" title="Đơn vị phụ trách " data-actions-box="true" data-size="5" data-live-search="true" data-live-search-placeholder="Tìm kiếm...">
                         <option value="1">Ban Giám Đốc</option>

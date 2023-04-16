@@ -248,13 +248,56 @@
 
 /* Mobile & Tablet */
 @media (max-width: 1023px) {
+
+    .mainSection_card,
+    #mainSection_width {
+        display: none!important;
+    }
     
-    .card-title {
+    .aside-left, .aside-right {
+        overflow: auto;
+        padding-bottom: 60px;
+    }
+
+    .margin-t-res {
+        margin-top: 10px;
+    }
+
+    .margin-b-res {
+        margin-bottom: 10px;
+    }
+
+    .card-title,
+    .mainSection_total-kpi {
         font-size: var(--fz-12);
     }
 
     .chart_wrapper {
         flex-direction: column;
+    }
+    
+    .dataTables_top,
+    .dataTables_bottom {
+        display: block;
+    }
+
+    .dataTables_filter {
+        margin-top: 10px;
+    }
+
+    .dataTables_info {
+        margin-bottom: 10px;
+    }
+
+    .dataTables_length {
+        padding-bottom: 10px;
+    }
+
+    .list_quota {
+        margin-bottom: 10px;
+    }
+    .list_quota .table-responsive{
+        padding-bottom: 10px;
     }
 
     .header_mobile-bars i {
@@ -289,9 +332,7 @@
         margin-left: 0;
         margin-right: 0;
     }
-    .header_user span {
-        display: none;
-    }
+    
     .header_actions-wrapper .header_actions-chat,
     .header_actions-wrapper .header_actions-notification {
         padding-right: 0px;
@@ -380,6 +421,13 @@
     .header_more {
         display: none;
     }
+/* 
+    .action_wrapper {
+        flex-direction: column;
+    }
+    .action_wrapper .action_export{
+        margin-bottom: 10px;
+    } */
 
     /* Menu bottom */
     .section_mobile-wrapper {
@@ -391,7 +439,7 @@
         background-color: var(--white-color-blur);
         box-shadow: rgba(0, 0, 0, 0.1) 0px -10px 15px -3px,
             rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-        z-index: 1995;
+        z-index: 9999;
     }
 
     .section_mobile-link {
@@ -399,6 +447,13 @@
         display: block;
         font-size: var(--fz-18);
         color: var(--primary-color) !important;
+    }
+
+    .modal-dialog {
+        margin-bottom: 100px;
+    }
+    .footer {
+        margin-bottom: 50px;
     }
 }
 
@@ -408,7 +463,5 @@
 
 /* Mobile */
 @media (max-width: 739px) {
-    .body_content-wrapper {
-        margin-top: 20px;
-    }
+    
 }

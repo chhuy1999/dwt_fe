@@ -32,7 +32,7 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center pb-2">
-                                        <div class="action_wrapper d-flex">
+                                        <div class="action_wrapper">
                                             <div class="form-group has-search">
                                                 <span class="bi bi-search form-control-feedback fs-5"></span>
                                                 <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">

@@ -328,7 +328,7 @@
             dom: '<"d-flex justify-content-between mb-3"<"card-title-left"><"d-flex "f<"card-title-right justify-content-end">>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         $('div.card-title-right').html(`
-            <div class="action_wrapper d-flex">
+            <div class="action_wrapper">
                 @if (session('user')['role'] == 'admin')
                 <div class="action_export ms-3" data-bs-toggle="tooltip"
                     data-bs-placement="top" aria-label="Thêm thành viên"

@@ -1,7 +1,13 @@
 @extends('template.master')
 {{-- Trang chủ admin --}}
 @section('title', 'Bảng điều khiển')
-
+@section('header-style')
+<style>
+    .dataTables_filter {
+        margin: 0;
+    }
+</style>
+@endsection
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
 
@@ -2550,7 +2556,7 @@
                         oLanguage: {
                             sLengthMenu: "_MENU_ bản ghi trên trang",
                         },
-                        dom: '<"d-flex justify-content-between align-items-center hidden mb-3"<"main-title-wrapper-left"><"d-flex "f<"main-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+                        dom: '<"d-block d-md-flex justify-content-between align-items-center mb-3"<"main-title-wrapper-left"><"d-flex justify-content-between "f<"main-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
                         fixedColumns: {
                             left: 4,
                         }
@@ -2567,7 +2573,7 @@
             </div>
             `);
                     $('div.main-title-wrapper-right').html(`
-            <div class="action_wrapper d-flex">
+            <div class="action_wrapper">
                 <div class="action_export ms-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất file Excel">
                     <button class="btn-export"><i class="bi bi-download"></i></button>
                 </div>
@@ -2631,7 +2637,7 @@
                         oLanguage: {
                             sLengthMenu: "_MENU_ bản ghi trên trang",
                         },
-                        dom: '<"d-flex justify-content-between align-items-center mb-3"<"three-title-wrapper-left"><"d-flex "f<"three-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+                        dom: '<"d-block d-md-flex justify-content-between align-items-center mb-3"<"three-title-wrapper-left"><"d-flex justify-content-between "f<"three-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
                         fixedColumns: {
                             left: 4,
                         }
@@ -2649,7 +2655,7 @@
             @endif
                         `);
                     $('div.three-title-wrapper-right').html(`
-            <div class="action_wrapper d-flex ms-3">
+            <div class="action_wrapper ms-3">
                 <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                     <button class="btn-export"><i class="bi bi-download"></i></button>
                 </div>
@@ -2711,7 +2717,7 @@
                         oLanguage: {
                             sLengthMenu: "_MENU_ bản ghi trên trang",
                         },
-                        dom: '<"d-flex justify-content-between align-items-center mb-3"<"dsVanDe-title-wrapper-left"><"d-flex "f<"dsVanDe-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
+                        dom: '<"d-block d-md-flex justify-content-between align-items-center mb-3"<"dsVanDe-title-wrapper-left"><"d-flex justify-content-between "f<"dsVanDe-title-wrapper-right justify-content-end">>>rt<"dataTables_bottom  justify-content-end"p>',
                     });
                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                     $('div.dsVanDe-title-wrapper-left').html(`
@@ -2719,7 +2725,7 @@
 
         `);
                     $('div.dsVanDe-title-wrapper-right').html(`
-            <div class="action_wrapper d-flex ms-3">
+            <div class="action_wrapper ms-3">
                 <div class="action_export" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Xuất file Excel" data-bs-original-title="Xuất file Excel">
                     <button class="btn-export"><i class="bi bi-download"></i></button>
                 </div>

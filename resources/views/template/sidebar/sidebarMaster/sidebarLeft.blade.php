@@ -38,7 +38,7 @@
                     <div class="sidebarBody_card">
                         <div class="data_chart">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-6">
                                     <div id="Doanh số" class="data_chart-items">
                                         <canvas id="stackedChart_doanhSo"></canvas>
                                     </div>
@@ -49,7 +49,7 @@
                                         <canvas id="stackedChartThree_khachHangActive"></canvas>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-6">
                                     <div id="Nhân Sự" class="data_chart-items">
                                         <canvas id="stackedChart_nhanSu"></canvas>
                                     </div>

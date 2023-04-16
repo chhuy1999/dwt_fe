@@ -24,7 +24,7 @@
                                             <strong style="color: var(--primary-color); font-weight: 700">40</strong>
                                             KPI
                                         </div>
-                                        <div class="action_wrapper d-flex">
+                                        <div class="action_wrapper">
                                             <div class="form-group has-search">
                                                 <span class="bi bi-search form-control-feedback fs-5"></span>
                                                 <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">
@@ -705,7 +705,7 @@
                                             <strong style="color: var(--primary-color); font-weight: 700">140</strong>
                                             KPI
                                         </div>
-                                        <div class="action_wrapper d-flex">
+                                        <div class="action_wrapper">
                                             <div class="form-group has-search">
                                                 <span class="bi bi-search form-control-feedback fs-5"></span>
                                                 <input type="text" class="form-control" placeholder="Tìm kiếm nhiệm vụ">

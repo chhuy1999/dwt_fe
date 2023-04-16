@@ -572,13 +572,13 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ biên bản họp',
             },
-            dom: '<"d-flex justify-content-between mb-3"<"card-title-wrapper-left"><"d-flex "<"card-title-wrapper-right justify-content-end">f>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
+            dom: '<"d-flex justify-content-between mb-3"<"d-block d-md-flex "<"card-title-wrapper-right justify-content-end">f>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
-        $('div.card-title-wrapper-left').html(`
-                <div class="card-title">Bộ lọc</div>
-        `);
+        // $('div.card-title-wrapper-left').html(`
+        //         <div class="card-title">Bộ lọc</div>
+        // `);
         $('div.card-title-wrapper-right').html(`
-                <div class="action_wrapper d-flex">
+                <div class="action_wrapper">
                     <div class="action_export me-3">
                         <button class="btn btn-outline-danger d-block" data-bs-toggle="modal" data-bs-target="#thamGiaCuocHop">Tham gia cuộc họp</button>
                     </div>

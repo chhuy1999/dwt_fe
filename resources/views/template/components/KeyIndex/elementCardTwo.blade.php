@@ -1,4 +1,4 @@
-<div class="sidebarBody_card">
+<div class="sidebarBody_card" style="height:100%">
     <div class="sidebarBody_heading-wrapper">
         <h6 class="sidebarBody_heading mt-1">
             {{-- Icon --}}

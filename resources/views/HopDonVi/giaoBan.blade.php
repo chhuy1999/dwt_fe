@@ -211,7 +211,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-5">
+                                                        <div class="col-md-5 margin-t-res">
                                                             <div class="mb-3 d-flex align-items-center justify-content-between">
                                                                 <div class="d-flex align-items-center">
                                                                     <img style="height:14px; width:14px; margin-right:6px" src="{{ asset('assets/img/pencil.svg') }}" />
@@ -264,9 +264,9 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-2 d-flex justify-content-between align-items-center">
-                                                <div class="card-title d-flex align-items-center">
+                                        <div class="col-md-6 margin-t-res">
+                                            <div class="mb-2 d-block d-md-flex justify-content-between align-items-center">
+                                                <div class="card-title d-flex align-items-center justify-content-between margin-b-res">
                                                     <div>Vấn đề tiếp nhận</div>
                                                     @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
                                                         <div class="card_action-wrapper ms-3">
@@ -316,7 +316,7 @@
                                                     <i class="bi bi-journal-check"></i>
                                                     Nội dung trao đổi
                                                 </div>
-                                                <div class="" style="max-height: 240px; overflow-y: scroll; overflow-x:hidden" id="notes">
+                                                <div class="" style="max-height: 240px; overflow-y: scroll" id="notes">
 
 
                                                 </div>
@@ -335,7 +335,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 margin-t-res">
                                             <div class="action_wrapper-upload rounded border p-3 h-100  d-flex flex-column">
                                                 <div class="card-title mb-3">
                                                     <i class="bi bi-paperclip"></i>

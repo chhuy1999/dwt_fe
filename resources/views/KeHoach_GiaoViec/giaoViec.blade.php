@@ -58,7 +58,7 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class='row'>
-                                        <div class="col-md-7">
+                                        <div class="col-md-7 list_quota">
                                             <div class="table-responsive dataTables_wrapper">
                                                 <table id="danhSachDinhMuc" class="table table-responsive table-hover table-bordered">
                                                     <thead>

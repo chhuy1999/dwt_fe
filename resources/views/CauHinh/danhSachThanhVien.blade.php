@@ -2379,7 +2379,7 @@
         </div>
         `);
         $('div.card-title-right').html(`
-            <div class="action_wrapper d-flex">
+            <div class="action_wrapper">
                 @if (session('user')['role'] == 'admin')
                 <div class="action_export ms-3" data-bs-toggle="tooltip"
                     data-bs-placement="top" aria-label="Thêm thành viên"

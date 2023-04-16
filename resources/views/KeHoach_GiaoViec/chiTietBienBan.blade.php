@@ -493,7 +493,7 @@
             </div>
         `);
         $('div.card-title-right').html(`
-            <div class="action_wrapper d-flex">
+            <div class="action_wrapper">
                 <div class="action_export ms-3">
                     <button class="btn btn-danger d-block testCreateUser" data-bs-toggle="modal"
                         data-bs-target="#duyetBienBanDaoTao">Duyệt</button>

@@ -1892,3 +1892,7 @@ ul.modal_upload-list li:last-child {
     font-weight: 700;
     margin-bottom: 10px;
 }
+
+.action_wrapper {
+    display: flex;
+}
