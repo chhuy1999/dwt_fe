@@ -209,7 +209,7 @@ pre[rel]:not([rel=""]):before {
     top: 0;
     right: 0;
     padding: 0 10px;
-    color: var(--white-color)!important;
+    color: var(--white-color) !important;
     background-color: #1b1b1b;
 }
 
@@ -277,7 +277,6 @@ pre[rel]:not([rel=""]):before {
     animation: heartbeat 3.5s linear infinite alternate;
 }
 
-
 /* Style Scroll hover show */
 .sidebarBody::-webkit-scrollbar-track {
     background-color: transparent;
@@ -292,17 +291,17 @@ pre[rel]:not([rel=""]):before {
 .sidebarBody:hover::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
 }
-.box_code-preview::-webkit-scrollbar-track {
+.box_code-preview-content::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
-.box_code-preview::-webkit-scrollbar-thumb {
+.box_code-preview-content::-webkit-scrollbar-thumb {
     background-color: transparent;
 }
-.box_code-preview::-webkit-scrollbar {
+.box_code-preview-content::-webkit-scrollbar {
     width: 4px;
 }
-.box_code-preview:hover::-webkit-scrollbar-thumb {
+.box_code-preview-content:hover::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
 }
 .trim_pre::-webkit-scrollbar-track {
@@ -397,11 +396,49 @@ pre[rel]:not([rel=""]):before {
     animation: blink 700ms infinite;
 }
 
-@media print {
-#mainWrap,
-#header,
-#btnPrint {
-    visibility: hidden;
+@keyframes UpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+#upDown {
+    -webkit-animation: UpDown 700ms infinite;
+    -moz-animation: UpDown 700ms infinite;
+    -o-animation: UpDown 700ms infinite;
+    animation: UpDown 700ms infinite;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    transition: all 0.3s linear;
+}
+@keyframes LeftRight {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+#leftRight {
+    -webkit-animation: LeftRight 700ms infinite;
+    -moz-animation: LeftRight 700ms infinite;
+    -o-animation: LeftRight 700ms infinite;
+    animation: LeftRight 700ms infinite;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    transition: all 0.3s linear;
 }
 
+@media print {
+    #mainWrap,
+    #header,
+    #btnPrint {
+        visibility: hidden;
+    }
 }

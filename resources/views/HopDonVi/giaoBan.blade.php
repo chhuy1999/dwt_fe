@@ -283,15 +283,15 @@
                                                         {{ $meeting->code }} </strong>
                                                 </div>
                                             </div>
-                                            <div class="table-responsive rounded" style="max-height: 100px;overflow-y: scroll;overflow-x: hidden;">
+                                            <div class="table-responsive rounded" style="max-height: 100px;overflow-y: scroll;">
                                                 <table class="table table-responsive table-hover table-bordered m-0 style_disableAll">
                                                     <thead>
                                                         <tr>
                                                             <th>STT</th>
-                                                            <th>Vấn đề tồn đọng</th>
-                                                            <th>Người nêu</th>
-                                                            <th>Thời hạn</th>
-                                                            <th>Tình trạng</th>
+                                                            <th class="text-nowrap">Vấn đề tồn đọng</th>
+                                                            <th class="text-nowrap">Người nêu</th>
+                                                            <th class="text-nowrap">Thời hạn</th>
+                                                            <th class="text-nowrap">Tình trạng</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="unhandled-reports">

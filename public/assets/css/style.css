@@ -1896,3 +1896,19 @@ ul.modal_upload-list li:last-child {
 .action_wrapper {
     display: flex;
 }
+.box_code-preview-content[contenteditable="false"],
+.box_code-preview-content[contenteditable="true"] {
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-mini);
+}
+.box_code-preview-content[contenteditable="true"]:focus {
+    border: 1px dashed var(--primary-color);
+    border-radius: var(--border-radius-mini);
+}
+  
+.sidebarBody_wrapper {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -78,18 +78,18 @@
                                                                     </div>
                                                                 </th>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->name }}">
-                                                                        {{ $target->name }}
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:250px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->name ?? '' }}">
+                                                                        {{ $target->name ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:280px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->description }}">
-                                                                        {{ $target->description }}
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:280px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->description ?? '' }}">
+                                                                        {{ $target->description ?? '' }}
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="d-flex justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->manday }} manday">
-                                                                        {{ $target->manday }}
+                                                                    <div class="d-flex justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $target->manday ?? '' }} manday">
+                                                                        {{ $target->manday ?? '' }}
                                                                     </div>
                                                                 </td>
                                                             </tr>
