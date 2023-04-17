@@ -35,7 +35,7 @@
                                 {{ session('loginError') }}
                             </div>
                         @endif
-                        <form action="/login" method="POST">
+                        <form action="/login" method="POST" autocomplete="off">
                             @csrf
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingInput" placeholder="admin" name="email" />
