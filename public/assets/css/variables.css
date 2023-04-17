@@ -1,0 +1,408 @@
+:root {
+    --primary-color: #ca1f24;
+    --primary-color-bold: #95161a;
+    --white-color: #fff;
+    --black-color: #000;
+    --white-color-blur: #f4f4f4;
+    --grey-color: #ccc;
+    --pink-color-blur: #fef3f5;
+    --yellow-color-blur: #fdfef3;
+    --blue-color-blur: #f3f6fe;
+
+    --border-radius-main: 8px;
+    --border-radius-mini: 4px;
+    --box-shadow: 0 0 0 0.25rem rgb(253 13 13 / 11%);
+
+    --width-sidebar: 270px;
+
+    /* FontSize */
+    --fz-10: 1rem;
+    --fz-12: 1.2rem;
+    --fz-14: 1.4rem;
+    --fz-16: 1.6rem;
+    --fz-18: 1.8rem;
+    --fz-20: 2rem;
+    --fz-22: 2.2rem;
+    --fz-24: 2.4rem;
+    --fz-26: 2.6rem;
+    --fz-28: 2.8rem;
+}
+
+/* GLOBAL */
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    overscroll-behavior: contain;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Roboto", sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: none !important;
+}
+
+input[readonly],
+input[readonly]:focus,
+select[disabled] {
+    cursor: not-allowed;
+    border-color: #d9d9d9;
+    color: rgb(0 0 0 / 28%);
+    background-color: rgba(0, 0, 0, 0.04);
+    box-shadow: none;
+}
+
+input[type=file], /* FF, IE7+, chrome (except button) */
+input[type=file]::-webkit-file-upload-button {
+    /* chromes and blink button */
+    cursor: pointer;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+.btn {
+    font-size: var(--fz-12);
+    /* height: 28px; */
+}
+
+input.disableText {
+    background-color: var(--white-color-blur);
+    border-radius: var(--border-radius-mini);
+}
+
+input,
+textarea {
+    border: 1px solid #ced4da !important;
+}
+input:focus,
+textarea:focus,
+.dataTables_length select:focus {
+    border: 1px solid var(--primary-color) !important;
+    box-shadow: var(--box-shadow) !important;
+    outline: none;
+}
+
+select optgroup {
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+option:hover,
+.dataTables_length select option:hover {
+    background-color: red !important;
+}
+
+.bs-searchbox .form-control:focus {
+    box-shadow: none;
+    border: 1px solid var(--primary-color);
+}
+.modal-dialog {
+    margin-top: 100px;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--primary-color);
+}
+
+/* DateTimePicker */
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_today {
+    color: var(--primary-color);
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_default,
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_current,
+.xdsoft_datetimepicker
+    .xdsoft_timepicker
+    .xdsoft_time_box
+    > div
+    > div.xdsoft_current {
+    background: var(--primary-color);
+    box-shadow: none;
+    color: #fff;
+    font-weight: 500;
+}
+.tooltip .tooltip-inner {
+    max-width: 500px !important;
+}
+/* #three_table th,
+#three_table td {
+    white-space: nowrap;
+    padding: 6px 0;
+} */
+
+/* DATA TABLES */
+.dataTables_length {
+    margin-right: 10px;
+}
+
+.dataTables_length label {
+    display: flex;
+    font-size: 1.2rem;
+    align-items: center;
+}
+.dataTables_length select {
+    width: 40px;
+    padding: 4px;
+    margin: 0 6px;
+    font-size: 1.2rem;
+    background-position: right 0.5rem center;
+    background-size: 10px 10px;
+}
+
+/* Code form */
+code {
+    /* padding: 6px;
+    background-color: var(--pink-color-blur);
+    border-radius: var(--border-radius-mini);
+    color: var(--black-color); */
+}
+
+pre {
+    clear: both;
+    color: #fff;
+    background-color: #343541;
+    padding: 24px 10px 10px;
+    white-space: pre-wrap;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+    tab-size: 2;
+    -ms-word-break: normal;
+    word-break: normal;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    position: relative;
+    line-height: 20px;
+    border-radius: var(--border-radius-main);
+    overflow: auto;
+    max-height: 200px;
+}
+
+pre[rel]:not([rel=""]):before {
+    font-style: normal;
+    font-weight: 700;
+    font-size: var(--fz-12);
+    content: attr(rel);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    color: var(--white-color)!important;
+    background-color: #1b1b1b;
+}
+
+/* STYLE SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 4px;
+}
+/* *:hover::-webkit-scrollbar {
+    height: 10px;
+    transition: height 5s ease-in-out;
+    background-color: transparent;
+} */
+
+::-webkit-scrollbar-track {
+    background-color: var(--white-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color-bold);
+}
+.badge {
+    font-weight: 500;
+    padding: 4px 8px;
+    letter-spacing: 0.2px;
+}
+
+/* div:not(.dataTables_scrollFoot)::-webkit-scrollbar {
+    display: none; //Dòng con cạc
+} */
+.bootstrap-select .btn:focus {
+    outline: none !important;
+}
+
+/* LOADER */
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 0 !important;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    animation: spotlight 2s linear infinite alternate;
+    z-index: 1995;
+}
+
+.loader:before {
+    content: "";
+    background-image: url(../img/logo-thaihung-1.jpg);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: heartbeat 3.5s linear infinite alternate;
+}
+
+
+/* Style Scroll hover show */
+.sidebarBody::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.sidebarBody::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.sidebarBody::-webkit-scrollbar {
+    width: 4px;
+}
+.sidebarBody:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.box_code-preview::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.box_code-preview::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.box_code-preview::-webkit-scrollbar {
+    width: 4px;
+}
+.box_code-preview:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.trim_pre::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.trim_pre::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.trim_pre::-webkit-scrollbar {
+    width: 6px;
+}
+.trim_pre:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes spotlight {
+    0%,
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes heartbeat {
+    0% {
+        transform: scale(0.75);
+    }
+    20% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(0.75);
+    }
+    60% {
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(0.75);
+    }
+    100% {
+        transform: scale(0.75);
+    }
+}
+
+/* Blink Blink */
+@-webkit-keyframes blink {
+    0% {
+        background-color: var(--yellow-color-blur);
+    }
+    50% {
+        background-color: var(--blue-color-blur);
+    }
+    100% {
+        background-color: var(--yellow-color-blur);
+    }
+}
+@-moz-keyframes blink {
+    0% {
+        background-color: var(--yellow-color-blur);
+    }
+    50% {
+        background-color: var(--blue-color-blur);
+    }
+    100% {
+        background-color: var(--yellow-color-blur);
+    }
+}
+@-o-keyframes blink {
+    0% {
+        background-color: var(--yellow-color-blur);
+    }
+    50% {
+        background-color: var(--blue-color-blur);
+    }
+    100% {
+        background-color: var(--yellow-color-blur);
+    }
+}
+@keyframes blink {
+    0% {
+        background-color: var(--yellow-color-blur);
+    }
+    50% {
+        background-color: var(--blue-color-blur);
+    }
+    100% {
+        background-color: var(--yellow-color-blur);
+    }
+}
+#bg-blink {
+    -webkit-animation: blink 700ms infinite;
+    -moz-animation: blink 700ms infinite;
+    -o-animation: blink 700ms infinite;
+    animation: blink 700ms infinite;
+}
+
+@media print {
+#mainWrap,
+#header,
+#btnPrint {
+    visibility: hidden;
+}
+
+}
