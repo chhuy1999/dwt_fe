@@ -37,7 +37,7 @@
                     </div>
                     <div class="information_wrapper bg-white">
                         <div class="row">
-                            <div class="col-4 col-md-4">
+                            <div class="col-12 col-md-5">
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
                                         <div class="information_image-upload">
@@ -51,14 +51,16 @@
                                         </div>
                                         <div class="information_signature-wrapper">
                                             <button role="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#taoChuKy">Tạo chữ ký</button>
+                                                data-bs-target="#signatureModal">Tạo chữ ký</button>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8 col-md-8">
+                            <div class="col-12 col-md-7">
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
+                                        <div class="card-title">Mục tiêu nhiệm vụ cá nhân</div>
                                         <div class="row">
                                             <div class="mb-3 col-6">
                                                 <input type="text" readonly value="Đặng Vũ Lam Mai" class="form-control">
@@ -76,16 +78,19 @@
                                                 <input type="text" readonly value="09123465789" class="form-control">
                                             </div>
                                             <div class="mb-3 col-4">
-                                                <input type="text" readonly value="bmtkt1@dopperherz.vn" class="form-control">
+                                                <input type="text" readonly value="bmtkt1@dopperherz.vn"
+                                                    class="form-control">
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <input type="text" readonly value="Phòng Marketing" class="form-control">
                                             </div>
                                             <div class="mb-3 col-4">
-                                                <input type="text" readonly value="Trợ lý Marketing" class="form-control">
+                                                <input type="text" readonly value="Trợ lý Marketing"
+                                                    class="form-control">
                                             </div>
                                             <div class="mb-3 col-6">
-                                                <input type="text" readonly value="bmtkt1@dopperherz.vn" class="form-control">
+                                                <input type="text" readonly value="bmtkt1@dopperherz.vn"
+                                                    class="form-control">
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <input type="text" readonly value="**********" class="form-control">
@@ -193,36 +198,28 @@
     </div>
 
     {{-- Modal tạo chữ ký --}}
-    <div class="modal fade" id="taoChuKy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 44%">
+
+    <div class="modal fade" id="signatureModal" tabindex="-1" role="dialog" aria-labelledby="signatureModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100 mt-2" id="exampleModalLabel">Tạo chữ ký cá nhân</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signatureModalLabel">Tạo chữ ký</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12">
-                                <div class="information_signature" style="height: 200px; width: 200px;">
-                                    <canvas id="signature-pad" class="signature-pad" width=400 height=200></canvas>
-                                </div>
-                            <button id="save-png">Save as PNG</button>
-                            <button id="save-jpeg">Save as JPEG</button>
-                            <button id="save-svg">Save as SVG</button>
-                            <button id="draw">Draw</button>
-                            <button id="erase">Erase</button>
-                            <button id="clear">Clear</button>
-                        </div>
-                    </div>
+                        <canvas id="signatureCanvas" ></canvas>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Lưu</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="saveSignatureButton">Lưu</button>
                 </div>
             </div>
         </div>
     </div>
-
 
 @endsection
 
@@ -231,27 +228,16 @@
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 
 
+
     <script>
-        $('#myModal').on('shown.bs.modal', function () {
-  var canvas = document.getElementById('signature-pad');
-  var signaturePad = new SignaturePad(canvas, {
-    backgroundColor: 'rgb(255, 255, 255)' // necessary for saving image as JPEG; can be removed is only saving as PNG or SVG
-  });
+        // Initialize the signature pad
+        var canvas = document.getElementById('signatureCanvas');
+        var signaturePad = new SignaturePad(canvas);
 
-  document.getElementById('clear').addEventListener('click', function() {
-    signaturePad.clear();
-  });
-
-  document.getElementById('draw').addEventListener('click', function() {
-    var ctx = canvas.getContext('2d');
-    ctx.globalCompositeOperation = 'source-over'; // default value
-  });
-
-  document.getElementById('erase').addEventListener('click', function() {
-    var ctx = canvas.getContext('2d');
-    ctx.globalCompositeOperation = 'destination-out';
-  });
-});
-
+        // Save the signature to a variable when the user clicks the save button
+        document.getElementById('saveSignatureButton').addEventListener('click', function() {
+            var signatureData = signaturePad.toDataURL();
+            console.log(signatureData); // You can do whatever you want with the signature data here
+        });
     </script>
 @endsection
