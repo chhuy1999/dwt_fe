@@ -1,10 +1,25 @@
-const KeyOtherChart_Bubble = document.getElementById("KeyOtherChart_Bubble");
+const KeyOtherChart_Scatter = document.getElementById("KeyOtherChart_Scatter");
 
-
-
-new Chart(KeyOtherChart_Bubble, {
-    type: "bubble",
+new Chart(KeyOtherChart_Scatter, {
+    type: "scatter",
     data: {
+        // labels: ["Nhân sự", "Marketing", "Tuyển Dụng", "Kiếm Soát"],
+        // datasets: [
+        //     {
+        //         label: "Chỉ số 1",
+        //         data: [12, 19, 3, 5],
+        //         backgroundColor: "rgb(0,165,255)",
+        //         borderColor: "rgba(0,165,255,0.75)",
+        //         borderWidth: 1,
+        //     },
+        //     {
+        //       label: "Chỉ số 2",
+        //       data: [5, 10, 18, 9],
+        //       backgroundColor: "rgb(255,165,0)",
+        //       borderColor: "rgba(255,165,0,0.75)",
+        //       borderWidth: 1,
+        //   },
+        // ],
         datasets: [{
           label: 'Dataset 1',
           data: [{
@@ -55,32 +70,7 @@ new Chart(KeyOtherChart_Bubble, {
             y: 21,
           }],
           backgroundColor: 'rgb(255, 159, 64)'
-        },{
-          label: 'Dataset 3',
-          data: [{
-            x: 8,
-            y: 5,
-          }, {
-            x: 31,
-            y: 24,
-          }, {
-            x: 26,
-            y: 19,
-          },{
-            x: 25,
-            y: 15,
-          },{
-            x: 16,
-            y: 19,
-          },{
-            x: 30,
-            y: 35,
-          },{
-            x: 31,
-            y: 12,
-          }],
-          backgroundColor: 'rgb(75, 192, 192)'
-        },]
+        }]
     },
     options: {
       responsive: true,
@@ -91,11 +81,8 @@ new Chart(KeyOtherChart_Bubble, {
         },
         title: {
           display: true,
-          text: 'Chart.js Bubble Chart'
+          text: 'Chart.js Scatter Chart'
         }
       }
     },
 });
-
-
-

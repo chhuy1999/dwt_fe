@@ -58,13 +58,13 @@ new Chart(KeyLineChart_InterpolationModes, {
             tension: 0.4
           }, {
             label: 'Cubic interpolation',
-            data: [0, 20, 20, 60, 60, 120, NaN, 180, 120, 125, 105, 110, 170],
+            data: [0, 26, 10, 48, 94, 118, NaN, 80, 20, 25, 115, 10, 70],
             borderColor: "rgb(54, 162, 235)",
             fill: false,
             tension: 0.4
           }, {
             label: 'Linear interpolation (default)',
-            data: [0, 20, 20, 60, 60, 120, NaN, 180, 120, 125, 105, 110, 170],
+            data: [0, 50, 60, 70, 20, 20, NaN, 160, 110, 110, 15, 10, 170],
             borderColor: "rgb(75, 192, 192)",
             fill: false
           }

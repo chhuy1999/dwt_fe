@@ -73,6 +73,10 @@
                                                                     'KeyOtherChart_Polararea' => 'KeyOtherChart_Polararea',
                                                                     'KeyOtherChart_Bubble' => 'KeyOtherChart_Bubble',
                                                                     'KeyOtherChart_Radar' => 'KeyOtherChart_Radar',
+                                                                    'KeyOtherChart_Scatter' => 'KeyOtherChart_Scatter',
+                                                                    'KeyOtherChart_ScatterMultiAxis' => 'KeyOtherChart_ScatterMultiAxis',
+
+
                                                             ],
                                                         ];
                                                         $chartNames = array_keys($barCharts);
@@ -223,6 +227,9 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Radar.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Quadrants.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Bubble.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_Scatter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_ScatterMultiAxis.js') }}"></script>
+
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales_MinMax.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyScales/KeyScales.js') }}"></script>
