@@ -1917,3 +1917,37 @@ ul.modal_upload-list li:last-child {
     padding: 0; 
     margin: 1.5cm 1.5cm 1.5cm 2cm;
 }
+
+/* Page Information */
+.information_wrapper {
+    padding: 10px;
+    border-radius: var(--border-radius-main);
+}
+
+.information_image-upload {
+    position: relative;
+    max-width: 200px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.information_image-upload input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+}
+
+.information_upload-field .information_file-thumbnail {
+    cursor: pointer;
+}
+
+.information_upload-field .information_file-thumbnail img  {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
