@@ -203,6 +203,7 @@
                                     <textarea rows="1" data-bs-toggle="tooltip" data-bs-placement="top" placeholder="Nhập đánh giá" class="form-control"></textarea>
                                 </div>
                                 <div class="col-12 mb-3">
+                                    <div class="card-title">File đã tải lên</div>
                                     <div class="upload_wrapper-items">
                                         <ul class="modal_upload-list" style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;">
                                             <li>
