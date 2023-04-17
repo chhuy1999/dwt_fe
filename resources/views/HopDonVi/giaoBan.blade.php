@@ -316,7 +316,7 @@
                                                     <i class="bi bi-journal-check"></i>
                                                     Nội dung trao đổi
                                                 </div>
-                                                <div class="" style="max-height: 240px; overflow-y: scroll" id="notes">
+                                                <div class="" style="max-height: 240px; overflow-y: scroll;overflow-x: hidden" id="notes">
 
 
                                                 </div>
@@ -693,7 +693,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Thời hạn">
-                                            <input id="timeSuaVanDe" value="{{ date('d/m/Y', strtotime($item->deadline)) }}" class="form-control" type="text" name="deadline">
+                                            <input value="{{ date('d/m/Y', strtotime($item->deadline)) }}" class="timeSuaVanDe form-control" type="text" name="deadline">
                                             <i class="bi bi-calendar-plus style_pickdate"></i>
                                         </div>
                                     </div>
@@ -742,7 +742,7 @@
             <div class="modal-content">
 
 
-                <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
+                <div class="modal-body print_body">
                     <div class="d-block text-center mb-3">
                         <h5 class="modal-title w-100 fs-3">BIÊN BẢN HỌP GIAO BAN {{ $meeting->type }}</option>
                         </h5>
@@ -809,7 +809,7 @@
                                                 <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="overflow: hidden">
                                                 <div class="fs-5 row">
                                                     @foreach (getListAbsence($meeting, $listUsers->data) as $absence)
                                                         <div class="col-md-4">{{ $absence->name }}
@@ -1718,6 +1718,10 @@
                 format: 'H:i'
             });
             $('#thoiHanVanDeTonDong').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('.timeSuaVanDe').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });

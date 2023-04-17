@@ -40,19 +40,23 @@
                             <div class="col-12 col-md-5">
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
-                                        <div class="information_image-upload">
-                                            <input type="file" name="" id="logo" onchange="fileValue(this)">
-                                            <label for="logo" class="information_upload-field" id="file-label">
-                                                <div class="information_file-thumbnail">
-                                                    <img id="information_image-preview" width="150" height="150"
-                                                        src="{{ asset('assets/img/avatar.jpeg') }}" alt="">
-                                                </div>
-                                            </label>
+                                        <div class="information_avatar">
+                                            <img src="{{ asset('assets/img/avatar.jpeg') }}" alt="" class="information_avatar-img">
                                         </div>
+                                        <div class="card-title text-center pt-3 pb-3">Đặng Vũ Lam Mai - MTT239</div>
                                         <div class="information_signature-wrapper">
-                                            <button role="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#signatureModal">Tạo chữ ký</button>
-
+                                            <div class="signature_wrapper">
+                                                <img class="signature_img" style="height:200px;width:100%"
+                                                    src="{{ asset('assets/img/noSignature.jpg') }}" />
+                                            </div>
+                                            <div class="signature_actions">
+                                                <button role="button" class="btn btn-outline-danger"
+                                                    id="clearSignatureButton">Xóa chữ ký</button>
+                                                <button role="button" class="btn btn-outline-warning"
+                                                    id="editSignatureButton">Sửa chữ ký</button>
+                                                <button role="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#signatureModal">Tạo chữ ký</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +64,7 @@
                             <div class="col-12 col-md-7">
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
-                                        <div class="card-title">Mục tiêu nhiệm vụ cá nhân</div>
+                                        <div class="card-title">Thông tin người dùng</div>
                                         <div class="row">
                                             <div class="mb-3 col-6">
                                                 <input type="text" readonly value="Đặng Vũ Lam Mai" class="form-control">
@@ -210,8 +214,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                        <canvas id="signatureCanvas" ></canvas>
-
+                    <canvas id="signatureCanvas"></canvas>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Hủy</button>
@@ -236,8 +239,48 @@
 
         // Save the signature to a variable when the user clicks the save button
         document.getElementById('saveSignatureButton').addEventListener('click', function() {
-            var signatureData = signaturePad.toDataURL();
-            console.log(signatureData); // You can do whatever you want with the signature data here
+            // Get the data URL of the signature image (with a low resolution)
+            var signatureData = signaturePad.toDataURL({
+                minWidth: 0.1,
+                maxWidth: 2,
+                throttle: 16
+            });
+
+            // Update the src of the signature image
+            var signatureImg = document.querySelector('.signature_img');
+            signatureImg.src = signatureData;
+
+            // Hide the signature pad modal
+            var signatureModal = document.getElementById('signatureModal');
+            var modalInstance = bootstrap.Modal.getInstance(signatureModal);
+            modalInstance.hide();
+            canvas.clear();
+        });
+
+        // Clear the signature when the user clicks the clear button
+        document.getElementById('clearSignatureButton').addEventListener('click', function() {
+            signaturePad.clear();
+            document.querySelector('.signature_img').src = '{{ asset('assets/img/noSignature.jpg') }}';
+        });
+
+        // Show the signature pad modal and load the previous signature when the user clicks the edit button
+        document.getElementById('editSignatureButton').addEventListener('click', function() {
+            // Show the signature pad modal
+            var signatureModal = document.getElementById('signatureModal');
+            var modalInstance = bootstrap.Modal.getInstance(signatureModal);
+            modalInstance.show();
+
+            // Load the previous signature (if it exists)
+            var signatureImg = document.querySelector('.signature_img');
+            var signatureData = signatureImg.src;
+            if (signatureData) {
+                var image = new Image();
+                image.onload = function() {
+                    signaturePad.clear();
+                    signaturePad.fromDataURL(signatureData);
+                };
+                image.src = signatureData;
+            }
         });
     </script>
 @endsection

@@ -187,11 +187,11 @@
     @foreach ($listMeeting->data as $meeting)
         <!-- Modal duyệt biên bản họp -->
         <div class="modal fade" id="bienban{{ $meeting->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 21cm">
+            <div class="modal-dialog modal-xl-centered" role="document" style="max-width: 24cm">
                 <div class="modal-content">
 
 
-                    <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
+                    <div class="modal-body print_body">
                         <div class="d-block text-center mb-3">
                             <h5 class="modal-title w-100 fs-3">BIÊN BẢN HỌP GIAO BAN {{ $meeting->type }}</option>
                             </h5>
@@ -243,10 +243,12 @@
                                                         gia:</div>
                                                 </td>
                                                 <td>
-                                                    <div class="fs-5">
+                                                    <div class="fs-5 row">
                                                         @if ($meeting->participants)
                                                             @foreach ($meeting->participants as $participant)
-                                                                {{ $participant->name }} - {{ $participant->code }}
+                                                                <div class="col-4 col-md-4">
+                                                                    {{ $participant->name }} - {{ $participant->code }}
+                                                                </div>
                                                             @endforeach
                                                         @endif
                                                     </div>
@@ -257,10 +259,12 @@
                                                     <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="fs-5">
+                                                <td style="overflow: hidden">
+                                                    <div class="fs-5 row">
                                                         @foreach (getListAbsence($meeting, $listUsers->data) as $absence)
-                                                            {{ $absence->name }} - {{ $absence->code }},&nbsp;
+                                                            <div class="col-4 col-md-4">
+                                                                {{ $absence->name }} - {{ $absence->code }}
+                                                            </div>
                                                         @endforeach
                                                     </div>
                                                 </td>
@@ -389,7 +393,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <div class="col-4 col-md-4 d-flex flex-column justify-content-between">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <div class="mt-3 modal_body-title fw-bolder">Trưởng bộ phận</div>
                                 </div>
@@ -404,7 +408,7 @@
                                     <p class="modal_body-title mb-0">{{ $meeting->leader->name ?? '' }}</p>
                                 </div>
                             </div>
-                            <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <div class="col-4 col-md-4 d-flex flex-column justify-content-between">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <div class="mt-3 modal_body-title fw-bolder">Thành viên tham gia</div>
                                 </div>
@@ -420,7 +424,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <div class="col-4 col-md-4 d-flex flex-column justify-content-between">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
                                 </div>
@@ -437,15 +441,10 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger ps-5 pe-5" data-bs-dismiss="modal">Hủy</button>
-                        <form action="/giao-ban/{{ $meeting->id }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="status" value="1">
-                            <button type="submit" class="btn btn-danger">Xác nhận</button>
-                        </form>
-                    </div> --}}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger" id="btnPrint">In</button>
+                    </div>
 
 
                 </div>
@@ -589,5 +588,11 @@
                     @endif
                 </div>
         `);
+    </script>
+
+    <script>
+        document.getElementById("btnPrint").onclick = function() {
+            window.print();
+        }
     </script>
 @endsection
