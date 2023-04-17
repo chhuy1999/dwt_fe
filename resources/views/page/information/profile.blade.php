@@ -41,7 +41,8 @@
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
                                         <div class="information_avatar">
-                                            <img src="{{ asset('assets/img/avatar.jpeg') }}" alt="" class="information_avatar-img">
+                                            <img src="{{ asset('assets/img/avatar.jpeg') }}" alt=""
+                                                class="information_avatar-img">
                                         </div>
                                         <div class="card-title text-center pt-3 pb-3">Đặng Vũ Lam Mai - MTT239</div>
                                         <div class="information_signature-wrapper">
@@ -64,7 +65,7 @@
                             <div class="col-12 col-md-7">
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
-                                        <div class="card-title">Thông tin người dùng</div>
+                                        <div class="card-title mb-3">Thông tin người dùng</div>
                                         <div class="row">
                                             <div class="mb-3 col-6">
                                                 <input type="text" readonly value="Đặng Vũ Lam Mai" class="form-control">
@@ -99,6 +100,10 @@
                                             <div class="mb-3 col-6">
                                                 <input type="text" readonly value="**********" class="form-control">
                                             </div>
+                                        </div>
+
+                                        <div>
+                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suaThongTin">Sửa thông tin</button>
                                         </div>
                                     </div>
                                 </div>
@@ -153,7 +158,7 @@
 
     {{-- Modal sửa thông tin cá nhân --}}
     <div class="modal fade" id="suaThongTin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 44%">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100 mt-2" id="exampleModalLabel">Sửa thông tin cá nhân</h5>
@@ -202,22 +207,19 @@
     </div>
 
     {{-- Modal tạo chữ ký --}}
-
     <div class="modal fade" id="signatureModal" tabindex="-1" role="dialog" aria-labelledby="signatureModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="signatureModalLabel">Tạo chữ ký</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <canvas id="signatureCanvas"></canvas>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
                     <button type="button" class="btn btn-danger" id="saveSignatureButton">Lưu</button>
                 </div>
             </div>
@@ -228,9 +230,8 @@
 
 @section('footer-script')
 
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
-
-
+    {{-- <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script> --}}
+    <script src="{{ asset('/assets/plugins/signature_pad/signature_pad.umd.min.js') }}"></script>
 
     <script>
         // Initialize the signature pad
@@ -283,4 +284,13 @@
             }
         });
     </script>
+
+    <script>
+        $("#signatureModal").on("hidden.bs.modal", function() {
+            var canvas = $(this).find("canvas")[0];
+            var signaturePad = new SignaturePad(canvas);
+            signaturePad.clear();
+        });
+    </script>
+
 @endsection

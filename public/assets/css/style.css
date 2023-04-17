@@ -1946,10 +1946,19 @@ ul.modal_upload-list li:last-child {
     cursor: pointer;
 }
 
-.information_upload-field .information_file-thumbnail img  {
+.information_avatar {
+    text-align: center;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.information_upload-field .information_file-thumbnail img,
+.information_avatar-img  {
     width: 180px;
     height: 180px;
     border-radius: 50%;
+    
 }
 
 .signature_actions {

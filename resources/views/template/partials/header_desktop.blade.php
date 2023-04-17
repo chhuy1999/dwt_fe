@@ -7,29 +7,10 @@
                 <span>Kế hoạch & Giao việc</span>
             </a>
             <ul id="header_submenu">
-                {{-- <li class="header_submenu-items more position-relative">
-                    <a href="#"
-                        class="header_submenu-link more_btn {{ request()->is('danh-sach-danh-gia', 'kho-bien-ban-danh-gia') ? 'active' : '' }}">
-                        Đào tạo <i class="bi bi-chevron-right"></i>
-                    </a>
-                    <ul class="header_more">
 
-                        <li class="header_more-item">
-                            <a href="/danh-sach-danh-gia"
-                                class="header_more-link {{ request()->is('danh-sach-danh-gia') ? 'active' : '' }}">Danh
-                                sách đánh giá</a>
-                        </li>
-                        <li class="header_more-item">
-                            <a href="/kho-bien-ban-danh-gia"
-                                class="header_more-link {{ request()->is('kho-bien-ban-danh-gia') ? 'active' : '' }}">Kho
-                                biên bản đánh giá</a>
-                        </li>
-                    </ul>
-                </li> --}}
                 @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                     <li class="header_submenu-items">
-                        <a href="#"
-                            class="header_submenu-link">
+                        <a href="#" class="header_submenu-link">
                             Kế hoạch
                         </a>
                         <a href="{{ route('assignTask.list') }}"
@@ -80,7 +61,8 @@
                 </li>
                 <li class="header_submenu-items">
                     <a href="/kho-luu-tru-bien-ban-hop"
-                        class="header_submenu-link {{ request()->is('kho-luu-tru-bien-ban-hop') ? 'active' : '' }}">Kho biên bản họp</a>
+                        class="header_submenu-link {{ request()->is('kho-luu-tru-bien-ban-hop') ? 'active' : '' }}">Kho
+                        biên bản họp</a>
                 </li>
             </ul>
         </li>
@@ -94,26 +76,41 @@
                 <li class="header_submenu-items">
                     <a href="{{ route('user.list') }}" class="header_submenu-link">Danh sách nhân sự</a>
                 </li>
+                <li class="header_submenu-items">
+                    <a href="/ho-so-nhan-vien" class="header_submenu-link">Hồ sơ nhân sự</a>
+                </li>
                 <li class="header_submenu-items more position-relative">
-                    <a href="#"
-                        class="header_submenu-link more_btn">
+                    <a href="#" class="header_submenu-link more_btn">
                         Đánh giá thi đua <i class="bi bi-chevron-right"></i>
                     </a>
                     <ul class="header_more">
                         <li class="header_more-item">
-                            <a href="#"
-                                class="header_more-link">Khen thưởng</a>
+                            <a href="#" class="header_more-link">Khen thưởng</a>
                         </li>
                         <li class="header_submenu-items">
                             <a href="#" class="header_submenu-link">Kỉ luật</a>
                         </li>
                     </ul>
                 </li>
-                <li class="header_submenu-items">
-                    <a href="#" class="header_submenu-link">Hồ sơ nhân sự</a>
-                </li>
-                <li class="header_submenu-items">
-                    <a href="#" class="header_submenu-link">Đào tạo & Huấn luyện</a>
+                
+                <li class="header_submenu-items more position-relative">
+                    <a href="#"
+                        class="header_submenu-link more_btn {{ request()->is('danh-sach-danh-gia', 'kho-bien-ban-danh-gia') ? 'active' : '' }}">
+                        Đào tạo & Huấn luyện <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <ul class="header_more">
+
+                        <li class="header_more-item">
+                            <a href="/danh-sach-danh-gia"
+                                class="header_more-link {{ request()->is('danh-sach-danh-gia') ? 'active' : '' }}">Danh
+                                sách đánh giá</a>
+                        </li>
+                        <li class="header_more-item">
+                            <a href="/kho-bien-ban-danh-gia"
+                                class="header_more-link {{ request()->is('kho-bien-ban-danh-gia') ? 'active' : '' }}">Kho
+                                biên bản đánh giá</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="header_submenu-items">
                     <a href="#" class="header_submenu-link">Đề nghị tuyển dụng</a>
@@ -127,9 +124,12 @@
                 <span>DWT & KPI</span>
             </a>
             <ul id="header_submenu">
-                
+
                 <li class="header_submenu-items">
                     <a href="/dashboard_admin" class="header_submenu-link">Xây dựng KPI </a>
+                </li>
+                <li class="header_submenu-items">
+                    <a href="/kho-key" class="header_submenu-link">Kho chỉ số key</a>
                 </li>
                 <li class="header_submenu-items">
                     <a href="/dashboard_admin" class="header_submenu-link">Lịch sử điều chỉnh</a>
@@ -157,8 +157,7 @@
             </a>
             <ul id="header_submenu">
                 <li class="header_submenu-items more position-relative">
-                    <a href="#"
-                        class="header_submenu-link more_btn">
+                    <a href="#" class="header_submenu-link more_btn">
                         Danh sách đề xuất <i class="bi bi-chevron-right"></i>
                     </a>
                     <ul class="header_more">
@@ -166,7 +165,7 @@
                             <a href="#" class="header_more-link">Đề xuất theo mẫu</a>
                         </li>
                         <li class="header_submenu-items">
-                            <a href="#" class="header_submenu-link">Đề xuất mở</a>
+                            <a href="/de-xuat-mo" class="header_submenu-link">Đề xuất mở</a>
                         </li>
                     </ul>
                 </li>
@@ -186,7 +185,7 @@
                 </li>
             </ul>
         </li>
-        
+
         <li class="header_menu-item">
             <a class="header_menu-link menu_btn-sub {{ request()->is('ho-so-don-vi', 'danh-sach-vi-tri', 'danh-sach-cap-nhan-su', 'danh-muc-goi-trang-bi', 'danh-sach-thanh-vien', 'danh-muc-dinh-muc', 'danh-muc-nhiem-vu', 'danh-muc-chi-so-key') ? 'active' : '' }}"
                 aria-current="page" href="#">
@@ -194,19 +193,27 @@
                 <span>Cấu hình</span>
             </a>
             <ul id="header_submenu">
-                {{-- <li class="header_submenu-items more position-relative">
-                    <a href="{{ route('department.list') }}"
-                        class="header_submenu-link more_btn {{ request()->is('ho-so-don-vi') ? 'active' : '' }}">
+                <li class="header_submenu-items more position-relative">
+                    <a href="#"
+                        class="header_submenu-link more_btn {{ request()->is('ho-so-don-vi', 'danh-sach-vi-tri', 'danh-sach-cap-nhan-su', 'danh-muc-goi-trang-bi') ? 'active' : '' }}">
                         Hồ sơ đơn vị <i class="bi bi-chevron-right"></i>
                     </a>
                     <ul class="header_more">
+                        <li class="header_more-item">
+                            <a href="{{ route('department.list') }}"
+                                class="header_more-link {{ request()->is('ho-so-don-vi') ? 'active' : '' }}">Cơ cấu
+                                đơn vị</a>
+                        </li>
                         <li class="header_more-item">
                             <a href="{{ route('position.list') }}"
                                 class="header_more-link {{ request()->is('danh-sach-vi-tri') ? 'active' : '' }}">Danh
                                 sách vị
                                 trí</a>
                         </li>
-                        
+                        <li class="header_more-item">
+                            <a href="{{ route('positionOri.list') }}" class="header_more-link">Danh sách cấp
+                                tổ chức</a>
+                        </li>
                         <li class="header_more-item">
                             <a href="{{ route('positionLevel.list') }}"
                                 class="header_more-link {{ request()->is('danh-sach-cap-nhan-su') ? 'active' : '' }}">Danh
@@ -220,41 +227,8 @@
                                 trang bị</a>
                         </li>
                     </ul>
-                </li> --}}
-
-                <li class="header_submenu-items">
-                    <a href="{{ route('department.list') }}" class="header_submenu-link">Hồ sơ đơn vị</a>
                 </li>
-                <li class="header_submenu-items">
-                    <a href="{{ route('positionOri.list') }}" class="header_submenu-link">Danh sách cấp tổ chức</a>
-                </li>
-                <li class="header_submenu-items">
-                    <a href="{{ route('equimentPack.list') }}" class="header_submenu-link {{ request()->is('danh-muc-goi-trang-bi') ? 'active' : '' }}">Danh mục gói trang bị</a>
-                </li>
-                <li class="header_submenu-items">
-                    <a href="mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
-                </li>
-                <li class="header_submenu-items">
-                    <a href="/kho-chart" class="header_submenu-link">Biểu đồ</a>
-                </li>
-                <li class="header_submenu-items">
-                    <a href="/ky-nang-nghiep-vu" class="header_submenu-link">Quy trình</a>
-                </li>
-                <li class="header_submenu-items">
-                    <a href="#" class="header_submenu-link">Phân quyền người dùng</a>
-                </li>
-                <li class="header_submenu-items">
-                    <a href="#" class="header_submenu-link">Cấu hình hiển thị</a>
-                </li>
-
-                <li class="header_submenu-items">
-                    <a href="/dashboard_admin" class="header_submenu-link">Dashboard Admin</a>
-                </li>
-                <li class="header_submenu-items">
-                    <a href="" class="header_submenu-link">Cấu hình thông tin doanh nghiệp</a>
-                </li>
-                
-                {{-- <li class="header_submenu-items more position-relative">
+                <li class="header_submenu-items more position-relative">
                     <a href="ho-so-nhan-vien"
                         class="header_submenu-link more_btn {{ request()->is('danh-sach-thanh-vien') ? 'active' : '' }}">
                         Hồ sơ nhân viên <i class="bi bi-chevron-right"></i>
@@ -271,8 +245,9 @@
                         </li>
                     </ul>
                 </li>
-                
-                
+                <li class="header_submenu-items">
+                    <a href="mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
+                </li>
                 <li class="header_submenu-items more position-relative">
                     <a href="#"
                         class="header_submenu-link more_btn {{ request()->is('danh-muc-dinh-muc', 'danh-muc-nhiem-vu', 'danh-muc-chi-so-key') ? 'active' : '' }}">
@@ -295,29 +270,37 @@
                                 số kinh
                                 doanh</a>
                         </li>
-                        <li class="header_more-item">
-                            <a href="#" class="header_more-link">Danh mục đơn
-                                vị tính</a>
-                        </li>
+                        {{-- <li class="header_more-item">
+                        <a href="#" class="header_more-link">Danh mục đơn
+                            vị tính</a>
+                    </li> --}}
                     </ul>
                 </li>
-                
                 <li class="header_submenu-items more position-relative">
-                    <a href="#" class="header_submenu-link more_btn">
-                        KPI<i class="bi bi-chevron-right"></i>
-                    </a>
+                    <a href="#" class="header_submenu-link more_btn">Quy trình<i
+                            class="bi bi-chevron-right"></i></a>
                     <ul class="header_more">
-                        <li class="header_submenu-items">
-                            <a href="/kho-key" class="header_submenu-link">Kho chỉ số key</a>
+                        <li class="header_more-item">
+                            <a href="/ky-nang-nghiep-vu" class="header_more-link">Kỹ Năng Nghiệp Vụ</a>
                         </li>
                     </ul>
-                    
                 </li>
                 <li class="header_submenu-items">
-                    <a href="#" class="header_submenu-link">Phân quyền</a>
+                    <a href="#" class="header_submenu-link">Phân quyền người dùng</a>
+                </li>
+
+                <li class="header_submenu-items">
+                    <a href="/dashboard_admin" class="header_submenu-link">Dashboard quản trị</a>
+                </li>
+
+                <li class="header_submenu-items">
+                    <a href="#" class="header_submenu-link">Cấu hình hiển thị</a>
                 </li>
                 
-                
+                <li class="header_submenu-items">
+                    <a href="" class="header_submenu-link">Cấu hình thông tin doanh nghiệp</a>
+                </li>
+
                 <li class="header_submenu-items more position-relative">
                     <a href="#" class="header_submenu-link more_btn">
                         Biểu đồ <i class="bi bi-chevron-right"></i>
@@ -330,8 +313,8 @@
                             <a href="/kho-chart" class="header_more-link">Kho chart</a>
                         </li>
                     </ul>
-                </li> --}}
-                
+                </li>
+
             </ul>
         </li>
     </ul>

@@ -195,6 +195,9 @@ Route::get('quan-ly-nhan-su', function () {
 Route::get('ho-so-nhan-vien', function () {
     return view('HopDonVi.hoSoNhanVien');
 })->middleware('auth.role:manager,admin,user');
+Route::get('de-xuat-mo', function () {
+    return view('DeXuat_XetDuyet.deXuatMo');
+})->middleware('auth.role:manager,admin,user');
 
 // Kế hoạch & giao việc
 

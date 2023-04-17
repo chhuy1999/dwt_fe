@@ -238,7 +238,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
+                                                <td  style="vertical-align: top;">
                                                     <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
                                                         gia:</div>
                                                 </td>
@@ -255,7 +255,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
+                                                <td  style="vertical-align: top;">
                                                     <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
                                                     </div>
                                                 </td>
@@ -393,7 +393,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4 col-md-4 d-flex flex-column justify-content-between">
+                            <div class="col-6 col-md-6 d-flex flex-column justify-content-between">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <div class="mt-3 modal_body-title fw-bolder">Trưởng bộ phận</div>
                                 </div>
@@ -408,7 +408,7 @@
                                     <p class="modal_body-title mb-0">{{ $meeting->leader->name ?? '' }}</p>
                                 </div>
                             </div>
-                            <div class="col-4 col-md-4 d-flex flex-column justify-content-between">
+                            {{-- <div class="col-4 col-md-4 d-flex flex-column justify-content-between">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <div class="mt-3 modal_body-title fw-bolder">Thành viên tham gia</div>
                                 </div>
@@ -423,8 +423,8 @@
                                     <p class="modal_body-title m-0">Chúng tôi xác nhận nội dung cuộc hop</p>
                                 </div>
 
-                            </div>
-                            <div class="col-4 col-md-4 d-flex flex-column justify-content-between">
+                            </div> --}}
+                            <div class="col-6 col-md-6 d-flex flex-column justify-content-between">
                                 <div class="d-flex align-items-center justify-content-center">
                                     <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
                                 </div>
