@@ -340,25 +340,25 @@
                             
                                 <div class="row d-flex align-items-center">
 
-                                    <div class="card-title col-6 me-auto">Revenue Trend Qtr YTD</div>
-                                    <div class="col-6 d-flex">
-                                        <div class="">
-                                            <img class="" style="width: 40px; height: 40px" src="{{ asset('assets/img/sua.png') }}" />
+                                    <div class="card-title col-6 me-auto" style="width:45%">Revenue Trend Qtr YTD</div>
+                                        <div class="col" style="padding: 0">
+                                            <img class="" style="width: 35px; height: 35px" src="{{ asset('assets/img/sua.png') }}" />
 
                                         </div>
-                                        <div class="">
-                                            <img class="" style="width: 40px; height: 40px" src="{{ asset('assets/img/kinhlup.png') }}" />
+                                        <div class="col" style="padding: 0">
+                                            <img class="" style="width: 35px; height: 35px" src="{{ asset('assets/img/kinhlup.png') }}" />
 
                                         </div>
-                                        <div class="">
-                                            <img class="" style="width: 40px; height: 40px" src="{{ asset('assets/img/10.png') }}" />
+                                        <div class="col" style="padding: 0">
+                                            <img class="" style="width: 35px; height: 35px" src="{{ asset('assets/img/10.png') }}" />
 
                                         </div>
-                                        <div class="">
-                                            <img class="" style="width: 40px; height: 40px" src="{{ asset('assets/img/11.png') }}" />
+                                        <div class="col" style="padding: 0">
+                                            <img class="" style="width: 35px; height: 35px" src="{{ asset('assets/img/11.png') }}" />
 
                                         </div>
-                                    </div>
+                                        <div class="col"></div>
+                                        <div class="col"></div>
                                 </div>
                             
                                 <div class="">
@@ -483,26 +483,28 @@
                         <div class="col-sm-4 ">
                             <div class="row d-flex align-items-center" >
 
-                                <div class="card-title col-6 me-auto">Expense Trend Qtr YTD</div>
-                                <div class="col-6 d-flex">
-                                    <div class="">
-                                        <img class="" style="width: 40px; height: 40px" src="{{ asset('assets/img/12.png') }}" />
+                                <div class="card-title col-6 me-auto" style="width:45%">Expense Trend Qtr YTD</div>
+                                    <div class="col" style="padding: 0">
+                                        <img class="" style="width: 35px; height: 35px" src="{{ asset('assets/img/12.png') }}" />
 
                                     </div>
-                                    <div class="">
-                                        <img class="" style="width: 40px; height: 40px" src="{{ asset('assets/img/13.png') }}" />
+                                    <div class="col" style="padding: 0">
+                                        <img class="" style="width: 35px; height: 35px" src="{{ asset('assets/img/13.png') }}" />
 
                                     </div>
-                                    <div class="">
-                                        <img class="" style="width: 40px; height: 40px" src="{{ asset('assets/img/14.png') }}" />
+                                    <div class="col" style="padding: 0">
+                                        <img class="" style="width: 35px; height: 35px" src="{{ asset('assets/img/14.png') }}" />
 
                                     </div>
-                                    <div class="">
-                                        <img class="" style="width: 40px; height: 40px" src="{{ asset('assets/img/15.png') }}" />
+                                    <div class="col" style="padding: 0">
+                                        <img class="" style="width: 35px; height: 35px" src="{{ asset('assets/img/15.png') }}" />
 
                                     </div>
-                                </div>
+                                    <div class="col"></div>
+                                    <div class="col"></div>
                             </div>
+
+                           
                         
                             <div class="">
                                 <table class="table table-hover">
