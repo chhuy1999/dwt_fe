@@ -930,4 +930,15 @@ class DwtServices
         $dataObj = $this->_toObject($data);
         return $dataObj->data;
     }
+
+    public function deleteTargetLogDetail($id) {
+        $url = $this->url . '/target-log-details/' . $id;
+        $response = $this->client->delete($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 }
