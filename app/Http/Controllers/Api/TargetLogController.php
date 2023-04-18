@@ -102,7 +102,7 @@ class TargetLogController extends Controller
             }
 
             $targetLogId = $targetLog->id;
-        
+
             //current user
             $loggedInUserId = session('user')['id'];
             //if target detail exist and belong to current user
@@ -146,6 +146,19 @@ class TargetLogController extends Controller
             return back()->with('success', 'Thêm mới thành công');
         } catch (Exception $e) {
             dd($e);
+            $error = $e->getMessage();
+            error_log($error);
+            return back()->with('error', $error);
+        }
+    }
+
+    public function delete($id, Request $request)
+    {
+        try {
+            $targetLogDetailId = $id;
+            $this->dwtService->deleteTargetLogDetail($targetLogDetailId);
+            return back()->with('success', 'Xóa thành công');
+        } catch (Exception $e) {
             $error = $e->getMessage();
             error_log($error);
             return back()->with('error', $error);

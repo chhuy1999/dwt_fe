@@ -69,6 +69,8 @@ class DashboardController extends Controller
                 $totalKpi += $listAssignedTasks->data[$i]->kpiValue;
             }
 
+            $allTasks = array_merge($listAssignedTasks->data, $myAssignedTasks->data);
+
 
             $reportTasks = $this->dwtServices->searchReportTasks([
                 "page" => 1,
@@ -80,7 +82,7 @@ class DashboardController extends Controller
                 "limit" => 100,
                 "departement_id" => $searchDepartment_id
             ]);
-
+            $allReportTasks = array_merge($reportTasks->data, $reportTaskAdmin->data);
             $listReports = $this->dwtServices->searchReports("", $user['departement_id'], 1, 100);
             $listReports = $listReports->data;
             return view('dashboard')
@@ -92,6 +94,8 @@ class DashboardController extends Controller
                 ->with('reportTaskAdmin', $reportTaskAdmin)
                 ->with('listReports', $listReports)
                 ->with('myTotalKpi', $myTotalKpi)
+                ->with('allTasks', $allTasks)
+                ->with('allReportTasks', $allReportTasks)
                 ->with('totalKpi', $totalKpi);
         } catch (Exception $e) {
             $error = $e->getMessage();

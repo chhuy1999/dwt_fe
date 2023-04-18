@@ -101,6 +101,7 @@ Route::group(['middleware' => 'auth.role:manager,admin'], function () {
 //bao cao cv
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::post('bao-cao-cong-viec/{id}', [TargetLogController::class, 'store'])->name('targetLog.store');
+    Route::delete('xoa-bao-cao-cong-viec/{id}', [TargetLogController::class, 'delete'])->name('targetLog.delete');
 });
 //report-tasks
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
