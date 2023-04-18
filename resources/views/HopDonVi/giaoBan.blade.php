@@ -316,7 +316,7 @@
                                                     <i class="bi bi-journal-check"></i>
                                                     Nội dung trao đổi
                                                 </div>
-                                                <div class="" style="max-height: 240px; overflow-y: scroll" id="notes">
+                                                <div class="" style="max-height: 240px; overflow-y: scroll;overflow-x: hidden" id="notes">
 
 
                                                 </div>
@@ -670,7 +670,7 @@
                                         <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Người nêu" value="{{ $item->user->name ?? '' }}">
                                     </div>
                                     <div class="col-sm-5 mb-3">
-                                        <select class="selectpicker" multiple required data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm *" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
+                                        <select class="selectpicker" required multiple required data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm *" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
                                             @foreach ($listUsers->data as $value)
                                                 @if (in_array($value->id, array_column($item->pics, 'id')))
                                                     <option value="{{ $value->id }}" selected>
@@ -686,14 +686,14 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-12 mb-3">
-                                        <textarea rows="1" class="form-control" placeholder="Nguyên nhân" name="reason">{{ $item->reason }}</textarea>
+                                        <textarea rows="1" class="form-control" required placeholder="Nguyên nhân" name="reason">{{ $item->reason }}</textarea>
                                     </div>
                                     <div class="col-sm-12 mb-3">
-                                        <textarea rows="1" class="form-control" placeholder="Hướng giải quyết" name="solution">{{ $item->solution }}</textarea>
+                                        <textarea rows="1" class="form-control" required placeholder="Hướng giải quyết" name="solution">{{ $item->solution }}</textarea>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Thời hạn">
-                                            <input id="timeSuaVanDe" value="{{ date('d/m/Y', strtotime($item->deadline)) }}" class="form-control" type="text" name="deadline">
+                                            <input value="{{ date('d/m/Y', strtotime($item->deadline)) }}" class="timeSuaVanDe form-control" type="text" name="deadline">
                                             <i class="bi bi-calendar-plus style_pickdate"></i>
                                         </div>
                                     </div>
@@ -742,7 +742,7 @@
             <div class="modal-content">
 
 
-                <div class="modal-body" style="padding: 0; margin: 1.5cm 1.5cm 1.5cm 2cm">
+                <div class="modal-body print_body">
                     <div class="d-block text-center mb-3">
                         <h5 class="modal-title w-100 fs-3">BIÊN BẢN HỌP GIAO BAN {{ $meeting->type }}</option>
                         </h5>
@@ -790,7 +790,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên tham
+                                                <div class="fs-5 modal_body-title fw-bolder text-nowrap" style="vertical-align: top;">Thành viên tham
                                                     gia:
                                                 </div>
                                             </td>
@@ -805,11 +805,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="vertical-align: top;">
                                                 <div class="fs-5 modal_body-title fw-bolder text-nowrap">Thành viên vắng:
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="overflow: hidden">
                                                 <div class="fs-5 row">
                                                     @foreach (getListAbsence($meeting, $listUsers->data) as $absence)
                                                         <div class="col-md-4">{{ $absence->name }}
@@ -944,7 +944,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                        <div class="col-6 col-md-6 d-flex flex-column justify-content-between">
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="mt-3 modal_body-title fw-bolder">Trưởng bộ phận</div>
                             </div>
@@ -959,7 +959,7 @@
                                 <p class="modal_body-title mb-0">{{ $meeting->leader->name ?? '' }}</p>
                             </div>
                         </div>
-                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                        {{-- <div class="col-md-4 d-flex flex-column justify-content-between">
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="mt-3 modal_body-title fw-bolder">Thành viên tham gia</div>
                             </div>
@@ -974,8 +974,8 @@
                                 <p class="modal_body-title m-0">Chúng tôi xác nhận nội dung cuộc hop</p>
                             </div>
 
-                        </div>
-                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                        </div> --}}
+                        <div class="col-6 col-md-6 d-flex flex-column justify-content-between">
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="mt-3 modal_body-title fw-bolder">Thư ký</div>
                             </div>
@@ -1718,6 +1718,10 @@
                 format: 'H:i'
             });
             $('#thoiHanVanDeTonDong').datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+            });
+            $('.timeSuaVanDe').datetimepicker({
                 format: 'd/m/Y',
                 timepicker: false,
             });

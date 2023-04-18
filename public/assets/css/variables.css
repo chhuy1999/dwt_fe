@@ -440,9 +440,8 @@ pre[rel]:not([rel=""]):before {
     #header,
     #btnPrint,
     .section_mobile-wrapper,
-    .tooltip {
+    .tooltip,
+    .modal-footer {
         visibility: hidden;
     }
-}
-
 }
