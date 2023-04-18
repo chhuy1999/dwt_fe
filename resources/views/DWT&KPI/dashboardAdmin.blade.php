@@ -456,10 +456,10 @@
                         <div class=" col-sm-4 ">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="card-title">KeyLineChart_SteppedLineCharts</div>
+                                    <div class="card-title">KeyBarChart_Vertical</div>
                                 </div>
                                 <div class="mainSection_chart-container mt-3">
-                                    <canvas id="KeyLineChart_SteppedLineCharts"></canvas>
+                                    <canvas id="KeyBarChart_Vertical"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -592,10 +592,10 @@
                         <div class=" col-sm-4 ">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="card-title">KeyLineChart_LineChart</div>
+                                    <div class="card-title">KeyBarChart_StackedWithGroups</div>
                                 </div>
                                 <div class="mainSection_chart-container mt-3">
-                                    <canvas id="KeyLineChart_LineChart"></canvas>
+                                    <canvas id="KeyBarChart_StackedWithGroups"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -902,6 +902,10 @@
     <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyOtherChart/KeyOtherChart_ScatterMultiAxis.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/DoughnutChart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/PieChart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_Vertical.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/KeyBarChart/KeyBarChart_StackedWithGroups.js') }}"></script>
+
+
 
 
 
