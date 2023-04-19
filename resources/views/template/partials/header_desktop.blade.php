@@ -179,6 +179,9 @@
                     </ul>
                 </li>
                 <li class="header_submenu-items">
+                    <a href="/de-xuat-theo-mau" class="header_submenu-link">Đề xuất theo mẫu</a>
+                </li>
+                <li class="header_submenu-items">
                     <a href="/de-xuat-mo" class="header_submenu-link">Đề xuất mở</a>
                 </li>
                 <li class="header_submenu-items">

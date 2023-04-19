@@ -4,10 +4,51 @@
 
 @section('header-style')
     {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}"> --}}
+    <style>
+        .sidebarBody {
+            overflow-y: scroll;
+        }
+    </style>
 @endsection
 
+
+@php
+    function displayChild($listDepartments, $parentId)
+    {
+        $result = '';
+        $children = getChild($listDepartments, $parentId);
+        if (count($children) > 0) {
+            $result .= '<ul class="tree_list-more">';
+            foreach ($children as $child) {
+                $result .= '<li class="section tree_list-more-item">';
+                if (count(getChild($listDepartments, $child->id)) > 0) {
+                    $result .= '<input type="checkbox" id="group' . $child->id . '">';
+                    $result .= '<label class="d-flex" for="group' . $child->id . '"></label>';
+                }
+                $result .= '<span class="clicktree d-block" data-href="#body_content-1">' . $child->name . '</span>';
+                $result .= displayChild($listDepartments, $child->id);
+                $result .= '</li>';
+            }
+            $result .= '</ul>';
+        }
+        return $result;
+    }
+    
+    function getChild($listDepartments, $parentId)
+    {
+        $children = [];
+        foreach ($listDepartments as $child) {
+            if ($child->parent != null && $child->parent->id == $parentId) {
+                $children[] = $child;
+            }
+        }
+        return $children;
+    }
+@endphp
+
+
 @section('content')
-    @include('template.sidebar.sidebardanhSachViTri.sidebarLeft')
+    @include('template.sidebar.sidebarCoCauToChuc.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -227,7 +268,7 @@
             @include('template.footer.footer')
         </div>
     </div>
-    @include('template.sidebar.sidebardanhSachViTri.sidebarRight')
+    @include('template.sidebar.sidebarCoCauToChuc.sidebarRight')
 
     {{-- Xóa Cơ cấu tổ chức --}}
     <div class="modal fade" id="xoaCoCauToChuc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
