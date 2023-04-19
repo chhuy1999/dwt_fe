@@ -71,7 +71,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         <ul class="dropdown-menu header_actions-notification-list p-0" aria-labelledby="dropdownActions">
                             <div class="header_actions-notification-heading bg-light">Hỗ trợ</div>
                             <li class="header_actions-notification-item">
-                                <a class="dropdown-item" href="thong-tin-ca-nhan">
+                                <a class="dropdown-item" href="/thong-tin-ca-nhan">
                                     <div class="header_actions-notification-title">
                                         Công bố nhân viên xuất sắc quý 1
                                     </div>
@@ -81,7 +81,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                             </li>
                             <li class="header_actions-notification-item">
-                                <a class="dropdown-item" href="thong-tin-ca-nhan">
+                                <a class="dropdown-item" href="/thong-tin-ca-nhan">
                                     <div class="header_actions-notification-title">
                                         Công bố nhân viên xuất sắc quý 1
                                     </div>
@@ -91,7 +91,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                             </li>
                             <li class="header_actions-notification-item">
-                                <a class="dropdown-item" href="thong-tin-ca-nhan">
+                                <a class="dropdown-item" href="/thong-tin-ca-nhan">
                                     <div class="header_actions-notification-title">
                                         Công bố nhân viên xuất sắc quý 1
                                     </div>
@@ -109,7 +109,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         <ul class="dropdown-menu header_actions-notification-list" aria-labelledby="dropdownNotification">
                             <div class="header_actions-notification-heading bg-light">Thông báo</div>
                             <li class="header_actions-notification-item">
-                                <a class="dropdown-item" href="thong-tin-ca-nhan">
+                                <a class="dropdown-item" href="/thong-tin-ca-nhan">
                                     <div class="header_actions-notification-title">
                                         Công bố nhân viên xuất sắc quý 1
                                     </div>
@@ -119,7 +119,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                             </li>
                             <li class="header_actions-notification-item">
-                                <a class="dropdown-item" href="thong-tin-ca-nhan">
+                                <a class="dropdown-item" href="/thong-tin-ca-nhan">
                                     <div class="header_actions-notification-title">
                                         Công bố nhân viên xuất sắc quý 1
                                     </div>
@@ -129,7 +129,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </a>
                             </li>
                             <li class="header_actions-notification-item">
-                                <a class="dropdown-item" href="thong-tin-ca-nhan">
+                                <a class="dropdown-item" href="/thong-tin-ca-nhan">
                                     <div class="header_actions-notification-title">
                                         Công bố nhân viên xuất sắc quý 1
                                     </div>
@@ -146,7 +146,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         </button>
                         <ul class="dropdown-menu header_user-list" aria-labelledby="dropdownUser">
                             <li class="header_user-item">
-                                <a class="dropdown-item" href="thong-tin-ca-nhan">
+                                <a class="dropdown-item" href="/thong-tin-ca-nhan">
                                     <i class="bi bi-person-vcard"></i>
                                     <span>Thông tin</span>
                                 </a>
