@@ -17,12 +17,12 @@
                                             <a class=" ">
                                                 <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
                                             </a>
-                                            <div class="fst-italic">BM013.QT02/12</div>
+                                            <div class="fst-italic">BM002.QT07/20</div>
 
                                         </div>
                                         <div class="col-8 d-flex align-items-center justify-content-center flex-column" >
-                                            <div class="mainSection_heading-title">Yêu cầu mua sắm</div>
-                                            <div class="fst-italic">Purchasing requirement</div>
+                                            <div class="mainSection_heading-title">Đề nghị tạm ứng</div>
+                                            <div class="fst-italic">Request for advance</div>
 
                                         </div>
                                         <div class="col-2 d-flex  justify-content-center flex-column">

@@ -418,7 +418,7 @@
                         
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
                         <a href="/form-yeu-cau-mua-sam" class="btn btn-danger">Thêm</a>
                     </div>
 
@@ -510,8 +510,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#taoDeXuat">Hủy</button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
                         <button type="submit" class="btn btn-danger">Thêm</button>
                     </div>
                 </form>
@@ -560,8 +559,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#taoDeXuat">Hủy</button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
                         <button type="submit" class="btn btn-danger">Thêm</button>
                     </div>
                 </form>
@@ -853,6 +851,7 @@
         $('select.selectpicker').on('change', function() {
             var target = $(this).find(":selected").data("target");
             $(target).modal("show");
+            $("#taoDeXuat").modal("hide");
         });
 
     </script>
