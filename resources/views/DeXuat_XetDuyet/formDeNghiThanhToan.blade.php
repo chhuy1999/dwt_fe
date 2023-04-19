@@ -14,7 +14,7 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class='row d-flex'>
-                                            <div class="col-2 d-flex fs-4 align-items-center justify-content-center flex-column">
+                                            <div class="col-2 d-flex fs-6 align-items-center justify-content-center flex-column">
                                                 <a class=" ">
                                                     <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
                                                 </a>
@@ -23,10 +23,10 @@
                                             </div>
                                             <div class="col-8 d-flex align-items-center justify-content-center flex-column" >
                                                 <div class="mainSection_heading-title">Đề nghị thanh toán</div>
-                                                <div class="fst-italic fs-4">Request for payment</div>
+                                                <div class="fst-italic fs-6">Request for payment</div>
     
                                             </div>
-                                            <div class="col-2 d-flex  fs-4 justify-content-center flex-column">
+                                            <div class="col-2 d-flex  fs-6 justify-content-center flex-column">
                                                 <div class="d-flex">
                                                     <div class="fst-italic">Số:</div>
                                                     <div class="fst-italic">BM001.QT07/20</div>
@@ -39,8 +39,8 @@
                                         </div>
     
                                         
-                                        <div class="mt-3">
-                                            <div class="row d-flex fs-4">
+                                        <div class="" style="margin-top: 20px">
+                                            <div class="row d-flex fs-6">
                                                 <div class="d-flex" style="font">Người đề nghị/
                                                     <div class="fst-italic ">Requester</div>
                                                     : 
@@ -50,7 +50,7 @@
                                         </div>
 
                                         <div class="mt-3">
-                                            <div class="row d-flex fs-4">
+                                            <div class="row d-flex fs-6">
                                                 <div class="d-flex" style="font">Bộ phận (hoặc địa chỉ)/
                                                     <div class="fst-italic ">Department (or address)</div>
                                                     : 
@@ -61,7 +61,7 @@
                         
     
                                         <div class="mt-3">
-                                            <div class="row d-flex fs-4">
+                                            <div class="row d-flex fs-6">
                                                 <div class="d-flex" style="font">Nội dung thanh toán/
                                                     <div class="fst-italic ">Contents of payment</div>
                                                     : 
@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-3">
-                                            <div class="row d-flex fs-4">
+                                            <div class="row d-flex fs-6">
                                                 <div class="d-flex" style="font">Số tiền/
                                                     <div class="fst-italic ">Amount</div>
                                                     : 
@@ -79,7 +79,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-3">
-                                            <div class="row d-flex fs-4 fst-italic">
+                                            <div class="row d-flex fs-6 fst-italic">
                                                 <div class="d-flex" style="font">(Bằng chữ/In words:
                                                     <div class="" style="margin-left: 3px">Năm mươi triệu đồng chẵn)</div>
                                                 </div>
@@ -88,7 +88,7 @@
     
                                         
                                         <div class="mt-3">
-                                            <div class="row d-flex fs-4">
+                                            <div class="row d-flex fs-6">
                                                 <div class="d-flex" style="font">Hình thức thanh toán/
                                                     <div class="fst-italic ">Payment method</div>
                                                     : 
@@ -99,7 +99,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-3">
-                                            <div class="row d-flex fs-4">
+                                            <div class="row d-flex fs-6">
                                                 <div class="d-flex" style="font">Người nhận tiền/
                                                     <div class="fst-italic ">Receiver</div>
                                                     : 
@@ -108,7 +108,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-3">
-                                            <div class="row d-flex fs-4">
+                                            <div class="row d-flex fs-6">
                                                 <div class="col-6 d-flex" style="font">Số tài khoản/ 
                                                     <div class="fst-italic ">Account number</div>
                                                     : 
@@ -121,7 +121,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class='row d-flex fs-4 mt-3'>
+                                        <div class='row d-flex fs-6 mt-3'>
                                             <div class="col-2">
                                                 <div class="fst-italic">File đính kèm:</div>
     
@@ -137,7 +137,7 @@
                                         
                                         <div class="mt-4">
     
-                                            <div class="row fs-4">
+                                            <div class="row fs-6">
                                                 <div class="col d-flex align-items-center justify-content-center flex-column">
                                                     <div class="fw-bold ">Người đề nghị/</div>
                                                     <div class="fw-bold">Applicant</div>
@@ -222,11 +222,50 @@
                                                                 
                                                             </div>
     
-    
+                                                            
     
                                                             <div class="col-md-12 mt-3">
                                                                 <div class="d-flex justify-content-start">
-                                                                    <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i> Thêm bảng kê</div>
+                                                                    <div role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i> Thêm bảng kê</div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="card mt-3">
+                                                                
+                                                                <div class="" style="margin: 10px">
+                                                                    <div class="card-title">Bảng kê đề nghị</div>
+                                                                    <div class="row d-flex mt-3">
+                                                                        <div class="col-6 col-md-6">
+                                                                            <input class="form-control" type="text" placeholder="Người đề nghị">
+                                                                        </div>
+                                                                        <div class="col-6 col-md-6">
+                                                                            <input class="form-control" type="number" placeholder="Công việc">
+                                                                        </div>
+                                                                        
+                                                                        
+                                                                    </div>
+                                                                    <div class="row d-flex mt-3">
+                                                                        <div class="col-2 col-md-2">
+                                                                            <input class="form-control" type="text" placeholder="Số chứng từ">
+                                                                        </div>
+                                                                        <div class="col-4 col-md-4">
+                                                                            <input class="form-control" type="text" placeholder="Nội dung">
+                                                                        </div>
+                                                                        <div class="col-2 col-md-2">
+                                                                            <input class="form-control" type="text" placeholder="Số tiền">
+                                                                        </div>
+                                                                        <div class="col-4 col-md-4">
+                                                                            <input class="form-control" type="text" placeholder="Ghi chú">
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="row mt-3">
+                                                                        <div class="d-flex justify-content-start">
+                                                                            <div role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
     
@@ -291,20 +330,127 @@
                                     </div>
                                 </div>
     
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
-                                    <form action="" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="1">
-                                        <button type="submit" class="btn btn-danger ps-5 pe-5">Gửi</button>
-                                    </form>
-                                </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
+                <div class="container-fluid " role="document" style="max-width: 24cm">
+                    <div class="">
+                        <div class="row ">
+                            <div class="col-lg-12">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class='row d-flex'>
+                                            <div class="col-2 d-flex fs-6 align-items-center justify-content-center flex-column">
+                                                <a class=" ">
+                                                    <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
+                                                </a>
+                                                <div class="fst-italic">BM003.QT07/20</div>
+    
+                                            </div>
+                                            <div class="col-8 d-flex align-items-center justify-content-center flex-column" >
+                                                <div class="mainSection_heading-title">Bảng kê đề nghị</div>
+    
+                                            </div>
+                                            <div class="col-2 d-flex  fs-6 justify-content-center flex-column">
+                                                
+                                                <div class="d-flex mt-1">
+                                                    <div class="fst-italic">Ngày:</div>
+                                                    <div class="fst-italic">19/04/2023</div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        
+                                        <div class="" style="margin-top: 20px">
+                                            <div class="row d-flex fs-6">
+                                                <div class="d-flex" style="font">Người đề nghị:
+                                                    <div class="" style="margin-left: 3px">Nguyen Văn A</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <div class="row d-flex fs-6">
+                                                <div class="d-flex" style="font">Công việc:
+                                                    <div class="" style="margin-left: 3px">Chạy quảng cáo</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+    
+                                        <div class="mt-3 fs-6" >
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">STT</th>
+                                                    <th scope="col">Số chứng từ</th>
+                                                    <th scope="col">Nội dung</th>
+                                                    <th scope="col">Số tiền</th>
+                                                    <th scope="col">Ghi chú</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <th scope="row">1</th>
+                                                    <td></td>
+                                                    <td>Google Ads</td>
+                                                    <td>25,000,000</td>
+                                                    <th scope="col"></th>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row">2</th>
+                                                    <td></td>
+                                                    <td>Facebook Ads</td>
+                                                    <td>25,000,000</td>
+                                                    <th scope="col"></th>
+                                                  </tr>
+                                                  <tr>
+                                                    <th colspan="3" style="text-align: center;">Tổng</th>
+                                                    <td>50,000,000</td>
+                                                    <th scope="col"></th>
+
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                        
+                                        <div class="mt-4">
+    
+                                            <div class="row fs-6" >
+                                                <div class="col"></div>
+                                                <div class="col d-flex flex-column align-items-center justify-content-center">
+                                                    <div class="fw-bold " >Người đề nghị</div>
+                                                    <div class="" style="height: 150px"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+
+                <div class="container-fluid " role="document" style="max-width: 24cm">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
+                        <form action="" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="status" value="1">
+                            <button type="submit" class="btn btn-danger ps-5 pe-5">Gửi</button>
+                        </form>
+                    </div>
+                
+                </div>
+
             </div>
             @include('template.footer.footer')
         </div>
