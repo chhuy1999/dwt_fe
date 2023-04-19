@@ -93,7 +93,7 @@
             }
             return $listParticipantIds;
         }
-        
+
         function getListAbsence($meeting, $listUser)
         {
             $listAbsence = [];
@@ -119,7 +119,7 @@
             }
             return $listAbsence;
         }
-        
+
         function removeReportFromMeeting($meeting, $reportId)
         {
             $meetingReportIds = [];
@@ -647,7 +647,7 @@
         </div>
     </div>
     <!-- Modal Sửa Vấn Đề -->
-    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+    @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
         @foreach ($meeting->reports as $item)
             <div class="modal fade" id="suaVanDeTonDong{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
