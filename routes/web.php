@@ -18,6 +18,8 @@ use App\Http\Controllers\Api\MeetingController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\ReportTaskController;
 use App\Http\Controllers\Api\MeetingListController;
+use App\Http\Controllers\Api\ProposeController;
+use App\Http\Controllers\Api\ListProposeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -165,7 +167,22 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::put('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'update'])->name('equimentPack.update');
     Route::delete('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'delete'])->name('equimentPack.delete');
 });
+// Đề xuất
+Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
+    Route::get('de-xuat-mo', [ProposeController::class, 'index'])->name('propose.list');
+    Route::post('de-xuat-mo', [ProposeController::class, 'store'])->name('propose.store');
+    Route::put('de-xuat-mo/{id}', [ProposeController::class, 'update'])->name('propose.update');
+    Route::delete('de-xuat-mo/{id}', [ProposeController::class, 'delete'])->name('propose.delete');
+});
 
+// Danh sách Đề xuất
+
+Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->group(function () {
+    Route::get('danh-sach-de-xuat', [ListProposeController::class, 'index'])->name('listPropose.list');
+    Route::post('danh-sach-de-xuat', [ListProposeController::class, 'store'])->name('listPropose.store');
+    Route::put('danh-sach-de-xuat/{id}', [ListProposeController::class, 'update'])->name('listPropose.update');
+    Route::delete('danh-sach-de-xuat/{id}', [ListProposeController::class, 'delete'])->name('listPropose.delete');
+});
 
 
 
@@ -196,9 +213,9 @@ Route::get('quan-ly-nhan-su', function () {
 Route::get('ho-so-nhan-vien', function () {
     return view('HopDonVi.hoSoNhanVien');
 })->middleware('auth.role:manager,admin,user');
-Route::get('de-xuat-mo', function () {
-    return view('DeXuat_XetDuyet.deXuatMo');
-})->middleware('auth.role:manager,admin,user');
+// Route::get('de-xuat-mo', function () {
+//     return view('DeXuat_XetDuyet.deXuatMo');
+// })->middleware('auth.role:manager,admin,user');
 
 // Kế hoạch & giao việc
 

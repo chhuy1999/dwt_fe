@@ -157,17 +157,29 @@
             </a>
             <ul id="header_submenu">
                 <li class="header_submenu-items more position-relative">
-                    <a href="#" class="header_submenu-link more_btn">
+                    <a href="{{ route('listPropose.list') }}" class="header_submenu-link more_btn">
                         Danh sách đề xuất <i class="bi bi-chevron-right"></i>
                     </a>
                     <ul class="header_more">
                         <li class="header_more-item">
-                            <a href="#" class="header_more-link">Đề xuất theo mẫu</a>
+                            <a href="#" class="header_more-link">Mua sắm</a>
                         </li>
                         <li class="header_submenu-items">
-                            <a href="/de-xuat-mo" class="header_submenu-link">Đề xuất mở</a>
+                            <a href="#" class="header_submenu-link">Công tác</a>
+                        </li>
+                        <li class="header_submenu-items">
+                            <a href="#" class="header_submenu-link">Tuyển dụng</a>
+                        </li>
+                        <li class="header_submenu-items">
+                            <a href="#" class="header_submenu-link">Sự cố và ý kiến</a>
+                        </li>
+                        <li class="header_submenu-items">
+                            <a href="#" class="header_submenu-link">Văn bản</a>
                         </li>
                     </ul>
+                </li>
+                <li class="header_submenu-items">
+                    <a href="/de-xuat-mo" class="header_submenu-link">Đề xuất mở</a>
                 </li>
                 <li class="header_submenu-items">
                     <a href="#" class="header_submenu-link">Lịch sử phản hồi</a>

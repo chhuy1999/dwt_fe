@@ -643,7 +643,7 @@
                                                             </td>
                                                             <td class="text-nowrap fw-bold bg-yellow-blur">
                                                                 <div class="progress-half">
-                                                                    <div class="text-dark content_table">5</div>
+                                                                    <div class="text-dark content_table"></div>
                                                                 </div>
                                                             </td>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
@@ -722,7 +722,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="text-nowrap d-inline-block text-truncate" value="Giải quyết">Giải quyết
+                                                        <div class="text-nowrap d-block text-truncate" value="Giải quyết">Giải quyết
                                                         </div>
                                                     </td>
                                                     <td>
@@ -748,7 +748,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div>
+                                                        <div class="text-center">
                                                             {{ date('d/m', strtotime($item->deadline)) }}
                                                         </div>
                                                     </td>
