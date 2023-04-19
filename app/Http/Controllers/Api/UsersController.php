@@ -68,7 +68,7 @@ class UsersController extends Controller
             //replace / to -
 
             // $dob = Carbon::parse($request['dob'])->format('d/m/Y H:i:s')
-            
+
 
             $data['dob'] = date('Y-m-d');;
 
@@ -141,16 +141,15 @@ class UsersController extends Controller
                 // 'status' => 'nullable'
             ]);
 
-            if($request['sex']==null)
-            {
-                $request['sex']='male';
+            if ($request['sex'] == null) {
+                $request['sex'] = 'male';
             }
 
             // dd($data);
-            if($request['dob']){
+            if ($request['dob']) {
                 $request['dob'] = Carbon::createFromFormat('m/d/Y', $request['dob'])->format('Y-m-d');
             }
-            if($request['doj']){
+            if ($request['doj']) {
                 $request['doj'] = Carbon::createFromFormat('m/d/Y', $request['doj'])->format('Y-m-d');
             }
             $request['role'] = 'user';
@@ -160,6 +159,26 @@ class UsersController extends Controller
             return back()->with('success', 'Cập nhật thành công');
         } catch (Exception $e) {
             // dd($e);
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
+    }
+
+    public function me(Request $request)
+    {
+        try {
+            $id = session('user')["id"];
+
+            $user = $this->dwtService->getUserDetail($id);
+            // $listDepartments = $this->dwtService->listDepartments();
+            // $listPositions = $this->dwtService->listPositions();
+            // $listPositionLevel = $this->dwtService->listPositionLevel();
+            // $listUsers = $this->dwtService->listUsers();
+            // $listEquimentPack = $this->dwtService->listEquimentPack();
+            return view('page.information.profile')
+                ->with('user', $user);
+        } catch (Exception $e) {
+            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
