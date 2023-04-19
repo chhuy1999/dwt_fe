@@ -73,86 +73,87 @@
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Họ và tên</label>
-                                                    <input type="text" id="name"  readonly value="{{$user->name}} - {{$user->code}}" class="form-control">
+                                                    <input type="text" id="name" readonly
+                                                        value="{{ $user->name }} - {{ $user->code }}"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Giới tính</label>
-                                                    <input type="text" id="sex"  readonly value="{{$user->sex == "male" ? "Nam" : "Nữ"}}" class="form-control">
+                                                    <input type="text" id="sex" readonly
+                                                        value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                                    <input type="text" id="bd"  readonly value="{{date('d/m/Y', strtotime($user->dob))}}" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="card-title mb-3" style="display: flex; justify-content: space-between">
-                                            Thông tin liên hệ
-                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinLienHe">Thay đổi</button>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-4">
-                                                <div class="mb-3">
-                                                    <label for="name" class="form-label fs-5">Số di động</label>
-                                                    <input type="text" id="name"  readonly value="{{$user->phone}}" class="form-control">
+                                                    <input type="text" id="bd" readonly
+                                                        value="{{ date('d/m/Y', strtotime($user->dob)) }}"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
-                                                    <label for="sex" class="form-label fs-5">Email</label>
-                                                    <input type="text" id="sex"  readonly value="{{$user->email}}" class="form-control">
+                                                    <label for="bd" class="form-label fs-5">Số điện thoại liên
+                                                        hệ</label>
+                                                    <input type="text" id="bd" readonly value="0123456"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 col-4">
+                                                <div class="mb-3">
+                                                    <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
+                                                    <input type="text" id="bd" readonly value="Phòng Marketing"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
-                                                    <label for="bd" class="form-label fs-5">Địa chỉ liên hệ</label>
-                                                    <input type="text" id="bd"  readonly value="{{$user->address}}" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="card-title mb-3" style="display: flex; justify-content: space-between">
-                                            CCCD/CMND
-                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinCCCD">Thay đổi</button>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-4">
-                                                <div class="mb-3">
-                                                    <label for="name" class="form-label fs-5">Số CCCD/CMND</label>
-                                                    <input type="text" id="name"  readonly value="" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 col-4">
-                                                <div class="mb-3">
-                                                    <label for="sex" class="form-label fs-5">Ngày cấp</label>
-                                                    <input type="text" id="sex"  readonly value="" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 col-4">
-                                                <div class="mb-3">
-                                                    <label for="bd" class="form-label fs-5">Nơi cấp</label>
-                                                    <input type="text" id="bd"  readonly value="" class="form-control">
+                                                    <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
+                                                    <input type="text" id="bd" readonly value="Trợ lý Marketing"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
                                                 <div class="mb-3">
-                                                    <label for="bd" class="form-label fs-5">Ảnh</label>
-                                                    <div style="height: 100px;"></div>
+                                                    <label for="bd" class="form-label fs-5">Địa chỉ</label>
+                                                    <input type="text" id="bd" readonly value="Khu 3 phú thọ"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="card-title mb-3"
+                                            style="display: flex; justify-content: space-between">
+                                            Thông tin tài khoản
+                                            {{-- <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinLienHe">Thay đổi</button> --}}
+                                        </div>
+                                        <div class="row">
+                                            
+                                            <div class="mb-3 col-6">
+                                                <div class="mb-3">
+                                                    <label for="sex" class="form-label fs-5">Email liên kết</label>
+                                                    <input type="text" id="sex" readonly
+                                                        value="{{ $user->email }}" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-6">
+                                                <div class="mb-3">
+                                                    <label for="bd" class="form-label fs-5">Mật khẩu</label>
+                                                    <input type="password" id="bd" readonly
+                                                        value="{{ $user->address }}" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -181,73 +182,55 @@
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="name" class="form-label fs-5">Họ và tên</label>
-                                    <input type="text" id="name"  value="{{ Session::get('user')['name'] }}" class="form-control">
+                                    <input type="text" id="name" readonly
+                                        value="{{ $user->name }} - {{ $user->code }}"
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="sex" class="form-label fs-5">Giới tính</label>
-                                    <input type="text" id="sex"  value="Nữ" class="form-control">
+                                    <input type="text" id="sex" readonly
+                                        value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}"
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                    <input type="text" id="bd"  value="27/04/1999" class="form-control">
+                                    <input type="text" id="bd" readonly
+                                        value="{{ date('d/m/Y', strtotime($user->dob)) }}"
+                                        class="form-control">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                            <button type="button" class="btn btn-danger">Lưu</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="bd" class="form-label fs-5">Số điện thoại liên
+                                        hệ</label>
+                                    <input type="text" id="bd" readonly value="0123456"
+                                        class="form-control">
+                                </div>
+                            </div>
 
-    {{-- Modal Thay đổi thông tin liên hệ --}}
-    <div class="modal fade" id="thongTinCCCD" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
-        tabindex="-1">
-
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title mt-2" id="layout-thayDoiMatKhau">
-                        <i class="bi bi-file-lock2"></i>
-                        Thay đổi CCCD/CMND
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="" method="">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
-                                    <label for="name" class="form-label fs-5">Số CCCD/CMND</label>
-                                    <input type="text" id="name" value="0123456789" class="form-control">
+                                    <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
+                                    <input type="text" id="bd" readonly value="Phòng Marketing"
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
-                                    <label for="sex" class="form-label fs-5">Ngày cấp</label>
-                                    <input type="text" id="sex" value="19/04/2023" class="form-control">
-                                </div>
-                            </div>
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Nơi cấp</label>
-                                    <input type="text" id="bd" value="Hà Nội" class="form-control">
+                                    <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
+                                    <input type="text" id="bd" readonly value="Trợ lý Marketing"
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Ảnh</label>
-                                    <div style="height: 100px;"></div>
+                                    <label for="bd" class="form-label fs-5">Địa chỉ</label>
+                                    <input type="text" id="bd" readonly value="Khu 3 phú thọ"
+                                        class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -262,8 +245,10 @@
             </div>
         </div>
     </div>
+
+    
     {{-- Modal Thay đổi thông tin liên hệ --}}
-    <div class="modal fade" id="thongTinLienHe" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
+    {{-- <div class="modal fade" id="thongTinLienHe" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
         tabindex="-1">
 
         <div class="modal-dialog modal-dialog-centered">
@@ -271,7 +256,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title mt-2" id="layout-thayDoiMatKhau">
                         <i class="bi bi-file-lock2"></i>
-                        Thay đổi thông tin liên hệ
+                        Thay đổi thông tin tài khoản
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -279,22 +264,19 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="mb-3 col-4">
+                            
+                            <div class="mb-3 col-6">
                                 <div class="mb-3">
-                                    <label for="name" class="form-label fs-5">Số di động</label>
-                                    <input type="text" id="name" value="0123456789" class="form-control">
+                                    <label for="sex" class="form-label fs-5">Email liên kết</label>
+                                    <input type="text" id="sex" readonly
+                                        value="{{ $user->email }}" class="form-control">
                                 </div>
                             </div>
-                            <div class="mb-3 col-4">
+                            <div class="mb-3 col-6">
                                 <div class="mb-3">
-                                    <label for="sex" class="form-label fs-5">Email</label>
-                                    <input type="text" id="sex" value="Admin@tbht.vn" class="form-control">
-                                </div>
-                            </div>
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Địa chỉ liên hệ</label>
-                                    <input type="text" id="bd" value="219 trung kính" class="form-control">
+                                    <label for="bd" class="form-label fs-5">Mật khẩu</label>
+                                    <input type="password" id="bd" readonly
+                                        value="#########" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -308,7 +290,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     {{-- Modal sửa thông tin cá nhân --}}
