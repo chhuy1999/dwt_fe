@@ -83,8 +83,9 @@ class DashboardController extends Controller
                 "departement_id" => $searchDepartment_id
             ]);
             $allReportTasks = array_merge($reportTasks->data, $reportTaskAdmin->data);
-            $listReports = $this->dwtServices->searchReports("", $user['departement_id'], 1, 100);
+            $listReports = $this->dwtServices->searchReports("", $user['departement_id'], 1, 100, true);
             $listReports = $listReports->data;
+
             return view('dashboard')
                 ->with('searchMonth', $currentMonth)
                 ->with('searchYear', $currentYear)
