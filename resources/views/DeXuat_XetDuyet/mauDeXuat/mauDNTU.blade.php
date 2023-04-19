@@ -10,7 +10,7 @@
                 <div class="container-fluid">
                     <div class="card_template-wrapper">
                         <div class="card-body">
-                            <div class='row d-flex'>
+                            <div class='row mb-3'>
                                 <div class="col-2 d-flex align-items-center justify-content-center flex-column">
                                     <a class=" ">
                                         <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
@@ -29,63 +29,80 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row fs-4">
-                                <div class="col-6">
-                                    Người đề nghị/Requester: {{ Session::get('user')['name'] }}
+                            <div class="row">
+                                <div class="mb-3 col-6">
+                                    <div class="card_template-title">
+                                        Người đề nghị/Requester:
+                                        <span class="card_template-sub">{{ Session::get('user')['name'] }}</span>
+                                    </div> 
                                 </div>
-                                <div class="col-6">
-                                    Bộ phận/Department: Marketing
+                                <div class="mb-3 col-6">
+                                    <div class="card_template-title">
+                                        Bộ phận/Department:
+                                        <span class="card_template-sub">Marketing</span>
+                                    </div> 
                                 </div>
-                                <div class="col-12">
-                                    Đề nghị tam ứng số tiền/Amount of Advance: 699,600,485 VNĐ
-                                    <span>(Bằng chữ/In words: Sáu trăm chín mươi chín triệu, sắm trăm nghìn, bốn trăm tám mươi lăm đồng)</span>
+                                <div class="mb-3 col-12">
+                                    <div class="card_template-title">
+                                        Đề nghị tam ứng số tiền/Amount of Advance:
+                                        <span class="card_template-sub">699,600,485 VNĐ</span>
+                                    </div> 
+                                    <div class="card_template-mini">(Bằng chữ/In words: Sáu trăm chín mươi chín triệu, sắm trăm nghìn, bốn trăm tám mươi lăm đồng)</div>
                                 </div>
-                                <div class="col-12">
-                                    Lý do tạm ứng/ Reason of Advance: Thanh toán giá trị quảng cáo đợt 1: 30% giá trị hợp đồng của Hợp đồng Kinh tes số 01/2023/HĐQC/GFM-MASTERTRAN ký ngày 15/04/2023
+                                <div class="mb-3 col-12">
+                                    <div class="card_template-title">
+                                        Lý do tạm ứng/ Reason of Advance
+                                        <span class="card_template-sub">Thanh toán giá trị quảng cáo đợt 1: 30% giá trị hợp đồng của Hợp đồng Kinh tes số 01/2023/HĐQC/GFM-MASTERTRAN ký ngày 15/04/2023</span>
+                                    </div> 
                                 </div>
-                                <div class="col-12">
-                                    Hình thức tạm ứng/Advance Method: Chuyển khoản
+                                <div class="mb-3 col-12">
+                                    <div class="card_template-title">
+                                        Hình thức tạm ứng/Advance Method:
+                                        <span class="card_template-sub">Chuyển khoản</span>
+                                    </div> 
                                 </div>
-                                <div class="col-12">
-                                    Thời hạn hoàn ứng/Deadline for rembursement: 15/07/2023
+                                <div class="mb-3 col-12">
+                                    <div class="card_template-title">
+                                        Thời hạn hoàn ứng/Deadline for rembursement:
+                                        <span class="card_template-sub">15/07/2023</span>
+                                    </div> 
+                                </div>
+                                <div class="mb-3 col-12">
+                                    <div class="card_template-title">File đính kèm:</div>
+                                    <ul class="card_template-list">
+                                        <li class="card_template-items">
+                                            <a class="#">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
+                                        </li>
+                                        <li class="card_template-items">
+                                            <a class="#">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
+                                        </li>
+                                        <li class="card_template-items">
+                                            <a class="#">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
 
-                            <div class='row d-flex mt-3'>
+                            <div class="row">
                                 <div class="col">
-                                    <div class="fst-italic">File đính kèm:</div>
-
+                                    <div class="fw-bold">Người ĐNTU/Applicant</div>
+                                    <div class="" style="height: 100px"></div>
                                 </div>
-                                <div class="col-11 d-flex flex-column">
-                                    <a class="#">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
-                                    <a class="#">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
-                                    <a class="#">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
+                                <div class="col">
+                                    <div class="fw-bold">Phụ trách bộ phận/Head of Department</div>
+                                    <div class="" style="height: 100px"></div>
                                 </div>
-                                
-                            </div>
-                            <div class="mt-3">
-
-                                <div class="row">
-                                    <div class="col d-flex align-items-center justify-content-center flex-column">
-                                        <div class="fw-bold">Người ĐNTU/Applicant</div>
-                                        <div class="" style="height: 100px"></div>
-                                    </div>
-                                    <div class="col d-flex align-items-center justify-content-center flex-column">
-                                        <div class="fw-bold">Phụ trách bộ phận/Head of Department</div>
-                                        <div class="" style="height: 100px"></div>
-                                    </div>
-                                    <div class="col d-flex align-items-center justify-content-center flex-column">
-                                        <div class="fw-bold">Kế toán TT/Payment Accountant</div>
-                                        <div class="" style="height: 100px"></div>
-                                    </div>
-                                    <div class="col d-flex align-items-center justify-content-center flex-column">
-                                        <div class="fw-bold">Kế toán trưởng/Chief Accountant</div>
-                                        <div class="" style="height: 100px"></div>
-                                    </div>
-                                    <div class="col d-flex align-items-center justify-content-center flex-column">
-                                        <div class="fw-bold">Phê duyệt/Approved by</div>
-                                        <div class="" style="height: 100px"></div>
-                                    </div>
+                                <div class="col">
+                                    <div class="fw-bold">Kế toán TT/Payment Accountant</div>
+                                    <div class="" style="height: 100px"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="fw-bold">Kế toán trưởng/Chief Accountant</div>
+                                    <div class="" style="height: 100px"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="fw-bold">Phê duyệt/Approved by</div>
+                                    <div class="" style="height: 100px"></div>
                                 </div>
                             </div>
                         </div>

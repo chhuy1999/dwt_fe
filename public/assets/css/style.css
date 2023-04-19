@@ -1985,3 +1985,19 @@ ul.modal_upload-list li:last-child {
     background-color:var(--white-color);
     margin: 1.5cm 1.5cm 1.5cm 2cm;
 }
+
+.card_template-title {
+    font-size: var(--fz-12);
+    font-weight: 500;
+}
+.card_template-sub {
+    font-size: var(--fz-12);
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.card_template-mini {
+    font-style: italic;
+    font-size: var(--fz-12);
+}
