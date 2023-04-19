@@ -723,7 +723,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
-                        <a href="/mau-de-nghi-tam-ung" class="btn btn-danger">Thêm</a>
+                        <a href="/mau-de-nghi-thanh-toan" class="btn btn-danger">Thêm</a>
                     </div>
 
                 </form>
