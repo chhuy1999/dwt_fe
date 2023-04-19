@@ -3,29 +3,29 @@
 @section('title', 'Hồ sơ đơn vị')
 
 @section('header-style')
-    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-treeSelect/cbtree.css') }}"> --}}
     <style>
-        /* .sidebarBody {
-                overflow: auto;
-            } */
+        .sidebarBody {
+            overflow-y: scroll;
+        }
     </style>
 @endsection
 
 @php
-    function displayChild($data, $parentId)
+    function displayChild($listDepartments, $parentId)
     {
         $result = '';
-        $children = getChild($data, $parentId);
+        $children = getChild($listDepartments, $parentId);
         if (count($children) > 0) {
             $result .= '<ul class="tree_list-more">';
             foreach ($children as $child) {
                 $result .= '<li class="section tree_list-more-item">';
-                if (count(getChild($data, $child->id)) > 0) {
+                if (count(getChild($listDepartments, $child->id)) > 0) {
                     $result .= '<input type="checkbox" id="group' . $child->id . '">';
                     $result .= '<label class="d-flex" for="group' . $child->id . '"></label>';
                 }
                 $result .= '<span class="clicktree d-block" data-href="#body_content-1">' . $child->name . '</span>';
-                $result .= displayChild($data, $child->id);
+                $result .= displayChild($listDepartments, $child->id);
                 $result .= '</li>';
             }
             $result .= '</ul>';
@@ -33,10 +33,10 @@
         return $result;
     }
     
-    function getChild($data, $parentId)
+    function getChild($listDepartments, $parentId)
     {
         $children = [];
-        foreach ($data as $child) {
+        foreach ($listDepartments as $child) {
             if ($child->parent != null && $child->parent->id == $parentId) {
                 $children[] = $child;
             }

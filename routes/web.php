@@ -184,6 +184,7 @@ Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->
     Route::delete('danh-sach-de-xuat/{id}', [ListProposeController::class, 'delete'])->name('listPropose.delete');
 });
 
+Route::get('de-xuat-theo-mau', function () { return view('DeXuat_XetDuyet.deXuatTheoMau'); })->middleware('auth.role:manager,admin,user');
 
 // Form yêu cầu mua sắm
 Route::get('form-yeu-cau-mua-sam', function () {
