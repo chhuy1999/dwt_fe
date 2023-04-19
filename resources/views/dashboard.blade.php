@@ -382,12 +382,12 @@
                                                     @foreach ($myAssignedTasks->data as $task)
                                                         <tr>
                                                             <td class="text-nowrap bg-blue-blur">
-                                                                <div class="content_table">
+                                                                <div class="text-center">
                                                                     {{ $loop->iteration }}
                                                                 </div>
                                                             </td>
                                                             <td class="text-nowrap bg-blue-blur">
-                                                                <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
+                                                                <div class=" justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
                                                                         {{ $task->name }}
                                                                     </div>
@@ -396,17 +396,17 @@
 
                                                             </td>
                                                             <td class="text-nowrap bg-blue-blur">
-                                                                <div class="content_table">
+                                                                <div class="text-center">
                                                                     {{ date('d/m', strtotime($task->deadline)) }}
                                                                 </div>
                                                             </td>
                                                             <td class="text-nowrap fw-bold bg-blue-blur">
                                                                 <div class="progress-half">
-                                                                    <div class="text-dark content_table">{{ $task->keysPassed }}</div>
+                                                                    <div class="text-dark text-center">{{ $task->keysPassed }}</div>
                                                                 </div>
                                                             </td>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
+                                                                <td style="width: 20px;height:20px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
                                                                 data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}"
                                                                 role="button" @endif>
                                                                     <div class="content_table">
@@ -469,29 +469,29 @@
                                                     @foreach ($reportTasks->data as $reportTask)
                                                         <tr>
                                                             <td class="text-nowrap bg-yellow-blur">
-                                                                <div class="content_table">
+                                                                <div class="text-center">
                                                                     {{ $loop->iteration }}
                                                                 </div>
                                                             </td>
                                                             <td class="text-nowrap bg-yellow-blur">
-                                                                <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
+                                                                <div class=" justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
                                                                     <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
                                                                         {{ $reportTask->name }}
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="text-nowrap bg-yellow-blur">
-                                                                <div class="content_table">
+                                                                <div class="text-center">
                                                                     {{ date('d/m', strtotime($reportTask->deadline)) }}
                                                                 </div>
                                                             </td>
                                                             <td class="text-nowrap fw-bold bg-yellow-blur">
                                                                 <div class="progress-half">
-                                                                    <div class="text-dark content_table"></div>
+                                                                    <div class="text-dark text-center"></div>
                                                                 </div>
                                                             </td>
                                                             @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
+                                                                <td style="width: 20px;height:20px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
                                                                 data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}"
                                                                 role="button" @endif>
                                                                     <div class="content_table">
@@ -573,12 +573,12 @@
                                                             @foreach ($listAssignedTasks->data as $task)
                                                                 <tr>
                                                                     <td class="text-nowrap bg-blue-blur">
-                                                                        <div class="content_table">
+                                                                        <div class="text-center">
                                                                             {{ $loop->iteration }}
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-nowrap bg-blue-blur">
-                                                                        <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
+                                                                        <div class=" justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVu{{ $task->id }}" role="button">
                                                                             <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $task->name }}">
 
                                                                                 {{ $task->name }}
@@ -587,17 +587,17 @@
                                                                     </td>
 
                                                                     <td class="text-nowrap bg-blue-blur">
-                                                                        <div class="content_table">
+                                                                        <div class="text-center">
                                                                             {{ date('m/d', strtotime($task->deadline)) }}
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-nowrap fw-bold bg-blue-blur">
                                                                         <div class="progress-half">
-                                                                            <div class="text-dark content_table">{{ $task->keysPassed }}</div>
+                                                                            <div class="text-dark text-center">{{ $task->keysPassed }}</div>
                                                                         </div>
                                                                     </td>
                                                                     @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                        <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
+                                                                        <td style="width: 20px;height:20px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
                                                                     data-bs-target="#baoCaoCongViec-{{ $task->id }}-{{ $i }}"
                                                                     role="button" @endif>
                                                                             <div class="content_table">
@@ -659,29 +659,29 @@
                                                             @foreach ($reportTaskAdmin->data as $reportTask)
                                                                 <tr>
                                                                     <td class="text-nowrap bg-yellow-blur">
-                                                                        <div class="content_table">
+                                                                        <div class="text-center">
                                                                             {{ $loop->iteration }}
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-nowrap bg-yellow-blur">
-                                                                        <div class="content_table justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
+                                                                        <div class=" justify-content-start" data-bs-toggle="modal" data-bs-target="#thongTinNhiemVuPhatSinh{{ $reportTask->id }}" role="button">
                                                                             <div class="text-nowrap d-block text-truncate" style="max-width:160px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{ $reportTask->name }}">
                                                                                 {{ $reportTask->name }}
                                                                             </div>
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-nowrap bg-yellow-blur">
-                                                                        <div class="content_table">
+                                                                        <div class="">
                                                                             {{ date('d/m', strtotime($reportTask->deadline)) }}
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-nowrap fw-bold bg-yellow-blur">
                                                                         <div class="progress-half">
-                                                                            <div class="text-dark content_table"></div>
+                                                                            <div class="text-dark text-center"></div>
                                                                         </div>
                                                                     </td>
                                                                     @for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $searchMonth, $searchYear); $i++)
-                                                                        <td style="padding: 0 14px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
+                                                                        <td style="width: 20px;height:20px; border:1px solid #dee2e6;" @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 7) class="bg-danger bg-opacity-10 text-danger" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) == 6) class="bg-warning bg-opacity-10 text-warning" @endif @if (date('N', strtotime($searchYear . '-' . $searchMonth . '-' . $i + 1)) != 7) data-bs-toggle="modal"
                                                                     data-bs-target="#baoCaoCongViecPhatSinh-{{ $reportTask->id }}-{{ $i }}"
                                                                     role="button" @endif>
                                                                             <div class="content_table">

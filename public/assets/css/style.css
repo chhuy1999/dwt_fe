@@ -1981,9 +1981,39 @@ ul.modal_upload-list li:last-child {
 /* Style Template Form */
 
 .card_template-wrapper {
-    padding: 60px;
-    background-color:var(--white-color);
     margin: 1.5cm 1.5cm 1.5cm 2cm;
+}
+
+.card_template-heading {
+    font-size: var(--fz-20);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card_template-heading-mini{
+    font-style: italic;
+    font-size: var(--fz-12);
+}
+
+.card_template-body {
+    padding: 60px 30px;
+    background-color:var(--white-color);
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: var(--border-radius-mini);
+}
+
+.card_template-topRight {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_template-body-middle{
+    margin: 10px 0;
+    padding: 20px 0;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .card_template-title {
@@ -1995,9 +2025,21 @@ ul.modal_upload-list li:last-child {
     font-weight: 400;
     text-decoration: underline;
     text-decoration-style: dotted;
+    text-underline-offset: 2px;
 }
 
 .card_template-mini {
     font-style: italic;
     font-size: var(--fz-12);
+}
+
+.card_template-footer {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.card_template-items {
+    font-size: var(--fz-12);
+    margin: 6px 0;
 }

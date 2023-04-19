@@ -1,6 +1,6 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Mẫu yêu cầu mua sắm')
+@section('title', 'Mẫu đề nghị thanh toán')
 
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
@@ -8,96 +8,71 @@
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
-                    <div class="card_template-wrapper">
+                    <div class="card_template-wrapper mb-3">
                         <div class="card_template-body">
                             <div class="card_template-body-top">
-                                <div class='row mb-3 align-items-center'>
+                                <div class='row mb-3'>
                                     <div class="col-2 d-flex align-items-center justify-content-center flex-column">
                                         <a class=" ">
                                             <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
                                         </a>
-                                        <div class="card_template-title fst-italic">BM013.QT02/12</div>
+                                        <div class="card_template-title fst-italic">BM001.QT07/20</div>
                                     </div>
                                     <div class="col-8 d-flex align-items-center justify-content-center flex-column" >
-                                        <div class="card_template-heading">Yêu cầu mua sắm</div>
-                                        <div class="card_template-heading-mini">Purchasing requirement</div>
+                                        <div class="card_template-heading">Đề nghị thanh toán</div>
+                                        <div class="card_template-heading-mini">Request for payment</div>
     
                                     </div>
-                                    <div class="col-2 card_template-topRight" style="display: block">
-                                            <div class="card_template-title fst-italic">Số: BM013.QT02/12</div>
-                                            <div class="card_template-title fst-italic">Ngày:19/04/2023</div>
+                                    <div class="col-2 card_template-topRight">
+                                            <div class="card_template-title fst-italic">Ngày đề nghị /<br> Request date:</div>
+                                            <div class="card_template-title fst-italic">18/04/2023</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card_template-body-middle">
                                 <div class="row">
-                                    <div class="col-12 mb-3">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <td scope="col">STT</td>
-                                                        <th scope="col">
-                                                            Tên, chủng loại, quy cách hàng hóa
-                                                            (Đính kèm hình ảnh, mô tả nếu có)
-                                                        </th>
-                                                        <th scope="col">Số lượng</th>
-                                                        <th scope="col">ĐVT</th>
-                                                        <th scope="col">MĐ sử dụng & T.gian hoàn thành</th>
-                                                        <th scope="col">NCC tốt nhất (Tên, sđt, đc)</th>
-                                                        <th scope="col">Đơn giá (VNĐ)</th>
-                                                        <th scope="col">Tổng tiền (VNĐ)</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Găng tay y tế</td>
-                                                        <td>4</td>
-                                                        <td>Hộp</td>
-                                                        <td rowspan="4"> Thực hiện ACT Tháng 12 Vùng 1 + 2 </td>
-                                                        <td></td>
-                                                        <td>90.000</td>
-                                                        <td>360.000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Standee chân cuộn ( Mua thêm trong trường hợp gẫy hỏng )</td>
-                                                        <td>2</td>
-                                                        <td>Cuốn</td>
-                                                        <td></td>
-                                                        <td>300.000</td>
-                                                        <td>600.000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Standee chương trình đo loãng xương ( Trưng bày tại địa bàn )</td>
-                                                        <td>4</td>
-                                                        <td>Tờ</td>
-                                                        <td>Xưởng in Tam Tân</td>
-                                                        <td>125.000</td>
-                                                        <td>500.000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Tờ rơi thông tin chương trình đo loãng xương ( Mỗi nhà thuốc in 1 thiết kế riêng )</td>
-                                                        <td>2.000</td>
-                                                        <td>Tờ</td>
-                                                        <td>Xưởng in Tam Tân</td>
-                                                        <td>2.000</td>
-                                                        <td>4.000.000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" colspan="7" style="text-align: center;">Tổng (chưa VAT)</th>
-                                                        <td> 5.460.000 </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" colspan="7" style="text-align: center;">Tổng (có VAT)</th>
-                                                        <th>6.006.000</th>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title">
+                                            Người đề nghị/Requester:
+                                            <span class="card_template-sub">{{ Session::get('user')['name'] }}</span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title">
+                                            Bộ phận/Department:
+                                            <span class="card_template-sub">Marketing</span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title">
+                                            Nội dung thanh toán/Contents of payment:
+                                            <span class="card_template-sub">Thanh toán Thỏa thuận Hợp tác</span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title">
+                                            Số tiền/Amount
+                                            <span class="card_template-sub">50,000,000 VNĐ</span>
+                                        </div> 
+                                        <div class="card_template-mini">(Bằng chữ/In words:Năm mươi triệu đồng chẵn)</div>
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title">
+                                            Người nhận tiền/Reciver:
+                                            <span class="card_template-sub">{{ Session::get('user')['name'] }}</span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title">
+                                            Số tài khoản/Account number:
+                                            <span class="card_template-sub">069 7040 6868 6666</span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title">
+                                            Tại ngân hàng/with bank:
+                                            <span class="card_template-sub">TMCP Quốc Tế Việt Nam - CN Cầu Giấy</span>
+                                        </div> 
                                     </div>
                                     <div class="mb-3 col-12">
                                         <div class="card_template-title">File đính kèm:</div>
@@ -119,24 +94,20 @@
                             <div class="card_template-body-bottom">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="card_template-title text-center">Người yêu cầu</div>
+                                        <div class="card_template-title text-center">Người ĐNTT/Applicant</div>
                                         <div class="" style="height: 100px"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center">Trưởng bộ phận</div>
-                                        <div class="" style="height: 100px"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card_template-title text-center">BP Mua hàng</div>
+                                        <div class="card_template-title text-center">Phụ trách bộ phận/Head of Department</div>
                                         <div class="" style="height: 100px"></div>
                                     </div>
                                     
                                     <div class="col">
-                                        <div class="card_template-title text-center">Người thực hiện mua</div>
+                                        <div class="card_template-title text-center">Kế toán trưởng/Chief Accountant</div>
                                         <div class="" style="height: 100px"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center">Phê duyệt</div>
+                                        <div class="card_template-title text-center">Phê duyệt/Approved by</div>
                                         <div class="" style="height: 100px"></div>
                                     </div>
                                 </div>
@@ -152,6 +123,101 @@
                                 <button type="submit" class="btn btn-danger ps-5 pe-5">Gửi</button>
                             </form>
                         </div>
+                        
+                    </div>
+                    
+                    <div class="card_template-wrapper mb-3">
+                        <div class="card_template-body">
+                            <div class="card_template-body-top">
+                                <div class='row mb-3'>
+                                    <div class="col-2 d-flex align-items-center justify-content-center flex-column">
+                                        <a class=" ">
+                                            <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
+                                        </a>
+                                        <div class="card_template-title fst-italic">BM003.QT07/20</div>
+                                    </div>
+                                    <div class="col-8 d-flex align-items-center justify-content-center flex-column" >
+                                        <div class="card_template-heading">Bảng kê đề nghị</div>
+    
+                                    </div>
+                                    <div class="col-2 card_template-topRight">
+                                            <div class="card_template-title fst-italic">Ngày:18/04/2023</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card_template-body-middle">
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title">
+                                            Người đề nghị/Requester:
+                                            <span class="card_template-sub">{{ Session::get('user')['name'] }}</span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title">
+                                            Công việc:
+                                            <span class="card_template-sub">Chạy quảng cáo</span>
+                                        </div> 
+                                    </div>
+                                    
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">STT</th>
+                                                    <th scope="col">Số chứng từ</th>
+                                                    <th scope="col">Nội dung</th>
+                                                    <th scope="col">Số tiền</th>
+                                                    <th scope="col">Ghi chú</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td></td>
+                                                    <td>Google Ads</td>
+                                                    <td>25,000,000</td>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td></td>
+                                                    <td>Facebook Ads</td>
+                                                    <td>25,000,000</td>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="3" style="text-align: center;">Tổng</th>
+                                                    <td>50,000,000</td>
+                                                    <th scope="col"></th>
+            
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_template-body-bottom">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card_template-title">Người đề nghị</div>
+                                        <div class="" style="height: 100px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card_template-footer">
+                            <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
+                            <form action="" method="POST">
+                                @csrf
+                                {{-- @method('PUT') --}}
+                                <input type="hidden" name="status" value="1">
+                                <button type="submit" class="btn btn-danger ps-5 pe-5">Gửi</button>
+                            </form>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
