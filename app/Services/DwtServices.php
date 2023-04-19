@@ -942,4 +942,15 @@ class DwtServices
         $dataObj = $this->_toObject($data);
         return $dataObj->data;
     }
+
+    public function getUserDetail($id) {
+        $url = $this->url . '/users/' . $id;
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 }

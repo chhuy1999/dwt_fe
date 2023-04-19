@@ -44,7 +44,7 @@
                                             <img src="{{ asset('assets/img/avatar.jpeg') }}" alt=""
                                                 class="information_avatar-img">
                                         </div>
-                                        <div class="card-title text-center pt-3 pb-3">{{ Session::get('user')['name'] }} - {{ Session::get('user')['code'] ?? '' }}</div>
+                                        <div class="card-title text-center pt-3 pb-3">{{$user->name}} - {{$user->code}}</div>
                                         <div class="information_signature-wrapper">
                                             <div class="signature_wrapper">
                                                 <img class="signature_img" style="height:200px;width:100%"
@@ -73,19 +73,19 @@
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Họ và tên</label>
-                                                    <input type="text" id="name"  readonly value="{{ Session::get('user')['name'] }}" class="form-control">
+                                                    <input type="text" id="name"  readonly value="{{$user->name}} - {{$user->code}}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Giới tính</label>
-                                                    <input type="text" id="sex"  readonly value="Nữ" class="form-control">
+                                                    <input type="text" id="sex"  readonly value="{{$user->sex == "male" ? "Nam" : "Nữ"}}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                                    <input type="text" id="bd"  readonly value="27/04/1999" class="form-control">
+                                                    <input type="text" id="bd"  readonly value="{{date('d/m/Y', strtotime($user->dob))}}" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -101,19 +101,19 @@
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Số di động</label>
-                                                    <input type="text" id="name"  readonly value="0123456789" class="form-control">
+                                                    <input type="text" id="name"  readonly value="{{$user->phone}}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Email</label>
-                                                    <input type="text" id="sex"  readonly value="Admin@tbht.vn" class="form-control">
+                                                    <input type="text" id="sex"  readonly value="{{$user->email}}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Địa chỉ liên hệ</label>
-                                                    <input type="text" id="bd"  readonly value="219 trung kính" class="form-control">
+                                                    <input type="text" id="bd"  readonly value="{{$user->address}}" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -129,19 +129,19 @@
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Số CCCD/CMND</label>
-                                                    <input type="text" id="name"  readonly value="0123456789" class="form-control">
+                                                    <input type="text" id="name"  readonly value="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Ngày cấp</label>
-                                                    <input type="text" id="sex"  readonly value="19/04/2023" class="form-control">
+                                                    <input type="text" id="sex"  readonly value="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Nơi cấp</label>
-                                                    <input type="text" id="bd"  readonly value="Hà Nội" class="form-control">
+                                                    <input type="text" id="bd"  readonly value="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
