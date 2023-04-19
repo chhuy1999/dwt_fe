@@ -303,9 +303,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <select class="selectpicker" title="Chọn mẫu đề xuất" data-size="5" data-live-search="true">
-                                    <option value="YCMS" data-target="#ycms-modal">YCMS</option>
-                                    <option value="DNTT" data-target="#dntt-modal">DNTT</option>
-                                    <option value="BM01_ĐNTU2" data-target="#bm01-modal">BM01_ĐNTU2</option>
+                                    <option value="ycms" data-target="#ycms-modal">Yêu cầu mua sắm</option>
+                                    <option value="dntt" data-target="#dntt-modal">Đề nghị thanh toán</option>
+                                    <option value="dntu2" data-target="#dntu-modal">BM01_Đề nghị tạm ứng 02</option>
                                 </select>
                             </div>
                         </div>
@@ -319,6 +319,7 @@
         </div>
     </div>
 
+    {{-- Modal Yêu Cầu Mua Sắm --}}
     <div class="modal fade" id="ycms-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
@@ -330,44 +331,36 @@
                 <form action="" method="POST">
                     @csrf
                     <div class="modal-body">
-                        <div class="card">
-
-                            <div class="row d-flex ">
-                                <div class="col-8 col-md-8 mt-3">
-                                    <input class="form-control" type="text" placeholder="Tên, chủng loại, quy cách hàng hóa (Mô tả nếu có)">
-                                </div>
-                                <div class="col-2 col-md-2 mt-3">
-                                    <input class="form-control" type="number" placeholder="Số lượng">
-                                </div>
-                                <div class="col-2 col-md-2 mt-3">
-                                    <input class="form-control" type="text" placeholder="Đơn vị tính">
-                                </div>
+                        <div class="row">
+                            <div class="col-8 col-md-8 mb-3">
+                                <input class="form-control" type="text" placeholder="Tên, chủng loại, quy cách hàng hóa (Mô tả nếu có)">
                             </div>
-                            <div class="row d-flex mb-3">
-                                <div class="col-4 col-md-4 mt-3">
-                                    <input class="form-control" type="text" placeholder="Mục đích sử dụng">
-                                </div>
-                                <div class="col-4 col-md-4 mt-3">
-                                    <input class="form-control" type="text" placeholder="Nhà cung cấp tốt nhất" name="">
-                                </div>
-                                <div class="col-2 col-md-2 mt-3">
-                                    <input class="form-control" type="text" placeholder="Đơn giá" name="">
-                                </div>
-                                <div class="col-2 col-md-2 mt-3">
-                                    <input class="form-control" type="text" placeholder="Tổng tiền" name="">
-                                </div>
+                            <div class="col-2 col-md-2 mb-3">
+                                <input class="form-control" type="number" placeholder="Số lượng">
                             </div>
-                            
-                        </div>
+                            <div class="col-2 col-md-2 mb-3">
+                                <input class="form-control" type="text" placeholder="Đơn vị tính">
+                            </div>
 
+                            <div class="col-4 col-md-4 mb-3">
+                                <input class="form-control" type="text" placeholder="Mục đích sử dụng">
+                            </div>
+                            <div class="col-4 col-md-4 mb-3">
+                                <input class="form-control" type="text" placeholder="Nhà cung cấp tốt nhất" name="">
+                            </div>
+                            <div class="col-2 col-md-2 mb-3">
+                                <input class="form-control" type="text" placeholder="Đơn giá" name="">
+                            </div>
+                            <div class="col-2 col-md-2 mb-3">
+                                <input class="form-control" type="text" placeholder="Tổng tiền" name="">
+                            </div>
 
-
-                        <div class="col-md-12 mt-3">
-                            <div class="d-flex justify-content-start">
-                                <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                            <div class="col-md-12 mb-3">
+                                <div class="d-flex justify-content-start">
+                                    <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                </div>
                             </div>
                         </div>
-
 
                         <div class="col-md-12 margin-t-res mt-3">
                             <div class="action_wrapper-upload rounded border p-3 h-30  d-flex flex-column">
@@ -419,7 +412,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
-                        <a href="/form-yeu-cau-mua-sam" class="btn btn-danger">Thêm</a>
+                        <a href="/mau-yeu-cau-mua-sam" class="btn btn-danger">Thêm</a>
                     </div>
 
                 </form>
@@ -427,47 +420,109 @@
         </div>
     </div>
 
-    <!-- Modal YCMS -->
-    {{-- <div class="modal fade" id="ycms-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <!-- Modal BM01_ĐNTU2 -->
+    <div class="modal fade" id="dntu-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">YCMS</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Đề nghị tạm ứng 02</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="" action="">
+
+                <form action="" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="mb-3 col-8">
-                                <input type="text" placeholder="Nhập tên, chủng loại, quy các hàng hóa" class="form-control">
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Người đề nghị" class="form-control">
                             </div>
-                            <div class="mb-3 col-2">
-                                <input type="number" min="0" placeholder="SL" class="form-control">
-                            </div>
-                            <div class="mb-3 col-2">
-                                <input type="number" min="0" placeholder="ĐVT" class="form-control">
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Đề nghị tạm ứng số tiền" class="form-control">
                             </div>
                             <div class="mb-3 col-12">
-                                <input type="text" placeholder="MĐ sử dụng & thời gian hoàn thành" class="form-control">
+                                <input type="text" placeholder="Lý do tạm ứng" class="form-control">
                             </div>
-                            <div class="mb-3 col-7">
-                                <input type="text" placeholder="NCC tốt nhất" class="form-control">
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Hình thức tạm ứng" class="form-control">
                             </div>
-                            <div class="mb-3 col-5">
-                                <input type="number" min="0" placeholder="Đơn giá" class="form-control">
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Thời hạn hoàn ứng" class="form-control">
+                            </div>
+                            <div class="mb-3 col-4">
+                                <input type="text" placeholder="Người nhận tiền" class="form-control">
+                            </div>
+                            <div class="mb-3 col-4">
+                                <input type="text" placeholder="Số tài khoản" class="form-control">
+                            </div>
+                            <div class="mb-3 col-4">
+                                <input type="text" placeholder="Tại ngân hàng" class="form-control">
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <div class="d-flex justify-content-start">
+                                    <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col-md-12 margin-t-res mt-3">
+                            <div class="action_wrapper-upload rounded border p-3 h-30  d-flex flex-column">
+                                <div class="card-title mb-3">
+                                    <i class="bi bi-paperclip"></i>
+                                    File đính kèm
+                                </div>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    @method('PUT')
+                                    @csrf
+                                    <div class="upload_wrapper-items">
+                                        <input type="hidden" name="uploadedFiles[]" value="" />
+                                        
+                                        <ul class="modal_upload-list" style="max-height: 20px; overflow-y: scroll; overflow-x: hidden;"></ul>
+                                        <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                            File bạn tải lên hiện tại không hỗ trợ !
+                                        </div>
+                                            <div class="modal_upload-wrapper">
+                                                <label class="modal_upload-label" for="file">
+                                                    Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                                <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
+                                                    dạng
+                                                    JPG,
+                                                    PNG, PDF, XLSX, DOCX, hoặc PPTX kích
+                                                    thước tệp không quá 10MB
+                                                </div>
+                                                <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                    <div class="modal_upload-addFile me-3">
+                                                        <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                            Tải file lên
+                                                            <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                    </div>
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <button type="submit" class="btn btn-outline-danger">Tải
+                                                file
+                                            </button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    
+                        
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
-                        data-bs-target="#taoDeXuat">Hủy</button>
-                        <button type="submit" class="btn btn-danger">Thêm</button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
+                        <a href="/mau-de-nghi-tam-ung" class="btn btn-danger">Thêm</a>
                     </div>
+
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
+
     <!-- Modal BM01_ĐNTU2 -->
     <div class="modal fade" id="bm01-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -517,6 +572,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal dntt-modal -->
     <div class="modal fade" id="dntt-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

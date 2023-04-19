@@ -1976,3 +1976,12 @@ ul.modal_upload-list li:last-child {
     user-select: none;
     margin-bottom: 10px;
 }
+
+
+/* Style Template Form */
+
+.card_template-wrapper {
+    padding: 60px;
+    background-color:var(--white-color);
+    margin: 1.5cm 1.5cm 1.5cm 2cm;
+}

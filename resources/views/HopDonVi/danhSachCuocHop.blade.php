@@ -571,7 +571,7 @@
             oLanguage: {
                 sLengthMenu: 'Hiển thị _MENU_ biên bản họp',
             },
-            dom: '<"d-flex justify-content-between mb-3"<"d-block d-md-flex "<"card-title-wrapper-right justify-content-end">f>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
+            dom: '<"d-flex justify-content-end mb-3"<"d-block d-md-flex "<"card-title-wrapper-right justify-content-end">f>>rt<"dataTables_bottom"i<"d-flex align-items-center justify-content-between"lp>>',
         });
         // $('div.card-title-wrapper-left').html(`
         //         <div class="card-title">Bộ lọc</div>

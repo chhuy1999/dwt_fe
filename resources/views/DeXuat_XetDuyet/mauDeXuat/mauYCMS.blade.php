@@ -1,6 +1,6 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Form yêu cầu mua sắm')
+@section('title', 'Mẫu yêu cầu mua sắm')
 
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
@@ -17,12 +17,12 @@
                                             <a class=" ">
                                                 <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
                                             </a>
-                                            <div class="fst-italic">BM002.QT07/20</div>
+                                            <div class="fst-italic">BM013.QT02/12</div>
 
                                         </div>
                                         <div class="col-8 d-flex align-items-center justify-content-center flex-column" >
-                                            <div class="mainSection_heading-title">Đề nghị tạm ứng</div>
-                                            <div class="fst-italic">Request for advance</div>
+                                            <div class="mainSection_heading-title">Yêu cầu mua sắm</div>
+                                            <div class="fst-italic">Purchasing requirement</div>
 
                                         </div>
                                         <div class="col-2 d-flex  justify-content-center flex-column">
@@ -138,120 +138,6 @@
                                             <div class="col d-flex align-items-center justify-content-center flex-column">
                                                 <div class="fw-bold">Phê duyệt</div>
                                                 <div class="" style="height: 100px"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formycms">
-                                        Launch demo modal
-                                    </button>
-                                    
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="formycms" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header text-center">
-                                                    <h5 class="modal-title w-100" id="exampleModalLabel">YÊU CẦU MUA SẮM</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-
-                                                <form action="" method="POST">
-                                                    @csrf
-                                                    <div class="modal-body">
-                                                        <div class="card">
-
-                                                            <div class="row d-flex ">
-                                                                <div class="col-8 col-md-8 mt-3">
-                                                                    <input class="form-control" type="text" placeholder="Tên, chủng loại, quy cách hàng hóa (Mô tả nếu có)">
-                                                                </div>
-                                                                <div class="col-2 col-md-2 mt-3">
-                                                                    <input class="form-control" type="number" placeholder="Số lượng">
-                                                                </div>
-                                                                <div class="col-2 col-md-2 mt-3">
-                                                                    <input class="form-control" type="text" placeholder="Đơn vị tính">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row d-flex mb-3">
-                                                                <div class="col-4 col-md-4 mt-3">
-                                                                    <input class="form-control" type="text" placeholder="Mục đích sử dụng">
-                                                                </div>
-                                                                <div class="col-4 col-md-4 mt-3">
-                                                                    <input class="form-control" type="text" placeholder="Nhà cung cấp tốt nhất" name="">
-                                                                </div>
-                                                                <div class="col-2 col-md-2 mt-3">
-                                                                    <input class="form-control" type="text" placeholder="Đơn giá" name="">
-                                                                </div>
-                                                                <div class="col-2 col-md-2 mt-3">
-                                                                    <input class="form-control" type="text" placeholder="Tổng tiền" name="">
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div>
-
-
-
-                                                        <div class="col-md-12 mt-3">
-                                                            <div class="d-flex justify-content-start">
-                                                                <div role="button" class="fs-4 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-12 margin-t-res mt-3">
-                                                            <div class="action_wrapper-upload rounded border p-3 h-30  d-flex flex-column">
-                                                                <div class="card-title mb-3">
-                                                                    <i class="bi bi-paperclip"></i>
-                                                                    File đính kèm
-                                                                </div>
-                                                                <form action="" method="POST" enctype="multipart/form-data">
-                                                                    @method('PUT')
-                                                                    @csrf
-                                                                    <div class="upload_wrapper-items">
-                                                                        <input type="hidden" name="uploadedFiles[]" value="" />
-                                                                        
-                                                                        <ul class="modal_upload-list" style="max-height: 20px; overflow-y: scroll; overflow-x: hidden;"></ul>
-                                                                        <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
-                                                                            File bạn tải lên hiện tại không hỗ trợ !
-                                                                        </div>
-                                                                            <div class="modal_upload-wrapper">
-                                                                                <label class="modal_upload-label" for="file">
-                                                                                    Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                                                <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
-                                                                                    dạng
-                                                                                    JPG,
-                                                                                    PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                                                    thước tệp không quá 10MB
-                                                                                </div>
-                                                                                <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                                                    <div class="modal_upload-addFile me-3">
-                                                                                        <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                                                            Tải file lên
-                                                                                            <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
-                                                                                        </button>
-                                                                                    </div>
-                
-                                                                                </div>
-                                                                            </div>
-                                                                    </div>
-                                                                        <div class="d-flex align-items-center justify-content-end">
-                                                                            <button type="submit" class="btn btn-outline-danger">Tải
-                                                                                file
-                                                                            </button>
-                                                                        </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    
-                                                        
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                        <button type="submit" class="btn btn-danger">Thêm</button>
-                                                    </div>
-
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
