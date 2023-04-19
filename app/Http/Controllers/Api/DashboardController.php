@@ -60,7 +60,7 @@ class DashboardController extends Controller
 
             $myTotalKpi = 0;
             for ($i = 0; $i < count($myAssignedTasks->data); $i++) {
-                $myTotalKpi += $myAssignedTasks->data[$i]->kpiValue;
+                $myTotalKpi += $myAssignedTasks->data[$i]->userKpiValue;
             }
 
 
