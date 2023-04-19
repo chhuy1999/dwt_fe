@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth.role:user,manager,admin'], function () {
     Route::post('danh-sach-thanh-vien', [UsersController::class, 'store'])->name('user.store');
     Route::put('danh-sach-thanh-vien/{id}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('danh-sach-thanh-vien/{id}', [UsersController::class, 'delete'])->name('users.delete');
+    Route::get('/thong-tin-ca-nhan', [UsersController::class, 'me'])->name('users.me');
 });
 
 // danh sách vị trí
@@ -245,9 +246,7 @@ Route::get('ho-so-nhan-vien', function () {
 // VBDH
 
 // Orther
-Route::get('thong-tin-ca-nhan', function () {
-    return view('page.information.profile');
-})->middleware('auth.role:manager,admin,user');
+
 
 Route::get('kpi-nhan-vien', function () {
     return view('page.staff.kpiStaff');
