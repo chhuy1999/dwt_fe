@@ -20,13 +20,14 @@
                     </div>
 
                     <ul class="tree_list">
-                        @foreach($data->data as $parent)
+                        {{-- @dd($listDepartments) --}}
+                        @foreach($listDepartments->data as $parent)
                             @if($parent->parent == null)
                                 <li class="section tree_list-item">
                                     <input type="checkbox" id="group{{ $parent->id }}">
                                     <label class="d-flex" for="group{{ $parent->id }}"></label>
                                     <span class="clicktree d-block" data-href="#body_content-1">{{ $parent->name }}</span>
-                                    {!! displayChild($data->data, $parent->id) !!}
+                                    {!! displayChild($listDepartments->data, $parent->id) !!}
                                 </li>
                             @endif
                         @endforeach

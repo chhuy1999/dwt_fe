@@ -184,6 +184,7 @@ Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->
     Route::delete('danh-sach-de-xuat/{id}', [ListProposeController::class, 'delete'])->name('listPropose.delete');
 });
 
+Route::get('de-xuat-theo-mau', function () { return view('DeXuat_XetDuyet.deXuatTheoMau'); })->middleware('auth.role:manager,admin,user');
 
 
 // Route::get('kho-luu-tru-bien-ban-hop', function () {
