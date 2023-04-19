@@ -28,7 +28,7 @@
                                                             <th style="width: 20%">Tên chỉ số key</th>
                                                             <th style="width: 66%">Mô tả</th>
                                                             <th style="width: 10%">Đơn vị tính</th>
-                                                            @if (session('user')['role'] == 'admin')
+                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                                 <th style="width: 2%"></th>
                                                             @endif
                                                         </tr>
@@ -57,7 +57,7 @@
                                                                     </div>
 
                                                                 </td>
-                                                                @if (session('user')['role'] == 'admin')
+                                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                         </div>
@@ -247,7 +247,7 @@
         });
         $('div.card-title-wrapper').html(`
             <div class="main_search d-flex me-3">
-                @if (session('user')['role'] == 'admin')
+                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
                 <button class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themChiSoKey">
                     Thêm chỉ số key

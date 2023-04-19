@@ -186,6 +186,12 @@ Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->
 
 Route::get('de-xuat-theo-mau', function () { return view('DeXuat_XetDuyet.deXuatTheoMau'); })->middleware('auth.role:manager,admin,user');
 
+// Form yêu cầu mua sắm
+Route::get('form-yeu-cau-mua-sam', function () {
+    return view('DeXuat_XetDuyet.formYeuCauMuaSam');
+})->middleware('auth.role:manager,admin,user');
+
+
 
 // Route::get('kho-luu-tru-bien-ban-hop', function () {
 //     return view('HopDonVi.khoLuuTruBienBanHop');

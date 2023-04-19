@@ -421,7 +421,7 @@
                                                             <th class="text-nowrap" style="width: 5%">Thời hạn</th>
                                                             <th class="border-0 text-nowrap" style="width: 5%">Trạng thái
                                                             </th>
-                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager' || session('user')['id'] == $meeting->leader_id || session('user')['id'] == $meeting->secretary_id)
                                                                 <th class="border-start-0"></th>
                                                             @endif
                                                         </tr>
