@@ -156,7 +156,7 @@
                 <span>Đề xuất & Xét duyệt</span>
             </a>
             <ul id="header_submenu">
-                <li class="header_submenu-items more position-relative">
+                {{-- <li class="header_submenu-items more position-relative">
                     <a href="{{ route('listPropose.list') }}" class="header_submenu-link more_btn">
                         Danh sách đề xuất <i class="bi bi-chevron-right"></i>
                     </a>
@@ -177,7 +177,7 @@
                             <a href="#" class="header_submenu-link">Văn bản</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="header_submenu-items">
                     <a href="/de-xuat-theo-mau" class="header_submenu-link">Đề xuất theo mẫu</a>
                 </li>

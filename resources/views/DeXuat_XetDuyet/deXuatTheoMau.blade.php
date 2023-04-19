@@ -1,6 +1,6 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Đề xuất theo mẫu')
+@section('title', 'Danh sách đề nghị')
 
 @php
     $lists = [
@@ -22,7 +22,7 @@
             <div class="main">
                 <div class="container-fluid">
                     <div class="mainSection_heading">
-                        <h5 class="mainSection_heading-title">Đề xuất theo mẫu</h5>
+                        <h5 class="mainSection_heading-title">Danh sách đề nghị</h5>
                         @include('template.components.sectionCard')
                     </div>
 
@@ -41,7 +41,7 @@
                                                             <th class="text-nowrap" style="width:10%">Mẫu Form</th>
                                                             <th class="text-nowrap" style="width:10%">Tiêu đề </th>
                                                             <th class="text-nowrap" style="width:15%">Tóm tắt</th>
-                                                            <th class="text-nowrap" style="width:15%">Đề nghị</th>
+                                                            <th class="text-nowrap" style="width:15%">Người đề nghị</th>
                                                             <th class="text-nowrap" style="width:10%">Trạng thái</th>
                                                             <th class="text-nowrap" style="width:20%">Xem file</th>
                                                             @if (session('user')['role'] == 'admin')
@@ -85,8 +85,8 @@
                                                                 <td class="text-nowrap">
                                                                     <div class="text-nowrap d-block text-truncate"
                                                                         style="max-width:155px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="Đề nghị">
-                                                                        Đề nghị
+                                                                        data-bs-placement="top" title="Người đề nghị">
+                                                                        Người đề nghị
                                                                     </div>
                                                                 </td>
                                                                 
@@ -111,12 +111,12 @@
                                                                         <div
                                                                             class="table_actions d-flex justify-content-center">
                                                                             <div class="btn" data-bs-toggle="modal"
-                                                                                data-bs-target="#suaDeXuat{{ $list['id'] }}">
+                                                                                data-bs-target="##suaDeXuat{{ $list['id'] }}">
                                                                                 <img style="width:16px;height:16px"
                                                                                     src="{{ asset('assets/img/edit.svg') }}" />
                                                                             </div>
                                                                             <div class="btn" data-bs-toggle="modal"
-                                                                                data-bs-target="#xoaDeXuat{{ $list['id'] }}">
+                                                                                data-bs-target="##xoaDeXuat{{ $list['id'] }}">
                                                                                 <img style="width:16px;height:16px"
                                                                                     src="{{ asset('assets/img/trash.svg') }}" />
                                                                             </div>
@@ -294,82 +294,20 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Tạo đề xuất</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Chọn mẫu đề xuất</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="" action="">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-12 mb-3">
-                                <input type="text" placeholder="Nhập tiêu đề" class="form-control">
-                            </div>
-                            <div class="col-12 mb-3">
-                                <input type="text" placeholder="Nhập chủ đề" class="form-control">
-                            </div>
-                            <div class="col-12 mb-3">
-                                <input type="text" placeholder="Nhập tóm tắt" class="form-control">
-                            </div>
-                            <div class="col-12 col-md-7 mb-3">
-                                <select class="selectpicker" title="Chọn người nhận" data-live-search="true"
-                                    data-size="5" data-live-search="true">
-                                    {{-- @foreach ($listUsers->data as $users)
-                                        <option value="{{ $users->id }}">{{ $users->name }} - {{ $users->code }}
-                                        </option>
-                                    @endforeach --}}
+                            <div class="col-12">
+                                <select class="selectpicker" title="Chọn mẫu đề xuất" data-size="5" data-live-search="true">
+                                    <option value="YCMS" data-target="#ycms-modal">YCMS</option>
+                                    <option value="DNTT" data-target="#dntt-modal">DNTT</option>
+                                    <option value="BM01_ĐNTU2" data-target="#bm01-modal">BM01_ĐNTU2</option>
                                 </select>
                             </div>
-                            <div class="col-12 col-md-5 mb-3">
-                                <select class="selectpicker" title="Chọn trạng thái" data-live-search="true"
-                                    data-size="5" data-live-search="true">
-                                    @foreach ($lists as $list)
-                                        <option value="{{ $list['id'] }}">{{ $list['status'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            {{-- <div class="col-12 mb-3">
-                                <textarea rows="1" class="form-control" placeholder="Nhập đánh giá"></textarea>
-                            </div> --}}
-                            <div class="col-12 mb-3">
-                                <div class="upload_wrapper-items">
-                                    <input type="hidden" name="uploadedFiles[]" value="" />
-                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
-                                        File bạn tải lên hiện tại không hỗ trợ !
-                                    </div>
-                                    <div class="modal_upload-wrapper">
-                                        <label class="modal_upload-label" for="file">
-                                            Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                        <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
-                                            dạng
-                                            JPG,
-                                            PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                            thước tệp không quá 10MB
-                                        </div>
-                                        <div
-                                            class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                            <div class="modal_upload-addFile me-3">
-                                                <button role="button" type="button"
-                                                    class="btn position-relative pe-4 ps-4">
-                                                    <img style="width:16px;height:16px"
-                                                        src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                    Tải file lên
-                                                    <input role="button" type="file"
-                                                        class="modal_upload-input modal_upload-file" name="files[]"
-                                                        multiple onchange="updateList(event)">
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <ul class="modal_upload-list"
-                                        style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;"></ul>
-                                </div>
-                            </div>
-
-                            <div class="col-12 d-flex justify-content-end">
-                                <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
-                            </div>
-
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -380,6 +318,152 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal YCMS -->
+    <div class="modal fade" id="ycms-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">YCMS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="" action="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3 col-8">
+                                <input type="text" placeholder="Nhập tên, chủng loại, quy các hàng hóa" class="form-control">
+                            </div>
+                            <div class="mb-3 col-2">
+                                <input type="number" min="0" placeholder="SL" class="form-control">
+                            </div>
+                            <div class="mb-3 col-2">
+                                <input type="number" min="0" placeholder="ĐVT" class="form-control">
+                            </div>
+                            <div class="mb-3 col-12">
+                                <input type="text" placeholder="MĐ sử dụng & thời gian hoàn thành" class="form-control">
+                            </div>
+                            <div class="mb-3 col-7">
+                                <input type="text" placeholder="NCC tốt nhất" class="form-control">
+                            </div>
+                            <div class="mb-3 col-5">
+                                <input type="number" min="0" placeholder="Đơn giá" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#taoDeXuat">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Thêm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal BM01_ĐNTU2 -->
+    <div class="modal fade" id="bm01-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">BM01_ĐNTU2</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="" action="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Người đề nghị" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Bộ phận" class="form-control">
+                            </div>
+                            <div class="mb-3 col-12">
+                                <input type="text" placeholder="Đề nghị tạm ứng tiền" class="form-control">
+                            </div>
+                            <div class="mb-3 col-12">
+                                <input type="text" placeholder="Lý do tạm ứng" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Hình thức tạm ứng" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Thời hạn hoàn ứng" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Thời hạn hoàn ứng" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Người nhận tiền" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Số tài khoản" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#taoDeXuat">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Thêm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal dntt-modal -->
+    <div class="modal fade" id="dntt-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">ĐNTT</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="" action="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Người đề nghị" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Loại thanh toán" class="form-control">
+                            </div>
+
+                            <div class="mb-3 col-12">
+                                <input type="text" placeholder="Số tiền tạm ứng" class="form-control">
+                            </div>
+                            <div class="mb-3 col-12">
+                                <input type="text" placeholder="Đề nghị thanh toán số tiền" class="form-control">
+                            </div>
+                            
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Lý do thanh toán" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Hình thức thanh toán" class="form-control">
+                            </div>
+                            
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Người nhận tiền" class="form-control">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input type="text" placeholder="Số tài khoản" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal"
+                        data-bs-target="#taoDeXuat">Hủy</button>
+                        <button type="submit" class="btn btn-danger">Thêm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <!-- Modal Xem DS biên bản -->
     @foreach ($lists as $list)
         <div class="modal fade" id="xemDeXuat{{ $list['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -655,6 +739,14 @@
                 }
             }
         }
+    </script>
+
+    <script>
+        $('select.selectpicker').on('change', function() {
+            var target = $(this).find(":selected").data("target");
+            $(target).modal("show");
+        });
+
     </script>
 
 @endsection

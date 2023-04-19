@@ -44,7 +44,7 @@
                                             <img src="{{ asset('assets/img/avatar.jpeg') }}" alt=""
                                                 class="information_avatar-img">
                                         </div>
-                                        <div class="card-title text-center pt-3 pb-3">Đặng Vũ Lam Mai - MTT239</div>
+                                        <div class="card-title text-center pt-3 pb-3">{{ Session::get('user')['name'] }} - {{ Session::get('user')['code'] ?? '' }}</div>
                                         <div class="information_signature-wrapper">
                                             <div class="signature_wrapper">
                                                 <img class="signature_img" style="height:200px;width:100%"
@@ -67,22 +67,22 @@
                                     <div class="card-body">
                                         <div class="card-title mb-3" style="display: flex; justify-content: space-between">
                                             Thông tin cơ bản
-                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suaThongTinCoBan">Thay đổi</button>
+                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinCoBan">Thay đổi</button>
                                         </div>
                                         <div class="row">
-                                            <div class="mb-3 col-6">
+                                            <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Họ và tên</label>
-                                                    <input type="text" id="name"  readonly value="Đặng Vũ Lam Mai" class="form-control">
+                                                    <input type="text" id="name"  readonly value="{{ Session::get('user')['name'] }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-6">
+                                            <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Giới tính</label>
                                                     <input type="text" id="sex"  readonly value="Nữ" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-6">
+                                            <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
                                                     <input type="text" id="bd"  readonly value="27/04/1999" class="form-control">
@@ -95,22 +95,22 @@
                                     <div class="card-body">
                                         <div class="card-title mb-3" style="display: flex; justify-content: space-between">
                                             Thông tin liên hệ
-                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suaThongTinLienHe">Thay đổi</button>
+                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinLienHe">Thay đổi</button>
                                         </div>
                                         <div class="row">
-                                            <div class="mb-3 col-6">
+                                            <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Số di động</label>
                                                     <input type="text" id="name"  readonly value="0123456789" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-6">
+                                            <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Email</label>
                                                     <input type="text" id="sex"  readonly value="Admin@tbht.vn" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-6">
+                                            <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Địa chỉ liên hệ</label>
                                                     <input type="text" id="bd"  readonly value="219 trung kính" class="form-control">
@@ -123,7 +123,7 @@
                                     <div class="card-body">
                                         <div class="card-title mb-3" style="display: flex; justify-content: space-between">
                                             CCCD/CMND
-                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suaThongTinCoBan">Thay đổi</button>
+                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinCCCD">Thay đổi</button>
                                         </div>
                                         <div class="row">
                                             <div class="mb-3 col-4">
@@ -161,42 +161,151 @@
         </div>
     </div>
 
-    {{-- Modal đổi mật khẩu --}}
-    <div class="modal fade" id="thayDoiMatKhau" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
+    {{-- Modal Thay đổi thông tin cơ bản --}}
+    <div class="modal fade" id="thongTinCoBan" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
         tabindex="-1">
 
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-2" id="layout-thayDoiMatKhau" style="margin-left: 16px">
+                    <h5 class="modal-title mt-2" id="layout-thayDoiMatKhau">
                         <i class="bi bi-file-lock2"></i>
-                        Đổi mật khẩu
+                        Thay đổi thông tin cơ bản
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form class="px-4 py-3">
-                        <div class="mb-3">
-                            <label for="password-old" class="form-label">Mật khẩu cũ</label>
-                            <input type="passwor-old" class="form-control" id="password-old" placeholder="">
+                <form action="" method="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label fs-5">Họ và tên</label>
+                                    <input type="text" id="name"  value="{{ Session::get('user')['name'] }}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="sex" class="form-label fs-5">Giới tính</label>
+                                    <input type="text" id="sex"  value="Nữ" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="bd" class="form-label fs-5">Ngày sinh</label>
+                                    <input type="text" id="bd"  value="27/04/1999" class="form-control">
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="password-new" class="form-label">Mật khẩu mới</label>
-                            <input type="password-new" class="form-control" id="password-new" placeholder="">
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn btn-danger">Lưu</button>
                         </div>
-                        <div class="mb-3">
-                            <label for="repeat-password" class="form-label">Nhập lại mật khẩu mới</label>
-                            <input type="repeat-password" class="form-control" id="repeat-password" placeholder="">
-                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-                    </form>
+    {{-- Modal Thay đổi thông tin liên hệ --}}
+    <div class="modal fade" id="thongTinCCCD" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
+        tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-2" id="layout-thayDoiMatKhau">
+                        <i class="bi bi-file-lock2"></i>
+                        Thay đổi CCCD/CMND
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">
-                        <i class="bi bi-fingerprint"></i>
-                        Xác nhận
-                    </button>
+                <form action="" method="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label fs-5">Số CCCD/CMND</label>
+                                    <input type="text" id="name" value="0123456789" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="sex" class="form-label fs-5">Ngày cấp</label>
+                                    <input type="text" id="sex" value="19/04/2023" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="bd" class="form-label fs-5">Nơi cấp</label>
+                                    <input type="text" id="bd" value="Hà Nội" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3 col-12">
+                                <div class="mb-3">
+                                    <label for="bd" class="form-label fs-5">Ảnh</label>
+                                    <div style="height: 100px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn btn-danger">Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- Modal Thay đổi thông tin liên hệ --}}
+    <div class="modal fade" id="thongTinLienHe" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
+        tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-2" id="layout-thayDoiMatKhau">
+                        <i class="bi bi-file-lock2"></i>
+                        Thay đổi thông tin liên hệ
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form action="" method="">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label fs-5">Số di động</label>
+                                    <input type="text" id="name" value="0123456789" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="sex" class="form-label fs-5">Email</label>
+                                    <input type="text" id="sex" value="Admin@tbht.vn" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <div class="mb-3">
+                                    <label for="bd" class="form-label fs-5">Địa chỉ liên hệ</label>
+                                    <input type="text" id="bd" value="219 trung kính" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn btn-danger">Lưu</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -213,10 +322,10 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="mb-3 col-6">
-                            <input type="text" readonly value="Đặng Vũ Lam Mai" class="form-control">
+                            <input type="text" readonly value="{{ Session::get('user')['name'] }}" class="form-control">
                         </div>
                         <div class="mb-3 col-3">
-                            <input type="text" readonly value="MTT239" class="form-control">
+                            <input type="text" readonly value="{{ Session::get('user')['code'] ?? '' }}" class="form-control">
                         </div>
                         <div class="mb-3 col-3">
                             <input type="text" readonly value="27/04/1999" class="form-control">
