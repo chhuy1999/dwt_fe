@@ -196,6 +196,11 @@ Route::get('mau-de-nghi-tam-ung', function () {
     return view('DeXuat_XetDuyet.mauDeXuat.mauDNTU');
 })->middleware('auth.role:manager,admin,user');
 
+// Form đề nghị thanh toán
+Route::get('form-de-nghi-thanh-toan', function () {
+    return view('DeXuat_XetDuyet.formDeNghiThanhToan');
+})->middleware('auth.role:manager,admin,user');
+
 
 
 // Route::get('kho-luu-tru-bien-ban-hop', function () {
