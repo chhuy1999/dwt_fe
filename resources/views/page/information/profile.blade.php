@@ -63,47 +63,93 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-7">
-                                <div class="card" style="height: 100%;">
+                                <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="card-title mb-3">Thông tin người dùng</div>
+                                        <div class="card-title mb-3" style="display: flex; justify-content: space-between">
+                                            Thông tin cơ bản
+                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suaThongTinCoBan">Thay đổi</button>
+                                        </div>
                                         <div class="row">
                                             <div class="mb-3 col-6">
-                                                <input type="text" readonly value="Đặng Vũ Lam Mai" class="form-control">
-                                            </div>
-                                            <div class="mb-3 col-3">
-                                                <input type="text" readonly value="MTT239" class="form-control">
-                                            </div>
-                                            <div class="mb-3 col-3">
-                                                <input type="text" readonly value="27/04/1999" class="form-control">
-                                            </div>
-                                            <div class="mb-3 col-7">
-                                                <input type="text" readonly value="219 Trung Kính" class="form-control">
-                                            </div>
-                                            <div class="mb-3 col-5">
-                                                <input type="text" readonly value="09123465789" class="form-control">
-                                            </div>
-                                            <div class="mb-3 col-4">
-                                                <input type="text" readonly value="bmtkt1@dopperherz.vn"
-                                                    class="form-control">
-                                            </div>
-                                            <div class="mb-3 col-4">
-                                                <input type="text" readonly value="Phòng Marketing" class="form-control">
-                                            </div>
-                                            <div class="mb-3 col-4">
-                                                <input type="text" readonly value="Trợ lý Marketing"
-                                                    class="form-control">
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label fs-5">Họ và tên</label>
+                                                    <input type="text" id="name"  readonly value="Đặng Vũ Lam Mai" class="form-control">
+                                                </div>
                                             </div>
                                             <div class="mb-3 col-6">
-                                                <input type="text" readonly value="bmtkt1@dopperherz.vn"
-                                                    class="form-control">
+                                                <div class="mb-3">
+                                                    <label for="sex" class="form-label fs-5">Giới tính</label>
+                                                    <input type="text" id="sex"  readonly value="Nữ" class="form-control">
+                                                </div>
                                             </div>
                                             <div class="mb-3 col-6">
-                                                <input type="text" readonly value="**********" class="form-control">
+                                                <div class="mb-3">
+                                                    <label for="bd" class="form-label fs-5">Ngày sinh</label>
+                                                    <input type="text" id="bd"  readonly value="27/04/1999" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
-
-                                        <div>
-                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suaThongTin">Sửa thông tin</button>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="card-title mb-3" style="display: flex; justify-content: space-between">
+                                            Thông tin liên hệ
+                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suaThongTinLienHe">Thay đổi</button>
+                                        </div>
+                                        <div class="row">
+                                            <div class="mb-3 col-6">
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label fs-5">Số di động</label>
+                                                    <input type="text" id="name"  readonly value="0123456789" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-6">
+                                                <div class="mb-3">
+                                                    <label for="sex" class="form-label fs-5">Email</label>
+                                                    <input type="text" id="sex"  readonly value="Admin@tbht.vn" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-6">
+                                                <div class="mb-3">
+                                                    <label for="bd" class="form-label fs-5">Địa chỉ liên hệ</label>
+                                                    <input type="text" id="bd"  readonly value="219 trung kính" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="card-title mb-3" style="display: flex; justify-content: space-between">
+                                            CCCD/CMND
+                                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#suaThongTinCoBan">Thay đổi</button>
+                                        </div>
+                                        <div class="row">
+                                            <div class="mb-3 col-4">
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label fs-5">Số CCCD/CMND</label>
+                                                    <input type="text" id="name"  readonly value="0123456789" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-4">
+                                                <div class="mb-3">
+                                                    <label for="sex" class="form-label fs-5">Ngày cấp</label>
+                                                    <input type="text" id="sex"  readonly value="19/04/2023" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-4">
+                                                <div class="mb-3">
+                                                    <label for="bd" class="form-label fs-5">Nơi cấp</label>
+                                                    <input type="text" id="bd"  readonly value="Hà Nội" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-12">
+                                                <div class="mb-3">
+                                                    <label for="bd" class="form-label fs-5">Ảnh</label>
+                                                    <div style="height: 100px;"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
