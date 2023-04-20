@@ -41,32 +41,18 @@
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
                                         <div class="information_avatar">
-                                            <img src="{{ asset('assets/img/avatar.jpeg') }}" alt=""
-                                                class="information_avatar-img">
+                                            <img src="{{ asset('assets/img/avatar.jpeg') }}" alt="" class="information_avatar-img">
                                         </div>
-                                        <div class="card-title text-center pt-3 pb-3">{{$user->name}} - {{$user->code}}</div>
-                                        <div class="information_signature-wrapper signature_wrapper">
-                                            <div class="d-flex justify-content-end">
-                                                <div class="signature-buttons">
-                                                  <div role="button" class="btn btn-outline-danger" id="clearSignatureButton">
-                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                  </div>
-                                                  <div role="button" class="btn btn-outline-warning" id="editSignatureButton">
-                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                                  </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="">
-                                                <div class="signature_img text-light" style="font-size:150px">
-                                                    <i class="bi bi-plus-circle"></i>
-                                                </div>
+                                        <div class="card-title text-center pt-3 pb-3">{{ $user->name }} - {{ $user->code }}</div>
+                                        <div class="information_signature-wrapper">
+                                            <div class="signature_wrapper">
+                                                <img class="signature_img" style="height:200px;width:100%" src="{{ $user->signature ?? asset('assets/img/noSignature.jpg') }}" />
                                             </div>
 
                                             <div class="signature_actions">
-                                                
-                                                <button role="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#signatureModal">Tạo chữ ký</button>
+                                                <button role="button" class="btn btn-outline-danger" id="clearSignatureButton">Xóa chữ ký</button>
+                                                <button role="button" class="btn btn-outline-warning" id="editSignatureButton">Sửa chữ ký</button>
+                                                <button role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signatureModal">Tạo chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
@@ -83,55 +69,45 @@
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Họ và tên</label>
-                                                    <input type="text" id="name" readonly
-                                                        value="{{ $user->name }} - {{ $user->code }}"
-                                                        class="form-control">
+                                                    <input type="text" id="name" readonly value="{{ $user->name }}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Giới tính</label>
-                                                    <input type="text" id="sex" readonly
-                                                        value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}"
-                                                        class="form-control">
+                                                    <input type="text" id="sex" readonly value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                                    <input type="text" id="bd" readonly
-                                                        value="{{ date('d/m/Y', strtotime($user->dob)) }}"
-                                                        class="form-control">
+                                                    <input type="text" id="bd" readonly value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Số điện thoại liên
                                                         hệ</label>
-                                                    <input type="text" id="bd" readonly value="0123456"
-                                                        class="form-control">
+                                                    <input type="text" id="bd" readonly value="{{ $user->phone }}" class="form-control">
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
-                                                    <input type="text" id="bd" readonly value="Phòng Marketing"
-                                                        class="form-control">
+                                                    <input type="text" id="bd" readonly value="{{ $user->departement->name ?? '' }}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
-                                                    <input type="text" id="bd" readonly value="Trợ lý Marketing"
-                                                        class="form-control">
+                                                    <input type="text" id="bd" readonly value="{{ $user->position->name ?? '' }}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Địa chỉ</label>
-                                                    <input type="text" id="bd" readonly value="Khu 3 phú thọ"
-                                                        class="form-control">
+                                                    <input type="text" id="bd" readonly value="{{ $user->address }}" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -139,31 +115,28 @@
                                 </div>
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="card-title mb-3"
-                                            style="display: flex; justify-content: space-between">
+                                        <div class="card-title mb-3" style="display: flex; justify-content: space-between">
                                             Thông tin tài khoản
                                             {{-- <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinLienHe">Thay đổi</button> --}}
                                         </div>
                                         <div class="row">
-                                            
+
                                             <div class="mb-3 col-6">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Email liên kết</label>
-                                                    <input type="text" id="sex" readonly
-                                                        value="{{ $user->email }}" class="form-control">
+                                                    <input type="text" id="sex" readonly value="{{ $user->email }}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Mật khẩu</label>
-                                                    <input type="password" id="bd" readonly
-                                                        value="{{ $user->address }}" class="form-control">
+                                                    <input type="password" id="bd" readonly value="*********" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -173,8 +146,7 @@
     </div>
 
     {{-- Modal Thay đổi thông tin cơ bản --}}
-    <div class="modal fade" id="thongTinCoBan" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
-        tabindex="-1">
+    <div class="modal fade" id="thongTinCoBan" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true" tabindex="-1">
 
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -192,55 +164,45 @@
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="name" class="form-label fs-5">Họ và tên</label>
-                                    <input type="text" id="name" readonly
-                                        value="{{ $user->name }} - {{ $user->code }}"
-                                        class="form-control">
+                                    <input type="text" id="name" readonly value="{{ $user->name }} - {{ $user->code }}" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="sex" class="form-label fs-5">Giới tính</label>
-                                    <input type="text" id="sex" readonly
-                                        value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}"
-                                        class="form-control">
+                                    <input type="text" id="sex" readonly value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                    <input type="text" id="bd" readonly
-                                        value="{{ date('d/m/Y', strtotime($user->dob)) }}"
-                                        class="form-control">
+                                    <input type="text" id="bd" readonly value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Số điện thoại liên
                                         hệ</label>
-                                    <input type="text" id="bd" readonly value="0123456"
-                                        class="form-control">
+                                    <input type="text" id="bd" readonly value="0123456" class="form-control">
                                 </div>
                             </div>
 
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
-                                    <input type="text" id="bd" readonly value="Phòng Marketing"
-                                        class="form-control">
+                                    <input type="text" id="bd" readonly value="Phòng Marketing" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
-                                    <input type="text" id="bd" readonly value="Trợ lý Marketing"
-                                        class="form-control">
+                                    <input type="text" id="bd" readonly value="Trợ lý Marketing" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Địa chỉ</label>
-                                    <input type="text" id="bd" readonly value="Khu 3 phú thọ"
-                                        class="form-control">
+                                    <input type="text" id="bd" readonly value="Khu 3 phú thọ" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -256,7 +218,7 @@
         </div>
     </div>
 
-    
+
     {{-- Modal Thay đổi thông tin liên hệ --}}
     {{-- <div class="modal fade" id="thongTinLienHe" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true"
         tabindex="-1">
@@ -274,7 +236,7 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            
+
                             <div class="mb-3 col-6">
                                 <div class="mb-3">
                                     <label for="sex" class="form-label fs-5">Email liên kết</label>
@@ -354,8 +316,7 @@
     </div>
 
     {{-- Modal tạo chữ ký --}}
-    <div class="modal fade" id="signatureModal" tabindex="-1" role="dialog" aria-labelledby="signatureModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="signatureModal" tabindex="-1" role="dialog" aria-labelledby="signatureModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -386,29 +347,111 @@
         var signaturePad = new SignaturePad(canvas);
 
         // Save the signature to a variable when the user clicks the save button
-        document.getElementById('saveSignatureButton').addEventListener('click', function() {
+        document.getElementById('saveSignatureButton').addEventListener('click', async function(e) {
             // Get the data URL of the signature image (with a low resolution)
-            var signatureData = signaturePad.toDataURL({
-                minWidth: 0.1,
-                maxWidth: 2,
-                throttle: 16
-            });
+      
+            try {
+                var signatureData = signaturePad.toDataURL({
+                    minWidth: 0.1,
+                    maxWidth: 2,
+                    throttle: 16
+                });
 
-            // Update the src of the signature image
-            var signatureImg = document.querySelector('.signature_img');
-            signatureImg = signatureData;
+                // Update the src of the signature image
+                var signatureImg = document.querySelector('.signature_img');
+                signatureImg.src = signatureData;
+                //create signature image file
+                const blob = await fetch(signatureData);
+                const blobData = await blob.blob();
+                const signatureFile = new File([blobData], "{!! session('user')['id'] !!}" + `_${new Date().getTime()}_signature.png`, {
+                    type: 'image/png'
+                });
+                // console.log(signatureFile);
+                //upload signature to server
+                const apiUrl = "https://report.sweetsica.com/api/report/upload"
+                const formData = new FormData();
+                formData.append('files', signatureFile);
+                formData.append('userId', '{!! session('user')['id'] !!}');
+                const data = new URLSearchParams();
+                for (const pair of formData) {
+                    data.append(pair[0], pair[1]);
+                }
+                const resp = await fetch(apiUrl, {
+                    method: 'POST',
+                    body: formData,
 
-            // Hide the signature pad modal
-            var signatureModal = document.getElementById('signatureModal');
-            var modalInstance = bootstrap.Modal.getInstance(signatureModal);
-            modalInstance.hide();
-            canvas.clear();
+                })
+                if (!resp.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const jsonData = await resp.json();
+                const signatureUrl = jsonData.downloadLink;
+                //update signature url to database
+
+                const updateUserApiurl = API_URL + '/users/' + "{!! session('user')['id'] !!}"
+                await fetch(updateUserApiurl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'Bearer ' + JWT_TOKEN,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        signature: signatureUrl
+                    })
+
+                })
+
+                //show success message
+                Toastify({
+
+                    text: "Tạo chữ ký thành công",
+                    duration: 3000,
+                    stopOnFocus: true,
+
+                }).showToast();
+
+
+            } catch (err) {
+                console.log(err)
+                Toastify({
+
+                    text: "Tạo chữ ký thất bại: " + err.message,
+                    duration: 3000,
+                    stopOnFocus: true,
+                    style: {
+                        background: "#FE6244",
+                    },
+
+                }).showToast();
+            } finally {
+                // Hide the signature pad modal
+                var signatureModal = document.getElementById('signatureModal');
+                var modalInstance = bootstrap.Modal.getInstance(signatureModal);
+                modalInstance.hide();
+                canvas.clear();
+
+            }
         });
 
         // Clear the signature when the user clicks the clear button
-        document.getElementById('clearSignatureButton').addEventListener('click', function() {
+        document.getElementById('clearSignatureButton').addEventListener('click', async function() {
             signaturePad.clear();
+            const apiUrl = API_URL + '/users/' + "{!! session('user')['id'] !!}"
+            await fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': 'Bearer ' + JWT_TOKEN,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    signature: ""
+                })
+
+            })
             document.querySelector('.signature_img').src = '{{ asset('assets/img/noSignature.jpg') }}';
+
         });
 
         // Show the signature pad modal and load the previous signature when the user clicks the edit button
