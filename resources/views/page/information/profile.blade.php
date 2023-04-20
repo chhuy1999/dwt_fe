@@ -163,54 +163,52 @@
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="name" class="form-label fs-5">Họ và tên</label>
-                                    <input type="text" id="name" readonly value="{{ $user->name }} - {{ $user->code }}" class="form-control">
+                                    <input type="text" id="name" value="{{ $user->name }} - {{ $user->code }}" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="sex" class="form-label fs-5">Giới tính</label>
-                                    <input type="text" id="sex" readonly value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
+                                    <input type="text" id="sex" value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                    <input type="text" id="bd" readonly value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
+                                    <input type="text" id="bd" value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Số điện thoại liên
                                         hệ</label>
-                                    <input type="text" id="bd" readonly value="0123456" class="form-control">
+                                    <input type="text" id="bd" value="0123456" class="form-control">
                                 </div>
                             </div>
 
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
-                                    <input type="text" id="bd" readonly value="Phòng Marketing" class="form-control">
+                                    <input type="text" id="bd" value="Phòng Marketing" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
-                                    <input type="text" id="bd" readonly value="Trợ lý Marketing" class="form-control">
+                                    <input type="text" id="bd" value="Trợ lý Marketing" class="form-control">
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Địa chỉ</label>
-                                    <input type="text" id="bd" readonly value="Khu 3 phú thọ" class="form-control">
+                                    <input type="text" id="bd" value="Khu 3 phú thọ" class="form-control">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                            <button type="button" class="btn btn-danger">Lưu</button>
-                        </div>
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger">Lưu</button>
                     </div>
                 </form>
             </div>

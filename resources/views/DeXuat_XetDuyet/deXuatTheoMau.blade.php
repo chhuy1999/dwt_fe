@@ -97,11 +97,18 @@
                                                                     </div>
                                                                 </td>
                                                                 <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:215px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top"
-                                                                        title="file-de-xuat-{{ time() }}.png">
-                                                                        file-de-xuat-{{ time() }}.png
+                                                                    <div class="text-nowrap d-block text-truncate">
+                                                                        <ul class="list_table">
+                                                                            <li class="list_table-items">
+                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 1</a>
+                                                                            </li>
+                                                                            <li class="list_table-items">
+                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 2</a>
+                                                                            </li>
+                                                                            <li class="list_table-items">
+                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 3</a>
+                                                                            </li>
+                                                                        </ul>
                                                                     </div>
                                                                 </td>
                                                                 @if (session('user')['role'] == 'admin')
@@ -957,7 +964,7 @@
         }
     </script>
 
-    <script>
+    {{-- <script>
         $('select.selectpicker').on('change', function() {
             var target = $(this).find(":selected").data("target");
             $(target).modal("show");
@@ -977,6 +984,6 @@
                 });
             });
         });
-    </script>
+    </script> --}}
 
 @endsection

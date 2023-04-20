@@ -1978,8 +1978,7 @@ ul.modal_upload-list li:last-child {
 }
 
 
-/* Style Template Form */
-
+/* Style Template Form & Page List Template */
 .card_template-wrapper {
     margin: 1.5cm 1.5cm 1.5cm 2cm;
 }
@@ -2057,4 +2056,19 @@ ul.modal_upload-list li:last-child {
 .card_template-items {
     font-size: var(--fz-12);
     margin: 6px 0;
+}
+
+.list_table {
+    display: flex;
+    align-items: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.list_table-items {
+    padding: 6px 0;
+}
+
+.list_table-items ~ .list_table-items  { 
+    margin-left: 10px;
 }
