@@ -37,7 +37,7 @@
                     </div>
                     <div class="information_wrapper bg-white">
                         <div class="row">
-                            <div class="col-12 col-md-5">
+                            <div class="col-12 col-md-5 mb-3">
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
                                         <div class="information_avatar">
@@ -66,25 +66,28 @@
                                             <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinCoBan">Thay đổi</button>
                                         </div>
                                         <div class="row">
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Họ và tên</label>
                                                     <input type="text" id="name" readonly value="{{ $user->name }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Giới tính</label>
                                                     <input type="text" id="sex" readonly value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                                    <input type="text" id="bd" readonly value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
+                                                    <div class="position-relative">
+                                                        <input type="text" id="bd" readonly value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
+                                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Số điện thoại liên
                                                         hệ</label>
@@ -92,19 +95,19 @@
                                                 </div>
                                             </div>
 
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
                                                     <input type="text" id="bd" readonly value="{{ $user->departement->name ?? '' }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
                                                     <input type="text" id="bd" readonly value="{{ $user->position->name ?? '' }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-12">
+                                            <div class="mb-3 col-12 col-md-12">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Địa chỉ</label>
                                                     <input type="text" id="bd" readonly value="{{ $user->address }}" class="form-control">
@@ -161,37 +164,40 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="mb-3 col-4">
+                            <div class="mb-3 col-6 col-md-4">
                                     <label for="name" class="form-label fs-5">Họ và tên</label>
                                     <input type="text" id="name" value="{{ $user->name }} - {{ $user->code }}" class="form-control">
                             </div>
-                            <div class="mb-3 col-4">
+                            <div class="mb-3 col-6 col-md-4">
                                     <label for="sex" class="form-label fs-5">Giới tính</label>
-                                    <input type="text" id="sex" value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
+                                    {{-- <input type="text" id="sex" value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control"> --}}
+                                    <select name="" id="deps" class="selectpicker" title="Giới tính">
+                                        <option value="">1</option>
+                                    </select>
                             </div>
-                            <div class="mb-3 col-4">
+                            <div class="mb-3 col-6 col-md-4">
                                 <label for="bd" class="form-label fs-5">Ngày sinh</label>
                                 <div class="position-relative">
                                     <input type="text" id="bd" value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control datePicker">
                                     <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                             </div>
-                            <div class="mb-3 col-4">
+                            <div class="mb-3 col-6 col-md-4">
                                     <label for="bd" class="form-label fs-5">Số điện thoại liên
                                         hệ</label>
                                     <input type="text" id="bd" value="0123456" class="form-control">
                             </div>
 
-                            <div class="mb-3 col-4">
+                            <div class="mb-3 col-6 col-md-4">
                                     <label for="deps" class="form-label fs-5">Đơn vị công tác</label>
                                     <select name="" id="deps" class="selectpicker" title="Đơn vị công tác" data-size="5" data-live-search="true">
-                                        <option valaue="">1</option>
+                                        <option value="">1</option>
                                     </select>
                             </div>
-                            <div class="mb-3 col-4">
+                            <div class="mb-3 col-6 col-md-4">
                                     <label for="pos" class="form-label fs-5">Vị trí làm việc</label>
                                     <select name="" id="pos" class="selectpicker" title="Vị trí làm việc" data-size="5" data-live-search="true">
-                                        <option valaue="">1</option>
+                                        <option value="">1</option>
                                     </select>
                             </div>
                             <div class="mb-3 col-12">
@@ -257,7 +263,7 @@
 
 
     {{-- Modal sửa thông tin cá nhân --}}
-    <div class="modal fade" id="suaThongTin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="suaThongTin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -304,7 +310,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Modal tạo chữ ký --}}
     <div class="modal fade" id="signatureModal" tabindex="-1" role="dialog" aria-labelledby="signatureModalLabel" aria-hidden="true">

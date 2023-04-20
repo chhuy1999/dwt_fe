@@ -1955,8 +1955,8 @@ ul.modal_upload-list li:last-child {
 
 .information_upload-field .information_file-thumbnail img,
 .information_avatar-img  {
-    width: 180px;
-    height: 180px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     
 }
