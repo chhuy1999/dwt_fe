@@ -30,114 +30,114 @@
                                 </div>
                             </div>
                             <div class="card_template-body-middle">
-                                <div class="row">
-                                    <div class="col-12 mb-3">
+                               
+                                    <div class="col-md-12 mb-3">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered YCMS_repeater " >
                                                 <thead>
                                                     <tr>
-                                                        <td scope="col">STT</td>
-                                                        <th scope="col">
-                                                            Tên, chủng loại, quy cách hàng hóa
-                                                            (Đính kèm hình ảnh, mô tả nếu có)
-                                                        </th>
-                                                        <th scope="col">Số lượng</th>
-                                                        <th scope="col">ĐVT</th>
-                                                        <th scope="col">MĐ sử dụng & T.gian hoàn thành</th>
-                                                        <th scope="col">NCC tốt nhất (Tên, sđt, đc)</th>
-                                                        <th scope="col">Đơn giá (VNĐ)</th>
-                                                        <th scope="col">Tổng tiền (VNĐ)</th>
+                                                        <th scope="col" style="width: 20px; text-align: center;">STT</th>
+                                                        <th scope="col" style="text-align: center;">Tên, chủng loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
+                                                        <th scope="col" style="text-align: center;">Số lượng</th>
+                                                        <th scope="col" style="text-align: center;">ĐVT</th>
+                                                        <th scope="col" style="text-align: center;">MĐ sử dụng & T.gian hoàn thành</th>
+                                                        <th scope="col" style="text-align: center;">NCC tốt nhất (Tên, sđt, đc)</th>
+                                                        <th scope="col" style="text-align: center;">Đơn giá (VNĐ)</th>
+                                                        <th scope="col" style="text-align: center;">Tổng tiền (VNĐ)</th>
+                                                        <th scope="col"></th>
+                                                        
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Găng tay y tế</td>
-                                                        <td>4</td>
-                                                        <td>Hộp</td>
-                                                        <td rowspan="4"> Thực hiện ACT Tháng 12 Vùng 1 + 2 </td>
-                                                        <td></td>
-                                                        <td>90.000</td>
-                                                        <td>360.000</td>
+                                                <tbody data-repeater-list="YCMS_list">
+                                                    <tr data-repeater-item>
+                                                        <td><input type="text" placeholder="" class="form-control"></td>
+                                                        <td><input type="text" placeholder="Tên, chủng loại" class="form-control"></td>
+                                                        <td><input type="text" placeholder="Số lượng" class="form-control"></td>
+                                                        <td><input type="text" placeholder="ĐVT" class="form-control"></td>
+                                                        <td><input type="text" placeholder="Mục đích" class="form-control"></td>
+                                                        <td><input type="text" placeholder="NCC" class="form-control"></td>
+                                                        <td><input type="text" placeholder="Đơn giá" style="text-align: right;" class="form-control"></td>
+                                                        <td><input type="text" placeholder="" style="text-align: right;"  class="form-control"></td>
+                                                        <td>
+                                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
+                                                        </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Standee chân cuộn ( Mua thêm trong trường hợp gẫy hỏng )</td>
-                                                        <td>2</td>
-                                                        <td>Cuốn</td>
-                                                        <td></td>
-                                                        <td>300.000</td>
-                                                        <td>600.000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Standee chương trình đo loãng xương ( Trưng bày tại địa bàn )</td>
-                                                        <td>4</td>
-                                                        <td>Tờ</td>
-                                                        <td>Xưởng in Tam Tân</td>
-                                                        <td>125.000</td>
-                                                        <td>500.000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Tờ rơi thông tin chương trình đo loãng xương ( Mỗi nhà thuốc in 1 thiết kế riêng )</td>
-                                                        <td>2.000</td>
-                                                        <td>Tờ</td>
-                                                        <td>Xưởng in Tam Tân</td>
-                                                        <td>2.000</td>
-                                                        <td>4.000.000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" colspan="7" style="text-align: center;">Tổng (chưa VAT)</th>
-                                                        <td> 5.460.000 </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" colspan="7" style="text-align: center;">Tổng (có VAT)</th>
-                                                        <th>6.006.000</th>
-                                                    </tr>
+                                                    
                                                 </tbody>
+                                                <td class="row" style="border: none;">
+                                                    <div class="d-flex justify-content-start">
+                                                        <div role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                                    </div>
+                                                </td>
+                                                <tr>
+                                                    <th scope="row" colspan="7" style="text-align: center;">Tổng (chưa VAT)</th>
+                                                    <td><input type="text" placeholder="" class="form-control"></td>
+                                                    <th scope="col"></th>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" colspan="7" style="text-align: center;">Tổng (có VAT)</th>
+                                                    <th><input type="text" placeholder="" class="form-control"></th>
+                                                    <th scope="col"></th>
+                                                </tr>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="mb-3 col-12">
-                                        <div class="card_template-title">File đính kèm:</div>
-                                        <ul class="card_template-list">
-                                            <li class="card_template-items">
-                                                <a href="#" target="_blank">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
-                                            </li>
-                                            <li class="card_template-items">
-                                                <a href="#" target="_blank">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
-                                            </li>
-                                            <li class="card_template-items">
-                                                <a href="#" target="_blank">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
-                                            </li>
-                                        </ul>
+
+                                    
+                                    <div class="col-md-12" >
+                                        <input type="file" style="padding:0" id="file-upload" name="files[]" multiple>
+                                        <div class="mt-3" id="file-upload-filenames"></div>
                                     </div>
-                                </div>
                             </div>
 
                             <div class="card_template-body-bottom">
                                 <div class="row">
                                     <div class="col">
                                         <div class="card_template-title text-center">Người yêu cầu</div>
-                                        <div class="" style="height: 100px"></div>
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                            <div class="">
+                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="card_template-title text-center">Trưởng bộ phận</div>
-                                        <div class="" style="height: 100px"></div>
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                            <div class="">
+                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="card_template-title text-center">BP Mua hàng</div>
-                                        <div class="" style="height: 100px"></div>
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                            <div class="">
+                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+
+                                            </div>
+                                        </div>
                                     </div>
                                     
                                     <div class="col">
                                         <div class="card_template-title text-center">Người thực hiện mua</div>
-                                        <div class="" style="height: 100px"></div>
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                            <div class="">
+                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="card_template-title text-center">Phê duyệt</div>
-                                        <div class="" style="height: 100px"></div>
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                            <div class="">
+                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -162,6 +162,10 @@
 
 @endsection
 @section('footer-script')
+
+    <!-- Plugins -->
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <script>
         const targetTable = $('#dsDaoTao').DataTable({
@@ -213,6 +217,30 @@
                 window.location.href = $(this).data('href');
             }
         });
+    </script>
+
+    <script>
+        let input = document.getElementById('file-upload');
+  let infoArea = document.getElementById('file-upload-filenames');
+
+  input.addEventListener('change', showFileNames);
+
+  function showFileNames(event) {
+    // Lấy input đang xử lý
+    let input = event.srcElement;
+    
+    // Lấy danh sách các file đã chọn
+    let files = input.files;
+    
+    // Hiển thị tên các file lên trên giao diện
+    for (let i = 0; i < files.length; i++) {
+      let fileName = files[i].name;
+      let div = document.createElement('div');
+      div.textContent = fileName;
+      infoArea.appendChild(div);
+    }
+  }
+
     </script>
 
     <script>
