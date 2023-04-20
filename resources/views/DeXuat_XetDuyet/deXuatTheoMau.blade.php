@@ -322,13 +322,13 @@
                                 </select>
                             </div>
                             <div class="col-6 mb-3">
-                                <input  name=""  type="text" placeholder="Tóm tắm"class="form-control">
+                                <input  name=""  type="text" placeholder="Tóm tắt"class="form-control">
                             </div>
                             <div class="col-12 mb-3">
                                 <select class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
-                                    <option value="ycms" data-target="#ycms-modal">Yêu cầu mua sắm</option>
-                                    <option value="dntt" data-target="#dntt-modal">Đề nghị thanh toán</option>
-                                    <option value="dntu2" data-target="#dntu-modal">BM01_Đề nghị tạm ứng 02</option>
+                                    <option value="ycms">Yêu cầu mua sắm</option>
+                                    <option value="dntt">Đề nghị thanh toán</option>
+                                    <option value="dntu2">Đề nghị tạm ứng</option>
                                 </select>
                             </div>
                             <div class="col-12 mb-3">
