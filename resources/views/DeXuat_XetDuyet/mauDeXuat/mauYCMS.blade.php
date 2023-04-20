@@ -32,32 +32,50 @@
                             <div class="card_template-body-middle">
                                
                                     <div class="col-md-12 mb-3">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered YCMS_repeater " >
+                                        <div class="table-responsive YCMS_repeater">
+                                            <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col" style="width: 20px; text-align: center;">STT</th>
-                                                        <th scope="col" style="text-align: center;">Tên, chủng loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
-                                                        <th scope="col" style="text-align: center;">Số lượng</th>
-                                                        <th scope="col" style="text-align: center;">ĐVT</th>
-                                                        <th scope="col" style="text-align: center;">MĐ sử dụng & T.gian hoàn thành</th>
-                                                        <th scope="col" style="text-align: center;">NCC tốt nhất (Tên, sđt, đc)</th>
-                                                        <th scope="col" style="text-align: center;">Đơn giá (VNĐ)</th>
-                                                        <th scope="col" style="text-align: center;">Tổng tiền (VNĐ)</th>
-                                                        <th scope="col"></th>
+                                                        <th scope="col" class="text-center" style="width:3%">STT</th>
+                                                        <th scope="col" class="text-center">Tên, chủng loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
+                                                        <th scope="col" class="text-center">Số lượng</th>
+                                                        <th scope="col" class="text-center">ĐVT</th>
+                                                        <th scope="col" class="text-center">MĐ sử dụng & T.gian hoàn thành</th>
+                                                        <th scope="col" class="text-center">NCC tốt nhất (Tên, sđt, đc)</th>
+                                                        <th scope="col" class="text-center">Đơn giá (VNĐ)</th>
+                                                        <th scope="col" class="text-center">Tổng tiền (VNĐ)</th>
+                                                        <th scope="col" style="width:3%"></th>
                                                         
                                                     </tr>
                                                 </thead>
                                                 <tbody data-repeater-list="YCMS_list">
                                                     <tr data-repeater-item>
-                                                        <td><input type="text" placeholder="" class="form-control"></td>
-                                                        <td><input type="text" placeholder="Tên, chủng loại" class="form-control"></td>
-                                                        <td><input type="text" placeholder="Số lượng" class="form-control"></td>
-                                                        <td><input type="text" placeholder="ĐVT" class="form-control"></td>
-                                                        <td><input type="text" placeholder="Mục đích" class="form-control"></td>
-                                                        <td><input type="text" placeholder="NCC" class="form-control"></td>
-                                                        <td><input type="text" placeholder="Đơn giá" style="text-align: right;" class="form-control"></td>
-                                                        <td><input type="text" placeholder="" style="text-align: right;"  class="form-control"></td>
+                                                        <td scope="row" class="text-center">
+                                                            <div>
+                                                                1
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" placeholder="Tên, chủng loại" class="form-control">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" placeholder="Số lượng" class="form-control">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" placeholder="ĐVT" class="form-control">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" placeholder="Mục đích" class="form-control">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" placeholder="NCC" class="form-control">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" placeholder="Đơn giá" style="text-align: right;" class="form-control">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" placeholder="" style="text-align: right;"  class="form-control">
+                                                        </td>
                                                         <td>
                                                             <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
                                                         </td>
@@ -70,24 +88,73 @@
                                                     </div>
                                                 </td>
                                                 <tr>
-                                                    <th scope="row" colspan="7" style="text-align: center;">Tổng (chưa VAT)</th>
-                                                    <td><input type="text" placeholder="" class="form-control"></td>
-                                                    <th scope="col"></th>
+                                                    <td colspan="7" class="text-center fw-bold">Tổng (chưa VAT)</td>
+                                                    <td colspan="2">
+                                                        <div>
+                                                            <input type="text" placeholder="" class="form-control">
+                                                        </div>
+                                                    </td>
 
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" colspan="7" style="text-align: center;">Tổng (có VAT)</th>
-                                                    <th><input type="text" placeholder="" class="form-control"></th>
-                                                    <th scope="col"></th>
+                                                    <td colspan="7" class="text-center fw-bold">Tổng (có VAT)</td>
+                                                    <td colspan="2">
+                                                        <div>
+                                                            <input type="text" placeholder="" class="form-control">
+                                                        </div>
+                                                    </td>
+
                                                 </tr>
                                             </table>
+                                            
                                         </div>
                                     </div>
 
                                     
-                                    <div class="col-md-12" >
-                                        <input type="file" style="padding:0" id="file-upload" name="files[]" multiple>
-                                        <div class="mt-3" id="file-upload-filenames"></div>
+                                    <div class="col-md-12 margin-t-res mt-3">
+                                        <div class="action_wrapper-upload rounded border p-3 h-30  d-flex flex-column">
+                                            <div class="card-title mb-3">
+                                                <i class="bi bi-paperclip"></i>
+                                                File đính kèm
+                                            </div>
+                                            <form action="" method="POST" enctype="multipart/form-data">
+                                                @method('PUT')
+                                                @csrf
+                                                <div class="upload_wrapper-items">
+                                                    <input type="hidden" name="uploadedFiles[]" value="" />
+                                                    
+                                                    <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;"></ul>
+                                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                                        File bạn tải lên hiện tại không hỗ trợ !
+                                                    </div>
+                                                        <div class="modal_upload-wrapper">
+                                                            <label class="modal_upload-label" for="file">
+                                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
+                                                                dạng
+                                                                JPG,
+                                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
+                                                                thước tệp không quá 10MB
+                                                            </div>
+                                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                                <div class="modal_upload-addFile me-3">
+                                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                        Tải file lên
+                                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                                    </button>
+                                                                </div>
+            
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-end">
+                                                        <button type="submit" class="btn btn-outline-danger">Tải
+                                                            file
+                                                        </button>
+                                                    </div>
+                                            </form>
+                                        </div>
                                     </div>
                             </div>
 
@@ -97,7 +164,7 @@
                                         <div class="card_template-title text-center">Người yêu cầu</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -106,7 +173,7 @@
                                         <div class="card_template-title text-center">Trưởng bộ phận</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -115,7 +182,7 @@
                                         <div class="card_template-title text-center">BP Mua hàng</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -125,7 +192,7 @@
                                         <div class="card_template-title text-center">Người thực hiện mua</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -134,7 +201,7 @@
                                         <div class="card_template-title text-center">Phê duyệt</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>

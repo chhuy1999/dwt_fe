@@ -150,7 +150,18 @@ $(function () {
     $(document).ready(function () {
         $('.YCMS_repeater').repeater({
             show: function () {
-                $(this).slideDown();
+                // Find the highest STT value among existing rows
+                var sttValues = $(this).closest('.YCMS_repeater').find('[scope="row"]').map(function () {
+                    return parseInt($(this).text());
+                }).get();
+                var maxStt = Math.max.apply(null, sttValues);
+    
+                // Set the new STT value to the next number
+                var sttColumn = $(this).find('[scope="row"]');
+                var sttValue = isNaN(maxStt) ? 1 : maxStt + 1;
+                sttColumn.text(sttValue);
+    
+                $(this).fadeIn();
             },
             hide: function (e) {
                 confirm('Bạn có chắc chắn muốn xóa phần tử này không?') && $(this).slideUp(e);
@@ -173,10 +184,21 @@ $(function () {
     $(document).ready(function () {
         $('.DNTU_repeater').repeater({
             show: function () {
-                $(this).slideDown();
+                // Find the highest STT value among existing rows
+                var sttValues = $(this).closest('.DNTU_repeater').find('[scope="row"]').map(function () {
+                    return parseInt($(this).text());
+                }).get();
+                var maxStt = Math.max.apply(null, sttValues);
+    
+                // Set the new STT value to the next number
+                var sttColumn = $(this).find('[scope="row"]');
+                var sttValue = isNaN(maxStt) ? 1 : maxStt + 1;
+                sttColumn.text(sttValue);
+    
+                $(this).fadeIn();
             },
             hide: function (e) {
-                confirm('Bạn có chắc chắn muốn xóa phần tử này không?') && $(this).slideUp(e);
+                confirm('Bạn có chắc chắn muốn xóa phần tử này không?') && $(this).fadeIn(e);
             },
             // hide: function (e) {
             //     $('#xoaThuocTinh').modal('show');
@@ -195,10 +217,21 @@ $(function () {
     $(document).ready(function () {
         $('.DNTT_repeater').repeater({
             show: function () {
-                $(this).slideDown();
+                // Find the highest STT value among existing rows
+                var sttValues = $(this).closest('.DNTT_repeater').find('[scope="row"]').map(function () {
+                    return parseInt($(this).text());
+                }).get();
+                var maxStt = Math.max.apply(null, sttValues);
+    
+                // Set the new STT value to the next number
+                var sttColumn = $(this).find('[scope="row"]');
+                var sttValue = isNaN(maxStt) ? 1 : maxStt + 1;
+                sttColumn.text(sttValue);
+    
+                $(this).fadeIn();
             },
             hide: function (e) {
-                confirm('Bạn có chắc chắn muốn xóa phần tử này không?') && $(this).slideUp(e);
+                confirm('Bạn có chắc chắn muốn xóa phần tử này không?') && $(this).fadeIn(e);
             },
             // hide: function (e) {
             //     $('#xoaThuocTinh').modal('show');

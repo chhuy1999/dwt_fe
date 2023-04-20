@@ -1988,7 +1988,6 @@ ul.modal_upload-list li:last-child {
     border: none!important;
     box-shadow: none!important;
     border-bottom: 1px dashed #e6e6e6 !important;
-    padding: 0 10px;
 }
 
 .card_template-heading {
@@ -2032,6 +2031,7 @@ ul.modal_upload-list li:last-child {
 .card_template-mini.with_form { 
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .card_template-sub {
@@ -2040,6 +2040,9 @@ ul.modal_upload-list li:last-child {
     /* text-decoration: underline;
     text-decoration-style: dotted;
     text-underline-offset: 3px; */
+}
+.card_template-sub.with_input {
+    width: 100%;
 }
 
 .card_template-mini {
