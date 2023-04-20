@@ -143,7 +143,7 @@
             </a>
             <ul id="header_submenu">
                 <li class="header_submenu-items">
-                    <a href="su-co-phat-sinh" class="header_submenu-link">Sự cố phát sinh</a>
+                    <a href="/su-co-phat-sinh" class="header_submenu-link">Sự cố phát sinh</a>
                 </li>
                 <li class="header_submenu-items">
                     <a href="#" class="header_submenu-link">Phản ánh</a>
@@ -244,7 +244,7 @@
                     </ul>
                 </li>
                 <li class="header_submenu-items more position-relative">
-                    <a href="ho-so-nhan-vien"
+                    <a href="#"
                         class="header_submenu-link more_btn {{ request()->is('danh-sach-thanh-vien') ? 'active' : '' }}">
                         Hồ sơ nhân viên <i class="bi bi-chevron-right"></i>
                     </a>
@@ -261,7 +261,7 @@
                     </ul>
                 </li>
                 <li class="header_submenu-items">
-                    <a href="mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
+                    <a href="/mo-ta-cong-viec" class="header_submenu-link">Mô tả công việc</a>
                 </li>
                 <li class="header_submenu-items more position-relative">
                     <a href="#"
@@ -313,7 +313,7 @@
                 </li>
                 
                 <li class="header_submenu-items">
-                    <a href="" class="header_submenu-link">Cấu hình thông tin doanh nghiệp</a>
+                    <a href="#" class="header_submenu-link">Cấu hình thông tin doanh nghiệp</a>
                 </li>
 
                 <li class="header_submenu-items more position-relative">
