@@ -23,9 +23,9 @@
                                         <div class="card_template-heading-mini">Request for advance</div>
     
                                     </div>
-                                    <div class="col-2 card_template-topRight">
-                                            <div class="card_template-title fst-italic">Ngày đề nghị /<br> Request date:</div>
-                                            <div class="card_template-title fst-italic">18/04/2023</div>
+                                    <div class="col-2">
+                                        <div class="card_template-title fst-italic d-flex">Số/No: BM002.QT07/20</div>
+                                        <div class="card_template-title fst-italic">Ngày/Date: 18/04/2023</div>
                                     </div>
                                 </div>
                             </div>
@@ -121,48 +121,25 @@
                                         </ul>
                                     </div> --}}
 
-                                    <div class="col-md-12 margin-t-res mt-3">
-                                        <div class="action_wrapper-upload rounded border p-3 h-30  d-flex flex-column">
-                                            <div class="card-title mb-3">
-                                                <i class="bi bi-paperclip"></i>
-                                                File đính kèm
-                                            </div>
+                                    <div class="col-md-5 mt-3 mb-3">
+                                        <div class="d-flex flex-column">
                                             <form action="" method="POST" enctype="multipart/form-data">
                                                 @method('PUT')
                                                 @csrf
                                                 <div class="upload_wrapper-items">
                                                     <input type="hidden" name="uploadedFiles[]" value="" />
-                                                    
+                                                    <button role="button" type="button" class="btn position-relative border d-flex">
+                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                        <span class="ps-2">Chọn file đính kèm</span>
+                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                    </button>
                                                     <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;"></ul>
-                                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
-                                                        File bạn tải lên hiện tại không hỗ trợ !
-                                                    </div>
-                                                        <div class="modal_upload-wrapper">
-                                                            <label class="modal_upload-label" for="file">
-                                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
-                                                                dạng
-                                                                JPG,
-                                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                                thước tệp không quá 10MB
-                                                            </div>
-                                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                                <div class="modal_upload-addFile me-3">
-                                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                                        Tải file lên
-                                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
-                                                                    </button>
-                                                                </div>
-            
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center justify-content-end">
+                                                    {{-- <div class="d-flex align-items-center justify-content-end">
                                                         <button type="submit" class="btn btn-outline-danger">Tải
                                                             file
                                                         </button>
-                                                    </div>
+                                                    </div> --}}
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -173,57 +150,47 @@
                             <div class="card_template-body-bottom">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="card_template-title text-center mb-3">Người ĐNTU<br>Applicant</div>
+                                        <div class="card_template-title text-center mb-3">Người đề nghị tam ứng</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center mb-3">Phụ trách bộ phận<br>Head of Department</div>
+                                        <div class="card_template-title text-center mb-3">Phụ trách bộ phận</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center mb-3">Kế toán TT<br>Payment Accountant</div>
+                                        <div class="card_template-title text-center mb-3">Kế toán thanh toán</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center mb-3">Kế toán trưởng<br>Chief Accountant</div>
+                                        <div class="card_template-title text-center mb-3">Kế toán trưởng</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center mb-3">Phê duyệt<br>Approved by</div>
+                                        <div class="card_template-title text-center mb-3">Phê duyệt</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="card_template-footer">
-                            <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
-                            <form action="" method="POST">
-                                @csrf
-                                {{-- @method('PUT') --}}
-                                <input type="hidden" name="status" value="1">
-                                <button type="submit" class="btn btn-danger ps-5 pe-5">Gửi</button>
-                            </form>
                         </div>
                     </div>
 
@@ -269,12 +236,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" style="width:2%">STT</th>
-                                                    <th scope="col" style="width:10%">Số chứng từ</th>
-                                                    <th scope="col" style="width:40%">Nội dung</th>
-                                                    <th scope="col" style="width:10%">Số tiền</th>
-                                                    <th scope="col" style="width:36%">Ghi chú</th>
-                                                    <th scope="col" style="width:2%">
+                                                    <th scope="col" class="text-center" style="width:2%">STT</th>
+                                                    <th scope="col" class="text-center" style="width:10%">Số chứng từ</th>
+                                                    <th scope="col" class="text-center" style="width:40%">Nội dung</th>
+                                                    <th scope="col" class="text-center" style="width:10%">Số tiền</th>
+                                                    <th scope="col" class="text-center" style="width:36%">Ghi chú</th>
+                                                    <th scope="col" class="text-center" style="width:2%">
                                                         <span></span>
                                                     </th>
                                                 </tr>
@@ -298,7 +265,7 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" placeholder="25,000,000" class="form-control">
+                                                            <input type="text" placeholder="25,000,000" class="form-control text-end">
                                                         </div>
                                                     </td>
                                                     <td>
@@ -326,9 +293,9 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="card_template-title mb-3">Người đề nghị</div>
-                                        <div class=" d-flex align-items-center justify-content-start" style="height: 100px; ">
+                                        <div class=" d-flex align-items-center justify-content-end" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>

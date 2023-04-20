@@ -301,7 +301,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <select name="" class="selectpicker" title="Chọn người gửi" data-size="5">
+                                <select name="" class="selectpicker" title="Chọn người gửi" data-size="5" data-live-search="true">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -313,7 +313,7 @@
                                 <input  name="" type="text" placeholder="Tiêu đề" class="form-control">
                             </div>
                             <div class="col-6 mb-3">
-                                <select name="" class="selectpicker" title="Chọn người nhận" data-size="5">
+                                <select name="" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>

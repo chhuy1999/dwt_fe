@@ -111,48 +111,25 @@
                                     </div>
 
                                     
-                                    <div class="col-md-12 margin-t-res mt-3">
-                                        <div class="action_wrapper-upload rounded border p-3 h-30  d-flex flex-column">
-                                            <div class="card-title mb-3">
-                                                <i class="bi bi-paperclip"></i>
-                                                File đính kèm
-                                            </div>
+                                    <div class="col-md-5 mt-3 mb-3">
+                                        <div class="d-flex flex-column">
                                             <form action="" method="POST" enctype="multipart/form-data">
                                                 @method('PUT')
                                                 @csrf
                                                 <div class="upload_wrapper-items">
                                                     <input type="hidden" name="uploadedFiles[]" value="" />
-                                                    
+                                                    <button role="button" type="button" class="btn position-relative border d-flex">
+                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                        <span class="ps-2">Chọn file đính kèm</span>
+                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                    </button>
                                                     <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;"></ul>
-                                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
-                                                        File bạn tải lên hiện tại không hỗ trợ !
-                                                    </div>
-                                                        <div class="modal_upload-wrapper">
-                                                            <label class="modal_upload-label" for="file">
-                                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
-                                                                dạng
-                                                                JPG,
-                                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                                thước tệp không quá 10MB
-                                                            </div>
-                                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                                <div class="modal_upload-addFile me-3">
-                                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                                        Tải file lên
-                                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
-                                                                    </button>
-                                                                </div>
-            
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center justify-content-end">
+                                                    {{-- <div class="d-flex align-items-center justify-content-end">
                                                         <button type="submit" class="btn btn-outline-danger">Tải
                                                             file
                                                         </button>
-                                                    </div>
+                                                    </div> --}}
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
