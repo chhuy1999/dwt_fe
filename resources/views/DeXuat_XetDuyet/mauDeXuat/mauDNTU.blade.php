@@ -164,7 +164,9 @@
                                     <div class="mb-3 col-6">
                                         <div class="card_template-title">
                                             Người đề nghị/Requester:
-                                            <span class="card_template-sub">{{ Session::get('user')['name'] }}</span>
+                                            <span class="card_template-sub">
+                                                <input>{{ Session::get('user')['name'] }}
+                                            </span>
                                         </div> 
                                     </div>
                                     <div class="mb-3 col-6">
@@ -242,6 +244,10 @@
 
 @endsection
 @section('footer-script')
+
+    <!-- Plugins -->
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <script>
         const targetTable = $('#dsDaoTao').DataTable({

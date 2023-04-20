@@ -281,7 +281,7 @@
     </div>
     @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
 
-    <!-- Modal Thêm DS biên bản -->
+    <!-- Modal Thêm Tao De Xuat -->
     <div class="modal fade" id="taoDeXuat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -293,18 +293,45 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-6 mb-3">
+                                <select name="" class="selectpicker" title="Chọn người gửi" data-size="5">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <input  name="" type="text" placeholder="Tiêu đề" class="form-control">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <select name="" class="selectpicker" title="Chọn người nhận" data-size="5">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <input  name=""  type="text" placeholder="Tóm tắm"class="form-control">
+                            </div>
+                            <div class="col-12 mb-3">
                                 <select class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
                                     <option value="ycms" data-target="#ycms-modal">Yêu cầu mua sắm</option>
                                     <option value="dntt" data-target="#dntt-modal">Đề nghị thanh toán</option>
                                     <option value="dntu2" data-target="#dntu-modal">BM01_Đề nghị tạm ứng 02</option>
                                 </select>
                             </div>
+                            <div class="col-12 mb-3">
+                                <div>Mã VB: {{ time() }}</div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                        <button type="submit" class="btn btn-danger">Gửi</button>
+                        <button type="submit" class="btn btn-danger">Tạo</button>
                     </div>
                 </form>
             </div>

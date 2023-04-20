@@ -32,49 +32,66 @@
                             <div class="card_template-body-middle">
                                 <div class="row">
                                     <div class="mb-3 col-6">
-                                        <div class="card_template-title">
+                                        <div class="card_template-title with_form">
                                             Người đề nghị/Requester:
-                                            <span class="card_template-sub">{{ Session::get('user')['name'] }}</span>
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="{{ Session::get('user')['name'] }}" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <div class="card_template-title">
+                                        <div class="card_template-title with_form">
                                             Bộ phận/Department:
-                                            <span class="card_template-sub">Marketing</span>
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="Marketing" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
                                     <div class="mb-3 col-12">
-                                        <div class="card_template-title">
-                                            Nội dung thanh toán/Contents of payment:
-                                            <span class="card_template-sub">Thanh toán Thỏa thuận Hợp tác</span>
+                                        <div class="card_template-title with_form">
+                                            Nội dung thanh toán/Contents of payment:    
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="Nhập nội dung thanh toán" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
                                     <div class="mb-3 col-12">
-                                        <div class="card_template-title">
+                                        <div class="card_template-title with_form">
                                             Số tiền/Amount
-                                            <span class="card_template-sub">50,000,000 VNĐ</span>
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="Nhập số tiền" class="form-control">
+                                            </span>
                                         </div> 
-                                        <div class="card_template-mini">(Bằng chữ/In words:Năm mươi triệu đồng chẵn)</div>
+                                        <div class="card_template-mini with_form">
+                                            <input type="text" placeholder="Nhập số tiền ghi bằng chữ" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="mb-3 col-12">
-                                        <div class="card_template-title">
+                                        <div class="card_template-title with_form">
                                             Người nhận tiền/Reciver:
-                                            <span class="card_template-sub">{{ Session::get('user')['name'] }}</span>
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="{{ Session::get('user')['name'] }}" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <div class="card_template-title">
+                                        <div class="card_template-title  with_form">
                                             Số tài khoản/Account number:
-                                            <span class="card_template-sub">069 7040 6868 6666</span>
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="Nhập số tài khoản" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <div class="card_template-title">
+                                        <div class="card_template-title  with_form">
                                             Tại ngân hàng/with bank:
-                                            <span class="card_template-sub">TMCP Quốc Tế Việt Nam - CN Cầu Giấy</span>
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="Nhập chi nhánh ngân hàng" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
-                                    <div class="mb-3 col-12">
+
+                                    {{-- <div class="mb-3 col-12">
                                         <div class="card_template-title">File đính kèm:</div>
                                         <ul class="card_template-list">
                                             <li class="card_template-items">
@@ -87,7 +104,55 @@
                                                 <a href="#" target="_blank">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
                                             </li>
                                         </ul>
+                                    </div> --}}
+
+                                    <div class="col-md-12 margin-t-res mt-3">
+                                        <div class="action_wrapper-upload rounded border p-3 h-30  d-flex flex-column">
+                                            <div class="card-title mb-3">
+                                                <i class="bi bi-paperclip"></i>
+                                                File đính kèm
+                                            </div>
+                                            <form action="" method="POST" enctype="multipart/form-data">
+                                                @method('PUT')
+                                                @csrf
+                                                <div class="upload_wrapper-items">
+                                                    <input type="hidden" name="uploadedFiles[]" value="" />
+                                                    
+                                                    <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;"></ul>
+                                                    <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
+                                                        File bạn tải lên hiện tại không hỗ trợ !
+                                                    </div>
+                                                        <div class="modal_upload-wrapper">
+                                                            <label class="modal_upload-label" for="file">
+                                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
+                                                                dạng
+                                                                JPG,
+                                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
+                                                                thước tệp không quá 10MB
+                                                            </div>
+                                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                                <div class="modal_upload-addFile me-3">
+                                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                        Tải file lên
+                                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                                    </button>
+                                                                </div>
+            
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-end">
+                                                        <button type="submit" class="btn btn-outline-danger">Tải
+                                                            file
+                                                        </button>
+                                                    </div>
+                                            </form>
+                                        </div>
                                     </div>
+
+
                                 </div>
                             </div>
 
@@ -148,20 +213,24 @@
                             <div class="card_template-body-middle">
                                 <div class="row">
                                     <div class="mb-3 col-6">
-                                        <div class="card_template-title">
+                                        <div class="card_template-title with_form">
                                             Người đề nghị/Requester:
-                                            <span class="card_template-sub">{{ Session::get('user')['name'] }}</span>
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="{{ Session::get('user')['name'] }}" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <div class="card_template-title">
+                                        <div class="card_template-title with_form">
                                             Công việc:
-                                            <span class="card_template-sub">Chạy quảng cáo</span>
+                                            <span class="card_template-sub">
+                                                <input type="text" placeholder="Chạy quảng cáo" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
                                     
                                     <div class="table-responsive">
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered DNTT_repeater">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
@@ -171,28 +240,20 @@
                                                     <th scope="col">Ghi chú</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
+                                            <tbody data-repeater-list="DNTT_list">
+                                                <tr data-repeater-item>
                                                     <th scope="row">1</th>
                                                     <td></td>
                                                     <td>Google Ads</td>
                                                     <td>25,000,000</td>
                                                     <th scope="col"></th>
                                                 </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td></td>
-                                                    <td>Facebook Ads</td>
-                                                    <td>25,000,000</td>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th colspan="3" style="text-align: center;">Tổng</th>
-                                                    <td>50,000,000</td>
-                                                    <th scope="col"></th>
-            
-                                                </tr>
                                             </tbody>
+                                            <td class="row mt-3">
+                                                <div class="d-flex justify-content-start">
+                                                    <div role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                                </div>
+                                            </td>
                                         </table>
                                     </div>
                                 </div>
@@ -228,6 +289,10 @@
 
 @endsection
 @section('footer-script')
+    
+    <!-- Plugins -->
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
     <script>
         const targetTable = $('#dsDaoTao').DataTable({

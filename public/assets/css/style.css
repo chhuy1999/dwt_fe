@@ -1984,6 +1984,14 @@ ul.modal_upload-list li:last-child {
     margin: 1.5cm 1.5cm 1.5cm 2cm;
 }
 
+.card_template-wrapper input,
+.card_template-wrapper input:focus {
+    border: none!important;
+    box-shadow: none!important;
+    border-bottom: 1px dashed #e6e6e6 !important;
+    padding: 0 10px;
+}
+
 .card_template-heading {
     font-size: var(--fz-20);
     font-weight: bold;
@@ -2020,12 +2028,19 @@ ul.modal_upload-list li:last-child {
     font-size: var(--fz-12);
     font-weight: 500;
 }
+
+.card_template-title.with_form,
+.card_template-mini.with_form { 
+    display: flex;
+    align-items: center;
+}
+
 .card_template-sub {
     font-size: var(--fz-12);
     font-weight: 400;
-    text-decoration: underline;
+    /* text-decoration: underline;
     text-decoration-style: dotted;
-    text-underline-offset: 2px;
+    text-underline-offset: 3px; */
 }
 
 .card_template-mini {
