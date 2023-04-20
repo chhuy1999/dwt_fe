@@ -48,6 +48,7 @@
                                             <div class="signature_wrapper">
                                                 <img class="signature_img" style="height:200px;width:100%" src="{{ $user->signature ?? asset('assets/img/noSignature.jpg') }}" />
                                             </div>
+
                                             <div class="signature_actions">
                                                 <button role="button" class="btn btn-outline-danger" id="clearSignatureButton">Xóa chữ ký</button>
                                                 <button role="button" class="btn btn-outline-warning" id="editSignatureButton">Sửa chữ ký</button>
