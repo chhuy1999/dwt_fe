@@ -130,7 +130,7 @@
                                             <div class="mb-3 col-6">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Mật khẩu</label>
-                                                    <input type="password" id="bd" readonly value="*********" class="form-control">
+                                                    <input type="password" id="bd" readonly value="lilhuydzvcl" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -301,7 +301,7 @@
                             <input type="text" readonly value="bmtkt1@dopperherz.vn" class="form-control">
                         </div>
                         <div class="mb-3 col-6">
-                            <input type="text" readonly value="**********" class="form-control">
+                            <input type="text" readonly value="khongphaimatkhaudau" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -355,11 +355,7 @@
 
             try {
                 saveSignatureButton.disabled = true;
-                var signatureData = signaturePad.toDataURL({
-                    minWidth: 0.1,
-                    maxWidth: 2,
-                    throttle: 16
-                });
+                var signatureData = signaturePad.toDataURL('image/png', 1);
 
                 // Update the src of the signature image
                 var signatureImg = document.querySelector('.signature_img');
