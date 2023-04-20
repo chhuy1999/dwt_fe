@@ -45,16 +45,26 @@
                                                 class="information_avatar-img">
                                         </div>
                                         <div class="card-title text-center pt-3 pb-3">{{$user->name}} - {{$user->code}}</div>
-                                        <div class="information_signature-wrapper">
-                                            <div class="signature_wrapper">
-                                                <img class="signature_img" style="height:200px;width:100%"
-                                                    src="{{ asset('assets/img/noSignature.jpg') }}" />
+                                        <div class="information_signature-wrapper signature_wrapper">
+                                            <div class="d-flex justify-content-end">
+                                                <div class="signature-buttons">
+                                                  <div role="button" class="btn btn-outline-danger" id="clearSignatureButton">
+                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                  </div>
+                                                  <div role="button" class="btn btn-outline-warning" id="editSignatureButton">
+                                                    <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                  </div>
+                                                </div>
                                             </div>
+
+                                            <div class="">
+                                                <div class="signature_img text-light" style="font-size:150px">
+                                                    <i class="bi bi-plus-circle"></i>
+                                                </div>
+                                            </div>
+
                                             <div class="signature_actions">
-                                                <button role="button" class="btn btn-outline-danger"
-                                                    id="clearSignatureButton">Xóa chữ ký</button>
-                                                <button role="button" class="btn btn-outline-warning"
-                                                    id="editSignatureButton">Sửa chữ ký</button>
+                                                
                                                 <button role="button" class="btn btn-danger" data-bs-toggle="modal"
                                                     data-bs-target="#signatureModal">Tạo chữ ký</button>
                                             </div>
@@ -386,7 +396,7 @@
 
             // Update the src of the signature image
             var signatureImg = document.querySelector('.signature_img');
-            signatureImg.src = signatureData;
+            signatureImg = signatureData;
 
             // Hide the signature pad modal
             var signatureModal = document.getElementById('signatureModal');
