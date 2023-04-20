@@ -168,7 +168,6 @@ class UsersController extends Controller
     {
         try {
             $id = session('user')["id"];
-
             $user = $this->dwtService->getUserDetail($id);
             // $listDepartments = $this->dwtService->listDepartments();
             // $listPositions = $this->dwtService->listPositions();
