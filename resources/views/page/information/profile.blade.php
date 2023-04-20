@@ -162,48 +162,41 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="mb-3 col-4">
-                                <div class="mb-3">
                                     <label for="name" class="form-label fs-5">Họ và tên</label>
                                     <input type="text" id="name" value="{{ $user->name }} - {{ $user->code }}" class="form-control">
-                                </div>
                             </div>
                             <div class="mb-3 col-4">
-                                <div class="mb-3">
                                     <label for="sex" class="form-label fs-5">Giới tính</label>
                                     <input type="text" id="sex" value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
+                            </div>
+                            <div class="mb-3 col-4">
+                                <label for="bd" class="form-label fs-5">Ngày sinh</label>
+                                <div class="position-relative">
+                                    <input type="text" id="bd" value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control datePicker">
+                                    <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                             </div>
                             <div class="mb-3 col-4">
-                                <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                    <input type="text" id="bd" value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
-                                </div>
-                            </div>
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Số điện thoại liên
                                         hệ</label>
                                     <input type="text" id="bd" value="0123456" class="form-control">
-                                </div>
                             </div>
 
                             <div class="mb-3 col-4">
-                                <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
-                                    <input type="text" id="bd" value="Phòng Marketing" class="form-control">
-                                </div>
+                                    <label for="deps" class="form-label fs-5">Đơn vị công tác</label>
+                                    <select name="" id="deps" class="selectpicker" title="Đơn vị công tác" data-size="5" data-live-search="true">
+                                        <option valaue="">1</option>
+                                    </select>
                             </div>
                             <div class="mb-3 col-4">
-                                <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
-                                    <input type="text" id="bd" value="Trợ lý Marketing" class="form-control">
-                                </div>
+                                    <label for="pos" class="form-label fs-5">Vị trí làm việc</label>
+                                    <select name="" id="pos" class="selectpicker" title="Vị trí làm việc" data-size="5" data-live-search="true">
+                                        <option valaue="">1</option>
+                                    </select>
                             </div>
                             <div class="mb-3 col-12">
-                                <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Địa chỉ</label>
                                     <input type="text" id="bd" value="Khu 3 phú thọ" class="form-control">
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -485,6 +478,15 @@
             signaturePad.clear();
         });
     </script>'
-
-
+    <script>
+        $(document).ready(function() {
+            $('.datePicker').daterangepicker({
+                singleDatePicker: true,
+                timePicker: false,
+                locale: {
+                    format: 'DD/MM/YYYY '
+                }
+            });
+        });
+    </script>
 @endsection
