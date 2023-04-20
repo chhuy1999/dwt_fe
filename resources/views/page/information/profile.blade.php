@@ -342,13 +342,19 @@
     <script>
         // Initialize the signature pad
         var canvas = document.getElementById('signatureCanvas');
+        canvas.width = 400;
+        canvas.height = 300;
         var signaturePad = new SignaturePad(canvas);
 
+        //resize canvas
+
+        const saveSignatureButton = document.getElementById('saveSignatureButton');
         // Save the signature to a variable when the user clicks the save button
-        document.getElementById('saveSignatureButton').addEventListener('click', async function(e) {
+        saveSignatureButton.addEventListener('click', async function(e) {
             // Get the data URL of the signature image (with a low resolution)
-      
+
             try {
+                saveSignatureButton.disabled = true;
                 var signatureData = signaturePad.toDataURL({
                     minWidth: 0.1,
                     maxWidth: 2,
@@ -366,6 +372,7 @@
                 });
                 // console.log(signatureFile);
                 //upload signature to server
+
                 const apiUrl = "https://report.sweetsica.com/api/report/upload"
                 const formData = new FormData();
                 formData.append('files', signatureFile);
@@ -423,11 +430,13 @@
 
                 }).showToast();
             } finally {
+                saveSignatureButton.disabled = false;
                 // Hide the signature pad modal
                 var signatureModal = document.getElementById('signatureModal');
                 var modalInstance = bootstrap.Modal.getInstance(signatureModal);
                 modalInstance.hide();
                 canvas.clear();
+
 
             }
         });
@@ -479,6 +488,7 @@
             var signaturePad = new SignaturePad(canvas);
             signaturePad.clear();
         });
-    </script>
+    </script>'
+
 
 @endsection
