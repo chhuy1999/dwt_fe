@@ -177,7 +177,6 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 });
 
 // Danh sách Đề xuất
-
 Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->group(function () {
     Route::get('danh-sach-de-xuat', [ListProposeController::class, 'index'])->name('listPropose.list');
     Route::post('danh-sach-de-xuat', [ListProposeController::class, 'store'])->name('listPropose.store');
@@ -185,16 +184,17 @@ Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->
     Route::delete('danh-sach-de-xuat/{id}', [ListProposeController::class, 'delete'])->name('listPropose.delete');
 });
 
+
 Route::get('de-xuat-theo-mau', function () { return view('DeXuat_XetDuyet.deXuatTheoMau'); })->middleware('auth.role:manager,admin,user');
-
-// Form yêu cầu mua sắm
-Route::get('form-yeu-cau-mua-sam', function () {
-    return view('DeXuat_XetDuyet.formYeuCauMuaSam');
+// Form danh sách đề nghị
+Route::get('mau-yeu-cau-mua-sam', function () {
+    return view('DeXuat_XetDuyet.mauDeXuat.mauYCMS');
 })->middleware('auth.role:manager,admin,user');
-
-// Form đề nghị thanh toán
-Route::get('form-de-nghi-thanh-toan', function () {
-    return view('DeXuat_XetDuyet.formDeNghiThanhToan');
+Route::get('mau-de-nghi-tam-ung', function () {
+    return view('DeXuat_XetDuyet.mauDeXuat.mauDNTU');
+})->middleware('auth.role:manager,admin,user');
+Route::get('mau-de-nghi-thanh-toan', function () {
+    return view('DeXuat_XetDuyet.mauDeXuat.mauDNTT');
 })->middleware('auth.role:manager,admin,user');
 
 
