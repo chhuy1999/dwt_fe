@@ -197,6 +197,17 @@ Route::get('de-nghi-thanh-toan', function () {
     return view('DeXuat_XetDuyet.mauDeXuat.mauDNTT');
 })->middleware('auth.role:manager,admin,user');
 
+// View
+Route::get('xem/yeu-cau-mua-sam/id', function () {
+    return view('DeXuat_XetDuyet.viewConfirm.mauYCMS');
+})->middleware('auth.role:manager,admin,user');
+Route::get('xem/de-nghi-tam-ung/id', function () {
+    return view('DeXuat_XetDuyet.viewConfirm.mauDNTU');
+})->middleware('auth.role:manager,admin,user');
+Route::get('xem/de-nghi-thanh-toan/id', function () {
+    return view('DeXuat_XetDuyet.viewConfirm.mauDNTT');
+})->middleware('auth.role:manager,admin,user');
+
 
 
 // Route::get('kho-luu-tru-bien-ban-hop', function () {

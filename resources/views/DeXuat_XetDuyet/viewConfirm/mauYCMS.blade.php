@@ -55,7 +55,7 @@
                                                         <th scope="col" class="text-center">NCC tốt nhất (Tên, sđt, đc)</th>
                                                         <th scope="col" class="text-center">Đơn giá (VNĐ)</th>
                                                         <th scope="col" class="text-center">Tổng tiền (VNĐ)</th>
-                                                        <th scope="col" style="width:3%"></th>
+                                                        {{-- <th scope="col" style="width:3%"></th> --}}
                                                         
                                                     </tr>
                                                 </thead>
@@ -67,42 +67,42 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="" class="form-control">
+                                                            <input type="text" value="Hàng thiết yesue" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="" class="form-control">
+                                                            <input type="text" value="2" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="" class="form-control">
+                                                            <input type="text" value="Cái" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="" class="form-control">
+                                                            <input type="text" value="22" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder=""class="form-control">
+                                                            <input type="text" value="Nhà cung cấp mẫu"class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder=""style="text-align: right;" class="form-control">
+                                                            <input type="text" value="10.000.000"style="text-align: right;" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder=""style="text-align: right;"  class="form-control">
+                                                            <input type="text" value="20.000.000"style="text-align: right;"  class="form-control">
                                                         </td>
-                                                        <td>
+                                                        {{-- <td>
                                                             <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
-                                                        </td>
+                                                        </td> --}}
                                                     </tr>
                                                     
                                                 </tbody>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td colspan="9">
                                                         <span role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></span>
                                                     </td>
-                                                </td>
+                                                </td> --}}
                                                 <tr>
                                                     <td colspan="7" class="text-center fw-bold">Tổng (chưa VAT)</td>
                                                     <td colspan="2">
                                                         <div>
-                                                            <input type="text" placeholder="" class="form-control">
+                                                            <input type="text" value="10.000.000" class="form-control">
                                                         </div>
                                                     </td>
 
@@ -111,7 +111,7 @@
                                                     <td colspan="7" class="text-center fw-bold">Tổng (có VAT)</td>
                                                     <td colspan="2">
                                                         <div>
-                                                            <input type="text" placeholder="" class="form-control">
+                                                            <input type="text" value="12.000.000" class="form-control">
                                                         </div>
                                                     </td>
 
@@ -205,10 +205,10 @@
                             </div>
                         </div>
 
-                        <div class="card_template-footer">
+                        {{-- <div class="card_template-footer">
                             <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
                             <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -235,7 +235,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Xem lại</button>
-                        <a href="/xem/yeu-cau-mua-sam/id" type="button" class="btn btn-danger">Gửi</a>
+                        <button type="button" class="btn btn-danger">Gửi</button>
                     </div>
                 </form>
             </div>

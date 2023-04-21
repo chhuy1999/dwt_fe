@@ -171,7 +171,7 @@
                                         <div class="card_template-title text-center mb-3">Người đề nghị tam ứng</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
@@ -179,7 +179,7 @@
                                         <div class="card_template-title text-center mb-3">Phụ trách bộ phận</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@
                                         <div class="card_template-title text-center mb-3">Kế toán thanh toán</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +195,7 @@
                                         <div class="card_template-title text-center mb-3">Kế toán trưởng</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
@@ -203,7 +203,7 @@
                                         <div class="card_template-title text-center mb-3">Phê duyệt</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
@@ -319,7 +319,7 @@
                                         <div class="card_template-title text-center">Người đề nghị</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -330,12 +330,7 @@
 
                         <div class="card_template-footer">
                             <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
-                            <form action="" method="POST">
-                                @csrf
-                                {{-- @method('PUT') --}}
-                                <input type="hidden" name="status" value="1">
-                                <button type="submit" class="btn btn-danger ps-5 pe-5">Gửi</button>
-                            </form>
+                            <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
                         </div>
                         
                     </div>
@@ -344,7 +339,67 @@
             @include('template.footer.footer')
         </div>
     </div>
-    @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
+    @include('template.sidebar.sidebarDeXuat.sidebarRight')
+
+    {{-- Modal Confirm --}}
+    <div class="modal fade" id="conFirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Xác nhận yêu cầu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="" action="" id="myForm">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div>Bạn đã chắc chắn với thông tin đề nghị chưa</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Xem lại</button>
+                        <a href="/xem/de-nghi-tam-ung/id" type="button" class="btn btn-danger">Gửi</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Sign --}}
+    <div class="modal fade" id="confirmSign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Ý kiến phản hồi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="" action="" id="myForm">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
+                                <div class="funkyradio-danger">
+                                    <input type="radio" name="radio" id="confirmRadio" />
+                                    <label for="confirmRadio">Xác nhận</label>
+                                </div>
+                                <div class="funkyradio-danger">
+                                    <input type="radio" name="radio" id="destroyRadio" />
+                                    <label for="destroyRadio">Từ chối</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 col-12 col-md-12">
+                                <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pe-5 ps-5">Ký</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection
 @section('footer-script')
