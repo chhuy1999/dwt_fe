@@ -1,6 +1,6 @@
 @extends('template.master')
 {{-- Trang chủ GIao Ban --}}
-@section('title', 'Mẫu yêu cầu mua sắm')
+@section('title', 'Mẫu đề nghị thanh toán')
 
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
@@ -8,19 +8,19 @@
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
-                    <div class="card_template-wrapper">
+                    <div class="card_template-wrapper mb-3">
                         <div class="card_template-body">
                             <div class="card_template-body-top">
-                                <div class='row mb-3 align-items-center'>
+                                <div class='row mb-3'>
                                     <div class="col-2 d-flex align-items-center justify-content-center flex-column">
                                         <a class=" ">
                                             <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
                                         </a>
-                                        <div class="card_template-title fst-italic">BM013.QT02/12</div>
+                                        <div class="card_template-title fst-italic">BM001.QT07/20</div>
                                     </div>
                                     <div class="col-8 d-flex align-items-center justify-content-center flex-column" >
-                                        <div class="card_template-heading">Yêu cầu mua sắm</div>
-                                        <div class="card_template-heading-mini">Purchasing requirement</div>
+                                        <div class="card_template-heading">Đề nghị thanh toán</div>
+                                        <div class="card_template-heading-mini">Request for payment</div>
                                         <div class="card_template-heading-mini">Mã: {{ time() }}</div>
     
                                     </div>
@@ -28,127 +28,89 @@
                                         <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Số/No:</div>
                                             <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control">
+                                                <input type="text" value="12345678" class="form-control">
                                             </div>
                                         </div>
                                         <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Ngày/Date:</div>
                                             <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control">
+                                                <input type="text" value="21/04/2023" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card_template-body-middle">
-                               
-                                    <div class="col-md-12 mb-3">
-                                        <div class="table-responsive YCMS_repeater">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col" class="text-center" style="width:3%">STT</th>
-                                                        <th scope="col" class="text-center">Tên, chủng loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
-                                                        <th scope="col" class="text-center">Số lượng</th>
-                                                        <th scope="col" class="text-center">ĐVT</th>
-                                                        <th scope="col" class="text-center">MĐ sử dụng & T.gian hoàn thành</th>
-                                                        <th scope="col" class="text-center">NCC tốt nhất (Tên, sđt, đc)</th>
-                                                        <th scope="col" class="text-center">Đơn giá (VNĐ)</th>
-                                                        <th scope="col" class="text-center">Tổng tiền (VNĐ)</th>
-                                                        <th scope="col" style="width:3%"></th>
-                                                        
-                                                    </tr>
-                                                </thead>
-                                                <tbody data-repeater-list="YCMS_list">
-                                                    <tr data-repeater-item>
-                                                        <td scope="row" class="text-center">
-                                                            <div>
-                                                                1
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" placeholder="" class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" placeholder="" class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" placeholder="" class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" placeholder="" class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" placeholder=""class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" placeholder=""style="text-align: right;" class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" placeholder=""style="text-align: right;"  class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                </tbody>
-                                                <tr>
-                                                    <td colspan="9">
-                                                        <span role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></span>
-                                                    </td>
-                                                </td>
-                                                <tr>
-                                                    <td colspan="7" class="text-center fw-bold">Tổng (chưa VAT)</td>
-                                                    <td colspan="2">
-                                                        <div>
-                                                            <input type="text" placeholder="" class="form-control">
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="7" class="text-center fw-bold">Tổng (có VAT)</td>
-                                                    <td colspan="2">
-                                                        <div>
-                                                            <input type="text" placeholder="" class="form-control">
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                            </table>
-                                            
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 col-12">
-                                        <div class="card_template-title  with_form">
-                                            <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
-                                            
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title with_form">
+                                            <div class="text-nowrap">Người đề nghị/Requester:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" value="Nguyễn Ngọc Bảo" class="form-control">
+                                            </span>
                                         </div> 
                                     </div>
-                                    <div class="col-md-5 mb-3">
-                                        <div class="d-flex flex-column">
-                                            <form action="" method="POST" enctype="multipart/form-data">
-                                                @method('PUT')
-                                                @csrf
-                                                <div class="upload_wrapper-items">
-                                                    <input type="hidden" name="uploadedFiles[]" value="" />
-                                                    <button role="button" type="button" class="btn position-relative border d-flex">
-                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                        <span class="ps-2">Chọn file đính kèm</span>
-                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)" />
-                                                    </button>
-                                                    <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;"></ul>
-                                                    {{-- <div class="d-flex align-items-center justify-content-end">
-                                                        <button type="submit" class="btn btn-outline-danger">Tải
-                                                            file
-                                                        </button>
-                                                    </div> --}}
-                                                </div>
-                                            </form>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title with_form">
+                                            <div class="text-nowrap">Bộ phận/Department:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" value="Phòng IT"class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title with_form">
+                                            <div class="text-nowrap">Nội dung thanh toán/Contents of payment:    </div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" value="Thanh toán hóa đơn" class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title with_form">
+                                            <div class="text-nowrap">Số tiền/Amount</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" value="1.000.000 VNĐ" class="form-control">
+                                            </span>
+                                        </div> 
+                                        <div class="card_template-mini with_form mt-3">
+                                            <input type="text" value="Một triệu việt nam đồng"class="form-control">
                                         </div>
                                     </div>
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title with_form">
+                                            <div class="text-nowrap">Người nhận tiền/Receiver:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" pvalue="Nguyễn Ngọc Bảo" class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title with_form">
+                                            <div class="text-nowrap">Hình thức thanh toán/Payment method:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" pvalue="Chuyển khoản" class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title  with_form">
+                                            <div class="text-nowrap">Số tài khoản/Account number:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" value="6287999999"class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title  with_form">
+                                            <div class="text-nowrap">Tại ngân hàng/with bank:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" value="Techcombank"class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+
+                                </div>
                             </div>
 
                             <div class="card_template-body-bottom">
@@ -158,7 +120,7 @@
                                         <div class="card_template-title text-center">Applicant</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
+                                                Nguyễn Ngọc Bảo
                                             </div>
                                         </div>
                                     </div>
@@ -174,18 +136,8 @@
                                     </div>
                                     
                                     <div class="col">
-                                        <div class="card_template-title text-center">Bộ phận mua hàng/</div>
-                                        <div class="card_template-title text-center">Purchasing Department</div>
-                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Người thực hiện mua/</div>
-                                        <div class="card_template-title text-center">Purchaser</div>
+                                        <div class="card_template-title text-center">Kế toán trưởng/</div>
+                                        <div class="card_template-title text-center">Chief Accountant</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
@@ -204,11 +156,125 @@
                                 </div>
                             </div>
                         </div>
+                        
+                    </div>
+                    
+                    <div class="card_template-wrapper mb-3">
+                        <div class="card_template-body">
+                            <div class="card_template-body-top">
+                                <div class='row mb-3'>
+                                    <div class="col-2 d-flex align-items-center justify-content-center flex-column">
+                                        <a class=" ">
+                                            <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
+                                        </a>
+                                        <div class="card_template-title fst-italic">BM003.QT07/20</div>
+                                    </div>
+                                    <div class="col-8 d-flex align-items-center justify-content-center flex-column" >
+                                        <div class="card_template-heading">Bảng kê đề nghị</div>
+                                        <div class="card_template-heading-mini">Mã: {{ time() }}-BK</div>
+                                    </div>
+                                    <div class="col-2 card_template-topRight">
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                            <div class="text-nowrap">Ngày/Date:</div>
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                <input type="text" value="21/04/2023" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card_template-body-middle">
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title with_form">
+                                             <div class="text-nowrap">Người đề nghị/Requester:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" value="Nguyễn Ngọc Bảo" class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <div class="card_template-title with_form">
+                                             <div class="text-nowrap">Công việc:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" value="IT"class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+                                    
+                                    <div class="table-responsive DNTT_repeater">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="text-center" style="width:2%">STT</th>
+                                                    <th scope="col" class="text-center" style="width:10%">Số chứng từ</th>
+                                                    <th scope="col" class="text-center" style="width:40%">Nội dung</th>
+                                                    <th scope="col" class="text-center" style="width:10%">Số tiền</th>
+                                                    <th scope="col" class="text-center" style="width:36%">Ghi chú</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody data-repeater-list="DNTT_list">
+                                                <tr data-repeater-item>
+                                                    <td scope="row"  class="text-center">
+                                                        <div>
+                                                            1
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" value="12346789" class="form-control">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" value="Cần thanh toán gấp" class="form-control">
+                                                        </div>
+                                                    </td>
+                                                    <td class="">
+                                                        <div>
+                                                            <input type="text" value="1.000.000 VNĐ"class="form-control text-end">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" value="Không có ghi chú"class="form-control">
+                                                        </div>
+                                                    </td>
+                                                    
+                                                </tr>
+                                            </tbody>
+                                               
+                                        </table>
+                                        {{-- <div class="d-flex justify-content-start">
+                                            <div role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_template-body-bottom">
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col">
+                                        <div class="card_template-title text-center">Người đề nghị</div>
+                                        <div class="card_template-title text-center">Applicant</div>
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                            <div class="">
+                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="card_template-footer">
                             <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
                             <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -216,6 +282,7 @@
         </div>
     </div>
     @include('template.sidebar.sidebarDeXuat.sidebarRight')
+
 
 
     {{-- Modal Confirm --}}
@@ -235,7 +302,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Xem lại</button>
-                        <a href="/xem/yeu-cau-mua-sam/id" type="button" class="btn btn-danger">Gửi</a>
+                        <button type="button" class="btn btn-danger">Gửi</button>
                     </div>
                 </form>
             </div>
@@ -266,7 +333,7 @@
                             </div>
 
                             <div class="mb-3 col-12 col-md-12">
-                                <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
+                                <textarea name="" id="" cols="5" class="form-control" value="Nhập ý kiến"></textarea>
                             </div>
                         </div>
                     </div>
@@ -277,10 +344,9 @@
             </div>
         </div>
     </div>
-
 @endsection
 @section('footer-script')
-
+    
     <!-- Plugins -->
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
@@ -377,7 +443,7 @@
                     next: '<i class="bi bi-caret-right-fill"></i>',
                 },
                 search: '',
-                searchPlaceholder: 'Tìm kiếm...',
+                searchvalue: 'Tìm kiếm...',
                 zeroRecords: 'Không tìm thấy kết quả',
             },
             oLanguage: {
@@ -410,30 +476,6 @@
                 window.location.href = $(this).data('href');
             }
         });
-    </script>
-
-    <script>
-        let input = document.getElementById('file-upload');
-  let infoArea = document.getElementById('file-upload-filenames');
-
-  input.addEventListener('change', showFileNames);
-
-  function showFileNames(event) {
-    // Lấy input đang xử lý
-    let input = event.srcElement;
-    
-    // Lấy danh sách các file đã chọn
-    let files = input.files;
-    
-    // Hiển thị tên các file lên trên giao diện
-    for (let i = 0; i < files.length; i++) {
-      let fileName = files[i].name;
-      let div = document.createElement('div');
-      div.textContent = fileName;
-      infoArea.appendChild(div);
-    }
-  }
-
     </script>
 
     <script>
