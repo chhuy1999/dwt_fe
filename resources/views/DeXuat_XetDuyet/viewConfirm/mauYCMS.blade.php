@@ -205,10 +205,10 @@
                             </div>
                         </div>
 
-                        <div class="card_template-footer">
+                        {{-- <div class="card_template-footer">
                             <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
                             <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
