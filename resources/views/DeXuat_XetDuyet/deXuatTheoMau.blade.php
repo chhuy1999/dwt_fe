@@ -4,16 +4,12 @@
 
 @php
     $lists = [
-        ['id' => '1','template_form' => 'Mẫu Form 1', 'code' => 'Đề xuất 1', 'status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '2','template_form' => 'Mẫu Form 2', 'code' => 'Đề xuất 2', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '3','template_form' => 'Mẫu Form 3', 'code' => 'Đề xuất 3', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '4','template_form' => 'Mẫu Form 4', 'code' => 'Đề xuất 4', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '5','template_form' => 'Mẫu Form 5', 'code' => 'Đề xuất 5', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '6','template_form' => 'Mẫu Form 6', 'code' => 'Đề xuất 6', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '7','template_form' => 'Mẫu Form 7', 'code' => 'Đề xuất 7', 'status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Lê Thị Thu Trang', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '8','template_form' => 'Mẫu Form 8', 'code' => 'Đề xuất 8', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Lê Thị Thu Trang', 'studentCode' => 'MTT271', 'THVP036'],
+        ['id' => '1', 'code' => '123456', 'title' => 'Đề xuất yêu cầu mua sắm máy tính', 'form' => 'Đề xuất yêu cầu mua sắm','status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Văn A', 'studentCode' => 'MTT271', 'THVP036'],
+        ['id' => '2', 'code' => '129371', 'title' => 'Đề nghị thanh toán phí dịch vụ toà nhà',   'form' => 'Đề nghị thanh toán', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Văn B', 'studentCode' => 'MTT271', 'THVP036'],
+        ['id' => '3', 'code' => '129761', 'title' => 'Đề nghị tạm ứng tiền chạy quảng cáo',   'form' => 'Đề nghị tạm ứng', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Đinh Văn C', 'studentCode' => 'MTT271', 'THVP036'],
+
     ];
-    $status = [['status_id' => '1', 'status' => 'Đã gửi'], ['status_id' => '2', 'status' => 'Đã duyệt'], ['status_id' => '3', 'status' => 'Từ chối']];
+    $status = [['status_id' => '1', 'status' => 'Đã tạo'], ['status_id' => '2', 'status' => 'Đã gửi'], ['status_id' => '3', 'status' => 'Đã mua']];
 @endphp
 @section('content')
     @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
@@ -22,7 +18,7 @@
             <div class="main">
                 <div class="container-fluid">
                     <div class="mainSection_heading">
-                        <h5 class="mainSection_heading-title">Danh sách đề nghị</h5>
+                        <h5 class="mainSection_heading-title">Danh sách đề xuất</h5>
                         @include('template.components.sectionCard')
                     </div>
 
@@ -38,240 +34,241 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center" style="width:2%">STT</th>
-                                                            <th class="text-nowrap" style="width:10%">Mẫu Form</th>
-                                                            <th class="text-nowrap" style="width:10%">Tiêu đề </th>
+                                                            <th class="text-nowrap" style="width:20%">Mã văn bản</th>
+                                                            <th class="text-nowrap" style="width:15%">Tiêu đề</th>
                                                             <th class="text-nowrap" style="width:15%">Tóm tắt</th>
-                                                            <th class="text-nowrap" style="width:15%">Người đề nghị</th>
+                                                            <th class="text-nowrap" style="width:15%">Người tạo</th>
+                                                            <th class="text-nowrap" style="width:15%">Loại mẫu</th>
                                                             <th class="text-nowrap" style="width:10%">Trạng thái</th>
-                                                            <th class="text-nowrap" style="width:20%">Xem file</th>
                                                             @if (session('user')['role'] == 'admin')
                                                                 <th class="text-nowrap" style="width:3%"><span></span></th>
                                                             @endif
-
+        
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($lists as $list)
-                                                            <tr class="table-row" data-status-id="{{ $list['status_id'] }}">
-                                                                <td class="text-nowrap text-center">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="">
-                                                                        {{ $list['id'] }}
+                                                    <tr class="table-row" data-status-id="{{ $list['status_id'] }}"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#xemDeXuat{{ $list['id'] }}" role="button">
+                                                        <td class="text-nowrap text-center">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="">
+                                                                {{ $list['id'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:195px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="{{ $list['code'] }}">
+                                                                {{ $list['code'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:155px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="{{ $list['title'] }}">
+                                                                {{ $list['title'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:155px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="Tóm tắt">
+                                                                Tóm tắt đề xuất
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:140px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top"
+                                                                title="{{ $list['student'] }} - {{ $list['studentCode'] }}">
+                                                                {{ $list['student'] }} - {{ $list['studentCode'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:155px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="{{ $list['form'] }}">
+                                                                {{ $list['form'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top"
+                                                                title="{{ $list['status'] }}">
+                                                                {{ $list['status'] }}
+                                                            </div>
+                                                        </td>
+                                                        
+                                                        @if (session('user')['role'] == 'admin')
+                                                            <td>
+                                                                <div
+                                                                    class="table_actions d-flex justify-content-center">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="##suaDeXuat{{ $list['id'] }}">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:195px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="{{ $list['template_form'] }}">
-                                                                        {{ $list['template_form'] }}
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaDeXuat{{ $list['id'] }}">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:195px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="{{ $list['code'] }}">
-                                                                        {{ $list['code'] }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:155px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="Tóm tắt đề xuất">
-                                                                        Tóm tắt đề xuất
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:155px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="Người đề nghị">
-                                                                        Người đề nghị
-                                                                    </div>
-                                                                </td>
-                                                                
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top"
-                                                                        title="{{ $list['status'] }}">
-                                                                        {{ $list['status'] }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate">
-                                                                        <ul class="list_table">
-                                                                            <li class="list_table-items">
-                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 1</a>
-                                                                            </li>
-                                                                            <li class="list_table-items">
-                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 2</a>
-                                                                            </li>
-                                                                            <li class="list_table-items">
-                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 3</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                                @if (session('user')['role'] == 'admin')
-                                                                    <td>
-                                                                        <div
-                                                                            class="table_actions d-flex justify-content-center">
-                                                                            <div class="btn" data-bs-toggle="modal"
-                                                                                data-bs-target="#suaDeXuat{{ $list['id'] }}">
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/edit.svg') }}" />
-                                                                            </div>
-                                                                            <div class="btn" data-bs-toggle="modal"
-                                                                                data-bs-target="#xoaDeXuat{{ $list['id'] }}">
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/trash.svg') }}" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                @endif
+                                                                </div>
+                                                            </td>
+                                                        @endif
 
-                                                                {{-- Xóa Vi tri --}}
-                                                                <div class="modal fade" id="suaDeXuat{{ $list['id'] }}"
-                                                                    tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-centered">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title text-danger w-100 text-center"
-                                                                                    id="exampleModalLabel">Sửa đề xuất</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <form method="" action="">
-                                                                                @csrf
-                                                                                <div class="modal-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-6 col-md-3 mb-3">
-                                                                                            <input type="text"
-                                                                                                data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Mẫu form"
-                                                                                                value="{{ $list['template_form'] }}"
-                                                                                                class="form-control">
-                                                                                        </div>
-                                                                                        <div class="col-6 col-md-9 mb-3">
-                                                                                            <input type="text"
-                                                                                                data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Tiêu đề"
-                                                                                                value="{{ $list['code'] }}"
-                                                                                                class="form-control">
-                                                                                        </div>
-                                                                                        <div class="col-12 col-md-12 mb-3">
-                                                                                            <input type="text"
-                                                                                                data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Tóm tắt"
-                                                                                                value="Tóm tắt đề xuất"
-                                                                                                class="form-control">
-                                                                                        </div>
-                                                                                        <div class="col-12 col-md-7 mb-3">
-                                                                                            <div data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Người đề nghị">
-                                                                                                <select
-                                                                                                    class="selectpicker"
-                                                                                                    title="Chọn người đề nghị"
-                                                                                                    data-live-search="true"
-                                                                                                    data-size="5"
-                                                                                                    data-live-search="true">
-                                                                                                    <option>Người đề nghị</option>
-                                                                                                    <option>Người đề nghị</option>
-                                                                                                    <option>Người đề nghị</option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-12 col-md-5 mb-3">
-                                                                                            <div data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Trạng thái">
-                                                                                                <select
-                                                                                                    class="selectpicker"
-                                                                                                    title="Chọn người nhận"
-                                                                                                    data-live-search="true"
-                                                                                                    data-size="5"
-                                                                                                    data-live-search="true">
-                                                                                                    <option
-                                                                                                        value="{{ $list['id'] }}"
-                                                                                                        selected>
-                                                                                                        {{ $list['status'] }}
-                                                                                                    </option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-12 col-md-12 mb-3">
-                                                                                            <div class="card-title">File đã
-                                                                                                tải lên</div>
-                                                                                            <div
-                                                                                                class="upload_wrapper-items">
-                                                                                                <ul class="modal_upload-list"
-                                                                                                    style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;">
-                                                                                                    <li>
-                                                                                                        <a href="#"
-                                                                                                            target="_blank">
-                                                                                                            <span
-                                                                                                                class="fs-5">
-                                                                                                                <i
-                                                                                                                    class="bi bi-link-45deg"></i>
-                                                                                                                209-40.json
-                                                                                                            </span>
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
+                                                        {{-- Sửa đề xuất --}}
+                                                        {{-- <div class="modal fade" id="#suaDeXuat{{ $list['id'] }}"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title text-danger"
+                                                                            id="exampleModalLabel">Sửa đề xuất</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form method="" action="">
+                                                                        @csrf
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col-12 col-md-12 mb-3">
+                                                                                    <input type="text"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Tiêu đề"
+                                                                                        value="{{ $list['code'] }}"
+                                                                                        class="form-control">
+                                                                                </div>
+                                                                                <div class="col-12 col-md-12 mb-3">
+                                                                                    <input type="text"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Chủ đề"
+                                                                                        value="{{ $list['user'] }}"
+                                                                                        class="form-control">
+                                                                                </div>
+                                                                                <div class="col-12 col-md-12 mb-3">
+                                                                                    <input type="text"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Tóm tắt"
+                                                                                        value="Tóm tắt đề xuất"
+                                                                                        class="form-control">
+                                                                                </div>
+                                                                                <div class="col-12 col-md-7 mb-3">
+                                                                                    <div data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Người gửi">
+                                                                                        <select
+                                                                                            class="selectpicker"
+                                                                                            title="Chọn người nhận"
+                                                                                            data-live-search="true"
+                                                                                            data-size="5"
+                                                                                            data-live-search="true">
+                                                                                            @foreach ($listUsers->data as $users)
+                                                                                                <option
+                                                                                                    value="{{ $users->id }}"
+                                                                                                    selected>
+                                                                                                    {{ $users->name }}
+                                                                                                    -
+                                                                                                    {{ $users->code }}
+                                                                                                </option>
+                                                                                            @endforeach
+                                                                                        </select>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button"
-                                                                                        class="btn btn-outline-danger"
-                                                                                        data-bs-dismiss="modal">Hủy</button>
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger">Sửa</button>
+                                                                                <div class="col-12 col-md-5 mb-3">
+                                                                                    <div data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Trạng thái">
+                                                                                        <select
+                                                                                            class="selectpicker"
+                                                                                            title="Chọn người nhận"
+                                                                                            data-live-search="true"
+                                                                                            data-size="5"
+                                                                                            data-live-search="true">
+                                                                                            <option
+                                                                                                value="{{ $list['id'] }}"
+                                                                                                selected>
+                                                                                                {{ $list['status'] }}
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {{-- Xóa Vi tri --}}
-                                                                <div class="modal fade" id="xoaDeXuat{{ $list['id'] }}"
-                                                                    tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-centered">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title text-danger w-100 text-center"
-                                                                                    id="exampleModalLabel">Xóa đề xuất</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                Bạn có thực sự muốn xoá đề xuất này không?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-outline-danger"
-                                                                                    data-bs-dismiss="modal">Hủy</button>
-                                                                                <form action="" method="POST">
-                                                                                    @csrf
-                                                                                    {{-- @method('DELETE') --}}
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger">Xóa</button>
-                                                                                </form>
+                                                                                <div class="col-12 col-md-12 mb-3">
+                                                                                    <div class="card-title">File đã
+                                                                                        tải lên</div>
+                                                                                    <div
+                                                                                        class="upload_wrapper-items">
+                                                                                        <ul class="modal_upload-list"
+                                                                                            style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;">
+                                                                                            <li>
+                                                                                                <a href="#"
+                                                                                                    target="_blank">
+                                                                                                    <span
+                                                                                                        class="fs-5">
+                                                                                                        <i
+                                                                                                            class="bi bi-link-45deg"></i>
+                                                                                                        209-40.json
+                                                                                                    </span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-danger"
+                                                                                data-bs-dismiss="modal">Hủy</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger">Sửa</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div> --}}
+                                                        {{-- Xóa đề xuất --}}
+                                                        <div class="modal fade" id="xoaDeXuat{{ $list['id'] }}"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title text-danger"
+                                                                            id="exampleModalLabel">Xóa đề xuất</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Bạn có thực sự muốn xoá đề xuất này không?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-danger"
+                                                                            data-bs-dismiss="modal">Hủy</button>
+                                                                        <form action="" method="POST">
+                                                                            @csrf
+                                                                            {{-- @method('DELETE') --}}
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger">Xóa</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                        </div>
 
 
-                                                            </tr>
-                                                        @endforeach
+                                                    </tr>
+                                                @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
