@@ -187,13 +187,13 @@ Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->
 
 Route::get('de-xuat-theo-mau', function () { return view('DeXuat_XetDuyet.deXuatTheoMau'); })->middleware('auth.role:manager,admin,user');
 // Form danh sách đề nghị
-Route::get('mau-yeu-cau-mua-sam', function () {
+Route::get('yeu-cau-mua-sam', function () {
     return view('DeXuat_XetDuyet.mauDeXuat.mauYCMS');
 })->middleware('auth.role:manager,admin,user');
-Route::get('mau-de-nghi-tam-ung', function () {
+Route::get('de-nghi-tam-ung', function () {
     return view('DeXuat_XetDuyet.mauDeXuat.mauDNTU');
 })->middleware('auth.role:manager,admin,user');
-Route::get('mau-de-nghi-thanh-toan', function () {
+Route::get('de-nghi-thanh-toan', function () {
     return view('DeXuat_XetDuyet.mauDeXuat.mauDNTT');
 })->middleware('auth.role:manager,admin,user');
 

@@ -293,12 +293,12 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Chọn mẫu đề xuất</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="" action="">
+                <form method="" action="" id="myForm">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <select name="" class="selectpicker" title="Chọn người gửi" data-size="5" data-live-search="true">
+                                <select name="sender" class="selectpicker" title="Chọn người gửi" data-size="5" data-live-search="true">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -307,10 +307,10 @@
                                 </select>
                             </div>
                             <div class="col-6 mb-3">
-                                <input  name="" type="text" placeholder="Tiêu đề" class="form-control">
+                                <input name="title" type="text" placeholder="Tiêu đề" class="form-control">
                             </div>
                             <div class="col-6 mb-3">
-                                <select name="" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
+                                <select name="receiver" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -319,10 +319,10 @@
                                 </select>
                             </div>
                             <div class="col-6 mb-3">
-                                <input  name=""  type="text" placeholder="Tóm tắt"class="form-control">
+                                <input name="summary" type="text" placeholder="Tóm tắt" class="form-control">
                             </div>
                             <div class="col-12 mb-3">
-                                <select class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
+                                <select name="proposal" class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
                                     <option value="ycms">Yêu cầu mua sắm</option>
                                     <option value="dntt">Đề nghị thanh toán</option>
                                     <option value="dntu2">Đề nghị tạm ứng</option>
@@ -904,6 +904,21 @@
             </div>
         `);
     </script>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            var select = document.querySelector('select[name="proposal"]');
+            if (select.value == "ycms") {
+                window.location.href = "/yeu-cau-mua-sam";
+            } else if (select.value == "dntt") {
+                window.location.href = "/de-nghi-thanh-toan";
+            } else if (select.value == "dntu2") {
+                window.location.href = "/de-nghi-tam-ung";
+            } 
+            event.preventDefault();
+        });
+    </script>
+
+        
 
     <script>
         updateList = function(e) {
