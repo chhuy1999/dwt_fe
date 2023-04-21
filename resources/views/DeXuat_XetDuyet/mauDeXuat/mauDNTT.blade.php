@@ -24,8 +24,18 @@
     
                                     </div>
                                     <div class="col-2">
-                                        <div class="card_template-title fst-italic d-flex">Số/No: BM001.QT07/20</div>
-                                        <div class="card_template-title fst-italic">Ngày/Date: 18/04/2023</div>
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                            <div class="text-nowrap">Số/No:</div>
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                <input type="text" placeholder="" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                            <div class="text-nowrap">Ngày/Date:</div>
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                <input type="text" placeholder="" class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +45,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Người đề nghị/Requester:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="{{ Session::get('user')['name'] }}" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -43,7 +53,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Bộ phận/Department:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="Marketing" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -51,7 +61,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Nội dung thanh toán/Contents of payment:    </div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="Nhập nội dung thanh toán" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -59,18 +69,26 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Số tiền/Amount</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="Nhập số tiền" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div> 
                                         <div class="card_template-mini with_form mt-3">
-                                            <input type="text" placeholder="Nhập số tiền ghi bằng chữ" class="form-control">
+                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                         </div>
                                     </div>
                                     <div class="mb-3 col-12">
                                         <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Người nhận tiền/Reciver:</div>
+                                            <div class="text-nowrap">Người nhận tiền/Receiver:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="{{ Session::get('user')['name'] }}" class="form-control">
+                                                <input type="text" pplaceholder="(Vui lòng nhập nội dung)" class="form-control">
+                                            </span>
+                                        </div> 
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title with_form">
+                                            <div class="text-nowrap">Hình thức thanh toán/Payment method:</div>
+                                            <span class="card_template-sub with_input">
+                                                <input type="text" pplaceholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -78,7 +96,7 @@
                                         <div class="card_template-title  with_form">
                                             <div class="text-nowrap">Số tài khoản/Account number:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="Nhập số tài khoản" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -86,7 +104,7 @@
                                         <div class="card_template-title  with_form">
                                             <div class="text-nowrap">Tại ngân hàng/with bank:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="Nhập chi nhánh ngân hàng" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -106,7 +124,19 @@
                                         </ul>
                                     </div> --}}
 
-                                    <div class="col-md-5 mt-3 mb-3">
+                                    {{-- <div class="mb-3 col-md-6">
+
+                                        <div class="card_template-title  with_form">
+                                            <div class="text-nowrap">Tệp đính kèm/Attached files:
+                                        </div> 
+                                    </div> --}}
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title  with_form">
+                                            <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
+                                            
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-5 mb-3">
                                         <div class="d-flex flex-column">
                                             <form action="" method="POST" enctype="multipart/form-data">
                                                 @method('PUT')
@@ -136,7 +166,8 @@
                             <div class="card_template-body-bottom">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="card_template-title text-center">Người đề nghị thanh toán</div>
+                                        <div class="card_template-title text-center">Người đề nghị/</div>
+                                        <div class="card_template-title text-center">Applicant</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
@@ -144,7 +175,9 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center">Phụ trách bộ phận</div>
+                                        <div class="card_template-title text-center">Phụ trách bộ phận/</div>
+                                        <div class="card_template-title text-center">Head of Department</div>
+
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
@@ -153,7 +186,8 @@
                                     </div>
                                     
                                     <div class="col">
-                                        <div class="card_template-title text-center">Kế toán trưởng</div>
+                                        <div class="card_template-title text-center">Kế toán trưởng/</div>
+                                        <div class="card_template-title text-center">Chief Accountant</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
@@ -161,7 +195,8 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center">Phê duyệt</div>
+                                        <div class="card_template-title text-center">Phê duyệt/</div>
+                                        <div class="card_template-title text-center">Approved by</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
@@ -189,7 +224,12 @@
     
                                     </div>
                                     <div class="col-2 card_template-topRight">
-                                            <div class="card_template-title fst-italic">Ngày:18/04/2023</div>
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                            <div class="text-nowrap">Ngày/Date:</div>
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                <input type="text" placeholder="" class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -199,7 +239,7 @@
                                         <div class="card_template-title with_form">
                                              <div class="text-nowrap">Người đề nghị/Requester:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="{{ Session::get('user')['name'] }}" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -207,7 +247,7 @@
                                         <div class="card_template-title with_form">
                                              <div class="text-nowrap">Công việc:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="Chạy quảng cáo" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -240,17 +280,17 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" placeholder="Google Ads" class="form-control">
+                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                                         </div>
                                                     </td>
                                                     <td class="">
                                                         <div>
-                                                            <input type="text" placeholder="25,000,000" class="form-control text-end">
+                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control text-end">
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" placeholder="Ghi chú" class="form-control">
+                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                                         </div>
                                                     </td>
                                                     <td>
@@ -274,6 +314,7 @@
                                     <div class="col"></div>
                                     <div class="col">
                                         <div class="card_template-title text-center">Người đề nghị</div>
+                                        <div class="card_template-title text-center">Applicant</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>

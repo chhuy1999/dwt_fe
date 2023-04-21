@@ -23,9 +23,19 @@
                                         <div class="card_template-heading-mini">Purchasing requirement</div>
     
                                     </div>
-                                    <div class="col-2 card_template-topRight" style="display: block">
-                                            <div class="card_template-title fst-italic">Số: BM013.QT02/12</div>
-                                            <div class="card_template-title fst-italic">Ngày:19/04/2023</div>
+                                    <div class="col-2">
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                            <div class="text-nowrap">Số/No:</div>
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                <input type="text" placeholder="" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                            <div class="text-nowrap">Ngày/Date:</div>
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                <input type="text" placeholder="" class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -56,25 +66,25 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="Tên, chủng loại" class="form-control">
+                                                            <input type="text" placeholder="" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="Số lượng" class="form-control">
+                                                            <input type="text" placeholder="" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="ĐVT" class="form-control">
+                                                            <input type="text" placeholder="" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="Mục đích" class="form-control">
+                                                            <input type="text" placeholder="" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="NCC" class="form-control">
+                                                            <input type="text" placeholder=""class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="Đơn giá" style="text-align: right;" class="form-control">
+                                                            <input type="text" placeholder=""style="text-align: right;" class="form-control">
                                                         </td>
                                                         <td>
-                                                            <input type="text" placeholder="" style="text-align: right;"  class="form-control">
+                                                            <input type="text" placeholder=""style="text-align: right;"  class="form-control">
                                                         </td>
                                                         <td>
                                                             <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
@@ -110,8 +120,13 @@
                                         </div>
                                     </div>
 
-                                    
-                                    <div class="col-md-5 mt-3 mb-3">
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title  with_form">
+                                            <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
+                                            
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-5 mb-3">
                                         <div class="d-flex flex-column">
                                             <form action="" method="POST" enctype="multipart/form-data">
                                                 @method('PUT')
@@ -121,7 +136,7 @@
                                                     <button role="button" type="button" class="btn position-relative border d-flex">
                                                         <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
                                                         <span class="ps-2">Chọn file đính kèm</span>
-                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)" />
                                                     </button>
                                                     <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;"></ul>
                                                     {{-- <div class="d-flex align-items-center justify-content-end">
@@ -138,48 +153,50 @@
                             <div class="card_template-body-bottom">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="card_template-title text-center">Người yêu cầu</div>
+                                        <div class="card_template-title text-center">Người đề nghị/</div>
+                                        <div class="card_template-title text-center">Applicant</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center">Trưởng bộ phận</div>
+                                        <div class="card_template-title text-center">Phụ trách bộ phận/</div>
+                                        <div class="card_template-title text-center">Head of Department</div>
+
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card_template-title text-center">BP Mua hàng</div>
-                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="col">
-                                        <div class="card_template-title text-center">Người thực hiện mua</div>
+                                        <div class="card_template-title text-center">Bộ phận mua hàng/</div>
+                                        <div class="card_template-title text-center">Purchasing Department</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div class="col">
+                                        <div class="card_template-title text-center">Người thực hiện mua/</div>
+                                        <div class="card_template-title text-center">Purchaser</div>
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                            <div class="">
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="card_template-title text-center">Phê duyệt</div>
+                                        <div class="card_template-title text-center">Phê duyệt/</div>
+                                        <div class="card_template-title text-center">Approved by</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-
                                             </div>
                                         </div>
                                     </div>
