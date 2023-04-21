@@ -101,8 +101,8 @@
                                                             <div class="text-nowrap d-block text-truncate"
                                                                 style="max-width:215px;" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top"
-                                                                title="file-de-xuat-{{ time() }}.png">
-                                                                file-de-xuat-{{ time() }}.png
+                                                                title="file-de-xuat-{{ time() }}.pdf">
+                                                                file-de-xuat-{{ time() }}.pdf
                                                             </div>
                                                         </td>
                                                         @if (session('user')['role'] == 'admin')
@@ -123,7 +123,7 @@
                                                             </td>
                                                         @endif
 
-                                                        {{-- Xóa Vi tri --}}
+                                                        {{-- Sửa đề xuất --}}
                                                         <div class="modal fade" id="#suaDeXuat{{ $list['id'] }}"
                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
@@ -238,7 +238,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        {{-- Xóa Vi tri --}}
+                                                        {{-- Xóa đề xuất --}}
                                                         <div class="modal fade" id="xoaDeXuat{{ $list['id'] }}"
                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">

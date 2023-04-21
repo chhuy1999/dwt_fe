@@ -141,7 +141,7 @@
                                         <div class="card_template-title text-center">Người yêu cầu</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -150,7 +150,7 @@
                                         <div class="card_template-title text-center">Trưởng bộ phận</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -159,7 +159,7 @@
                                         <div class="card_template-title text-center">BP Mua hàng</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -169,7 +169,7 @@
                                         <div class="card_template-title text-center">Người thực hiện mua</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>
@@ -178,7 +178,7 @@
                                         <div class="card_template-title text-center">Phê duyệt</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-danger fs-6">Chèn chữ ký</button>
+                                                <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
 
                                             </div>
                                         </div>

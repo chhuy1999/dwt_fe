@@ -271,11 +271,13 @@
 
                             <div class="card_template-body-bottom">
                                 <div class="row">
+                                    <div class="col"></div>
                                     <div class="col">
-                                        <div class="card_template-title">Người đề nghị</div>
-                                        <div class=" d-flex align-items-center justify-content-end" style="height: 100px; ">
+                                        <div class="card_template-title text-center">Người đề nghị</div>
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
                                                 <button type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+
                                             </div>
                                         </div>
                                     </div>
