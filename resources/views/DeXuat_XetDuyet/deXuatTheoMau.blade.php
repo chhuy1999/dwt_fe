@@ -34,14 +34,15 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center" style="width:2%">STT</th>
-                                                            <th class="text-nowrap" style="width:20%">Mã văn bản</th>
-                                                            <th class="text-nowrap" style="width:15%">Tiêu đề</th>
-                                                            <th class="text-nowrap" style="width:15%">Tóm tắt</th>
+                                                            <th class="text-nowrap" style="width:10%">Mã văn bản</th>
+                                                            <th class="text-nowrap" style="width:25%">Tiêu đề</th>
+                                                            <th class="text-nowrap" style="width:20%">Tóm tắt</th>
                                                             <th class="text-nowrap" style="width:15%">Người tạo</th>
                                                             <th class="text-nowrap" style="width:15%">Loại mẫu</th>
                                                             <th class="text-nowrap" style="width:10%">Trạng thái</th>
                                                             @if (session('user')['role'] == 'admin')
                                                                 <th class="text-nowrap" style="width:3%"><span></span></th>
+                                                                
                                                             @endif
         
                                                         </tr>
@@ -59,21 +60,21 @@
                                                         </td>
                                                         <td class="text-nowrap">
                                                             <div class="text-nowrap d-block text-truncate"
-                                                                style="max-width:195px;" data-bs-toggle="tooltip"
+                                                                style="max-width:80px;" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="{{ $list['code'] }}">
                                                                 {{ $list['code'] }}
                                                             </div>
                                                         </td>
                                                         <td class="text-nowrap">
                                                             <div class="text-nowrap d-block text-truncate"
-                                                                style="max-width:155px;" data-bs-toggle="tooltip"
+                                                                style="max-width:220px;" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="{{ $list['title'] }}">
                                                                 {{ $list['title'] }}
                                                             </div>
                                                         </td>
                                                         <td class="text-nowrap">
                                                             <div class="text-nowrap d-block text-truncate"
-                                                                style="max-width:155px;" data-bs-toggle="tooltip"
+                                                                style="max-width:200px;" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="Tóm tắt">
                                                                 Tóm tắt đề xuất
                                                             </div>

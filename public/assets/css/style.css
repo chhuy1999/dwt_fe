@@ -1145,8 +1145,8 @@ th {
     font-size: var(--fz-12);
     font-weight: 500;
 }
-.sidebarBody_notification-status {
-}
+/* .sidebarBody_notification-status {
+} */
 .sidebarBody_notification-date {
     color: #b4b3b2;
 }
@@ -1232,9 +1232,9 @@ th {
     font-size: var(--fz-12);
 }
 
-.sidebarBody_card-body-subtitle-before {
-    /* color: #008000; */
-}
+/* .sidebarBody_card-body-subtitle-before {
+    color: #008000;
+} */
 
 .sidebarBody_card-body-subtitle-after {
     color: #008000;
@@ -1784,8 +1784,8 @@ th {
     width: 100%;
     opacity: 0;
 }
-.upload-field {
-}
+/* .upload-field {
+} */
 
 .upload-field .file-thumbnail {
     cursor: pointer;
@@ -1999,8 +1999,9 @@ ul.modal_upload-list li:last-child {
 }
 
 .card_template-body {
-    padding: 60px 30px;
-    background-color: var(--white-color);
+    
+    padding: 1.5cm 1.5cm 1.5cm 2cm;
+    background-color:var(--white-color);
     margin-bottom: 20px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
         rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;

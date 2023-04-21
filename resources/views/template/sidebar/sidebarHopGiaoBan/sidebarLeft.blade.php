@@ -12,7 +12,7 @@
                         <div class="sidebarBody_heading-wrapper">
                             <h6 class="sidebarBody_heading mt-2">
                                 Họp giao ban
-                                <span class="sidebarBody_heading-mini text-black">( Đã thực hiện / Số phòng )</span>
+                                <span class="sidebarBody_heading-mini text-black">( BP đã thực hiện / Tổng số BP )</span>
                             </h6>
                         </div>
                         <div class="table-responsive">
@@ -56,7 +56,7 @@
                         <div class="sidebarBody_heading-wrapper">
                             <h6 class="sidebarBody_heading mt-2">
                                 Vấn đề tồn đọng
-                                <span class="sidebarBody_heading-mini text-black">(Tồn đọng/Phát sinh)</span>
+                                <span class="sidebarBody_heading-mini text-black">(Đã phản hồi/Phát sinh)</span>
                             </h6>
                         </div>
                         <div class="table-responsive">
@@ -69,15 +69,15 @@
                                                 <span class="sidebarBody_card-body-subtitle-before">
                                                     2</span>
                                                 <span class="sidebarBody_card-body-subtitle-separate">/</span>
-                                                <span class="sidebarBody_card-body-subtitle-after">3</span>
+                                                <span class="sidebarBody_card-body-subtitle-after">30</span>
                                             </span>
                                         </th>
                                         <th style="padding: 0; text-align: left; letter-spacing: -1px">
                                             Tuần này:&nbsp;
                                             <span class="sidebarBody_card-body-subtitle">
-                                                <span class="sidebarBody_card-body-subtitle-before">2</span>
+                                                <span class="sidebarBody_card-body-subtitle-before">12</span>
                                                 <span class="sidebarBody_card-body-subtitle-separate">/</span>
-                                                <span class="sidebarBody_card-body-subtitle-after">3</span>
+                                                <span class="sidebarBody_card-body-subtitle-after">30</span>
                                             </span>
                                         </th>
                                         <th style="padding: 0; text-align: left; letter-spacing: -1px">
@@ -92,7 +92,7 @@
                                 </thead>
                             </table>
                         </div>
-                        <div class="sidebarBody_heading-wrapper">
+                        {{-- <div class="sidebarBody_heading-wrapper">
                             <h6 class="sidebarBody_heading mt-2">
                                 Phòng ban có nhiệm vụ quá hạn
                             </h6>
@@ -129,7 +129,7 @@
                                     </tr>
                                 </thead>
                             </table>
-                        </div>
+                        </div> --}}
 
                         <div class="mt-3">
                             <canvas id="doughnutChiSo"></canvas>
@@ -140,7 +140,7 @@
                     <div class="sidebarBody_card bg-blue-blur">
                         <div class="sidebarBody_heading-wrapper">
                             <h6 class="sidebarBody_heading mt-2 mb-2">
-                                Lưu trữ cuộc họp cấp công ty
+                                Biên bản cuộc họp cấp công ty
                             </h6>
                         </div>
                         <div class="sidebarBody_card-items-pdf">
