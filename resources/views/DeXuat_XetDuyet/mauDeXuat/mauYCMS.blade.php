@@ -48,13 +48,13 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" class="text-center" style="width:3%">STT</th>
-                                                        <th scope="col" class="text-center">Tên, chủng loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
-                                                        <th scope="col" class="text-center">Số lượng</th>
-                                                        <th scope="col" class="text-center">ĐVT</th>
-                                                        <th scope="col" class="text-center">MĐ sử dụng & T.gian hoàn thành</th>
-                                                        <th scope="col" class="text-center">NCC tốt nhất (Tên, sđt, đc)</th>
-                                                        <th scope="col" class="text-center">Đơn giá (VNĐ)</th>
-                                                        <th scope="col" class="text-center">Tổng tiền (VNĐ)</th>
+                                                        <th scope="col" class="text-center" style="width: 22%">Tên, chủng loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
+                                                        <th scope="col" class="text-center" style="width: 7%">Số lượng</th>
+                                                        <th scope="col" class="text-center" style="width: 5%">ĐVT</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">MĐ sử dụng & T.gian hoàn thành</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">NCC tốt nhất (Tên, sđt, đc)</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">Đơn giá (VNĐ)</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">Tổng tiền (VNĐ)</th>
                                                         <th scope="col" style="width:3%"></th>
                                                         
                                                     </tr>

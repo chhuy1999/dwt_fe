@@ -48,13 +48,13 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" class="text-center" style="width:3%">STT</th>
-                                                        <th scope="col" class="text-center">Tên, chủng loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
-                                                        <th scope="col" class="text-center">Số lượng</th>
-                                                        <th scope="col" class="text-center">ĐVT</th>
-                                                        <th scope="col" class="text-center">MĐ sử dụng & T.gian hoàn thành</th>
-                                                        <th scope="col" class="text-center">NCC tốt nhất (Tên, sđt, đc)</th>
-                                                        <th scope="col" class="text-center">Đơn giá (VNĐ)</th>
-                                                        <th scope="col" class="text-center">Tổng tiền (VNĐ)</th>
+                                                        <th scope="col" class="text-center" style="width: 25%">Tên, chủng loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
+                                                        <th scope="col" class="text-center" style="width: 7%">Số lượng</th>
+                                                        <th scope="col" class="text-center" style="width: 5%">ĐVT</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">MĐ sử dụng & T.gian hoàn thành</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">NCC tốt nhất (Tên, sđt, đc)</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">Đơn giá (VNĐ)</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">Tổng tiền (VNĐ)</th>
                                                         {{-- <th scope="col" style="width:3%"></th> --}}
                                                         
                                                     </tr>
@@ -67,25 +67,39 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" value="Hàng thiết yếu" class="form-control">
+                                                            <div>
+                                                                <input type="text" value="Hàng thiết yếu" class="form-control" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="text-center">
+                                                                <input type="text" value="2" class="form-control" />
+                                                            </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" value="2" class="form-control">
+                                                            <div>
+                                                                <input type="text" value="Cái" class="form-control" />
+                                                            </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" value="Cái" class="form-control">
+                                                            <div>
+                                                                <input type="text" value="22" class="form-control" />
+                                                            </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" value="22" class="form-control">
+                                                           <div> 
+                                                                <input type="text" value="Nhà cung cấp mẫu"class="form-control" />
+                                                            </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" value="Nhà cung cấp mẫu"class="form-control">
+                                                            <div>
+                                                                <input type="text" value="10.000.000"style="text-align: right;" class="form-control" />
+                                                            </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" value="10.000.000"style="text-align: right;" class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" value="20.000.000"style="text-align: right;"  class="form-control">
+                                                            <div>
+                                                                <input type="text" value="20.000.000"style="text-align: right;"  class="form-control" />
+                                                            </div>
                                                         </td>
                                                         {{-- <td>
                                                             <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
