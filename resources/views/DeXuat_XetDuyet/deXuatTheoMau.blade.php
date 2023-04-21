@@ -1051,6 +1051,14 @@
         }
     </script>
 
+    <script>
+        $('tr[data-href]').on("click", function(event) {
+            if ($(event.target).closest('td').index() !== $(this).find('td').length - 1) {
+                window.location.href = $(this).data('href');
+            }
+        });
+    </script>
+
     {{-- <script>
         $('select.selectpicker').on('change', function() {
             var target = $(this).find(":selected").data("target");

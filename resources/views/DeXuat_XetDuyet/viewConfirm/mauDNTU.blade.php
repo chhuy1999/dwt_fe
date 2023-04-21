@@ -261,8 +261,8 @@
                                                 <tr>
                                                     <th scope="col" class="text-center" style="width:2%">STT</th>
                                                     <th scope="col" class="text-center" style="width:10%">Số chứng từ</th>
-                                                    <th scope="col" class="text-center" style="width:40%">Nội dung</th>
-                                                    <th scope="col" class="text-center" style="width:10%">Số tiền</th>
+                                                    <th scope="col" class="text-center" style="width:33%">Nội dung</th>
+                                                    <th scope="col" class="text-center" style="width:17%">Số tiền</th>
                                                     <th scope="col" class="text-center" style="width:36%">Ghi chú</th>
                                                     {{-- <th scope="col" class="text-center" style="width:2%">
                                                         <span></span>
@@ -328,10 +328,9 @@
                             </div>
                         </div>
 
-                        {{-- <div class="card_template-footer">
-                            <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
-                            <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
-                        </div> --}}
+                        <div class="card_template-footer">
+                            <a href="/de-nghi-tam-ung" type="button" class="btn btn-outline-danger ps-5 pe-5">Quay lại</a>
+                        </div>
                         
                     </div>
                 </div>

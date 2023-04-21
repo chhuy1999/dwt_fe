@@ -230,7 +230,7 @@
                                         <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Ngày/Date:</div>
                                             <div class="card_template-sub with_input d-flex justify-content-center align-items-center">
-                                                <input type="text" placeholder="" class="form-control">
+                                                <input type="text" placeholder="" class="form-control datePicker">
                                             </div>
                                         </div>
                                     </div>
@@ -261,8 +261,8 @@
                                                 <tr>
                                                     <th scope="col" class="text-center" style="width:2%">STT</th>
                                                     <th scope="col" class="text-center" style="width:10%">Số chứng từ</th>
-                                                    <th scope="col" class="text-center" style="width:40%">Nội dung</th>
-                                                    <th scope="col" class="text-center" style="width:10%">Số tiền</th>
+                                                    <th scope="col" class="text-center" style="width:33%">Nội dung</th>
+                                                    <th scope="col" class="text-center" style="width:17%">Số tiền</th>
                                                     <th scope="col" class="text-center" style="width:36%">Ghi chú</th>
                                                     <th scope="col" class="text-center" style="width:2%">
                                                         <span></span>
@@ -329,7 +329,7 @@
                         </div>
 
                         <div class="card_template-footer">
-                            <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
+                            <a href="/de-xuat-theo-mau" type="button" class="btn btn-outline-danger ps-5 pe-5">Hủy</a>
                             <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
                         </div>
                         

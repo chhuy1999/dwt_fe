@@ -67,7 +67,7 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <input type="text" value="Hàng thiết yesue" class="form-control">
+                                                            <input type="text" value="Hàng thiết yếu" class="form-control">
                                                         </td>
                                                         <td>
                                                             <input type="text" value="2" class="form-control">
@@ -157,8 +157,8 @@
                                         <div class="card_template-title text-center">Người đề nghị/</div>
                                         <div class="card_template-title text-center">Applicant</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
+                                            <div class="card_template-title fw-normal">
+                                                {{ Session::get('user')['name'] }}
                                             </div>
                                         </div>
                                     </div>
@@ -205,10 +205,9 @@
                             </div>
                         </div>
 
-                        {{-- <div class="card_template-footer">
-                            <button type="button" class="btn btn-outline-danger ps-5 pe-5" style="margin-right: 10px;" data-bs-dismiss="modal">Hủy</button>
-                            <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
-                        </div> --}}
+                        <div class="card_template-footer">
+                            <a href="/yeu-cau-mua-sam" type="button" class="btn btn-outline-danger ps-5 pe-5">Quay lại</a>
+                        </div>
                     </div>
                 </div>
             </div>
