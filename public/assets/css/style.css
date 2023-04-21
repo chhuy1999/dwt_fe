@@ -1999,8 +1999,7 @@ ul.modal_upload-list li:last-child {
 }
 
 .card_template-body {
-    
-    padding: 1.5cm 1.5cm 1.5cm 2cm;
+    padding: 60px 30px;
     background-color:var(--white-color);
     margin-bottom: 20px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,

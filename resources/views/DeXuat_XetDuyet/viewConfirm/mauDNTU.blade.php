@@ -117,50 +117,33 @@
                                             </span>
                                         </div> 
                                     </div>
-                                    {{-- <div class="mb-3 col-12">
-                                        <div class="card_template-title">File đính kèm:</div>
-                                        <ul class="card_template-list">
-                                            <li class="card_template-items">
-                                                <a href="#" target="_blank">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
-                                            </li>
-                                            <li class="card_template-items">
-                                                <a href="#" target="_blank">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
-                                            </li>
-                                            <li class="card_template-items">
-                                                <a href="#" target="_blank">https://report.sweetsica.com/storage/report/19-04-2023/KPI thiết kế.xlsx</a>
-                                            </li>
-                                        </ul>
-                                    </div> --}}
-
-                                    {{-- <div class="mb-3 col-12">
+                                    <div class="mb-3 col-12">
                                         <div class="card_template-title  with_form">
                                             <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
                                             
                                         </div> 
-                                    </div> --}}
-
-                                    {{-- <div class="col-md-5 mt-3 mb-3">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
                                         <div class="d-flex flex-column">
-                                            <form action="" method="POST" enctype="multipart/form-data">
-                                                @method('PUT')
-                                                @csrf
-                                                <div class="upload_wrapper-items">
-                                                    <input type="hidden" name="uploadedFiles[]" value="" />
-                                                    <button role="button" type="button" class="btn position-relative border d-flex">
-                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                        <span class="ps-2">Chọn file đính kèm</span>
-                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
-                                                    </button>
-                                                    <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;"></ul>
-                                                    {{-- <div class="d-flex align-items-center justify-content-end">
-                                                        <button type="submit" class="btn btn-outline-danger">Tải
-                                                            file
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            <ul class="modal_upload-list">
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 1
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 2
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 3
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </div> --}}
+                                    </div>
 
                                 </div>
                             </div>

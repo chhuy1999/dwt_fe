@@ -110,6 +110,34 @@
                                         </div> 
                                     </div>
 
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title  with_form">
+                                            <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
+                                            
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="d-flex flex-column">
+                                            <ul class="modal_upload-list">
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 1
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 2
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 3
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 

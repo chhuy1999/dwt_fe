@@ -34,7 +34,7 @@
                                         <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Ngày/Date:</div>
                                             <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control">
+                                                <input type="text" placeholder="" class="form-control datePicker">
                                             </div>
                                         </div>
                                     </div>
@@ -141,26 +141,25 @@
                                             
                                         </div> 
                                     </div>
-                                    <div class="col-md-5 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <div class="d-flex flex-column">
-                                            <form action="" method="POST" enctype="multipart/form-data">
-                                                @method('PUT')
-                                                @csrf
-                                                <div class="upload_wrapper-items">
-                                                    <input type="hidden" name="uploadedFiles[]" value="" />
-                                                    <button role="button" type="button" class="btn position-relative border d-flex">
-                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                        <span class="ps-2">Chọn file đính kèm</span>
-                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)" />
-                                                    </button>
-                                                    <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;"></ul>
-                                                    {{-- <div class="d-flex align-items-center justify-content-end">
-                                                        <button type="submit" class="btn btn-outline-danger">Tải
-                                                            file
-                                                        </button>
-                                                    </div> --}}
-                                                </div>
-                                            </form>
+                                            <ul class="modal_upload-list">
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 1
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 2
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class="bi bi-link-45deg"></i> Link file 3
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                             </div>
@@ -579,5 +578,20 @@
             }
         }
     </script>
+
+<script>
+    $(document).ready(function() {
+
+        $('.datePicker').daterangepicker({
+            singleDatePicker: true,
+            timePicker: false,
+            startDate: new Date(),
+            locale: {
+                format: 'DD/MM/YYYY '
+            }
+        });
+
+    });
+</script>
 
 @endsection
