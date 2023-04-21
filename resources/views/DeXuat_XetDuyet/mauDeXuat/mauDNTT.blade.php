@@ -34,7 +34,7 @@
                                         <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Ngày/Date:</div>
                                             <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control">
+                                                <input type="text" placeholder="" class="form-control datePicker">
                                             </div>
                                         </div>
                                     </div>
@@ -664,6 +664,20 @@
                 }
             }
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            $('.datePicker').daterangepicker({
+                singleDatePicker: true,
+                timePicker: false,
+                startDate: new Date(),
+                locale: {
+                    format: 'DD/MM/YYYY '
+                }
+            });
+
+        });
     </script>
 
 @endsection

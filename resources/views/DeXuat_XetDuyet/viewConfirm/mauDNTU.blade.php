@@ -46,7 +46,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Người đề nghị/Requester:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" value="(Vui lòng nhập nội dung)" class="form-control">
+                                                <input type="text" value="{{ Session::get('user')['name'] }}" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -54,7 +54,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Bộ phận/Department:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" value="Nguyễn Ngọc Bảo" class="form-control">
+                                                <input type="text" value="{{Session::get('department_name') ?? ''}}" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -66,7 +66,7 @@
                                             </span>
                                         </div> 
                                         <div class="card_template-mini with_form mt-3">
-                                            <input type="text" value="Một triệu việt nam đồng"class="form-control">
+                                            <input type="text" value="( Một triệu việt nam đồng )"class="form-control fst-italic">
                                         </div>
                                     </div>
                                     <div class="mb-3 col-12">
@@ -170,8 +170,8 @@
                                     <div class="col">
                                         <div class="card_template-title text-center mb-3">Người đề nghị tam ứng</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
-                                           Nguyễn Ngọc Bảo
+                                            <div class="card_template-title fw-normal">
+                                                {{ Session::get('user')['name'] }}
                                             </div>
                                         </div>
                                     </div>
@@ -242,7 +242,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Người đề nghị/Requester:</div>
                                             <span class="card_template-sub  with_input">
-                                                <input type="text" value="Nguyễn Ngọc Bảo" class="form-control">
+                                                <input type="text" value="{{ Session::get('user')['name'] }}" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -250,7 +250,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Công việc:</div>
                                             <span class="card_template-sub  with_input">
-                                                <input type="text" value="IT" class="form-control">
+                                                <input type="text" value="{{Session::get('department_name') ?? ''}}" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -318,8 +318,8 @@
                                     <div class="col">
                                         <div class="card_template-title text-center">Người đề nghị</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
+                                            <div class="card_template-title fw-normal">
+                                                {{ Session::get('user')['name'] }}
 
                                             </div>
                                         </div>
