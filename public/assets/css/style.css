@@ -1145,8 +1145,8 @@ th {
     font-size: var(--fz-12);
     font-weight: 500;
 }
-.sidebarBody_notification-status {
-}
+/* .sidebarBody_notification-status {
+} */
 .sidebarBody_notification-date {
     color: #b4b3b2;
 }
@@ -1232,9 +1232,9 @@ th {
     font-size: var(--fz-12);
 }
 
-.sidebarBody_card-body-subtitle-before {
-    /* color: #008000; */
-}
+/* .sidebarBody_card-body-subtitle-before {
+    color: #008000;
+} */
 
 .sidebarBody_card-body-subtitle-after {
     color: #008000;
@@ -1784,8 +1784,8 @@ th {
     width: 100%;
     opacity: 0;
 }
-.upload-field {
-}
+/* .upload-field {
+} */
 
 .upload-field .file-thumbnail {
     cursor: pointer;
