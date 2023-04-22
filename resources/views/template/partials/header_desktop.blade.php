@@ -192,7 +192,7 @@
         <li class="header_menu-item">
             <a class="header_menu-link menu_btn-sub" href="#">
                 <i class="bi bi-share"></i>
-                <span>Văn bản & điều hành</span>
+                <span>Văn bản điều hành</span>
             </a>
             <ul id="header_submenu">
                 <li class="header_submenu-items">

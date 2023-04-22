@@ -995,7 +995,13 @@
         $('div.card-title-wrapper').html(`
             <div class="d-flex align-items-center">
                 <div class="card-title me-2">Danh mục đầu việc tiêu chuẩn</div>
-
+                <div class="">
+                <select class="selectpicker" name="departement_id" title="Đơn vị phụ trách" data-width="100%" data-size="5">
+                    @foreach ($listDepartments->data as $dep)
+                        <option value="{{ $dep->id }}">{{ $dep->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             </div>
         `);
 

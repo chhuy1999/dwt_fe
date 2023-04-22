@@ -1145,8 +1145,8 @@ th {
     font-size: var(--fz-12);
     font-weight: 500;
 }
-.sidebarBody_notification-status {
-}
+/* .sidebarBody_notification-status {
+} */
 .sidebarBody_notification-date {
     color: #b4b3b2;
 }
@@ -1232,9 +1232,9 @@ th {
     font-size: var(--fz-12);
 }
 
-.sidebarBody_card-body-subtitle-before {
-    /* color: #008000; */
-}
+/* .sidebarBody_card-body-subtitle-before {
+    color: #008000;
+} */
 
 .sidebarBody_card-body-subtitle-after {
     color: #008000;
@@ -1784,8 +1784,8 @@ th {
     width: 100%;
     opacity: 0;
 }
-.upload-field {
-}
+/* .upload-field {
+} */
 
 .upload-field .file-thumbnail {
     cursor: pointer;
@@ -1885,7 +1885,6 @@ ul.modal_upload-list li:last-child {
     display: flex;
 }
 
-
 .box_code-title {
     font-size: var(--fz-14);
     color: var(--primary-color);
@@ -1906,7 +1905,7 @@ ul.modal_upload-list li:last-child {
     border: 1px dashed var(--primary-color);
     border-radius: var(--border-radius-mini);
 }
-  
+
 .sidebarBody_wrapper {
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -1914,7 +1913,7 @@ ul.modal_upload-list li:last-child {
 }
 
 .print_body {
-    padding: 0; 
+    padding: 0;
     margin: 1.5cm 1.5cm 1.5cm 2cm;
 }
 
@@ -1954,11 +1953,10 @@ ul.modal_upload-list li:last-child {
 }
 
 .information_upload-field .information_file-thumbnail img,
-.information_avatar-img  {
-    width: 180px;
-    height: 180px;
+.information_avatar-img {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    
 }
 
 .signature_actions {
@@ -1977,7 +1975,6 @@ ul.modal_upload-list li:last-child {
     margin-bottom: 10px;
 }
 
-
 /* Style Template Form & Page List Template */
 .card_template-wrapper {
     margin: 1.5cm 1.5cm 1.5cm 2cm;
@@ -1985,8 +1982,8 @@ ul.modal_upload-list li:last-child {
 
 .card_template-wrapper input,
 .card_template-wrapper input:focus {
-    border: none!important;
-    box-shadow: none!important;
+    border: none !important;
+    box-shadow: none !important;
     border-bottom: 1px dashed #e6e6e6 !important;
 }
 
@@ -1996,7 +1993,7 @@ ul.modal_upload-list li:last-child {
     text-transform: uppercase;
 }
 
-.card_template-heading-mini{
+.card_template-heading-mini {
     font-style: italic;
     font-size: var(--fz-12);
 }
@@ -2005,7 +2002,8 @@ ul.modal_upload-list li:last-child {
     padding: 60px 30px;
     background-color:var(--white-color);
     margin-bottom: 20px;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: var(--border-radius-mini);
 }
 
@@ -2015,7 +2013,7 @@ ul.modal_upload-list li:last-child {
     align-items: center;
 }
 
-.card_template-body-middle{
+.card_template-body-middle {
     margin: 10px 0;
     padding: 20px 0;
     border-top: 1px solid #e6e6e6;
@@ -2028,7 +2026,7 @@ ul.modal_upload-list li:last-child {
 }
 
 .card_template-title.with_form,
-.card_template-mini.with_form { 
+.card_template-mini.with_form {
     display: flex;
     align-items: center;
     width: 100%;
@@ -2053,7 +2051,6 @@ ul.modal_upload-list li:last-child {
 .card_template-footer {
     display: flex;
     justify-content: flex-end;
-
 }
 
 .card_template-items {
@@ -2072,6 +2069,113 @@ ul.modal_upload-list li:last-child {
     padding: 6px 0;
 }
 
-.list_table-items ~ .list_table-items  { 
+.list_table-items ~ .list_table-items {
     margin-left: 10px;
+}
+
+/* Style Radio */
+
+.funkyradio label {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #d1d3d4;
+    font-weight: normal;
+}
+
+.funkyradio input[type="radio"]:empty,
+.funkyradio input[type="checkbox"]:empty {
+    display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label,
+.funkyradio input[type="checkbox"]:empty ~ label {
+    position: relative;
+    line-height: 2.2;
+    text-indent: 30px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: var(--fz-12);
+    padding: 0 10px;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before,
+.funkyradio input[type="checkbox"]:empty ~ label:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 30px;
+    background: #d1d3d4;
+    border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+    color: #888;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+    content: "\2714";
+    text-indent: 0.9em;
+    color: #c2c2c2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label,
+.funkyradio input[type="checkbox"]:checked ~ label {
+    color: #777;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before,
+.funkyradio input[type="checkbox"]:checked ~ label:before {
+    content: "\2714";
+    text-indent: 0.9em;
+    color: #333;
+    background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before,
+.funkyradio input[type="checkbox"]:focus ~ label:before {
+    box-shadow: 0 0 0 3px #999;
+}
+
+.funkyradio-default input[type="radio"]:checked ~ label:before,
+.funkyradio-default input[type="checkbox"]:checked ~ label:before {
+    color: #333;
+    background-color: #ccc;
+}
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before,
+.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before,
+.funkyradio-success input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before,
+.funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before,
+.funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before,
+.funkyradio-info input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5bc0de;
 }

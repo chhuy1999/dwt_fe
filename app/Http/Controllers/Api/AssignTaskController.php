@@ -43,7 +43,8 @@ class AssignTaskController extends Controller
             $kpiKeys = $this->dwtService->searchKpiKeys("", 1, 100);
             $kpiKeys = $kpiKeys->data;
             $listPositions = $this->dwtService->listPositions();
-
+            $listDepartments = $this->dwtService->listDepartments();
+            // dd($listDepartments);
             $reportTasks = $this->dwtService->searchReportTasks([
                 "page" => 1,
                 "limit" => 100
@@ -56,7 +57,8 @@ class AssignTaskController extends Controller
                 ->with('listUsers', $listUsers)
                 ->with('kpiKeys', $kpiKeys)
                 ->with('reportTasks', $reportTasks)
-                ->with('listPositions', $listPositions);
+                ->with('listPositions', $listPositions)
+                ->with('listDepartments', $listDepartments);
         } catch (Exception $e) {
             error_log($e->getMessage());
             $error = $e->getMessage();

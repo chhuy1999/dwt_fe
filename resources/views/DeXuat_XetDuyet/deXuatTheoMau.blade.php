@@ -4,25 +4,21 @@
 
 @php
     $lists = [
-        ['id' => '1','template_form' => 'Mẫu Form 1', 'code' => 'Đề xuất 1', 'status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '2','template_form' => 'Mẫu Form 2', 'code' => 'Đề xuất 2', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '3','template_form' => 'Mẫu Form 3', 'code' => 'Đề xuất 3', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '4','template_form' => 'Mẫu Form 4', 'code' => 'Đề xuất 4', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '5','template_form' => 'Mẫu Form 5', 'code' => 'Đề xuất 5', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '6','template_form' => 'Mẫu Form 6', 'code' => 'Đề xuất 6', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '7','template_form' => 'Mẫu Form 7', 'code' => 'Đề xuất 7', 'status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Lê Thị Thu Trang', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '8','template_form' => 'Mẫu Form 8', 'code' => 'Đề xuất 8', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Lê Thị Thu Trang', 'studentCode' => 'MTT271', 'THVP036'],
+        ['id' => '1', 'code' => '123456', 'title' => 'Đề xuất yêu cầu mua sắm máy tính', 'form' => 'Đề xuất yêu cầu mua sắm','status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Văn A', 'studentCode' => 'MTT271', 'THVP036'],
+        ['id' => '2', 'code' => '129371', 'title' => 'Đề nghị thanh toán phí dịch vụ toà nhà',   'form' => 'Đề nghị thanh toán', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Văn B', 'studentCode' => 'MTT271', 'THVP036'],
+        ['id' => '3', 'code' => '129761', 'title' => 'Đề nghị tạm ứng tiền chạy quảng cáo',   'form' => 'Đề nghị tạm ứng', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Đinh Văn C', 'studentCode' => 'MTT271', 'THVP036'],
+
     ];
-    $status = [['status_id' => '1', 'status' => 'Đã gửi'], ['status_id' => '2', 'status' => 'Đã duyệt'], ['status_id' => '3', 'status' => 'Từ chối']];
+    $status = [['status_id' => '1', 'status' => 'Đã tạo'], ['status_id' => '2', 'status' => 'Đã gửi'], ['status_id' => '3', 'status' => 'Đã mua']];
 @endphp
 @section('content')
-    @include('template.sidebar.sidebarHopGiaoBan.sidebarLeft')
+    @include('template.sidebar.sidebarMaster.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
                 <div class="container-fluid">
                     <div class="mainSection_heading">
-                        <h5 class="mainSection_heading-title">Danh sách đề nghị</h5>
+                        <h5 class="mainSection_heading-title">Danh sách đề xuất</h5>
                         @include('template.components.sectionCard')
                     </div>
 
@@ -38,240 +34,242 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center" style="width:2%">STT</th>
-                                                            <th class="text-nowrap" style="width:10%">Mẫu Form</th>
-                                                            <th class="text-nowrap" style="width:10%">Tiêu đề </th>
-                                                            <th class="text-nowrap" style="width:15%">Tóm tắt</th>
-                                                            <th class="text-nowrap" style="width:15%">Người đề nghị</th>
+                                                            <th class="text-nowrap" style="width:10%">Mã văn bản</th>
+                                                            <th class="text-nowrap" style="width:25%">Tiêu đề</th>
+                                                            <th class="text-nowrap" style="width:20%">Tóm tắt</th>
+                                                            <th class="text-nowrap" style="width:15%">Người tạo</th>
+                                                            <th class="text-nowrap" style="width:15%">Loại mẫu</th>
                                                             <th class="text-nowrap" style="width:10%">Trạng thái</th>
-                                                            <th class="text-nowrap" style="width:20%">Xem file</th>
                                                             @if (session('user')['role'] == 'admin')
                                                                 <th class="text-nowrap" style="width:3%"><span></span></th>
+                                                                
                                                             @endif
-
+        
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($lists as $list)
-                                                            <tr class="table-row" data-status-id="{{ $list['status_id'] }}">
-                                                                <td class="text-nowrap text-center">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="">
-                                                                        {{ $list['id'] }}
+                                                    <tr class="table-row" data-status-id="{{ $list['status_id'] }}"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#xemDeXuat{{ $list['id'] }}" role="button">
+                                                        <td class="text-nowrap text-center">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="">
+                                                                {{ $list['id'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:80px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="{{ $list['code'] }}">
+                                                                {{ $list['code'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:220px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="{{ $list['title'] }}">
+                                                                {{ $list['title'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:200px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="Tóm tắt">
+                                                                Tóm tắt đề xuất
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:140px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top"
+                                                                title="{{ $list['student'] }} - {{ $list['studentCode'] }}">
+                                                                {{ $list['student'] }} - {{ $list['studentCode'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="max-width:155px;" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top" title="{{ $list['form'] }}">
+                                                                {{ $list['form'] }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-nowrap">
+                                                            <div class="text-nowrap d-block text-truncate"
+                                                                style="" data-bs-toggle="tooltip"
+                                                                data-bs-placement="top"
+                                                                title="{{ $list['status'] }}">
+                                                                {{ $list['status'] }}
+                                                            </div>
+                                                        </td>
+                                                        
+                                                        @if (session('user')['role'] == 'admin')
+                                                            <td>
+                                                                <div
+                                                                    class="table_actions d-flex justify-content-center">
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="##suaDeXuat{{ $list['id'] }}">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/edit.svg') }}" />
                                                                     </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:195px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="{{ $list['template_form'] }}">
-                                                                        {{ $list['template_form'] }}
+                                                                    <div class="btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#xoaDeXuat{{ $list['id'] }}">
+                                                                        <img style="width:16px;height:16px"
+                                                                            src="{{ asset('assets/img/trash.svg') }}" />
                                                                     </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:195px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="{{ $list['code'] }}">
-                                                                        {{ $list['code'] }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:155px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="Tóm tắt đề xuất">
-                                                                        Tóm tắt đề xuất
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:155px;" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top" title="Người đề nghị">
-                                                                        Người đề nghị
-                                                                    </div>
-                                                                </td>
-                                                                
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate"
-                                                                        style="" data-bs-toggle="tooltip"
-                                                                        data-bs-placement="top"
-                                                                        title="{{ $list['status'] }}">
-                                                                        {{ $list['status'] }}
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-nowrap">
-                                                                    <div class="text-nowrap d-block text-truncate">
-                                                                        <ul class="list_table">
-                                                                            <li class="list_table-items">
-                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 1</a>
-                                                                            </li>
-                                                                            <li class="list_table-items">
-                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 2</a>
-                                                                            </li>
-                                                                            <li class="list_table-items">
-                                                                                <a href="file-de-xuat-{{ time() }}.png">Link 3</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                                @if (session('user')['role'] == 'admin')
-                                                                    <td>
-                                                                        <div
-                                                                            class="table_actions d-flex justify-content-center">
-                                                                            <div class="btn" data-bs-toggle="modal"
-                                                                                data-bs-target="#suaDeXuat{{ $list['id'] }}">
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/edit.svg') }}" />
-                                                                            </div>
-                                                                            <div class="btn" data-bs-toggle="modal"
-                                                                                data-bs-target="#xoaDeXuat{{ $list['id'] }}">
-                                                                                <img style="width:16px;height:16px"
-                                                                                    src="{{ asset('assets/img/trash.svg') }}" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                @endif
+                                                                </div>
+                                                            </td>
+                                                        @endif
 
-                                                                {{-- Xóa Vi tri --}}
-                                                                <div class="modal fade" id="suaDeXuat{{ $list['id'] }}"
-                                                                    tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-centered">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title text-danger w-100 text-center"
-                                                                                    id="exampleModalLabel">Sửa đề xuất</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <form method="" action="">
-                                                                                @csrf
-                                                                                <div class="modal-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-6 col-md-3 mb-3">
-                                                                                            <input type="text"
-                                                                                                data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Mẫu form"
-                                                                                                value="{{ $list['template_form'] }}"
-                                                                                                class="form-control">
-                                                                                        </div>
-                                                                                        <div class="col-6 col-md-9 mb-3">
-                                                                                            <input type="text"
-                                                                                                data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Tiêu đề"
-                                                                                                value="{{ $list['code'] }}"
-                                                                                                class="form-control">
-                                                                                        </div>
-                                                                                        <div class="col-12 col-md-12 mb-3">
-                                                                                            <input type="text"
-                                                                                                data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Tóm tắt"
-                                                                                                value="Tóm tắt đề xuất"
-                                                                                                class="form-control">
-                                                                                        </div>
-                                                                                        <div class="col-12 col-md-7 mb-3">
-                                                                                            <div data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Người đề nghị">
-                                                                                                <select
-                                                                                                    class="selectpicker"
-                                                                                                    title="Chọn người đề nghị"
-                                                                                                    data-live-search="true"
-                                                                                                    data-size="5"
-                                                                                                    data-live-search="true">
-                                                                                                    <option>Người đề nghị</option>
-                                                                                                    <option>Người đề nghị</option>
-                                                                                                    <option>Người đề nghị</option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-12 col-md-5 mb-3">
-                                                                                            <div data-bs-toggle="tooltip"
-                                                                                                data-bs-placement="top"
-                                                                                                title="Trạng thái">
-                                                                                                <select
-                                                                                                    class="selectpicker"
-                                                                                                    title="Chọn người nhận"
-                                                                                                    data-live-search="true"
-                                                                                                    data-size="5"
-                                                                                                    data-live-search="true">
-                                                                                                    <option
-                                                                                                        value="{{ $list['id'] }}"
-                                                                                                        selected>
-                                                                                                        {{ $list['status'] }}
-                                                                                                    </option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-12 col-md-12 mb-3">
-                                                                                            <div class="card-title">File đã
-                                                                                                tải lên</div>
-                                                                                            <div
-                                                                                                class="upload_wrapper-items">
-                                                                                                <ul class="modal_upload-list"
-                                                                                                    style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;">
-                                                                                                    <li>
-                                                                                                        <a href="#"
-                                                                                                            target="_blank">
-                                                                                                            <span
-                                                                                                                class="fs-5">
-                                                                                                                <i
-                                                                                                                    class="bi bi-link-45deg"></i>
-                                                                                                                209-40.json
-                                                                                                            </span>
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
+                                                        {{-- Sửa đề xuất --}}
+                                                        {{-- <div class="modal fade" id="#suaDeXuat{{ $list['id'] }}"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title text-danger"
+                                                                            id="exampleModalLabel">Sửa đề xuất</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form method="" action="">
+                                                                        @csrf
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col-12 col-md-12 mb-3">
+                                                                                    <input type="text"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Tiêu đề"
+                                                                                        value="{{ $list['code'] }}"
+                                                                                        class="form-control">
+                                                                                </div>
+                                                                                <div class="col-12 col-md-12 mb-3">
+                                                                                    <input type="text"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Chủ đề"
+                                                                                        value="{{ $list['user'] }}"
+                                                                                        class="form-control">
+                                                                                </div>
+                                                                                <div class="col-12 col-md-12 mb-3">
+                                                                                    <input type="text"
+                                                                                        data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Tóm tắt"
+                                                                                        value="Tóm tắt đề xuất"
+                                                                                        class="form-control">
+                                                                                </div>
+                                                                                <div class="col-12 col-md-7 mb-3">
+                                                                                    <div data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Người gửi">
+                                                                                        <select
+                                                                                            class="selectpicker"
+                                                                                            title="Chọn người nhận"
+                                                                                            data-live-search="true"
+                                                                                            data-size="5"
+                                                                                            data-live-search="true">
+                                                                                            @foreach ($listUsers->data as $users)
+                                                                                                <option
+                                                                                                    value="{{ $users->id }}"
+                                                                                                    selected>
+                                                                                                    {{ $users->name }}
+                                                                                                    -
+                                                                                                    {{ $users->code }}
+                                                                                                </option>
+                                                                                            @endforeach
+                                                                                        </select>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button"
-                                                                                        class="btn btn-outline-danger"
-                                                                                        data-bs-dismiss="modal">Hủy</button>
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger">Sửa</button>
+                                                                                <div class="col-12 col-md-5 mb-3">
+                                                                                    <div data-bs-toggle="tooltip"
+                                                                                        data-bs-placement="top"
+                                                                                        title="Trạng thái">
+                                                                                        <select
+                                                                                            class="selectpicker"
+                                                                                            title="Chọn người nhận"
+                                                                                            data-live-search="true"
+                                                                                            data-size="5"
+                                                                                            data-live-search="true">
+                                                                                            <option
+                                                                                                value="{{ $list['id'] }}"
+                                                                                                selected>
+                                                                                                {{ $list['status'] }}
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {{-- Xóa Vi tri --}}
-                                                                <div class="modal fade" id="xoaDeXuat{{ $list['id'] }}"
-                                                                    tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-centered">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title text-danger w-100 text-center"
-                                                                                    id="exampleModalLabel">Xóa đề xuất</h5>
-                                                                                <button type="button" class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                Bạn có thực sự muốn xoá đề xuất này không?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-outline-danger"
-                                                                                    data-bs-dismiss="modal">Hủy</button>
-                                                                                <form action="" method="POST">
-                                                                                    @csrf
-                                                                                    {{-- @method('DELETE') --}}
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger">Xóa</button>
-                                                                                </form>
+                                                                                <div class="col-12 col-md-12 mb-3">
+                                                                                    <div class="card-title">File đã
+                                                                                        tải lên</div>
+                                                                                    <div
+                                                                                        class="upload_wrapper-items">
+                                                                                        <ul class="modal_upload-list"
+                                                                                            style="max-height: 134px; overflow-y: scroll; overflow-x: hidden;">
+                                                                                            <li>
+                                                                                                <a href="#"
+                                                                                                    target="_blank">
+                                                                                                    <span
+                                                                                                        class="fs-5">
+                                                                                                        <i
+                                                                                                            class="bi bi-link-45deg"></i>
+                                                                                                        209-40.json
+                                                                                                    </span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-danger"
+                                                                                data-bs-dismiss="modal">Hủy</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger">Sửa</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div> --}}
+                                                        {{-- Xóa đề xuất --}}
+                                                        <div class="modal fade" id="xoaDeXuat{{ $list['id'] }}"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title text-danger"
+                                                                            id="exampleModalLabel">Xóa đề xuất</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Bạn có thực sự muốn xoá đề xuất này không?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-danger"
+                                                                            data-bs-dismiss="modal">Hủy</button>
+                                                                        <form action="" method="POST">
+                                                                            @csrf
+                                                                            {{-- @method('DELETE') --}}
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger">Xóa</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                        </div>
 
 
-                                                            </tr>
-                                                        @endforeach
+                                                    </tr>
+                                                @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -286,7 +284,7 @@
             @include('template.footer.footer')
         </div>
     </div>
-    @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
+    @include('template.sidebar.sidebarDeXuat.sidebarRight')
 
     <!-- Modal Thêm Tao De Xuat -->
     <div class="modal fade" id="taoDeXuat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -296,12 +294,12 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Chọn mẫu đề xuất</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="" action="">
+                <form method="" action="" id="myForm">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <select name="" class="selectpicker" title="Chọn người gửi" data-size="5">
+                                <select name="sender" class="selectpicker" title="Chọn người gửi" data-size="5" data-live-search="true">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -310,10 +308,10 @@
                                 </select>
                             </div>
                             <div class="col-6 mb-3">
-                                <input  name="" type="text" placeholder="Tiêu đề" class="form-control">
+                                <input name="title" type="text" placeholder="Tiêu đề" class="form-control">
                             </div>
                             <div class="col-6 mb-3">
-                                <select name="" class="selectpicker" title="Chọn người nhận" data-size="5">
+                                <select name="receiver" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -322,13 +320,13 @@
                                 </select>
                             </div>
                             <div class="col-6 mb-3">
-                                <input  name=""  type="text" placeholder="Tóm tắm"class="form-control">
+                                <input name="summary" type="text" placeholder="Tóm tắt" class="form-control">
                             </div>
                             <div class="col-12 mb-3">
-                                <select class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
-                                    <option value="ycms" data-target="#ycms-modal">Yêu cầu mua sắm</option>
-                                    <option value="dntt" data-target="#dntt-modal">Đề nghị thanh toán</option>
-                                    <option value="dntu2" data-target="#dntu-modal">BM01_Đề nghị tạm ứng 02</option>
+                                <select name="proposal" class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
+                                    <option value="ycms">Yêu cầu mua sắm</option>
+                                    <option value="dntt">Đề nghị thanh toán</option>
+                                    <option value="dntu2">Đề nghị tạm ứng</option>
                                 </select>
                             </div>
                             <div class="col-12 mb-3">
@@ -772,6 +770,81 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/repeater.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/jquery-repeater/custom-repeater.js') }}"></script>
 
+    <!-- Chart Js -->
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+
+    <script>
+        // SELECT MULTIPLE LEFT SIDEBAR
+        const select = document.getElementById('select');
+        const elems = document.querySelectorAll('.data_chart-items');
+        const obj = {};
+
+        const filtered = [...elems].filter((el) => {
+            if (!obj[el.id]) {
+                obj[el.id] = true;
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        const selectOpt = filtered.map((el) => {
+            el.style.display = 'block';
+            return `<option> ${el.id} </option>`;
+        });
+
+        select.innerHTML = selectOpt.join('');
+
+        select.addEventListener('change', function() {
+            for (let i = 0, iLen = select.options.length; i < iLen; i++) {
+                const opt = select.options[i];
+                const noPick = document.getElementById('data_chart-nopick')
+
+                const val = opt.value || opt.text;
+                if (opt.selected) {
+                    document.getElementById(val).style.display = 'block';
+                    noPick.style.display = 'none';
+
+                } else {
+                    document.getElementById(val).style.display = 'none';
+                    noPick.style.display = 'block';
+                }
+            }
+        });
+
+        // BTN SETTINGS
+        document.getElementById('sidebarBody_settings-body').addEventListener('click', handleClickSettings, false);
+
+        function handleClickSettings() {
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (sidebarBodySelectWrapper.style.display === 'none') {
+                sidebarBodySelectWrapper.style.display = 'block';
+                document.addEventListener('click', handleClickOutside);
+            } else {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+
+        function handleClickOutside(event) {
+            const sidebarBodySettings = document.getElementsByClassName('sidebarBody_settings-body')[0];
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (!sidebarBodySettings.contains(event.target) && !sidebarBodySelectWrapper.contains(event.target)) {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+    </script>
+
     <script>
         const targetTable = $('#dsDaoTao').DataTable({
             paging: true,
@@ -832,6 +905,21 @@
             </div>
         `);
     </script>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            var select = document.querySelector('select[name="proposal"]');
+            if (select.value == "ycms") {
+                window.location.href = "/yeu-cau-mua-sam";
+            } else if (select.value == "dntt") {
+                window.location.href = "/de-nghi-thanh-toan";
+            } else if (select.value == "dntu2") {
+                window.location.href = "/de-nghi-tam-ung";
+            } 
+            event.preventDefault();
+        });
+    </script>
+
+        
 
     <script>
         updateList = function(e) {
@@ -962,6 +1050,14 @@
                 }
             }
         }
+    </script>
+
+    <script>
+        $('tr[data-href]').on("click", function(event) {
+            if ($(event.target).closest('td').index() !== $(this).find('td').length - 1) {
+                window.location.href = $(this).data('href');
+            }
+        });
     </script>
 
     {{-- <script>

@@ -28,6 +28,7 @@
 @endsection
 
 @section('content')
+    @include('template.sidebar.sidebarMaster.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
@@ -37,7 +38,7 @@
                     </div>
                     <div class="information_wrapper bg-white">
                         <div class="row">
-                            <div class="col-12 col-md-5">
+                            <div class="col-12 col-md-5 mb-3">
                                 <div class="card" style="height: 100%;">
                                     <div class="card-body">
                                         <div class="information_avatar">
@@ -66,25 +67,28 @@
                                             <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#thongTinCoBan">Thay đổi</button>
                                         </div>
                                         <div class="row">
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="name" class="form-label fs-5">Họ và tên</label>
                                                     <input type="text" id="name" readonly value="{{ $user->name }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="sex" class="form-label fs-5">Giới tính</label>
                                                     <input type="text" id="sex" readonly value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                                    <input type="text" id="bd" readonly value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
+                                                    <div class="position-relative">
+                                                        <input type="text" id="bd" readonly value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
+                                                        <i class="bi bi-calendar-plus style_pickdate"></i>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Số điện thoại liên
                                                         hệ</label>
@@ -92,19 +96,19 @@
                                                 </div>
                                             </div>
 
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
                                                     <input type="text" id="bd" readonly value="{{ $user->departement->name ?? '' }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-4">
+                                            <div class="mb-3 col-6 col-md-4">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
                                                     <input type="text" id="bd" readonly value="{{ $user->position->name ?? '' }}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-12">
+                                            <div class="mb-3 col-12 col-md-12">
                                                 <div class="mb-3">
                                                     <label for="bd" class="form-label fs-5">Địa chỉ</label>
                                                     <input type="text" id="bd" readonly value="{{ $user->address }}" class="form-control">
@@ -144,7 +148,7 @@
             </div>
         </div>
     </div>
-
+    @include('template.sidebar.sidebarHopGiaoBan.sidebarRight')
     {{-- Modal Thay đổi thông tin cơ bản --}}
     <div class="modal fade" id="thongTinCoBan" tabindex="-1" aria-labelledby="layout-thayDoiMatKhau" aria-hidden="true" tabindex="-1">
 
@@ -161,49 +165,45 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
+                            <div class="mb-3 col-6 col-md-4">
                                     <label for="name" class="form-label fs-5">Họ và tên</label>
                                     <input type="text" id="name" value="{{ $user->name }} - {{ $user->code }}" class="form-control">
-                                </div>
                             </div>
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
+                            <div class="mb-3 col-6 col-md-4">
                                     <label for="sex" class="form-label fs-5">Giới tính</label>
-                                    <input type="text" id="sex" value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control">
+                                    {{-- <input type="text" id="sex" value="{{ $user->sex == 'male' ? 'Nam' : 'Nữ' }}" class="form-control"> --}}
+                                    <select name="" id="deps" class="selectpicker" title="Giới tính">
+                                        <option value="">1</option>
+                                    </select>
+                            </div>
+                            <div class="mb-3 col-6 col-md-4">
+                                <label for="bd" class="form-label fs-5">Ngày sinh</label>
+                                <div class="position-relative">
+                                    <input type="text" id="bd" value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control datePicker">
+                                    <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                             </div>
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Ngày sinh</label>
-                                    <input type="text" id="bd" value="{{ date('d/m/Y', strtotime($user->dob)) }}" class="form-control">
-                                </div>
-                            </div>
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
+                            <div class="mb-3 col-6 col-md-4">
                                     <label for="bd" class="form-label fs-5">Số điện thoại liên
                                         hệ</label>
                                     <input type="text" id="bd" value="0123456" class="form-control">
-                                </div>
                             </div>
 
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Đơn vị công tác</label>
-                                    <input type="text" id="bd" value="Phòng Marketing" class="form-control">
-                                </div>
+                            <div class="mb-3 col-6 col-md-4">
+                                    <label for="deps" class="form-label fs-5">Đơn vị công tác</label>
+                                    <select name="" id="deps" class="selectpicker" title="Đơn vị công tác" data-size="5" data-live-search="true">
+                                        <option value="">1</option>
+                                    </select>
                             </div>
-                            <div class="mb-3 col-4">
-                                <div class="mb-3">
-                                    <label for="bd" class="form-label fs-5">Vị trí làm việc</label>
-                                    <input type="text" id="bd" value="Trợ lý Marketing" class="form-control">
-                                </div>
+                            <div class="mb-3 col-6 col-md-4">
+                                    <label for="pos" class="form-label fs-5">Vị trí làm việc</label>
+                                    <select name="" id="pos" class="selectpicker" title="Vị trí làm việc" data-size="5" data-live-search="true">
+                                        <option value="">1</option>
+                                    </select>
                             </div>
                             <div class="mb-3 col-12">
-                                <div class="mb-3">
                                     <label for="bd" class="form-label fs-5">Địa chỉ</label>
                                     <input type="text" id="bd" value="Khu 3 phú thọ" class="form-control">
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -264,7 +264,7 @@
 
 
     {{-- Modal sửa thông tin cá nhân --}}
-    <div class="modal fade" id="suaThongTin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="suaThongTin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -311,7 +311,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Modal tạo chữ ký --}}
     <div class="modal fade" id="signatureModal" tabindex="-1" role="dialog" aria-labelledby="signatureModalLabel" aria-hidden="true">
@@ -338,6 +338,82 @@
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script> --}}
     <script src="{{ asset('/assets/plugins/signature_pad/signature_pad.umd.min.js') }}"></script>
+
+    <!-- Chart Js -->
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
+    
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
+
+    <script>
+        // SELECT MULTIPLE LEFT SIDEBAR
+        const select = document.getElementById('select');
+        const elems = document.querySelectorAll('.data_chart-items');
+        const obj = {};
+
+        const filtered = [...elems].filter((el) => {
+            if (!obj[el.id]) {
+                obj[el.id] = true;
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        const selectOpt = filtered.map((el) => {
+            el.style.display = 'block';
+            return `<option> ${el.id} </option>`;
+        });
+
+        select.innerHTML = selectOpt.join('');
+
+        select.addEventListener('change', function() {
+            for (let i = 0, iLen = select.options.length; i < iLen; i++) {
+                const opt = select.options[i];
+                const noPick = document.getElementById('data_chart-nopick')
+
+                const val = opt.value || opt.text;
+                if (opt.selected) {
+                    document.getElementById(val).style.display = 'block';
+                    noPick.style.display = 'none';
+
+                } else {
+                    document.getElementById(val).style.display = 'none';
+                    noPick.style.display = 'block';
+                }
+            }
+        });
+
+        // BTN SETTINGS
+        document.getElementById('sidebarBody_settings-body').addEventListener('click', handleClickSettings, false);
+
+        function handleClickSettings() {
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (sidebarBodySelectWrapper.style.display === 'none') {
+                sidebarBodySelectWrapper.style.display = 'block';
+                document.addEventListener('click', handleClickOutside);
+            } else {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+
+        function handleClickOutside(event) {
+            const sidebarBodySettings = document.getElementsByClassName('sidebarBody_settings-body')[0];
+            const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
+            if (!sidebarBodySettings.contains(event.target) && !sidebarBodySelectWrapper.contains(event.target)) {
+                sidebarBodySelectWrapper.style.display = 'none';
+                document.removeEventListener('click', handleClickOutside);
+            }
+        }
+    </script>
+
 
     <script>
         // Initialize the signature pad
@@ -485,6 +561,15 @@
             signaturePad.clear();
         });
     </script>'
-
-
+    <script>
+        $(document).ready(function() {
+            $('.datePicker').daterangepicker({
+                singleDatePicker: true,
+                timePicker: false,
+                locale: {
+                    format: 'DD/MM/YYYY '
+                }
+            });
+        });
+    </script>
 @endsection
