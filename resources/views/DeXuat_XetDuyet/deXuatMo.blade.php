@@ -4,14 +4,9 @@
 
 @php
     $lists = [
-        ['id' => '1', 'code' => 'Đề xuất 1', 'status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '2', 'code' => 'Đề xuất 2', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '3', 'code' => 'Đề xuất 3', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Ngọc Bảo', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '4', 'code' => 'Đề xuất 4', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '5', 'code' => 'Đề xuất 5', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '6', 'code' => 'Đề xuất 6', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Thị Hồng Nhung', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '7', 'code' => 'Đề xuất 7', 'status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Lê Thị Thu Trang', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '8', 'code' => 'Đề xuất 8', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Lê Thị Thu Trang', 'studentCode' => 'MTT271', 'THVP036'],
+        ['id' => '1', 'code' => '388272', 'status_id' => '1',  'form' => 'Đề nghị tạm ứng', 'status' => 'Đã gửi', 'user' => 'Tạm ứng phí tài trợ', 'userCode' => 'MTT271', 'student' => 'Nguyễn Văn A', 'studentCode' => 'MTT271', 'refuser' => 'Nguyễn Thị D', 'refuserCode' => 'MTT112',],
+        ['id' => '2', 'code' => '823626', 'status_id' => '2',  'form' => 'Đề nghị thanh toán', 'status' => 'Đã duyệt', 'user' => 'Thanh toán phí dịch vụ', 'userCode' => 'MTT271', 'student' => 'Trần Văn B', 'studentCode' => 'MTT271', 'refuser' => 'Trần Thị E', 'refuserCode' => 'MTT113',],
+        ['id' => '3', 'code' => '937262', 'status_id' => '3',  'form' => 'Yêu cầu mua sắm','status' => 'Từ chối', 'user' => 'Yêu cầu mua tivi', 'userCode' => 'MTT271', 'student' => 'Đinh Văn C', 'studentCode' => 'MTT271', 'refuser' => 'Nguyễn Thị F', 'refuserCode' => 'MTT114',],
     ];
     $status = [['status_id' => '1', 'status' => 'Đã gửi'], ['status_id' => '2', 'status' => 'Đã duyệt'], ['status_id' => '3', 'status' => 'Từ chối']];
 @endphp
@@ -38,17 +33,15 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center" style="width:2%">STT</th>
-                                                            <th class="text-nowrap" style="width:20%">Tiêu đề
-                                                            </th>
-                                                            <th class="text-nowrap" style="width:15%">Chủ đề</th>
+                                                            <th class="text-nowrap" style="width:10%">Mã văn bản</th>
+                                                            <th class="text-nowrap" style="width:10%">Loại mẫu</th>
+                                                            <th class="text-nowrap" style="width:20%">Tiêu đề</th>
                                                             <th class="text-nowrap" style="width:15%">Tóm tắt</th>
-                                                            <th class="text-nowrap" style="width:15%">Người gửi</th>
+                                                            <th class="text-nowrap" style="width:10%">Người gửi</th>
+                                                            <th class="text-nowrap" style="width:10%">Ngày gửi</th>
                                                             <th class="text-nowrap" style="width:10%">Trạng thái</th>
-                                                            <th class="text-nowrap" style="width:20%">Xem file</th>
-                                                            @if (session('user')['role'] == 'admin')
-                                                                <th class="text-nowrap" style="width:3%"><span></span></th>
-                                                            @endif
-
+                                                            <th class="text-nowrap" style="width:10%">Từ chối bởi</th>
+                                                            <th class="text-nowrap" style="width:3%"><span></span></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -67,6 +60,20 @@
                                                                         style="max-width:195px;" data-bs-toggle="tooltip"
                                                                         data-bs-placement="top" title="{{ $list['code'] }}">
                                                                         {{ $list['code'] }}
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="max-width:155px;" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top" title="{{ $list['form'] }}">
+                                                                        {{ $list['form'] }}
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate"
+                                                                        style="max-width:155px;" data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top" title="{{ $list['user'] }}">
+                                                                        {{ $list['user'] }}
                                                                     </div>
                                                                 </td>
                                                                 <td class="text-nowrap">
@@ -99,16 +106,18 @@
                                                                         {{ $list['status'] }}
                                                                     </div>
                                                                 </td>
+                                                                
                                                                 <td class="text-nowrap">
                                                                     <div class="text-nowrap d-block text-truncate"
-                                                                        style="max-width:215px;" data-bs-toggle="tooltip"
+                                                                        style="max-width:140px;" data-bs-toggle="tooltip"
                                                                         data-bs-placement="top"
-                                                                        title="file-de-xuat-{{ time() }}.png">
-                                                                        file-de-xuat-{{ time() }}.png
+                                                                        title="{{ $list['refuser'] }} - {{ $list['refuserCode'] }}">
+                                                                        {{ $list['refuser'] }} - {{ $list['refuserCode'] }}
                                                                     </div>
                                                                 </td>
-                                                                @if (session('user')['role'] == 'admin')
-                                                                    <td>
+                                                                
+                                                                
+                                                                <td>
                                                                         <div
                                                                             class="table_actions d-flex justify-content-center">
                                                                             <div class="btn" data-bs-toggle="modal"
@@ -123,7 +132,6 @@
                                                                             </div>
                                                                         </div>
                                                                     </td>
-                                                                @endif
 
                                                                 {{-- Xóa Vi tri --}}
                                                                 <div class="modal fade" id="suaDeXuat{{ $list['id'] }}"
@@ -295,7 +303,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel">Tạo đề xuất</h5>
+                    <h5 class="modal-title w-100" id="exampleModalLabel">THông tin mẫu đề xuất</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="" action="">
@@ -303,35 +311,32 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <input type="text" placeholder="Nhập tiêu đề" class="form-control">
+                                <input type="text" placeholder="Tiêu đề" class="form-control">
                             </div>
                             <div class="col-12 mb-3">
-                                <input type="text" placeholder="Nhập chủ đề" class="form-control">
+                                <input type="text" placeholder="Tóm tắt" class="form-control">
                             </div>
-                            <div class="col-12 mb-3">
-                                <input type="text" placeholder="Nhập tóm tắt" class="form-control">
-                            </div>
-                            <div class="col-12 col-md-7 mb-3">
-                                <select class="selectpicker" title="Chọn người nhận" data-live-search="true"
-                                    data-size="5" data-live-search="true">
+                            <div class="col-6 col-md-6 mb-3">
+                                <select class='selectpicker' title="Người nhận" multiple data-live-search="true" data-size="5" data-actions-box="true" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người nhận" data-live-search-placeholder="Tìm kiếm...">
                                     @foreach ($listUsers->data as $users)
                                         <option value="{{ $users->id }}">{{ $users->name }} - {{ $users->code }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-12 col-md-5 mb-3">
-                                <select class="selectpicker" title="Chọn trạng thái" data-live-search="true"
-                                    data-size="5" data-live-search="true">
-                                    @foreach ($lists as $list)
-                                        <option value="{{ $list['id'] }}">{{ $list['status'] }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="col-6 col-md-6 mb-3">
+                                <select class='selectpicker' title="Người liên quan" multiple data-live-search="true" data-size="5" data-actions-box="true" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người liên quán" data-live-search-placeholder="Tìm kiếm...">
+
+                                @foreach ($listUsers->data as $users)
+                                    <option value="{{ $users->id }}">{{ $users->name }} - {{ $users->code }}
+                                    </option>
+                                @endforeach
+                            </select>
                             </div>
                             {{-- <div class="col-12 mb-3">
                                 <textarea rows="1" class="form-control" placeholder="Nhập đánh giá"></textarea>
                             </div> --}}
-                            <div class="col-12 mb-3">
+                            <div class="col-12 col-md-12">
                                 <div class="upload_wrapper-items">
                                     <input type="hidden" name="uploadedFiles[]" value="" />
                                     <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
@@ -367,9 +372,19 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 d-flex justify-content-end">
-                                <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                            <div class="col-12 col-md-12">
+                                <div class="row d-flex align-items-center justify-content-center" style="height: 100px;">
+                                    <div class="col">
+                                        <button id="showImageBtn-proponent" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                    </div>
+                                    <div class="col d-flex justify-content-end">
+                                        <img id="signatureImg-proponent" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                                    </div>
+                                </div>
                             </div>
+
+
+                           
 
                         </div>
                     </div>
@@ -381,45 +396,79 @@
             </div>
         </div>
     </div>
-    <!-- Modal Xem DS biên bản -->
+
+    {{-- Modal Sign --}}
+    {{-- <div class="modal fade" id="confirmSign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Ý kiến phản hồi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="" action="" id="myForm">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
+                                <div class="funkyradio-danger">
+                                    <input type="radio" name="radio" id="confirmRadio" />
+                                    <label for="confirmRadio">Xác nhận</label>
+                                </div>
+                                <div class="funkyradio-danger">
+                                    <input type="radio" name="radio" id="destroyRadio" />
+                                    <label for="destroyRadio">Từ chối</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 col-12 col-md-12">
+                                <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pe-5 ps-5">Ký</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+    <!-- Modal Phê duyệt đề xuất -->
     @foreach ($lists as $list)
         <div class="modal fade" id="xemDeXuat{{ $list['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h5 class="modal-title w-100" id="exampleModalLabel">Chi tiết đề xuất</h5>
+                        <h5 class="modal-title w-100" id="exampleModalLabel">PHÊ DUYỆT ĐỀ XUẤT</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form method="" action="">
                         @csrf
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-12 col-md-12 mb-3">
-                                    <input readonly type="text" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Tiêu đề" value="{{ $list['code'] }}" class="form-control">
+                                <div class="col-6 col-md-6 mb-3">
+                                    <input readonly type="text" value="Nguyễn Văn A" disabled data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Tên người đề xuất" class="form-control">
+                                </div>
+                                <div class="col-6 col-md-6 mb-3">
+                                    <input readonly type="text" disabled data-bs-toggle="tooltip" data-bs-placement="top"
+                                        title="Tóm tắt" value="Thanh toán tiền phí dịch vụ" class="form-control">
                                 </div>
                                 <div class="col-12 col-md-12 mb-3">
                                     <input readonly type="text" data-bs-toggle="tooltip" data-bs-placement="top"
                                         title="Chủ đề" value="{{ $list['user'] }}" class="form-control">
                                 </div>
-                                <div class="col-12 col-md-12 mb-3">
-                                    <input readonly type="text" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Tóm tắt" value="Tóm tắt đề xuất" class="form-control">
-                                </div>
-                                <div class="col-12 col-md-7 mb-3">
+                                
+                                <div class="col-6 col-md-6 mb-3">
                                     <div data-bs-toggle="tooltip" data-bs-placement="top" title="Người gửi">
-                                        <select class="selectpicker" title="Chọn người gửi" data-size="5">
+                                        <select class="selectpicker" title="Người gửi" data-size="5">
                                             <option value="{{ $users->id }}" selected>{{ $users->name }} - {{ $users->code }}</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-5 mb-3">
-                                    <div data-bs-toggle="tooltip" data-bs-placement="top" title="Trạng thái">
-                                        <select class="selectpicker" title="Chọn Trạng thái" data-size="5">
-                                            <option value="{{ $list['id'] }}" selected>{{ $list['status'] }}</option>
-                                        </select>
-                                    </div>
+                                <div class="col-6 col-md-6 mb-3 position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Thời gian gửi">
+                                    <input id="suaCreateUser" name="" value="" class="form-control" type="text">
+                                    <i class="bi bi-calendar-plus style_pickdate"></i>
                                 </div>
                                 <div class="col-12 col-md-12 mb-3">
                                     <div class="card-title">File đã tải lên</div>
@@ -437,17 +486,33 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 d-flex justify-content-end">
-                                    <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                                <div class="col-12 col-md-12">
+                                    <div class="row d-flex align-items-center justify-content-center" style="height: 100px;">
+                                        <div class="col d-flex align-items-center justify-content-center flex-column">
+                                                <div class="card_template-title text-center">Người đề nghị</div>
+                                                <div class="" style="margin-top: 20px">
+                                                    <img id="signatureImg" width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                                                </div>
+                                        </div>
+                                        
+
+                                            <div class="col d-flex align-items-center justify-content-center flex-column" style="height: 100px;">
+                                                <div class="card_template-title text-center">Người duyệt</div>
+                                                
+                                                <div class="" style="margin-top: 16px">
+                                                    <button id="showImageBtn-reviewer" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                    <img id="signatureImg-reviewer" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                                                </div>
+                                            </div>
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-warning">Không duyệt</button>
-                            <button type="submit" class="btn btn-danger">Ký duyệt</button>
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Trở
-                                lại</button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Trở lại</button>
+                            <button type="button" class="btn btn-outline-warning">Từ chối</button>
+                            <button type="submit" class="btn btn-danger">Duyệt</button>
                         </div>
                     </form>
                 </div>
@@ -510,6 +575,25 @@
             if ($(event.target).closest('td').index() !== $(this).find('td').length - 1) {
                 window.location.href = $(this).data('href');
             }
+        });
+    </script>
+
+    <script>
+        const showImageBtn = document.getElementById('showImageBtn-proponent');
+        const signatureImg = document.getElementById('signatureImg-proponent');
+
+        showImageBtn.addEventListener('click', () => {
+            showImageBtn.style.display = 'none';
+            signatureImg.style.display = 'block';
+        });
+
+
+        const showImageBtn1 = document.getElementById('showImageBtn-reviewer');
+        const signatureImg1 = document.getElementById('signatureImg-reviewer');
+
+        showImageBtn1.addEventListener('click', () => {
+            showImageBtn1.style.display = 'none';
+            signatureImg1.style.display = 'block';
         });
     </script>
 
