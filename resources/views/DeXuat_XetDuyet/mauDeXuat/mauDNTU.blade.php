@@ -171,7 +171,8 @@
                                         <div class="card_template-title text-center mb-3">Người đề nghị tam ứng</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
+                                                <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <img id="signatureImg" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                                             </div>
                                         </div>
                                     </div>
@@ -319,8 +320,8 @@
                                         <div class="card_template-title text-center">Người đề nghị</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign">Chèn chữ ký</button>
-
+                                                <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <img id="signatureImg" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                                             </div>
                                         </div>
                                     </div>
@@ -388,13 +389,17 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3 col-12 col-md-12">
+                            <div class="mb-3 col-12 col-md-12 showSign">
+                                <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                            </div>
+
+                            <div class="mb-3 col-12 col-md-12 showFormYKien">
                                 <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger pe-5 ps-5">Ký</button>
+                        <button type="button" class="btn btn-danger pe-5 ps-5">Xác nhận</button>
                     </div>
                 </form>
             </div>
