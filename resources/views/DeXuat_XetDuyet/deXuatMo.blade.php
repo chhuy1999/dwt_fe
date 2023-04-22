@@ -397,8 +397,8 @@
         </div>
     </div>
 
-    {{-- Modal Sign --}}
-    {{-- <div class="modal fade" id="confirmSign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- Modal từ chối --}}
+    <div class="modal fade" id="confirmSign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -409,29 +409,18 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
-                                <div class="funkyradio-danger">
-                                    <input type="radio" name="radio" id="confirmRadio" />
-                                    <label for="confirmRadio">Xác nhận</label>
-                                </div>
-                                <div class="funkyradio-danger">
-                                    <input type="radio" name="radio" id="destroyRadio" />
-                                    <label for="destroyRadio">Từ chối</label>
-                                </div>
-                            </div>
-
-                            <div class="mb-3 col-12 col-md-12">
+                            <div class="mb-3 col-12 col-md-12 showFormYKien">
                                 <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger pe-5 ps-5">Ký</button>
+                        <button type="button" class="btn btn-danger pe-5 ps-5">Xác nhận</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Modal Phê duyệt đề xuất -->
     @foreach ($lists as $list)
         <div class="modal fade" id="xemDeXuat{{ $list['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -488,6 +477,7 @@
 
                                 <div class="col-12 col-md-12">
                                     <div class="row d-flex align-items-center justify-content-center" style="height: 100px;">
+
                                         <div class="col d-flex align-items-center justify-content-center flex-column">
                                                 <div class="card_template-title text-center">Người đề nghị</div>
                                                 <div class="" style="margin-top: 20px">
@@ -496,10 +486,11 @@
                                         </div>
                                         
 
-                                            <div class="col d-flex align-items-center justify-content-center flex-column" style="height: 100px;">
+                                            <div class="col d-flex align-items-center justify-content-center flex-column">
                                                 <div class="card_template-title text-center">Người duyệt</div>
                                                 
                                                 <div class="" style="margin-top: 16px">
+                                                    
                                                     <button id="showImageBtn-reviewer" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
                                                     <img id="signatureImg-reviewer" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                                                 </div>
@@ -510,8 +501,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Trở lại</button>
-                            <button type="button" class="btn btn-outline-warning">Từ chối</button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" >Trở lại</button>
+                            <button type="button" class="btn btn-outline-warning"  data-bs-toggle="modal" data-bs-target="#confirmSign">Từ chối</button>
                             <button type="submit" class="btn btn-danger">Duyệt</button>
                         </div>
                     </form>
@@ -522,6 +513,41 @@
 
 @endsection
 @section('footer-script')
+<script>
+    $(document).ready(function() {
+        $.datetimepicker.setLocale('vi');
+        // $('#createUser').datetimepicker({
+        //     format: 'd/m/Y',
+        //     timepicker: false,
+        // });
+        $('#suaCreateUser').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false,
+        });
+
+        $('#onchangeDonViCongTac').change(function() {
+            var opval = $(this).val();
+            if (opval == "themCoCauToChuc") {
+                $('#themCoCauToChuc').modal("show");
+                $('#themThanhVien').modal("hide");
+            }
+        });
+        $('#onchangeViTriChucDanh').change(function() {
+            var opval = $(this).val();
+            if (opval == "themViTriChucDanh") {
+                $('#themViTriChucDanh').modal("show");
+                $('#themThanhVien').modal("hide");
+            }
+        });
+        $('#onchangeCapNhanSu').change(function() {
+            var opval = $(this).val();
+            if (opval == "themCapNhanSu") {
+                $('#themCapNhanSu').modal("show");
+                $('#themThanhVien').modal("hide");
+            }
+        });
+    });
+</script>
 
     <script>
         const targetTable = $('#dsDaoTao').DataTable({
