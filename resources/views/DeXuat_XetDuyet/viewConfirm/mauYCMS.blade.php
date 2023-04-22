@@ -28,13 +28,13 @@
                                         <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Số/No:</div>
                                             <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control">
+                                                <input type="text" value="123456" class="form-control">
                                             </div>
                                         </div>
                                         <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Ngày/Date:</div>
                                             <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control datePicker">
+                                                <input type="text" value="22/04/2023" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@
                                         <div class="card_template-title text-center">Applicant</div>
                                         <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="card_template-title fw-normal">
-                                                {{ Session::get('user')['name'] }}
+                                                <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                                             </div>
                                         </div>
                                     </div>
@@ -277,13 +277,17 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3 col-12 col-md-12">
+                            <div class="mb-3 col-12 col-md-12 showSign">
+                                <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                            </div>
+
+                            <div class="mb-3 col-12 col-md-12 showFormYKien">
                                 <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger pe-5 ps-5">Ký</button>
+                        <button type="button" class="btn btn-danger pe-5 ps-5">Xác nhận</button>
                     </div>
                 </form>
             </div>
@@ -579,19 +583,29 @@
         }
     </script>
 
-<script>
-    $(document).ready(function() {
 
-        $('.datePicker').daterangepicker({
-            singleDatePicker: true,
-            timePicker: false,
-            startDate: new Date(),
-            locale: {
-                format: 'DD/MM/YYYY '
-            }
-        });
-
+    <script>
+      $(document).ready(function() {
+  // Hide the text areas initially
+  $('.showSign, .showFormYKien').hide();
+  
+  // Attach event listeners to radio buttons using a loop
+  $('input[type="radio"][name="radio"]').each(function() {
+    $(this).click(function() {
+      var selectedRadio = $(this).attr('id');
+      
+      if (selectedRadio === 'confirmRadio') {
+        $('.showSign').show();
+        $('.showFormYKien').hide();
+      } else if (selectedRadio === 'destroyRadio') {
+        $('.showFormYKien').show();
+        $('.showSign').hide();
+      }
     });
-</script>
+  });
+});
+
+
+    </script>
 
 @endsection

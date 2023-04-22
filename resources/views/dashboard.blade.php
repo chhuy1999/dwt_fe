@@ -588,7 +588,7 @@
 
                                                                     <td class="text-nowrap bg-blue-blur">
                                                                         <div class="text-center">
-                                                                            {{ date('m/d', strtotime($task->deadline)) }}
+                                                                            {{ date('d/m', strtotime($task->deadline)) }}
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-nowrap fw-bold bg-blue-blur">
@@ -671,7 +671,7 @@
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-nowrap bg-yellow-blur">
-                                                                        <div class="">
+                                                                        <div class="text-center">
                                                                             {{ date('d/m', strtotime($reportTask->deadline)) }}
                                                                         </div>
                                                                     </td>
