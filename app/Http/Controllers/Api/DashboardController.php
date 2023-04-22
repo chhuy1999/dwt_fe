@@ -36,6 +36,7 @@ class DashboardController extends Controller
             if ($user['role'] == 'manager') {
                 $searchDepartment_id = $user['departement_id'];
             }
+            dd($user['role']);
             $listAssignedTasks = $this->dwtServices
                 ->searchKpiTargetDetails([
                     "page" => 1,

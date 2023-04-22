@@ -122,13 +122,14 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function searchKpiTargets($q = "", $page = 1, $limit = 30)
+    public function searchKpiTargets($q = "", $department_id, $page = 1, $limit = 30)
     {
         $url = $this->url . '/targets';
         $response = $this->client->get($url, [
             'q' => $q,
             'page' => $page,
-            'limit' => $limit
+            'limit' => $limit,
+            'department_id' => $department_id
         ]);
         //throw exception if response is not successful
         $response->throw()->json()['message'];

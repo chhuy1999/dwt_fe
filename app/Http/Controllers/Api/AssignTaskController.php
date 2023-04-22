@@ -23,7 +23,14 @@ class AssignTaskController extends Controller
     {
         try {
             //get list target
-            $listTargets = $this->dwtService->searchKpiTargets("", 1, 9999);
+            $loginUser = $request->session()->get('user');
+            $departmentId = null;
+            if ($loginUser['role'] != 'admin') {
+                $departmentId = $loginUser['department_id'];
+            }
+
+
+            $listTargets = $this->dwtService->searchKpiTargets("", $departmentId, 1, 9999);
             //get list assigned task
             $listAssignTasks = $this->dwtService->searchKpiTargetDetails([
                 "page" => 1,
