@@ -40,11 +40,7 @@
                                                             <th class="text-nowrap" style="width:15%">Người tạo</th>
                                                             <th class="text-nowrap" style="width:15%">Loại mẫu</th>
                                                             <th class="text-nowrap" style="width:10%">Trạng thái</th>
-                                                            @if (session('user')['role'] == 'admin')
-                                                                <th class="text-nowrap" style="width:3%"><span></span></th>
-                                                                
-                                                            @endif
-        
+                                                            <th class="text-nowrap" style="width:3%"><span></span></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -103,23 +99,21 @@
                                                             </div>
                                                         </td>
                                                         
-                                                        @if (session('user')['role'] == 'admin')
-                                                            <td>
-                                                                <div
-                                                                    class="table_actions d-flex justify-content-center">
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="##suaDeXuat{{ $list['id'] }}">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/edit.svg') }}" />
-                                                                    </div>
-                                                                    <div class="btn" data-bs-toggle="modal"
-                                                                        data-bs-target="#xoaDeXuat{{ $list['id'] }}">
-                                                                        <img style="width:16px;height:16px"
-                                                                            src="{{ asset('assets/img/trash.svg') }}" />
-                                                                    </div>
+                                                        <td>
+                                                            <div
+                                                                class="table_actions d-flex justify-content-center">
+                                                                <div class="btn" data-bs-toggle="modal"
+                                                                    data-bs-target="##suaDeXuat{{ $list['id'] }}">
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/edit.svg') }}" />
                                                                 </div>
-                                                            </td>
-                                                        @endif
+                                                                <div class="btn" data-bs-toggle="modal"
+                                                                    data-bs-target="#xoaDeXuat{{ $list['id'] }}">
+                                                                    <img style="width:16px;height:16px"
+                                                                        src="{{ asset('assets/img/trash.svg') }}" />
+                                                                </div>
+                                                            </div>
+                                                        </td>
 
                                                         {{-- Sửa đề xuất --}}
                                                         {{-- <div class="modal fade" id="#suaDeXuat{{ $list['id'] }}"
@@ -896,12 +890,10 @@
         `);
         $('div.card-title-right').html(`
             <div class="action_wrapper">
-                @if (session('user')['role'] == 'admin')
                 <div class="action_export me-3">
                     <button class="btn btn-danger d-block testCreateUser" data-bs-toggle="modal"
                         data-bs-target="#taoDeXuat">Thêm đề xuất</button>
                 </div>
-                @endif
             </div>
         `);
     </script>
