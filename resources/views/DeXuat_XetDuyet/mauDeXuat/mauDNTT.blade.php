@@ -81,7 +81,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Người nhận tiền/Receiver:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" pplaceholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -89,7 +89,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Hình thức thanh toán/Payment method:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" pplaceholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div> 
                                     </div>
@@ -276,7 +276,7 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                                         </div>
                                                     </td>
                                                     <td>
@@ -328,7 +328,7 @@
                         </div>
 
                         <div class="card_template-footer">
-                            <a href="/de-xuat-theo-mau" type="button" class="btn btn-outline-danger ps-5 pe-5">Hủy</a>
+                            <a href="/de-xuat-theo-mau" type="button" class="btn btn-outline-danger ps-5 pe-5 me-3">Hủy</a>
                             <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
                         </div>
                         
