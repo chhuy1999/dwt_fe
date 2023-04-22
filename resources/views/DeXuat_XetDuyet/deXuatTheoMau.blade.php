@@ -114,7 +114,7 @@
                                                         </td>
 
                                                         {{-- Sửa đề xuất --}}
-                                                        <div class="modal fade" id="taoDeXuat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="suaDeXuat{{ $list['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header text-center">
@@ -126,10 +126,10 @@
                                                                         <div class="modal-body">
                                                                             <div class="row">
                                                                                 <div class="col-6 mb-3">
-                                                                                    <input name="summary" type="text" placeholder="Tóm tắt" class="form-control">
+                                                                                    <input name="summary" type="text" value="Tóm tắt" class="form-control">
                                                                                 </div>
                                                                                 <div class="col-6 mb-3">
-                                                                                    <input name="title" type="text" placeholder="Tiêu đề" class="form-control">
+                                                                                    <input name="title" type="text" value="{{ $list['title'] }}" class="form-control">
                                                                                 </div>
                                                                                 <div class="col-6 mb-3">
                                                                                     <select name="sender" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">

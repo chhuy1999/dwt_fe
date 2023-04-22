@@ -241,24 +241,14 @@ Route::get('ho-so-nhan-vien', function () {
 //     return view('DeXuat_XetDuyet.deXuatMo');
 // })->middleware('auth.role:manager,admin,user');
 
-// Kế hoạch & giao việc
 
-// DWT & KPI
-
-// Kiểm soát NV & CV
-// Route::get('ke-hoach', function () {
-//     return view('KeHoach_GiaoViec.keHoach');
-// });
-
-// Xết duyệt
-
-// Đề xuất
 
 // VBDH
+Route::get('danh-sach-van-ban-dieu-hanh', function () {
+    return view('VBDH.danhSachVanBanDieuHanh');
+})->middleware('auth.role:manager,admin,user');
 
 // Orther
-
-
 Route::get('kpi-nhan-vien', function () {
     return view('page.staff.kpiStaff');
 })->middleware('auth.role:manager,admin,user');
