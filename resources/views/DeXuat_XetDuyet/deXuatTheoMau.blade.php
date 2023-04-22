@@ -103,7 +103,7 @@
                                                             <div
                                                                 class="table_actions d-flex justify-content-center">
                                                                 <div class="btn" data-bs-toggle="modal"
-                                                                    data-bs-target="##suaDeXuat{{ $list['id'] }}">
+                                                                    data-bs-target="#suaDeXuat{{ $list['id'] }}">
                                                                     <img style="width:16px;height:16px"
                                                                         src="{{ asset('assets/img/edit.svg') }}" />
                                                                 </div>
