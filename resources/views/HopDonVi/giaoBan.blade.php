@@ -670,7 +670,7 @@
                                         <input class="form-control" type="text" readonly data-bs-toggle="tooltip" data-bs-placement="top" title="Người nêu" value="{{ $item->user->name ?? '' }}">
                                     </div>
                                     <div class="col-sm-5 mb-3">
-                                        <select class="selectpicker" required multiple required data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm *" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
+                                        <select class="selectpicker" multiple required data-actions-box="true" data-width="100%" data-live-search="true" title="Người đảm nhiệm *" data-select-all-text="Chọn tất cả" data-deselect-all-text="Bỏ chọn" data-size="3" data-selected-text-format="count > 1" data-count-selected-text="Có {0} người đảm nhiệm" data-live-search-placeholder="Tìm kiếm..." name='pics[]'>
                                             @foreach ($listUsers->data as $value)
                                                 @if (in_array($value->id, array_column($item->pics, 'id')))
                                                     <option value="{{ $value->id }}" selected>
@@ -951,11 +951,12 @@
                             <div class="d-flex align-items-center  justify-content-center">
                                 <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
                             </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <p class="modal_body-title"></p>
-                                <img src="" height="60" alt="" />
+                            <div class="d-flex align-items-center  justify-content-center" style="margin-top: 16px">
+                                                    
+                                <button id="showImageBtn-leader" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                <img id="signatureImg-leader" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                             </div>
-                            <div class="d-flex align-items-center  justify-content-center">
+                            <div class="d-flex align-items-center  justify-content-center" style="margin-top: 16px">
                                 <p class="modal_body-title mb-0">{{ $meeting->leader->name ?? '' }}</p>
                             </div>
                         </div>
@@ -982,11 +983,12 @@
                             <div class="d-flex align-items-center  justify-content-center">
                                 <p class="modal_body-title">(Ký và ghi rõ họ tên)</p>
                             </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <p class="modal_body-title"></p>
-                                <img src="" height="60" alt="" />
+                            <div class="d-flex align-items-center  justify-content-center" style="margin-top: 16px">
+                                                    
+                                <button id="showImageBtn-secretary" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                <img id="signatureImg-secretary" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                             </div>
-                            <div class="d-flex align-items-center  justify-content-center">
+                            <div class="d-flex align-items-center  justify-content-center" style="margin-top: 16px" >
                                 <p class="modal_body-title mb-0">{{ $meeting->secretary->name ?? '' }}</p>
                             </div>
                         </div>
@@ -1261,7 +1263,24 @@
 
     <script type="text/javascript" src="{{ asset('/assets/js/chart_hopgiaoban/doughnutChiSo.js') }}"></script>
 
+    <script>
+        const showImageBtn = document.getElementById('showImageBtn-leader');
+        const signatureImg = document.getElementById('signatureImg-leader');
 
+        showImageBtn.addEventListener('click', () => {
+            showImageBtn.style.display = 'none';
+            signatureImg.style.display = 'block';
+        });
+
+
+        const showImageBtn1 = document.getElementById('showImageBtn-secretary');
+        const signatureImg1 = document.getElementById('signatureImg-secretary');
+
+        showImageBtn1.addEventListener('click', () => {
+            showImageBtn1.style.display = 'none';
+            signatureImg1.style.display = 'block';
+        });
+    </script>
     <script>
         const meetingId = {!! $meeting->id !!};
         const meetCode = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
