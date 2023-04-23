@@ -213,17 +213,17 @@ class DwtServices
     // }
 
     public function searchKpiTargetDetails(array $params = null)
-{
-    $url = $this->url . '/target-details';
-    //        dd($url);
-    $response = $this->client->get($url, $params);
-    //throw exception if response is not successful
-    $response->throw()->json()['message'];
-    //get data from response
-    $data = $response->json();
-    $dataObj = $this->_toObject($data);
-    return $dataObj->data;
-}
+    {
+        $url = $this->url . '/target-details';
+        //        dd($url);
+        $response = $this->client->get($url, $params);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 
     public function updateKpiTargetDetail($id, $data)
     {
@@ -911,7 +911,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function getDepartmentDetail($id) {
+    public function getDepartmentDetail($id)
+    {
         $url = $this->url . '/departments/' . $id;
         $response = $this->client->get($url);
         //throw exception if response is not successful
@@ -922,7 +923,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function deleteReportTask($id) {
+    public function deleteReportTask($id)
+    {
         $url = $this->url . '/report-tasks/' . $id;
         $response = $this->client->delete($url);
         //throw exception if response is not successful
@@ -933,7 +935,8 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function deleteTargetLogDetail($id) {
+    public function deleteTargetLogDetail($id)
+    {
         $url = $this->url . '/target-log-details/' . $id;
         $response = $this->client->delete($url);
         //throw exception if response is not successful
@@ -944,9 +947,66 @@ class DwtServices
         return $dataObj->data;
     }
 
-    public function getUserDetail($id) {
+    public function getUserDetail($id)
+    {
         $url = $this->url . '/users/' . $id;
         $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function getProposals($params = [])
+    {
+
+        $url = $this->url . '/proposals';
+        $response = $this->client->get($url, $params);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function createProposal($data) {
+        $url = $this->url . '/proposals';
+        $response = $this->client->post($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function getProposalDetail($id) {
+        $url = $this->url . '/proposals/' . $id;
+        $response = $this->client->get($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+
+    public function updateProposal($id, $data) {
+        $url = $this->url . '/proposals/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+    public function deleteProposal($id) {
+        $url = $this->url . '/proposals/' . $id;
+        $response = $this->client->delete($url);
         //throw exception if response is not successful
         $response->throw()->json()['message'];
         //get data from response

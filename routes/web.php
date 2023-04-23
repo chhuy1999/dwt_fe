@@ -18,8 +18,7 @@ use App\Http\Controllers\Api\MeetingController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\ReportTaskController;
 use App\Http\Controllers\Api\MeetingListController;
-use App\Http\Controllers\Api\ProposeController;
-use App\Http\Controllers\Api\ListProposeController;
+use App\Http\Controllers\Api\ProposalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TotalController;
 
@@ -168,45 +167,55 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::put('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'update'])->name('equimentPack.update');
     Route::delete('danh-muc-goi-trang-bi/{id}', [EquimentPackController::class, 'delete'])->name('equimentPack.delete');
 });
-// Đề xuất
+// // Đề xuất
+// Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
+//     Route::get('de-xuat-mo', [ProposeController::class, 'index'])->name('propose.list');
+//     Route::post('de-xuat-mo', [ProposeController::class, 'store'])->name('propose.store');
+//     Route::put('de-xuat-mo/{id}', [ProposeController::class, 'update'])->name('propose.update');
+//     Route::delete('de-xuat-mo/{id}', [ProposeController::class, 'delete'])->name('propose.delete');
+// });
+
+// // Danh sách Đề xuất ?? tao cai gi o day ??
+// Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->group(function () {
+//     Route::get('danh-sach-de-xuat', [ListProposeController::class, 'index'])->name('listPropose.list');
+//     Route::post('danh-sach-de-xuat', [ListProposeController::class, 'store'])->name('listPropose.store');
+//     Route::put('danh-sach-de-xuat/{id}', [ListProposeController::class, 'update'])->name('listPropose.update');
+//     Route::delete('danh-sach-de-xuat/{id}', [ListProposeController::class, 'delete'])->name('listPropose.delete');
+// });
+
+//form proposal
 Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
-    Route::get('de-xuat-mo', [ProposeController::class, 'index'])->name('propose.list');
-    Route::post('de-xuat-mo', [ProposeController::class, 'store'])->name('propose.store');
-    Route::put('de-xuat-mo/{id}', [ProposeController::class, 'update'])->name('propose.update');
-    Route::delete('de-xuat-mo/{id}', [ProposeController::class, 'delete'])->name('propose.delete');
-});
-
-// Danh sách Đề xuất
-Route::prefix('de-xuat-xet-duyet')->middleware('auth.role:manager,admin,user')->group(function () {
-    Route::get('danh-sach-de-xuat', [ListProposeController::class, 'index'])->name('listPropose.list');
-    Route::post('danh-sach-de-xuat', [ListProposeController::class, 'store'])->name('listPropose.store');
-    Route::put('danh-sach-de-xuat/{id}', [ListProposeController::class, 'update'])->name('listPropose.update');
-    Route::delete('danh-sach-de-xuat/{id}', [ListProposeController::class, 'delete'])->name('listPropose.delete');
+    Route::get('de-xuat-theo-mau', [ProposalController::class, 'index'])->name('proposal.list');
+    Route::post('de-xuat-theo-mau/tao-moi', [ProposalController::class, 'create'])->name('proposal.create');
+    Route::get('de-xuat-theo-mau/{id}', [ProposalController::class, 'show'])->name('proposal.show');
+    Route::put('de-xuat-theo-mau/{id}', [ProposalController::class, 'edit'])->name('proposal.update');
+    //delete
+    Route::put('de-xuat-theo-mau/{id}/basic-update', [ProposalController::class, 'updateBasic'])->name('proposal.updateBasic');
+    Route::delete('de-xuat-theo-mau/{id}', [ProposalController::class, 'delete'])->name('proposal.delete');
 });
 
 
-Route::get('de-xuat-theo-mau', function () { return view('DeXuat_XetDuyet.deXuatTheoMau'); })->middleware('auth.role:manager,admin,user');
 // Form danh sách đề nghị
-Route::get('yeu-cau-mua-sam', function () {
-    return view('DeXuat_XetDuyet.mauDeXuat.mauYCMS');
-})->middleware('auth.role:manager,admin,user');
-Route::get('de-nghi-tam-ung', function () {
-    return view('DeXuat_XetDuyet.mauDeXuat.mauDNTU');
-})->middleware('auth.role:manager,admin,user');
-Route::get('de-nghi-thanh-toan', function () {
-    return view('DeXuat_XetDuyet.mauDeXuat.mauDNTT');
-})->middleware('auth.role:manager,admin,user');
+// Route::get('yeu-cau-mua-sam', function () {
+//     return view('DeXuat_XetDuyet.mauDeXuat.mauYCMS');
+// })->middleware('auth.role:manager,admin,user');
+// Route::get('de-nghi-tam-ung', function () {
+//     return view('DeXuat_XetDuyet.mauDeXuat.mauDNTU');
+// })->middleware('auth.role:manager,admin,user');
+// Route::get('de-nghi-thanh-toan', function () {
+//     return view('DeXuat_XetDuyet.mauDeXuat.mauDNTT');
+// })->middleware('auth.role:manager,admin,user');
 
-// View
-Route::get('xem/yeu-cau-mua-sam/id', function () {
-    return view('DeXuat_XetDuyet.viewConfirm.mauYCMS');
-})->middleware('auth.role:manager,admin,user');
-Route::get('xem/de-nghi-tam-ung/id', function () {
-    return view('DeXuat_XetDuyet.viewConfirm.mauDNTU');
-})->middleware('auth.role:manager,admin,user');
-Route::get('xem/de-nghi-thanh-toan/id', function () {
-    return view('DeXuat_XetDuyet.viewConfirm.mauDNTT');
-})->middleware('auth.role:manager,admin,user');
+// // View
+// Route::get('xem/yeu-cau-mua-sam/id', function () {
+//     return view('DeXuat_XetDuyet.viewConfirm.mauYCMS');
+// })->middleware('auth.role:manager,admin,user');
+// Route::get('xem/de-nghi-tam-ung/id', function () {
+//     return view('DeXuat_XetDuyet.viewConfirm.mauDNTU');
+// })->middleware('auth.role:manager,admin,user');
+// Route::get('xem/de-nghi-thanh-toan/id', function () {
+//     return view('DeXuat_XetDuyet.viewConfirm.mauDNTT');
+// })->middleware('auth.role:manager,admin,user');
 
 
 

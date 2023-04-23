@@ -21,10 +21,10 @@ class AuthController extends Controller
 
     public function index(Request $request)
     {
-        //logout old session
-        $request->session()->flush();
-        //regenerate session id
-        $request->session()->regenerate();
+
+        $request->session()->invalidate();
+        //regenerate csrf token
+        $request->session()->regenerateToken();
         return view('login');
     }
 
@@ -57,9 +57,10 @@ class AuthController extends Controller
             session()->put('listUsers', $listUsers);
             session()->put('listKpiKeys', $listKpiKeys);
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect()->intended('/');
         } catch (Exception $e) {
-            $error = $e->getMessage();
+            $error = "Tên đăng nhập hoặc mật khẩu không đúng!";
+            error_log($e->getMessage());
             // parse json to array
             //return back with login error
             return back()->with('loginError', $error);
@@ -68,9 +69,9 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $request->session()->flush();
-        //unvalidate session
-        $request->session()->regenerate();
+        $request->session()->invalidate();
+        //regenerate csrf token
+        $request->session()->regenerateToken();
         return redirect('/login');
     }
 }

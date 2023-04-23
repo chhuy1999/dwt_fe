@@ -10,7 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-
+{{-- toastify --}}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <!-- Vendor CSS Files -->
 <link href="{{ asset('/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('/assets/css/variables.css') }}" rel="stylesheet" />
@@ -69,6 +70,54 @@
         </div>
     </div>
     </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+
+        @if (Session::has('loginError'))
+            Toastify({
+
+                text: `{!! session('loginError') !!}`,
+                // gravity: "top", // `top` or `bottom`
+                // position: "center"
+                duration: 3000,
+                stopOnFocus: true,
+                style: {
+                    background: "#FE6244",
+                },
+
+            }).showToast();
+        @endif
+
+        @if (isset($error))
+            Toastify({
+
+                text: `{!! $error !!}`,
+                // gravity: "top", // `top` or `bottom`
+                // position: "center"
+                duration: 3000,
+                stopOnFocus: true,
+                style: {
+                    background: "#FE6244",
+                },
+
+            }).showToast();
+        @endif
+
+        @if (session('token_error'))
+            Toastify({
+
+                text: `{!! session('token_error') !!}`,
+                // gravity: "top", // `top` or `bottom`
+                // position: "center"
+                duration: 3000,
+                stopOnFocus: true,
+                style: {
+                    background: "#FE6244",
+                },
+
+            }).showToast();
+        @endif
+    </script>
 </body>
 
 </html>

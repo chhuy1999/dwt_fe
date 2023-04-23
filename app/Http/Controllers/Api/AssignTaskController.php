@@ -31,9 +31,8 @@ class AssignTaskController extends Controller
             }
 
 
-
             $listTargets = $this->dwtService->searchKpiTargets("", $departmentId, 1, 9999);
-           
+
             //get list assigned task
             $listAssignTasks = $this->dwtService->searchKpiTargetDetails([
                 "page" => 1,
