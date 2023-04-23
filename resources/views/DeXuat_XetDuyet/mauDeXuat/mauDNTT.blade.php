@@ -25,19 +25,15 @@
 
                                     </div>
                                     <div class="col-2">
-                                        <div
-                                            class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Số/No:</div>
-                                            <div
-                                                class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
                                                 <input type="text" placeholder="" class="form-control">
                                             </div>
                                         </div>
-                                        <div
-                                            class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Ngày/Date:</div>
-                                            <div
-                                                class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
                                                 <input type="text" placeholder="" class="form-control datePicker">
                                             </div>
                                         </div>
@@ -48,10 +44,10 @@
                                 <div class="row">
                                     <div class="mb-3 col-6">
                                         <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Người đề nghị/Requester:</div>
+                                            <div class="text-nowrap">Người đề nghị/Requester: </div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"
-                                                    class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+
                                             </span>
                                         </div>
                                     </div>
@@ -59,8 +55,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Bộ phận/Department:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text"
-                                                    placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                             </span>
                                         </div>
                                     </div>
@@ -68,8 +63,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Nội dung thanh toán/Contents of payment: </div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"
-                                                    class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div>
                                     </div>
@@ -77,21 +71,18 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Số tiền/Amount</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"
-                                                    class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div>
                                         <div class="card_template-mini with_form mt-3">
-                                            <input type="text"
-                                                placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                         </div>
                                     </div>
                                     <div class="mb-3 col-12">
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Người nhận tiền/Receiver:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"
-                                                    class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div>
                                     </div>
@@ -99,8 +90,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Hình thức thanh toán/Payment method:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"
-                                                    class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div>
                                     </div>
@@ -108,8 +98,7 @@
                                         <div class="card_template-title  with_form">
                                             <div class="text-nowrap">Số tài khoản/Account number:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text"
-                                                    placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                             </span>
                                         </div>
                                     </div>
@@ -117,8 +106,7 @@
                                         <div class="card_template-title  with_form">
                                             <div class="text-nowrap">Tại ngân hàng/with bank:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text"
-                                                    placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                             </span>
                                         </div>
                                     </div>
@@ -142,7 +130,7 @@
 
                                         <div class="card_template-title  with_form">
                                             <div class="text-nowrap">Tệp đính kèm/Attached files:
-                                        </div> 
+                                        </div>
                                     </div> --}}
                                     <div class="mb-3 col-12">
                                         <div class="card_template-title  with_form">
@@ -157,17 +145,12 @@
                                                 @csrf
                                                 <div class="upload_wrapper-items">
                                                     <input type="hidden" name="uploadedFiles[]" value="" />
-                                                    <button role="button" type="button"
-                                                        class="btn position-relative border d-flex">
-                                                        <img style="width:16px;height:16px"
-                                                            src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                    <button role="button" type="button" class="btn position-relative border d-flex">
+                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
                                                         <span class="ps-2">Chọn file đính kèm</span>
-                                                        <input role="button" type="file"
-                                                            class="modal_upload-input modal_upload-file" name="files[]"
-                                                            multiple onchange="updateList(event)" />
+                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)" />
                                                     </button>
-                                                    <ul class="modal_upload-list"
-                                                        style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;">
+                                                    <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;">
                                                     </ul>
                                                     {{-- <div class="d-flex align-items-center justify-content-end">
                                                         <button type="submit" class="btn btn-outline-danger">Tải
@@ -188,13 +171,10 @@
                                     <div class="col">
                                         <div class="card_template-title text-center">Người đề nghị/</div>
                                         <div class="card_template-title text-center">Applicant</div>
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button id="showImageBtn" type="button"
-                                                    class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-                                                <img id="signatureImg" width="100" style="display: none;"
-                                                    src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                                                <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <img id="signatureImg" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                                             </div>
                                         </div>
                                     </div>
@@ -202,10 +182,9 @@
                                         <div class="card_template-title text-center">Phụ trách bộ phận/</div>
                                         <div class="card_template-title text-center">Head of Department</div>
 
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -213,20 +192,18 @@
                                     <div class="col">
                                         <div class="card_template-title text-center">Kế toán trưởng/</div>
                                         <div class="card_template-title text-center">Chief Accountant</div>
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card_template-title text-center">Phê duyệt/</div>
                                         <div class="card_template-title text-center">Approved by</div>
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -251,11 +228,9 @@
                                         <div class="card_template-heading-mini">Mã: {{ time() }}-BK</div>
                                     </div>
                                     <div class="col-2 card_template-topRight">
-                                        <div
-                                            class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
                                             <div class="text-nowrap">Ngày/Date:</div>
-                                            <div
-                                                class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
                                                 <input type="text" placeholder="" class="form-control datePicker">
                                             </div>
                                         </div>
@@ -268,8 +243,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Người đề nghị/Requester:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"
-                                                    class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                             </span>
                                         </div>
                                     </div>
@@ -277,8 +251,7 @@
                                         <div class="card_template-title with_form">
                                             <div class="text-nowrap">Công việc:</div>
                                             <span class="card_template-sub with_input">
-                                                <input type="text"
-                                                    placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                             </span>
                                         </div>
                                     </div>
@@ -308,33 +281,27 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"
-                                                                class="form-control">
+                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"
-                                                                class="form-control">
+                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
                                                         </div>
                                                     </td>
                                                     <td class="">
                                                         <div>
-                                                            <input type="text"
-                                                                placeholder="(Vui lòng nhập nội dung)"class="form-control text-end">
+                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control text-end">
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text"
-                                                                placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            <img data-repeater-delete role="button"
-                                                                src="{{ asset('/assets/img/trash.svg') }}" width="15px"
-                                                                height="15px" />
+                                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -342,8 +309,7 @@
 
                                         </table>
                                         <div class="d-flex justify-content-start">
-                                            <div role="button" class="fs-5 text-danger" data-repeater-create><i
-                                                    class="bi bi-plus-circle"></i></div>
+                                            <div role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -355,13 +321,10 @@
                                     <div class="col">
                                         <div class="card_template-title text-center">Người đề nghị</div>
                                         <div class="card_template-title text-center">Applicant</div>
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
+                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
                                             <div class="">
-                                                <button id="showImageBtn" type="button"
-                                                    class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-                                                <img id="signatureImg" width="100" style="display: none;"
-                                                    src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                                                <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                <img id="signatureImg" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                                             </div>
                                         </div>
                                     </div>
@@ -370,10 +333,8 @@
                         </div>
 
                         <div class="card_template-footer">
-                            <a href="/de-xuat-theo-mau" type="button"
-                                class="btn btn-outline-danger ps-5 pe-5 me-3">Hủy</a>
-                            <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal"
-                                data-bs-target="#conFirm">Gửi</button>
+                            <a href="/de-xuat-theo-mau" type="button" class="btn btn-outline-danger ps-5 pe-5 me-3">Hủy</a>
+                            <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
                         </div>
 
                     </div>
@@ -422,8 +383,7 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div
-                                class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
+                            <div class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
                                 <div class="funkyradio-danger">
                                     <input type="radio" name="radio" id="confirmRadio" />
                                     <label for="confirmRadio">Xác nhận</label>

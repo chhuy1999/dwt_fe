@@ -36,7 +36,7 @@ class DashboardController extends Controller
             if ($user['role'] == 'manager') {
                 $searchDepartment_id = $user['departement_id'];
             }
-            
+
             $listAssignedTasks = $this->dwtServices
                 ->searchKpiTargetDetails([
                     "page" => 1,
@@ -111,7 +111,7 @@ class DashboardController extends Controller
                 //logout
                 session()->flush();
                 //invalidate token
-                session()->regenerateToken();
+                session()->invalidate();
                 return redirect('/login');
             }
 
@@ -125,6 +125,8 @@ class DashboardController extends Controller
                 ->with('listReports', [])
                 ->with('myTotalKpi', 0)
                 ->with('totalKpi', 0)
+                ->with('allTasks', [])
+                ->with('allReportTasks', [])
                 ->with('error', $error);
         }
     }
