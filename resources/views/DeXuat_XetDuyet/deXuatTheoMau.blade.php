@@ -3,13 +3,50 @@
 @section('title', 'Danh sách đề nghị')
 
 @php
-    $lists = [
-        ['id' => '1', 'code' => '123456', 'title' => 'Đề xuất yêu cầu mua sắm máy tính', 'form' => 'Đề xuất yêu cầu mua sắm','status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Văn A', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '2', 'code' => '129371', 'title' => 'Đề nghị thanh toán phí dịch vụ toà nhà',   'form' => 'Đề nghị thanh toán', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Văn B', 'studentCode' => 'MTT271', 'THVP036'],
-        ['id' => '3', 'code' => '129761', 'title' => 'Đề nghị tạm ứng tiền chạy quảng cáo',   'form' => 'Đề nghị tạm ứng', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Đinh Văn C', 'studentCode' => 'MTT271', 'THVP036'],
-
-    ];
+    $lists = [['id' => '1', 'code' => '123456', 'title' => 'Đề xuất yêu cầu mua sắm máy tính', 'form' => 'Đề xuất yêu cầu mua sắm', 'status_id' => '1', 'status' => 'Đã gửi', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Nguyễn Văn A', 'studentCode' => 'MTT271', 'THVP036'], ['id' => '2', 'code' => '129371', 'title' => 'Đề nghị thanh toán phí dịch vụ toà nhà', 'form' => 'Đề nghị thanh toán', 'status_id' => '2', 'status' => 'Đã duyệt', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Trần Văn B', 'studentCode' => 'MTT271', 'THVP036'], ['id' => '3', 'code' => '129761', 'title' => 'Đề nghị tạm ứng tiền chạy quảng cáo', 'form' => 'Đề nghị tạm ứng', 'status_id' => '3', 'status' => 'Từ chối', 'user' => 'Chủ đề đề xuất', 'userCode' => 'MTT271', 'student' => 'Đinh Văn C', 'studentCode' => 'MTT271', 'THVP036']];
     $status = [['status_id' => '1', 'status' => 'Đã tạo'], ['status_id' => '2', 'status' => 'Đã gửi'], ['status_id' => '3', 'status' => 'Đã mua']];
+    function getFormName($formInt)
+    {
+        //cast to int
+        $formInt = (int) $formInt;
+        switch ($formInt) {
+            case 1:
+                return 'Yêu cầu mua sắm';
+                break;
+            case 2:
+                return 'Đề nghị thanh toán';
+                break;
+            case 3:
+                return 'Đề nghị tạm ứng';
+                break;
+            default:
+                return '';
+                break;
+        }
+    }
+    
+    function getStatusName($statusInt)
+    {
+        //cast to int
+        $statusInt = (int) $statusInt;
+        switch ($statusInt) {
+            case 0:
+                return 'Đã tạo';
+                break;
+            case 1:
+                return 'Đã gửi';
+                break;
+            case 1:
+                return 'Đã duyệt';
+                break;
+            case 2:
+                return 'Từ chối';
+                break;
+            default:
+                return '';
+                break;
+        }
+    }
 @endphp
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
@@ -29,8 +66,7 @@
                                     <div class='row'>
                                         <div class="col-md-12">
                                             <div class="table-responsive">
-                                                <table id="dsDaoTao"
-                                                    class="table table-responsive table-hover table-bordered filter">
+                                                <table id="dsDaoTao" class="table table-responsive table-hover table-bordered filter">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center" style="width:2%">STT</th>
@@ -44,168 +80,56 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($lists as $list)
-                                                    <tr class="table-row" data-status-id="{{ $list['status_id'] }}" data-href="/xem/yeu-cau-mua-sam/id" role="button">
-                                                        <td class="text-nowrap text-center">
-                                                            <div class="text-nowrap d-block text-truncate"
-                                                                style="">
-                                                                {{ $list['id'] }}
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-nowrap">
-                                                            <div class="text-nowrap d-block text-truncate"
-                                                                style="max-width:80px;" data-bs-toggle="tooltip"
-                                                                data-bs-placement="top" title="{{ $list['code'] }}">
-                                                                {{ $list['code'] }}
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-nowrap">
-                                                            <div class="text-nowrap d-block text-truncate"
-                                                                style="max-width:220px;" data-bs-toggle="tooltip"
-                                                                data-bs-placement="top" title="{{ $list['title'] }}">
-                                                                {{ $list['title'] }}
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-nowrap">
-                                                            <div class="text-nowrap d-block text-truncate"
-                                                                style="max-width:200px;" data-bs-toggle="tooltip"
-                                                                data-bs-placement="top" title="Tóm tắt">
-                                                                Tóm tắt đề xuất
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-nowrap">
-                                                            <div class="text-nowrap d-block text-truncate"
-                                                                style="max-width:140px;" data-bs-toggle="tooltip"
-                                                                data-bs-placement="top"
-                                                                title="{{ $list['student'] }} - {{ $list['studentCode'] }}">
-                                                                {{ $list['student'] }} - {{ $list['studentCode'] }}
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-nowrap">
-                                                            <div class="text-nowrap d-block text-truncate"
-                                                                style="max-width:155px;" data-bs-toggle="tooltip"
-                                                                data-bs-placement="top" title="{{ $list['form'] }}">
-                                                                {{ $list['form'] }}
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-nowrap">
-                                                            <div class="text-nowrap d-block text-truncate"
-                                                                style="" data-bs-toggle="tooltip"
-                                                                data-bs-placement="top"
-                                                                title="{{ $list['status'] }}">
-                                                                {{ $list['status'] }}
-                                                            </div>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <div
-                                                                class="table_actions d-flex justify-content-center">
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                    data-bs-target="#suaDeXuat{{ $list['id'] }}">
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/edit.svg') }}" />
-                                                                </div>
-                                                                <div class="btn" data-bs-toggle="modal"
-                                                                    data-bs-target="#xoaDeXuat{{ $list['id'] }}">
-                                                                    <img style="width:16px;height:16px"
-                                                                        src="{{ asset('assets/img/trash.svg') }}" />
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-                                                        {{-- Sửa đề xuất --}}
-                                                        <div class="modal fade" id="taoDeXuat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header text-center">
-                                                                        <h5 class="modal-title w-100" id="exampleModalLabel">Sửa đề xuất</h5>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        @foreach ($proposals->data as $item)
+                                                            <tr class="table-row" data-status-id="{{ $item->id }}" data-href="{{ route('proposal.show', $item->id) }}" role="button">
+                                                                <td class="text-nowrap text-center">
+                                                                    <div class="text-nowrap d-block text-truncate" style="">
+                                                                        {{ $loop->iteration }}
                                                                     </div>
-                                                                    <form method="" action="" id="myForm">
-                                                                        @csrf
-                                                                        <div class="modal-body">
-                                                                            <div class="row">
-                                                                                <div class="col-6 mb-3">
-                                                                                    <input name="summary" type="text" placeholder="Tóm tắt" class="form-control">
-                                                                                </div>
-                                                                                <div class="col-6 mb-3">
-                                                                                    <input name="title" type="text" placeholder="Tiêu đề" class="form-control">
-                                                                                </div>
-                                                                                <div class="col-6 mb-3">
-                                                                                    <select name="sender" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
-                                                                                        <option>1</option>
-                                                                                        <option>2</option>
-                                                                                        <option>3</option>
-                                                                                        <option>4</option>
-                                                                                        <option>5</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                                
-                                                                                <div class="col-6 mb-3">
-                                                                                    <select name="receiver" class="selectpicker" title="Chọn người liên quan" data-size="5" data-live-search="true">
-                                                                                        <option>1</option>
-                                                                                        <option>2</option>
-                                                                                        <option>3</option>
-                                                                                        <option>4</option>
-                                                                                        <option>5</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                                
-                                                                                <div class="col-6 mb-3">
-                                                                                    <select name="proposal" class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
-                                                                                        <option value="ycms">Yêu cầu mua sắm</option>
-                                                                                        <option value="dntt">Đề nghị thanh toán</option>
-                                                                                        <option value="dntu2">Đề nghị tạm ứng</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                                <div class="col-6 mb-3">
-                                                                                    <div class="card_template-title">Mã VB: {{ time() }}</div>
-                                                                                </div>
-                                                                            </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:80px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $item->code }}">
+                                                                        {{ $item->code }}
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:220px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $item->title }}">
+                                                                        {{ $item->title }}
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:200px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $item->description }}">
+                                                                        {{ $item->description }}
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:140px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $item->sender->name ?? '' }} - {{ $item->sender->code ?? '' }}">
+                                                                        {{ $item->sender->name ?? '' }} - {{ $item->sender->code ?? '' }}
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate" style="max-width:155px;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ getFormName($item->form) }}">
+                                                                        {{ getFormName($item->form) }}
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-nowrap">
+                                                                    <div class="text-nowrap d-block text-truncate" style="" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ getStatusName($item->status) }}">
+                                                                        {{ getStatusName($item->status) }}
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div class="table_actions d-flex justify-content-center">
+                                                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#suaDeXuat{{ $item->id }}">
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
                                                                         </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                                                                            <button type="submit" class="btn btn-danger">Tạo</button>
+                                                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaDeXuat{{ $item->id }}">
+                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
                                                                         </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        {{-- Xóa đề xuất --}}
-                                                        <div class="modal fade" id="xoaDeXuat{{ $list['id'] }}"
-                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title text-danger"
-                                                                            id="exampleModalLabel">Xóa đề xuất</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
                                                                     </div>
-                                                                    <div class="modal-body">
-                                                                        Bạn có thực sự muốn xoá đề xuất này không?
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-danger"
-                                                                            data-bs-dismiss="modal">Hủy</button>
-                                                                        <form action="" method="POST">
-                                                                            @csrf
-                                                                            {{-- @method('DELETE') --}}
-                                                                            <button type="submit"
-                                                                                class="btn btn-danger">Xóa</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </tr>
-                                                @endforeach
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -222,6 +146,90 @@
     </div>
     @include('template.sidebar.sidebarDeXuat.sidebarRight')
 
+    @foreach ($proposals->data as $item)
+        {{-- Sửa đề xuất --}}
+        <div class="modal fade" id="suaDeXuat{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title w-100" id="exampleModalLabel">Sửa đề xuất</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="" action="" id="myForm">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <input name="summary" type="text" placeholder="Tóm tắt" class="form-control">
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <input name="title" type="text" placeholder="Tiêu đề" class="form-control">
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <select name="sender" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-6 mb-3">
+                                    <select name="receiver" class="selectpicker" title="Chọn người liên quan" data-size="5" data-live-search="true">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-6 mb-3">
+                                    <select name="proposal" class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
+                                        <option value="ycms">Yêu cầu mua sắm</option>
+                                        <option value="dntt">Đề nghị thanh toán</option>
+                                        <option value="dntu2">Đề nghị tạm ứng</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <div class="card_template-title">Mã VB: {{ time() }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-danger">Tạo</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {{-- Xóa đề xuất --}}
+        <div class="modal fade" id="xoaDeXuat{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger" id="exampleModalLabel">Xóa đề xuất</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có thực sự muốn xoá đề xuất này không?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                        <form action="" method="POST">
+                            @csrf
+                            {{-- @method('DELETE') --}}
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
     <!-- Modal Thêm Tao De Xuat -->
     <div class="modal fade" id="taoDeXuat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -230,45 +238,43 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Chọn mẫu đề xuất</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="" action="" id="myForm">
+                <form method="POST" action="{{ route('proposal.create') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <input name="summary" type="text" placeholder="Tóm tắt" class="form-control">
-                            </div>
-                            <div class="col-6 mb-3">
                                 <input name="title" type="text" placeholder="Tiêu đề" class="form-control">
                             </div>
                             <div class="col-6 mb-3">
-                                <select name="sender" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <input name="description" type="text" placeholder="Tóm tắt" class="form-control">
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <select name="receiver_id" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
+                                    @foreach (session('listUsers') as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                            
+
                             <div class="col-6 mb-3">
-                                <select name="receiver" class="selectpicker" title="Chọn người liên quan" data-size="5" data-live-search="true">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select name="related_people[]" class="selectpicker" title="Chọn người liên quan" data-size="5" data-live-search="true" multiple>
+                                    @foreach (session('listUsers') as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                            
+
                             <div class="col-6 mb-3">
-                                <select name="proposal" class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
-                                    <option value="ycms">Yêu cầu mua sắm</option>
-                                    <option value="dntt">Đề nghị thanh toán</option>
-                                    <option value="dntu2">Đề nghị tạm ứng</option>
+                                <select name="form" class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
+                                    <option value="1">Yêu cầu mua sắm</option>
+                                    <option value="2">Đề nghị thanh toán</option>
+                                    <option value="3">Đề nghị tạm ứng</option>
                                 </select>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="card_template-title">Mã VB: {{ time() }}</div>
+                                <input type="hidden" name="code" value="{{ time() }}">
                             </div>
                         </div>
                     </div>
@@ -312,7 +318,7 @@
                                         <div class="col-2 col-md-2 mb-3">
                                             <input class="form-control" type="text" placeholder="Đơn vị tính">
                                         </div>
-    
+
                                         <div class="col-4 col-md-4 mb-3">
                                             <input class="form-control" type="text" placeholder="Mục đích sử dụng">
                                         </div>
@@ -330,7 +336,7 @@
                                         <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="20px" height="20px" />
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="col-md-12 mb-3">
                                 <div class="d-flex justify-content-start">
@@ -349,41 +355,41 @@
                                     @csrf
                                     <div class="upload_wrapper-items">
                                         <input type="hidden" name="uploadedFiles[]" value="" />
-                                        
+
                                         <ul class="modal_upload-list" style="max-height: 20px; overflow-y: scroll; overflow-x: hidden;"></ul>
                                         <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                             File bạn tải lên hiện tại không hỗ trợ !
                                         </div>
-                                            <div class="modal_upload-wrapper">
-                                                <label class="modal_upload-label" for="file">
-                                                    Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
-                                                    dạng
-                                                    JPG,
-                                                    PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                    thước tệp không quá 10MB
-                                                </div>
-                                                <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                    <div class="modal_upload-addFile me-3">
-                                                        <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                            Tải file lên
-                                                            <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
-                                                        </button>
-                                                    </div>
-
-                                                </div>
+                                        <div class="modal_upload-wrapper">
+                                            <label class="modal_upload-label" for="file">
+                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
+                                                dạng
+                                                JPG,
+                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
+                                                thước tệp không quá 10MB
                                             </div>
-                                    </div>
-                                        <div class="d-flex align-items-center justify-content-end">
-                                            <button type="submit" class="btn btn-outline-danger">Tải
-                                                file
-                                            </button>
+                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                <div class="modal_upload-addFile me-3">
+                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                        Tải file lên
+                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                    </button>
+                                                </div>
+
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-end">
+                                        <button type="submit" class="btn btn-outline-danger">Tải
+                                            file
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                    
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
@@ -499,42 +505,42 @@
                                     @csrf
                                     <div class="upload_wrapper-items">
                                         <input type="hidden" name="uploadedFiles[]" value="" />
-                                        
+
                                         <ul class="modal_upload-list" style="max-height: 20px; overflow-y: scroll; overflow-x: hidden;"></ul>
                                         <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                             File bạn tải lên hiện tại không hỗ trợ !
                                         </div>
-                                            <div class="modal_upload-wrapper">
-                                                <label class="modal_upload-label" for="file">
-                                                    Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
-                                                    dạng
-                                                    JPG,
-                                                    PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                    thước tệp không quá 10MB
-                                                </div>
-                                                <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                    <div class="modal_upload-addFile me-3">
-                                                        <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                            Tải file lên
-                                                            <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
-                                                        </button>
-                                                    </div>
-
-                                                </div>
+                                        <div class="modal_upload-wrapper">
+                                            <label class="modal_upload-label" for="file">
+                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
+                                                dạng
+                                                JPG,
+                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
+                                                thước tệp không quá 10MB
                                             </div>
-                                    </div>
-                                        <div class="d-flex align-items-center justify-content-end">
-                                            <button type="submit" class="btn btn-outline-danger">Tải
-                                                file
-                                            </button>
+                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                <div class="modal_upload-addFile me-3">
+                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                        Tải file lên
+                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                    </button>
+                                                </div>
+
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-end">
+                                        <button type="submit" class="btn btn-outline-danger">Tải
+                                            file
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                    
-                        
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
@@ -570,11 +576,11 @@
                             <div class="mb-3 col-6 col-md-6">
                                 <input class="form-control" type="number" placeholder="Bộ phận">
                             </div>
-                            
+
                             <div class="mb-3 col-12 col-md-12">
                                 <input class="form-control" type="text" placeholder="Nội dung thanh toán">
                             </div>
-                            
+
                             <div class="mb-3 col-4 col-md-4">
                                 <input class="form-control" type="text" placeholder="Số tiền">
                             </div>
@@ -594,7 +600,7 @@
                                 <input class="form-control" type="text" placeholder="Tại ngân hàng" name="">
                             </div>
                         </div>
-                        
+
                         <div class="col-md-12 mb-3 kiemKe_wrapper">
                             <div class="d-flex justify-content-start">
                                 <div role="button" class="fs-5 text-danger showKiemKe"><i class="bi bi-file-earmark-spreadsheet"></i> Thêm bảng kê</div>
@@ -642,7 +648,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="col-md-12 margin-t-res mt-3">
                             <div class="action_wrapper-upload rounded border p-3 h-30  d-flex flex-column">
                                 <div class="card-title mb-3">
@@ -654,42 +660,42 @@
                                     @csrf
                                     <div class="upload_wrapper-items">
                                         <input type="hidden" name="uploadedFiles[]" value="" />
-                                        
+
                                         <ul class="modal_upload-list" style="max-height: 20px; overflow-y: scroll; overflow-x: hidden;"></ul>
                                         <div class="alert alert-danger alertNotSupport" role="alert" style="display:none">
                                             File bạn tải lên hiện tại không hỗ trợ !
                                         </div>
-                                            <div class="modal_upload-wrapper">
-                                                <label class="modal_upload-label" for="file">
-                                                    Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
-                                                <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
-                                                    dạng
-                                                    JPG,
-                                                    PNG, PDF, XLSX, DOCX, hoặc PPTX kích
-                                                    thước tệp không quá 10MB
-                                                </div>
-                                                <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
-                                                    <div class="modal_upload-addFile me-3">
-                                                        <button role="button" type="button" class="btn position-relative pe-4 ps-4">
-                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                            Tải file lên
-                                                            <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
-                                                        </button>
-                                                    </div>
-
-                                                </div>
+                                        <div class="modal_upload-wrapper">
+                                            <label class="modal_upload-label" for="file">
+                                                Tải xuống tệp hoặc đính kèm liên kết ở đây</label>
+                                            <div class="mt-2 text-secondary fst-italic">Hỗ trợ định
+                                                dạng
+                                                JPG,
+                                                PNG, PDF, XLSX, DOCX, hoặc PPTX kích
+                                                thước tệp không quá 10MB
                                             </div>
-                                    </div>
-                                        <div class="d-flex align-items-center justify-content-end">
-                                            <button type="submit" class="btn btn-outline-danger">Tải
-                                                file
-                                            </button>
+                                            <div class="modal_upload-action mt-3 d-flex align-items-center justify-content-center">
+                                                <div class="modal_upload-addFile me-3">
+                                                    <button role="button" type="button" class="btn position-relative pe-4 ps-4">
+                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                        Tải file lên
+                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)">
+                                                    </button>
+                                                </div>
+
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-end">
+                                        <button type="submit" class="btn btn-outline-danger">Tải
+                                            file
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                    
-                        
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#taoDeXuat">Hủy</button>
@@ -712,7 +718,7 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
-    
+
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
@@ -813,21 +819,21 @@
                 <div class="action_wrapper me-3">
                     <select class="selectpicker" title="Mẫu form">
                         <option value="all">Tất cả</option>
-                        
+
                     </select>
                 </div>
                 <div class="action_wrapper me-3">
                     <select id="filter_status"  class="selectpicker filter_status" title="Trạng thái">
                         <option value="all">Tất cả</option>
                         @foreach ($status as $filter_status)
-                            <option value="{{ $filter_status['status_id'] }}">{{ $filter_status['status'] }}</option>    
+                            <option value="{{ $filter_status['status_id'] }}">{{ $filter_status['status'] }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="action_wrapper">
                     <select  class="selectpicker" title="Phòng ban">
                         <option value="all">Tất cả</option>
-                        
+
                     </select>
                 </div>
             </div>
@@ -841,101 +847,7 @@
             </div>
         `);
     </script>
-    <script>
-        document.getElementById("myForm").addEventListener("submit", function(event) {
-            var select = document.querySelector('select[name="proposal"]');
-            if (select.value == "ycms") {
-                window.location.href = "/yeu-cau-mua-sam";
-            } else if (select.value == "dntt") {
-                window.location.href = "/de-nghi-thanh-toan";
-            } else if (select.value == "dntu2") {
-                window.location.href = "/de-nghi-tam-ung";
-            } 
-            event.preventDefault();
-        });
-    </script>
 
-        
-
-    <script>
-        updateList = function(e) {
-            const input = e.target;
-            const outPut = input.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(
-                '.modal_upload-list');
-            const notSupport = outPut.parentNode.querySelector('.alertNotSupport');
-
-            let children = '';
-            console.log(children);
-            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-            const maxFileSize = 10485760; //10MB in bytes
-
-            for (let i = 0; i < input.files.length; ++i) {
-                const file = input.files.item(i);
-                //allowedTypes.includes(file.type) &&
-                if (file.size <= maxFileSize) {
-                    children += `<li>
-            <span class="fs-5">
-                <i class="bi bi-link-45deg"></i> ${file.name}
-            </span>
-            <span class="modal_upload-remote" onclick="removeFileFromFileList(event, ${i})">
-                <img style="width:18px;height:18px" src="{{ asset('assets/img/trash.svg') }}" />
-            </span>
-        </li>`;
-                } else {
-
-                    notSupport.style.display = 'block';
-                    setTimeout(() => {
-                        notSupport.style.display = 'none';
-                    }, 3500);
-                }
-            }
-            outPut.innerHTML = children;
-        }
-
-        //delete file from input
-        function removeFileFromFileList(event, index) {
-            const deleteButton = event.target;
-            //get tag name
-            const tagName = deleteButton.tagName.toLowerCase();
-            let liEl;
-            if (tagName == "img") {
-                liEl = deleteButton.parentNode.parentNode;
-            }
-            if (tagName == "span") {
-                liEl = deleteButton.parentNode;
-            }
-
-            const inputEl = liEl.parentNode.parentNode.querySelector('.modal_upload-input');
-            const dt = new DataTransfer()
-
-            const {
-                files
-            } = inputEl
-
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i]
-                if (index !== i)
-                    dt.items.add(file) // here you exclude the file. thus removing it.
-            }
-
-            inputEl.files = dt.files // Assign the updates list
-            liEl.remove();
-        }
-
-        function removeUploaded(event) {
-            const deleteButton = event.target;
-            //get tag name
-            const tagName = deleteButton.tagName.toLowerCase();
-            let liEl;
-            if (tagName == "img") {
-                liEl = deleteButton.parentNode.parentNode;
-            }
-            if (tagName == "span") {
-                liEl = deleteButton.parentNode;
-            }
-            liEl.remove();
-        }
-    </script>
     <script>
         const select = document.querySelector('#filter_status');
         const rows = document.querySelectorAll('.table-row');
