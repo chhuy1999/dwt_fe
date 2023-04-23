@@ -22,7 +22,7 @@
                                         <div class="card_template-heading">Yêu cầu mua sắm</div>
                                         <div class="card_template-heading-mini">Purchasing requirement</div>
                                         <div class="card_template-heading-mini">Mã: {{ time() }}</div>
-    
+
                                     </div>
                                     <div class="col-2">
                                         <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="card_template-body-middle">
-                               
+
                                     <div class="col-md-12 mb-3">
                                         <div class="table-responsive YCMS_repeater">
                                             <table class="table table-bordered">
@@ -56,7 +56,7 @@
                                                         <th scope="col" class="text-center" style="width: 15%">Đơn giá (VNĐ)</th>
                                                         <th scope="col" class="text-center" style="width: 15%">Tổng tiền (VNĐ)</th>
                                                         {{-- <th scope="col" style="width:3%"></th> --}}
-                                                        
+
                                                     </tr>
                                                 </thead>
                                                 <tbody data-repeater-list="YCMS_list">
@@ -87,7 +87,7 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                           <div> 
+                                                           <div>
                                                                 <input type="text" value="Nhà cung cấp mẫu"class="form-control" />
                                                             </div>
                                                         </td>
@@ -105,7 +105,7 @@
                                                             <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
                                                         </td> --}}
                                                     </tr>
-                                                    
+
                                                 </tbody>
                                                 {{-- <tr>
                                                     <td colspan="9">
@@ -131,15 +131,15 @@
 
                                                 </tr>
                                             </table>
-                                            
+
                                         </div>
                                     </div>
 
                                     <div class="mb-3 col-12">
                                         <div class="card_template-title  with_form">
                                             <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
-                                            
-                                        </div> 
+
+                                        </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <div class="d-flex flex-column">
@@ -185,7 +185,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col">
                                         <div class="card_template-title text-center">Bộ phận mua hàng/</div>
                                         <div class="card_template-title text-center">Purchasing Department</div>
@@ -305,20 +305,20 @@
      <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chart.js') }}"></script>
      <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-stacked100@1.0.0.js') }}"></script>
      <script type="text/javascript" src="{{ asset('assets/plugins/chartjs/chartjs-plugin-datalabels@2.0.0.js') }}"></script>
-     
+
      <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangActive.js') }}"></script>
      <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_khachHangMoi.js') }}"></script>
      <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_soDonHang.js') }}"></script>
      <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_doanhSo.js') }}"></script>
      <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_nhanSu.js') }}"></script>
      <script type="text/javascript" src="{{ asset('/assets/js/chart/StackedChart_chiPhi.js') }}"></script>
- 
+
      <script>
          // SELECT MULTIPLE LEFT SIDEBAR
          const select = document.getElementById('select');
          const elems = document.querySelectorAll('.data_chart-items');
          const obj = {};
- 
+
          const filtered = [...elems].filter((el) => {
              if (!obj[el.id]) {
                  obj[el.id] = true;
@@ -327,34 +327,34 @@
                  return false;
              }
          });
- 
+
          const selectOpt = filtered.map((el) => {
              el.style.display = 'block';
              return `<option> ${el.id} </option>`;
          });
- 
+
          select.innerHTML = selectOpt.join('');
- 
+
          select.addEventListener('change', function() {
              for (let i = 0, iLen = select.options.length; i < iLen; i++) {
                  const opt = select.options[i];
                  const noPick = document.getElementById('data_chart-nopick')
- 
+
                  const val = opt.value || opt.text;
                  if (opt.selected) {
                      document.getElementById(val).style.display = 'block';
                      noPick.style.display = 'none';
- 
+
                  } else {
                      document.getElementById(val).style.display = 'none';
                      noPick.style.display = 'block';
                  }
              }
          });
- 
+
          // BTN SETTINGS
          document.getElementById('sidebarBody_settings-body').addEventListener('click', handleClickSettings, false);
- 
+
          function handleClickSettings() {
              const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
              if (sidebarBodySelectWrapper.style.display === 'none') {
@@ -365,7 +365,7 @@
                  document.removeEventListener('click', handleClickOutside);
              }
          }
- 
+
          function handleClickOutside(event) {
              const sidebarBodySettings = document.getElementsByClassName('sidebarBody_settings-body')[0];
              const sidebarBodySelectWrapper = document.getElementById('sidebarBody_select-wrapper');
@@ -437,10 +437,10 @@
   function showFileNames(event) {
     // Lấy input đang xử lý
     let input = event.srcElement;
-    
+
     // Lấy danh sách các file đã chọn
     let files = input.files;
-    
+
     // Hiển thị tên các file lên trên giao diện
     for (let i = 0; i < files.length; i++) {
       let fileName = files[i].name;
@@ -588,12 +588,12 @@
       $(document).ready(function() {
   // Hide the text areas initially
   $('.showSign, .showFormYKien').hide();
-  
+
   // Attach event listeners to radio buttons using a loop
   $('input[type="radio"][name="radio"]').each(function() {
     $(this).click(function() {
       var selectedRadio = $(this).attr('id');
-      
+
       if (selectedRadio === 'confirmRadio') {
         $('.showSign').show();
         $('.showFormYKien').hide();

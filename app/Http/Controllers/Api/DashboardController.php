@@ -32,6 +32,10 @@ class DashboardController extends Controller
             $endDate = $currentYear . '-' . $currentMonth . '-31';
             //get list assigned task
             $user = session('user');
+
+            // dd($user);
+
+
             $searchDepartment_id = null;
             if ($user['role'] == 'manager') {
                 $searchDepartment_id = $user['departement_id'];

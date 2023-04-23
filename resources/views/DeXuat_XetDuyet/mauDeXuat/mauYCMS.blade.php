@@ -2,6 +2,41 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Mẫu yêu cầu mua sắm')
 
+@php
+    function getProposalRelatedPeople($proposal)
+    {
+        $data = $proposal->data;
+        $data = json_decode($data);
+        if (!isset($data->relatedPeople)) {
+            return [];
+        }
+        return $data->relatedPeople;
+    }
+
+    function isRelatedToProposal($proposal, $userId)
+    {
+        $related = getProposalRelatedPeople($proposal);
+        if (count($related) == 0) {
+            return false;
+        }
+        foreach ($related as $item) {
+            if ($item == $userId) {
+                return true;
+            }
+        }
+    }
+
+    function isEdit($proposal, $userId)
+    {
+        if ($proposal->status > 0) {
+            return false;
+        }
+        if ($proposal->sender_id == $userId) {
+            return true;
+        }
+    }
+
+@endphp
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -9,236 +44,343 @@
             <div class="main">
                 <div class="container-fluid">
                     <div class="card_template-wrapper">
-                        <div class="card_template-body">
-                            <div class="card_template-body-top">
-                                <div class='row mb-3 align-items-center'>
-                                    <div class="col-2 d-flex align-items-center justify-content-center flex-column">
-                                        <a class=" ">
-                                            <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
-                                        </a>
-                                        <div class="card_template-title fst-italic">BM013.QT02/12</div>
-                                    </div>
-                                    <div class="col-8 d-flex align-items-center justify-content-center flex-column">
-                                        <div class="card_template-heading">Yêu cầu mua sắm</div>
-                                        <div class="card_template-heading-mini">Purchasing requirement</div>
-                                        <div class="card_template-heading-mini">Mã: {{ time() }}</div>
-
-                                    </div>
-                                    <div class="col-2">
-                                        <div
-                                            class="card_template-title fst-italic d-flex align-items-center justify-content-center">
-                                            <div class="text-nowrap">Số/No:</div>
-                                            <div
-                                                class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control">
-                                            </div>
+                        <form action="{{ route('proposal.updateData', $proposal->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="card_template-body">
+                                <div class="card_template-body-top">
+                                    <div class='row mb-3 align-items-center'>
+                                        <div class="col-3 d-flex align-items-center justify-content-center flex-column">
+                                            <a class=" ">
+                                                <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
+                                            </a>
+                                            <div class="card_template-title fst-italic">BM013.QT02/12</div>
                                         </div>
-                                        <div
-                                            class="card_template-title fst-italic d-flex align-items-center justify-content-center">
-                                            <div class="text-nowrap">Ngày/Date:</div>
-                                            <div
-                                                class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control datePicker">
+                                        <div class="col-6 d-flex align-items-center justify-content-center flex-column">
+                                            <div class="card_template-heading">Yêu cầu mua sắm</div>
+                                            <div class="card_template-heading-mini">Purchasing requirement</div>
+                                            <div class="card_template-heading-mini">Mã: {{ $proposal->code }}</div>
+
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                                <div class="text-nowrap">Số/No:</div>
+                                                <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                    @if (isEdit($proposal, session('user')['id']))
+                                                        <input type="text" placeholder="" class="form-control" name="proposalNo">
+                                                    @else
+                                                        <div class="card_template-sub-text">{{ $proposalData->proposalNo }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                                <div class="text-nowrap">Ngày/Date:</div>
+                                                <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                    @if (isEdit($proposal, session('user')['id']))
+                                                        <input type="text" placeholder="" class="form-control datePicker" value="{{ date('d/m/Y', strtotime($proposal->created_at)) }}">
+                                                    @else
+                                                        <span>{{ date('d/m/Y', strtotime($proposal->created_at)) }}</span>
+                                                    @endif
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card_template-body-middle">
+                                <div class="card_template-body-middle">
 
-                                <div class="col-md-12 mb-3">
-                                    <div class="table-responsive YCMS_repeater">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" class="text-center" style="width:3%">STT</th>
-                                                    <th scope="col" class="text-center" style="width: 22%">Tên, chủng
-                                                        loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
-                                                    <th scope="col" class="text-center" style="width: 7%">Số lượng</th>
-                                                    <th scope="col" class="text-center" style="width: 5%">ĐVT</th>
-                                                    <th scope="col" class="text-center" style="width: 15%">MĐ sử dụng &
-                                                        T.gian hoàn thành</th>
-                                                    <th scope="col" class="text-center" style="width: 15%">NCC tốt nhất
-                                                        (Tên, sđt, đc)</th>
-                                                    <th scope="col" class="text-center" style="width: 15%">Đơn giá (VNĐ)
-                                                    </th>
-                                                    <th scope="col" class="text-center" style="width: 15%">Tổng tiền
-                                                        (VNĐ)</th>
-                                                    <th scope="col" style="width:3%"></th>
+                                    <div class="col-md-12 mb-3">
+                                        <div class="table-responsive YCMS_repeater">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" class="text-center" style="width:3%">STT</th>
+                                                        <th scope="col" class="text-center" style="width: 22%">Tên, chủng
+                                                            loại, quy cách hàng hóa (Đính kèm hình ảnh, mô tả nếu có)</th>
+                                                        <th scope="col" class="text-center" style="width: 7%">Số lượng</th>
+                                                        <th scope="col" class="text-center" style="width: 5%">ĐVT</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">MĐ sử dụng &
+                                                            T.gian hoàn thành</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">NCC tốt nhất
+                                                            (Tên, sđt, đc)</th>
+                                                        <th scope="col" class="text-center" style="width: 15%">Đơn giá (VNĐ)
+                                                        </th>
+                                                        <th scope="col" class="text-center" style="width: 15%">Tổng tiền
+                                                            (VNĐ)</th>
+                                                        @if (isEdit($proposal, $user->id))
+                                                            <th scope="col" style="width:3%"></th>
+                                                        @endif
 
-                                                </tr>
-                                            </thead>
-                                            <tbody data-repeater-list="YCMS_list">
-                                                <tr data-repeater-item>
-                                                    <td scope="row" class="text-center">
-                                                        <div>
-                                                            1
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="" class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="" class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="" class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="" class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder=""class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder=""style="text-align: right;"
-                                                            class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder=""style="text-align: right;"
-                                                            class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <img data-repeater-delete role="button"
-                                                            src="{{ asset('/assets/img/trash.svg') }}" width="15px"
-                                                            height="15px" />
-                                                    </td>
-                                                </tr>
+                                                    </tr>
+                                                </thead>
+                                                @if (isEdit($proposal, $user->id))
+                                                    <tbody data-repeater-list="listShoppingRequest">
+                                                        <tr data-repeater-item>
+                                                            <td scope="row" class="text-center">
+                                                                <div>
+                                                                    1
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" placeholder="" class="form-control" name="product">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" placeholder="" class="form-control" name="quantity">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" placeholder="" class="form-control" name="unit">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" placeholder="" class="form-control" name="purpose">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" placeholder=""class="form-control" name="provider">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" placeholder=""style="text-align: right;" class="form-control" name="price">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" placeholder=""style="text-align: right;" class="form-control" name="totalPrice">
+                                                            </td>
+                                                            <td>
+                                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
+                                                            </td>
+                                                        </tr>
 
-                                            </tbody>
-                                            <tr>
-                                                <td colspan="9">
-                                                    <span role="button" class="fs-5 text-danger" data-repeater-create><i
-                                                            class="bi bi-plus-circle"></i></span>
-                                                </td>
-                                                </td>
-                                            <tr>
+                                                    </tbody>
+                                                    <tr>
+                                                        <td colspan="9">
+                                                            <span role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></span>
+                                                        </td>
+                                                        </td>
+                                                    <tr>
+                                                @else
+                                                    <tbody>
+                                                        @if ($proposalData->listShoppingRequest)
+                                                            @foreach ($proposalData->listShoppingRequest as $item)
+                                                                <tr>
+                                                                    <td scope="row" class="text-center">
+                                                                        <div>
+                                                                            {{ $loop->iteration }}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $item->product }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $item->quantity }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $item->unit }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $item->purpose }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $item->provider }}
+                                                                    </td>
+                                                                    <td style="text-align: right">
+                                                                        {{ $item->price }}
+                                                                    </td>
+                                                                    <td style="text-align: right">
+                                                                        {{ $item->totalPrice }}
+                                                                    </td>
+
+                                                                </tr>
+                                                            @endforeach
+                                                        @endif
+                                                    </tbody>
+                                                @endif
+
                                                 <td colspan="7" class="text-center fw-bold">Tổng (chưa VAT)</td>
                                                 <td colspan="2">
-                                                    <div>
-                                                        <input type="text" placeholder="" class="form-control">
+                                                    <div style="text-align: right">
+                                                        @if (isEdit($proposal, $user->id))
+                                                            <input type="text" placeholder="" class="form-control" name="sumPriceNovat">
+                                                        @else
+                                                            <span>{{ $proposalData->sumPriceNovat }}</span>
+                                                        @endif
+
                                                     </div>
                                                 </td>
 
-                                            </tr>
-                                            <tr>
-                                                <td colspan="7" class="text-center fw-bold">Tổng (có VAT)</td>
-                                                <td colspan="2">
-                                                    <div>
-                                                        <input type="text" placeholder="" class="form-control">
-                                                    </div>
-                                                </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="7" class="text-center fw-bold">Tổng (có VAT)</td>
+                                                    <td colspan="2">
+                                                        <div style="text-align: right">
 
-                                            </tr>
-                                        </table>
+                                                            @if (isEdit($proposal, $user->id))
+                                                                <input type="text" placeholder="" class="form-control" name="sumPricevat">
+                                                            @else
+                                                                <span>{{ $proposalData->sumPricevat }}</span>
+                                                            @endif
+                                                        </div>
+                                                    </td>
 
+                                                </tr>
+                                            </table>
+
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="mb-3 col-12">
-                                    <div class="card_template-title  with_form">
-                                        <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
-
+                                    <div class="mb-3 col-12">
+                                        <div class="card_template-title  with_form">
+                                            <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-5 mb-3">
-                                    <div class="d-flex flex-column">
-                                        <form action="" method="POST" enctype="multipart/form-data">
-                                            @method('PUT')
-                                            @csrf
-                                            <div class="upload_wrapper-items">
-                                                <input type="hidden" name="uploadedFiles[]" value="" />
-                                                <button role="button" type="button"
-                                                    class="btn position-relative border d-flex">
-                                                    <img style="width:16px;height:16px"
-                                                        src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                    <span class="ps-2">Chọn file đính kèm</span>
-                                                    <input role="button" type="file"
-                                                        class="modal_upload-input modal_upload-file" name="files[]"
-                                                        multiple onchange="updateList(event)" />
-                                                </button>
-                                                <ul class="modal_upload-list"
-                                                    style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;">
-                                                </ul>
-                                                {{-- <div class="d-flex align-items-center justify-content-end">
-                                                        <button type="submit" class="btn btn-outline-danger">Tải
-                                                            file
-                                                        </button>
-                                                    </div> --}}
+                                    @if (isEdit($proposal, $user->id))
+                                        <div class="col-md-5 mb-3">
+                                            <div class="d-flex flex-column">
+
+                                                <div class="upload_wrapper-items">
+                                                    <input type="hidden" value="" />
+                                                    <button role="button" type="button" class="btn position-relative border d-flex">
+                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                        <span class="ps-2">Chọn file đính kèm</span>
+                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)" />
+                                                    </button>
+                                                    <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;">
+                                                    </ul>
+
+                                                </div>
+
                                             </div>
-                                        </form>
+                                        </div>
+                                    @else
+                                        <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;">
+                                            @foreach ($proposalFiles as $file)
+                                                <li>
+                                                    <a href="{{ $file }}" target="_blank">{{ $file }}</a>
+                                                </li>
+                                            @endforeach
+
+                                        </ul>
+                                    @endif
+                                </div>
+
+                                <div class="card_template-body-bottom">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Người đề nghị/</div>
+                                            <div class="card_template-title text-center">Applicant</div>
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                @if (isEdit($proposal, $user->id))
+                                                    <div>
+                                                        @if ($proposal->sender_id == $user->id)
+                                                            <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                        @endif
+                                                        <div id="signatureImg" style="display: none">
+                                                            @if ($user->signature)
+                                                                <img width="100" src="{{ $user->signature }}" />
+                                                            @else
+                                                                <span>Chưa có chữ ký. Vào trang profile chèn chữ ký</span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <img width="100" src="{{ $proposalData->senderSignature }}" />
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Phụ trách bộ phận/</div>
+                                            <div class="card_template-title text-center">Head of Department</div>
+
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div>
+                                                    @if (isset($proposalData->rejectReason1))
+                                                        <div>
+                                                            <div class="text-center">x</div>
+                                                            <div>{{ $proposalData->rejectReason1 }}</div>
+                                                        </div>
+                                                    @elseif (isset($proposalData->relatedSignature1))
+                                                        <img src="{{ $proposalData->relatedSignature1 }}" alt="" width="100">
+                                                    @else
+                                                        @if (isRelatedToProposal($proposal, $user->id))
+                                                            <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign1">Chèn chữ ký</button>
+                                                        @endif
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Bộ phận mua hàng/</div>
+                                            <div class="card_template-title text-center">Purchasing Department</div>
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div>
+                                                    @if (isset($proposalData->rejectReason2))
+                                                        <div>
+                                                            <div class="text-center">x</div>
+                                                            <div>{{ $proposalData->rejectReason2 }}</div>
+                                                        </div>
+                                                    @elseif (isset($proposalData->relatedSignature2))
+                                                        <img src="{{ $proposalData->relatedSignature2 }}" alt="" width="100">
+                                                    @else
+                                                        @if (isRelatedToProposal($proposal, $user->id))
+                                                            <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign2">Chèn chữ ký</button>
+                                                        @endif
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Người thực hiện mua/</div>
+                                            <div class="card_template-title text-center">Purchaser</div>
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div>
+                                                    @if (isset($proposalData->rejectReason3))
+                                                        <div>
+                                                            <div class="text-center">x</div>
+                                                            <div>{{ $proposalData->rejectReason3 }}</div>
+                                                        </div>
+                                                    @elseif (isset($proposalData->relatedSignature3))
+                                                        <img src="{{ $proposalData->relatedSignature3 }}" alt="" width="100">
+                                                    @else
+                                                        @if (isRelatedToProposal($proposal, $user->id))
+                                                            <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#confirmSign3">Chèn chữ ký</button>
+                                                        @endif
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Phê duyệt/</div>
+                                            <div class="card_template-title text-center">Approved by</div>
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div>
+                                                    @if (isset($proposalData->receiverRejectReason))
+                                                        <div>
+                                                            <div class="text-center">x</div>
+                                                            <div>{{ $proposalData->receiverRejectReason }}</div>
+                                                        </div>
+                                                    @elseif (isset($proposalData->receiverSignature))
+                                                        <img src="{{ $proposalData->receiverSignature }}" alt="" width="100">
+                                                    @else
+                                                        @if ($proposal->receiver_id == $user->id)
+                                                            <button type="button" class="btn btn-outline-primary fs-6" data-bs-toggle="modal" data-bs-target="#receiverConfirmSign">Chèn chữ ký</button>
+                                                        @endif
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="card_template-body-bottom">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Người đề nghị/</div>
-                                        <div class="card_template-title text-center">Applicant</div>
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
-                                            <div class="">
-                                                <button id="showImageBtn" type="button"
-                                                    class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-                                                <img id="signatureImg" width="100" style="display: none;"
-                                                    src="{{ asset('/assets/img/sign-temp.jpg') }}" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Phụ trách bộ phận/</div>
-                                        <div class="card_template-title text-center">Head of Department</div>
-
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
-                                            <div class="">
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Bộ phận mua hàng/</div>
-                                        <div class="card_template-title text-center">Purchasing Department</div>
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
-                                            <div class="">
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Người thực hiện mua/</div>
-                                        <div class="card_template-title text-center">Purchaser</div>
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
-                                            <div class="">
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Phê duyệt/</div>
-                                        <div class="card_template-title text-center">Approved by</div>
-                                        <div class=" d-flex align-items-center justify-content-center"
-                                            style="height: 100px; ">
-                                            <div class="">
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
+                            @if (isEdit($proposal, $user->id))
+                                <div class="card_template-footer">
+                                    <a href="/de-xuat-theo-mau" type="button" class="btn btn-outline-danger ps-5 pe-5 me-3">Hủy</a>
+                                    <button type="submit" class="btn btn-danger ps-5 pe-5">Gửi</button>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="card_template-footer">
-                            <a href="/de-xuat-theo-mau" type="button"
-                                class="btn btn-outline-danger ps-5 pe-5 me-3">Hủy</a>
-                            <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal"
-                                data-bs-target="#conFirm">Gửi</button>
-                        </div>
+                            @endif
+                        </form>
                     </div>
                 </div>
             </div>
@@ -271,47 +413,100 @@
             </div>
         </div>
     </div>
+    @for ($i = 0; $i < 3; $i++)
+        {{-- Modal Sign --}}
+        <div class="modal fade" id="confirmSign{{ $i + 1 }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title w-100" id="exampleModalLabel">Ý kiến phản hồi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('proposal.updateData', $proposal->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
+                                    <div class="funkyradio-danger">
+                                        <input type="radio" name="isConfirm{{ $i + 1 }}" value="confirmRadio" id="confirmRadio{{ $i + 1 }}" />
+                                        <label for="confirmRadio{{ $i + 1 }}">Xác nhận</label>
+                                    </div>
+                                    <div class="funkyradio-danger">
+                                        <input type="radio" name="isConfirm{{ $i + 1 }}" value="destroyRadio" id="destroyRadio{{ $i + 1 }}" />
+                                        <label for="destroyRadio{{ $i + 1 }}">Từ chối</label>
+                                    </div>
+                                </div>
 
-    {{-- Modal Sign --}}
-    <div class="modal fade" id="confirmSign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="mb-3 col-12 col-md-12 showSign">
+                                    @if ($user->signature)
+                                        <img width="100" src="{{ $user->signature }}" />
+                                        <input type="hidden" name="relatedSignature{{ $i + 1 }}" value="{{ $user->signature }}">
+                                    @else
+                                        <span>Chưa có chữ ký. Vào trang profile chèn chữ ký</span>
+                                    @endif
+                                </div>
+
+                                <div class="mb-3 col-12 col-md-12 showFormYKien">
+                                    <textarea name="rejectReason{{ $i + 1 }}" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger pe-5 ps-5">Xác nhận</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endfor
+
+
+    <div class="modal fade" id="receiverConfirmSign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title w-100" id="exampleModalLabel">Ý kiến phản hồi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="" action="" id="myForm">
+                <form action="{{ route('proposal.updateData', $proposal->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="modal-body">
                         <div class="row">
-                            <div
-                                class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
+                            <div class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
                                 <div class="funkyradio-danger">
-                                    <input type="radio" name="radio" id="confirmRadio" />
-                                    <label for="confirmRadio">Xác nhận</label>
+                                    <input type="radio" name="isReceiverConfirm" value="confirmRadio" id="receiverConfirm" />
+                                    <label for="receiverConfirm">Xác nhận</label>
                                 </div>
                                 <div class="funkyradio-danger">
-                                    <input type="radio" name="radio" id="destroyRadio" />
-                                    <label for="destroyRadio">Từ chối</label>
+                                    <input type="radio" name="isReceiverConfirm" value="destroyRadio" id="destroyRadioRec" />
+                                    <label for="destroyRadioRec">Từ chối</label>
                                 </div>
                             </div>
 
                             <div class="mb-3 col-12 col-md-12 showSign">
-                                <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                                @if ($user->signature)
+                                    <img width="100" src="{{ $user->signature }}" />
+                                    <input type="hidden" name="receiverSignature" value="{{ $user->signature }}">
+                                @else
+                                    <span>Chưa có chữ ký. Vào trang profile chèn chữ ký</span>
+                                @endif
                             </div>
 
                             <div class="mb-3 col-12 col-md-12 showFormYKien">
-                                <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
+                                <textarea name="receiverRejectReason" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger pe-5 ps-5">Xác nhận</button>
+                        <button type="submit" class="btn btn-danger pe-5 ps-5">Xác nhận</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
 
 @endsection
 @section('footer-script')
@@ -447,28 +642,7 @@
         });
     </script>
 
-    <script>
-        let input = document.getElementById('file-upload');
-        let infoArea = document.getElementById('file-upload-filenames');
 
-        input.addEventListener('change', showFileNames);
-
-        function showFileNames(event) {
-            // Lấy input đang xử lý
-            let input = event.srcElement;
-
-            // Lấy danh sách các file đã chọn
-            let files = input.files;
-
-            // Hiển thị tên các file lên trên giao diện
-            for (let i = 0; i < files.length; i++) {
-                let fileName = files[i].name;
-                let div = document.createElement('div');
-                div.textContent = fileName;
-                infoArea.appendChild(div);
-            }
-        }
-    </script>
 
     <script>
         updateList = function(e) {
@@ -607,7 +781,7 @@
             $('.datePicker').daterangepicker({
                 singleDatePicker: true,
                 timePicker: false,
-                startDate: new Date(),
+                // startDate: new Date(),
                 locale: {
                     format: 'DD/MM/YYYY '
                 }
@@ -620,10 +794,101 @@
         const showImageBtn = document.getElementById('showImageBtn');
         const signatureImg = document.getElementById('signatureImg');
 
-        showImageBtn.addEventListener('click', () => {
-            showImageBtn.style.display = 'none';
-            signatureImg.style.display = 'block';
-        });
+        if (showImageBtn && signatureImg) {
+            showImageBtn.addEventListener('click', () => {
+                showImageBtn.style.display = 'none';
+                signatureImg.style.display = 'block';
+                //create hidden input
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'senderSignature';
+                input.value = `{!! $user->signature !!}`;
+
+                signatureImg.parentNode.appendChild(input);
+
+            });
+        }
+
+
+        // const showImageBtn2 = document.getElementById('showImageBtn2');
+        // const signatureImg2 = document.getElementById('signatureImg2');
+
+        // if (showImageBtn2 && signatureImg2) {
+        //     showImageBtn2.addEventListener('click', () => {
+        //         showImageBtn2.style.display = 'none';
+        //         signatureImg2.style.display = 'block';
+
+
+        //         //create hidden input
+        //         const input = document.createElement('input');
+        //         input.type = 'hidden';
+        //         input.name = 'relatedSignature1';
+        //         input.value = `{!! $user->signature !!}`;
+
+        //         signatureImg2.parentNode.appendChild(input);
+        //     });
+        // }
+
+
+
+        // const showImageBtn3 = document.getElementById('showImageBtn3');
+        // const signatureImg3 = document.getElementById('signatureImg3');
+
+        // if (showImageBtn3 && signatureImg3) {
+
+
+        //     showImageBtn3.addEventListener('click', () => {
+        //         showImageBtn3.style.display = 'none';
+        //         signatureImg3.style.display = 'block';
+
+        //         const input = document.createElement('input');
+        //         input.type = 'hidden';
+        //         input.name = 'relatedSignature2';
+        //         input.value = `{!! $user->signature !!}`;
+
+        //         signatureImg3.parentNode.appendChild(input);
+        //     });
+
+        // }
+
+
+        // const showImageBtn4 = document.getElementById('showImageBtn4');
+        // const signatureImg4 = document.getElementById('signatureImg4');
+
+        // if (showImageBtn4 && signatureImg4) {
+        //     showImageBtn4.addEventListener('click', () => {
+        //         showImageBtn4.style.display = 'none';
+        //         signatureImg4.style.display = 'block';
+
+        //         const input = document.createElement('input');
+        //         input.type = 'hidden';
+        //         input.name = 'relatedSignature3';
+        //         input.value = `{!! $user->signature !!}`;
+
+        //         signatureImg4.parentNode.appendChild(input);
+
+        //     });
+        // }
+
+
+
+
+        // const showImageBtn5 = document.getElementById('showImageBtn5');
+        // const signatureImg5 = document.getElementById('signatureImg5');
+
+        // if (showImageBtn5 && signatureImg5) {
+        //     showImageBtn5.addEventListener('click', () => {
+        //         showImageBtn5.style.display = 'none';
+        //         signatureImg5.style.display = 'block';
+
+        //         const input = document.createElement('input');
+        //         input.type = 'hidden';
+        //         input.name = 'receiverSignature';
+        //         input.value = `{!! $user->signature !!}`;
+
+        //         signatureImg5.parentNode.appendChild(input);
+        //     });
+        // }
     </script>
 
 
@@ -633,9 +898,9 @@
             $('.showSign, .showFormYKien').hide();
 
             // Attach event listeners to radio buttons using a loop
-            $('input[type="radio"][name="radio"]').each(function() {
+            $('input[type="radio"]').each(function() {
                 $(this).click(function() {
-                    var selectedRadio = $(this).attr('id');
+                    var selectedRadio = $(this).val();
 
                     if (selectedRadio === 'confirmRadio') {
                         $('.showSign').show();
@@ -648,5 +913,4 @@
             });
         });
     </script>
-
 @endsection

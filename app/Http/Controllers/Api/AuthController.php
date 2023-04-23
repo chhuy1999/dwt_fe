@@ -57,6 +57,9 @@ class AuthController extends Controller
             session()->put('listUsers', $listUsers);
             session()->put('listKpiKeys', $listKpiKeys);
             $request->session()->regenerate();
+            if ($user['email'] == 'thaotm@mastertran.vn') {
+                return redirect('/dashboard_admin');
+            }
             return redirect('/');
         } catch (Exception $e) {
             $error = "Tên đăng nhập hoặc mật khẩu không đúng!";
