@@ -26,7 +26,19 @@ class TargetController extends Controller
             $q = $request->get('q');
             $page = $request->get('page');
             $limit = $request->get('limit');
-            $data = $this->dwtService->searchKpiTargets("", 1, 999);
+            $user = session('user');
+
+            $departmentId = null;
+            if ($user['role'] != 'admin') {
+                $departmentId = $user['departement_id'];
+            }
+
+            $data = $this->dwtService->searchKpiTargets([
+                'page' => 1,
+                'limit' => 9999,
+                'departement_id' => $departmentId,
+
+            ]);
             $listUnits = $this->dwtService->listUnits();
             $listPositions = $this->dwtService->listPositions();
             $listDepartments = $this->dwtService->listDepartments();
