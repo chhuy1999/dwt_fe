@@ -24,7 +24,7 @@
                 break;
         }
     }
-    
+
     function getStatusName($statusInt)
     {
         //cast to int
