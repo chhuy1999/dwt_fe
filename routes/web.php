@@ -188,8 +188,7 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('de-xuat-theo-mau', [ProposalController::class, 'index'])->name('proposal.list');
     Route::post('de-xuat-theo-mau/tao-moi', [ProposalController::class, 'create'])->name('proposal.create');
     Route::get('de-xuat-theo-mau/{id}', [ProposalController::class, 'show'])->name('proposal.show');
-    Route::put('de-xuat-theo-mau/{id}', [ProposalController::class, 'edit'])->name('proposal.update');
-    //delete
+    Route::put('de-xuat-theo-mau/{id}/data-update', [ProposalController::class, 'updateData'])->name('proposal.updateData');
     Route::put('de-xuat-theo-mau/{id}/basic-update', [ProposalController::class, 'updateBasic'])->name('proposal.updateBasic');
     Route::delete('de-xuat-theo-mau/{id}', [ProposalController::class, 'delete'])->name('proposal.delete');
 });
@@ -207,9 +206,9 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
 // })->middleware('auth.role:manager,admin,user');
 
 // // View
-// Route::get('xem/yeu-cau-mua-sam/id', function () {
-//     return view('DeXuat_XetDuyet.viewConfirm.mauYCMS');
-// })->middleware('auth.role:manager,admin,user');
+Route::get('xem/yeu-cau-mua-sam/id', function () {
+    return view('DeXuat_XetDuyet.viewConfirm.mauYCMS');
+})->middleware('auth.role:manager,admin,user');
 // Route::get('xem/de-nghi-tam-ung/id', function () {
 //     return view('DeXuat_XetDuyet.viewConfirm.mauDNTU');
 // })->middleware('auth.role:manager,admin,user');

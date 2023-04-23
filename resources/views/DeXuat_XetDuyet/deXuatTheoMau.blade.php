@@ -36,10 +36,10 @@
             case 1:
                 return 'Đã gửi';
                 break;
-            case 1:
+            case 2:
                 return 'Đã duyệt';
                 break;
-            case 2:
+            case 3:
                 return 'Từ chối';
                 break;
             default:
@@ -180,7 +180,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h5 class="modal-title w-100" id="exampleModalLabel">Sửa đề xuất {{ count(getProposalRelatedPeople($item)) }}</h5>
+                        <h5 class="modal-title w-100" id="exampleModalLabel">Sửa đề xuất</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form method="POST" action="{{ route('proposal.updateBasic', $item->id) }}">
