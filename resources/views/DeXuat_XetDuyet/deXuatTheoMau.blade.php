@@ -47,7 +47,33 @@
                 break;
         }
     }
+
+    function getProposalRelatedPeople($proposal)
+    {
+        $data = $proposal->data;
+        $data = json_decode($data);
+        if (!isset($data->relatedPeople)) {
+            return [];
+        }
+        return $data->relatedPeople;
+    }
+
+    function isRelatedToProposal($proposal, $userId)
+    {
+        $related = getProposalRelatedPeople($proposal);
+        if (count($related) == 0) {
+            return false;
+        }
+        foreach ($related as $item) {
+            if ($item == $userId) {
+                return true;
+            }
+        }
+    }
+
 @endphp
+
+
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
@@ -120,12 +146,14 @@
 
                                                                 <td>
                                                                     <div class="table_actions d-flex justify-content-center">
-                                                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#suaDeXuat{{ $item->id }}">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
-                                                                        </div>
-                                                                        <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaDeXuat{{ $item->id }}">
-                                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
-                                                                        </div>
+                                                                        @if ($item->status == 0)
+                                                                            <div class="btn" data-bs-toggle="modal" data-bs-target="#suaDeXuat{{ $item->id }}">
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/edit.svg') }}" />
+                                                                            </div>
+                                                                            <div class="btn" data-bs-toggle="modal" data-bs-target="#xoaDeXuat{{ $item->id }}">
+                                                                                <img style="width:16px;height:16px" src="{{ asset('assets/img/trash.svg') }}" />
+                                                                            </div>
+                                                                        @endif
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -152,54 +180,60 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h5 class="modal-title w-100" id="exampleModalLabel">Sửa đề xuất</h5>
+                        <h5 class="modal-title w-100" id="exampleModalLabel">Sửa đề xuất {{ count(getProposalRelatedPeople($item)) }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="" action="" id="myForm">
+                    <form method="POST" action="{{ route('proposal.updateBasic', $item->id) }}">
                         @csrf
+                        @method('PUT');
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-6 mb-3">
-                                    <input name="summary" type="text" placeholder="Tóm tắt" class="form-control">
+                                    <input name="title" type="text" placeholder="Tiêu đề" class="form-control" value={{ $item->title }}>
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <input name="title" type="text" placeholder="Tiêu đề" class="form-control">
+                                    <input name="description" type="text" placeholder="Tóm tắt" class="form-control" value="{{ $item->description }}">
                                 </div>
+
                                 <div class="col-6 mb-3">
-                                    <select name="sender" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select name="receiver_id" class="selectpicker" title="Chọn người nhận" data-size="5" data-live-search="true">
+                                        @foreach (session('listUsers') as $u)
+                                            @if ($item->receiver_id == $u->id)
+                                                <option value="{{ $u->id }}" selected>{{ $u->name }}</option>
+                                            @else
+                                                <option value="{{ $u->id }}">{{ $u->name }}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <div class="col-6 mb-3">
-                                    <select name="receiver" class="selectpicker" title="Chọn người liên quan" data-size="5" data-live-search="true">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select name="related_people[]" class="selectpicker" title="Chọn người liên quan" data-size="5" data-live-search="true" multiple>
+                                        @foreach (session('listUsers') as $u)
+                                            @if (isRelatedToProposal($item, $u->id))
+                                                <option value="{{ $u->id }}" selected>{{ $u->name }}</option>
+                                            @else
+                                                <option value="{{ $u->id }}">{{ $u->name }}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <div class="col-6 mb-3">
-                                    <select name="proposal" class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
-                                        <option value="ycms">Yêu cầu mua sắm</option>
-                                        <option value="dntt">Đề nghị thanh toán</option>
-                                        <option value="dntu2">Đề nghị tạm ứng</option>
+                                    <select name="form" class="selectpicker" title="Chọn mẫu đề xuất" data-size="5">
+                                        <option value="1" @if ($item->form == 1) selected @endif>Yêu cầu mua sắm</option>
+                                        <option value="2" @if ($item->form == 2) selected @endif>Đề nghị thanh toán</option>
+                                        <option value="3" @if ($item->form == 3) selected @endif>Đề nghị tạm ứng</option>
                                     </select>
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <div class="card_template-title">Mã VB: {{ time() }}</div>
+                                    <div class="card_template-title">Mã VB: {{ $item->code }}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                            <button type="submit" class="btn btn-danger">Tạo</button>
+                            <button type="submit" class="btn btn-danger">Lưu</button>
                         </div>
                     </form>
                 </div>
@@ -219,9 +253,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-                        <form action="" method="POST">
+                        <form action="{{ route('proposal.delete', $item->id) }}" method="POST">
                             @csrf
-                            {{-- @method('DELETE') --}}
+                            @method('DELETE')
                             <button type="submit" class="btn btn-danger">Xóa</button>
                         </form>
                     </div>

@@ -82,4 +82,40 @@ class ProposalController extends Controller
             return view('DeXuat_XetDuyet.deXuatTheoMau')->with('proposals', $blankData);
         }
     }
+
+    public function updateBasic($id, Request $request) {
+        try {
+            $data = $request->validate([
+                'title' => 'nullable',
+                'description' => 'nullable',
+                'receiver_id' => 'nullable|numeric',
+                'related_people' => 'nullable|array',
+                'form' => 'nullable|numeric',
+            ]);
+            //get old data
+            $oldData = $this->dwtServices->getProposalDetail($id);
+            $oldData = json_decode($oldData->data);
+            //replace old data with new data
+            if (isset($data['related_people'])) {
+                $oldData->relatedPeople = $data['related_people'];
+            }
+            $data['data'] = json_encode($oldData);
+
+            $proposal = $this->dwtServices->updateProposal($id, $data);
+            return redirect()->back()->with('success', 'Cập nhật thành công');
+        }catch(Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
+    }
+
+    public function delete($id) {
+        try {
+            $this->dwtServices->deleteProposal($id);
+            return redirect()->back()->with('success', 'Xóa thành công');
+        }catch(Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
+    }
 }

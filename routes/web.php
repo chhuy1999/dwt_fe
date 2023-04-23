@@ -190,31 +190,32 @@ Route::group(['middleware' => 'auth.role:manager,admin,user'], function () {
     Route::get('de-xuat-theo-mau/{id}', [ProposalController::class, 'show'])->name('proposal.show');
     Route::put('de-xuat-theo-mau/{id}', [ProposalController::class, 'edit'])->name('proposal.update');
     //delete
+    Route::put('de-xuat-theo-mau/{id}/basic-update', [ProposalController::class, 'updateBasic'])->name('proposal.updateBasic');
     Route::delete('de-xuat-theo-mau/{id}', [ProposalController::class, 'delete'])->name('proposal.delete');
 });
 
 
 // Form danh sách đề nghị
-Route::get('yeu-cau-mua-sam', function () {
-    return view('DeXuat_XetDuyet.mauDeXuat.mauYCMS');
-})->middleware('auth.role:manager,admin,user');
-Route::get('de-nghi-tam-ung', function () {
-    return view('DeXuat_XetDuyet.mauDeXuat.mauDNTU');
-})->middleware('auth.role:manager,admin,user');
-Route::get('de-nghi-thanh-toan', function () {
-    return view('DeXuat_XetDuyet.mauDeXuat.mauDNTT');
-})->middleware('auth.role:manager,admin,user');
+// Route::get('yeu-cau-mua-sam', function () {
+//     return view('DeXuat_XetDuyet.mauDeXuat.mauYCMS');
+// })->middleware('auth.role:manager,admin,user');
+// Route::get('de-nghi-tam-ung', function () {
+//     return view('DeXuat_XetDuyet.mauDeXuat.mauDNTU');
+// })->middleware('auth.role:manager,admin,user');
+// Route::get('de-nghi-thanh-toan', function () {
+//     return view('DeXuat_XetDuyet.mauDeXuat.mauDNTT');
+// })->middleware('auth.role:manager,admin,user');
 
-// View
-Route::get('xem/yeu-cau-mua-sam/id', function () {
-    return view('DeXuat_XetDuyet.viewConfirm.mauYCMS');
-})->middleware('auth.role:manager,admin,user');
-Route::get('xem/de-nghi-tam-ung/id', function () {
-    return view('DeXuat_XetDuyet.viewConfirm.mauDNTU');
-})->middleware('auth.role:manager,admin,user');
-Route::get('xem/de-nghi-thanh-toan/id', function () {
-    return view('DeXuat_XetDuyet.viewConfirm.mauDNTT');
-})->middleware('auth.role:manager,admin,user');
+// // View
+// Route::get('xem/yeu-cau-mua-sam/id', function () {
+//     return view('DeXuat_XetDuyet.viewConfirm.mauYCMS');
+// })->middleware('auth.role:manager,admin,user');
+// Route::get('xem/de-nghi-tam-ung/id', function () {
+//     return view('DeXuat_XetDuyet.viewConfirm.mauDNTU');
+// })->middleware('auth.role:manager,admin,user');
+// Route::get('xem/de-nghi-thanh-toan/id', function () {
+//     return view('DeXuat_XetDuyet.viewConfirm.mauDNTT');
+// })->middleware('auth.role:manager,admin,user');
 
 
 

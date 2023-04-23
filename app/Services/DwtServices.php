@@ -993,4 +993,25 @@ class DwtServices
         $dataObj = $this->_toObject($data);
         return $dataObj->data;
     }
+
+    public function updateProposal($id, $data) {
+        $url = $this->url . '/proposals/' . $id;
+        $response = $this->client->put($url, $data);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
+    public function deleteProposal($id) {
+        $url = $this->url . '/proposals/' . $id;
+        $response = $this->client->delete($url);
+        //throw exception if response is not successful
+        $response->throw()->json()['message'];
+        //get data from response
+        $data = $response->json();
+        $dataObj = $this->_toObject($data);
+        return $dataObj->data;
+    }
 }
