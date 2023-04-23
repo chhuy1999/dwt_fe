@@ -190,7 +190,7 @@
             </ul>
         </li>
         <li class="header_menu-item">
-            <a class="header_menu-link menu_btn-sub" href="#">
+            <a class="header_menu-link menu_btn-sub" href="/danh-sach-van-ban-dieu-hanh">
                 <i class="bi bi-share"></i>
                 <span>Văn bản điều hành</span>
             </a>

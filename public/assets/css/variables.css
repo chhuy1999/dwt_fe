@@ -145,11 +145,18 @@ option:hover,
 .tooltip .tooltip-inner {
     max-width: 500px !important;
 }
-/* #three_table th,
+
+#main_table th,
+#main_table td,
+#two_table th,
+#two_table td,
+#four_table th,
+#four_table td,
+#three_table th,
 #three_table td {
     white-space: nowrap;
-    padding: 6px 0;
-} */
+    padding: 6px 4px;
+}
 
 /* DATA TABLES */
 .dataTables_length {
