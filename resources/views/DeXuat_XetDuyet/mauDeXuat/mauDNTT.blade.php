@@ -2,116 +2,155 @@
 {{-- Trang chủ GIao Ban --}}
 @section('title', 'Mẫu đề nghị thanh toán')
 
+@php
+    function getProposalRelatedPeople($proposal)
+    {
+        $data = $proposal->data;
+        $data = json_decode($data);
+        if (!isset($data->relatedPeople)) {
+            return [];
+        }
+        return $data->relatedPeople;
+    }
+
+    function isRelatedToProposal($proposal, $userId)
+    {
+        $related = getProposalRelatedPeople($proposal);
+        if (count($related) == 0) {
+            return false;
+        }
+        foreach ($related as $item) {
+            if ($item == $userId) {
+                return true;
+            }
+        }
+    }
+
+    function isEdit($proposal, $userId)
+    {
+        if ($proposal->status > 0) {
+            return false;
+        }
+        if ($proposal->sender_id == $userId) {
+            return true;
+        }
+    }
+
+@endphp
+
 @section('content')
     @include('template.sidebar.sidebarMaster.sidebarLeft')
     <div id="mainWrap" class="mainWrap">
         <div class="mainSection">
             <div class="main">
-                <div class="container-fluid">
-                    <div class="card_template-wrapper mb-3">
-                        <div class="card_template-body">
-                            <div class="card_template-body-top">
-                                <div class='row mb-3'>
-                                    <div class="col-2 d-flex align-items-center justify-content-center flex-column">
-                                        <a class=" ">
-                                            <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
-                                        </a>
-                                        <div class="card_template-title fst-italic">BM001.QT07/20</div>
-                                    </div>
-                                    <div class="col-8 d-flex align-items-center justify-content-center flex-column">
-                                        <div class="card_template-heading">Đề nghị thanh toán</div>
-                                        <div class="card_template-heading-mini">Request for payment</div>
-                                        <div class="card_template-heading-mini">Mã: {{ time() }}</div>
-
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
-                                            <div class="text-nowrap">Số/No:</div>
-                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control">
-                                            </div>
+                <form action="{{ route('proposal.updateData', $proposal->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="container-fluid">
+                        <div class="card_template-wrapper mb-3">
+                            <div class="card_template-body">
+                                <div class="card_template-body-top">
+                                    <div class='row mb-3'>
+                                        <div class="col-3 d-flex align-items-center justify-content-center flex-column">
+                                            <a class=" ">
+                                                <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
+                                            </a>
+                                            <div class="card_template-title fst-italic">BM001.QT07/20</div>
                                         </div>
-                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
-                                            <div class="text-nowrap">Ngày/Date:</div>
-                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control datePicker">
+                                        <div class="col-6 d-flex align-items-center justify-content-center flex-column">
+                                            <div class="card_template-heading">Đề nghị thanh toán</div>
+                                            <div class="card_template-heading-mini">Request for payment</div>
+                                            <div class="card_template-heading-mini">Mã: {{ time() }}</div>
+
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                                <div class="text-nowrap">Số/No:</div>
+                                                <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                    <input type="text" placeholder="" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                                <div class="text-nowrap">Ngày/Date:</div>
+                                                <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                    <input type="text" placeholder="" class="form-control datePicker">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card_template-body-middle">
-                                <div class="row">
-                                    <div class="mb-3 col-6">
-                                        <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Người đề nghị/Requester: </div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+                                <div class="card_template-body-middle">
+                                    <div class="row">
+                                        <div class="mb-3 col-6">
+                                            <div class="card_template-title with_form">
+                                                <div class="text-nowrap">Người đề nghị/Requester: </div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
 
-                                            </span>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-3 col-6">
-                                        <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Bộ phận/Department:</div>
-                                            <span class="card_template-sub with_input">
+                                        <div class="mb-3 col-6">
+                                            <div class="card_template-title with_form">
+                                                <div class="text-nowrap">Bộ phận/Department:</div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 col-12">
+                                            <div class="card_template-title with_form">
+                                                <div class="text-nowrap">Nội dung thanh toán/Contents of payment: </div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 col-12">
+                                            <div class="card_template-title with_form">
+                                                <div class="text-nowrap">Số tiền/Amount</div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                </span>
+                                            </div>
+                                            <div class="card_template-mini with_form mt-3">
                                                 <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
-                                            </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-3 col-12">
-                                        <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Nội dung thanh toán/Contents of payment: </div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
-                                            </span>
+                                        <div class="mb-3 col-12">
+                                            <div class="card_template-title with_form">
+                                                <div class="text-nowrap">Người nhận tiền/Receiver:</div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-3 col-12">
-                                        <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Số tiền/Amount</div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
-                                            </span>
+                                        <div class="mb-3 col-12">
+                                            <div class="card_template-title with_form">
+                                                <div class="text-nowrap">Hình thức thanh toán/Payment method:</div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="card_template-mini with_form mt-3">
-                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                        <div class="mb-3 col-6">
+                                            <div class="card_template-title  with_form">
+                                                <div class="text-nowrap">Số tài khoản/Account number:</div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-3 col-12">
-                                        <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Người nhận tiền/Receiver:</div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
-                                            </span>
+                                        <div class="mb-3 col-6">
+                                            <div class="card_template-title  with_form">
+                                                <div class="text-nowrap">Tại ngân hàng/with bank:</div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-3 col-12">
-                                        <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Hình thức thanh toán/Payment method:</div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-6">
-                                        <div class="card_template-title  with_form">
-                                            <div class="text-nowrap">Số tài khoản/Account number:</div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-6">
-                                        <div class="card_template-title  with_form">
-                                            <div class="text-nowrap">Tại ngân hàng/with bank:</div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
-                                            </span>
-                                        </div>
-                                    </div>
 
-                                    {{-- <div class="mb-3 col-12">
+                                        {{-- <div class="mb-3 col-12">
                                         <div class="card_template-title">File đính kèm:</div>
                                         <ul class="card_template-list">
                                             <li class="card_template-items">
@@ -126,219 +165,220 @@
                                         </ul>
                                     </div> --}}
 
-                                    {{-- <div class="mb-3 col-md-6">
+                                        {{-- <div class="mb-3 col-md-6">
 
                                         <div class="card_template-title  with_form">
                                             <div class="text-nowrap">Tệp đính kèm/Attached files:
                                         </div>
                                     </div> --}}
-                                    <div class="mb-3 col-12">
-                                        <div class="card_template-title  with_form">
-                                            <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
+                                        <div class="mb-3 col-12">
+                                            <div class="card_template-title  with_form">
+                                                <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-5 mb-3">
-                                        <div class="d-flex flex-column">
-                                            <form action="" method="POST" enctype="multipart/form-data">
-                                                @method('PUT')
-                                                @csrf
-                                                <div class="upload_wrapper-items">
-                                                    <input type="hidden" name="uploadedFiles[]" value="" />
-                                                    <button role="button" type="button" class="btn position-relative border d-flex">
-                                                        <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
-                                                        <span class="ps-2">Chọn file đính kèm</span>
-                                                        <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)" />
-                                                    </button>
-                                                    <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;">
-                                                    </ul>
-                                                    {{-- <div class="d-flex align-items-center justify-content-end">
+                                        <div class="col-md-5 mb-3">
+                                            <div class="d-flex flex-column">
+                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <div class="upload_wrapper-items">
+                                                        <input type="hidden" name="uploadedFiles[]" value="" />
+                                                        <button role="button" type="button" class="btn position-relative border d-flex">
+                                                            <img style="width:16px;height:16px" src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                            <span class="ps-2">Chọn file đính kèm</span>
+                                                            <input role="button" type="file" class="modal_upload-input modal_upload-file" name="files[]" multiple onchange="updateList(event)" />
+                                                        </button>
+                                                        <ul class="modal_upload-list" style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;">
+                                                        </ul>
+                                                        {{-- <div class="d-flex align-items-center justify-content-end">
                                                         <button type="submit" class="btn btn-outline-danger">Tải
                                                             file
                                                         </button>
                                                     </div> --}}
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="card_template-body-bottom">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Người đề nghị/</div>
+                                            <div class="card_template-title text-center">Applicant</div>
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div class="">
+                                                    <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                    <img id="signatureImg" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-                            <div class="card_template-body-bottom">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Người đề nghị/</div>
-                                        <div class="card_template-title text-center">Applicant</div>
-                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
-                                                <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-                                                <img id="signatureImg" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Phụ trách bộ phận/</div>
-                                        <div class="card_template-title text-center">Head of Department</div>
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Phụ trách bộ phận/</div>
+                                            <div class="card_template-title text-center">Head of Department</div>
 
-                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div class="">
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Kế toán trưởng/</div>
-                                        <div class="card_template-title text-center">Chief Accountant</div>
-                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Kế toán trưởng/</div>
+                                            <div class="card_template-title text-center">Chief Accountant</div>
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div class="">
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Phê duyệt/</div>
-                                        <div class="card_template-title text-center">Approved by</div>
-                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Phê duyệt/</div>
+                                            <div class="card_template-title text-center">Approved by</div>
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div class="">
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
+                        <div class="card_template-wrapper mb-3">
+                            <div class="card_template-body">
+                                <div class="card_template-body-top">
+                                    <div class='row mb-3'>
+                                        <div class="col-2 d-flex align-items-center justify-content-center flex-column">
+                                            <a class=" ">
+                                                <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
+                                            </a>
+                                            <div class="card_template-title fst-italic">BM003.QT07/20</div>
+                                        </div>
+                                        <div class="col-8 d-flex align-items-center justify-content-center flex-column">
+                                            <div class="card_template-heading">Bảng kê đề nghị</div>
+                                            <div class="card_template-heading-mini">Mã: {{ time() }}-BK</div>
+                                        </div>
+                                        <div class="col-2 card_template-topRight">
+                                            <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
+                                                <div class="text-nowrap">Ngày/Date:</div>
+                                                <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
+                                                    <input type="text" placeholder="" class="form-control datePicker">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card_template-body-middle">
+                                    <div class="row">
+                                        <div class="mb-3 col-6">
+                                            <div class="card_template-title with_form">
+                                                <div class="text-nowrap">Người đề nghị/Requester:</div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 col-6">
+                                            <div class="card_template-title with_form">
+                                                <div class="text-nowrap">Công việc:</div>
+                                                <span class="card_template-sub with_input">
+                                                    <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="table-responsive DNTT_repeater">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" class="text-center" style="width:2%">STT</th>
+                                                        <th scope="col" class="text-center" style="width:10%">Số chứng từ
+                                                        </th>
+                                                        <th scope="col" class="text-center" style="width:33%">Nội dung
+                                                        </th>
+                                                        <th scope="col" class="text-center" style="width:17%">Số tiền</th>
+                                                        <th scope="col" class="text-center" style="width:36%">Ghi chú</th>
+                                                        <th scope="col" class="text-center" style="width:2%">
+                                                            <span></span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody data-repeater-list="DNTT_list">
+                                                    <tr data-repeater-item>
+                                                        <td scope="row" class="text-center">
+                                                            <div>
+                                                                1
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
+                                                            </div>
+                                                        </td>
+                                                        <td class="">
+                                                            <div>
+                                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control text-end">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-center">
+                                                                <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                            <div class="d-flex justify-content-start">
+                                                <div role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card_template-body-bottom">
+                                    <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <div class="card_template-title text-center">Người đề nghị</div>
+                                            <div class="card_template-title text-center">Applicant</div>
+                                            <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
+                                                <div class="">
+                                                    <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
+                                                    <img id="signatureImg" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card_template-footer">
+                                <a href="/de-xuat-theo-mau" type="button" class="btn btn-outline-danger ps-5 pe-5 me-3">Hủy</a>
+                                <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
+                            </div>
+
+                        </div>
                     </div>
-
-                    <div class="card_template-wrapper mb-3">
-                        <div class="card_template-body">
-                            <div class="card_template-body-top">
-                                <div class='row mb-3'>
-                                    <div class="col-2 d-flex align-items-center justify-content-center flex-column">
-                                        <a class=" ">
-                                            <img class="header_logo" src="{{ env('LOGO_URL', '') }}" />
-                                        </a>
-                                        <div class="card_template-title fst-italic">BM003.QT07/20</div>
-                                    </div>
-                                    <div class="col-8 d-flex align-items-center justify-content-center flex-column">
-                                        <div class="card_template-heading">Bảng kê đề nghị</div>
-                                        <div class="card_template-heading-mini">Mã: {{ time() }}-BK</div>
-                                    </div>
-                                    <div class="col-2 card_template-topRight">
-                                        <div class="card_template-title fst-italic d-flex align-items-center justify-content-center">
-                                            <div class="text-nowrap">Ngày/Date:</div>
-                                            <div class="card_template-sub with_input d-flex justify-content-center align-items-center"">
-                                                <input type="text" placeholder="" class="form-control datePicker">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card_template-body-middle">
-                                <div class="row">
-                                    <div class="mb-3 col-6">
-                                        <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Người đề nghị/Requester:</div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-6">
-                                        <div class="card_template-title with_form">
-                                            <div class="text-nowrap">Công việc:</div>
-                                            <span class="card_template-sub with_input">
-                                                <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="table-responsive DNTT_repeater">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" class="text-center" style="width:2%">STT</th>
-                                                    <th scope="col" class="text-center" style="width:10%">Số chứng từ
-                                                    </th>
-                                                    <th scope="col" class="text-center" style="width:33%">Nội dung
-                                                    </th>
-                                                    <th scope="col" class="text-center" style="width:17%">Số tiền</th>
-                                                    <th scope="col" class="text-center" style="width:36%">Ghi chú</th>
-                                                    <th scope="col" class="text-center" style="width:2%">
-                                                        <span></span>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody data-repeater-list="DNTT_list">
-                                                <tr data-repeater-item>
-                                                    <td scope="row" class="text-center">
-                                                        <div>
-                                                            1
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)" class="form-control">
-                                                        </div>
-                                                    </td>
-                                                    <td class="">
-                                                        <div>
-                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control text-end">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            <input type="text" placeholder="(Vui lòng nhập nội dung)"class="form-control">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-center">
-                                                            <img data-repeater-delete role="button" src="{{ asset('/assets/img/trash.svg') }}" width="15px" height="15px" />
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-
-                                        </table>
-                                        <div class="d-flex justify-content-start">
-                                            <div role="button" class="fs-5 text-danger" data-repeater-create><i class="bi bi-plus-circle"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card_template-body-bottom">
-                                <div class="row">
-                                    <div class="col"></div>
-                                    <div class="col">
-                                        <div class="card_template-title text-center">Người đề nghị</div>
-                                        <div class="card_template-title text-center">Applicant</div>
-                                        <div class=" d-flex align-items-center justify-content-center" style="height: 100px; ">
-                                            <div class="">
-                                                <button id="showImageBtn" type="button" class="btn btn-outline-primary fs-6">Chèn chữ ký</button>
-                                                <img id="signatureImg" width="100" style="display: none;" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card_template-footer">
-                            <a href="/de-xuat-theo-mau" type="button" class="btn btn-outline-danger ps-5 pe-5 me-3">Hủy</a>
-                            <button type="button" class="btn btn-danger ps-5 pe-5" data-bs-toggle="modal" data-bs-target="#conFirm">Gửi</button>
-                        </div>
-
-                    </div>
-                </div>
+                </form>
             </div>
             @include('template.footer.footer')
         </div>
@@ -379,34 +419,32 @@
                     <h5 class="modal-title w-100" id="exampleModalLabel">Ý kiến phản hồi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="" action="" id="myForm">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
-                                <div class="funkyradio-danger">
-                                    <input type="radio" name="radio" id="confirmRadio" />
-                                    <label for="confirmRadio">Xác nhận</label>
-                                </div>
-                                <div class="funkyradio-danger">
-                                    <input type="radio" name="radio" id="destroyRadio" />
-                                    <label for="destroyRadio">Từ chối</label>
-                                </div>
-                            </div>
 
-                            <div class="mb-3 col-12 col-md-12 showSign">
-                                <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="mb-3 col-12 col-md-12 d-flex justify-content-between align-items-center funkyradio">
+                            <div class="funkyradio-danger">
+                                <input type="radio" name="radio" id="confirmRadio" />
+                                <label for="confirmRadio">Xác nhận</label>
                             </div>
-
-                            <div class="mb-3 col-12 col-md-12 showFormYKien">
-                                <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
+                            <div class="funkyradio-danger">
+                                <input type="radio" name="radio" id="destroyRadio" />
+                                <label for="destroyRadio">Từ chối</label>
                             </div>
                         </div>
+
+                        <div class="mb-3 col-12 col-md-12 showSign">
+                            <img width="100" src="{{ asset('/assets/img/sign-temp.jpg') }}" />
+                        </div>
+
+                        <div class="mb-3 col-12 col-md-12 showFormYKien">
+                            <textarea name="" id="" cols="5" class="form-control" placeholder="Nhập ý kiến"></textarea>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger pe-5 ps-5">Xác nhận</button>
-                    </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pe-5 ps-5">Xác nhận</button>
+                </div>
             </div>
         </div>
     </div>
