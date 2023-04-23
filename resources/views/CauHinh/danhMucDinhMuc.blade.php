@@ -35,7 +35,7 @@
                                                             <th class="text-nowrap">Đơn vị phụ trách</th>
                                                             <th class="text-nowrap">Vị trí phụ trách</th>
                                                             <th class="text-nowrap text-center">Manday</th>
-                                                            @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                            @if (session('user')['role'] == 'admin')
                                                                 <th></th>
                                                             @endif
                                                         </tr>
@@ -72,7 +72,7 @@
                                                                 <td>
                                                                     <div class="text-center">{{ $target->manday }}</div>
                                                                 </td>
-                                                                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                                                                @if (session('user')['role'] == 'admin')
                                                                     <td>
                                                                         <div class="dotdotdot" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
                                                                         </div>
@@ -649,7 +649,7 @@
         <div class="d-flex justify-content-between align-items-center">
 
             <div class="main_action ms-3">
-                @if (session('user')['role'] == 'admin' || session('user')['role'] == 'manager')
+                @if (session('user')['role'] == 'admin')
                 <button id="exporttable" class="btn btn-danger me-3" data-bs-toggle="modal"
                     data-bs-target="#themMoiDinhMuc">
                     Thêm định mức
