@@ -33,18 +33,17 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-nowrap text-center" style="width:5%">STT</th>
-                                                            <th class="text-nowrap" style="width:15%">Mã văn bản</th>
+                                                            <th class="text-nowrap" style="width:15%">Mã hiệu</th>
                                                             <th class="text-nowrap" style="width:25%">Tên văn bản</th>
-                                                            <th class="text-nowrap" style="width:15%">Loại văn bản</th>
-                                                            <th class="text-nowrap" style="width:15%">Đơn vị ban hành</th>
-                                                            <th class="text-nowrap" style="width:15%">Ngày hiệu lực</th>
-                                                            <th class="text-nowrap" style="width:20%">Xem file</th>
+                                                            <th class="text-nowrap" style="width:15%">Loại</th>
+                                                            <th class="text-nowrap" style="width:15%">Đơn vị</th>
+                                                            <th class="text-nowrap" style="width:15%">Hiệu lực</th>
                                                             <th class="text-nowrap" style="width:5%"><span></span></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($lists as $list)
-                                                    <tr class="table-row" role="button">
+                                                    <tr class="table-row" role="button" data-bs-toggle="modal" data-bs-target="#chiTietVanBan{{ $list['id'] }}">
                                                         <td class="text-nowrap text-center">
                                                             <div class="text-nowrap d-block text-truncate"
                                                                 style="">
@@ -87,18 +86,7 @@
                                                                 {{ $list['deadline'] }}
                                                             </div>
                                                         </td>
-                                                        <td class="text-nowrap">
-                                                            <div class="text-nowrap d-block text-truncate">
-                                                                <ul class="modal_upload-list">
-                                                                    <li>
-                                                                        <a href="#">Link 1</a>
-                                                                        <a href="#">Link 2</a>
-                                                                        <a href="#">Link 3</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </td>
-                                                        <td>
+                                                        <td onmousedown="event.stopPropagation();">
                                                             <div
                                                                 class="table_actions d-flex justify-content-center">
                                                                 <div class="btn" data-bs-toggle="modal" data-bs-target="#suaVanBan{{ $list['id'] }}">
@@ -232,6 +220,99 @@
                                                                                 class="btn btn-danger">Xóa</button>
                                                                         </form>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Modal Chi tiết De Xuat -->
+                                                        <div class="modal fade" id="chiTietVanBan{{ $list['id'] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header text-center">
+                                                                        <h5 class="modal-title w-100" id="exampleModalLabel">Quy trình đào tạo nhân sự mới</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form method="" action="">
+                                                                        @csrf
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col-6 mb-3">
+                                                                                    <input name="" type="text" value="{{ $list['code'] }}" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="Mã văn bản">
+                                                                                </div>
+                                                                                <div class="col-6 mb-3">
+                                                                                    <input name="" type="text" value="{{ $list['title'] }}" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $list['title'] }}">
+                                                                                </div>
+                                                                                
+                                                                                <div class="col-6 mb-3">
+                                                                                    <select name="" class="selectpicker" title="Chọn đơn vị ban hành" multiple data-size="5" data-live-search="true">
+                                                                                        <option>1</option>
+                                                                                        <option>2</option>
+                                                                                        <option>3</option>
+                                                                                        <option>4</option>
+                                                                                        <option>5</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                
+                                                                                <div class="col-6 mb-3">
+                                                                                    <select name="" class="selectpicker" title="Chọn đơn vị nhận" multiple data-size="5" data-live-search="true">
+                                                                                        <option>1</option>
+                                                                                        <option>2</option>
+                                                                                        <option>3</option>
+                                                                                        <option>4</option>
+                                                                                        <option>5</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                
+                                                                                <div class="col-6 mb-3">
+                                                                                    <select name="" class="selectpicker" title="Chọn loại văn bản" data-size="5">
+                                                                                        <option value="1">Quyết định nội bộ</option>
+                                                                                        <option value="2">Quyết định</option>
+                                                                                        <option value="3">Thông báo</option>
+                                                                                        <option value="4">Chương trình bán hàng</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="col-6 mb-3 position-relative">
+                                                                                    <input type="text" class="form-control datePicker">
+                                                                                    <i class="bi bi-calendar-plus style_pickdate"></i>
+                                                                                </div>
+                                                                                <div class="mb-3 col-12">
+                                                                                    <div class="card_template-title  with_form">
+                                                                                        <div class="text-nowrap">Tệp đính kèm/Attached files:</div>
+                                                                                    </div>
+                                                                                    <div class="d-flex flex-column">
+                                                                                        <form action="" method="POST" enctype="multipart/form-data">
+                                                                                            @method('PUT')
+                                                                                            @csrf
+                                                                                            <div class="upload_wrapper-items">
+                                                                                                <input type="hidden" name="uploadedFiles[]" value="" />
+                                                                                                <button role="button" type="button"
+                                                                                                    class="btn position-relative border d-flex">
+                                                                                                    <img style="width:16px;height:16px"
+                                                                                                        src="{{ asset('assets/img/upload-file.svg') }}" />
+                                                                                                    <span class="ps-2">Chọn file đính kèm</span>
+                                                                                                    <input role="button" type="file"
+                                                                                                        class="modal_upload-input modal_upload-file" name="files[]"
+                                                                                                        multiple onchange="updateList(event)">
+                                                                                                </button>
+                                                                                                <ul class="modal_upload-list"
+                                                                                                    style="max-height: 200px; overflow-y: scroll; overflow-x: hidden;">
+                                                                                                </ul>
+                                                                                                {{-- <div class="d-flex align-items-center justify-content-end">
+                                                                                                    <button type="submit" class="btn btn-outline-danger">Tải
+                                                                                                        file
+                                                                                                    </button>
+                                                                                                </div> --}}
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
+                                                                            <button type="submit" class="btn btn-danger">Tạo</button>
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -458,7 +539,7 @@
         $('div.card-title-left').html(`
             <div class="d-flex">
                 <div class="action_wrapper me-3">
-                    <select class="selectpicker" title="Đơn vị bán hàng">
+                    <select class="selectpicker" title="Đơn vị">
                         <option value="all">Tất cả</option>
                     </select>
                 </div>

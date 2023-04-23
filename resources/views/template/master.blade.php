@@ -213,7 +213,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 <i class="bi bi-calendar-plus style_pickdate-two"></i>
                             </div>
                             <div class="col-sm-12 mb-3">
-                                <textarea name="problem" class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
+                                <textarea name="problem" required class="form-control" placeholder="Vấn đề tồn đọng"></textarea>
                             </div>
                             <div class="col-sm-7 mb-3">
                                 <select class="selectpicker" title="Phân loại">
@@ -222,7 +222,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 </select>
                             </div>
                             <div class="col-sm-5 mb-3 position-relative">
-                                <input id="thoiHanVanDeTonDong" placeholder="Thời hạn" class="form-control" type="text" name="deadline" />
+                                <input id="thoiHanVanDeTonDong" required placeholder="Thời hạn" class="form-control" type="text" name="deadline" />
                                 <i class="bi bi-calendar-plus style_pickdate-two"></i>
                             </div>
                         </div>

@@ -686,10 +686,10 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-12 mb-3">
-                                        <textarea rows="1" class="form-control" required placeholder="Nguyên nhân" name="reason">{{ $item->reason }}</textarea>
+                                        <textarea rows="1" class="form-control"  placeholder="Nguyên nhân" name="reason" required>{{ $item->reason }}</textarea>
                                     </div>
                                     <div class="col-sm-12 mb-3">
-                                        <textarea rows="1" class="form-control" required placeholder="Hướng giải quyết" name="solution">{{ $item->solution }}</textarea>
+                                        <textarea rows="1" class="form-control"  placeholder="Hướng giải quyết" name="solution" required>{{ $item->solution }}</textarea>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Thời hạn">

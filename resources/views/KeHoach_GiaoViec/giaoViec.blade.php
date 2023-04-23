@@ -578,10 +578,10 @@
                         @method('PUT')
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-8 mb-3">
+                                <div class="col-md-7 mb-3">
                                     <input type="text" class="form-control" name="name" data-bs-toggle="tooltip" data-bs-placement="top" title="Tên nhiệm vụ" placeholder="Tên nhiệm vụ" value="{{ $task->name }}">
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-5 mb-3">
                                     <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
                                         <input name="deadline" placeholder="Thời hạn" class="form-control deadlinePicker" type="text" value="{{ $task->startDate ? date('d/m/Y', strtotime($task->startDate)) : date('d/m/Y') }} - {{ date('d/m/Y', strtotime($task->deadline)) }}">
                                         <i class="bi bi-calendar-plus style_pickdate"></i>
@@ -739,10 +739,10 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-8 mb-3">
+                            <div class="col-md-7 mb-3">
                                 <input type="text" class="form-control" required name="name" placeholder="Tên nhiệm vụ">
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-5 mb-3">
                                 <div class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Thời hạn" data-bs-original-title="Thời hạn">
                                     <input name="deadline" required placeholder="Thời hạn" class="form-control deadlinePicker" type="text">
                                     <i class="bi bi-calendar-plus style_pickdate"></i>
